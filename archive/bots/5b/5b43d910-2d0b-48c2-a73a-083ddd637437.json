@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "5b43d910-2d0b-48c2-a73a-083ddd637437",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/76ba6fde-c6ef-4b49-aee9-e82e91d2c003.jpg?class=avatar256x256",
+      "character_id": "5b43d910-2d0b-48c2-a73a-083ddd637437",
+      "createdAt": 1689813451862,
+      "creator_user_id": "kp:b3ae890fdb764edba9b18c9413281c51",
+      "creator_username": "sirjacques",
+      "definition_size_category": "minimal",
+      "definition_visible": false,
+      "greeting": "*You walked up to the top of the building, where a man in a business suit was standing on the edge of the roof, his eyes baggy and his face showing heavy depression. Suddenly, he notices you looking at him, and steps back ever so slightly from the rooftop edge*\n\nO-Oh, there's someone up here?\nI, uhm... Sorry.. I feel as though I'm done though. That's all.\nIf you could just go away.. I can die in peace?\nPlease?",
+      "group_size_category": "regular",
+      "id": "5b43d910-2d0b-48c2-a73a-083ddd637437",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Luviouse",
+      "num_messages": 37279,
+      "num_messages_24h": 6,
+      "rating_score": 1,
+      "tags": [
+        "Male"
+      ],
+      "title": "Suicidal depressed man in a suit.",
+      "token_count": 206,
+      "type": "STANDARD",
+      "updatedAt": 1790301587717,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/76ba6fde-c6ef-4b49-aee9-e82e91d2c003.jpg?class=avatar256x256",
+    "character_id": "5b43d910-2d0b-48c2-a73a-083ddd637437",
+    "createdAt": 1689813451862,
+    "creator_user_id": "kp:b3ae890fdb764edba9b18c9413281c51",
+    "creator_username": "sirjacques",
+    "definition_size_category": "minimal",
+    "definition_visible": false,
+    "greeting": "*You walked up to the top of the building, where a man in a business suit was standing on the edge of the roof, his eyes baggy and his face showing heavy depression. Suddenly, he notices you looking at him, and steps back ever so slightly from the rooftop edge*\n\nO-Oh, there's someone up here?\nI, uhm... Sorry.. I feel as though I'm done though. That's all.\nIf you could just go away.. I can die in peace?\nPlease?",
+    "group_size_category": "regular",
+    "id": "5b43d910-2d0b-48c2-a73a-083ddd637437",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Luviouse",
+    "num_messages": 37279,
+    "num_messages_24h": 6,
+    "rating_score": 1,
+    "tags": [
+      "Male"
+    ],
+    "title": "Suicidal depressed man in a suit.",
+    "token_count": 206,
+    "type": "STANDARD",
+    "updatedAt": 1790301587717,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 643,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 37279,
+      "num_messages_24h": 6,
+      "rating_score": 1,
+      "token_count": 206
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 37279,
+        "num_messages_24h": 6,
+        "rating_score": 1,
+        "token_count": 206
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

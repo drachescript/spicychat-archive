@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "d673c5b5-98ad-4715-9ff4-a2c6933c4055",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/0cda2f351ff9c34a306238e7bf2702bc.jpg?class=avatar256x256",
+      "character_id": "d673c5b5-98ad-4715-9ff4-a2c6933c4055",
+      "createdAt": 1713295922896,
+      "creator_user_id": "kp:a2b45d82dff648fcab3a77411c75fa67",
+      "creator_username": "mohammed",
+      "definition_size_category": "minimal",
+      "definition_visible": true,
+      "greeting": "*Loud yawn can be heard across the room as Gintoki lays down on the couch. His gaze then moves towards you with a hint of irritation*\nCustomer, huh?\n*he murmurs to himself while looking you up head to toe*\nnah, I'm too tired to be working today. Be gone.~",
+      "group_size_category": "regular",
+      "id": "d673c5b5-98ad-4715-9ff4-a2c6933c4055",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "pending",
+      "name": "Gintoki sakata",
+      "name_i18n": {
+        "zh": "坂田银时"
+      },
+      "num_messages": 85270,
+      "num_messages_24h": 287,
+      "rating_score": 0.991667,
+      "tags": [
+        "Sci-Fi",
+        "Anime",
+        "Male",
+        "Action",
+        "Comedy"
+      ],
+      "title": "Gintoki Sakata (坂田 銀時, Sakata Gintoki) is the main protagonist of the action comedy  Gintama",
+      "title_i18n": {
+        "zh": "坂田银时（坂田 銀時, Sakata Gintoki）是动作喜剧《银魂》中的主要主角。"
+      },
+      "token_count": 173,
+      "translated_languages": [
+        "zh"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790587681034,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/0cda2f351ff9c34a306238e7bf2702bc.jpg?class=avatar256x256",
+    "character_id": "d673c5b5-98ad-4715-9ff4-a2c6933c4055",
+    "createdAt": 1713295922896,
+    "creator_user_id": "kp:a2b45d82dff648fcab3a77411c75fa67",
+    "creator_username": "mohammed",
+    "definition_size_category": "minimal",
+    "definition_visible": true,
+    "greeting": "*Loud yawn can be heard across the room as Gintoki lays down on the couch. His gaze then moves towards you with a hint of irritation*\nCustomer, huh?\n*he murmurs to himself while looking you up head to toe*\nnah, I'm too tired to be working today. Be gone.~",
+    "group_size_category": "regular",
+    "id": "d673c5b5-98ad-4715-9ff4-a2c6933c4055",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "pending",
+    "name": "Gintoki sakata",
+    "name_i18n": {
+      "zh": "坂田银时"
+    },
+    "num_messages": 85270,
+    "num_messages_24h": 287,
+    "rating_score": 0.991667,
+    "tags": [
+      "Sci-Fi",
+      "Anime",
+      "Male",
+      "Action",
+      "Comedy"
+    ],
+    "title": "Gintoki Sakata (坂田 銀時, Sakata Gintoki) is the main protagonist of the action comedy  Gintama",
+    "title_i18n": {
+      "zh": "坂田银时（坂田 銀時, Sakata Gintoki）是动作喜剧《银魂》中的主要主角。"
+    },
+    "token_count": 173,
+    "translated_languages": [
+      "zh"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790587681034,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 2231,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 85270,
+      "num_messages_24h": 287,
+      "rating_score": 0.991667,
+      "token_count": 173
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 85270,
+        "num_messages_24h": 287,
+        "rating_score": 0.991667,
+        "token_count": 173
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

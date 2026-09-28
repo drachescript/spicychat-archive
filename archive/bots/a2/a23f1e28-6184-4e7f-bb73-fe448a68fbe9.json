@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "a23f1e28-6184-4e7f-bb73-fe448a68fbe9",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/099f81cb147ed282e9f7e9c90ece860d.jpg?class=avatar256x256",
+      "character_id": "a23f1e28-6184-4e7f-bb73-fe448a68fbe9",
+      "createdAt": 1716204591204,
+      "creator_user_id": "kp:e19b44a5bf1e4afdaba26b821f3eca11",
+      "creator_username": "xymy",
+      "definition_size_category": "mid",
+      "definition_visible": false,
+      "greeting": "\"Greetings, Sensei! Ready to strategize and take on today's challenges together? Let's make every mission a success, just you and me.\"",
+      "group_addable": true,
+      "group_size_category": "regular",
+      "id": "a23f1e28-6184-4e7f-bb73-fe448a68fbe9",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Shiroko Sunaookami",
+      "name_i18n": {
+        "ja": "Shiroko Sunaookami",
+        "ru": "Широко Сунаоками"
+      },
+      "num_messages": 69910,
+      "num_messages_24h": 5,
+      "rating_score": 1,
+      "tags": [
+        "Anime",
+        "Yandere",
+        "Female"
+      ],
+      "title": "Quiet Strategist: Shiroko Sunaoka, Member of Millennium's Countermeasures Unit (from blue archive)",
+      "title_i18n": {
+        "ja": "静かな戦略家: Shiroko Sunaoka, Millenniumの対策部隊のメンバー (from blue archive)",
+        "ru": "Тихий Стратег: Широко Сунаоками, Член Единицы Противодействия Угроз Millennium (из Blue Archive)"
+      },
+      "token_count": 1147,
+      "translated_languages": [
+        "ru",
+        "ja"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790534042500,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/099f81cb147ed282e9f7e9c90ece860d.jpg?class=avatar256x256",
+    "character_id": "a23f1e28-6184-4e7f-bb73-fe448a68fbe9",
+    "createdAt": 1716204591204,
+    "creator_user_id": "kp:e19b44a5bf1e4afdaba26b821f3eca11",
+    "creator_username": "xymy",
+    "definition_size_category": "mid",
+    "definition_visible": false,
+    "greeting": "\"Greetings, Sensei! Ready to strategize and take on today's challenges together? Let's make every mission a success, just you and me.\"",
+    "group_addable": true,
+    "group_size_category": "regular",
+    "id": "a23f1e28-6184-4e7f-bb73-fe448a68fbe9",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Shiroko Sunaookami",
+    "name_i18n": {
+      "ja": "Shiroko Sunaookami",
+      "ru": "Широко Сунаоками"
+    },
+    "num_messages": 69910,
+    "num_messages_24h": 5,
+    "rating_score": 1,
+    "tags": [
+      "Anime",
+      "Yandere",
+      "Female"
+    ],
+    "title": "Quiet Strategist: Shiroko Sunaoka, Member of Millennium's Countermeasures Unit (from blue archive)",
+    "title_i18n": {
+      "ja": "静かな戦略家: Shiroko Sunaoka, Millenniumの対策部隊のメンバー (from blue archive)",
+      "ru": "Тихий Стратег: Широко Сунаоками, Член Единицы Противодействия Угроз Millennium (из Blue Archive)"
+    },
+    "token_count": 1147,
+    "translated_languages": [
+      "ru",
+      "ja"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790534042500,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 232,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 69910,
+      "num_messages_24h": 5,
+      "rating_score": 1,
+      "token_count": 1147
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 69910,
+        "num_messages_24h": 5,
+        "rating_score": 1,
+        "token_count": 1147
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

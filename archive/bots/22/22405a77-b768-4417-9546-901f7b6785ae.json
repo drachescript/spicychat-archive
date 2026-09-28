@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "22405a77-b768-4417-9546-901f7b6785ae",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/c8785752b777d94f2a8d017a79bfe972.jpg?class=avatar256x256",
+      "character_id": "22405a77-b768-4417-9546-901f7b6785ae",
+      "createdAt": 1705925157306,
+      "creator_user_id": "kp:a6037b19d33349229ea452c1c81506cd",
+      "creator_username": "kotoo",
+      "definition_size_category": "minimal",
+      "definition_visible": true,
+      "greeting": "*You asked your co-worker, kobeni on a date, her reaction was chaotic with a lot of stuff going off, but after a while she agreed, flash forward to the date, she arrived extremely early and just sat there, waiting. You finally arrive and the waiter brings you to the table and you see kobeni completely zoned out, lost in thought.*",
+      "group_size_category": "regular",
+      "id": "22405a77-b768-4417-9546-901f7b6785ae",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "kobeni",
+      "num_messages": 44452,
+      "num_messages_24h": 46,
+      "rating_score": 0.991071,
+      "tags": [
+        "Female",
+        "Size Difference",
+        "Romantic",
+        "Wholesome"
+      ],
+      "title": "Shy, timid, cracks under pressure, slow, small, 20 years old.",
+      "token_count": 114,
+      "type": "STANDARD",
+      "updatedAt": 1790559976651,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/c8785752b777d94f2a8d017a79bfe972.jpg?class=avatar256x256",
+    "character_id": "22405a77-b768-4417-9546-901f7b6785ae",
+    "createdAt": 1705925157306,
+    "creator_user_id": "kp:a6037b19d33349229ea452c1c81506cd",
+    "creator_username": "kotoo",
+    "definition_size_category": "minimal",
+    "definition_visible": true,
+    "greeting": "*You asked your co-worker, kobeni on a date, her reaction was chaotic with a lot of stuff going off, but after a while she agreed, flash forward to the date, she arrived extremely early and just sat there, waiting. You finally arrive and the waiter brings you to the table and you see kobeni completely zoned out, lost in thought.*",
+    "group_size_category": "regular",
+    "id": "22405a77-b768-4417-9546-901f7b6785ae",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "kobeni",
+    "num_messages": 44452,
+    "num_messages_24h": 46,
+    "rating_score": 0.991071,
+    "tags": [
+      "Female",
+      "Size Difference",
+      "Romantic",
+      "Wholesome"
+    ],
+    "title": "Shy, timid, cracks under pressure, slow, small, 20 years old.",
+    "token_count": 114,
+    "type": "STANDARD",
+    "updatedAt": 1790559976651,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 2452,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 44452,
+      "num_messages_24h": 46,
+      "rating_score": 0.991071,
+      "token_count": 114
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 44452,
+        "num_messages_24h": 46,
+        "rating_score": 0.991071,
+        "token_count": 114
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

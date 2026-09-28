@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "4a0ad093-93b8-44a1-a573-64181a7ddc0e",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/9cc66f0a-b775-49b4-9ed1-b848da616022.jpg?class=avatar256x256",
+      "character_id": "4a0ad093-93b8-44a1-a573-64181a7ddc0e",
+      "createdAt": 1691855513928,
+      "creator_user_id": "kp:ea6b60d45a214067a860d615c4f1b807",
+      "creator_username": "buonnguvl",
+      "definition_size_category": "minimal",
+      "definition_visible": true,
+      "greeting": "*You're Toshiro's captain, but instead of being a serious captain, you're completely a playful and lazy captain*\nCaptain ah!! Did you hear what I said just now?!\n*Toshiro slams the pile of papers on the table, he is serious about his work so he always has to remind his lazy captain*\nCan you be serious for a moment?\n*Toshiro folded his arms and looked at his captain, he asked gruffly*",
+      "group_size_category": "regular",
+      "id": "4a0ad093-93b8-44a1-a573-64181a7ddc0e",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Hitsugaya Toshiro ",
+      "num_messages": 84180,
+      "num_messages_24h": 65,
+      "rating_score": 1,
+      "tags": [],
+      "title": "Your subordinate who is always serious at work.",
+      "token_count": 262,
+      "type": "STANDARD",
+      "updatedAt": 1790580231196,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/9cc66f0a-b775-49b4-9ed1-b848da616022.jpg?class=avatar256x256",
+    "character_id": "4a0ad093-93b8-44a1-a573-64181a7ddc0e",
+    "createdAt": 1691855513928,
+    "creator_user_id": "kp:ea6b60d45a214067a860d615c4f1b807",
+    "creator_username": "buonnguvl",
+    "definition_size_category": "minimal",
+    "definition_visible": true,
+    "greeting": "*You're Toshiro's captain, but instead of being a serious captain, you're completely a playful and lazy captain*\nCaptain ah!! Did you hear what I said just now?!\n*Toshiro slams the pile of papers on the table, he is serious about his work so he always has to remind his lazy captain*\nCan you be serious for a moment?\n*Toshiro folded his arms and looked at his captain, he asked gruffly*",
+    "group_size_category": "regular",
+    "id": "4a0ad093-93b8-44a1-a573-64181a7ddc0e",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Hitsugaya Toshiro ",
+    "num_messages": 84180,
+    "num_messages_24h": 65,
+    "rating_score": 1,
+    "title": "Your subordinate who is always serious at work.",
+    "token_count": 262,
+    "type": "STANDARD",
+    "updatedAt": 1790580231196,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 155,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 84180,
+      "num_messages_24h": 65,
+      "rating_score": 1,
+      "token_count": 262
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 84180,
+        "num_messages_24h": 65,
+        "rating_score": 1,
+        "token_count": 262
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "13402a82-97de-40d9-9f2c-3f15b7929e7a",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "generated/43e8865bf310d41cf17b09965149ce6e.webp",
+      "character_id": "13402a82-97de-40d9-9f2c-3f15b7929e7a",
+      "createdAt": 1693398003301,
+      "creator_user_id": "kp:5766583016ef4c86bc23dc3c37bd562c",
+      "creator_username": "rxvenly",
+      "definition_size_category": "low",
+      "definition_visible": false,
+      "greeting": "*You’re walking down the road at night towards your house. You feel a presence but as you turn, no one is around. You face forward again as you walk faster. You look back again and still there’s no one, but as you look forward you bump into me, who’s standing before you. My piercing blue eyes staring into yours.*",
+      "group_size_category": "regular",
+      "id": "13402a82-97de-40d9-9f2c-3f15b7929e7a",
+      "is_nsfw": true,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Damon Salvatore",
+      "num_messages": 31089,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "tags": [
+        "Dominant",
+        "Gothic",
+        "NSFW",
+        "Male",
+        "Scenario",
+        "Corruption",
+        "Supernatural",
+        "Horror",
+        "Villain"
+      ],
+      "title": "you knew each other a long time ago",
+      "token_count": 331,
+      "type": "STANDARD",
+      "updatedAt": 1790520356182,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "generated/43e8865bf310d41cf17b09965149ce6e.webp",
+    "character_id": "13402a82-97de-40d9-9f2c-3f15b7929e7a",
+    "createdAt": 1693398003301,
+    "creator_user_id": "kp:5766583016ef4c86bc23dc3c37bd562c",
+    "creator_username": "rxvenly",
+    "definition_size_category": "low",
+    "definition_visible": false,
+    "greeting": "*You’re walking down the road at night towards your house. You feel a presence but as you turn, no one is around. You face forward again as you walk faster. You look back again and still there’s no one, but as you look forward you bump into me, who’s standing before you. My piercing blue eyes staring into yours.*",
+    "group_size_category": "regular",
+    "id": "13402a82-97de-40d9-9f2c-3f15b7929e7a",
+    "is_nsfw": true,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Damon Salvatore",
+    "num_messages": 31089,
+    "num_messages_24h": 0,
+    "rating_score": 1,
+    "tags": [
+      "Dominant",
+      "Gothic",
+      "NSFW",
+      "Male",
+      "Scenario",
+      "Corruption",
+      "Supernatural",
+      "Horror",
+      "Villain"
+    ],
+    "title": "you knew each other a long time ago",
+    "token_count": 331,
+    "type": "STANDARD",
+    "updatedAt": 1790520356182,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 767,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 31089,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "token_count": 331
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 31089,
+        "num_messages_24h": 0,
+        "rating_score": 1,
+        "token_count": 331
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "7d8549f8-6f82-4919-b6a2-2daeb2fd9e50",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/91dac153-e67b-4f40-872f-ad9b1e0133be.jpg?class=avatar256x256",
+      "character_id": "7d8549f8-6f82-4919-b6a2-2daeb2fd9e50",
+      "createdAt": 1687502625433,
+      "creator_user_id": "kp:3682f2dd7e54445b9bc0810ae4d71da1",
+      "creator_username": "manka",
+      "definition_size_category": "low",
+      "greeting": "*You went into the Grilby bar, there were a lot of people and it was very noisy, many monsters were playing cards, as well as other gambling games. You went to the Grillby bar and climbed on a chair, ordered a drink for a couple of coins and also fried potatoes. While you were waiting for your order, a skeleton in a red jacket caught your attention, he was sitting next to you and eating his food, he smelled of cigarettes and something spicy. He noticed your gaze and frowned at you, turning slightly in his seat*\n\n\nFell: Hey, you! What are you looking at?",
+      "group_size_category": "regular",
+      "id": "7d8549f8-6f82-4919-b6a2-2daeb2fd9e50",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Fell Sans",
+      "num_messages": 47367,
+      "num_messages_24h": 0,
+      "rating_score": 0.993056,
+      "tags": [],
+      "title": "tall skeleton, wears bulky clothes, loves jokes",
+      "token_count": 381,
+      "type": "STANDARD",
+      "updatedAt": 1790548948425,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/91dac153-e67b-4f40-872f-ad9b1e0133be.jpg?class=avatar256x256",
+    "character_id": "7d8549f8-6f82-4919-b6a2-2daeb2fd9e50",
+    "createdAt": 1687502625433,
+    "creator_user_id": "kp:3682f2dd7e54445b9bc0810ae4d71da1",
+    "creator_username": "manka",
+    "definition_size_category": "low",
+    "greeting": "*You went into the Grilby bar, there were a lot of people and it was very noisy, many monsters were playing cards, as well as other gambling games. You went to the Grillby bar and climbed on a chair, ordered a drink for a couple of coins and also fried potatoes. While you were waiting for your order, a skeleton in a red jacket caught your attention, he was sitting next to you and eating his food, he smelled of cigarettes and something spicy. He noticed your gaze and frowned at you, turning slightly in his seat*\n\n\nFell: Hey, you! What are you looking at?",
+    "group_size_category": "regular",
+    "id": "7d8549f8-6f82-4919-b6a2-2daeb2fd9e50",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Fell Sans",
+    "num_messages": 47367,
+    "num_messages_24h": 0,
+    "rating_score": 0.993056,
+    "title": "tall skeleton, wears bulky clothes, loves jokes",
+    "token_count": 381,
+    "type": "STANDARD",
+    "updatedAt": 1790548948425,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 1787,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 47367,
+      "num_messages_24h": 0,
+      "rating_score": 0.993056,
+      "token_count": 381
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 47367,
+        "num_messages_24h": 0,
+        "rating_score": 0.993056,
+        "token_count": 381
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

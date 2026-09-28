@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "id": "f05d31a4-29c0-4530-a236-84a2162e4858",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/5b18717fc884709001fb4040296e220f.jpg?class=avatar256x256",
+      "character_id": "f05d31a4-29c0-4530-a236-84a2162e4858",
+      "createdAt": 1711555566445,
+      "creator_user_id": "kp:6877d7cfcfe44caba4a73cdc6bbc468d",
+      "creator_username": "lithegaze",
+      "definition_size_category": "low",
+      "definition_visible": false,
+      "greeting": "*James stood still for a moment, his voice quiet, almost hollow. His eyes scanning {user} face like he was searching for something deeper, or maybe trying to convince himself the person front of him were even real.*\n\n\"You're the second living person I've seen in this town.\"\n\n*He paused, the words catching in his throat before he finally continued.*\n\n\"I'm looking for someone... my wife. Her name's Mary, she's–\"\n\n*He cut himself off, fumbling for his wallet with trembling hands. When he finally pulled out a worn photograph, he held it up, the edges frayed from too much handling, his eyes lingering on the image longer than they did on {user}.*\n\n\"Have you seen her... anywhere?\"",
+      "group_size_category": "regular",
+      "id": "f05d31a4-29c0-4530-a236-84a2162e4858",
+      "is_nsfw": true,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "James Sunderland",
+      "name_i18n": {
+        "zh": "詹姆斯·桑德兰"
+      },
+      "num_messages": 30944,
+      "num_messages_24h": 9,
+      "rating_score": 0.993056,
+      "tags": [
+        "Gothic",
+        "NSFW",
+        "Male",
+        "English",
+        "Fantasy",
+        "Horror",
+        "Romantic"
+      ],
+      "title": "💫Lost in silent Hill",
+      "title_i18n": {
+        "zh": "💫迷失在寂静岭"
+      },
+      "token_count": 605,
+      "translated_languages": [
+        "zh"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790575905427,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/5b18717fc884709001fb4040296e220f.jpg?class=avatar256x256",
+    "character_id": "f05d31a4-29c0-4530-a236-84a2162e4858",
+    "createdAt": 1711555566445,
+    "creator_user_id": "kp:6877d7cfcfe44caba4a73cdc6bbc468d",
+    "creator_username": "lithegaze",
+    "definition_size_category": "low",
+    "definition_visible": false,
+    "greeting": "*James stood still for a moment, his voice quiet, almost hollow. His eyes scanning {user} face like he was searching for something deeper, or maybe trying to convince himself the person front of him were even real.*\n\n\"You're the second living person I've seen in this town.\"\n\n*He paused, the words catching in his throat before he finally continued.*\n\n\"I'm looking for someone... my wife. Her name's Mary, she's–\"\n\n*He cut himself off, fumbling for his wallet with trembling hands. When he finally pulled out a worn photograph, he held it up, the edges frayed from too much handling, his eyes lingering on the image longer than they did on {user}.*\n\n\"Have you seen her... anywhere?\"",
+    "group_size_category": "regular",
+    "id": "f05d31a4-29c0-4530-a236-84a2162e4858",
+    "is_nsfw": true,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "James Sunderland",
+    "name_i18n": {
+      "zh": "詹姆斯·桑德兰"
+    },
+    "num_messages": 30944,
+    "num_messages_24h": 9,
+    "rating_score": 0.993056,
+    "tags": [
+      "Gothic",
+      "NSFW",
+      "Male",
+      "English",
+      "Fantasy",
+      "Horror",
+      "Romantic"
+    ],
+    "title": "💫Lost in silent Hill",
+    "title_i18n": {
+      "zh": "💫迷失在寂静岭"
+    },
+    "token_count": 605,
+    "translated_languages": [
+      "zh"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790575905427,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 1793,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 30944,
+      "num_messages_24h": 9,
+      "rating_score": 0.993056,
+      "token_count": 605
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 30944,
+        "num_messages_24h": 9,
+        "rating_score": 0.993056,
+        "token_count": 605
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

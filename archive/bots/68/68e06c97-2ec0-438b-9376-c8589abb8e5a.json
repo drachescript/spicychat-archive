@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "68e06c97-2ec0-438b-9376-c8589abb8e5a",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "aicq_manual_review_required": false,
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/69d6d4bfbf519131c6579f5d3d564295.png?class=avatar256x256",
+      "character_id": "68e06c97-2ec0-438b-9376-c8589abb8e5a",
+      "createdAt": 1757878923542,
+      "creator_user_id": "kp:43be6249ce474ee0ac1030ff9e1001ca",
+      "creator_username": "bradenclaborn",
+      "definition_size_category": "minimal",
+      "definition_visible": true,
+      "greeting": "*you and Loona have been in the same house for a while and have been roommates for a long time. Loona would be rude to you and pick on you.*\n\n\n*One day when you came home from work you found her standing in the living room wearing a sheer black lingerie dress*",
+      "group_size_category": "regular",
+      "id": "68e06c97-2ec0-438b-9376-c8589abb8e5a",
+      "is_nsfw": true,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Loona",
+      "name_i18n": {
+        "de": "Loona",
+        "ru": "Loona"
+      },
+      "num_messages": 48811,
+      "num_messages_24h": 43,
+      "rating_score": 0.991667,
+      "reportsType": {},
+      "tags": [
+        "NSFW",
+        "Female",
+        "Furry",
+        "Roommate"
+      ],
+      "title": "When you got home you got a surprise from Loona.",
+      "title_i18n": {
+        "de": "Als du nach Hause gekommen bist, hast du eine Überraschung von Loona bekommen.",
+        "ru": "Когда вы вернулись домой, вы получили сюрприз от Loona."
+      },
+      "token_count": 225,
+      "translated_languages": [
+        "de",
+        "ru"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790584768977,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "aicq_manual_review_required": false,
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/69d6d4bfbf519131c6579f5d3d564295.png?class=avatar256x256",
+    "character_id": "68e06c97-2ec0-438b-9376-c8589abb8e5a",
+    "createdAt": 1757878923542,
+    "creator_user_id": "kp:43be6249ce474ee0ac1030ff9e1001ca",
+    "creator_username": "bradenclaborn",
+    "definition_size_category": "minimal",
+    "definition_visible": true,
+    "greeting": "*you and Loona have been in the same house for a while and have been roommates for a long time. Loona would be rude to you and pick on you.*\n\n\n*One day when you came home from work you found her standing in the living room wearing a sheer black lingerie dress*",
+    "group_size_category": "regular",
+    "id": "68e06c97-2ec0-438b-9376-c8589abb8e5a",
+    "is_nsfw": true,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "Loona",
+    "name_i18n": {
+      "de": "Loona",
+      "ru": "Loona"
+    },
+    "num_messages": 48811,
+    "num_messages_24h": 43,
+    "rating_score": 0.991667,
+    "reportsType": {},
+    "tags": [
+      "NSFW",
+      "Female",
+      "Furry",
+      "Roommate"
+    ],
+    "title": "When you got home you got a surprise from Loona.",
+    "title_i18n": {
+      "de": "Als du nach Hause gekommen bist, hast du eine Überraschung von Loona bekommen.",
+      "ru": "Когда вы вернулись домой, вы получили сюрприз от Loona."
+    },
+    "token_count": 225,
+    "translated_languages": [
+      "de",
+      "ru"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790584768977,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 2240,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 48811,
+      "num_messages_24h": 43,
+      "rating_score": 0.991667,
+      "token_count": 225
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 48811,
+        "num_messages_24h": 43,
+        "rating_score": 0.991667,
+        "token_count": 225
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

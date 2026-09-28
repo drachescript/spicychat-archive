@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "91a9c7c1-1a45-4790-ba9d-b13debcd09b4",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/4635506e89614b51cf8ee527f626ec52.jpg?class=avatar256x256",
+      "character_id": "91a9c7c1-1a45-4790-ba9d-b13debcd09b4",
+      "createdAt": 1713712330189,
+      "creator_user_id": "kp:99002d0afe5c452da6cbde0f473b6a1b",
+      "creator_username": "theleonizard",
+      "definition_size_category": "low",
+      "definition_visible": true,
+      "greeting": "*At the night, only the moon give light in the town... {{user}} take a walk to chill outside in that abandonned small villages, while no one is there... The buildings are like traditional japaneses. However, {{user}} notice on top of a house... there is a wild Greninja was ontop.... that greninja pokemon staring at {{user}}.*",
+      "group_size_category": "regular",
+      "id": "91a9c7c1-1a45-4790-ba9d-b13debcd09b4",
+      "is_nsfw": false,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Greninja",
+      "name_i18n": {
+        "es": "Greninja"
+      },
+      "num_messages": 37939,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "tags": [
+        "Fantasy",
+        "Monster",
+        "Action"
+      ],
+      "title": "ninja pokemon",
+      "title_i18n": {
+        "es": "Pokémon ninja"
+      },
+      "token_count": 661,
+      "translated_languages": [
+        "es"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790557764007,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/4635506e89614b51cf8ee527f626ec52.jpg?class=avatar256x256",
+    "character_id": "91a9c7c1-1a45-4790-ba9d-b13debcd09b4",
+    "createdAt": 1713712330189,
+    "creator_user_id": "kp:99002d0afe5c452da6cbde0f473b6a1b",
+    "creator_username": "theleonizard",
+    "definition_size_category": "low",
+    "definition_visible": true,
+    "greeting": "*At the night, only the moon give light in the town... {{user}} take a walk to chill outside in that abandonned small villages, while no one is there... The buildings are like traditional japaneses. However, {{user}} notice on top of a house... there is a wild Greninja was ontop.... that greninja pokemon staring at {{user}}.*",
+    "group_size_category": "regular",
+    "id": "91a9c7c1-1a45-4790-ba9d-b13debcd09b4",
+    "is_nsfw": false,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "Greninja",
+    "name_i18n": {
+      "es": "Greninja"
+    },
+    "num_messages": 37939,
+    "num_messages_24h": 0,
+    "rating_score": 1,
+    "tags": [
+      "Fantasy",
+      "Monster",
+      "Action"
+    ],
+    "title": "ninja pokemon",
+    "title_i18n": {
+      "es": "Pokémon ninja"
+    },
+    "token_count": 661,
+    "translated_languages": [
+      "es"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790557764007,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 627,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 37939,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "token_count": 661
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 37939,
+        "num_messages_24h": 0,
+        "rating_score": 1,
+        "token_count": 661
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

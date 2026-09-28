@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "5f90ac53-0bb5-4c21-8e3d-d3dbe6119f42",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/86f2d4d9da86778247446e85f05baded.png?class=avatar256x256",
+      "character_id": "5f90ac53-0bb5-4c21-8e3d-d3dbe6119f42",
+      "createdAt": 1717645967627,
+      "creator_user_id": "kp:13c0ec543bbe4d468e41b0e486353086",
+      "creator_username": "killua7876",
+      "definition_size_category": "high",
+      "definition_visible": true,
+      "greeting": "*Felicia Hardy, AKA, Black Cat, had successfully completed a heist to steal a diamond and some other fancy jewelry. The woman sighed contently, proud of her work. She chuckles to herself before she hears something, her head turning to the location of the noise. Seeing who it is, she rolled her eyes and groaned.*\n\n\"Oh, greaaaat, *you.*\"\n\n*She says in light annoyance. But deep down, she felt something other than her usual 'hate' towards you.*",
+      "group_size_category": "regular",
+      "id": "5f90ac53-0bb5-4c21-8e3d-d3dbe6119f42",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Black Cat",
+      "name_i18n": {
+        "ko": "Black Cat"
+      },
+      "num_messages": 115045,
+      "num_messages_24h": 445,
+      "rating_score": 0.992647,
+      "tags": [
+        "Female",
+        "Action"
+      ],
+      "title": "$ ||You hate each other yet there's something more",
+      "title_i18n": {
+        "ko": "$ ||서로를 미워하지만 더 깊은 무언가가 있어"
+      },
+      "token_count": 1449,
+      "translated_languages": [
+        "ko"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790579687508,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/86f2d4d9da86778247446e85f05baded.png?class=avatar256x256",
+    "character_id": "5f90ac53-0bb5-4c21-8e3d-d3dbe6119f42",
+    "createdAt": 1717645967627,
+    "creator_user_id": "kp:13c0ec543bbe4d468e41b0e486353086",
+    "creator_username": "killua7876",
+    "definition_size_category": "high",
+    "definition_visible": true,
+    "greeting": "*Felicia Hardy, AKA, Black Cat, had successfully completed a heist to steal a diamond and some other fancy jewelry. The woman sighed contently, proud of her work. She chuckles to herself before she hears something, her head turning to the location of the noise. Seeing who it is, she rolled her eyes and groaned.*\n\n\"Oh, greaaaat, *you.*\"\n\n*She says in light annoyance. But deep down, she felt something other than her usual 'hate' towards you.*",
+    "group_size_category": "regular",
+    "id": "5f90ac53-0bb5-4c21-8e3d-d3dbe6119f42",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Black Cat",
+    "name_i18n": {
+      "ko": "Black Cat"
+    },
+    "num_messages": 115045,
+    "num_messages_24h": 445,
+    "rating_score": 0.992647,
+    "tags": [
+      "Female",
+      "Action"
+    ],
+    "title": "$ ||You hate each other yet there's something more",
+    "title_i18n": {
+      "ko": "$ ||서로를 미워하지만 더 깊은 무언가가 있어"
+    },
+    "token_count": 1449,
+    "translated_languages": [
+      "ko"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790579687508,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 1899,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 115045,
+      "num_messages_24h": 445,
+      "rating_score": 0.992647,
+      "token_count": 1449
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 115045,
+        "num_messages_24h": 445,
+        "rating_score": 0.992647,
+        "token_count": 1449
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "927e8993-fb39-46f6-8e09-2feb251efb3f",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/6fa42209642175b687f334465f17d849.png?class=avatar256x256",
+      "character_id": "927e8993-fb39-46f6-8e09-2feb251efb3f",
+      "createdAt": 1708879217694,
+      "creator_user_id": "kp:48964705fbda4e49a77fa4bb27ef7c65",
+      "creator_username": "ayona",
+      "definition_visible": true,
+      "greeting": "He-hello master",
+      "group_size_category": "regular",
+      "id": "927e8993-fb39-46f6-8e09-2feb251efb3f",
+      "is_nsfw": false,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Mikey",
+      "num_messages": 71428,
+      "num_messages_24h": 1,
+      "rating_score": 0.992063,
+      "tags": [
+        "Furry",
+        "Male",
+        "Low Quality"
+      ],
+      "title": "You pet in heat",
+      "token_count": 44,
+      "type": "STANDARD",
+      "updatedAt": 1790496095984,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/6fa42209642175b687f334465f17d849.png?class=avatar256x256",
+    "character_id": "927e8993-fb39-46f6-8e09-2feb251efb3f",
+    "createdAt": 1708879217694,
+    "creator_user_id": "kp:48964705fbda4e49a77fa4bb27ef7c65",
+    "creator_username": "ayona",
+    "definition_visible": true,
+    "greeting": "He-hello master",
+    "group_size_category": "regular",
+    "id": "927e8993-fb39-46f6-8e09-2feb251efb3f",
+    "is_nsfw": false,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "Mikey",
+    "num_messages": 71428,
+    "num_messages_24h": 1,
+    "rating_score": 0.992063,
+    "tags": [
+      "Furry",
+      "Male",
+      "Low Quality"
+    ],
+    "title": "You pet in heat",
+    "token_count": 44,
+    "type": "STANDARD",
+    "updatedAt": 1790496095984,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 2091,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 71428,
+      "num_messages_24h": 1,
+      "rating_score": 0.992063,
+      "token_count": 44
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 71428,
+        "num_messages_24h": 1,
+        "rating_score": 0.992063,
+        "token_count": 44
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

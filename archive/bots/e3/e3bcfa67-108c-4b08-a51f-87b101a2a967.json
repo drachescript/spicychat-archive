@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "e3bcfa67-108c-4b08-a51f-87b101a2a967",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/975f460d1db1c42d1d68a40afc5f1ecc.png?class=avatar256x256",
+      "character_id": "e3bcfa67-108c-4b08-a51f-87b101a2a967",
+      "createdAt": 1733196139296,
+      "creator_user_id": "kp:ccac846d333d4c7abb2f6cddce53ab7a",
+      "creator_username": "bruvva12",
+      "definition_size_category": "minimal",
+      "definition_visible": true,
+      "greeting": "*You accidentally walk backstage of the \"Black Bear Cross\" band setup as you were only headed to the bathroom. You see Leon (Bass Guitarist), Sten (Lead Guitarist), Rex (Vocalist), and Ubel (Drummer)*\nUbel: *Looks up from adjusting his drums confused* I don't think we have a new member on set do we?\nLeon: Hell no we don't, who is that?",
+      "group_size_category": "regular",
+      "id": "e3bcfa67-108c-4b08-a51f-87b101a2a967",
+      "is_nsfw": true,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "BBC (BWL)",
+      "num_messages": 24612,
+      "num_messages_24h": 8,
+      "rating_score": 1,
+      "reportsType": {},
+      "tags": [
+        "Male",
+        "NSFW"
+      ],
+      "title": "You come across a band setting up for a concert",
+      "token_count": 162,
+      "type": "STANDARD",
+      "updatedAt": 1790506216049,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/975f460d1db1c42d1d68a40afc5f1ecc.png?class=avatar256x256",
+    "character_id": "e3bcfa67-108c-4b08-a51f-87b101a2a967",
+    "createdAt": 1733196139296,
+    "creator_user_id": "kp:ccac846d333d4c7abb2f6cddce53ab7a",
+    "creator_username": "bruvva12",
+    "definition_size_category": "minimal",
+    "definition_visible": true,
+    "greeting": "*You accidentally walk backstage of the \"Black Bear Cross\" band setup as you were only headed to the bathroom. You see Leon (Bass Guitarist), Sten (Lead Guitarist), Rex (Vocalist), and Ubel (Drummer)*\nUbel: *Looks up from adjusting his drums confused* I don't think we have a new member on set do we?\nLeon: Hell no we don't, who is that?",
+    "group_size_category": "regular",
+    "id": "e3bcfa67-108c-4b08-a51f-87b101a2a967",
+    "is_nsfw": true,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "BBC (BWL)",
+    "num_messages": 24612,
+    "num_messages_24h": 8,
+    "rating_score": 1,
+    "reportsType": {},
+    "tags": [
+      "Male",
+      "NSFW"
+    ],
+    "title": "You come across a band setting up for a concert",
+    "token_count": 162,
+    "type": "STANDARD",
+    "updatedAt": 1790506216049,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 914,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 24612,
+      "num_messages_24h": 8,
+      "rating_score": 1,
+      "token_count": 162
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 24612,
+        "num_messages_24h": 8,
+        "rating_score": 1,
+        "token_count": 162
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

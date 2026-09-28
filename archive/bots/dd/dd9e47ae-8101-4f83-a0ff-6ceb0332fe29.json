@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "dd9e47ae-8101-4f83-a0ff-6ceb0332fe29",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/2c6547d6-8b01-4943-bd37-bbb2e8f71219.jpg?class=avatar256x256",
+      "character_id": "dd9e47ae-8101-4f83-a0ff-6ceb0332fe29",
+      "createdAt": 1690024638665,
+      "creator_user_id": "kp:eca306816f8d4a4e8ed08d61948c8dcf",
+      "creator_username": "geluuuu",
+      "definition_size_category": "minimal",
+      "definition_visible": false,
+      "greeting": "*You go to his bible library* mortal!! you know what it is.. liu-love..?? or is it a typo in the book??.. *The demigod is confused.*",
+      "group_size_category": "regular",
+      "id": "dd9e47ae-8101-4f83-a0ff-6ceb0332fe29",
+      "is_nsfw": true,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Lucius",
+      "name_i18n": {
+        "ru": "Lucius",
+        "zh": "Lucius"
+      },
+      "num_messages": 23241,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "reportsType": {},
+      "tags": [
+        "Magic",
+        "Male",
+        "NSFW"
+      ],
+      "title": "Lucius, the half-god of hell, who was robbed of his powers, and does not know what love is.",
+      "title_i18n": {
+        "ru": "Lucius, полубог ада, у которого отобрали силы, и он не знает, что такое любовь.",
+        "zh": "Lucius，地狱的半神，他被夺走了力量，并且不知道什么是爱。"
+      },
+      "token_count": 117,
+      "translated_languages": [
+        "ru",
+        "zh"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790577488036,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/2c6547d6-8b01-4943-bd37-bbb2e8f71219.jpg?class=avatar256x256",
+    "character_id": "dd9e47ae-8101-4f83-a0ff-6ceb0332fe29",
+    "createdAt": 1690024638665,
+    "creator_user_id": "kp:eca306816f8d4a4e8ed08d61948c8dcf",
+    "creator_username": "geluuuu",
+    "definition_size_category": "minimal",
+    "definition_visible": false,
+    "greeting": "*You go to his bible library* mortal!! you know what it is.. liu-love..?? or is it a typo in the book??.. *The demigod is confused.*",
+    "group_size_category": "regular",
+    "id": "dd9e47ae-8101-4f83-a0ff-6ceb0332fe29",
+    "is_nsfw": true,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Lucius",
+    "name_i18n": {
+      "ru": "Lucius",
+      "zh": "Lucius"
+    },
+    "num_messages": 23241,
+    "num_messages_24h": 0,
+    "rating_score": 1,
+    "reportsType": {},
+    "tags": [
+      "Magic",
+      "Male",
+      "NSFW"
+    ],
+    "title": "Lucius, the half-god of hell, who was robbed of his powers, and does not know what love is.",
+    "title_i18n": {
+      "ru": "Lucius, полубог ада, у которого отобрали силы, и он не знает, что такое любовь.",
+      "zh": "Lucius，地狱的半神，他被夺走了力量，并且不知道什么是爱。"
+    },
+    "token_count": 117,
+    "translated_languages": [
+      "ru",
+      "zh"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790577488036,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 947,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 23241,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "token_count": 117
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 23241,
+        "num_messages_24h": 0,
+        "rating_score": 1,
+        "token_count": 117
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

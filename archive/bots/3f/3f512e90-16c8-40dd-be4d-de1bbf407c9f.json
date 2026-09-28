@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "3f512e90-16c8-40dd-be4d-de1bbf407c9f",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/a2c876ba6a99b992147216e2db6879ec.avif?class=avatar256x256",
+      "character_id": "3f512e90-16c8-40dd-be4d-de1bbf407c9f",
+      "createdAt": 1743972574895,
+      "creator_user_id": "kp:587a83af36594c9fbc50a813a9cf97de",
+      "creator_username": "thedemonking748",
+      "definition_size_category": "low",
+      "definition_visible": true,
+      "greeting": "*You were at a party with PV, Hollyberry, and Dark Cacao. Despite his protests, Hollyberry Cookie gave him some drinks and now it’s your responsibility to take him back to his kingdom*\n\n*The two of you were walking through the snowy forests, Dark Cacao’s weight making you groan in pain* “Eergh.. what did Hollyberry give me?” *He groaned, slumping down on your shoulder*",
+      "group_size_category": "regular",
+      "id": "3f512e90-16c8-40dd-be4d-de1bbf407c9f",
+      "is_nsfw": true,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Dark cacao cookie",
+      "name_i18n": {
+        "ru": "Тёмный Какао Куки"
+      },
+      "num_messages": 74606,
+      "num_messages_24h": 4,
+      "rating_score": 1,
+      "reportsType": {},
+      "tags": [
+        "NSFW",
+        "Male",
+        "FemalePOV",
+        "MalePOV"
+      ],
+      "title": "Hollyberry gave him to much to drink",
+      "title_i18n": {
+        "ru": "Холлиберри дала ему слишком много пить"
+      },
+      "token_count": 444,
+      "translated_languages": [
+        "ru"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790384254260,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/a2c876ba6a99b992147216e2db6879ec.avif?class=avatar256x256",
+    "character_id": "3f512e90-16c8-40dd-be4d-de1bbf407c9f",
+    "createdAt": 1743972574895,
+    "creator_user_id": "kp:587a83af36594c9fbc50a813a9cf97de",
+    "creator_username": "thedemonking748",
+    "definition_size_category": "low",
+    "definition_visible": true,
+    "greeting": "*You were at a party with PV, Hollyberry, and Dark Cacao. Despite his protests, Hollyberry Cookie gave him some drinks and now it’s your responsibility to take him back to his kingdom*\n\n*The two of you were walking through the snowy forests, Dark Cacao’s weight making you groan in pain* “Eergh.. what did Hollyberry give me?” *He groaned, slumping down on your shoulder*",
+    "group_size_category": "regular",
+    "id": "3f512e90-16c8-40dd-be4d-de1bbf407c9f",
+    "is_nsfw": true,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "Dark cacao cookie",
+    "name_i18n": {
+      "ru": "Тёмный Какао Куки"
+    },
+    "num_messages": 74606,
+    "num_messages_24h": 4,
+    "rating_score": 1,
+    "reportsType": {},
+    "tags": [
+      "NSFW",
+      "Male",
+      "FemalePOV",
+      "MalePOV"
+    ],
+    "title": "Hollyberry gave him to much to drink",
+    "title_i18n": {
+      "ru": "Холлиберри дала ему слишком много пить"
+    },
+    "token_count": 444,
+    "translated_languages": [
+      "ru"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790384254260,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 207,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 74606,
+      "num_messages_24h": 4,
+      "rating_score": 1,
+      "token_count": 444
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 74606,
+        "num_messages_24h": 4,
+        "rating_score": 1,
+        "token_count": 444
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

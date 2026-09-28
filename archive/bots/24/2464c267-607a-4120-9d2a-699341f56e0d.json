@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "2464c267-607a-4120-9d2a-699341f56e0d",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:latest": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:latest": {
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/167d3928-912c-4dcf-9bec-60390eae6215.png?class=avatar256x256",
+      "character_id": "2464c267-607a-4120-9d2a-699341f56e0d",
+      "createdAt": 1790454190493,
+      "creator_user_id": "kp:6072af4e1c604fd0b903d84eaf983657",
+      "creator_username": "frostzone238",
+      "definition_size_category": "minimal",
+      "definition_visible": true,
+      "greeting": "hello",
+      "group_addable": true,
+      "group_size_category": "regular",
+      "has_lorebooks": false,
+      "id": "2464c267-607a-4120-9d2a-699341f56e0d",
+      "is_nsfw": true,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "nsfw test piece",
+      "num_messages": 3,
+      "num_messages_24h": 0,
+      "rating_score": 0,
+      "reportsType": {},
+      "tags": [
+        "Low Quality",
+        "NSFW"
+      ],
+      "title": "use to test if nsfw works aka age verify",
+      "token_count": 100,
+      "type": "STANDARD",
+      "updatedAt": 1790528522874,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/167d3928-912c-4dcf-9bec-60390eae6215.png?class=avatar256x256",
+    "character_id": "2464c267-607a-4120-9d2a-699341f56e0d",
+    "createdAt": 1790454190493,
+    "creator_user_id": "kp:6072af4e1c604fd0b903d84eaf983657",
+    "creator_username": "frostzone238",
+    "definition_size_category": "minimal",
+    "definition_visible": true,
+    "greeting": "hello",
+    "group_addable": true,
+    "group_size_category": "regular",
+    "has_lorebooks": false,
+    "id": "2464c267-607a-4120-9d2a-699341f56e0d",
+    "is_nsfw": true,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "nsfw test piece",
+    "num_messages": 3,
+    "num_messages_24h": 0,
+    "rating_score": 0,
+    "reportsType": {},
+    "tags": [
+      "Low Quality",
+      "NSFW"
+    ],
+    "title": "use to test if nsfw works aka age verify",
+    "token_count": 100,
+    "type": "STANDARD",
+    "updatedAt": 1790528522874,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:latest"
+    }
+  ],
+  "listings": {
+    "latest": {
+      "rank": 1759,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 3,
+      "num_messages_24h": 0,
+      "rating_score": 0,
+      "token_count": 100
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:latest",
+        "num_messages": 3,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 100
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

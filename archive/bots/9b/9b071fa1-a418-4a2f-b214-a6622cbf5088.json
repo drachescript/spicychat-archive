@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "9b071fa1-a418-4a2f-b214-a6622cbf5088",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/fac7b604917ac6b780a3f9f3d6a4d197.webp?class=avatar256x256",
+      "character_id": "9b071fa1-a418-4a2f-b214-a6622cbf5088",
+      "createdAt": 1713937058420,
+      "creator_user_id": "kp:b401b8c37b6d41908b501cde96ad3163",
+      "creator_username": "hongclaire",
+      "definition_size_category": "minimal",
+      "definition_visible": false,
+      "greeting": "\"I am Yi Sang. My name is all I have to say.\"",
+      "group_size_category": "regular",
+      "id": "9b071fa1-a418-4a2f-b214-a6622cbf5088",
+      "is_nsfw": false,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Yi Sang",
+      "name_i18n": {
+        "ko": "이상",
+        "pt": "Yi Sang",
+        "zh": "伊桑"
+      },
+      "num_messages": 57967,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "tags": [
+        "Gothic",
+        "Male",
+        "Trans"
+      ],
+      "title": "Ruminating sinner of Limbus Company",
+      "title_i18n": {
+        "ko": "림버스 컴퍼니의 사색하는 죄인",
+        "pt": "Pecador contemplativo da Limbus Company",
+        "zh": "沉思的罪人，属于Limbus Company"
+      },
+      "token_count": 260,
+      "translated_languages": [
+        "zh",
+        "ko",
+        "pt"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790577352856,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/fac7b604917ac6b780a3f9f3d6a4d197.webp?class=avatar256x256",
+    "character_id": "9b071fa1-a418-4a2f-b214-a6622cbf5088",
+    "createdAt": 1713937058420,
+    "creator_user_id": "kp:b401b8c37b6d41908b501cde96ad3163",
+    "creator_username": "hongclaire",
+    "definition_size_category": "minimal",
+    "definition_visible": false,
+    "greeting": "\"I am Yi Sang. My name is all I have to say.\"",
+    "group_size_category": "regular",
+    "id": "9b071fa1-a418-4a2f-b214-a6622cbf5088",
+    "is_nsfw": false,
+    "language": "en",
+    "moderation_status": "reviewed",
+    "name": "Yi Sang",
+    "name_i18n": {
+      "ko": "이상",
+      "pt": "Yi Sang",
+      "zh": "伊桑"
+    },
+    "num_messages": 57967,
+    "num_messages_24h": 0,
+    "rating_score": 1,
+    "tags": [
+      "Gothic",
+      "Male",
+      "Trans"
+    ],
+    "title": "Ruminating sinner of Limbus Company",
+    "title_i18n": {
+      "ko": "림버스 컴퍼니의 사색하는 죄인",
+      "pt": "Pecador contemplativo da Limbus Company",
+      "zh": "沉思的罪人，属于Limbus Company"
+    },
+    "token_count": 260,
+    "translated_languages": [
+      "zh",
+      "ko",
+      "pt"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790577352856,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 340,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 57967,
+      "num_messages_24h": 0,
+      "rating_score": 1,
+      "token_count": 260
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 57967,
+        "num_messages_24h": 0,
+        "rating_score": 1,
+        "token_count": 260
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "id": "f2252202-da52-499a-b994-b1366a03677e",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/a10410397ab67d188ff01b32dfdeb1df.jpg?class=avatar256x256",
+      "character_id": "f2252202-da52-499a-b994-b1366a03677e",
+      "createdAt": 1722875901682,
+      "creator_user_id": "kp:d202406c333d4d2ca75a38e8a5fea91c",
+      "creator_username": "randomblob42",
+      "definition_size_category": "low",
+      "definition_visible": true,
+      "greeting": "*You are Rick Sanchez's assistant and have been working with him for almost a year. You walk in Rick's garage to find him waiting for you, a flask in hand.*\n You-*belch*-You're late.",
+      "group_size_category": "regular",
+      "id": "f2252202-da52-499a-b994-b1366a03677e",
+      "is_nsfw": false,
+      "language": "en",
+      "moderation_flags": [
+        "incest"
+      ],
+      "moderation_keywords": [
+        "daughter"
+      ],
+      "moderation_status": "pending",
+      "name": "Rick Sanchez C-137",
+      "name_i18n": {
+        "es": "Rick Sanchez C-137",
+        "ru": "Rick Sanchez C-137"
+      },
+      "num_messages": 53749,
+      "num_messages_24h": 387,
+      "rating_score": 1,
+      "reportsType": {},
+      "tags": [
+        "Male",
+        "Adventure",
+        "FemalePOV",
+        "MalePOV",
+        "LGBTQ+",
+        "Age Play"
+      ],
+      "title": "What do you want?",
+      "title_i18n": {
+        "es": "¿Qué quieres?",
+        "ru": "Что тебе нужно?"
+      },
+      "token_count": 590,
+      "translated_languages": [
+        "es",
+        "ru"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790577707836,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/a10410397ab67d188ff01b32dfdeb1df.jpg?class=avatar256x256",
+    "character_id": "f2252202-da52-499a-b994-b1366a03677e",
+    "createdAt": 1722875901682,
+    "creator_user_id": "kp:d202406c333d4d2ca75a38e8a5fea91c",
+    "creator_username": "randomblob42",
+    "definition_size_category": "low",
+    "definition_visible": true,
+    "greeting": "*You are Rick Sanchez's assistant and have been working with him for almost a year. You walk in Rick's garage to find him waiting for you, a flask in hand.*\n You-*belch*-You're late.",
+    "group_size_category": "regular",
+    "id": "f2252202-da52-499a-b994-b1366a03677e",
+    "is_nsfw": false,
+    "language": "en",
+    "moderation_flags": [
+      "incest"
+    ],
+    "moderation_keywords": [
+      "daughter"
+    ],
+    "moderation_status": "pending",
+    "name": "Rick Sanchez C-137",
+    "name_i18n": {
+      "es": "Rick Sanchez C-137",
+      "ru": "Rick Sanchez C-137"
+    },
+    "num_messages": 53749,
+    "num_messages_24h": 387,
+    "rating_score": 1,
+    "reportsType": {},
+    "tags": [
+      "Male",
+      "Adventure",
+      "FemalePOV",
+      "MalePOV",
+      "LGBTQ+",
+      "Age Play"
+    ],
+    "title": "What do you want?",
+    "title_i18n": {
+      "es": "¿Qué quieres?",
+      "ru": "Что тебе нужно?"
+    },
+    "token_count": 590,
+    "translated_languages": [
+      "es",
+      "ru"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790577707836,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 387,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 53749,
+      "num_messages_24h": 387,
+      "rating_score": 1,
+      "token_count": 590
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 53749,
+        "num_messages_24h": 387,
+        "rating_score": 1,
+        "token_count": 590
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

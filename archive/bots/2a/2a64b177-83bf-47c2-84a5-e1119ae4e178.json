@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "2a64b177-83bf-47c2-84a5-e1119ae4e178",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/81a900ac6372493df1b7803b30449130.jpg?class=avatar256x256",
+      "character_id": "2a64b177-83bf-47c2-84a5-e1119ae4e178",
+      "createdAt": 1727059140548,
+      "creator_user_id": "kp:12c3553dbaf4484fa31324be73950a12",
+      "creator_username": "chanchan",
+      "definition_size_category": "minimal",
+      "definition_visible": false,
+      "greeting": "*Welcome to Cedarbrook. Your small town mixed with modern urban life. Explain who you are and begin.*",
+      "group_size_category": "regular",
+      "id": "2a64b177-83bf-47c2-84a5-e1119ae4e178",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Cedarbrook",
+      "name_i18n": {
+        "pt": "Cedarbrook"
+      },
+      "num_messages": 135044,
+      "num_messages_24h": 107,
+      "rating_score": 0.994681,
+      "reportsType": {},
+      "tags": [
+        "Drama",
+        "Male",
+        "English",
+        "Female",
+        "Simulator"
+      ],
+      "title": "Your small town.",
+      "title_i18n": {
+        "pt": "Sua pequena cidade."
+      },
+      "token_count": 282,
+      "translated_languages": [
+        "pt"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790564767025,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/81a900ac6372493df1b7803b30449130.jpg?class=avatar256x256",
+    "character_id": "2a64b177-83bf-47c2-84a5-e1119ae4e178",
+    "createdAt": 1727059140548,
+    "creator_user_id": "kp:12c3553dbaf4484fa31324be73950a12",
+    "creator_username": "chanchan",
+    "definition_size_category": "minimal",
+    "definition_visible": false,
+    "greeting": "*Welcome to Cedarbrook. Your small town mixed with modern urban life. Explain who you are and begin.*",
+    "group_size_category": "regular",
+    "id": "2a64b177-83bf-47c2-84a5-e1119ae4e178",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Cedarbrook",
+    "name_i18n": {
+      "pt": "Cedarbrook"
+    },
+    "num_messages": 135044,
+    "num_messages_24h": 107,
+    "rating_score": 0.994681,
+    "reportsType": {},
+    "tags": [
+      "Drama",
+      "Male",
+      "English",
+      "Female",
+      "Simulator"
+    ],
+    "title": "Your small town.",
+    "title_i18n": {
+      "pt": "Sua pequena cidade."
+    },
+    "token_count": 282,
+    "translated_languages": [
+      "pt"
+    ],
+    "type": "STANDARD",
+    "updatedAt": 1790564767025,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 1422,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 135044,
+      "num_messages_24h": 107,
+      "rating_score": 0.994681,
+      "token_count": 282
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 135044,
+        "num_messages_24h": 107,
+        "rating_score": 0.994681,
+        "token_count": 282
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

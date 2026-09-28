@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "8f3212ea-4dc9-4784-956b-941d1bd0009c",
+  "firstSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "status": {
+    "current": "public",
+    "since": "2026-09-28T09:29:01Z",
+    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+  },
+  "sources": {
+    "typesense:top-rated": {
+      "lastSeenAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "current": {
+    "typesense:top-rated": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/db439b55-4318-4115-9ac0-fe135d8bda0c.jpg?class=avatar256x256",
+      "character_id": "8f3212ea-4dc9-4784-956b-941d1bd0009c",
+      "createdAt": 1686194709324,
+      "creator_user_id": "kp:f944f63fc3d04056a2756ea207f287e9",
+      "creator_username": "_marian_",
+      "definition_size_category": "mid",
+      "greeting": "*While you were walking along the corridors of Valhalla, someone was watching you.  When you turned around, you didn’t see anyone behind you, thinking that it seemed to you that you were thinking to continue your journey, but there was a tall man in front of you. He wears a cloak with long sleeves detached from its base. He also wears fingerless gloves and an array of stud ear piercings on each of his ears. He has green hair that goes down to his neck and a hair highlight to the left of his face. Pupils are slanted like that of a goat and he occasionally shape-shifts into other gods. It was Loki. Smiling slyly, he slightly narrowed his purple eyes and said:* Human? ~ What are you doing here?  This is the realm of the gods~ wait, you're not spying on the Ragnarok participants from the side of the gods, are you?~ *His voice seemed playful, like he was tipsy, but don't be deceived, a god like Loki is not worth trusting.*",
+      "group_size_category": "regular",
+      "id": "8f3212ea-4dc9-4784-956b-941d1bd0009c",
+      "is_nsfw": false,
+      "language": "en",
+      "lora_status": "ready",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Loki",
+      "num_messages": 47126,
+      "num_messages_24h": 59,
+      "rating_score": 0.993506,
+      "tags": [
+        "Male",
+        "Action",
+        "Adventure"
+      ],
+      "title": "God of Mischief",
+      "token_count": 1185,
+      "type": "STANDARD",
+      "updatedAt": 1790532904397,
+      "visibility": "public"
+    }
+  },
+  "lastKnown": {
+    "application_ids": [
+      "spicychat",
+      "pixelchat"
+    ],
+    "avatar_is_nsfw": false,
+    "avatar_url": "https://cdn.nd-api.com/avatars/db439b55-4318-4115-9ac0-fe135d8bda0c.jpg?class=avatar256x256",
+    "character_id": "8f3212ea-4dc9-4784-956b-941d1bd0009c",
+    "createdAt": 1686194709324,
+    "creator_user_id": "kp:f944f63fc3d04056a2756ea207f287e9",
+    "creator_username": "_marian_",
+    "definition_size_category": "mid",
+    "greeting": "*While you were walking along the corridors of Valhalla, someone was watching you.  When you turned around, you didn’t see anyone behind you, thinking that it seemed to you that you were thinking to continue your journey, but there was a tall man in front of you. He wears a cloak with long sleeves detached from its base. He also wears fingerless gloves and an array of stud ear piercings on each of his ears. He has green hair that goes down to his neck and a hair highlight to the left of his face. Pupils are slanted like that of a goat and he occasionally shape-shifts into other gods. It was Loki. Smiling slyly, he slightly narrowed his purple eyes and said:* Human? ~ What are you doing here?  This is the realm of the gods~ wait, you're not spying on the Ragnarok participants from the side of the gods, are you?~ *His voice seemed playful, like he was tipsy, but don't be deceived, a god like Loki is not worth trusting.*",
+    "group_size_category": "regular",
+    "id": "8f3212ea-4dc9-4784-956b-941d1bd0009c",
+    "is_nsfw": false,
+    "language": "en",
+    "lora_status": "ready",
+    "moderation_status": "reviewed",
+    "name": "Loki",
+    "num_messages": 47126,
+    "num_messages_24h": 59,
+    "rating_score": 0.993506,
+    "tags": [
+      "Male",
+      "Action",
+      "Adventure"
+    ],
+    "title": "God of Mischief",
+    "token_count": 1185,
+    "type": "STANDARD",
+    "updatedAt": 1790532904397,
+    "visibility": "public"
+  },
+  "fieldHistory": [],
+  "availabilityHistory": [
+    {
+      "status": "public",
+      "from": "2026-09-28T09:29:01Z",
+      "source": "typesense:top-rated"
+    }
+  ],
+  "listings": {
+    "top-rated": {
+      "rank": 1671,
+      "observedAt": "2026-09-28T09:29:01Z"
+    }
+  },
+  "metrics": {
+    "latest": {
+      "num_messages": 47126,
+      "num_messages_24h": 59,
+      "rating_score": 0.993506,
+      "token_count": 1185
+    },
+    "history": [
+      {
+        "at": "2026-09-28T09:29:01Z",
+        "source": "typesense:top-rated",
+        "num_messages": 47126,
+        "num_messages_24h": 59,
+        "rating_score": 0.993506,
+        "token_count": 1185
+      }
+    ]
+  },
+  "avatarArchive": {}
+}

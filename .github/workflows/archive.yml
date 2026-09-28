@@ -1,0 +1,56 @@
+name: Update SpicyChat archive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 */3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update archive
+        run: python scripts/archive.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+
+      - name: Test archive code
+        run: python -m unittest discover -s tests -v
+
+      - name: Add run summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/archive-summary.md" ]; then
+            cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Commit genuine archive changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add archive site/data site/media || true
+          if git diff --cached --quiet; then
+            echo "No archive changes to commit."
+            exit 0
+          fi
+          git commit -m "Update SpicyChat archive"
+          git push

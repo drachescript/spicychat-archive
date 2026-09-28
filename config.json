@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "typesense": {
+    "primary_url": "https://ts-lb.nd-api.com/multi_search",
+    "fallback_urls": [
+      "https://etmzpxgvnid370fyp.a1.typesense.net/multi_search"
+    ],
+    "public_search_key": "STHKtT6jrC5z1IozTJHIeSN4qN9oL1s3",
+    "collection": "public_characters_alias",
+    "query_by": "name,title,tags,creator_username,character_id,type",
+    "application_filter": "application_ids:=spicychat && type:!=META && visibility:=public"
+  },
+  "character_api": {
+    "base_url": "https://prod.nd-api.com/v2/characters/",
+    "country": "US"
+  },
+  "crawler": {
+    "listing_page_size": 250,
+    "listing_max_hits": 2500,
+    "explore_pages_per_run": 8,
+    "enrichment_budget": 200,
+    "image_budget": 100,
+    "image_archive_enabled": true,
+    "deleted_confirmations_required": 2,
+    "request_timeout_seconds": 20,
+    "request_delay_ms": 80
+  },
+  "listings": {
+    "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
+    "top-rated": "rating_score:desc,num_messages:desc",
+    "popular": "num_messages:desc",
+    "latest": "createdAt:desc"
+  }
+}

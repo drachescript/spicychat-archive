@@ -51,18 +51,18 @@ jobs:
 
       - name: Replay pending Git fallback into R2
         if: steps.r2guard.outputs.mode == 'r2' && steps.r2guard.outputs.replay_write_budget != '0'
-        run: python scripts/replay_fallback.py --max-writes "${{ steps.r2guard.outputs.replay_write_budget }}" --summary-file "$RUNNER_TEMP/replay-summary.md"
+        run: python scripts/r2_safe_runner.py replay_fallback.py --max-writes "${{ steps.r2guard.outputs.replay_write_budget }}" --summary-file "$RUNNER_TEMP/replay-summary.md"
 
       - name: Update archive in R2
         if: steps.r2guard.outputs.mode == 'r2'
         env:
           SPICYCHAT_ARCHIVE_EXPLORE_PAGES: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
-        run: python scripts/archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+        run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Update pre-migration local archive
         if: steps.r2guard.outputs.mode == 'legacy'
-        run: python scripts/archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+        run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Update compact Git fallback journal
         if: steps.r2guard.outputs.mode == 'github'

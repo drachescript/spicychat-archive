@@ -56,13 +56,13 @@ jobs:
       - name: Update archive in R2
         if: steps.r2guard.outputs.mode == 'r2'
         env:
+          # Keep the quota guard in control of discovery depth/images. On a healthy
+          # month this is the normal config budget (currently 20 discovery pages);
+          # unlike the temporary safe-scan wrapper there is no permanent 2-page /
+          # 500-listing cap anymore.
           SPICYCHAT_ARCHIVE_EXPLORE_PAGES: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
-          # Temporary safety caps until the R2 catalog reader is converted to
-          # bulk/concurrent object reads. These prevent another 2-hour serial scan.
-          SPICYCHAT_ARCHIVE_LISTING_MAX_HITS: "500"
-          SPICYCHAT_ARCHIVE_EXPLORE_PAGE_CAP: "2"
-        run: python scripts/r2_archive_safe_scan.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+        run: python scripts/r2_archive_optimized.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Update pre-migration local archive
         if: steps.r2guard.outputs.mode == 'legacy'

@@ -28,7 +28,7 @@
     "image_archive_policy": "priority-only"
   },
   "storage": {
-    "mode": "auto",
+    "mode": "r2",
     "r2": {
       "bucket": "spicychat-archiv",
       "public_base_url": "https://data.spicychatarchive.drache.uk",
@@ -70,7 +70,6 @@
   "listings": {
     "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
     "top-rated": "rating_score:desc,num_messages:desc",
-    "popular": "num_messages:desc",
-    "latest": "createdAt:desc"
+    "popular": "num_messages:desc"
   }
 }

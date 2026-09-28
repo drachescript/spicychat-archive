@@ -29,6 +29,7 @@ jobs:
       CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
       CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,8 +45,28 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Update archive
+      - name: Check R2 free-tier guard
+        id: r2guard
+        run: python scripts/r2_guard.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
+
+      - name: Replay pending Git fallback into R2
+        if: steps.r2guard.outputs.mode == 'r2' && steps.r2guard.outputs.replay_write_budget != '0'
+        run: python scripts/replay_fallback.py --max-writes "${{ steps.r2guard.outputs.replay_write_budget }}" --summary-file "$RUNNER_TEMP/replay-summary.md"
+
+      - name: Update archive in R2
+        if: steps.r2guard.outputs.mode == 'r2'
+        env:
+          SPICYCHAT_ARCHIVE_EXPLORE_PAGES: ${{ steps.r2guard.outputs.explore_pages }}
+          SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
         run: python scripts/archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+
+      - name: Update pre-migration local archive
+        if: steps.r2guard.outputs.mode == 'legacy'
+        run: python scripts/archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+
+      - name: Update compact Git fallback journal
+        if: steps.r2guard.outputs.mode == 'github'
+        run: python scripts/archive_fallback.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Test archive code
         run: python -m unittest discover -s tests -v
@@ -53,20 +74,19 @@ jobs:
       - name: Add run summary
         if: always()
         run: |
-          if [ -f "$RUNNER_TEMP/archive-summary.md" ]; then
-            cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          [ ! -f "$RUNNER_TEMP/replay-summary.md" ] || cat "$RUNNER_TEMP/replay-summary.md" >> "$GITHUB_STEP_SUMMARY"
+          [ ! -f "$RUNNER_TEMP/archive-summary.md" ] || cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Commit genuine public/index changes
+      - name: Commit genuine public/index/fallback changes
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Local mode still stores archive files in Git. R2 mode normally only
-          # changes the tiny data/ manifests; -A also records one-time pruning.
-          git add -A -- archive data
+          # R2 mode normally changes only tiny public manifests. Git fallback mode
+          # also commits compressed observation journals until R2 has headroom again.
+          git add -A -- archive data fallback config.json 2>/dev/null || true
           git add -A -- media 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No Git-side archive changes to commit."

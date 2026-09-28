@@ -57,8 +57,18 @@ async function loadManifest(){
 }
 
 async function loadRuntime(){
-  try{return await fetchJson(asset('data/runtime.json'));}
-  catch{return {storageMode:'local'};}
+  let runtime;
+  try{runtime=await fetchJson(asset('data/runtime.json'));}
+  catch{runtime={storageMode:'local'};}
+  // The quota guard is refreshed every archive run, including while R2 writes are
+  // paused. Merge its public read kill-switch into runtime so the website itself
+  // stops generating R2 Class B reads before the free-tier ceiling.
+  try{
+    const guard=await fetchJson(asset('data/r2-usage.json'));
+    if(typeof guard.r2ReadAllowed==='boolean') runtime.r2ReadAllowed=guard.r2ReadAllowed;
+    runtime.r2QuotaGuard=guard;
+  }catch{}
+  return runtime;
 }
 
 async function loadCatalog(){
@@ -216,6 +226,10 @@ async function browseLive(runtime,manifest){
 }
 
 async function browseDeletedR2(runtime,manifest){
+  if(runtime.r2ReadAllowed===false){
+    app.innerHTML=`${statsHtml(manifest)}<div class="error"><b>Archived details are temporarily paused.</b><br><br>The Cloudflare R2 free-tier read budget is inside its safety reserve, so this page is not reading R2 right now. Active bot browsing still works normally, and deleted/archive access will resume automatically after the quota guard reports enough headroom again.</div>`;
+    return;
+  }
   const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:parseTags(qs('exclude')),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',status:'deleted',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0'};
   let bots=[];
   if(runtime.deletedIndexUrl){
@@ -244,6 +258,11 @@ function bestField(record,key){
 }
 
 async function loadBotRecord(id,runtime){
+  if(runtime.storageMode==='r2'&&runtime.r2ReadAllowed===false){
+    const err=new Error('R2_READ_BUDGET_PAUSED');
+    err.code='R2_READ_BUDGET_PAUSED';
+    throw err;
+  }
   if(runtime.storageMode==='r2'&&runtime.publicDataBaseUrl){
     const compact=id.replaceAll('-','').toLowerCase(); const prefix=compact.slice(0,2)||'__';
     const url=`${runtime.publicDataBaseUrl.replace(/\/$/,'')}/bots/${prefix}/${encodeURIComponent(id.toLowerCase())}.json`;
@@ -255,7 +274,15 @@ async function loadBotRecord(id,runtime){
 async function botPage(){
   const id=qs('id'); if(!id){app.innerHTML='<div class="error">No bot ID supplied.</div>';return;}
   const runtime=await loadRuntime();
-  let record; try{record=await loadBotRecord(id,runtime);}catch{app.innerHTML='<div class="error">This bot has not been captured by the archive yet. The crawler is still expanding through the public catalog.</div>';return;}
+  let record;
+  try{record=await loadBotRecord(id,runtime);}
+  catch(e){
+    if(e?.code==='R2_READ_BUDGET_PAUSED'||e?.message==='R2_READ_BUDGET_PAUSED'){
+      app.innerHTML='<div class="error"><b>Archived bot details are temporarily paused.</b><br><br>The Cloudflare R2 free-tier read budget is inside its safety reserve. Active browsing still works, and this archived detail will become available automatically once the monthly usage guard has enough headroom again.</div>';
+      return;
+    }
+    app.innerHTML='<div class="error">This bot has not been captured by the archive yet. The crawler is still expanding through the public catalog.</div>';return;
+  }
   const lk=record.lastKnown||{},status=record.status?.current||'unknown';
   const avatar=record.avatarArchive?.publicUrl||record.avatarArchive?.r2Url||(record.avatarArchive?.path?resolveAvatar(record.avatarArchive.path.replace(/^archive\//,'')):resolveAvatar(lk.avatar_url||lk.avatar||lk.image));
   const fields=['description','greeting','greetings','personality','definition','persona','character_definition','characterDefinition','scenario','example_dialogue','example_dialogues','system_prompt','post_history_instructions','lorebooks'];

@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import archive as legacy
-from storage_r2 import BloomFilter, R2ArchiveStore
+from storage_r2 import BloomFilter, R2ArchiveStore, StorageQuotaExceeded
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,27 +47,41 @@ def collapse_record(record: dict[str, Any], store: R2ArchiveStore) -> dict[str, 
     return record
 
 
-def upload_media(store: R2ArchiveStore) -> tuple[int, int]:
+def upload_media(store: R2ArchiveStore) -> tuple[int, int, int]:
     source = ROOT / "archive" / "media"
     files = [p for p in source.rglob("*") if p.is_file()] if source.exists() else []
     if not files:
-        return 0, 0
+        return 0, 0, 0
 
     def one(path: Path):
         rel = path.relative_to(source)
         key = store.key(store.media_prefix, *rel.parts)
         ctype = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
-        if not store.exists(key):
-            store.put_bytes(key, path.read_bytes(), content_type=ctype, cache_control="public,max-age=31536000,immutable")
-            return 1
-        return 0
+        if store.exists(key):
+            return "exists"
+        try:
+            store.put_bytes(
+                key,
+                path.read_bytes(),
+                content_type=ctype,
+                cache_control="public,max-age=31536000,immutable",
+                category="media",
+                known_new=True,
+            )
+            return "uploaded"
+        except StorageQuotaExceeded:
+            return "quota"
 
-    uploaded = 0
+    uploaded = quota_skipped = 0
     with ThreadPoolExecutor(max_workers=12) as pool:
         futures = [pool.submit(one, p) for p in files]
         for f in as_completed(futures):
-            uploaded += f.result()
-    return len(files), uploaded
+            result = f.result()
+            if result == "uploaded":
+                uploaded += 1
+            elif result == "quota":
+                quota_skipped += 1
+    return len(files), uploaded, quota_skipped
 
 
 def upload_bots(store: R2ArchiveStore) -> tuple[list[str], dict[str, dict[str, Any]], int]:
@@ -175,7 +189,10 @@ def main() -> int:
     started = utc_now()
 
     print(f"Migrating to R2 bucket: {store.bucket}")
-    media_total, media_uploaded = upload_media(store)
+    # Establish an exact starting counter before the migration. On a new bucket
+    # this is effectively free; on a resumed migration it prevents under-counting.
+    store.recalculate_usage()
+    media_total, media_uploaded, media_quota_skipped = upload_media(store)
     order, deleted, bots_uploaded = upload_bots(store)
     ranking_count = upload_rankings(store)
 
@@ -213,7 +230,7 @@ def main() -> int:
         hashes=int(r2cfg.get("bloom_hashes") or 7),
     )
     store.save_bloom(bloom)
-    deleted_url = store.publish_deleted_index()
+    deleted_url = store.publish_deleted_index(force=True)
 
     marker = {
         "schemaVersion": 1,
@@ -222,11 +239,13 @@ def main() -> int:
         "deletedRecords": len(deleted),
         "mediaObjectsSeen": media_total,
         "mediaObjectsUploaded": media_uploaded,
+        "mediaObjectsSkippedByQuota": media_quota_skipped,
         "legacyRankingSnapshots": ranking_count,
     }
     # Marker is intentionally last: archive_cloud.py will not switch to R2 until
     # every required piece above has succeeded.
     store.mark_migrated(marker)
+    store.flush_usage(force=True)
 
     config.setdefault("storage", {})["mode"] = "r2"
     legacy.write_json_if_changed(ROOT / "config.json", config)
@@ -254,7 +273,8 @@ def main() -> int:
     summary = (
         f"# R2 migration — {started}\n\n"
         f"- Bot records uploaded: **{bots_uploaded:,}**\n"
-        f"- Archived media: **{media_uploaded:,}** new / {media_total:,} existing local files\n"
+        f"- Archived media: **{media_uploaded:,}** new / {media_total:,} existing local files"
+        f" ({media_quota_skipped:,} skipped by media quota)\n"
         f"- Deleted summaries: **{len(deleted):,}**\n"
         f"- Legacy ranking snapshots copied: **{ranking_count:,}**\n"
         f"- Git working tree pruned: **{'yes' if args.prune_local else 'no'}**\n"

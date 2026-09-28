@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import archive as legacy
-from storage_r2 import R2ArchiveStore
+from storage_r2 import R2ArchiveStore, StorageQuotaExceeded
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -146,7 +146,14 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             old_definition_visible = old_known.get("definition_visible")
             old_avatar = legacy.normalize_avatar_url(old_known.get("avatar_url") or old_known.get("avatar") or old_known.get("image"))
 
-            record, changed = legacy.observe_bot(existing, doc, source=observe_source, at=at)
+            observed_doc = doc
+            # Do not rewrite thousands of per-bot objects every three hours just
+            # because counters moved. Ranking snapshots below preserve compact
+            # listing metrics; each bot keeps its initial/enriched metrics.
+            if existing is not None and source.startswith("typesense:"):
+                observed_doc = {k: v for k, v in doc.items() if k not in legacy.VOLATILE_FIELDS}
+
+            record, changed = legacy.observe_bot(existing, observed_doc, source=observe_source, at=at)
             # Preserve which public surface observed it without duplicating the raw
             # Typesense document four or five times in current{}.
             record.setdefault("sources", {})[source] = {"lastSeenAt": at}
@@ -160,7 +167,11 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     _priority_add(state, "priorityEnrichment", bot_id)
 
             avatar = legacy.normalize_avatar_url(doc.get("avatar_url") or doc.get("avatar") or doc.get("image"))
-            if avatar and existing is not None and avatar != old_avatar:
+            if avatar and (existing is None or avatar != old_avatar):
+                # Images remain lower priority than metadata, but newly discovered
+                # bots are still eligible for gradual permanent avatar archiving.
+                # The queue is bounded and the R2 media/storage guards stop it well
+                # before the free-tier storage ceiling.
                 _priority_add(state, "priorityImages", bot_id)
 
             if changed and save_bot(record):
@@ -194,9 +205,26 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         store.flush_discovery_journal()
         ids = [legacy.normalize_id(d) for d in docs]
         ids = [x for x in ids if x]
-        # Current ranks are already archived as compact ranking snapshots. Do not
-        # rewrite thousands of full bot objects every 3 hours just because rank moved.
-        return {"ok": True, "found": found, "count": len(ids), "new": new, "changed": changed, "ids": ids}
+        # Current ranks and volatile counters are archived compactly in one ranking
+        # snapshot object, instead of forcing one R2 write per bot every three hours.
+        metric_keys = ("num_messages", "num_messages_24h", "rating_score", "rating_count", "token_count")
+        compact_metrics = {}
+        for doc in docs:
+            bot_id = legacy.normalize_id(doc)
+            if not bot_id:
+                continue
+            row = {k: doc.get(k) for k in metric_keys if k in doc and legacy.meaningful(doc.get(k))}
+            if row:
+                compact_metrics[bot_id] = row
+        return {
+            "ok": True,
+            "found": found,
+            "count": len(ids),
+            "new": new,
+            "changed": changed,
+            "ids": ids,
+            "metrics": compact_metrics,
+        }
 
     legacy.scan_listing = cloud_scan_listing
 
@@ -229,7 +257,18 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         errors: list[str] = []
         missing_queued = 0
 
+        discovery_write_soft_limit = int(
+            (config.get("storage") or {}).get("r2", {}).get("discovery_write_soft_limit") or 700000
+        )
+
         for _ in range(pages_budget):
+            usage = store.storage_usage()
+            if int(usage.get("writesThisMonth") or 0) >= discovery_write_soft_limit:
+                errors.append(
+                    f"discovery paused for free-tier operation safety at "
+                    f"{int(usage.get('writesThisMonth') or 0):,} R2 writes this month"
+                )
+                break
             if mode == "cursor" and exploration.get("cursorCreatedAt"):
                 cursor = exploration["cursorCreatedAt"]
                 base_filter = config["typesense"]["application_filter"]
@@ -359,9 +398,11 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
     def cloud_archive_images(client, config, at: str, state: dict[str, Any]):
         if not config["crawler"].get("image_archive_enabled", True):
-            return {"processed": 0, "saved": 0, "failed": 0}
+            return {"processed": 0, "saved": 0, "failed": 0, "quotaPaused": False}
         budget = int(config["crawler"].get("image_budget", 100))
+        policy = str(config["crawler"].get("image_archive_policy") or "priority-only").lower()
         processed = saved = failed = 0
+        quota_paused = False
         priority = list(dict.fromkeys(state.setdefault("priorityImages", [])))
         cursor = max(0, int(state.get("imageCursor") or 0))
 
@@ -370,16 +411,20 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             selected.append((bot_id, False))
         remaining_priority = priority[budget:]
         selected_ids = {bot_id for bot_id, _ in selected}
-        while len(selected) < budget and cursor < len(store.discovery_order):
-            bot_id = store.discovery_order[cursor]
-            cursor += 1
-            if bot_id in selected_ids:
-                continue
-            selected_ids.add(bot_id)
-            selected.append((bot_id, True))
+
+        # "priority-only" is the free-tier-safe default: active bots keep their
+        # durable CDN URL, while changed/deleted avatars are copied to R2.
+        if policy not in {"priority-only", "priority"}:
+            while len(selected) < budget and cursor < len(store.discovery_order):
+                bot_id = store.discovery_order[cursor]
+                cursor += 1
+                if bot_id in selected_ids:
+                    continue
+                selected_ids.add(bot_id)
+                selected.append((bot_id, True))
 
         retry: list[str] = []
-        for bot_id, _sequential in selected:
+        for index, (bot_id, _sequential) in enumerate(selected):
             processed += 1
             record = load_bot(bot_id)
             if not record:
@@ -397,7 +442,15 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 retry.append(bot_id)
                 continue
             content, ctype = result
-            info = store.save_image(content, ctype, url)
+            try:
+                info = store.save_image(content, ctype, url)
+            except StorageQuotaExceeded as exc:
+                print(f"Image archiving paused by R2 quota: {exc}")
+                quota_paused = True
+                # Keep this and every unprocessed priority item for a later run in
+                # case the quota/config changes; do not keep downloading images now.
+                retry.extend([bot_id, *[x for x, _ in selected[index + 1 :]]])
+                break
             record["avatarArchive"] = {
                 "originalUrl": url,
                 "sha256": info["sha256"],
@@ -414,7 +467,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         state["priorityImages"] = []
         for bot_id in [*remaining_priority, *retry]:
             _priority_add(state, "priorityImages", bot_id)
-        return {"processed": processed, "saved": saved, "failed": failed}
+        return {"processed": processed, "saved": saved, "failed": failed, "quotaPaused": quota_paused}
 
     legacy.archive_images = cloud_archive_images
 
@@ -459,6 +512,9 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                             "evidence": f"{info['count']} repeated public character API 404s",
                         }
                         save_bot(record)
+                        # Images are not copied for every active bot. Once a bot is
+                        # confirmed deleted, immediately prioritize its last-known avatar.
+                        _priority_add(state, "priorityImages", bot_id)
                         store.set_deleted_summary(bot_id, _cloud_summary(record))
                         deleted += 1
                     checks.pop(bot_id, None)
@@ -472,12 +528,13 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
     def cloud_save_ranking_snapshot(listings: dict[str, Any], at: str) -> bool:
         compact = {
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "capturedAt": at,
             "listings": {name: info.get("ids", []) for name, info in listings.items() if info.get("ok")},
+            "metrics": {name: info.get("metrics", {}) for name, info in listings.items() if info.get("ok")},
         }
         prior = store.load_latest_ranking()
-        if prior.get("listings") == compact["listings"]:
+        if prior.get("listings") == compact["listings"] and prior.get("metrics") == compact["metrics"]:
             return False
         safe = at.replace(":", "").replace("-", "")
         store.save_ranking_snapshot(compact, safe)
@@ -498,8 +555,10 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         public_counts = [int(v.get("found") or 0) for v in (listings or {}).values() if v.get("ok") and v.get("found") is not None]
         active = max(public_counts) if public_counts else int((state.get("exploration") or {}).get("lastFound") or prior.get("activeBots") or 0)
         deleted_url = store.publish_deleted_index()
+        usage = store.storage_usage()
+        guard_status = original_read_json(ROOT / "data" / "r2-usage.json", {})
         manifest = {
-            "schemaVersion": 2,
+            "schemaVersion": 3,
             "generatedAt": at,
             "totalBots": len(store.discovery_order),
             "activeBots": active,
@@ -511,16 +570,33 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             "listings": {k: v.get("ids", []) for k, v in (listings or {}).items() if v.get("ok")},
             "lastScan": at,
             "storageMode": "r2",
+            "quotaGuard": {
+                "selectedMode": guard_status.get("selectedMode"),
+                "reasonCodes": guard_status.get("reasonCodes") or [],
+                "r2ReadAllowed": guard_status.get("r2ReadAllowed", True),
+                "checkedAt": guard_status.get("checkedAt"),
+            },
+            "storage": {
+                "usedBytes": usage.get("totalBytes", 0),
+                "mediaBytes": usage.get("mediaBytes", 0),
+                "hardLimitBytes": store.hard_limit_bytes,
+                "warningBytes": store.warning_bytes,
+                "mediaLimitBytes": store.media_limit_bytes,
+                "writesThisMonth": usage.get("writesThisMonth", 0),
+            },
             "exploration": {
                 "mode": (state.get("exploration") or {}).get("mode") or "page",
                 "page": (state.get("exploration") or {}).get("page") or 1,
                 "pass": (state.get("exploration") or {}).get("pass") or 0,
                 "found": (state.get("exploration") or {}).get("lastFound"),
+                "cursorCreatedAt": (state.get("exploration") or {}).get("cursorCreatedAt"),
+                "lastCreatedAt": (state.get("exploration") or {}).get("lastCreatedAt"),
             },
         }
         runtime = {
             "schemaVersion": 1,
             "storageMode": "r2",
+            "r2ReadAllowed": guard_status.get("r2ReadAllowed", True),
             "publicDataBaseUrl": store.public_base_url,
             "deletedIndexUrl": deleted_url,
             "typesense": {
@@ -544,6 +620,16 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
 def run() -> int:
     config = legacy.load_config()
+    # r2_guard.py can throttle a run without editing config.json. This lets the
+    # workflow react immediately to monthly R2 usage.
+    env_pages = os.environ.get("SPICYCHAT_ARCHIVE_EXPLORE_PAGES", "").strip()
+    if env_pages:
+        try:
+            config.setdefault("crawler", {})["explore_pages_per_run"] = max(0, int(env_pages))
+        except ValueError:
+            pass
+    if os.environ.get("SPICYCHAT_ARCHIVE_DISABLE_IMAGES", "").strip().lower() in {"1", "true", "yes"}:
+        config.setdefault("crawler", {})["image_archive_enabled"] = False
     storage = config.get("storage") or {}
     mode = str(storage.get("mode") or "auto").lower()
 
@@ -576,6 +662,13 @@ def run() -> int:
     store.save_discovery_order()
     store.save_deleted_index()
     store.save_bloom(bloom)
+    store.flush_usage(force=True)
+    usage = store.storage_usage()
+    print(
+        f"R2 usage: {usage.get('totalBytes', 0):,}/{store.hard_limit_bytes:,} bytes "
+        f"(media {usage.get('mediaBytes', 0):,}/{store.media_limit_bytes:,}; "
+        f"writes this month {usage.get('writesThisMonth', 0):,})"
+    )
     return rc
 
 

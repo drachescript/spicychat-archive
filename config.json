@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "typesense": {
     "primary_url": "https://ts-lb.nd-api.com/multi_search",
     "fallback_urls": [
@@ -24,12 +24,13 @@
     "missing_verification_budget": 100,
     "deleted_confirmations_required": 2,
     "request_timeout_seconds": 20,
-    "request_delay_ms": 80
+    "request_delay_ms": 80,
+    "image_archive_policy": "priority-only"
   },
   "storage": {
     "mode": "auto",
     "r2": {
-      "bucket": "spicychat-archive",
+      "bucket": "spicychat-archiv",
       "public_base_url": "https://data.spicychatarchive.drache.uk",
       "bot_prefix": "bots",
       "media_prefix": "media",
@@ -38,7 +39,32 @@
       "cache_seconds": 300,
       "memory_cache_records": 25000,
       "bloom_bytes": 8388608,
-      "bloom_hashes": 7
+      "bloom_hashes": 7,
+      "hard_limit_bytes": 9000000000,
+      "warning_bytes": 8000000000,
+      "media_limit_bytes": 2000000000,
+      "usage_checkpoint_writes": 250,
+      "discovery_write_soft_limit": 700000
+    },
+    "quota_guard": {
+      "enabled": true,
+      "fail_closed": true,
+      "storage_pause_bytes": 8000000000,
+      "storage_resume_bytes": 7500000000,
+      "class_a_pause": 700000,
+      "class_a_resume": 500000,
+      "class_b_pause": 6000000,
+      "class_b_resume": 4000000,
+      "class_b_read_disable": 6000000,
+      "image_pause_storage_bytes": 5000000000,
+      "replay_max_writes_per_run": 20000,
+      "class_a_reserve_per_run": 10000
+    },
+    "fallback": {
+      "listing_max_hits": 250,
+      "explore_pages_per_run": 2,
+      "enrichment_budget": 25,
+      "max_pending_bytes": 1000000000
     }
   },
   "listings": {

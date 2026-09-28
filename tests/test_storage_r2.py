@@ -28,5 +28,9 @@ class BloomTests(unittest.TestCase):
             self.assertIn(value, restored)
 
 
+    def test_storage_quota_exception_exists(self):
+        self.assertTrue(issubclass(mod.StorageQuotaExceeded, RuntimeError))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -13,6 +13,8 @@ import json
 import mimetypes
 import os
 import uuid
+import threading
+from datetime import datetime, timezone
 from collections import OrderedDict
 from copy import deepcopy
 from pathlib import Path
@@ -22,6 +24,10 @@ from urllib.parse import urlparse
 import boto3
 from botocore.config import Config
 from botocore.exceptions import ClientError
+
+
+class StorageQuotaExceeded(RuntimeError):
+    """Raised before an R2 write would exceed the configured free-tier safety cap."""
 
 
 class BloomFilter:
@@ -86,6 +92,14 @@ class R2ArchiveStore:
         self.rankings_prefix = str(r2.get("rankings_prefix") or "rankings").strip("/")
         self.cache_seconds = int(r2.get("cache_seconds") or 300)
         self.cache_limit = int(r2.get("memory_cache_records") or 25000)
+        # Keep a deliberate buffer below Cloudflare R2's 10 GB-month free storage tier.
+        self.hard_limit_bytes = int(r2.get("hard_limit_bytes") or 9_000_000_000)
+        self.warning_bytes = int(r2.get("warning_bytes") or 8_000_000_000)
+        self.media_limit_bytes = int(r2.get("media_limit_bytes") or 2_000_000_000)
+        self.usage_checkpoint_writes = max(25, int(r2.get("usage_checkpoint_writes") or 250))
+        self._usage_lock = threading.Lock()
+        self._usage: dict[str, Any] | None = None
+        self._usage_dirty_writes = 0
 
         account_id = os.environ.get("CLOUDFLARE_R2_ACCOUNT_ID", "").strip()
         access = os.environ.get("CLOUDFLARE_R2_ACCESS_KEY_ID", "").strip()
@@ -129,6 +143,151 @@ class R2ArchiveStore:
         status = (exc.response.get("ResponseMetadata") or {}).get("HTTPStatusCode")
         return code in {"NoSuchKey", "404", "NotFound"} or status == 404
 
+
+    @property
+    def usage_key(self) -> str:
+        return self.key(self.meta_prefix, "storage-usage.json")
+
+    @staticmethod
+    def _month_key() -> str:
+        return datetime.now(timezone.utc).strftime("%Y-%m")
+
+    def _head_size(self, key: str) -> int:
+        try:
+            obj = self.s3.head_object(Bucket=self.bucket, Key=key)
+            return int(obj.get("ContentLength") or 0)
+        except ClientError as exc:
+            if self._missing(exc):
+                return 0
+            raise
+
+    def _normalize_usage(self, usage: dict[str, Any] | None) -> dict[str, Any]:
+        u = dict(usage or {})
+        u.setdefault("schemaVersion", 1)
+        u["totalBytes"] = max(0, int(u.get("totalBytes") or 0))
+        u["mediaBytes"] = max(0, int(u.get("mediaBytes") or 0))
+        u["objects"] = max(0, int(u.get("objects") or 0))
+        month = self._month_key()
+        if u.get("month") != month:
+            u["month"] = month
+            u["writesThisMonth"] = 0
+        else:
+            u["writesThisMonth"] = max(0, int(u.get("writesThisMonth") or 0))
+        return u
+
+    def recalculate_usage(self) -> dict[str, Any]:
+        """Rebuild byte/object totals from R2. This is only needed at setup/recovery."""
+        total = media = objects = 0
+        token = None
+        while True:
+            kwargs: dict[str, Any] = {"Bucket": self.bucket, "MaxKeys": 1000}
+            if token:
+                kwargs["ContinuationToken"] = token
+            page = self.s3.list_objects_v2(**kwargs)
+            for obj in page.get("Contents") or []:
+                key = str(obj.get("Key") or "")
+                if key == self.usage_key:
+                    continue
+                size = int(obj.get("Size") or 0)
+                total += size
+                objects += 1
+                if key.startswith(self.media_prefix.rstrip("/") + "/"):
+                    media += size
+            if not page.get("IsTruncated"):
+                break
+            token = page.get("NextContinuationToken")
+        prior = self._normalize_usage(self.get_json(self.usage_key, {}))
+        self._usage = {
+            "schemaVersion": 1,
+            "totalBytes": total,
+            "mediaBytes": media,
+            "objects": objects,
+            "month": self._month_key(),
+            "writesThisMonth": int(prior.get("writesThisMonth") or 0),
+        }
+        self.flush_usage(force=True)
+        return deepcopy(self._usage)
+
+    def storage_usage(self, *, reconcile_if_missing: bool = True) -> dict[str, Any]:
+        if self._usage is not None:
+            return deepcopy(self._usage)
+        data = self.get_json(self.usage_key, None)
+        if isinstance(data, dict) and "totalBytes" in data:
+            self._usage = self._normalize_usage(data)
+        elif reconcile_if_missing:
+            return self.recalculate_usage()
+        else:
+            self._usage = self._normalize_usage({})
+        return deepcopy(self._usage)
+
+    def flush_usage(self, *, force: bool = False) -> None:
+        if self._usage is None:
+            return
+        if not force and self._usage_dirty_writes < self.usage_checkpoint_writes:
+            return
+        payload = self._normalize_usage(self._usage)
+        payload["hardLimitBytes"] = self.hard_limit_bytes
+        payload["warningBytes"] = self.warning_bytes
+        payload["mediaLimitBytes"] = self.media_limit_bytes
+        raw = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        # Usage metadata is deliberately excluded from its own byte counter.
+        self.s3.put_object(
+            Bucket=self.bucket,
+            Key=self.usage_key,
+            Body=raw,
+            ContentType="application/json; charset=utf-8",
+            CacheControl="no-store",
+        )
+        self._usage = payload
+        self._usage_dirty_writes = 0
+
+    def _reserve_usage(self, *, key: str, new_size: int, old_size: int, category: str) -> tuple[int, int, bool]:
+        usage = self.storage_usage()
+        delta = int(new_size) - int(old_size)
+        media_delta = delta if category == "media" else 0
+        new_total = max(0, int(usage["totalBytes"]) + delta)
+        new_media = max(0, int(usage["mediaBytes"]) + media_delta)
+        if new_total > self.hard_limit_bytes:
+            raise StorageQuotaExceeded(
+                f"R2 safety cap reached: write to {key} would use {new_total:,} bytes "
+                f"(hard cap {self.hard_limit_bytes:,})."
+            )
+        if category == "media" and new_media > self.media_limit_bytes:
+            raise StorageQuotaExceeded(
+                f"R2 media cap reached: write to {key} would use {new_media:,} media bytes "
+                f"(media cap {self.media_limit_bytes:,})."
+            )
+        was_new = old_size == 0
+        with self._usage_lock:
+            # Re-check against the newest in-process reservation to stay safe with
+            # migration's parallel upload workers.
+            u = self._normalize_usage(self._usage)
+            total2 = max(0, int(u["totalBytes"]) + delta)
+            media2 = max(0, int(u["mediaBytes"]) + media_delta)
+            if total2 > self.hard_limit_bytes:
+                raise StorageQuotaExceeded(f"R2 safety cap reached at {total2:,} bytes.")
+            if category == "media" and media2 > self.media_limit_bytes:
+                raise StorageQuotaExceeded(f"R2 media cap reached at {media2:,} bytes.")
+            u["totalBytes"] = total2
+            u["mediaBytes"] = media2
+            if was_new:
+                u["objects"] = int(u["objects"]) + 1
+            u["writesThisMonth"] = int(u.get("writesThisMonth") or 0) + 1
+            self._usage = u
+            self._usage_dirty_writes += 1
+        return delta, media_delta, was_new
+
+    def _rollback_usage(self, delta: int, media_delta: int, was_new: bool) -> None:
+        with self._usage_lock:
+            if self._usage is None:
+                return
+            self._usage["totalBytes"] = max(0, int(self._usage.get("totalBytes") or 0) - delta)
+            self._usage["mediaBytes"] = max(0, int(self._usage.get("mediaBytes") or 0) - media_delta)
+            if was_new:
+                self._usage["objects"] = max(0, int(self._usage.get("objects") or 0) - 1)
+            self._usage["writesThisMonth"] = max(0, int(self._usage.get("writesThisMonth") or 0) - 1)
+            self._usage_dirty_writes = max(0, self._usage_dirty_writes - 1)
+
     def exists(self, key: str) -> bool:
         try:
             self.s3.head_object(Bucket=self.bucket, Key=key)
@@ -158,8 +317,14 @@ class R2ArchiveStore:
         content_type: str = "application/octet-stream",
         gzip_content: bool = False,
         cache_control: str | None = None,
+        category: str = "data",
+        known_new: bool = False,
     ) -> None:
         body = gzip.compress(data, compresslevel=6) if gzip_content else data
+        old_size = 0 if known_new else self._head_size(key)
+        delta, media_delta, was_new = self._reserve_usage(
+            key=key, new_size=len(body), old_size=old_size, category=category
+        )
         kwargs: dict[str, Any] = {
             "Bucket": self.bucket,
             "Key": key,
@@ -170,7 +335,12 @@ class R2ArchiveStore:
             kwargs["ContentEncoding"] = "gzip"
         if cache_control:
             kwargs["CacheControl"] = cache_control
-        self.s3.put_object(**kwargs)
+        try:
+            self.s3.put_object(**kwargs)
+        except Exception:
+            self._rollback_usage(delta, media_delta, was_new)
+            raise
+        self.flush_usage()
 
     def get_json(self, key: str, default: Any = None) -> Any:
         raw = self.get_bytes(key)
@@ -178,7 +348,9 @@ class R2ArchiveStore:
             return deepcopy(default)
         return json.loads(raw.decode("utf-8"))
 
-    def put_json(self, key: str, data: Any, *, public: bool = False) -> None:
+    def put_json(
+        self, key: str, data: Any, *, public: bool = False, category: str = "data", known_new: bool = False
+    ) -> None:
         raw = json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
         self.put_bytes(
             key,
@@ -186,6 +358,8 @@ class R2ArchiveStore:
             content_type="application/json; charset=utf-8",
             gzip_content=True,
             cache_control=(f"public,max-age={self.cache_seconds}" if public else "no-store"),
+            category=category,
+            known_new=known_new,
         )
 
     @property
@@ -301,8 +475,20 @@ class R2ArchiveStore:
     def _delete_keys(self, keys: list[str]) -> None:
         for i in range(0, len(keys), 1000):
             chunk = keys[i:i + 1000]
-            if chunk:
-                self.s3.delete_objects(Bucket=self.bucket, Delete={"Objects": [{"Key": k} for k in chunk], "Quiet": True})
+            if not chunk:
+                continue
+            sizes = [(key, self._head_size(key)) for key in chunk]
+            self.s3.delete_objects(Bucket=self.bucket, Delete={"Objects": [{"Key": k} for k in chunk], "Quiet": True})
+            with self._usage_lock:
+                if self._usage is not None:
+                    for key, size in sizes:
+                        self._usage["totalBytes"] = max(0, int(self._usage.get("totalBytes") or 0) - size)
+                        if key.startswith(self.media_prefix.rstrip("/") + "/"):
+                            self._usage["mediaBytes"] = max(0, int(self._usage.get("mediaBytes") or 0) - size)
+                        if size:
+                            self._usage["objects"] = max(0, int(self._usage.get("objects") or 0) - 1)
+                    self._usage_dirty_writes += 1
+            self.flush_usage()
 
     def save_discovery_order(self, force: bool = False) -> None:
         self.flush_discovery_journal()
@@ -371,8 +557,9 @@ class R2ArchiveStore:
 
     def save_bot(self, record: dict[str, Any]) -> bool:
         bot_id = str(record["id"]).lower()
+        is_new = bot_id not in self.known_ids
+        self.put_json(self.bot_key(bot_id), record, public=True, category="bot", known_new=is_new)
         self.register_id(bot_id)
-        self.put_json(self.bot_key(bot_id), record, public=True)
         self._records[bot_id] = deepcopy(record)
         while len(self._records) > self.cache_limit:
             self._records.popitem(last=False)
@@ -389,7 +576,15 @@ class R2ArchiveStore:
     def save_image(self, content: bytes, content_type: str, source_url: str = "") -> dict[str, Any]:
         key, digest = self.media_key_for(content, content_type, source_url)
         if not self.exists(key):
-            self.put_bytes(key, content, content_type=content_type, gzip_content=False, cache_control="public,max-age=31536000,immutable")
+            self.put_bytes(
+                key,
+                content,
+                content_type=content_type,
+                gzip_content=False,
+                cache_control="public,max-age=31536000,immutable",
+                category="media",
+                known_new=True,
+            )
         return {"key": key, "sha256": digest, "publicUrl": self.public_url(key)}
 
     def save_ranking_snapshot(self, snapshot: dict[str, Any], timestamp_slug: str) -> None:
@@ -401,9 +596,14 @@ class R2ArchiveStore:
         data = self.get_json(self.ranking_latest_key, {})
         return data if isinstance(data, dict) else {}
 
-    def publish_deleted_index(self) -> str | None:
+    def publish_deleted_index(self, *, force: bool = False) -> str | None:
+        key = self.key("indexes", "deleted.json")
+        # This public index is a Class A write. Do not rewrite the same deleted
+        # list every three hours just to refresh cache metadata. During normal
+        # runs deleted_dirty is set only when the list genuinely changes.
+        if not force and not self.deleted_dirty:
+            return self.public_url(key)
         rows = list(self.deleted_index.values())
         rows.sort(key=lambda x: str(x.get("statusSince") or ""), reverse=True)
-        key = self.key("indexes", "deleted.json")
         self.put_json(key, {"bots": rows}, public=True)
         return self.public_url(key)

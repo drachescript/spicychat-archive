@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-28T19:12:53Z",
+  "monthStart": "2026-09-01T00:00:00Z",
+  "selectedMode": "r2",
+  "reasonCodes": [],
+  "message": "R2 inside safety envelope",
+  "r2ReadAllowed": true,
+  "imagesAllowed": true,
+  "usage": {
+    "classA": 58090,
+    "classB": 109774,
+    "freeOperations": 3,
+    "storageBytes": 151945159,
+    "objectCount": 22406,
+    "actions": {
+      "DeleteObject": 3,
+      "GetBucketCors": 4,
+      "GetBucketLifecycleConfiguration": 4,
+      "GetBucketNotificationConfiguration": 6,
+      "GetBucketSippyConfiguration": 5,
+      "GetObject": 63044,
+      "HeadBucket": 17,
+      "HeadObject": 46694,
+      "ListBuckets": 102,
+      "ListMultipartUploads": 6,
+      "ListObjects": 40,
+      "PutBucket": 1,
+      "PutBucketCors": 1,
+      "PutObject": 57940
+    },
+    "buckets": {
+      "spicychat-archiv": {
+        "datetime": "2026-09-28T18:20:00Z",
+        "payloadSize": 149830484,
+        "metadataSize": 2114675,
+        "objectCount": 22406
+      }
+    }
+  },
+  "limits": {
+    "storageFreeBytes": 10000000000,
+    "classAFree": 1000000,
+    "classBFree": 10000000,
+    "storagePauseBytes": 8000000000,
+    "storageResumeBytes": 7500000000,
+    "classAPause": 700000,
+    "classAResume": 500000,
+    "classBPause": 6000000,
+    "classBResume": 4000000,
+    "classBReadDisable": 6000000,
+    "imagePauseStorageBytes": 5000000000
+  },
+  "planned": {
+    "fallbackReplayWriteBudget": 20000,
+    "r2ExplorePages": 25
+  }
+}

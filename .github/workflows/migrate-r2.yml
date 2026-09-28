@@ -13,7 +13,7 @@ concurrency:
 jobs:
   migrate:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 45
     env:
       CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
@@ -46,24 +46,35 @@ jobs:
       - name: Verify R2 free-tier headroom before migration
         run: python scripts/r2_guard.py --migration-check --status-file data/r2-usage.json
 
+      - name: Check for completed R2 migration
+        id: migration
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python - <<'PY'
+          import os
+          import archive
+          from storage_r2 import R2ArchiveStore
+
+          config = archive.load_config()
+          store = R2ArchiveStore(config)
+          completed = store.is_migrated()
+          print(f"R2 migration marker present: {completed}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              f.write(f"completed={'true' if completed else 'false'}\n")
+          PY
+
       - name: Upload current archive and prune Git copies
+        if: steps.migration.outputs.completed != 'true'
         run: python scripts/r2_safe_runner.py migrate_r2.py --prune-local --summary-file "$RUNNER_TEMP/r2-migration-summary.md"
 
-      - name: Run one R2-backed archive scan
-        env:
-          SPICYCHAT_ARCHIVE_EXPLORE_PAGES: "4"
-          SPICYCHAT_ARCHIVE_DISABLE_IMAGES: "true"
-        run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+      - name: Finalize already-completed R2 migration
+        if: steps.migration.outputs.completed == 'true'
+        run: python scripts/finalize_r2_migration.py --prune-local --summary-file "$RUNNER_TEMP/r2-migration-summary.md"
 
-      - name: Test archive code
-        run: python -m unittest discover -s tests -v
-
-      - name: Add run summary
-        if: always()
-        run: |
-          [ ! -f "$RUNNER_TEMP/r2-migration-summary.md" ] || cat "$RUNNER_TEMP/r2-migration-summary.md" >> "$GITHUB_STEP_SUMMARY"
-          [ ! -f "$RUNNER_TEMP/archive-summary.md" ] || cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
-
+      # Commit the authoritative switch immediately after migration/finalization.
+      # A later smoke-test failure must not strand the successful R2 migration
+      # only inside a disposable Actions runner again.
       - name: Commit R2 migration cleanup
         shell: bash
         run: |
@@ -83,3 +94,17 @@ jobs:
             git fetch origin main
             git rebase origin/main
           done
+
+      - name: Run short R2 smoke test
+        timeout-minutes: 5
+        run: python scripts/r2_smoke_test.py --summary-file "$RUNNER_TEMP/r2-smoke-summary.md"
+
+      - name: Test archive code
+        timeout-minutes: 10
+        run: python -m unittest discover -s tests -v
+
+      - name: Add run summary
+        if: always()
+        run: |
+          [ ! -f "$RUNNER_TEMP/r2-migration-summary.md" ] || cat "$RUNNER_TEMP/r2-migration-summary.md" >> "$GITHUB_STEP_SUMMARY"
+          [ ! -f "$RUNNER_TEMP/r2-smoke-summary.md" ] || cat "$RUNNER_TEMP/r2-smoke-summary.md" >> "$GITHUB_STEP_SUMMARY"

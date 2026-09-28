@@ -58,7 +58,11 @@ jobs:
         env:
           SPICYCHAT_ARCHIVE_EXPLORE_PAGES: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
-        run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+          # Temporary safety caps until the R2 catalog reader is converted to
+          # bulk/concurrent object reads. These prevent another 2-hour serial scan.
+          SPICYCHAT_ARCHIVE_LISTING_MAX_HITS: "500"
+          SPICYCHAT_ARCHIVE_EXPLORE_PAGE_CAP: "2"
+        run: python scripts/r2_archive_safe_scan.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Update pre-migration local archive
         if: steps.r2guard.outputs.mode == 'legacy'

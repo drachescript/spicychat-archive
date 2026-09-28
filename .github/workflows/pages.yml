@@ -4,7 +4,14 @@ on:
   push:
     branches: [main]
     paths:
-      - "site/**"
+      - "index.html"
+      - "assets/**"
+      - "bot/**"
+      - "deleted/**"
+      - "data/**"
+      - "media/**"
+      - "CNAME"
+      - ".nojekyll"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -25,10 +32,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/configure-pages@v5
+
+      - name: Build Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$RUNNER_TEMP/pages-site"
+          mkdir -p "$RUNNER_TEMP/pages-site"
+          cp -a index.html assets bot deleted data media CNAME .nojekyll "$RUNNER_TEMP/pages-site/"
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: ${{ runner.temp }}/pages-site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

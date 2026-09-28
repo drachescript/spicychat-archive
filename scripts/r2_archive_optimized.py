@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-"""R2 archive runner with a compact, tolerant fingerprint index.
+"""Discovery-first R2 archive runner.
 
-v3 corrects the fingerprint rules for SpicyChat's noisy updatedAt field.
-On SpicyChat, updatedAt can move because message counters/activity changed, so it
-is not reliable evidence that a bot's personality, greeting, scenario, definition
-or other authored metadata changed.
+v4 keeps the compact fingerprint architecture, but narrows fingerprints to
+metadata that actually matters for a bot. SpicyChat's updatedAt, counters and
+backend bookkeeping are intentionally ignored.
 
-This version:
-- excludes updatedAt-style bookkeeping fields from fingerprints entirely;
-- does NOT queue enrichment just because updatedAt changed;
-- loads full archived bot JSON only when actual non-volatile Typesense content
-  changed, a bot is new, or a deleted bot reappeared;
-- batches genuinely-needed R2 bot reads with 16 concurrent readers;
-- prints listing + ingest progress so Actions never appears frozen;
-- keeps the existing deletion, enrichment, image, ranking and archive logic.
+It also adds:
+- adaptive discovery (+1 page after a healthy successful run, capped);
+- a discovery wall-clock limit so scheduled runs cannot grow forever;
+- newly discovered bots prioritized for richer character-API enrichment;
+- persistent full scan/growth history in R2 plus a small public data/stats.json;
+- noisy updatedAt values excluded from field-history changes.
 """
 from __future__ import annotations
 
 import hashlib
 import json
+import os
+import time
+from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Iterable
 
@@ -27,12 +27,10 @@ import archive_cloud as cloud
 from storage_r2 import R2ArchiveStore
 
 
-FINGERPRINT_SCHEMA = 3
+FINGERPRINT_SCHEMA = 4
 READ_WORKERS = 16
 BOOTSTRAP_MAX_READS = 25_000
 
-# These are useful change hints but should not make every listing hit download the
-# full archived JSON. If only one of these moves, queue normal enrichment instead.
 UPDATE_HINT_FIELDS = {
     "updatedAt",
     "updated_at",
@@ -40,8 +38,40 @@ UPDATE_HINT_FIELDS = {
     "last_updated_at",
 }
 
+# Fields that can change because of ranking, traffic, translation/indexing or
+# other backend activity. They must not turn into "creator edited the bot"
+# signals.
+BACKEND_NOISE_FIELDS = {
+    "lora_status",
+    "reportsType",
+    "translated_languages",
+    "recommendation_score",
+    "rank",
+}
+
+# Stable/public metadata worth comparing. token_count and definition visibility
+# are kept because they can reveal a real definition edit even when the actual
+# personality text is not exposed in Typesense.
+FINGERPRINT_FIELDS = {
+    "character_id", "id", "uuid",
+    "name", "title", "description", "greeting", "scenario",
+    "creator_username", "creator",
+    "tags", "language", "type", "visibility",
+    "avatar_url", "avatar", "image", "avatar_is_nsfw", "is_nsfw",
+    "definition_visible", "definition_size_category", "token_count",
+    "has_lorebooks", "lorebooks", "group_size_category", "group_addable",
+}
+
+# updatedAt is also noise for field history. This affects observe_bot() globally
+# during the R2 run without changing the legacy/local implementation.
+legacy.VOLATILE_FIELDS.update(UPDATE_HINT_FIELDS)
+
 _original_configure_cloud = cloud.configure_cloud
 _active_fingerprints = None
+_active_store = None
+_active_state = None
+_active_config = None
+_run_started_monotonic = 0.0
 
 
 def _clean_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
@@ -49,8 +79,10 @@ def _clean_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
     return {
         key: value
         for key, value in cleaned.items()
-        if key not in legacy.VOLATILE_FIELDS
+        if key in FINGERPRINT_FIELDS
+        and key not in legacy.VOLATILE_FIELDS
         and key not in UPDATE_HINT_FIELDS
+        and key not in BACKEND_NOISE_FIELDS
     }
 
 
@@ -165,14 +197,14 @@ class FingerprintIndex:
         ]
         if not missing:
             print(
-                f"R2 fingerprint v3 ready: {len(self.values):,} archived IDs covered.",
+                f"R2 fingerprint v4 ready: {len(self.values):,} archived IDs covered.",
                 flush=True,
             )
             return
 
         batch = missing[:BOOTSTRAP_MAX_READS]
         print(
-            f"R2 fingerprint v3 bootstrap: {len(batch):,} existing bot records "
+            f"R2 fingerprint v4 bootstrap: {len(batch):,} existing bot records "
             f"({READ_WORKERS} concurrent readers).",
             flush=True,
         )
@@ -195,7 +227,7 @@ class FingerprintIndex:
 
                 if completed % 1000 == 0 or completed == len(batch):
                     print(
-                        f"  fingerprint v3 bootstrap {completed:,}/{len(batch):,}",
+                        f"  fingerprint v4 bootstrap {completed:,}/{len(batch):,}",
                         flush=True,
                     )
 
@@ -216,7 +248,7 @@ class FingerprintIndex:
 
     def print_stats(self) -> None:
         print(
-            "R2 fingerprint v3: "
+            "R2 fingerprint v4: "
             f"{self.stats['avoidedReads']:,} full bot GETs avoided; "
             f"{self.stats['fullReads']:,} full bot GETs needed; "
             f"{self.stats['newBots']:,} new; "
@@ -277,9 +309,12 @@ def _parallel_load_records(
 
 
 def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
-    global _active_fingerprints
+    global _active_fingerprints, _active_store, _active_state, _active_config
 
     state, bloom = _original_configure_cloud(config, store)
+    _active_store = store
+    _active_state = state
+    _active_config = config
 
     fingerprints = FingerprintIndex(store)
     _active_fingerprints = fingerprints
@@ -377,11 +412,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
             observed_doc = doc
             if existing is not None and source.startswith("typesense:"):
-                observed_doc = {
-                    key: value
-                    for key, value in doc.items()
-                    if key not in legacy.VOLATILE_FIELDS
-                }
+                observed_doc = _clean_typesense_doc(doc)
 
             record, changed = legacy.observe_bot(
                 existing,
@@ -394,6 +425,10 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             if existing is None:
                 created_count += 1
                 fingerprints.stats["newBots"] += 1
+                # Discovery is the priority while the archive is young. Capture
+                # richer data for new bots before spending the rotating budget on
+                # old/stale records.
+                cloud._priority_add(state, "priorityEnrichment", bot_id)
             else:
                 # updatedAt is intentionally ignored as an enrichment signal:
                 # SpicyChat can bump it from message/activity changes alone.
@@ -556,15 +591,34 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         exploration = state.setdefault("exploration", {})
         mode = exploration.get("mode") or "page"
         page_size = 250
-        pages_budget = int(
-            config["crawler"].get("explore_pages_per_run", 20)
+
+        crawler = config.get("crawler") or {}
+        base_pages = max(1, int(crawler.get("explore_pages_per_run") or 20))
+        max_pages = max(base_pages, int(crawler.get("explore_pages_max") or base_pages))
+        growth = max(0, int(crawler.get("explore_pages_growth_per_success") or 1))
+        time_limit = max(60, int(crawler.get("explore_time_limit_seconds") or 3600))
+        adaptive_pages = max(
+            base_pages,
+            int(exploration.get("adaptivePages") or base_pages),
         )
+        adaptive_pages = min(adaptive_pages, max_pages)
+
+        # The quota guard provides a ceiling. It is deliberately separate from
+        # the base/adaptive value so a healthy month can grow above 20 pages.
+        try:
+            guard_cap = int(os.environ.get("SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP", str(max_pages)))
+        except ValueError:
+            guard_cap = max_pages
+        pages_budget = max(0, min(adaptive_pages, guard_cap, max_pages))
 
         total_new = 0
         total_changed = 0
         total_hits = 0
         errors: list[str] = []
         missing_queued = 0
+        completed_pages = 0
+        time_limited = False
+        discovery_started = time.monotonic()
 
         discovery_write_soft_limit = int(
             (config.get("storage") or {})
@@ -574,11 +628,24 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         )
 
         print(
-            f"explore: up to {pages_budget} pages × {page_size} hits",
+            "explore: "
+            f"{pages_budget} adaptive pages this run "
+            f"(base {base_pages}, max {max_pages}, guard {guard_cap}) × {page_size} hits; "
+            f"time limit {time_limit // 60}m",
             flush=True,
         )
 
         for page_index in range(pages_budget):
+            elapsed = time.monotonic() - discovery_started
+            if elapsed >= time_limit:
+                time_limited = True
+                print(
+                    f"explore: time limit reached after {elapsed/60:.1f}m; "
+                    "saving cursor and stopping before the next page.",
+                    flush=True,
+                )
+                break
+
             usage = store.storage_usage()
             if (
                 int(usage.get("writesThisMonth") or 0)
@@ -663,6 +730,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             total_new += new
             total_changed += changed
             total_hits += len(hits)
+            completed_pages += 1
 
             last_created = hits[-1].get("createdAt")
             if last_created is not None:
@@ -673,15 +741,11 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     last_created is None
                     or last_created == exploration.get("cursorCreatedAt")
                 ):
-                    errors.append(
-                        "cursor discovery could not advance createdAt"
-                    )
+                    errors.append("cursor discovery could not advance createdAt")
                     break
                 exploration["cursorCreatedAt"] = last_created
             else:
-                exploration["page"] = (
-                    int(exploration.get("page") or 1) + 1
-                )
+                exploration["page"] = int(exploration.get("page") or 1) + 1
 
             print(
                 f"explore {page_index + 1}/{pages_budget}: "
@@ -698,6 +762,34 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 exploration["lastCreatedAt"] = None
                 break
 
+        elapsed_seconds = int(time.monotonic() - discovery_started)
+
+        # Grow only after a healthy run that actually completed its allowed page
+        # budget. If time/quota/API limits stopped us, hold steady.
+        next_pages = adaptive_pages
+        if (
+            pages_budget > 0
+            and completed_pages >= pages_budget
+            and not errors
+            and not time_limited
+            and adaptive_pages < max_pages
+        ):
+            next_pages = min(max_pages, adaptive_pages + growth)
+
+        exploration["adaptivePages"] = next_pages
+        exploration["lastPageBudget"] = pages_budget
+        exploration["lastPagesCompleted"] = completed_pages
+        exploration["lastDiscoverySeconds"] = elapsed_seconds
+        exploration["lastDiscoveryNew"] = total_new
+        exploration["lastTimeLimited"] = time_limited
+
+        print(
+            "explore: finished "
+            f"{completed_pages}/{pages_budget} pages in {elapsed_seconds/60:.1f}m; "
+            f"{total_new:,} new. Next healthy-run budget: {next_pages} pages.",
+            flush=True,
+        )
+
         fingerprints.save_if_dirty()
         fingerprints.print_stats()
 
@@ -708,6 +800,11 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             "mode": mode,
             "missingQueued": missing_queued,
             "errors": errors,
+            "pageBudget": pages_budget,
+            "pagesCompleted": completed_pages,
+            "nextPageBudget": next_pages,
+            "timeLimited": time_limited,
+            "durationSeconds": elapsed_seconds,
             "r2BotReadsAvoided": fingerprints.stats["avoidedReads"],
             "r2BotReadsNeeded": fingerprints.stats["fullReads"],
         }
@@ -718,17 +815,224 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
     return state, bloom
 
 
-def main() -> int:
-    cloud.configure_cloud = optimized_configure_cloud
+
+def _iso_to_epoch(value: str | None) -> float | None:
+    if not value:
+        return None
     try:
-        return cloud.run()
+        return datetime.fromisoformat(str(value).replace("Z", "+00:00")).timestamp()
+    except Exception:
+        return None
+
+
+def _delta_since(runs: list[dict[str, Any]], hours: int) -> int | None:
+    if len(runs) < 2:
+        return None
+    latest = runs[-1]
+    latest_t = _iso_to_epoch(latest.get("at"))
+    if latest_t is None:
+        return None
+    cutoff = latest_t - hours * 3600
+    baseline = None
+    for row in runs:
+        t = _iso_to_epoch(row.get("at"))
+        if t is None:
+            continue
+        if t <= cutoff:
+            baseline = row
+        elif baseline is None:
+            baseline = row
+            break
+        else:
+            break
+    if baseline is None or baseline is latest:
+        baseline = runs[0]
+    return max(0, int(latest.get("totalBots") or 0) - int(baseline.get("totalBots") or 0))
+
+
+def _public_stats(history: dict[str, Any], config: dict[str, Any], manifest: dict[str, Any]) -> dict[str, Any]:
+    runs = [r for r in (history.get("runs") or []) if isinstance(r, dict)]
+    runs.sort(key=lambda r: str(r.get("at") or ""))
+    latest = runs[-1] if runs else {}
+    previous = runs[-2] if len(runs) >= 2 else None
+
+    latest_added = (
+        max(0, int(latest.get("totalBots") or 0) - int(previous.get("totalBots") or 0))
+        if previous else 0
+    )
+
+    start_t = _iso_to_epoch(runs[0].get("at")) if runs else None
+    latest_t = _iso_to_epoch(latest.get("at")) if latest else None
+    observed_hours = max(0.0, ((latest_t - start_t) / 3600)) if start_t and latest_t else 0.0
+    observed_growth = (
+        max(0, int(latest.get("totalBots") or 0) - int(runs[0].get("totalBots") or 0))
+        if runs else 0
+    )
+    # Use at most a 7-day window for the headline pace; while the archive is new,
+    # this is an extrapolated observed pace and naturally stabilizes over time.
+    window_runs = runs
+    if latest_t:
+        cutoff = latest_t - 7 * 86400
+        candidates = [r for r in runs if (_iso_to_epoch(r.get("at")) or 0) >= cutoff]
+        if len(candidates) >= 2:
+            window_runs = candidates
+    if len(window_runs) >= 2:
+        w0, w1 = window_runs[0], window_runs[-1]
+        t0, t1 = _iso_to_epoch(w0.get("at")), _iso_to_epoch(w1.get("at"))
+        span_days = max((t1 - t0) / 86400, 1 / 24) if t0 and t1 else 0
+        pace = (
+            max(0, int(w1.get("totalBots") or 0) - int(w0.get("totalBots") or 0)) / span_days
+            if span_days else 0
+        )
+    else:
+        pace = 0
+
+    keep = max(24, int((config.get("site") or {}).get("public_stats_history_points") or 480))
+    public_runs = []
+    prev_total = None
+    for row in runs[-keep:]:
+        item = dict(row)
+        total = int(item.get("totalBots") or 0)
+        item["addedSincePrevious"] = None if prev_total is None else max(0, total - prev_total)
+        prev_total = total
+        public_runs.append(item)
+
+    site = config.get("site") or {}
+    return {
+        "schemaVersion": 1,
+        "generatedAt": legacy.utc_now(),
+        "startedAt": site.get("started_at") or history.get("startedAt") or (runs[0].get("at") if runs else None),
+        "totalBots": int(manifest.get("totalBots") or latest.get("totalBots") or 0),
+        "publicIndexBots": int(manifest.get("activeBots") or latest.get("publicIndexBots") or 0),
+        "deletedBots": int(manifest.get("deletedBots") or latest.get("deletedBots") or 0),
+        "latestAdded": latest_added,
+        "growth": {
+            "added24h": _delta_since(runs, 24),
+            "added7d": _delta_since(runs, 24 * 7),
+            "added30d": _delta_since(runs, 24 * 30),
+            "averagePerDay": round(pace, 1),
+            "observedHours": round(observed_hours, 1),
+            "observedGrowth": observed_growth,
+        },
+        "adaptiveDiscovery": {
+            "basePages": int((config.get("crawler") or {}).get("explore_pages_per_run") or 20),
+            "maxPages": int((config.get("crawler") or {}).get("explore_pages_max") or 50),
+            "growthPerSuccess": int((config.get("crawler") or {}).get("explore_pages_growth_per_success") or 1),
+            "timeLimitSeconds": int((config.get("crawler") or {}).get("explore_time_limit_seconds") or 3600),
+            "nextPageBudget": int(((latest.get("exploration") or {}).get("nextPageBudget")) or 0),
+        },
+        "runs": public_runs,
+    }
+
+
+def _record_successful_run_stats() -> None:
+    if not (_active_store and _active_state is not None and _active_config):
+        return
+
+    store = _active_store
+    state = _active_state
+    config = _active_config
+    manifest = legacy.read_json(legacy.SITE_DATA_DIR / "manifest.json", {})
+    if not isinstance(manifest, dict):
+        manifest = {}
+
+    key = store.key(store.meta_prefix, "stats-history.json")
+    history = store.get_json(key, None)
+    if not isinstance(history, dict):
+        history = {"schemaVersion": 1, "runs": []}
+
+    runs = history.setdefault("runs", [])
+    if not runs:
+        # Seed the graph with the migration count so the first public stats file
+        # can already show real growth instead of starting from a single point.
+        marker = store.get_json(store.marker_key, {})
+        if isinstance(marker, dict) and marker.get("migratedAt") and marker.get("botRecords"):
+            runs.append({
+                "at": marker["migratedAt"],
+                "kind": "migration-baseline",
+                "totalBots": int(marker.get("botRecords") or 0),
+                "publicIndexBots": None,
+                "deletedBots": int(marker.get("deletedRecords") or 0),
+            })
+
+    summary = state.get("lastRunSummary") or {}
+    exploration = summary.get("exploration") or {}
+    enrichment = summary.get("enrichment") or {}
+    images = summary.get("images") or {}
+    missing = summary.get("missingVerification") or {}
+    usage = store.storage_usage()
+    event = {
+        "at": state.get("lastRunAt") or legacy.utc_now(),
+        "kind": "archive-run",
+        "totalBots": len(store.discovery_order),
+        "publicIndexBots": int(manifest.get("activeBots") or 0),
+        "deletedBots": len(store.deleted_index),
+        "missingBots": len(state.get("missingChecks") or {}),
+        "runDurationSeconds": max(0, int(time.monotonic() - _run_started_monotonic)),
+        "exploration": {
+            "hits": int(exploration.get("hits") or 0),
+            "new": int(exploration.get("new") or 0),
+            "changed": int(exploration.get("changed") or 0),
+            "pageBudget": int(exploration.get("pageBudget") or 0),
+            "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+            "nextPageBudget": int(exploration.get("nextPageBudget") or 0),
+            "timeLimited": bool(exploration.get("timeLimited")),
+            "durationSeconds": int(exploration.get("durationSeconds") or 0),
+        },
+        "enrichment": {
+            "attempted": int(enrichment.get("processed") or 0),
+            "enriched": int(enrichment.get("enriched") or 0),
+        },
+        "images": {
+            "attempted": int(images.get("processed") or 0),
+            "saved": int(images.get("saved") or 0),
+        },
+        "deletedConfirmed": int(missing.get("deleted") or 0),
+        "storage": {
+            "usedBytes": int(usage.get("totalBytes") or 0),
+            "mediaBytes": int(usage.get("mediaBytes") or 0),
+            "objects": int(usage.get("objects") or 0),
+            "writesThisMonth": int(usage.get("writesThisMonth") or 0),
+        },
+    }
+
+    # Exact-at timestamp dedupe makes reruns/resumes harmless.
+    runs[:] = [r for r in runs if str(r.get("at") or "") != str(event["at"])]
+    runs.append(event)
+    runs.sort(key=lambda r: str(r.get("at") or ""))
+
+    history["schemaVersion"] = 1
+    history["startedAt"] = (config.get("site") or {}).get("started_at") or history.get("startedAt") or runs[0].get("at")
+    store.put_json(key, history)
+    store.flush_usage(force=True)
+
+    public_stats = _public_stats(history, config, manifest)
+    legacy.write_json_if_changed(legacy.SITE_DATA_DIR / "stats.json", public_stats)
+    print(
+        "Stats: "
+        f"{event['totalBots']:,} archived; "
+        f"+{public_stats.get('latestAdded', 0):,} since previous snapshot; "
+        f"~{public_stats.get('growth', {}).get('averagePerDay', 0):,.0f}/day observed pace.",
+        flush=True,
+    )
+
+def main() -> int:
+    global _run_started_monotonic
+    _run_started_monotonic = time.monotonic()
+    cloud.configure_cloud = optimized_configure_cloud
+    rc = 1
+    try:
+        rc = cloud.run()
+        if rc == 0:
+            _record_successful_run_stats()
+        return rc
     finally:
         if _active_fingerprints is not None:
             try:
                 _active_fingerprints.save_if_dirty()
             except Exception as exc:
                 print(
-                    f"WARNING: could not persist R2 fingerprint v3 index: {exc}",
+                    f"WARNING: could not persist R2 fingerprint v4 index: {exc}",
                     flush=True,
                 )
 

@@ -17,8 +17,6 @@ concurrency:
 
 jobs:
   archive:
-    # A manually-dispatched successful probe automatically continues into the
-    # real archive update. Failed probes, or non-manual probe runs, do not.
     if: >-
       ${{ github.event_name != 'workflow_run' ||
           (github.event.workflow_run.conclusion == 'success' &&
@@ -47,7 +45,7 @@ jobs:
 
       - name: Check R2 free-tier guard
         id: r2guard
-        run: python scripts/r2_guard.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
 
       - name: Replay pending Git fallback into R2
         if: steps.r2guard.outputs.mode == 'r2' && steps.r2guard.outputs.replay_write_budget != '0'
@@ -56,11 +54,9 @@ jobs:
       - name: Update archive in R2
         if: steps.r2guard.outputs.mode == 'r2'
         env:
-          # Keep the quota guard in control of discovery depth/images. On a healthy
-          # month this is the normal config budget (currently 20 discovery pages);
-          # unlike the temporary safe-scan wrapper there is no permanent 2-page /
-          # 500-listing cap anymore.
-          SPICYCHAT_ARCHIVE_EXPLORE_PAGES: ${{ steps.r2guard.outputs.explore_pages }}
+          # This is a quota ceiling, not the actual page count. The crawler keeps
+          # its adaptive value in R2 state and grows it by +1 after healthy runs.
+          SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
         run: python scripts/r2_archive_optimized.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
@@ -81,15 +77,13 @@ jobs:
           [ ! -f "$RUNNER_TEMP/replay-summary.md" ] || cat "$RUNNER_TEMP/replay-summary.md" >> "$GITHUB_STEP_SUMMARY"
           [ ! -f "$RUNNER_TEMP/archive-summary.md" ] || cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Commit genuine public/index/fallback changes
+      - name: Commit public stats/runtime changes
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # R2 mode normally changes only tiny public manifests. Git fallback mode
-          # also commits compressed observation journals until R2 has headroom again.
           git add -A -- archive data fallback config.json 2>/dev/null || true
           git add -A -- media 2>/dev/null || true
           if git diff --cached --quiet; then

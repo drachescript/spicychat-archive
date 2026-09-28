@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """R2 archive runner with a compact, tolerant fingerprint index.
 
-v2 fixes the first fingerprint version's main weakness: it compared the entire
-non-volatile Typesense document including updatedAt. If updatedAt or another
-bookkeeping field moved for many bots, the crawler could fall back to thousands
-of serial R2 GETs.
+v3 corrects the fingerprint rules for SpicyChat's noisy updatedAt field.
+On SpicyChat, updatedAt can move because message counters/activity changed, so it
+is not reliable evidence that a bot's personality, greeting, scenario, definition
+or other authored metadata changed.
 
 This version:
-- fingerprints visible content separately from updatedAt;
-- treats updatedAt-only changes as an enrichment hint, not a reason to GET the
-  full archived bot record immediately;
-- batches any genuinely-needed R2 bot reads with 16 concurrent readers;
+- excludes updatedAt-style bookkeeping fields from fingerprints entirely;
+- does NOT queue enrichment just because updatedAt changed;
+- loads full archived bot JSON only when actual non-volatile Typesense content
+  changed, a bot is new, or a deleted bot reappeared;
+- batches genuinely-needed R2 bot reads with 16 concurrent readers;
 - prints listing + ingest progress so Actions never appears frozen;
 - keeps the existing deletion, enrichment, image, ranking and archive logic.
 """
@@ -26,7 +27,7 @@ import archive_cloud as cloud
 from storage_r2 import R2ArchiveStore
 
 
-FINGERPRINT_SCHEMA = 2
+FINGERPRINT_SCHEMA = 3
 READ_WORKERS = 16
 BOOTSTRAP_MAX_READS = 25_000
 
@@ -51,13 +52,6 @@ def _clean_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
         if key not in legacy.VOLATILE_FIELDS
         and key not in UPDATE_HINT_FIELDS
     }
-
-
-def _updated_hint(doc: dict[str, Any]) -> Any:
-    for key in ("updatedAt", "updated_at", "lastUpdatedAt", "last_updated_at"):
-        if key in doc and legacy.meaningful(doc.get(key)):
-            return doc.get(key)
-    return None
 
 
 def _content_hash(doc: dict[str, Any]) -> str:
@@ -90,9 +84,10 @@ def _record_typesense_doc(record: dict[str, Any]) -> dict[str, Any] | None:
 
 
 def _entry_for_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    # Deliberately do not store updatedAt. On SpicyChat it can move when message
+    # activity changes and is therefore not a trustworthy authored-content signal.
     return {
         "contentHash": _content_hash(doc),
-        "updatedAt": _updated_hint(doc),
     }
 
 
@@ -107,7 +102,6 @@ class FingerprintIndex:
             "fullReads": 0,
             "newBots": 0,
             "changedBots": 0,
-            "updatedOnly": 0,
             "readErrors": 0,
             "bootstrapReads": 0,
             "bootstrapErrors": 0,
@@ -125,7 +119,6 @@ class FingerprintIndex:
                 bot_id = str(raw_id).lower()
                 self.values[bot_id] = {
                     "contentHash": raw_entry.get("contentHash"),
-                    "updatedAt": raw_entry.get("updatedAt"),
                 }
 
     def contains(self, bot_id: str) -> bool:
@@ -147,21 +140,9 @@ class FingerprintIndex:
         bot_id = bot_id.lower()
         normalized = {
             "contentHash": entry.get("contentHash"),
-            "updatedAt": entry.get("updatedAt"),
         }
         if self.values.get(bot_id) != normalized:
             self.values[bot_id] = normalized
-            self.dirty = True
-
-    def update_hint_only(self, bot_id: str, updated_at: Any) -> None:
-        bot_id = bot_id.lower()
-        current = self.values.get(bot_id)
-        if not isinstance(current, dict):
-            return
-        if current.get("updatedAt") != updated_at:
-            current = dict(current)
-            current["updatedAt"] = updated_at
-            self.values[bot_id] = current
             self.dirty = True
 
     def _bootstrap_one(self, bot_id: str):
@@ -171,7 +152,7 @@ class FingerprintIndex:
                 return bot_id, None, None
             doc = _record_typesense_doc(record)
             if not isinstance(doc, dict):
-                return bot_id, {"contentHash": None, "updatedAt": None}, None
+                return bot_id, {"contentHash": None}, None
             return bot_id, _entry_for_doc(doc), None
         except Exception as exc:
             return bot_id, None, str(exc)
@@ -184,14 +165,14 @@ class FingerprintIndex:
         ]
         if not missing:
             print(
-                f"R2 fingerprint v2 ready: {len(self.values):,} archived IDs covered.",
+                f"R2 fingerprint v3 ready: {len(self.values):,} archived IDs covered.",
                 flush=True,
             )
             return
 
         batch = missing[:BOOTSTRAP_MAX_READS]
         print(
-            f"R2 fingerprint v2 bootstrap: {len(batch):,} existing bot records "
+            f"R2 fingerprint v3 bootstrap: {len(batch):,} existing bot records "
             f"({READ_WORKERS} concurrent readers).",
             flush=True,
         )
@@ -214,7 +195,7 @@ class FingerprintIndex:
 
                 if completed % 1000 == 0 or completed == len(batch):
                     print(
-                        f"  fingerprint v2 bootstrap {completed:,}/{len(batch):,}",
+                        f"  fingerprint v3 bootstrap {completed:,}/{len(batch):,}",
                         flush=True,
                     )
 
@@ -235,10 +216,9 @@ class FingerprintIndex:
 
     def print_stats(self) -> None:
         print(
-            "R2 fingerprint v2: "
+            "R2 fingerprint v3: "
             f"{self.stats['avoidedReads']:,} full bot GETs avoided; "
             f"{self.stats['fullReads']:,} full bot GETs needed; "
-            f"{self.stats['updatedOnly']:,} updatedAt-only hints; "
             f"{self.stats['newBots']:,} new; "
             f"{self.stats['changedBots']:,} changed; "
             f"{self.stats['readErrors']:,} read errors; "
@@ -331,21 +311,10 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             if known and not restore and fingerprints.same_content(
                 bot_id, entry["contentHash"]
             ):
+                # Ignore updatedAt completely here. SpicyChat commonly changes it
+                # because message/activity counters moved; that alone says nothing
+                # about personality, greeting, scenario, definition, etc.
                 fingerprints.stats["avoidedReads"] += 1
-
-                old_updated = prior.get("updatedAt") if prior else None
-                new_updated = entry.get("updatedAt")
-                if (
-                    legacy.meaningful(new_updated)
-                    and old_updated != new_updated
-                ):
-                    # updatedAt can be noisy. Use it as a signal for normal
-                    # character-API enrichment without downloading this bot JSON.
-                    cloud._priority_add(
-                        state, "priorityEnrichment", bot_id
-                    )
-                    fingerprints.stats["updatedOnly"] += 1
-                    fingerprints.update_hint_only(bot_id, new_updated)
                 continue
 
             rows.append(
@@ -399,7 +368,6 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             existing = loaded.get(bot_id) if known else None
 
             old_known = (existing or {}).get("lastKnown") or {}
-            old_updated = old_known.get("updatedAt")
             old_definition_visible = old_known.get("definition_visible")
             old_avatar = legacy.normalize_avatar_url(
                 old_known.get("avatar_url")
@@ -427,13 +395,8 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 created_count += 1
                 fingerprints.stats["newBots"] += 1
             else:
-                if (
-                    legacy.meaningful(doc.get("updatedAt"))
-                    and doc.get("updatedAt") != old_updated
-                ):
-                    cloud._priority_add(
-                        state, "priorityEnrichment", bot_id
-                    )
+                # updatedAt is intentionally ignored as an enrichment signal:
+                # SpicyChat can bump it from message/activity changes alone.
                 if (
                     "definition_visible" in doc
                     and doc.get("definition_visible")
@@ -765,7 +728,7 @@ def main() -> int:
                 _active_fingerprints.save_if_dirty()
             except Exception as exc:
                 print(
-                    f"WARNING: could not persist R2 fingerprint v2 index: {exc}",
+                    f"WARNING: could not persist R2 fingerprint v3 index: {exc}",
                     flush=True,
                 )
 

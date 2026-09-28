@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "typesense": {
     "primary_url": "https://ts-lb.nd-api.com/multi_search",
     "fallback_urls": [
@@ -21,9 +21,25 @@
     "enrichment_budget": 200,
     "image_budget": 100,
     "image_archive_enabled": true,
+    "missing_verification_budget": 100,
     "deleted_confirmations_required": 2,
     "request_timeout_seconds": 20,
     "request_delay_ms": 80
+  },
+  "storage": {
+    "mode": "auto",
+    "r2": {
+      "bucket": "spicychat-archive",
+      "public_base_url": "https://data.spicychatarchive.drache.uk",
+      "bot_prefix": "bots",
+      "media_prefix": "media",
+      "rankings_prefix": "rankings",
+      "meta_prefix": "_meta",
+      "cache_seconds": 300,
+      "memory_cache_records": 25000,
+      "bloom_bytes": 8388608,
+      "bloom_hashes": 7
+    }
   },
   "listings": {
     "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",

@@ -5,11 +5,11 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "favicon.svg"
       - "assets/**"
       - "bot/**"
       - "deleted/**"
       - "data/**"
-      - "media/**"
       - "CNAME"
       - ".nojekyll"
       - ".github/workflows/pages.yml"
@@ -39,9 +39,32 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf "$RUNNER_TEMP/pages-site"
-          mkdir -p "$RUNNER_TEMP/pages-site"
-          cp -a index.html assets bot deleted data media CNAME .nojekyll "$RUNNER_TEMP/pages-site/"
+          OUT="$RUNNER_TEMP/pages-site"
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          cp -a index.html favicon.svg assets bot deleted data CNAME .nojekyll "$OUT/"
+
+          # Before the one-time R2 migration the site still uses the old local
+          # detail/media layout. Rebuild those generated copies only in the Pages
+          # artifact so they no longer need to be duplicated in Git afterward.
+          if ! python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/runtime.json')
+          raise SystemExit(0 if p.exists() and json.loads(p.read_text()).get('storageMode') == 'r2' else 1)
+          PY
+          then
+            mkdir -p "$OUT/data/bots"
+            if [ -d archive/bots ]; then
+              find archive/bots -type f -name '*.json' -exec cp {} "$OUT/data/bots/" \;
+            fi
+            if [ -d archive/media ]; then
+              mkdir -p "$OUT/media"
+              cp -a archive/media/. "$OUT/media/"
+            elif [ -d media ]; then
+              cp -a media "$OUT/"
+            fi
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

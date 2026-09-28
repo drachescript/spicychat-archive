@@ -35,9 +35,28 @@ async function fetchJson(url, options={}){
 async function loadManifest(){return fetchJson(asset('data/manifest.json'));}
 async function loadStats(){try{return await fetchJson(asset('data/stats.json'));}catch{return null;}}
 async function loadTags(){try{return (await fetchJson(asset('data/tags.json'))).tags||[];}catch{return [];}}
+const R2_RUNTIME_FALLBACK={
+  schemaVersion:1,storageMode:'r2',r2ReadAllowed:true,
+  publicDataBaseUrl:'https://data.spicychatarchive.drache.uk',
+  deletedIndexUrl:'https://data.spicychatarchive.drache.uk/_meta/deleted-index.json',
+  typesense:{
+    url:'https://ts-lb.nd-api.com/multi_search',
+    fallbackUrls:['https://etmzpxgvnid370fyp.a1.typesense.net/multi_search'],
+    apiKey:'STHKtT6jrC5z1IozTJHIeSN4qN9oL1s3',
+    collection:'public_characters_alias',
+    queryBy:'name,title,tags,creator_username,character_id,type',
+    baseFilter:'application_ids:=spicychat && type:!=META && visibility:=public'
+  },
+  sorts:{
+    trending:'_text_match(buckets: 3):desc,num_messages_24h:desc',
+    'top-rated':'rating_score:desc,num_messages:desc',
+    popular:'num_messages:desc'
+  }
+};
 async function loadRuntime(){
   let runtime;
-  try{runtime=await fetchJson(asset('data/runtime.json'));}catch{runtime={storageMode:'local'};}
+  try{runtime=await fetchJson(asset('data/runtime.json'));}
+  catch{runtime=JSON.parse(JSON.stringify(R2_RUNTIME_FALLBACK));}
   try{
     const guard=await fetchJson(asset('data/r2-usage.json'));
     if(typeof guard.r2ReadAllowed==='boolean')runtime.r2ReadAllowed=guard.r2ReadAllowed;
@@ -250,7 +269,7 @@ async function browseLive(runtime,manifest,tags,stats){
   const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:1};
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div></div></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
-      <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(manifest.totalBots)} bots captured so far.</div>
+      <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
       <div class="results-head"><h2>Public bots</h2><span id="result-count"></span></div><section class="grid" id="grid"></section>
       <div class="load-more-wrap"><button type="button" class="load-more" id="load-more" hidden>Load more</button></div>
       <footer class="footer">Active browsing queries SpicyChat's public Typesense index. Historical bot records and archived images are stored separately in the archive.</footer>

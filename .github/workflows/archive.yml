@@ -84,8 +84,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -A -- archive data fallback config.json 2>/dev/null || true
-          git add -A -- media 2>/dev/null || true
+          # Required paths are always present. Stage these first so an absent
+          # optional directory can never make the whole git add fail.
+          git add -A -- archive data config.json
+
+          # Stage optional paths only when they exist now or are already tracked
+          # (the latter also catches a tracked directory that was deleted).
+          for path in fallback media; do
+            if [ -e "$path" ] || git ls-files -- "$path" | grep -q .; then
+              git add -A -- "$path"
+            fi
+          done
           if git diff --cached --quiet; then
             echo "No Git-side archive changes to commit."
             exit 0

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "storageMode": "r2",
+  "r2ReadAllowed": true,
+  "publicDataBaseUrl": "https://data.spicychatarchive.drache.uk",
+  "deletedIndexUrl": "https://data.spicychatarchive.drache.uk/_meta/deleted-index.json",
+  "typesense": {
+    "url": "https://ts-lb.nd-api.com/multi_search",
+    "fallbackUrls": [
+      "https://etmzpxgvnid370fyp.a1.typesense.net/multi_search"
+    ],
+    "apiKey": "STHKtT6jrC5z1IozTJHIeSN4qN9oL1s3",
+    "collection": "public_characters_alias",
+    "queryBy": "name,title,tags,creator_username,character_id,type",
+    "baseFilter": "application_ids:=spicychat && type:!=META && visibility:=public"
+  },
+  "sorts": {
+    "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
+    "top-rated": "rating_score:desc,num_messages:desc",
+    "popular": "num_messages:desc"
+  }
+}

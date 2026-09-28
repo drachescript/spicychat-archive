@@ -1,23 +1,9 @@
-# SpicyChat Archive — discovery + website + stats update
+# v0.5 runtime / stats cleanup
 
-Replace/merge these files at the repository root.
+This patch fixes the two site issues exposed by the first adaptive scheduled run.
 
-Main changes:
-- Adaptive discovery: starts at 20 pages, +1 after each healthy successful run, max 50.
-- Discovery has a 60-minute wall-clock ceiling and resumes from its saved cursor.
-- Quota guard now supplies a ceiling rather than forcing discovery back to 20.
-- Fingerprint v4 ignores updatedAt, ranking counters and backend noise.
-- New bots are prioritized for rich character-API enrichment.
-- updatedAt no longer creates field-history noise during R2 runs.
-- Full scan/growth history stored at R2 `_meta/stats-history.json`.
-- Small public `data/stats.json` updated after successful runs.
-- New /stats page with growth, recent runs, discovery depth and R2 stats.
-- Browse + Deleted redesigned around a SpicyChat-like sidebar/filter/card layout.
-- All 90 current supported tags included from the supplied Create Bot HTML.
-- NTR + Cheating excluded by default, but visitors can remove either exclusion.
-- Latest sort removed from the site.
-- Bot profiles prefer the live SpicyChat CDN image for public bots and archived R2 copy for deleted bots.
-- Old migrated avatar paths are reconstructed against the R2 public domain instead of GitHub.
-- Bot profiles include an “Open in SpicyChat” link.
-
-The first run after installing this patch will rebuild fingerprint schema v4 once.
+- Fixes the archive workflow's masked `git add` failure. A missing optional `fallback` path caused the whole multi-path `git add` to fail, then `|| true` hid the failure. This is why generated `runtime.json`, `stats.json`, manifest updates and R2-mode cleanup were never committed.
+- Adds a real `data/runtime.json` immediately, plus a frontend R2 fallback so a transient missing runtime file cannot blank the whole site.
+- Adds the `stats/` directory to the GitHub Pages trigger and Pages artifact. The file existed in the repository, but the deploy workflow never copied it, which caused `/stats/` to 404.
+- Seeds `data/stats.json` with the completed scheduled-run numbers. The next successful archive run will extend it from the full R2 `_meta/stats-history.json`.
+- In R2 mode the Pages artifact now strips old `data/bots`, `data/catalog`, and root `media` copies. The next successful archive run will also commit their Git cleanup because the staging bug is fixed.

@@ -9,6 +9,7 @@ on:
       - "assets/**"
       - "bot/**"
       - "deleted/**"
+      - "stats/**"
       - "data/**"
       - "CNAME"
       - ".nojekyll"
@@ -42,18 +43,21 @@ jobs:
           OUT="$RUNNER_TEMP/pages-site"
           rm -rf "$OUT"
           mkdir -p "$OUT"
-          cp -a index.html favicon.svg assets bot deleted data CNAME .nojekyll "$OUT/"
+          cp -a index.html favicon.svg assets bot deleted stats data CNAME .nojekyll "$OUT/"
 
-          # Before the one-time R2 migration the site still uses the old local
-          # detail/media layout. Rebuild those generated copies only in the Pages
-          # artifact so they no longer need to be duplicated in Git afterward.
-          if ! python - <<'PY'
+          # In R2 mode, bot detail JSON and media live in R2. Old generated Git
+          # copies can still exist in checkout until the cleanup commit lands, so
+          # explicitly keep them out of the Pages artifact.
+          if python - <<'PY_CHECK'
           import json
           from pathlib import Path
           p=Path('data/runtime.json')
           raise SystemExit(0 if p.exists() and json.loads(p.read_text()).get('storageMode') == 'r2' else 1)
-          PY
+          PY_CHECK
           then
+            rm -rf "$OUT/data/bots" "$OUT/data/catalog" "$OUT/media"
+          else
+            # Pre-migration/local mode fallback.
             mkdir -p "$OUT/data/bots"
             if [ -d archive/bots ]; then
               find archive/bots -type f -name '*.json' -exec cp {} "$OUT/data/bots/" \;

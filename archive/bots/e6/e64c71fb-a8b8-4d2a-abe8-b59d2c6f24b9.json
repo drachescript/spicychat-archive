@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e64c71fb-a8b8-4d2a-abe8-b59d2c6f24b9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Mrs // entity // ???",
         "tr": "Mrs // entity // ???"
       },
-      "num_messages": 89644,
+      "num_messages": 90233,
       "num_messages_24h": 12184,
       "rating_score": 0,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587027705,
+      "updatedAt": 1790588454342,
       "visibility": "public"
     },
     "character-api": {
@@ -165,7 +165,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/d1ca5b5f-27e7-40eb-895b-8992cfc4ce74.png?class=avatar256x256",
     "character_id": "e64c71fb-a8b8-4d2a-abe8-b59d2c6f24b9",
-    "createdAt": "2026-09-07T06:33:23.934Z",
+    "createdAt": 1788762803934,
     "creator_user_id": "kp:facbfd397fd9425a9533c3593372032a",
     "creator_username": "acxtheofficial",
     "definition_size_category": "high",
@@ -192,12 +192,10 @@
       "ru": "Mrs // entity // ???",
       "tr": "Mrs // entity // ???"
     },
-    "num_messages": 89997,
+    "num_messages": 90233,
     "num_messages_24h": 12184,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Supernatural",
       "Horror",
@@ -232,7 +230,7 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:02.581Z",
+    "updatedAt": 1790588454342,
     "visibility": "public",
     "lorebooks": [
       {
@@ -292,6 +290,22 @@
           "entries": []
         }
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-07T06:33:23.934Z",
+      "to": 1788762803934
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:02.581Z",
+      "to": 1790588454342
     }
   ],
   "availabilityHistory": [
@@ -309,7 +323,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 89997,
+      "num_messages": 90233,
+      "num_messages_24h": 12184,
       "rating_score": 0,
       "token_count": 1433
     },
@@ -328,8 +343,23 @@
         "num_messages": 89997,
         "rating_score": 0,
         "token_count": 1433
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 90233,
+        "num_messages_24h": 12184,
+        "rating_score": 0,
+        "token_count": 1433
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/d1ca5b5f-27e7-40eb-895b-8992cfc4ce74.png?class=avatar256x256",
+    "sha256": "c7371c65f63c6416dadf5e6c05b6818fd11e7d540770f07007c54bca7d82897c",
+    "contentType": "image/png",
+    "bytes": 96173,
+    "path": "archive/media/c7/c7371c65f63c6416dadf5e6c05b6818fd11e7d540770f07007c54bca7d82897c.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

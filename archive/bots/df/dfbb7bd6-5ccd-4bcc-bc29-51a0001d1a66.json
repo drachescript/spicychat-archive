@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dfbb7bd6-5ccd-4bcc-bc29-51a0001d1a66",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "Claire & Guys",
         "zh": "Claire & Guys"
       },
-      "num_messages": 69317,
+      "num_messages": 69320,
       "num_messages_24h": 2338,
       "rating_score": 0.01,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586915467,
+      "updatedAt": 1790587766190,
       "visibility": "public"
     }
   },
@@ -156,7 +156,7 @@
       "tr": "Claire & Guys",
       "zh": "Claire & Guys"
     },
-    "num_messages": 69317,
+    "num_messages": 69320,
     "num_messages_24h": 2338,
     "rating_score": 0.01,
     "reportsType": {},
@@ -204,10 +204,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586915467,
+    "updatedAt": 1790587766190,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586915467,
+      "to": 1790587766190
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,13 +226,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2419,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2420,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 69317,
+      "num_messages": 69320,
       "num_messages_24h": 2338,
       "rating_score": 0.01,
       "token_count": 1357
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 69317,
+        "num_messages_24h": 2338,
+        "rating_score": 0.01,
+        "token_count": 1357
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 69320,
         "num_messages_24h": 2338,
         "rating_score": 0.01,
         "token_count": 1357

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dcb13d78-b5ab-4285-98d3-e3d31f1cb0cc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Diego",
         "zh": "Diego"
       },
-      "num_messages": 372680,
+      "num_messages": 373583,
       "num_messages_24h": 36060,
       "rating_score": 0.863636,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587199830,
+      "updatedAt": 1790588366386,
       "visibility": "public"
     },
     "character-api": {
@@ -198,13 +198,10 @@
       "tr": "Diego",
       "zh": "Diego"
     },
-    "num_messages": 372751,
+    "num_messages": 373583,
     "num_messages_24h": 36060,
     "rating_score": 0.863636,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Male",
@@ -248,7 +245,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587199830,
+    "updatedAt": 1790588366386,
     "visibility": "public",
     "persona": "He’s 6,5 ,muscular, big hands, huge cock, black messy lose curly hair, facial hair and he has his ears pierced.\nName(Caleb) Gender(Male) Age(21) species(human) body(dark gray t shirt +sweatpants + white socks)\nHe smokes weed all the time, either he rolls a blunt or he smokes from his huka.\npersonality(horny + annoying + seductive+ clingy + aggressive + flirtatious + obsessive+mean) Likes({{user}} + touching {{user}} + making fun of {{user}}'s height and figure but loves her feet boobs and ass) dislikes({{user}} ignoring him + {{user}} rejecting his advances + being alone without {{user}}) Note({{char}} has a strong desire for {{user}} and often makes his intentions clear, but his approach is often aggressive and unwelcome). {{char}} is {{user}}’s caring boyfriend who loves to tease and flirt with {{user}}, often crossing boundaries and making {{user}} feel uncomfortable. {{char}} has a hard time controlling his desires and often acts on impulse, leading to blue balls and tense situations with {{user}}. {{char}} is also very possessive and clingy, always trying to find ways to be close to {{user}} and touch {{user}} in any way possible. {{char}} has a strong dislike for being rejected or ignored by {{user}}, and will often lash out or become aggressive when his advances are denied.  He also loves to smell her pussy. When he’s not fucking hee he’s hot boxing in the living room while listening to rap while shirtless. He also likes to play call of duty black ops 4 zombies."
   },
@@ -269,6 +266,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587199830,
+      "to": 1790588366386
     }
   ],
   "availabilityHistory": [
@@ -286,7 +291,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 372751,
+      "num_messages": 373583,
+      "num_messages_24h": 36060,
       "rating_score": 0.863636,
       "token_count": 652
     },
@@ -303,6 +309,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 372751,
+        "rating_score": 0.863636,
+        "token_count": 652
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 373583,
+        "num_messages_24h": 36060,
         "rating_score": 0.863636,
         "token_count": 652
       }

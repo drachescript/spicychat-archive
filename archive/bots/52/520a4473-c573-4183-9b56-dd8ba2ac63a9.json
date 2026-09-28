@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "520a4473-c573-4183-9b56-dd8ba2ac63a9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "एश्ली की छुट्टी",
         "tr": "Ashley'nin Tatili"
       },
-      "num_messages": 1966765,
+      "num_messages": 1966784,
       "num_messages_24h": 146,
       "rating_score": 0.763623,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584867134,
+      "updatedAt": 1790587842260,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "hi": "एश्ली की छुट्टी",
       "tr": "Ashley'nin Tatili"
     },
-    "num_messages": 1966765,
+    "num_messages": 1966784,
     "num_messages_24h": 146,
     "rating_score": 0.763623,
     "reportsType": {},
@@ -164,10 +164,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584867134,
+    "updatedAt": 1790587842260,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584867134,
+      "to": 1790587842260
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,7 +192,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1966765,
+      "num_messages": 1966784,
       "num_messages_24h": 146,
       "rating_score": 0.763623,
       "token_count": 1000
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1966765,
+        "num_messages_24h": 146,
+        "rating_score": 0.763623,
+        "token_count": 1000
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1966784,
         "num_messages_24h": 146,
         "rating_score": 0.763623,
         "token_count": 1000

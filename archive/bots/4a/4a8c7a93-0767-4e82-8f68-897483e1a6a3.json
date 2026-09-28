@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4a8c7a93-0767-4e82-8f68-897483e1a6a3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Theron Zhou",
         "tr": "Theron Zhou"
       },
-      "num_messages": 14790,
+      "num_messages": 14857,
       "num_messages_24h": 5664,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587396883,
+      "updatedAt": 1790588384493,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "ru": "Theron Zhou",
       "tr": "Theron Zhou"
     },
-    "num_messages": 14790,
+    "num_messages": 14857,
     "num_messages_24h": 5664,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587396883,
+    "updatedAt": 1790588384493,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587396883,
+      "to": 1790588384493
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 14790,
+      "num_messages": 14857,
       "num_messages_24h": 5664,
       "rating_score": 0,
       "token_count": 693
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 14790,
+        "num_messages_24h": 5664,
+        "rating_score": 0,
+        "token_count": 693
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 14857,
         "num_messages_24h": 5664,
         "rating_score": 0,
         "token_count": 693

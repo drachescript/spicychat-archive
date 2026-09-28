@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a6d149e0-d21e-4f46-a377-2a7b66407037",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Yuji Itadori",
         "zh": "Yuji Itadori"
       },
-      "num_messages": 181018,
+      "num_messages": 181024,
       "num_messages_24h": 2285,
       "rating_score": 0.876984,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586628865,
+      "updatedAt": 1790587815118,
       "visibility": "public"
     }
   },
@@ -126,7 +126,7 @@
       "ru": "Yuji Itadori",
       "zh": "Yuji Itadori"
     },
-    "num_messages": 181018,
+    "num_messages": 181024,
     "num_messages_24h": 2285,
     "rating_score": 0.876984,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586628865,
+    "updatedAt": 1790587815118,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586628865,
+      "to": 1790587815118
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,13 +188,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2488,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2489,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 181018,
+      "num_messages": 181024,
       "num_messages_24h": 2285,
       "rating_score": 0.876984,
       "token_count": 810
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 181018,
+        "num_messages_24h": 2285,
+        "rating_score": 0.876984,
+        "token_count": 810
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 181024,
         "num_messages_24h": 2285,
         "rating_score": 0.876984,
         "token_count": 810

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "03b175dd-99cf-4ef1-98c5-a0f188882a0c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "de": "Ashley Anderson"
       },
-      "num_messages": 2298,
+      "num_messages": 2302,
       "num_messages_24h": 1238,
       "rating_score": 0,
       "reportsType": {},
@@ -65,7 +65,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586324424,
+      "updatedAt": 1790588382593,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
     "name_i18n": {
       "de": "Ashley Anderson"
     },
-    "num_messages": 2298,
+    "num_messages": 2302,
     "num_messages_24h": 1238,
     "rating_score": 0,
     "reportsType": {},
@@ -118,10 +118,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586324424,
+    "updatedAt": 1790588382593,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586324424,
+      "to": 1790588382593
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +140,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1930,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1931,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2298,
+      "num_messages": 2302,
       "num_messages_24h": 1238,
       "rating_score": 0,
       "token_count": 555
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2298,
+        "num_messages_24h": 1238,
+        "rating_score": 0,
+        "token_count": 555
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2302,
         "num_messages_24h": 1238,
         "rating_score": 0,
         "token_count": 555

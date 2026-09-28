@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0c5d78fa-c8e1-4d09-8cbf-d7b0d5b0f0df",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "ru": "TF141-R&R Polycule",
         "zh": "TF141-R&R Polycule"
       },
-      "num_messages": 545342,
+      "num_messages": 545378,
       "num_messages_24h": 2644,
       "rating_score": 0.900901,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587523628,
+      "updatedAt": 1790588294308,
       "visibility": "public"
     }
   },
@@ -146,7 +146,7 @@
       "ru": "TF141-R&R Polycule",
       "zh": "TF141-R&R Polycule"
     },
-    "num_messages": 545342,
+    "num_messages": 545378,
     "num_messages_24h": 2644,
     "rating_score": 0.900901,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587523628,
+    "updatedAt": 1790588294308,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587523628,
+      "to": 1790588294308
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 545342,
+      "num_messages": 545378,
       "num_messages_24h": 2644,
       "rating_score": 0.900901,
       "token_count": 2267
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 545342,
+        "num_messages_24h": 2644,
+        "rating_score": 0.900901,
+        "token_count": 2267
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 545378,
         "num_messages_24h": 2644,
         "rating_score": 0.900901,
         "token_count": 2267

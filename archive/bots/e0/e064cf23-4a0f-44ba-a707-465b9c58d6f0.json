@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e064cf23-4a0f-44ba-a707-465b9c58d6f0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Luciana",
         "zh": "Luciana"
       },
-      "num_messages": 18873,
+      "num_messages": 18900,
       "num_messages_24h": 541,
       "rating_score": 1,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586710017,
+      "updatedAt": 1790587924657,
       "visibility": "public"
     }
   },
@@ -105,7 +105,7 @@
       "pl": "Luciana",
       "zh": "Luciana"
     },
-    "num_messages": 18873,
+    "num_messages": 18900,
     "num_messages_24h": 541,
     "rating_score": 1,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586710017,
+    "updatedAt": 1790587924657,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586710017,
+      "to": 1790587924657
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 1059,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1058,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 18873,
+      "num_messages": 18900,
       "num_messages_24h": 541,
       "rating_score": 1,
       "token_count": 590
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 18873,
+        "num_messages_24h": 541,
+        "rating_score": 1,
+        "token_count": 590
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 18900,
         "num_messages_24h": 541,
         "rating_score": 1,
         "token_count": 590

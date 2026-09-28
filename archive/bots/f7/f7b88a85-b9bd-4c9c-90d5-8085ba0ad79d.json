@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f7b88a85-b9bd-4c9c-90d5-8085ba0ad79d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Dante Moreau",
         "zh": "Dante Moreau"
       },
-      "num_messages": 162714,
+      "num_messages": 162719,
       "num_messages_24h": 2607,
       "rating_score": 0.657407,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585340309,
+      "updatedAt": 1790587826760,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "tr": "Dante Moreau",
       "zh": "Dante Moreau"
     },
-    "num_messages": 162714,
+    "num_messages": 162719,
     "num_messages_24h": 2607,
     "rating_score": 0.657407,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585340309,
+    "updatedAt": 1790587826760,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585340309,
+      "to": 1790587826760
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,13 +192,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2122,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2123,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 162714,
+      "num_messages": 162719,
       "num_messages_24h": 2607,
       "rating_score": 0.657407,
       "token_count": 489
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 162714,
+        "num_messages_24h": 2607,
+        "rating_score": 0.657407,
+        "token_count": 489
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 162719,
         "num_messages_24h": 2607,
         "rating_score": 0.657407,
         "token_count": 489

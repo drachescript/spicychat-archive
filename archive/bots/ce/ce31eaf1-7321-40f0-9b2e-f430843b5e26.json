@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ce31eaf1-7321-40f0-9b2e-f430843b5e26",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "hi": "एटिकस क्विन",
         "tr": "Atticus Quinn"
       },
-      "num_messages": 2153417,
+      "num_messages": 2153428,
       "num_messages_24h": 99,
       "rating_score": 0.796623,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790583368355,
+      "updatedAt": 1790588359662,
       "visibility": "public"
     }
   },
@@ -114,7 +114,7 @@
       "hi": "एटिकस क्विन",
       "tr": "Atticus Quinn"
     },
-    "num_messages": 2153417,
+    "num_messages": 2153428,
     "num_messages_24h": 99,
     "rating_score": 0.796623,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790583368355,
+    "updatedAt": 1790588359662,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583368355,
+      "to": 1790588359662
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,7 +188,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2153417,
+      "num_messages": 2153428,
       "num_messages_24h": 99,
       "rating_score": 0.796623,
       "token_count": 1109
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2153417,
+        "num_messages_24h": 99,
+        "rating_score": 0.796623,
+        "token_count": 1109
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2153428,
         "num_messages_24h": 99,
         "rating_score": 0.796623,
         "token_count": 1109

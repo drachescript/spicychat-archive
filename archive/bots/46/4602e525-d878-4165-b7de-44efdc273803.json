@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4602e525-d878-4165-b7de-44efdc273803",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "typesense:latest": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -52,7 +52,7 @@
         "ru": "Santiago",
         "tr": "Santiago"
       },
-      "num_messages": 33842,
+      "num_messages": 34296,
       "num_messages_24h": 5704,
       "rating_score": 0,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587382599,
+      "updatedAt": 1790588360605,
       "visibility": "public"
     },
     "typesense:latest": {
@@ -213,7 +213,7 @@
       "ru": "Santiago",
       "tr": "Santiago"
     },
-    "num_messages": 33944,
+    "num_messages": 34296,
     "num_messages_24h": 5704,
     "rating_score": 0,
     "reportsType": {},
@@ -256,7 +256,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587523553,
+    "updatedAt": 1790588360605,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -267,6 +267,14 @@
       "kind": "value",
       "from": 1790587382599,
       "to": 1790587523553
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587523553,
+      "to": 1790588360605
     }
   ],
   "availabilityHistory": [
@@ -282,13 +290,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 2237,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2239,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 33944,
+      "num_messages": 34296,
       "num_messages_24h": 5704,
       "rating_score": 0,
       "token_count": 2138
@@ -306,6 +314,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 33944,
+        "num_messages_24h": 5704,
+        "rating_score": 0,
+        "token_count": 2138
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 34296,
         "num_messages_24h": 5704,
         "rating_score": 0,
         "token_count": 2138

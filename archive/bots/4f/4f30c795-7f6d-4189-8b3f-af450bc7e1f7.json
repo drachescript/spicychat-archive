@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4f30c795-7f6d-4189-8b3f-af450bc7e1f7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Shizuku & Amane",
         "zh": "Shizuku & Amane"
       },
-      "num_messages": 239382,
+      "num_messages": 239457,
       "num_messages_24h": 2361,
       "rating_score": 0.810345,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587406719,
+      "updatedAt": 1790588451260,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Shizuku & Amane",
       "zh": "Shizuku & Amane"
     },
-    "num_messages": 239382,
+    "num_messages": 239457,
     "num_messages_24h": 2361,
     "rating_score": 0.810345,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587406719,
+    "updatedAt": 1790588451260,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587406719,
+      "to": 1790588451260
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,13 +212,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2388,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2389,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 239382,
+      "num_messages": 239457,
       "num_messages_24h": 2361,
       "rating_score": 0.810345,
       "token_count": 1748
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 239382,
+        "num_messages_24h": 2361,
+        "rating_score": 0.810345,
+        "token_count": 1748
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 239457,
         "num_messages_24h": 2361,
         "rating_score": 0.810345,
         "token_count": 1748

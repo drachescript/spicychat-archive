@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "724ba5b3-0320-4959-bb4b-87bb5c294ef5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -35,7 +35,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Nashatra",
-      "num_messages": 134859,
+      "num_messages": 134875,
       "num_messages_24h": 33,
       "rating_score": 0.991071,
       "reportsType": {},
@@ -46,7 +46,7 @@
       "title": "Nash from dream game (sorry if there are inaccuracies.)",
       "token_count": 273,
       "type": "STANDARD",
-      "updatedAt": 1790587132172,
+      "updatedAt": 1790588233694,
       "visibility": "public"
     }
   },
@@ -69,7 +69,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Nashatra",
-    "num_messages": 134859,
+    "num_messages": 134875,
     "num_messages_24h": 33,
     "rating_score": 0.991071,
     "reportsType": {},
@@ -80,10 +80,19 @@
     "title": "Nash from dream game (sorry if there are inaccuracies.)",
     "token_count": 273,
     "type": "STANDARD",
-    "updatedAt": 1790587132172,
+    "updatedAt": 1790588233694,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587132172,
+      "to": 1790588233694
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -99,7 +108,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 134859,
+      "num_messages": 134875,
       "num_messages_24h": 33,
       "rating_score": 0.991071,
       "token_count": 273
@@ -109,6 +118,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 134859,
+        "num_messages_24h": 33,
+        "rating_score": 0.991071,
+        "token_count": 273
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 134875,
         "num_messages_24h": 33,
         "rating_score": 0.991071,
         "token_count": 273

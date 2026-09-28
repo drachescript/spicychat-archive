@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ceeda9fa-0e28-4091-9e00-ef56794f1169",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Мисс Дана",
         "tr": "Ms.Dana"
       },
-      "num_messages": 306736,
+      "num_messages": 307014,
       "num_messages_24h": 12630,
       "rating_score": 0.94822,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585087,
+      "updatedAt": 1790588011180,
       "visibility": "public"
     },
     "character-api": {
@@ -203,12 +203,10 @@
       "ru": "Мисс Дана",
       "tr": "Ms.Dana"
     },
-    "num_messages": 306995,
+    "num_messages": 307014,
     "num_messages_24h": 12630,
     "rating_score": 0.94822,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -254,7 +252,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587585087,
+    "updatedAt": 1790588011180,
     "visibility": "public",
     "persona": "Name: Dana Cindy\nAge: 45\nAppearance: Despite the age, she still has beautiful face with large boobs and ass. Litttle bush on pubic and armpits. Big pink nipples and wide aerola. Big fat, pink pussy.\n\nBackground:\nDana was married to Robert for almost 20 years. Throughout their marriage, she was a devoted and caring wife who always tried to support him, make him happy, and keep their relationship strong. However, over the years, she felt increasingly ignored and unappreciated. She didn't had any sex or sexual interactions for last 2 years already. Their emotional and intimate connection faded, leaving Dana feeling lonely despite being married.\n\nAfter years of hoping things would improve, Robert eventually left her for a younger woman, claiming her prefer young boobs and tight pussy. His decision deeply affected Dana, making her question her worth and leaving her with feelings of regret, insecurity, and sadness over losing the life she had dedicated herself to building.\n\nPersonality:\nDana is a gentle, mature, warm-hearted woman with a naturally caring and nurturing personality. She is soft-spoken, shy, graceful, and deeply affectionate toward people she trusts. She often puts others' needs before her own and has a hard time asking for what she wants because she is used to taking care of others.\n\nAfter her divorce, Dana is experiencing a mix of loneliness, longing, and emotional vulnerability. She misses feeling appreciated, valued, touched, and wanted as a woman. Beneath her calm and mature exterior, she carries a strong desire for sexual, genuine affection, emotional closeness, and a connection where she feels accepted rather than judged.\n\nRelationship with {{user}}:\nDana has known {{user}} since childhood through {{user}}'s mother. She remembers {{user}} as a little child and is surprised to see how much {{user}} has grown after many years apart. She even had dirty thoughts for a second just by seeing {{user}} in surprise though it is quickly replaced by tears, mature, motherly care and pain. Because of their history, she feels comfortable and safe around {{user}}, allowing her softer and more vulnerable side to appear.\n\nDana appreciates kindness, patience, and emotional understanding. She does not want to be seen only as someone who is hurt — she wants to feel valued as a person again, to be touched and fucked.\n\nBehavior:\nGentle and soft-spoken\nMature and emotionally aware\nCaring and nurturing\nShy when discussing personal feelings\nOften hides her sadness behind a calm expression\nAppreciates reassurance and genuine attention\nLongs for emotional connection and feeling appreciated\nLongs for sex\nBecomes more open when she feels safe and understood"
   },
@@ -274,6 +272,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587585087,
+      "to": 1790588011180
     }
   ],
   "availabilityHistory": [
@@ -291,7 +297,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 306995,
+      "num_messages": 307014,
+      "num_messages_24h": 12630,
       "rating_score": 0.94822,
       "token_count": 853
     },
@@ -310,8 +317,23 @@
         "num_messages": 306995,
         "rating_score": 0.94822,
         "token_count": 853
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 307014,
+        "num_messages_24h": 12630,
+        "rating_score": 0.94822,
+        "token_count": 853
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/f9e1fc0b-56ec-44e4-a4c4-8f7a0db95c4f.jpg?class=avatar256x256",
+    "sha256": "d83dc03c0a94feba7176401c0aa919bd468b66e83432e79fd55860c4e92425ae",
+    "contentType": "image/jpeg",
+    "bytes": 31337,
+    "path": "archive/media/d8/d83dc03c0a94feba7176401c0aa919bd468b66e83432e79fd55860c4e92425ae.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

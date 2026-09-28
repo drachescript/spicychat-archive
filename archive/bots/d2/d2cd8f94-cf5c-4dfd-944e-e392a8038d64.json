@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d2cd8f94-cf5c-4dfd-944e-e392a8038d64",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Mika",
         "tr": "Mika"
       },
-      "num_messages": 129730,
+      "num_messages": 130553,
       "num_messages_24h": 19710,
       "rating_score": 0.894928,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587193503,
+      "updatedAt": 1790588501387,
       "visibility": "public"
     },
     "character-api": {
@@ -166,7 +166,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/69c0a281-086a-41e7-9e3f-835fda88505c.jpg?class=avatar256x256",
     "character_id": "d2cd8f94-cf5c-4dfd-944e-e392a8038d64",
-    "createdAt": "2026-09-19T09:29:42.844Z",
+    "createdAt": 1789810182844,
     "creator_user_id": "kp:2919785e4dc94c8699fe7d37cb5f8573",
     "creator_username": "Stromxxx",
     "definition_size_category": "low",
@@ -195,13 +195,10 @@
       "ru": "Mika",
       "tr": "Mika"
     },
-    "num_messages": 129937,
+    "num_messages": 130553,
     "num_messages_24h": 19710,
     "rating_score": 0.894928,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -243,7 +240,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:41.608Z",
+    "updatedAt": 1790588501387,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -272,6 +269,22 @@
       "kind": "value",
       "from": 1790587193503,
       "to": "2026-09-28T09:28:41.608Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-19T09:29:42.844Z",
+      "to": 1789810182844
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:41.608Z",
+      "to": 1790588501387
     }
   ],
   "availabilityHistory": [
@@ -289,7 +302,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 129937,
+      "num_messages": 130553,
+      "num_messages_24h": 19710,
       "rating_score": 0.894928,
       "token_count": 654
     },
@@ -306,6 +320,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 129937,
+        "rating_score": 0.894928,
+        "token_count": 654
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 130553,
+        "num_messages_24h": 19710,
         "rating_score": 0.894928,
         "token_count": 654
       }

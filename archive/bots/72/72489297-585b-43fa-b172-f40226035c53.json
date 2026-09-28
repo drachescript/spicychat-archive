@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "72489297-585b-43fa-b172-f40226035c53",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       "name_i18n": {
         "de": "Skylar Thomas"
       },
-      "num_messages": 1730,
+      "num_messages": 1757,
       "num_messages_24h": 981,
       "rating_score": 0,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587408779,
+      "updatedAt": 1790588293739,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
     "name_i18n": {
       "de": "Skylar Thomas"
     },
-    "num_messages": 1730,
+    "num_messages": 1757,
     "num_messages_24h": 981,
     "rating_score": 0,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587408779,
+    "updatedAt": 1790588293739,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587408779,
+      "to": 1790588293739
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,13 +138,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1703,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1704,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1730,
+      "num_messages": 1757,
       "num_messages_24h": 981,
       "rating_score": 0,
       "token_count": 1230
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1730,
+        "num_messages_24h": 981,
+        "rating_score": 0,
+        "token_count": 1230
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1757,
         "num_messages_24h": 981,
         "rating_score": 0,
         "token_count": 1230

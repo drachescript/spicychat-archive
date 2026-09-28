@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "14a70cab-ced1-4866-94d1-bc4a4640e1da",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Cassia and Lysandra",
         "zh": "Cassia and Lysandra"
       },
-      "num_messages": 40614,
+      "num_messages": 40656,
       "num_messages_24h": 4570,
       "tags": [
         "Sci-Fi",
@@ -77,7 +77,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516224,
+      "updatedAt": 1790588452894,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "ru": "Cassia and Lysandra",
       "zh": "Cassia and Lysandra"
     },
-    "num_messages": 40614,
+    "num_messages": 40656,
     "num_messages_24h": 4570,
     "tags": [
       "Sci-Fi",
@@ -142,10 +142,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516224,
+    "updatedAt": 1790588452894,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516224,
+      "to": 1790588452894
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,7 +170,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 40614,
+      "num_messages": 40656,
       "num_messages_24h": 4570,
       "token_count": 1106
     },
@@ -170,6 +179,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 40614,
+        "num_messages_24h": 4570,
+        "token_count": 1106
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 40656,
         "num_messages_24h": 4570,
         "token_count": 1106
       }

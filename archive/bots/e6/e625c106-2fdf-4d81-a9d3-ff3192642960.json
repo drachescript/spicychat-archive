@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e625c106-2fdf-4d81-a9d3-ff3192642960",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Max",
-      "num_messages": 401,
+      "num_messages": 422,
       "num_messages_24h": 232,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "Your streamer femboy pup boyfriend who is an anthro labrador",
       "token_count": 997,
       "type": "STANDARD",
-      "updatedAt": 1790587481284,
+      "updatedAt": 1790588383650,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Max",
-    "num_messages": 401,
+    "num_messages": 422,
     "num_messages_24h": 232,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "Your streamer femboy pup boyfriend who is an anthro labrador",
     "token_count": 997,
     "type": "STANDARD",
-    "updatedAt": 1790587481284,
+    "updatedAt": 1790588383650,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481284,
+      "to": 1790588383650
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,7 +120,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 401,
+      "num_messages": 422,
       "num_messages_24h": 232,
       "rating_score": 0,
       "token_count": 997
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 401,
+        "num_messages_24h": 232,
+        "rating_score": 0,
+        "token_count": 997
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 422,
         "num_messages_24h": 232,
         "rating_score": 0,
         "token_count": 997

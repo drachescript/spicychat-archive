@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4b620bd2-dc4d-4eda-ae5c-1c31512b08db",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,9 +48,10 @@
       "name": "Jade",
       "name_i18n": {
         "de": "Jade",
-        "es": "Jade"
+        "es": "Jade",
+        "fr": "Jade"
       },
-      "num_messages": 6370,
+      "num_messages": 6517,
       "num_messages_24h": 3050,
       "rating_score": 0,
       "reportsType": {},
@@ -71,15 +72,17 @@
       "title": "Roommate childhood bully transitioned and thinks you're hot (trans, femboy, romantic, roommate)",
       "title_i18n": {
         "de": "Zimmergenossin, Kindheits-Bully, die transitioniert ist und dich heiß findet (trans, Femboy, romantisch, Zimmergenossin)",
-        "es": "Compañera de cuarto bully de la infancia que se ha transicionado y te encuentra atractivo (trans, femboy, romántico, roommate)"
+        "es": "Compañera de cuarto bully de la infancia que se ha transicionado y te encuentra atractivo (trans, femboy, romántico, roommate)",
+        "fr": "Colocataire harceleur d'enfance qui a transitionné et te trouve sexy (trans, femboy, romantique, colocataire)"
       },
       "token_count": 1202,
       "translated_languages": [
         "es",
-        "de"
+        "de",
+        "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587197428,
+      "updatedAt": 1790588104736,
       "visibility": "public"
     }
   },
@@ -117,9 +120,10 @@
     "name": "Jade",
     "name_i18n": {
       "de": "Jade",
-      "es": "Jade"
+      "es": "Jade",
+      "fr": "Jade"
     },
-    "num_messages": 6370,
+    "num_messages": 6517,
     "num_messages_24h": 3050,
     "rating_score": 0,
     "reportsType": {},
@@ -140,18 +144,58 @@
     "title": "Roommate childhood bully transitioned and thinks you're hot (trans, femboy, romantic, roommate)",
     "title_i18n": {
       "de": "Zimmergenossin, Kindheits-Bully, die transitioniert ist und dich heiß findet (trans, Femboy, romantisch, Zimmergenossin)",
-      "es": "Compañera de cuarto bully de la infancia que se ha transicionado y te encuentra atractivo (trans, femboy, romántico, roommate)"
+      "es": "Compañera de cuarto bully de la infancia que se ha transicionado y te encuentra atractivo (trans, femboy, romántico, roommate)",
+      "fr": "Colocataire harceleur d'enfance qui a transitionné et te trouve sexy (trans, femboy, romantique, colocataire)"
     },
     "token_count": 1202,
     "translated_languages": [
       "es",
-      "de"
+      "de",
+      "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587197428,
+    "updatedAt": 1790588104736,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "name_i18n.fr",
+      "kind": "value",
+      "to": "Jade"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "title_i18n.fr",
+      "kind": "value",
+      "to": "Colocataire harceleur d'enfance qui a transitionné et te trouve sexy (trans, femboy, romantique, colocataire)"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "translated_languages",
+      "kind": "value",
+      "from": [
+        "es",
+        "de"
+      ],
+      "to": [
+        "es",
+        "de",
+        "fr"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587197428,
+      "to": 1790588104736
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,13 +209,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1555,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1556,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 6370,
+      "num_messages": 6517,
       "num_messages_24h": 3050,
       "rating_score": 0,
       "token_count": 1202
@@ -181,6 +225,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 6370,
+        "num_messages_24h": 3050,
+        "rating_score": 0,
+        "token_count": 1202
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 6517,
         "num_messages_24h": 3050,
         "rating_score": 0,
         "token_count": 1202

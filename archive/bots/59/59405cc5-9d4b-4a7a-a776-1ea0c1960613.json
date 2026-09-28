@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "59405cc5-9d4b-4a7a-a776-1ea0c1960613",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +50,7 @@
         "pl": "Phoebe Simmons",
         "zh": "Phoebe Simmons"
       },
-      "num_messages": 37276,
+      "num_messages": 37399,
       "num_messages_24h": 8281,
       "rating_score": 0,
       "reportsType": {},
@@ -78,8 +81,54 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587409844,
+      "updatedAt": 1790588233662,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "59405cc5-9d4b-4a7a-a776-1ea0c1960613",
+      "type": "STANDARD",
+      "name": "Phoebe Simmons",
+      "title": "She’s a candidate running for office and knocks on your door",
+      "visibility": "public",
+      "creator_username": "whiskeybravo1000",
+      "creator_user_id": "kp:e82dfe7bb25c409cb12d621458d5422c",
+      "greeting": "*Late afternoon sunlight cuts across the neighborhood as Phoebe Simmons works her way down the street with a tote bag, campaign flyers, an iced coffee, and a clipboard she nearly drops on the way up your steps.*\n\n*She is polling at 22%, badly outfunded, and still knocking doors herself.*\n\n*Phoebe smooths her blazer, pushes her sunglasses higher on her head, and knocks.*\n\n*When you answer, she gives you a warm smile.*\n\nHi, I’m Phoebe Simmons. I’m running for State Congress.\n\n*She holds up a flyer.*\n\nUnaffiliated. Very underfunded.\n\n*A small grin.*\n\nAnd I promise not to talk politics forever.\n\n*She pauses.*\n\nUnless you ask about UFO disclosure. Then we could be here awhile.",
+      "avatar_url": "https://cdn.nd-api.com/avatars/d6ff4950-c052-4a28-88a5-b3a366e7c1ef.jpg?class=avatar256x256",
+      "num_messages": 37608,
+      "rating_score": 0,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Female",
+        "Real",
+        "Scenario",
+        "MalePOV",
+        "FemalePOV",
+        "Original Character"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 1170,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-23T13:42:35.741Z",
+      "updatedAt": "2026-09-28T09:42:37.847Z",
+      "translated_languages": [
+        "de",
+        "fr",
+        "hi",
+        "zh",
+        "es",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "59405cc5-9d4b-4a7a-a776-1ea0c1960613"
     }
   },
   "lastKnown": {
@@ -90,7 +139,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/d6ff4950-c052-4a28-88a5-b3a366e7c1ef.jpg?class=avatar256x256",
     "character_id": "59405cc5-9d4b-4a7a-a776-1ea0c1960613",
-    "createdAt": 1790170955741,
+    "createdAt": "2026-09-23T13:42:35.741Z",
     "creator_user_id": "kp:e82dfe7bb25c409cb12d621458d5422c",
     "creator_username": "whiskeybravo1000",
     "definition_size_category": "mid",
@@ -113,10 +162,12 @@
       "pl": "Phoebe Simmons",
       "zh": "Phoebe Simmons"
     },
-    "num_messages": 37276,
+    "num_messages": 37608,
     "num_messages_24h": 8281,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Real",
@@ -144,10 +195,44 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587409844,
+    "updatedAt": "2026-09-28T09:42:37.847Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587409844,
+      "to": 1790588233662
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790170955741,
+      "to": "2026-09-23T13:42:35.741Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588233662,
+      "to": "2026-09-28T09:42:37.847Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,8 +248,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 37276,
-      "num_messages_24h": 8281,
+      "num_messages": 37608,
       "rating_score": 0,
       "token_count": 1170
     },
@@ -174,6 +258,21 @@
         "source": "typesense:trending",
         "num_messages": 37276,
         "num_messages_24h": 8281,
+        "rating_score": 0,
+        "token_count": 1170
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 37399,
+        "num_messages_24h": 8281,
+        "rating_score": 0,
+        "token_count": 1170
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 37608,
         "rating_score": 0,
         "token_count": 1170
       }

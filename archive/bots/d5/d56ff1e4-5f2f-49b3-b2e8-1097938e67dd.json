@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d56ff1e4-5f2f-49b3-b2e8-1097938e67dd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Dylan Smirnov",
-      "num_messages": 852,
+      "num_messages": 863,
       "num_messages_24h": 310,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "Big booty Femboy Roommate 👀",
       "token_count": 398,
       "type": "STANDARD",
-      "updatedAt": 1790587486618,
+      "updatedAt": 1790588382143,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Dylan Smirnov",
-    "num_messages": 852,
+    "num_messages": 863,
     "num_messages_24h": 310,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "Big booty Femboy Roommate 👀",
     "token_count": 398,
     "type": "STANDARD",
-    "updatedAt": 1790587486618,
+    "updatedAt": 1790588382143,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587486618,
+      "to": 1790588382143
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 852,
+      "num_messages": 863,
       "num_messages_24h": 310,
       "rating_score": 0,
       "token_count": 398
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 852,
+        "num_messages_24h": 310,
+        "rating_score": 0,
+        "token_count": 398
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 863,
         "num_messages_24h": 310,
         "rating_score": 0,
         "token_count": 398

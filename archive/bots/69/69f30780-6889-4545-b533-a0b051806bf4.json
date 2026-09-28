@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "69f30780-6889-4545-b533-a0b051806bf4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -39,7 +39,7 @@
       "name_i18n": {
         "ru": "Sebastian - Stardew"
       },
-      "num_messages": 54012,
+      "num_messages": 54023,
       "num_messages_24h": 33,
       "rating_score": 1,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790452674764,
+      "updatedAt": 1790588247542,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
     "name_i18n": {
       "ru": "Sebastian - Stardew"
     },
-    "num_messages": 54012,
+    "num_messages": 54023,
     "num_messages_24h": 33,
     "rating_score": 1,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790452674764,
+    "updatedAt": 1790588247542,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790452674764,
+      "to": 1790588247542
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -143,7 +152,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 54012,
+      "num_messages": 54023,
       "num_messages_24h": 33,
       "rating_score": 1,
       "token_count": 1188
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 54012,
+        "num_messages_24h": 33,
+        "rating_score": 1,
+        "token_count": 1188
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 54023,
         "num_messages_24h": 33,
         "rating_score": 1,
         "token_count": 1188

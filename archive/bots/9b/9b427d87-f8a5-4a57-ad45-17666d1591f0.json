@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9b427d87-f8a5-4a57-ad45-17666d1591f0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "tr": "Letherbelk Academy",
         "zh": "Letherbelk Academy"
       },
-      "num_messages": 3708162,
+      "num_messages": 3708175,
       "num_messages_24h": 258,
       "rating_score": 0.703307,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586943267,
+      "updatedAt": 1790587763758,
       "visibility": "public"
     }
   },
@@ -149,7 +149,7 @@
       "tr": "Letherbelk Academy",
       "zh": "Letherbelk Academy"
     },
-    "num_messages": 3708162,
+    "num_messages": 3708175,
     "num_messages_24h": 258,
     "rating_score": 0.703307,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586943267,
+    "updatedAt": 1790587763758,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586943267,
+      "to": 1790587763758
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3708162,
+      "num_messages": 3708175,
       "num_messages_24h": 258,
       "rating_score": 0.703307,
       "token_count": 739
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3708162,
+        "num_messages_24h": 258,
+        "rating_score": 0.703307,
+        "token_count": 739
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3708175,
         "num_messages_24h": 258,
         "rating_score": 0.703307,
         "token_count": 739

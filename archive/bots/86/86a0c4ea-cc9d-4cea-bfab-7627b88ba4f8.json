@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "86a0c4ea-cc9d-4cea-bfab-7627b88ba4f8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Noble Transmigration",
         "zh": "Noble Transmigration"
       },
-      "num_messages": 882712,
+      "num_messages": 882884,
       "num_messages_24h": 4597,
       "rating_score": 0.688424,
       "reportsType": {},
@@ -109,7 +109,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587477249,
+      "updatedAt": 1790588133871,
       "visibility": "public"
     }
   },
@@ -157,7 +157,7 @@
       "tr": "Noble Transmigration",
       "zh": "Noble Transmigration"
     },
-    "num_messages": 882712,
+    "num_messages": 882884,
     "num_messages_24h": 4597,
     "rating_score": 0.688424,
     "reportsType": {},
@@ -208,10 +208,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587477249,
+    "updatedAt": 1790588133871,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587477249,
+      "to": 1790588133871
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -227,7 +236,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 882712,
+      "num_messages": 882884,
       "num_messages_24h": 4597,
       "rating_score": 0.688424,
       "token_count": 2347
@@ -237,6 +246,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 882712,
+        "num_messages_24h": 4597,
+        "rating_score": 0.688424,
+        "token_count": 2347
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 882884,
         "num_messages_24h": 4597,
         "rating_score": 0.688424,
         "token_count": 2347

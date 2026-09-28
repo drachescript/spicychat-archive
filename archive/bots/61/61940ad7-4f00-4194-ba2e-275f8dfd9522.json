@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "61940ad7-4f00-4194-ba2e-275f8dfd9522",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Ashlan Varrick",
         "zh": "阿什兰·瓦里克"
       },
-      "num_messages": 2084360,
+      "num_messages": 2084364,
       "num_messages_24h": 553,
       "rating_score": 0.898275,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586708002,
+      "updatedAt": 1790587816802,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Ashlan Varrick",
       "zh": "阿什兰·瓦里克"
     },
-    "num_messages": 2084360,
+    "num_messages": 2084364,
     "num_messages_24h": 553,
     "rating_score": 0.898275,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586708002,
+    "updatedAt": 1790587816802,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586708002,
+      "to": 1790587816802
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2084360,
+      "num_messages": 2084364,
       "num_messages_24h": 553,
       "rating_score": 0.898275,
       "token_count": 1173
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2084360,
+        "num_messages_24h": 553,
+        "rating_score": 0.898275,
+        "token_count": 1173
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2084364,
         "num_messages_24h": 553,
         "rating_score": 0.898275,
         "token_count": 1173

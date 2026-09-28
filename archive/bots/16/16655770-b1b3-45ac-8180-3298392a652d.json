@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "16655770-b1b3-45ac-8180-3298392a652d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "de": "MHA in Australien",
         "ru": "MHA в Австралии"
       },
-      "num_messages": 169351,
+      "num_messages": 169370,
       "num_messages_24h": 2544,
       "reportsType": {},
       "tags": [
@@ -65,7 +65,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587408523,
+      "updatedAt": 1790588129479,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
       "de": "MHA in Australien",
       "ru": "MHA в Австралии"
     },
-    "num_messages": 169351,
+    "num_messages": 169370,
     "num_messages_24h": 2544,
     "reportsType": {},
     "tags": [
@@ -118,10 +118,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587408523,
+    "updatedAt": 1790588129479,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587408523,
+      "to": 1790588129479
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +140,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2182,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2183,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 169351,
+      "num_messages": 169370,
       "num_messages_24h": 2544,
       "token_count": 1562
     },
@@ -146,6 +155,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 169351,
+        "num_messages_24h": 2544,
+        "token_count": 1562
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 169370,
         "num_messages_24h": 2544,
         "token_count": 1562
       }

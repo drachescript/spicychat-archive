@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d9822856-5867-496e-91ef-97635afcbac3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Твои три соседа по комнате",
         "zh": "你的三个室友"
       },
-      "num_messages": 139380,
+      "num_messages": 139390,
       "num_messages_24h": 149,
       "rating_score": 0.993789,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587479233,
+      "updatedAt": 1790588499272,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "ru": "Твои три соседа по комнате",
       "zh": "你的三个室友"
     },
-    "num_messages": 139380,
+    "num_messages": 139390,
     "num_messages_24h": 149,
     "rating_score": 0.993789,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587479233,
+    "updatedAt": 1790588499272,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587479233,
+      "to": 1790588499272
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 139380,
+      "num_messages": 139390,
       "num_messages_24h": 149,
       "rating_score": 0.993789,
       "token_count": 774
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 139380,
+        "num_messages_24h": 149,
+        "rating_score": 0.993789,
+        "token_count": 774
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 139390,
         "num_messages_24h": 149,
         "rating_score": 0.993789,
         "token_count": 774

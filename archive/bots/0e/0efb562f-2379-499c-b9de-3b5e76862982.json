@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0efb562f-2379-499c-b9de-3b5e76862982",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Фэнтезийная RPG",
         "zh": "Fantasy RPG"
       },
-      "num_messages": 52617,
+      "num_messages": 52667,
       "num_messages_24h": 2537,
       "rating_score": 0,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587198716,
+      "updatedAt": 1790588010998,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "ru": "Фэнтезийная RPG",
       "zh": "Fantasy RPG"
     },
-    "num_messages": 52617,
+    "num_messages": 52667,
     "num_messages_24h": 2537,
     "rating_score": 0,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587198716,
+    "updatedAt": 1790588010998,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587198716,
+      "to": 1790588010998
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,13 +182,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2189,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2190,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 52617,
+      "num_messages": 52667,
       "num_messages_24h": 2537,
       "rating_score": 0,
       "token_count": 1476
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 52617,
+        "num_messages_24h": 2537,
+        "rating_score": 0,
+        "token_count": 1476
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 52667,
         "num_messages_24h": 2537,
         "rating_score": 0,
         "token_count": 1476

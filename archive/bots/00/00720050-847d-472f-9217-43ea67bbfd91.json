@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "00720050-847d-472f-9217-43ea67bbfd91",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "ru": "Партия Героев",
         "zh": "英雄派对"
       },
-      "num_messages": 2875446,
+      "num_messages": 2875545,
       "num_messages_24h": 1048,
       "rating_score": 0.710967,
       "tags": [
@@ -106,7 +106,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587080471,
+      "updatedAt": 1790588182050,
       "visibility": "public"
     }
   },
@@ -154,7 +154,7 @@
       "ru": "Партия Героев",
       "zh": "英雄派对"
     },
-    "num_messages": 2875446,
+    "num_messages": 2875545,
     "num_messages_24h": 1048,
     "rating_score": 0.710967,
     "tags": [
@@ -202,10 +202,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587080471,
+    "updatedAt": 1790588182050,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587080471,
+      "to": 1790588182050
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2875446,
+      "num_messages": 2875545,
       "num_messages_24h": 1048,
       "rating_score": 0.710967,
       "token_count": 1475
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2875446,
+        "num_messages_24h": 1048,
+        "rating_score": 0.710967,
+        "token_count": 1475
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2875545,
         "num_messages_24h": 1048,
         "rating_score": 0.710967,
         "token_count": 1475

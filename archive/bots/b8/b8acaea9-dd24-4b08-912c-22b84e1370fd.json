@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b8acaea9-dd24-4b08-912c-22b84e1370fd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pt": "Mundo Sombrio e Lascivo",
         "zh": "黑暗淫荡世界"
       },
-      "num_messages": 1914567,
+      "num_messages": 1914667,
       "num_messages_24h": 1533,
       "rating_score": 0.748555,
       "tags": [
@@ -94,7 +94,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587193483,
+      "updatedAt": 1790588502317,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "pt": "Mundo Sombrio e Lascivo",
       "zh": "黑暗淫荡世界"
     },
-    "num_messages": 1914567,
+    "num_messages": 1914667,
     "num_messages_24h": 1533,
     "rating_score": 0.748555,
     "tags": [
@@ -176,10 +176,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587193483,
+    "updatedAt": 1790588502317,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587193483,
+      "to": 1790588502317
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1914567,
+      "num_messages": 1914667,
       "num_messages_24h": 1533,
       "rating_score": 0.748555,
       "token_count": 612
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1914567,
+        "num_messages_24h": 1533,
+        "rating_score": 0.748555,
+        "token_count": 612
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1914667,
         "num_messages_24h": 1533,
         "rating_score": 0.748555,
         "token_count": 612

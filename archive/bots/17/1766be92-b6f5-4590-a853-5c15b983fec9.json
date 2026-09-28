@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1766be92-b6f5-4590-a853-5c15b983fec9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Гибридная Лаборатория",
         "zh": "混合实验室"
       },
-      "num_messages": 167806,
+      "num_messages": 167811,
       "num_messages_24h": 1723,
       "rating_score": 0.994253,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587199754,
+      "updatedAt": 1790588559379,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "ru": "Гибридная Лаборатория",
       "zh": "混合实验室"
     },
-    "num_messages": 167806,
+    "num_messages": 167811,
     "num_messages_24h": 1723,
     "rating_score": 0.994253,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587199754,
+    "updatedAt": 1790588559379,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587199754,
+      "to": 1790588559379
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,7 +176,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 167806,
+      "num_messages": 167811,
       "num_messages_24h": 1723,
       "rating_score": 0.994253,
       "token_count": 790
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 167806,
+        "num_messages_24h": 1723,
+        "rating_score": 0.994253,
+        "token_count": 790
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 167811,
         "num_messages_24h": 1723,
         "rating_score": 0.994253,
         "token_count": 790

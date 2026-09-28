@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6efa43d7-de42-4295-a16e-8c05f7de75c7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Blake",
         "zh": "Blake"
       },
-      "num_messages": 429591,
+      "num_messages": 429823,
       "num_messages_24h": 12959,
       "rating_score": 0.913158,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587512975,
+      "updatedAt": 1790588564900,
       "visibility": "public"
     },
     "character-api": {
@@ -171,7 +171,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/57b1d526d1a1b03c710967ef7d56f3de.jpg?class=avatar256x256",
     "character_id": "6efa43d7-de42-4295-a16e-8c05f7de75c7",
-    "createdAt": "2025-12-03T14:31:56.039Z",
+    "createdAt": 1764772316039,
     "creator_user_id": "kp:157489b04db34a8299c934d5a6a83928",
     "creator_username": "demmahonlygay",
     "definition_size_category": "mid",
@@ -200,12 +200,10 @@
       "tr": "Blake",
       "zh": "Blake"
     },
-    "num_messages": 429678,
+    "num_messages": 429823,
     "num_messages_24h": 12959,
     "rating_score": 0.913158,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "MalePOV",
@@ -251,7 +249,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:30:16.206Z",
+    "updatedAt": 1790588564900,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -279,6 +277,22 @@
       "kind": "value",
       "from": 1790587512975,
       "to": "2026-09-28T09:30:16.206Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2025-12-03T14:31:56.039Z",
+      "to": 1764772316039
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:30:16.206Z",
+      "to": 1790588564900
     }
   ],
   "availabilityHistory": [
@@ -296,7 +310,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 429678,
+      "num_messages": 429823,
+      "num_messages_24h": 12959,
       "rating_score": 0.913158,
       "token_count": 737
     },
@@ -315,8 +330,23 @@
         "num_messages": 429678,
         "rating_score": 0.913158,
         "token_count": 737
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 429823,
+        "num_messages_24h": 12959,
+        "rating_score": 0.913158,
+        "token_count": 737
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/57b1d526d1a1b03c710967ef7d56f3de.jpg?class=avatar256x256",
+    "sha256": "55468e119f0759de7500304decb4d0ea19c45e4f5c7b84795ce63a713ef9f9a8",
+    "contentType": "image/jpeg",
+    "bytes": 35270,
+    "path": "archive/media/55/55468e119f0759de7500304decb4d0ea19c45e4f5c7b84795ce63a713ef9f9a8.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

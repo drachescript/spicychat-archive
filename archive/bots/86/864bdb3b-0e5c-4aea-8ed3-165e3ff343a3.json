@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "864bdb3b-0e5c-4aea-8ed3-165e3ff343a3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Юдзи Итадори",
         "zh": "Yuji itadori"
       },
-      "num_messages": 119389,
+      "num_messages": 119425,
       "num_messages_24h": 1643,
       "rating_score": 0.994118,
       "tags": [
@@ -75,7 +75,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399167,
+      "updatedAt": 1790588565839,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "ru": "Юдзи Итадори",
       "zh": "Yuji itadori"
     },
-    "num_messages": 119389,
+    "num_messages": 119425,
     "num_messages_24h": 1643,
     "rating_score": 0.994118,
     "tags": [
@@ -140,10 +140,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587399167,
+    "updatedAt": 1790588565839,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587399167,
+      "to": 1790588565839
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 119389,
+      "num_messages": 119425,
       "num_messages_24h": 1643,
       "rating_score": 0.994118,
       "token_count": 295
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 119389,
+        "num_messages_24h": 1643,
+        "rating_score": 0.994118,
+        "token_count": 295
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 119425,
         "num_messages_24h": 1643,
         "rating_score": 0.994118,
         "token_count": 295

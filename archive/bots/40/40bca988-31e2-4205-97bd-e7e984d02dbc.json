@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40bca988-31e2-4205-97bd-e7e984d02dbc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Дамион",
         "tr": "Damion"
       },
-      "num_messages": 154481,
+      "num_messages": 154611,
       "num_messages_24h": 2318,
       "reportsType": {},
       "tags": [
@@ -73,7 +73,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587490045,
+      "updatedAt": 1790588244143,
       "visibility": "public"
     }
   },
@@ -105,7 +105,7 @@
       "ru": "Дамион",
       "tr": "Damion"
     },
-    "num_messages": 154481,
+    "num_messages": 154611,
     "num_messages_24h": 2318,
     "reportsType": {},
     "tags": [
@@ -134,10 +134,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587490045,
+    "updatedAt": 1790588244143,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587490045,
+      "to": 1790588244143
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2440,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2441,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 154481,
+      "num_messages": 154611,
       "num_messages_24h": 2318,
       "token_count": 166
     },
@@ -162,6 +171,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 154481,
+        "num_messages_24h": 2318,
+        "token_count": 166
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 154611,
         "num_messages_24h": 2318,
         "token_count": 166
       }

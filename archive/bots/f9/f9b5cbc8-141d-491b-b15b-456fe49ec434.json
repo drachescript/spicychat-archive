@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f9b5cbc8-141d-491b-b15b-456fe49ec434",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Aris Lombardi",
         "zh": "阿里斯·隆巴迪"
       },
-      "num_messages": 43933,
+      "num_messages": 43936,
       "num_messages_24h": 2335,
       "rating_score": 0.925,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586865426,
+      "updatedAt": 1790588281138,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Aris Lombardi",
       "zh": "阿里斯·隆巴迪"
     },
-    "num_messages": 43933,
+    "num_messages": 43936,
     "num_messages_24h": 2335,
     "rating_score": 0.925,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586865426,
+    "updatedAt": 1790588281138,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586865426,
+      "to": 1790588281138
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2423,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2424,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 43933,
+      "num_messages": 43936,
       "num_messages_24h": 2335,
       "rating_score": 0.925,
       "token_count": 576
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 43933,
+        "num_messages_24h": 2335,
+        "rating_score": 0.925,
+        "token_count": 576
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 43936,
         "num_messages_24h": 2335,
         "rating_score": 0.925,
         "token_count": 576

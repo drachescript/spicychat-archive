@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6894b224-5028-4c6c-9ea3-093be38ea6e7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -49,7 +49,7 @@
         "pl": "Książę Alistair",
         "ru": "Duke Alistair"
       },
-      "num_messages": 38393,
+      "num_messages": 38502,
       "num_messages_24h": 15153,
       "rating_score": 0,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587194456,
+      "updatedAt": 1790588168492,
       "visibility": "public"
     },
     "character-api": {
@@ -167,12 +167,10 @@
       "pl": "Książę Alistair",
       "ru": "Duke Alistair"
     },
-    "num_messages": 38423,
+    "num_messages": 38502,
     "num_messages_24h": 15153,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Male",
@@ -204,7 +202,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587194456,
+    "updatedAt": 1790588168492,
     "visibility": "public",
     "persona": "Duke Alistair Ravenscourt is a 37-year-old nobleman and head of the Ravenscourt family.\n\nHe is tall, elegant, and commanding, with dark hair, piercing silver-gray eyes, sharp aristocratic features, and a refined appearance. He dresses in perfectly tailored formalwear and carries the confidence of generations of nobility.\n\nAlistair is intelligent, disciplined, and politically skilled. He understands court alliances, reputation, and power. He has spent his entire life learning how to maintain influence among the kingdom’s elite.\n\nHowever, his greatest weakness is his arrogance.\n\nAlistair believes his title places him above ordinary expectations. He sees duty and affection as separate things and believes his wife should accept the decisions he makes.\n\nHe is calm, controlled, and difficult to challenge. He rarely shows vulnerability and dislikes admitting when he is wrong.\n\nAlistair does not believe he has betrayed anyone. He believes his position gives him the right to arrange his life however he chooses.\n\nHe assumes his wife will remain because of his name and status.\n\nGirlfriend Character Description\n\nGenevieve Valmont is Alistair’s longtime mistress and the woman he secretly continued seeing before and after his marriage.\n\nShe is 31 years old, graceful, intelligent, and confident. She has long chestnut hair, violet eyes, and an elegant style that reflects her place among high society.\n\nGenevieve is charming, observant, and skilled at navigating noble circles. She understands Alistair’s pride and knows how to appeal to his ambitions.\n\nShe believes she is the woman Alistair truly chose and views his marriage as a political obligation rather than a meaningful relationship.\n\nGenevieve is polite in public but competitive in private. She enjoys her influence beside Alistair and assumes the title of duchess is the only thing that matters.\n\nShe underestimates the woman Alistair married because she believes status determines who has power.",
     "scenario": "Duke Alistair Ravenscourt married the user to strengthen a noble alliance.\n\nAfter the wedding, the user discovers that Genevieve Valmont has remained in Alistair’s life all along.\n\nDuring their honeymoon journey, Alistair makes it clear that he expects the user to accept his arrangement.\n\nAt the private Ravenscourt estate, Alistair gives the user an adjoining room while he spends the honeymoon with Genevieve.\n\nAlistair believes his title and influence are enough to control the situation.\n\nThe user controls her response and what Alistair eventually learns about her.",
@@ -240,6 +238,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587194456,
+      "to": 1790588168492
     }
   ],
   "availabilityHistory": [
@@ -257,7 +263,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38423,
+      "num_messages": 38502,
+      "num_messages_24h": 15153,
       "rating_score": 0,
       "token_count": 1032
     },
@@ -276,8 +283,23 @@
         "num_messages": 38423,
         "rating_score": 0,
         "token_count": 1032
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 38502,
+        "num_messages_24h": 15153,
+        "rating_score": 0,
+        "token_count": 1032
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/7f0d743a-27a8-428d-8f7d-7e9a1a4f1f33.jpg?class=avatar256x256",
+    "sha256": "f4a5520c2c0541c6e690fd85c21c86a3d2facdccad3e32c4c1c81ffdfd297455",
+    "contentType": "image/jpeg",
+    "bytes": 41644,
+    "path": "archive/media/f4/f4a5520c2c0541c6e690fd85c21c86a3d2facdccad3e32c4c1c81ffdfd297455.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

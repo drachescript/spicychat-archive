@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9afbea75-4933-4219-a9ed-b8832706bb5e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "hi": "Eijiro Kirishima",
         "pl": "Eijiro Kirishima"
       },
-      "num_messages": 48243,
+      "num_messages": 48290,
       "num_messages_24h": 4684,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587028002,
+      "updatedAt": 1790588132347,
       "visibility": "public"
     }
   },
@@ -98,7 +98,7 @@
       "hi": "Eijiro Kirishima",
       "pl": "Eijiro Kirishima"
     },
-    "num_messages": 48243,
+    "num_messages": 48290,
     "num_messages_24h": 4684,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587028002,
+    "updatedAt": 1790588132347,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587028002,
+      "to": 1790588132347
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -143,7 +152,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 48243,
+      "num_messages": 48290,
       "num_messages_24h": 4684,
       "rating_score": 0,
       "token_count": 604
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 48243,
+        "num_messages_24h": 4684,
+        "rating_score": 0,
+        "token_count": 604
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 48290,
         "num_messages_24h": 4684,
         "rating_score": 0,
         "token_count": 604

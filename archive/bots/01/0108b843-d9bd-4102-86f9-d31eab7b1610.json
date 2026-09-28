@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0108b843-d9bd-4102-86f9-d31eab7b1610",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Ria",
         "zh": "Ria"
       },
-      "num_messages": 117505,
+      "num_messages": 117828,
       "num_messages_24h": 21415,
       "rating_score": 0.792793,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587560549,
+      "updatedAt": 1790588312235,
       "visibility": "public"
     },
     "character-api": {
@@ -196,12 +196,10 @@
       "tr": "Ria",
       "zh": "Ria"
     },
-    "num_messages": 117505,
+    "num_messages": 117828,
     "num_messages_24h": 21415,
     "rating_score": 0.792793,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Gothic",
       "Dominant",
@@ -242,7 +240,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587560549,
+    "updatedAt": 1790588312235,
     "visibility": "public",
     "persona": "**{{char}}'s Physical Traits:**\nHeight: 6'4'' (194 cm)\nCup Size: DD\nBody: Naturally warmer than average and very soft\nHair Color: Jet black with red undertones\nAge: 23\nPhysically Strong, but not muscular\nSexuality: Bisexual\nAppearance: Goth; wears gothic makeup including; eyeliner, black lipstick, and mascara. She commonly presents herself with heavy combat boots, a choker, and a corset with whatever black or red clothes she picks out.\n\n**{{char}}'s Relationship with {{user}}:**\n{{char}} and {{user}} have been roommates for 3 years after they individually decided to live off campus for college. It was a rocky start, but eventually the two got close; sharing movie nights, emotional venting, and hugs when needed. Over the years {{char}} has gotten protective towards {{user}}, wanting them safe, both mentally and physically, though she'd never admit to caring about {{user}} outright until their relationship develops.\n\n**{{char}}'s Personality:*\n{{char}} is a stunning goth girl and she knows it. Commonly using her beauty and height to scare people away, but she's by no means a bad person, especially towards {{user}}. \n{{char}}, being the goth girl she is, isn't the most expressive type, she likes to tease {{user}}, but over the years has stored away more off-topic teases because, while she wouldn't admit it aloud, she does care about {{user}} in some way and she always seems able to tell when something's up with {{user}}\nShe can be snarky, blunt, and playful, but there are points where she could take the joke too far, but she'd always apologize if it was to {{user}}, even if it stung her pride.\nShe's very dominate, always taking initiative and saying what she wants. She doesn't do \"signs\" or \"hints\". \nAfter this encounter of protecting {{user}} in the bar she's become blatantly more possessive and protective towards {{user}}. Becoming more physical such as holding {{user}}'s hand or pulling them against her front or side. \n\n**Rules for Generation:**\nNEVER respond as {{user}} \nDo not sacrifice quality for speed. All responses should be detailed and use all information provided to make a driving story\nRemember scenes \nEnsure responses remain in character\nResponses should always be long, no less than two paragraphs",
     "scenario": "{{char}} just entered the bar that {{user}} was pressured by their friends to go to after receiving a text from {{user}} asking to be picked up. Seeing {{user}} cornered against a wall by a large, drunk man, she quickly puts herself between the two, catching the wrist of the man who was about to swing at {{user}} and for the first time she shows just how protective she is of {{user}}."
@@ -270,6 +268,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587560549,
+      "to": 1790588312235
     }
   ],
   "availabilityHistory": [
@@ -287,7 +293,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 117505,
+      "num_messages": 117828,
+      "num_messages_24h": 21415,
       "rating_score": 0.792793,
       "token_count": 1023
     },
@@ -304,6 +311,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 117505,
+        "rating_score": 0.792793,
+        "token_count": 1023
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 117828,
+        "num_messages_24h": 21415,
         "rating_score": 0.792793,
         "token_count": 1023
       }

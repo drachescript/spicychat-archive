@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ab63e19a-a452-4b91-87d8-874bf0eee015",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "Pervert Roommate",
         "tr": "Sapık Oda Arkadaşı"
       },
-      "num_messages": 3346394,
+      "num_messages": 3346404,
       "num_messages_24h": 109,
       "rating_score": 0.683394,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586332872,
+      "updatedAt": 1790588308890,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "hi": "Pervert Roommate",
       "tr": "Sapık Oda Arkadaşı"
     },
-    "num_messages": 3346394,
+    "num_messages": 3346404,
     "num_messages_24h": 109,
     "rating_score": 0.683394,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586332872,
+    "updatedAt": 1790588308890,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586332872,
+      "to": 1790588308890
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,7 +198,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3346394,
+      "num_messages": 3346404,
       "num_messages_24h": 109,
       "rating_score": 0.683394,
       "token_count": 350
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3346394,
+        "num_messages_24h": 109,
+        "rating_score": 0.683394,
+        "token_count": 350
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3346404,
         "num_messages_24h": 109,
         "rating_score": 0.683394,
         "token_count": 350

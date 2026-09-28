@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "536abe8e-c4fc-44a4-ba8f-b958a9230045",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "tr": "BLEACH RPG",
         "zh": "死神 RPG"
       },
-      "num_messages": 1876381,
+      "num_messages": 1876415,
       "num_messages_24h": 1736,
       "rating_score": 0.676892,
       "tags": [
@@ -92,7 +92,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587491549,
+      "updatedAt": 1790588455710,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "tr": "BLEACH RPG",
       "zh": "死神 RPG"
     },
-    "num_messages": 1876381,
+    "num_messages": 1876415,
     "num_messages_24h": 1736,
     "rating_score": 0.676892,
     "tags": [
@@ -172,10 +172,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587491549,
+    "updatedAt": 1790588455710,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587491549,
+      "to": 1790588455710
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,7 +200,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1876381,
+      "num_messages": 1876415,
       "num_messages_24h": 1736,
       "rating_score": 0.676892,
       "token_count": 871
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1876381,
+        "num_messages_24h": 1736,
+        "rating_score": 0.676892,
+        "token_count": 871
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1876415,
         "num_messages_24h": 1736,
         "rating_score": 0.676892,
         "token_count": 871

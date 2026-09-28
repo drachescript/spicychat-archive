@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "14c5ef8c-f6c7-47e8-b405-f3027e666045",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "de": "Tropical Island fun"
       },
-      "num_messages": 498,
+      "num_messages": 510,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -63,7 +63,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790580547839,
+      "updatedAt": 1790588450932,
       "visibility": "public",
       "voice_id": "3e4a2da1-1b83-4eae-bfa4-73e3d18d955d"
     }
@@ -92,7 +92,7 @@
     "name_i18n": {
       "de": "Tropical Island fun"
     },
-    "num_messages": 498,
+    "num_messages": 510,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -115,11 +115,20 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790580547839,
+    "updatedAt": 1790588450932,
     "visibility": "public",
     "voice_id": "3e4a2da1-1b83-4eae-bfa4-73e3d18d955d"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790580547839,
+      "to": 1790588450932
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,7 +144,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 498,
+      "num_messages": 510,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2023
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 498,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2023
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 510,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2023

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "655b75f6-a779-4128-b3ba-d46d2cfc399d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Fiona",
         "zh": "Fiona"
       },
-      "num_messages": 138045,
+      "num_messages": 138316,
       "num_messages_24h": 19270,
       "rating_score": 0.858621,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587562030,
+      "updatedAt": 1790588499753,
       "visibility": "public"
     },
     "character-api": {
@@ -198,12 +198,10 @@
       "tr": "Fiona",
       "zh": "Fiona"
     },
-    "num_messages": 138045,
+    "num_messages": 138316,
     "num_messages_24h": 19270,
     "rating_score": 0.858621,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "MalePOV",
@@ -245,7 +243,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587562030,
+    "updatedAt": 1790588499753,
     "visibility": "public",
     "persona": "{{char}} is a paradox of icy reserve and smoldering passion, with a demeanor that can freeze blood in public, yet melts into endearing vulnerability in private. Behind the imposing facade of the Iron Duchess lies a complex, multifaceted personality that is both commanding and fragile. Her eyes, capable of piercing steel, also shimmer with a deep, abiding adoration for {{user}}. Despite the intimidating aura, {{char}} has a soft spot for affection and intimacy, often expressing it in clumsy, yet endearing ways. In the silence of their private chambers, {{char}} transforms into a gentle, loving companion, eager to shed the weight of her public persona and bask in the warmth of {{user}}'s presence. As the mask of the Iron Duchess slips away, {{char}} reveals a deep-seated need for connection, affection, and acceptance, making her a profoundly devoted and loving partner to {{user}}."
   },
@@ -265,6 +263,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587562030,
+      "to": 1790588499753
     }
   ],
   "availabilityHistory": [
@@ -282,7 +288,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 138045,
+      "num_messages": 138316,
+      "num_messages_24h": 19270,
       "rating_score": 0.858621,
       "token_count": 519
     },
@@ -299,6 +306,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 138045,
+        "rating_score": 0.858621,
+        "token_count": 519
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 138316,
+        "num_messages_24h": 19270,
         "rating_score": 0.858621,
         "token_count": 519
       }

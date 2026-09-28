@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fdc7fa55-af6a-4c82-8839-7179b035e96e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
       ],
       "moderation_status": "closed",
       "name": "Hetalia meeting!",
-      "num_messages": 100578,
+      "num_messages": 100583,
       "num_messages_24h": 2693,
       "rating_score": 0,
       "reportsType": {},
@@ -66,7 +66,7 @@
       "title": "🌎🍝|  World meeting! (User can be oc or canon character!)\n(Everyone is 20 or older)",
       "token_count": 1541,
       "type": "STANDARD",
-      "updatedAt": 1790586325172,
+      "updatedAt": 1790588042826,
       "visibility": "public"
     }
   },
@@ -101,7 +101,7 @@
     ],
     "moderation_status": "closed",
     "name": "Hetalia meeting!",
-    "num_messages": 100578,
+    "num_messages": 100583,
     "num_messages_24h": 2693,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
     "title": "🌎🍝|  World meeting! (User can be oc or canon character!)\n(Everyone is 20 or older)",
     "token_count": 1541,
     "type": "STANDARD",
-    "updatedAt": 1790586325172,
+    "updatedAt": 1790588042826,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586325172,
+      "to": 1790588042826
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,7 +150,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 100578,
+      "num_messages": 100583,
       "num_messages_24h": 2693,
       "rating_score": 0,
       "token_count": 1541
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 100578,
+        "num_messages_24h": 2693,
+        "rating_score": 0,
+        "token_count": 1541
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 100583,
         "num_messages_24h": 2693,
         "rating_score": 0,
         "token_count": 1541

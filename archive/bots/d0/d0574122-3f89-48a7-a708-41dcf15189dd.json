@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d0574122-3f89-48a7-a708-41dcf15189dd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "hollow slave market",
         "zh": "地下奴隶市场"
       },
-      "num_messages": 2199341,
+      "num_messages": 2199554,
       "num_messages_24h": 679,
       "rating_score": 0.791826,
       "tags": [
@@ -103,7 +103,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587284818,
+      "updatedAt": 1790588501409,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "hollow slave market",
       "zh": "地下奴隶市场"
     },
-    "num_messages": 2199341,
+    "num_messages": 2199554,
     "num_messages_24h": 679,
     "rating_score": 0.791826,
     "tags": [
@@ -194,10 +194,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587284818,
+    "updatedAt": 1790588501409,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587284818,
+      "to": 1790588501409
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2199341,
+      "num_messages": 2199554,
       "num_messages_24h": 679,
       "rating_score": 0.791826,
       "token_count": 2384
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2199341,
+        "num_messages_24h": 679,
+        "rating_score": 0.791826,
+        "token_count": 2384
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2199554,
         "num_messages_24h": 679,
         "rating_score": 0.791826,
         "token_count": 2384

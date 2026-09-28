@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "91d88611-4db4-4bf4-9fdc-4e1dc1527112",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
       "name_i18n": {
         "es": "Wren Adair"
       },
-      "num_messages": 127,
+      "num_messages": 138,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -76,7 +76,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587522119,
+      "updatedAt": 1790588458049,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
     "name_i18n": {
       "es": "Wren Adair"
     },
-    "num_messages": 127,
+    "num_messages": 138,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -142,10 +142,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587522119,
+    "updatedAt": 1790588458049,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587522119,
+      "to": 1790588458049
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,7 +170,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 127,
+      "num_messages": 138,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2226
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 127,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2226
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 138,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2226

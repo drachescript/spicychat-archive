@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "13f0a98c-587e-49d5-b86e-85385af5fb81",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "de": "Axle Reeves",
         "es": "Axle Reeves"
       },
-      "num_messages": 37951,
+      "num_messages": 37970,
       "num_messages_24h": 8,
       "rating_score": 1,
       "tags": [
@@ -65,7 +65,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587193771,
+      "updatedAt": 1790588168990,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
       "de": "Axle Reeves",
       "es": "Axle Reeves"
     },
-    "num_messages": 37951,
+    "num_messages": 37970,
     "num_messages_24h": 8,
     "rating_score": 1,
     "tags": [
@@ -118,10 +118,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587193771,
+    "updatedAt": 1790588168990,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587193771,
+      "to": 1790588168990
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +140,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 626,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 625,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 37951,
+      "num_messages": 37970,
       "num_messages_24h": 8,
       "rating_score": 1,
       "token_count": 1197
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 37951,
+        "num_messages_24h": 8,
+        "rating_score": 1,
+        "token_count": 1197
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 37970,
         "num_messages_24h": 8,
         "rating_score": 1,
         "token_count": 1197

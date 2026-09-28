@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "97b413b9-850e-4643-8aca-a4fee31596ab",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -58,7 +58,7 @@
         "ru": "Chloe Sterling </3",
         "zh": "Chloe Sterling </3"
       },
-      "num_messages": 101018,
+      "num_messages": 101813,
       "num_messages_24h": 25963,
       "rating_score": 0.722222,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587082387,
+      "updatedAt": 1790588181745,
       "visibility": "public"
     },
     "character-api": {
@@ -164,7 +164,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/dfd85894-0d30-4023-9566-eb81b22bfff1.png?class=avatar256x256",
     "character_id": "97b413b9-850e-4643-8aca-a4fee31596ab",
-    "createdAt": "2026-09-24T00:44:03.465Z",
+    "createdAt": 1790210643465,
     "creator_user_id": "kp:e896562ac81a479a9896adc21717b566",
     "creator_username": "kojinnn",
     "definition_size_category": "high",
@@ -198,12 +198,10 @@
       "ru": "Chloe Sterling </3",
       "zh": "Chloe Sterling </3"
     },
-    "num_messages": 101018,
+    "num_messages": 101813,
     "num_messages_24h": 25963,
     "rating_score": 0.722222,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Romantic",
       "Drama",
@@ -243,7 +241,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:18:02.387Z",
+    "updatedAt": 1790588181745,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -271,6 +269,22 @@
       "kind": "value",
       "from": 1790587082387,
       "to": "2026-09-28T09:18:02.387Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-24T00:44:03.465Z",
+      "to": 1790210643465
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:18:02.387Z",
+      "to": 1790588181745
     }
   ],
   "availabilityHistory": [
@@ -288,7 +302,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 101018,
+      "num_messages": 101813,
+      "num_messages_24h": 25963,
       "rating_score": 0.722222,
       "token_count": 1565
     },
@@ -305,6 +320,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 101018,
+        "rating_score": 0.722222,
+        "token_count": 1565
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 101813,
+        "num_messages_24h": 25963,
         "rating_score": 0.722222,
         "token_count": 1565
       }

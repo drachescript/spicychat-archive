@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2727a3f7-6707-4852-8b20-b602052612fe",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "Emily, Chloe & Mia",
         "ru": "Emily, Chloe & Mia"
       },
-      "num_messages": 2628,
+      "num_messages": 2648,
       "num_messages_24h": 1754,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584009646,
+      "updatedAt": 1790587768095,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "fr": "Emily, Chloe & Mia",
       "ru": "Emily, Chloe & Mia"
     },
-    "num_messages": 2628,
+    "num_messages": 2648,
     "num_messages_24h": 1754,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584009646,
+    "updatedAt": 1790587768095,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584009646,
+      "to": 1790587768095
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2009,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2010,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2628,
+      "num_messages": 2648,
       "num_messages_24h": 1754,
       "rating_score": 0,
       "token_count": 1950
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2628,
+        "num_messages_24h": 1754,
+        "rating_score": 0,
+        "token_count": 1950
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2648,
         "num_messages_24h": 1754,
         "rating_score": 0,
         "token_count": 1950

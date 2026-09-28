@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "975a7ef0-4bfd-41ef-a9b9-cc7ae99721ba",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,6 +37,10 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Mrs. Bennett",
+      "name_i18n": {
+        "ru": "Миссис Беннетт",
+        "zh": "Mrs. Bennett"
+      },
       "num_messages": 211,
       "num_messages_24h": 0,
       "rating_score": 0,
@@ -49,9 +53,17 @@
         "Dominant"
       ],
       "title": "Horny MILF Next Door",
+      "title_i18n": {
+        "ru": "Возбужденная МИЛФ по соседству",
+        "zh": "隔壁饥渴的MILF"
+      },
       "token_count": 332,
+      "translated_languages": [
+        "ru",
+        "zh"
+      ],
       "type": "STANDARD",
-      "updatedAt": 1790584252133,
+      "updatedAt": 1790588290138,
       "visibility": "public"
     }
   },
@@ -90,10 +102,69 @@
     "title": "Horny MILF Next Door",
     "token_count": 332,
     "type": "STANDARD",
-    "updatedAt": 1790584252133,
-    "visibility": "public"
+    "updatedAt": 1790588290138,
+    "visibility": "public",
+    "name_i18n": {
+      "ru": "Миссис Беннетт",
+      "zh": "Mrs. Bennett"
+    },
+    "title_i18n": {
+      "ru": "Возбужденная МИЛФ по соседству",
+      "zh": "隔壁饥渴的MILF"
+    },
+    "translated_languages": [
+      "ru",
+      "zh"
+    ]
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "name_i18n.ru",
+      "kind": "value",
+      "to": "Миссис Беннетт"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "name_i18n.zh",
+      "kind": "value",
+      "to": "Mrs. Bennett"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "title_i18n.ru",
+      "kind": "value",
+      "to": "Возбужденная МИЛФ по соседству"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "title_i18n.zh",
+      "kind": "value",
+      "to": "隔壁饥渴的MILF"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "translated_languages",
+      "kind": "value",
+      "to": [
+        "ru",
+        "zh"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584252133,
+      "to": 1790588290138
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",

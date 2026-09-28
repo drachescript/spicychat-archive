@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d8a284cf-25f7-492b-b116-2f974cad3f19",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,6 +38,7 @@
       "moderation_status": "reviewed",
       "name": "Femboy Hooters",
       "name_i18n": {
+        "ko": "Femboy Hooters",
         "pt": "Femboy Hooters"
       },
       "num_messages": 242,
@@ -57,14 +58,16 @@
       ],
       "title": "A new restaurant recently opened in your town. 👌😉🔥",
       "title_i18n": {
+        "ko": "당신의 마을에 최근 오픈한 새로운 레스토랑. 👌😉🔥",
         "pt": "Um novo restaurante recentemente aberto na sua cidade. 👌😉🔥"
       },
       "token_count": 682,
       "translated_languages": [
-        "pt"
+        "pt",
+        "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585675121,
+      "updatedAt": 1790588023989,
       "visibility": "public"
     }
   },
@@ -90,7 +93,8 @@
     "moderation_status": "reviewed",
     "name": "Femboy Hooters",
     "name_i18n": {
-      "pt": "Femboy Hooters"
+      "pt": "Femboy Hooters",
+      "ko": "Femboy Hooters"
     },
     "num_messages": 242,
     "num_messages_24h": 201,
@@ -109,17 +113,55 @@
     ],
     "title": "A new restaurant recently opened in your town. 👌😉🔥",
     "title_i18n": {
-      "pt": "Um novo restaurante recentemente aberto na sua cidade. 👌😉🔥"
+      "pt": "Um novo restaurante recentemente aberto na sua cidade. 👌😉🔥",
+      "ko": "당신의 마을에 최근 오픈한 새로운 레스토랑. 👌😉🔥"
     },
     "token_count": 682,
     "translated_languages": [
-      "pt"
+      "pt",
+      "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585675121,
+    "updatedAt": 1790588023989,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "name_i18n.ko",
+      "kind": "value",
+      "to": "Femboy Hooters"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "title_i18n.ko",
+      "kind": "value",
+      "to": "당신의 마을에 최근 오픈한 새로운 레스토랑. 👌😉🔥"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "translated_languages",
+      "kind": "value",
+      "from": [
+        "pt"
+      ],
+      "to": [
+        "pt",
+        "ko"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585675121,
+      "to": 1790588023989
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",

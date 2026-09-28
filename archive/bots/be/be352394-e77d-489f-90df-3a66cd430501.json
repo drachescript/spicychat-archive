@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "be352394-e77d-489f-90df-3a66cd430501",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Black Clover 🍀",
         "tr": "Black Clover 🍀"
       },
-      "num_messages": 301413,
+      "num_messages": 301468,
       "num_messages_24h": 2701,
       "rating_score": 0.9,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587396819,
+      "updatedAt": 1790588246370,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "ru": "Black Clover 🍀",
       "tr": "Black Clover 🍀"
     },
-    "num_messages": 301413,
+    "num_messages": 301468,
     "num_messages_24h": 2701,
     "rating_score": 0.9,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587396819,
+    "updatedAt": 1790588246370,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587396819,
+      "to": 1790588246370
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 301413,
+      "num_messages": 301468,
       "num_messages_24h": 2701,
       "rating_score": 0.9,
       "token_count": 424
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 301413,
+        "num_messages_24h": 2701,
+        "rating_score": 0.9,
+        "token_count": 424
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 301468,
         "num_messages_24h": 2701,
         "rating_score": 0.9,
         "token_count": 424

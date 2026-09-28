@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bb0a674d-3cfa-43ec-a20a-94fe342a09db",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "She Built You",
         "zh": "She Built You"
       },
-      "num_messages": 1730876,
+      "num_messages": 1731855,
       "num_messages_24h": 20937,
       "rating_score": 0.800874,
       "reportsType": {},
@@ -108,7 +108,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587478204,
+      "updatedAt": 1790588453914,
       "visibility": "public"
     },
     "character-api": {
@@ -180,7 +180,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/d8f50f5b-f0bc-4cb0-b028-15bc025f271a.png?class=avatar256x256",
     "character_id": "bb0a674d-3cfa-43ec-a20a-94fe342a09db",
-    "createdAt": "2026-09-12T04:15:27.119Z",
+    "createdAt": 1789186527119,
     "creator_user_id": "kp:cc293de5d8c54cfb9e181f829d2d491f",
     "creator_username": "undeadminiboss",
     "definition_size_category": "high",
@@ -210,13 +210,10 @@
       "tr": "She Built You",
       "zh": "She Built You"
     },
-    "num_messages": 1731105,
+    "num_messages": 1731855,
     "num_messages_24h": 20937,
     "rating_score": 0.800874,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Fantasy",
       "Adventure",
@@ -264,7 +261,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:26.923Z",
+    "updatedAt": 1790588453914,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -293,6 +290,22 @@
       "kind": "value",
       "from": 1790587478204,
       "to": "2026-09-28T09:29:26.923Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-12T04:15:27.119Z",
+      "to": 1789186527119
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:26.923Z",
+      "to": 1790588453914
     }
   ],
   "availabilityHistory": [
@@ -308,13 +321,14 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "popular": {
-      "rank": 1995,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1992,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1731105,
+      "num_messages": 1731855,
+      "num_messages_24h": 20937,
       "rating_score": 0.800874,
       "token_count": 1579
     },
@@ -331,6 +345,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 1731105,
+        "rating_score": 0.800874,
+        "token_count": 1579
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1731855,
+        "num_messages_24h": 20937,
         "rating_score": 0.800874,
         "token_count": 1579
       }

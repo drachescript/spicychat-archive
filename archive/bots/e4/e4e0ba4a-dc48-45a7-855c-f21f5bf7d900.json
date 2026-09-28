@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e4e0ba4a-dc48-45a7-855c-f21f5bf7d900",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Emperor Yu",
         "zh": "皇帝禹"
       },
-      "num_messages": 68080,
+      "num_messages": 68152,
       "num_messages_24h": 6328,
       "reportsType": {},
       "tags": [
@@ -72,7 +72,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587384039,
+      "updatedAt": 1790588557353,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "ru": "Emperor Yu",
       "zh": "皇帝禹"
     },
-    "num_messages": 68080,
+    "num_messages": 68152,
     "num_messages_24h": 6328,
     "reportsType": {},
     "tags": [
@@ -132,10 +132,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587384039,
+    "updatedAt": 1790588557353,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587384039,
+      "to": 1790588557353
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 68080,
+      "num_messages": 68152,
       "num_messages_24h": 6328,
       "token_count": 321
     },
@@ -160,6 +169,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 68080,
+        "num_messages_24h": 6328,
+        "token_count": 321
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 68152,
         "num_messages_24h": 6328,
         "token_count": 321
       }

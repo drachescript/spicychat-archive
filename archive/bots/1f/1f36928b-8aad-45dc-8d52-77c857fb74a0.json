@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1f36928b-8aad-45dc-8d52-77c857fb74a0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "pt": "Rachael Rivera",
         "ru": "Rachael Rivera"
       },
-      "num_messages": 57482,
+      "num_messages": 57484,
       "num_messages_24h": 144,
       "rating_score": 0.991935,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587402499,
+      "updatedAt": 1790588454750,
       "visibility": "public"
     }
   },
@@ -101,7 +101,7 @@
       "pt": "Rachael Rivera",
       "ru": "Rachael Rivera"
     },
-    "num_messages": 57482,
+    "num_messages": 57484,
     "num_messages_24h": 144,
     "rating_score": 0.991935,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587402499,
+    "updatedAt": 1790588454750,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587402499,
+      "to": 1790588454750
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 57482,
+      "num_messages": 57484,
       "num_messages_24h": 144,
       "rating_score": 0.991935,
       "token_count": 568
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 57482,
+        "num_messages_24h": 144,
+        "rating_score": 0.991935,
+        "token_count": 568
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 57484,
         "num_messages_24h": 144,
         "rating_score": 0.991935,
         "token_count": 568

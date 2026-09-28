@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "84940b4a-0708-4f80-aa24-12c1f2bcefe3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Bekar Anne Elsia",
         "zh": "Single Mom Elsia"
       },
-      "num_messages": 282807,
+      "num_messages": 282869,
       "num_messages_24h": 3136,
       "rating_score": 0.947489,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587251172,
+      "updatedAt": 1790588359658,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "tr": "Bekar Anne Elsia",
       "zh": "Single Mom Elsia"
     },
-    "num_messages": 282807,
+    "num_messages": 282869,
     "num_messages_24h": 3136,
     "rating_score": 0.947489,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587251172,
+    "updatedAt": 1790588359658,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587251172,
+      "to": 1790588359658
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 282807,
+      "num_messages": 282869,
       "num_messages_24h": 3136,
       "rating_score": 0.947489,
       "token_count": 785
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 282807,
+        "num_messages_24h": 3136,
+        "rating_score": 0.947489,
+        "token_count": 785
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 282869,
         "num_messages_24h": 3136,
         "rating_score": 0.947489,
         "token_count": 785

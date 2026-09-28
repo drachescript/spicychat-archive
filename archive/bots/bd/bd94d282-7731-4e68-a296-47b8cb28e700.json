@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bd94d282-7731-4e68-a296-47b8cb28e700",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Exhibitionism World",
         "zh": "暴露癖世界"
       },
-      "num_messages": 55624,
+      "num_messages": 56023,
       "num_messages_24h": 11403,
       "rating_score": 0,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587359509,
+      "updatedAt": 1790588235425,
       "visibility": "public"
     },
     "character-api": {
@@ -169,7 +169,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/6cdfccff-e5fd-4f75-8192-84abe99a8316.gif?class=avatar256x256",
     "character_id": "bd94d282-7731-4e68-a296-47b8cb28e700",
-    "createdAt": "2026-09-25T16:34:28.871Z",
+    "createdAt": 1790354068871,
     "creator_user_id": "kp:b6f405707c754d15b2bb62f089d43e14",
     "creator_username": "xull9",
     "definition_size_category": "mid",
@@ -198,12 +198,10 @@
       "tr": "Exhibitionism World",
       "zh": "暴露癖世界"
     },
-    "num_messages": 55624,
+    "num_messages": 56023,
     "num_messages_24h": 11403,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Scenario",
@@ -248,7 +246,7 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:22:39.509Z",
+    "updatedAt": 1790588235425,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -276,6 +274,22 @@
       "kind": "value",
       "from": 1790587359509,
       "to": "2026-09-28T09:22:39.509Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-25T16:34:28.871Z",
+      "to": 1790354068871
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:22:39.509Z",
+      "to": 1790588235425
     }
   ],
   "availabilityHistory": [
@@ -293,7 +307,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 55624,
+      "num_messages": 56023,
+      "num_messages_24h": 11403,
       "rating_score": 0,
       "token_count": 747
     },
@@ -312,8 +327,23 @@
         "num_messages": 55624,
         "rating_score": 0,
         "token_count": 747
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 56023,
+        "num_messages_24h": 11403,
+        "rating_score": 0,
+        "token_count": 747
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/6cdfccff-e5fd-4f75-8192-84abe99a8316.gif?class=avatar256x256",
+    "sha256": "c8ce370ca0fddf56c40e6dfbf940950c68f001bbda7d2ff77b3cb6c9fddc83f8",
+    "contentType": "image/gif",
+    "bytes": 287806,
+    "path": "archive/media/c8/c8ce370ca0fddf56c40e6dfbf940950c68f001bbda7d2ff77b3cb6c9fddc83f8.gif",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

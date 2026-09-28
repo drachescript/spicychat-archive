@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4707178e-e223-434d-9d53-52753920a495",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "fr": "Valeria Moretti"
       },
-      "num_messages": 353,
+      "num_messages": 372,
       "num_messages_24h": 154,
       "rating_score": 0,
       "reportsType": {},
@@ -61,7 +61,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586890740,
+      "updatedAt": 1790587682053,
       "visibility": "public"
     }
   },
@@ -89,7 +89,7 @@
     "name_i18n": {
       "fr": "Valeria Moretti"
     },
-    "num_messages": 353,
+    "num_messages": 372,
     "num_messages_24h": 154,
     "rating_score": 0,
     "reportsType": {},
@@ -110,10 +110,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586890740,
+    "updatedAt": 1790587682053,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586890740,
+      "to": 1790587682053
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -123,13 +132,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1969,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1970,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 353,
+      "num_messages": 372,
       "num_messages_24h": 154,
       "rating_score": 0,
       "token_count": 367
@@ -139,6 +148,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 353,
+        "num_messages_24h": 154,
+        "rating_score": 0,
+        "token_count": 367
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 372,
         "num_messages_24h": 154,
         "rating_score": 0,
         "token_count": 367

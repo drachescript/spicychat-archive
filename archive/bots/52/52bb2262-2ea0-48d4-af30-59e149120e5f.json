@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "52bb2262-2ea0-48d4-af30-59e149120e5f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Lucian Hale",
         "zh": "Lucian Hale"
       },
-      "num_messages": 59182,
+      "num_messages": 59236,
       "num_messages_24h": 4067,
       "rating_score": 0,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587407796,
+      "updatedAt": 1790588107633,
       "visibility": "public"
     }
   },
@@ -130,7 +130,7 @@
       "ru": "Lucian Hale",
       "zh": "Lucian Hale"
     },
-    "num_messages": 59182,
+    "num_messages": 59236,
     "num_messages_24h": 4067,
     "rating_score": 0,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587407796,
+    "updatedAt": 1790588107633,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587407796,
+      "to": 1790588107633
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,7 +200,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 59182,
+      "num_messages": 59236,
       "num_messages_24h": 4067,
       "rating_score": 0,
       "token_count": 481
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 59182,
+        "num_messages_24h": 4067,
+        "rating_score": 0,
+        "token_count": 481
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 59236,
         "num_messages_24h": 4067,
         "rating_score": 0,
         "token_count": 481

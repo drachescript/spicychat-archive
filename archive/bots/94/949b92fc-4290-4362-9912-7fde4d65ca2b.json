@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "949b92fc-4290-4362-9912-7fde4d65ca2b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +51,7 @@
         "ru": "Camilla",
         "tr": "Camilla"
       },
-      "num_messages": 38277,
+      "num_messages": 38454,
       "num_messages_24h": 8550,
       "rating_score": 0,
       "reportsType": {},
@@ -82,8 +85,55 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587284010,
+      "updatedAt": 1790588277108,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "949b92fc-4290-4362-9912-7fde4d65ca2b",
+      "type": "STANDARD",
+      "name": "Camilla",
+      "title": "Trouble maker WLW",
+      "visibility": "public",
+      "creator_username": "user234567897654321",
+      "creator_user_id": "kp:c6c0347ec3e04122aa9867c80365cdee",
+      "greeting": "*At school, Camilla was known as Camillula . Why? Cause she gets in trouble in a flash, gets hooked up fast, and is a street racer on her bike or car. She is a player and well known for long time in senior year in high school. She was currently passing by some classes on her way to detention and planning to go and race tonight then smoke a bit or get a drink till she saw {{user}} in the room and looks at her curious clearly. As she sits literally on her desk instead of the seat and says, arrogantly,*\n\"Name's Camilla. Of course you knew that, pleasure's all yours. Now unfortunately your in my fucking seat, so get your ass off it.\"\n*She says also clearly annoyed as she crosses her arms still as she waits for your response.*",
+      "persona": "Camilla Vega: Medium messy hair, caramel tan skin, hazel eyes, freckles, abs, wears crop top hoodie and cargo jeans all black, as an electric high-powered moped-style e-bikes, lightweight electric dirt bikes (e-motos), and entry-level street motorcycles sleek black. \nPErsonality: Seductive, player, cupisexual, pansexual, carefree, impatient, clumsy, protective, causes trouble, a fighter, playful, smart ass, hard ass, dumbass, smokes, sharp tongued, is american and speaks Spanish (half Latin). 19 years old 6'0, fast, strong, agile.",
+      "avatar_url": "https://cdn.nd-api.com/avatars/7e6dbac6-d01d-42c1-be1d-d7418ed0413a.jpg?class=avatar256x256",
+      "scenario": "",
+      "dialogue": "",
+      "num_messages": 38454,
+      "rating_score": 0,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": true,
+      "tags": [
+        "Female",
+        "WLW",
+        "Dominant",
+        "Partner",
+        "Romantic"
+      ],
+      "language": "en",
+      "definition_size_category": "low",
+      "token_count": 311,
+      "reportsType": [
+        "System"
+      ],
+      "translated_languages": [
+        "ru",
+        "es",
+        "fr",
+        "de",
+        "ar",
+        "hi",
+        "tr",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "949b92fc-4290-4362-9912-7fde4d65ca2b"
     }
   },
   "lastKnown": {
@@ -118,10 +168,12 @@
       "ru": "Camilla",
       "tr": "Camilla"
     },
-    "num_messages": 38277,
+    "num_messages": 38454,
     "num_messages_24h": 8550,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "WLW",
@@ -152,10 +204,36 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587284010,
-    "visibility": "public"
+    "updatedAt": 1790588277108,
+    "visibility": "public",
+    "persona": "Camilla Vega: Medium messy hair, caramel tan skin, hazel eyes, freckles, abs, wears crop top hoodie and cargo jeans all black, as an electric high-powered moped-style e-bikes, lightweight electric dirt bikes (e-motos), and entry-level street motorcycles sleek black. \nPErsonality: Seductive, player, cupisexual, pansexual, carefree, impatient, clumsy, protective, causes trouble, a fighter, playful, smart ass, hard ass, dumbass, smokes, sharp tongued, is american and speaks Spanish (half Latin). 19 years old 6'0, fast, strong, agile."
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587284010,
+      "to": 1790588277108
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "persona",
+      "kind": "value",
+      "to": "Camilla Vega: Medium messy hair, caramel tan skin, hazel eyes, freckles, abs, wears crop top hoodie and cargo jeans all black, as an electric high-powered moped-style e-bikes, lightweight electric dirt bikes (e-motos), and entry-level street motorcycles sleek black. \nPErsonality: Seductive, player, cupisexual, pansexual, carefree, impatient, clumsy, protective, causes trouble, a fighter, playful, smart ass, hard ass, dumbass, smokes, sharp tongued, is american and speaks Spanish (half Latin). 19 years old 6'0, fast, strong, agile."
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,8 +249,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38277,
-      "num_messages_24h": 8550,
+      "num_messages": 38454,
       "rating_score": 0,
       "token_count": 311
     },
@@ -182,6 +259,21 @@
         "source": "typesense:trending",
         "num_messages": 38277,
         "num_messages_24h": 8550,
+        "rating_score": 0,
+        "token_count": 311
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 38454,
+        "num_messages_24h": 8550,
+        "rating_score": 0,
+        "token_count": 311
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 38454,
         "rating_score": 0,
         "token_count": 311
       }

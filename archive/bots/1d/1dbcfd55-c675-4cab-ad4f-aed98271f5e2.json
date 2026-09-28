@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1dbcfd55-c675-4cab-ad4f-aed98271f5e2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "Allen",
         "zh": "艾伦"
       },
-      "num_messages": 1642390,
+      "num_messages": 1642398,
       "num_messages_24h": 56,
       "rating_score": 0.784254,
       "reportsType": {},
@@ -77,7 +77,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584807287,
+      "updatedAt": 1790588113839,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "fr": "Allen",
       "zh": "艾伦"
     },
-    "num_messages": 1642390,
+    "num_messages": 1642398,
     "num_messages_24h": 56,
     "rating_score": 0.784254,
     "reportsType": {},
@@ -142,10 +142,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584807287,
+    "updatedAt": 1790588113839,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584807287,
+      "to": 1790588113839
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,13 +164,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2220,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2221,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1642390,
+      "num_messages": 1642398,
       "num_messages_24h": 56,
       "rating_score": 0.784254,
       "token_count": 788
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1642390,
+        "num_messages_24h": 56,
+        "rating_score": 0.784254,
+        "token_count": 788
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1642398,
         "num_messages_24h": 56,
         "rating_score": 0.784254,
         "token_count": 788

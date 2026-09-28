@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a2eeb00d-8ad3-4cea-9b4e-58b6afad4ce7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Lorenzo De Luca",
         "tr": "Lorenzo De Luca"
       },
-      "num_messages": 94770,
+      "num_messages": 94837,
       "num_messages_24h": 4279,
       "rating_score": 1,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587120445,
+      "updatedAt": 1790588232897,
       "visibility": "public"
     }
   },
@@ -128,7 +128,7 @@
       "ru": "Lorenzo De Luca",
       "tr": "Lorenzo De Luca"
     },
-    "num_messages": 94770,
+    "num_messages": 94837,
     "num_messages_24h": 4279,
     "rating_score": 1,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587120445,
+    "updatedAt": 1790588232897,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587120445,
+      "to": 1790588232897
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,13 +198,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "top-rated": {
-      "rank": 114,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 112,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 94770,
+      "num_messages": 94837,
       "num_messages_24h": 4279,
       "rating_score": 1,
       "token_count": 912
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 94770,
+        "num_messages_24h": 4279,
+        "rating_score": 1,
+        "token_count": 912
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 94837,
         "num_messages_24h": 4279,
         "rating_score": 1,
         "token_count": 912

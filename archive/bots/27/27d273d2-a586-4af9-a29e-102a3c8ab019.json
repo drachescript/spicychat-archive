@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "27d273d2-a586-4af9-a29e-102a3c8ab019",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "tr": "Delphi Vex",
         "zh": "Delphi Vex"
       },
-      "num_messages": 6510785,
+      "num_messages": 6510794,
       "num_messages_24h": 399,
       "rating_score": 0.795887,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561354,
+      "updatedAt": 1790588245970,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "tr": "Delphi Vex",
       "zh": "Delphi Vex"
     },
-    "num_messages": 6510785,
+    "num_messages": 6510794,
     "num_messages_24h": 399,
     "rating_score": 0.795887,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561354,
+    "updatedAt": 1790588245970,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561354,
+      "to": 1790588245970
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,7 +198,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 6510785,
+      "num_messages": 6510794,
       "num_messages_24h": 399,
       "rating_score": 0.795887,
       "token_count": 1262
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 6510785,
+        "num_messages_24h": 399,
+        "rating_score": 0.795887,
+        "token_count": 1262
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 6510794,
         "num_messages_24h": 399,
         "rating_score": 0.795887,
         "token_count": 1262

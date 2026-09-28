@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "21005ecd-5d5c-4edb-b886-8d845dc8c920",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "tr": "Eris Greyrat",
         "zh": "Eris Greyrat"
       },
-      "num_messages": 28201,
+      "num_messages": 28256,
       "num_messages_24h": 5113,
       "rating_score": 0,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587194035,
+      "updatedAt": 1790588312715,
       "visibility": "public"
     }
   },
@@ -126,7 +126,7 @@
       "tr": "Eris Greyrat",
       "zh": "Eris Greyrat"
     },
-    "num_messages": 28201,
+    "num_messages": 28256,
     "num_messages_24h": 5113,
     "rating_score": 0,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587194035,
+    "updatedAt": 1790588312715,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587194035,
+      "to": 1790588312715
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,7 +194,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 28201,
+      "num_messages": 28256,
       "num_messages_24h": 5113,
       "rating_score": 0,
       "token_count": 1565
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 28201,
+        "num_messages_24h": 5113,
+        "rating_score": 0,
+        "token_count": 1565
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 28256,
         "num_messages_24h": 5113,
         "rating_score": 0,
         "token_count": 1565

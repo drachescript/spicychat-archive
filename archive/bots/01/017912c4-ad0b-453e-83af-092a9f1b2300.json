@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "017912c4-ad0b-453e-83af-092a9f1b2300",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Hellhound Familiar",
         "zh": "地狱犬使魔"
       },
-      "num_messages": 47682,
+      "num_messages": 47702,
       "num_messages_24h": 3130,
       "rating_score": 0.893443,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587307581,
+      "updatedAt": 1790588042006,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "ru": "Hellhound Familiar",
       "zh": "地狱犬使魔"
     },
-    "num_messages": 47682,
+    "num_messages": 47702,
     "num_messages_24h": 3130,
     "rating_score": 0.893443,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587307581,
+    "updatedAt": 1790588042006,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587307581,
+      "to": 1790588042006
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 47682,
+      "num_messages": 47702,
       "num_messages_24h": 3130,
       "rating_score": 0.893443,
       "token_count": 2340
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 47682,
+        "num_messages_24h": 3130,
+        "rating_score": 0.893443,
+        "token_count": 2340
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 47702,
         "num_messages_24h": 3130,
         "rating_score": 0.893443,
         "token_count": 2340

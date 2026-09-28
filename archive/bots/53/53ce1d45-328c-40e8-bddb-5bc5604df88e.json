@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "53ce1d45-328c-40e8-bddb-5bc5604df88e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Тюрьма похотливых женщин",
         "zh": "饥渴女监狱"
       },
-      "num_messages": 49622,
+      "num_messages": 49852,
       "num_messages_24h": 6074,
       "rating_score": 0.918033,
       "reportsType": {},
@@ -82,7 +82,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587409409,
+      "updatedAt": 1790588210090,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "ru": "Тюрьма похотливых женщин",
       "zh": "饥渴女监狱"
     },
-    "num_messages": 49622,
+    "num_messages": 49852,
     "num_messages_24h": 6074,
     "rating_score": 0.918033,
     "reportsType": {},
@@ -152,10 +152,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587409409,
+    "updatedAt": 1790588210090,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587409409,
+      "to": 1790588210090
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,7 +180,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 49622,
+      "num_messages": 49852,
       "num_messages_24h": 6074,
       "rating_score": 0.918033,
       "token_count": 1937
@@ -181,6 +190,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 49622,
+        "num_messages_24h": 6074,
+        "rating_score": 0.918033,
+        "token_count": 1937
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 49852,
         "num_messages_24h": 6074,
         "rating_score": 0.918033,
         "token_count": 1937

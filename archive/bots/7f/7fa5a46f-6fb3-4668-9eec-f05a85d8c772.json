@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7fa5a46f-6fb3-4668-9eec-f05a85d8c772",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Real World RPG |",
         "zh": "Real World RPG |"
       },
-      "num_messages": 1771942,
+      "num_messages": 1772292,
       "num_messages_24h": 1427,
       "rating_score": 0.798319,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587481858,
+      "updatedAt": 1790588499037,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Real World RPG |",
       "zh": "Real World RPG |"
     },
-    "num_messages": 1771942,
+    "num_messages": 1772292,
     "num_messages_24h": 1427,
     "rating_score": 0.798319,
     "reportsType": {},
@@ -188,10 +188,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587481858,
+    "updatedAt": 1790588499037,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481858,
+      "to": 1790588499037
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1771942,
+      "num_messages": 1772292,
       "num_messages_24h": 1427,
       "rating_score": 0.798319,
       "token_count": 120
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1771942,
+        "num_messages_24h": 1427,
+        "rating_score": 0.798319,
+        "token_count": 120
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1772292,
         "num_messages_24h": 1427,
         "rating_score": 0.798319,
         "token_count": 120

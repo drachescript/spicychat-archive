@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "316c24d8-2621-45bb-9915-188da5c00e35",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "May",
-      "num_messages": 381,
+      "num_messages": 397,
       "num_messages_24h": 300,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "lonely MILF",
       "token_count": 528,
       "type": "STANDARD",
-      "updatedAt": 1790587583918,
+      "updatedAt": 1790588366911,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "May",
-    "num_messages": 381,
+    "num_messages": 397,
     "num_messages_24h": 300,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "lonely MILF",
     "token_count": 528,
     "type": "STANDARD",
-    "updatedAt": 1790587583918,
+    "updatedAt": 1790588366911,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587583918,
+      "to": 1790588366911
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,7 +122,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 381,
+      "num_messages": 397,
       "num_messages_24h": 300,
       "rating_score": 0,
       "token_count": 528
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 381,
+        "num_messages_24h": 300,
+        "rating_score": 0,
+        "token_count": 528
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 397,
         "num_messages_24h": 300,
         "rating_score": 0,
         "token_count": 528

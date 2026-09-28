@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "af557c18-8577-449e-a399-a2298694cfb1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "hi": "°❄•Mha-Snowed in•❄°",
         "zh": "°❄•MHA-被雪困住•❄°"
       },
-      "num_messages": 2038764,
+      "num_messages": 2038789,
       "num_messages_24h": 246,
       "rating_score": 0.72766,
       "reportsType": {},
@@ -82,7 +82,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585048452,
+      "updatedAt": 1790587718810,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "hi": "°❄•Mha-Snowed in•❄°",
       "zh": "°❄•MHA-被雪困住•❄°"
     },
-    "num_messages": 2038764,
+    "num_messages": 2038789,
     "num_messages_24h": 246,
     "rating_score": 0.72766,
     "reportsType": {},
@@ -152,10 +152,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585048452,
+    "updatedAt": 1790587718810,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585048452,
+      "to": 1790587718810
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,7 +180,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2038764,
+      "num_messages": 2038789,
       "num_messages_24h": 246,
       "rating_score": 0.72766,
       "token_count": 1181
@@ -181,6 +190,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2038764,
+        "num_messages_24h": 246,
+        "rating_score": 0.72766,
+        "token_count": 1181
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2038789,
         "num_messages_24h": 246,
         "rating_score": 0.72766,
         "token_count": 1181

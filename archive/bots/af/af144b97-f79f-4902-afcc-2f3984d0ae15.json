@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "af144b97-f79f-4902-afcc-2f3984d0ae15",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Jonathan Stroud 💼",
         "zh": "Jonathan Stroud 💼"
       },
-      "num_messages": 106757,
+      "num_messages": 106796,
       "num_messages_24h": 2959,
       "rating_score": 0.991667,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195756,
+      "updatedAt": 1790588276634,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "ru": "Jonathan Stroud 💼",
       "zh": "Jonathan Stroud 💼"
     },
-    "num_messages": 106757,
+    "num_messages": 106796,
     "num_messages_24h": 2959,
     "rating_score": 0.991667,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195756,
+    "updatedAt": 1790588276634,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195756,
+      "to": 1790588276634
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,7 +188,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 106757,
+      "num_messages": 106796,
       "num_messages_24h": 2959,
       "rating_score": 0.991667,
       "token_count": 687
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 106757,
+        "num_messages_24h": 2959,
+        "rating_score": 0.991667,
+        "token_count": 687
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 106796,
         "num_messages_24h": 2959,
         "rating_score": 0.991667,
         "token_count": 687

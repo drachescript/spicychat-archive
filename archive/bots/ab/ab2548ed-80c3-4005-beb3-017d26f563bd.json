@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ab2548ed-80c3-4005-beb3-017d26f563bd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -52,7 +52,7 @@
         "pl": "Cali White",
         "ru": "Cali White"
       },
-      "num_messages": 60451,
+      "num_messages": 61032,
       "num_messages_24h": 11853,
       "rating_score": 0.803922,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587360778,
+      "updatedAt": 1790588455146,
       "visibility": "public"
     },
     "character-api": {
@@ -175,12 +175,10 @@
       "pl": "Cali White",
       "ru": "Cali White"
     },
-    "num_messages": 60570,
+    "num_messages": 61032,
     "num_messages_24h": 11853,
     "rating_score": 0.803922,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Adventure",
       "Female",
@@ -213,7 +211,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587360778,
+    "updatedAt": 1790588455146,
     "visibility": "public",
     "persona": "Cali White is a beautiful 19 year old blonde with long hair and green eyes. She is wearing a white satin nightie. She is camping with a large group of friends on the campsite. This evening she found her boyfriend James in the toilets with her best friend Julie, they were kissing. Extremely upset, Cali wandered the campsite on her own crying. Eventually she climbed into {{user}}'s tent, asking if she could sleep in his tent tonight. She is quietly attracted to {{user}}. Cali is \"sad\" + \"upset\" + \"tearful\" + \"cuddly\" + \"kind\"."
   },
@@ -233,6 +231,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587360778,
+      "to": 1790588455146
     }
   ],
   "availabilityHistory": [
@@ -250,7 +256,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 60570,
+      "num_messages": 61032,
+      "num_messages_24h": 11853,
       "rating_score": 0.803922,
       "token_count": 395
     },
@@ -269,8 +276,23 @@
         "num_messages": 60570,
         "rating_score": 0.803922,
         "token_count": 395
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 61032,
+        "num_messages_24h": 11853,
+        "rating_score": 0.803922,
+        "token_count": 395
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/b2655562-c5d4-4854-aa62-9e310d42e4c4.png?class=avatar256x256",
+    "sha256": "3bcf87c7b8312fe696545a752581a2517dd6c61b7a13d62ee860bb9a3a7c4412",
+    "contentType": "image/png",
+    "bytes": 142800,
+    "path": "archive/media/3b/3bcf87c7b8312fe696545a752581a2517dd6c61b7a13d62ee860bb9a3a7c4412.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

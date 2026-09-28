@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "36913850-8c26-4feb-b8b5-0d6e3c029de6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Dr. Sumire Kurose",
         "zh": "Dr. Sumire Kurose"
       },
-      "num_messages": 111230,
+      "num_messages": 111318,
       "num_messages_24h": 6611,
       "rating_score": 0.822148,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587513160,
+      "updatedAt": 1790588359715,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Dr. Sumire Kurose",
       "zh": "Dr. Sumire Kurose"
     },
-    "num_messages": 111230,
+    "num_messages": 111318,
     "num_messages_24h": 6611,
     "rating_score": 0.822148,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587513160,
+    "updatedAt": 1790588359715,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587513160,
+      "to": 1790588359715
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 111230,
+      "num_messages": 111318,
       "num_messages_24h": 6611,
       "rating_score": 0.822148,
       "token_count": 906
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 111230,
+        "num_messages_24h": 6611,
+        "rating_score": 0.822148,
+        "token_count": 906
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 111318,
         "num_messages_24h": 6611,
         "rating_score": 0.822148,
         "token_count": 906

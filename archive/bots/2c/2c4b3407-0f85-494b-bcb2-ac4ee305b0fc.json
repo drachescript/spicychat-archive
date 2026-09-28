@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2c4b3407-0f85-494b-bcb2-ac4ee305b0fc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Девичник",
         "tr": "Kızların Uyku Partisi"
       },
-      "num_messages": 251387,
+      "num_messages": 251425,
       "num_messages_24h": 2830,
       "rating_score": 0.717241,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587137825,
+      "updatedAt": 1790588131955,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Девичник",
       "tr": "Kızların Uyku Partisi"
     },
-    "num_messages": 251387,
+    "num_messages": 251425,
     "num_messages_24h": 2830,
     "rating_score": 0.717241,
     "reportsType": {},
@@ -182,10 +182,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587137825,
+    "updatedAt": 1790588131955,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587137825,
+      "to": 1790588131955
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,7 +210,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 251387,
+      "num_messages": 251425,
       "num_messages_24h": 2830,
       "rating_score": 0.717241,
       "token_count": 1281
@@ -211,6 +220,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 251387,
+        "num_messages_24h": 2830,
+        "rating_score": 0.717241,
+        "token_count": 1281
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 251425,
         "num_messages_24h": 2830,
         "rating_score": 0.717241,
         "token_count": 1281

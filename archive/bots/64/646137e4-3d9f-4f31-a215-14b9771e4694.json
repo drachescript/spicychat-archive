@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "646137e4-3d9f-4f31-a215-14b9771e4694",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Frieren",
         "zh": "Frieren"
       },
-      "num_messages": 118924,
+      "num_messages": 118951,
       "num_messages_24h": 262,
       "rating_score": 0.992754,
       "tags": [
@@ -76,7 +76,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587134332,
+      "updatedAt": 1790588233543,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "ru": "Frieren",
       "zh": "Frieren"
     },
-    "num_messages": 118924,
+    "num_messages": 118951,
     "num_messages_24h": 262,
     "rating_score": 0.992754,
     "tags": [
@@ -140,10 +140,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587134332,
+    "updatedAt": 1790588233543,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587134332,
+      "to": 1790588233543
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 118924,
+      "num_messages": 118951,
       "num_messages_24h": 262,
       "rating_score": 0.992754,
       "token_count": 1022
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 118924,
+        "num_messages_24h": 262,
+        "rating_score": 0.992754,
+        "token_count": 1022
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 118951,
         "num_messages_24h": 262,
         "rating_score": 0.992754,
         "token_count": 1022

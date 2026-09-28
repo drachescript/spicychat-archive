@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dfccac32-831d-4d33-a0d5-3cc8aa1e7caa",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Faedra",
         "zh": "Faedra"
       },
-      "num_messages": 165907,
+      "num_messages": 165911,
       "num_messages_24h": 2402,
       "rating_score": 0.243169,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584806239,
+      "updatedAt": 1790587712243,
       "visibility": "public"
     }
   },
@@ -153,7 +153,7 @@
       "tr": "Faedra",
       "zh": "Faedra"
     },
-    "num_messages": 165907,
+    "num_messages": 165911,
     "num_messages_24h": 2402,
     "rating_score": 0.243169,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584806239,
+    "updatedAt": 1790587712243,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584806239,
+      "to": 1790587712243
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,13 +222,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2331,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2332,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 165907,
+      "num_messages": 165911,
       "num_messages_24h": 2402,
       "rating_score": 0.243169,
       "token_count": 1380
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 165907,
+        "num_messages_24h": 2402,
+        "rating_score": 0.243169,
+        "token_count": 1380
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 165911,
         "num_messages_24h": 2402,
         "rating_score": 0.243169,
         "token_count": 1380

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "54e43bbd-8742-4a00-a6e4-fb01ba361cde",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "tr": "Dark Omegaverse",
         "zh": "黑暗欧米伽宇宙"
       },
-      "num_messages": 1392703,
+      "num_messages": 1392728,
       "num_messages_24h": 2469,
       "rating_score": 0.836028,
       "tags": [
@@ -105,7 +105,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587638459,
+      "updatedAt": 1790588207425,
       "visibility": "public"
     }
   },
@@ -152,7 +152,7 @@
       "tr": "Dark Omegaverse",
       "zh": "黑暗欧米伽宇宙"
     },
-    "num_messages": 1392703,
+    "num_messages": 1392728,
     "num_messages_24h": 2469,
     "rating_score": 0.836028,
     "tags": [
@@ -200,10 +200,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587638459,
+    "updatedAt": 1790588207425,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587638459,
+      "to": 1790588207425
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,13 +222,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2266,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2267,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1392703,
+      "num_messages": 1392728,
       "num_messages_24h": 2469,
       "rating_score": 0.836028,
       "token_count": 540
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1392703,
+        "num_messages_24h": 2469,
+        "rating_score": 0.836028,
+        "token_count": 540
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1392728,
         "num_messages_24h": 2469,
         "rating_score": 0.836028,
         "token_count": 540

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f6a58288-8f0a-416e-a135-25b7e7a59f1e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "ru": "Futa Breeding Ground"
       },
-      "num_messages": 3671,
+      "num_messages": 3688,
       "num_messages_24h": 2249,
       "rating_score": 0,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585891,
+      "updatedAt": 1790587714953,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
     "name_i18n": {
       "ru": "Futa Breeding Ground"
     },
-    "num_messages": 3671,
+    "num_messages": 3688,
     "num_messages_24h": 2249,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587585891,
+    "updatedAt": 1790587714953,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587585891,
+      "to": 1790587714953
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,13 +144,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2130,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2132,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 3671,
+      "num_messages": 3688,
       "num_messages_24h": 2249,
       "rating_score": 0,
       "token_count": 1713
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 3671,
+        "num_messages_24h": 2249,
+        "rating_score": 0,
+        "token_count": 1713
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 3688,
         "num_messages_24h": 2249,
         "rating_score": 0,
         "token_count": 1713

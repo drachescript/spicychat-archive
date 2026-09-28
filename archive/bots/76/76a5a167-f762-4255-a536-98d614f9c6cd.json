@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "76a5a167-f762-4255-a536-98d614f9c6cd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "MHA - Big Four Intro",
-      "num_messages": 74,
+      "num_messages": 78,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -50,7 +50,7 @@
       "title": "Aizawa Asked The Big Four To Introduce Themselfs And Train Class 1A. ( MHA ).",
       "token_count": 1172,
       "type": "STANDARD",
-      "updatedAt": 1790586522134,
+      "updatedAt": 1790587841596,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "MHA - Big Four Intro",
-    "num_messages": 74,
+    "num_messages": 78,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -88,10 +88,19 @@
     "title": "Aizawa Asked The Big Four To Introduce Themselfs And Train Class 1A. ( MHA ).",
     "token_count": 1172,
     "type": "STANDARD",
-    "updatedAt": 1790586522134,
+    "updatedAt": 1790587841596,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586522134,
+      "to": 1790587841596
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,7 +116,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 74,
+      "num_messages": 78,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1172
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 74,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1172
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 78,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1172

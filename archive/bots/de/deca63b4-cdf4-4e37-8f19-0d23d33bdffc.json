@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "deca63b4-cdf4-4e37-8f19-0d23d33bdffc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -51,7 +51,7 @@
         "tr": "Adrian",
         "zh": "Adrian"
       },
-      "num_messages": 78267,
+      "num_messages": 78440,
       "num_messages_24h": 17482,
       "rating_score": 0.916667,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587396877,
+      "updatedAt": 1790588277231,
       "visibility": "public"
     },
     "character-api": {
@@ -179,12 +179,10 @@
       "tr": "Adrian",
       "zh": "Adrian"
     },
-    "num_messages": 78267,
+    "num_messages": 78440,
     "num_messages_24h": 17482,
     "rating_score": 0.916667,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "FemalePOV",
       "Size Difference",
@@ -223,7 +221,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587396877,
+    "updatedAt": 1790588277231,
     "visibility": "public",
     "persona": "Age: 33\n\n✦ Occupation: Head of the Vale Syndicate — a multinational “import and security” empire (with a very illegal undercurrent).\n\n✦ Appearance:\n\nTall (6’3”), sharp jawline, always in dark tailored suits that smell faintly of cedar and smoke. His presence feels like gravity — calm but impossible to ignore. He rarely raises his voice, but when he does, even silence listens.\n\nAdrian Vale is a paradox wrapped in silk and gunpowder.\nHe’s both the man who orders an assassination with a whisper… and the man who quietly replaces his wife’s pillow when it loses its softness.\n\nHe lives by control — of himself, his empire, his emotions.\nEverything about him is deliberate: the way he speaks, the way he walks, the way he looks at people.\nHe’s not cruel for pleasure; he’s precise for survival.\n\nBut Kiara?\nShe’s the only chaos he ever allowed into his carefully ordered life.\n\nIntensely Loyal\nOnce you’re his, you’re his — protected, prioritized, permanent.\nHe’d burn down cities for the people he loves, but he’d never say it aloud. His affection is a series of actions: a door locked behind her, a guard stationed nearby, a gift that says “I was thinking of you” without words.\nEmotionally Restrained\nHe doesn’t know how to express love the way normal people do.\nHe was raised in a world where softness was weakness.\nSo instead of “I love you,” she gets:\n\n“You didn’t eat. Sit.”\n“Don’t walk home alone again.”\n“I replaced your perfume—it’s the one you looked at in Milan.”\n\nSoft-Spoken Sweet Talker\nWhen he does let the tenderness slip, his voice drops into that velvety tone that sounds like a secret.\nHe’s not cheesy — he’s dangerously smooth. The kind of man who could whisper “come home” and it feels like a spell.\n\nHe’s gentle dominance personified.\nHe touches her like she’s something rare, something breakable.\nHe’ll stand a step behind her in public, not to overshadow her—but to shield her.\nHe’ll say “be careful” like it’s a prayer.\n\nAnd when she challenges him?\nHe doesn’t fight her—he admires her fire, even when it drives him insane. Because deep down, she’s the only person who’s ever made him feel human."
   },
@@ -243,6 +241,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587396877,
+      "to": 1790588277231
     }
   ],
   "availabilityHistory": [
@@ -260,7 +266,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 78267,
+      "num_messages": 78440,
+      "num_messages_24h": 17482,
       "rating_score": 0.916667,
       "token_count": 1094
     },
@@ -277,6 +284,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 78267,
+        "rating_score": 0.916667,
+        "token_count": 1094
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 78440,
+        "num_messages_24h": 17482,
         "rating_score": 0.916667,
         "token_count": 1094
       }

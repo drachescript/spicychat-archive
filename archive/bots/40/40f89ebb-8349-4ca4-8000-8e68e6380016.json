@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40f89ebb-8349-4ca4-8000-8e68e6380016",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "hi": "JJK rpg",
         "ru": "JJK rpg"
       },
-      "num_messages": 76778,
+      "num_messages": 76874,
       "num_messages_24h": 3545,
       "rating_score": 1,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587248054,
+      "updatedAt": 1790588458302,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "hi": "JJK rpg",
       "ru": "JJK rpg"
     },
-    "num_messages": 76778,
+    "num_messages": 76874,
     "num_messages_24h": 3545,
     "rating_score": 1,
     "reportsType": {},
@@ -144,10 +144,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587248054,
+    "updatedAt": 1790588458302,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587248054,
+      "to": 1790588458302
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,13 +170,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "top-rated": {
-      "rank": 194,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 193,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 76778,
+      "num_messages": 76874,
       "num_messages_24h": 3545,
       "rating_score": 1,
       "token_count": 1330
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 76778,
+        "num_messages_24h": 3545,
+        "rating_score": 1,
+        "token_count": 1330
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 76874,
         "num_messages_24h": 3545,
         "rating_score": 1,
         "token_count": 1330

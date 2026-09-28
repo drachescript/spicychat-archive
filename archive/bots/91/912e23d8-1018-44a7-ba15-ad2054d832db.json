@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "912e23d8-1018-44a7-ba15-ad2054d832db",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -58,7 +58,7 @@
         "tr": "Jaehyun Yeo (BL/MLM)",
         "zh": "Jaehyun Yeo (BL/MLM)"
       },
-      "num_messages": 79193,
+      "num_messages": 79323,
       "num_messages_24h": 11499,
       "rating_score": 0.975,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587524621,
+      "updatedAt": 1790588559564,
       "visibility": "public"
     },
     "character-api": {
@@ -161,7 +161,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/7885abf8-fa6f-418d-8ccd-4494ee6b3c38.jpg?class=avatar256x256",
     "character_id": "912e23d8-1018-44a7-ba15-ad2054d832db",
-    "createdAt": "2026-04-03T09:18:05.299Z",
+    "createdAt": 1775207885299,
     "creator_user_id": "kp:1debccbaf0bc455d825d95a95e2c8175",
     "creator_username": "enzooobunni",
     "definition_size_category": "low",
@@ -194,14 +194,10 @@
       "tr": "Jaehyun Yeo (BL/MLM)",
       "zh": "Jaehyun Yeo (BL/MLM)"
     },
-    "num_messages": 79193,
+    "num_messages": 79323,
     "num_messages_24h": 11499,
     "rating_score": 0.975,
-    "reportsType": [
-      "Admin",
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "MalePOV",
@@ -237,7 +233,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:25:24.621Z",
+    "updatedAt": 1790588559564,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -267,6 +263,22 @@
       "kind": "value",
       "from": 1790587524621,
       "to": "2026-09-28T09:25:24.621Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-04-03T09:18:05.299Z",
+      "to": 1775207885299
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:25:24.621Z",
+      "to": 1790588559564
     }
   ],
   "availabilityHistory": [
@@ -284,7 +296,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 79193,
+      "num_messages": 79323,
+      "num_messages_24h": 11499,
       "rating_score": 0.975,
       "token_count": 483
     },
@@ -303,8 +316,23 @@
         "num_messages": 79193,
         "rating_score": 0.975,
         "token_count": 483
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 79323,
+        "num_messages_24h": 11499,
+        "rating_score": 0.975,
+        "token_count": 483
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/7885abf8-fa6f-418d-8ccd-4494ee6b3c38.jpg?class=avatar256x256",
+    "sha256": "a4a5da402fde0124e826e1082279ac2bc961bd897cf8d9cd10c41c08cdd690de",
+    "contentType": "image/jpeg",
+    "bytes": 32387,
+    "path": "archive/media/a4/a4a5da402fde0124e826e1082279ac2bc961bd897cf8d9cd10c41c08cdd690de.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

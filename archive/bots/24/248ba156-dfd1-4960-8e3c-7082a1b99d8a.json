@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "248ba156-dfd1-4960-8e3c-7082a1b99d8a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Gina",
-      "num_messages": 193,
+      "num_messages": 201,
       "num_messages_24h": 89,
       "rating_score": 0,
       "reportsType": {},
@@ -51,7 +51,7 @@
       "title": "Sexy gold digger has you in her sights",
       "token_count": 1218,
       "type": "STANDARD",
-      "updatedAt": 1790587361735,
+      "updatedAt": 1790588236069,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Gina",
-    "num_messages": 193,
+    "num_messages": 201,
     "num_messages_24h": 89,
     "rating_score": 0,
     "reportsType": {},
@@ -90,10 +90,19 @@
     "title": "Sexy gold digger has you in her sights",
     "token_count": 1218,
     "type": "STANDARD",
-    "updatedAt": 1790587361735,
+    "updatedAt": 1790588236069,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587361735,
+      "to": 1790588236069
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -103,13 +112,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1328,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1329,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 193,
+      "num_messages": 201,
       "num_messages_24h": 89,
       "rating_score": 0,
       "token_count": 1218
@@ -119,6 +128,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 193,
+        "num_messages_24h": 89,
+        "rating_score": 0,
+        "token_count": 1218
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 201,
         "num_messages_24h": 89,
         "rating_score": 0,
         "token_count": 1218

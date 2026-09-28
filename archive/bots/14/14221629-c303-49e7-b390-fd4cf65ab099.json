@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "14221629-c303-49e7-b390-fd4cf65ab099",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "ABO Kim Luke - BL",
         "zh": "ABO 金卢克 - BL"
       },
-      "num_messages": 178208,
+      "num_messages": 178229,
       "num_messages_24h": 2384,
       "rating_score": 0.862205,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587026305,
+      "updatedAt": 1790588041273,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "ru": "ABO Kim Luke - BL",
       "zh": "ABO 金卢克 - BL"
     },
-    "num_messages": 178208,
+    "num_messages": 178229,
     "num_messages_24h": 2384,
     "rating_score": 0.862205,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587026305,
+    "updatedAt": 1790588041273,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587026305,
+      "to": 1790588041273
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2352,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2353,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 178208,
+      "num_messages": 178229,
       "num_messages_24h": 2384,
       "rating_score": 0.862205,
       "token_count": 407
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 178208,
+        "num_messages_24h": 2384,
+        "rating_score": 0.862205,
+        "token_count": 407
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 178229,
         "num_messages_24h": 2384,
         "rating_score": 0.862205,
         "token_count": 407

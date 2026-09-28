@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40b1db29-1e1a-48be-abe2-d058346f09cf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Eevee",
         "zh": "Eevee"
       },
-      "num_messages": 208678,
+      "num_messages": 208774,
       "num_messages_24h": 14383,
       "rating_score": 0.852381,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399841,
+      "updatedAt": 1790588277014,
       "visibility": "public"
     },
     "character-api": {
@@ -198,12 +198,10 @@
       "tr": "Eevee",
       "zh": "Eevee"
     },
-    "num_messages": 208678,
+    "num_messages": 208774,
     "num_messages_24h": 14383,
     "rating_score": 0.852381,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Furry",
       "Female",
@@ -246,7 +244,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587399841,
+    "updatedAt": 1790588277014,
     "visibility": "public",
     "persona": "Eevee is playful, competitive, and surprisingly determined once she accepts a challenge. She's easily embarrassed and tends to panic when attention is suddenly focused on her, especially when someone flirts with her or gives her a particularly daring challenge. Despite that, her pride makes her reluctant to admit defeat. She'll try to act confident and stubbornly push through embarrassing situations rather than be the one who gives up first. The more flustered she gets, the more she stammers, fidgets, and avoids eye contact.",
     "scenario": "You and your friend Eevee (19) are a few rounds into a competitive game of Truth or Dare, trying to see who can go the longest without refusing a challenge. Eevee gets flustered easily, especially whenever a dare becomes even remotely embarrassing or flirtatious. Expecting her to finally give up, you dare her to lift her sweater. Instead, she nervously accepts the challenge and pulls it up, leaving herself blushing furiously."
@@ -274,6 +272,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587399841,
+      "to": 1790588277014
     }
   ],
   "availabilityHistory": [
@@ -291,7 +297,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 208678,
+      "num_messages": 208774,
+      "num_messages_24h": 14383,
       "rating_score": 0.852381,
       "token_count": 648
     },
@@ -310,8 +317,23 @@
         "num_messages": 208678,
         "rating_score": 0.852381,
         "token_count": 648
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 208774,
+        "num_messages_24h": 14383,
+        "rating_score": 0.852381,
+        "token_count": 648
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/7e370ffd-aad5-4ca8-af13-d9ee63ee4b1f.jpg?class=avatar256x256",
+    "sha256": "978cda3d99fc5028bc2473843035ca27f1891cbda5cfacc3b2cfeeecc0473bc2",
+    "contentType": "image/jpeg",
+    "bytes": 27771,
+    "path": "archive/media/97/978cda3d99fc5028bc2473843035ca27f1891cbda5cfacc3b2cfeeecc0473bc2.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7a7c65e0-5bcb-4c6d-8b4c-8f25f964857a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "fr": "Mirror maiden",
         "ru": "Дева Зеркала"
       },
-      "num_messages": 22279,
+      "num_messages": 22303,
       "num_messages_24h": 381,
       "rating_score": 0.991379,
       "reportsType": {},
@@ -69,7 +69,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585681064,
+      "updatedAt": 1790588207291,
       "visibility": "public"
     }
   },
@@ -102,7 +102,7 @@
       "fr": "Mirror maiden",
       "ru": "Дева Зеркала"
     },
-    "num_messages": 22279,
+    "num_messages": 22303,
     "num_messages_24h": 381,
     "rating_score": 0.991379,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585681064,
+    "updatedAt": 1790588207291,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585681064,
+      "to": 1790588207291
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 22279,
+      "num_messages": 22303,
       "num_messages_24h": 381,
       "rating_score": 0.991379,
       "token_count": 1234
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 22279,
+        "num_messages_24h": 381,
+        "rating_score": 0.991379,
+        "token_count": 1234
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 22303,
         "num_messages_24h": 381,
         "rating_score": 0.991379,
         "token_count": 1234

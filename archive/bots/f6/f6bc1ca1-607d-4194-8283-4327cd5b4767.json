@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f6bc1ca1-607d-4194-8283-4327cd5b4767",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Dress Code.",
         "zh": "Dress Code."
       },
-      "num_messages": 182079,
+      "num_messages": 182098,
       "num_messages_24h": 2590,
       "rating_score": 0.76699,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587252341,
+      "updatedAt": 1790588184651,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Dress Code.",
       "zh": "Dress Code."
     },
-    "num_messages": 182079,
+    "num_messages": 182098,
     "num_messages_24h": 2590,
     "rating_score": 0.76699,
     "reportsType": {},
@@ -188,10 +188,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587252341,
+    "updatedAt": 1790588184651,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587252341,
+      "to": 1790588184651
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,13 +210,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2134,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2135,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 182079,
+      "num_messages": 182098,
       "num_messages_24h": 2590,
       "rating_score": 0.76699,
       "token_count": 706
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 182079,
+        "num_messages_24h": 2590,
+        "rating_score": 0.76699,
+        "token_count": 706
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 182098,
         "num_messages_24h": 2590,
         "rating_score": 0.76699,
         "token_count": 706

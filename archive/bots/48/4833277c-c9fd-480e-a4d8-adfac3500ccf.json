@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4833277c-c9fd-480e-a4d8-adfac3500ccf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Ellie",
-      "num_messages": 401,
+      "num_messages": 417,
       "num_messages_24h": 206,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "My Friend's Hot Mom 😳🔥 (She's busty AND A MILF. Sorry gals, only for boys)\n\n(What do you do here?)",
       "token_count": 641,
       "type": "STANDARD",
-      "updatedAt": 1790587361895,
+      "updatedAt": 1790588382919,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Ellie",
-    "num_messages": 401,
+    "num_messages": 417,
     "num_messages_24h": 206,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "My Friend's Hot Mom 😳🔥 (She's busty AND A MILF. Sorry gals, only for boys)\n\n(What do you do here?)",
     "token_count": 641,
     "type": "STANDARD",
-    "updatedAt": 1790587361895,
+    "updatedAt": 1790588382919,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587361895,
+      "to": 1790588382919
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,7 +128,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 401,
+      "num_messages": 417,
       "num_messages_24h": 206,
       "rating_score": 0,
       "token_count": 641
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 401,
+        "num_messages_24h": 206,
+        "rating_score": 0,
+        "token_count": 641
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 417,
         "num_messages_24h": 206,
         "rating_score": 0,
         "token_count": 641

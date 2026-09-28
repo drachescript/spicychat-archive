@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2a5f9f2a-1c07-43ae-985f-25d397c05312",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "Irina Petrovna",
         "ru": "Irina Petrovna"
       },
-      "num_messages": 7352,
+      "num_messages": 7416,
       "num_messages_24h": 3505,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587679692,
+      "updatedAt": 1790588383969,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "fr": "Irina Petrovna",
       "ru": "Irina Petrovna"
     },
-    "num_messages": 7352,
+    "num_messages": 7416,
     "num_messages_24h": 3505,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587679692,
+    "updatedAt": 1790588383969,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587679692,
+      "to": 1790588383969
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,13 +160,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 2125,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2127,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 7352,
+      "num_messages": 7416,
       "num_messages_24h": 3505,
       "rating_score": 0,
       "token_count": 1930
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 7352,
+        "num_messages_24h": 3505,
+        "rating_score": 0,
+        "token_count": 1930
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 7416,
         "num_messages_24h": 3505,
         "rating_score": 0,
         "token_count": 1930

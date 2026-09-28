@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5c97f59d-042e-4247-ba40-4d533a6f9fae",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "es": "My Hero Academia",
         "ru": "My Hero Academia"
       },
-      "num_messages": 52644,
+      "num_messages": 52684,
       "num_messages_24h": 3488,
       "reportsType": {},
       "tags": [
@@ -69,7 +69,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587406974,
+      "updatedAt": 1790588068846,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "es": "My Hero Academia",
       "ru": "My Hero Academia"
     },
-    "num_messages": 52644,
+    "num_messages": 52684,
     "num_messages_24h": 3488,
     "reportsType": {},
     "tags": [
@@ -128,10 +128,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587406974,
+    "updatedAt": 1790588068846,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587406974,
+      "to": 1790588068846
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 52644,
+      "num_messages": 52684,
       "num_messages_24h": 3488,
       "token_count": 1174
     },
@@ -156,6 +165,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 52644,
+        "num_messages_24h": 3488,
+        "token_count": 1174
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 52684,
         "num_messages_24h": 3488,
         "token_count": 1174
       }

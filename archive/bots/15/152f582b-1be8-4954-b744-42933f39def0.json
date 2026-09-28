@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "152f582b-1be8-4954-b744-42933f39def0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Nanase Tsubasa",
         "ru": "Nanase Tsubasa"
       },
-      "num_messages": 15599,
+      "num_messages": 15899,
       "num_messages_24h": 3232,
       "rating_score": 0,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587136734,
+      "updatedAt": 1790588455923,
       "visibility": "public"
     }
   },
@@ -102,7 +102,7 @@
       "pl": "Nanase Tsubasa",
       "ru": "Nanase Tsubasa"
     },
-    "num_messages": 15599,
+    "num_messages": 15899,
     "num_messages_24h": 3232,
     "rating_score": 0,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587136734,
+    "updatedAt": 1790588455923,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587136734,
+      "to": 1790588455923
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 15599,
+      "num_messages": 15899,
       "num_messages_24h": 3232,
       "rating_score": 0,
       "token_count": 268
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 15599,
+        "num_messages_24h": 3232,
+        "rating_score": 0,
+        "token_count": 268
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 15899,
         "num_messages_24h": 3232,
         "rating_score": 0,
         "token_count": 268

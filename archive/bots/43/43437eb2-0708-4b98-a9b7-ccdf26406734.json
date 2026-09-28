@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "43437eb2-0708-4b98-a9b7-ccdf26406734",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "de": "Sheela and Justin",
         "ru": "Sheela and Justin"
       },
-      "num_messages": 2005,
+      "num_messages": 2018,
       "num_messages_24h": 888,
       "rating_score": 0,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195074,
+      "updatedAt": 1790588233103,
       "visibility": "public"
     }
   },
@@ -99,7 +99,7 @@
       "de": "Sheela and Justin",
       "ru": "Sheela and Justin"
     },
-    "num_messages": 2005,
+    "num_messages": 2018,
     "num_messages_24h": 888,
     "rating_score": 0,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195074,
+    "updatedAt": 1790588233103,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195074,
+      "to": 1790588233103
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2005,
+      "num_messages": 2018,
       "num_messages_24h": 888,
       "rating_score": 0,
       "token_count": 1356
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2005,
+        "num_messages_24h": 888,
+        "rating_score": 0,
+        "token_count": 1356
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2018,
         "num_messages_24h": 888,
         "rating_score": 0,
         "token_count": 1356

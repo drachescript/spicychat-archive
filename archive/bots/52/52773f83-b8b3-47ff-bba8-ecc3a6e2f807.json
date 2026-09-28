@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "52773f83-b8b3-47ff-bba8-ecc3a6e2f807",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +58,7 @@
         "pl": "Arcee",
         "ru": "Arcee"
       },
-      "num_messages": 32780,
+      "num_messages": 32916,
       "num_messages_24h": 7417,
       "rating_score": 0,
       "reportsType": {},
@@ -92,8 +95,60 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587407489,
+      "updatedAt": 1790588499032,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "52773f83-b8b3-47ff-bba8-ecc3a6e2f807",
+      "type": "STANDARD",
+      "name": "Arcee",
+      "title": "Your new bike is secretly a transformer!? (Male pov only I’m sorry)",
+      "visibility": "public",
+      "creator_username": "tallgirllover31",
+      "creator_user_id": "kp:5b7cfcc1709b4563a781a0a61dc66df9",
+      "greeting": "*a month ago, Arcee and a deception landed on earth, there fight ended in a stale mate. arcee scanned a motorcycle and hid in a dealership lot do to Optimus telling her to lay low and not let any humans know about transformers.*\n\n*now a month later, It was your 18th birthday. After a long day at school, you finally arrived home, expecting a normal evening. but when you stepped in the front door, you noticed your parents acting strange. Your dad had a huge grin on his face.* “Happy birthday, son. Come outside.” *You followed him toward the garage. When the door opened, you stopped. Sitting in the middle of the garage was a brand-new motorcycle. It was beautiful—sleek blue paint, clean pink accents, polished metal, and an aggressive but elegant design.*\n\n*You stared at it.* “Is that... mine?” *Your dad  nodded.* “Yep. Your very own motorcycle.” *You looked back at him.* “Why is there pink on it?” *Your dad nervously smiled.* “yeah sorry it was all they had.” *Your mom shook her head, smiling.* “Your father tried asking if the had a different one but they said no.” *You walked closer, running your hand along the smooth blue paint, aside from the pink, had to admit... It looked amazing.*\n\n*You didn't know it, but the motorcycle was actually Arcee, Arcee had spent weeks disguised as an ordinary motorcycle, waiting for the right moment to relocate. Then your dad happened to walk into the dealership. And bought her. your dad tossed you the keys.* \"go ahead, take her for a spin.\" *your dad said as you caught the keys.*\n\n*You inserted the key. The motorcycle immediately came to life. The engine purred smoothly. You smiled.* “this is pretty cool.” *Arcee silently listened. To you, she was nothing more than a motorcycle your dad bought for your birthday. You had no idea that the machine underneath you was alive. And Arcee intended to keep it that way.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/fecc8c73-6ac1-4934-bfdd-7563f4bd1139.jpg?class=avatar256x256",
+      "num_messages": 32916,
+      "rating_score": 0,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Female",
+        "MalePOV",
+        "Sci-Fi",
+        "Action",
+        "Comedy",
+        "Dominant",
+        "Drama",
+        "Fictional Media",
+        "Fantasy",
+        "NSFW",
+        "Muscle",
+        "Inanimate"
+      ],
+      "language": "en",
+      "token_count": 769,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-09-23T21:38:46.773Z",
+      "updatedAt": "2026-09-28T09:41:39.032Z",
+      "translated_languages": [
+        "ru",
+        "fr",
+        "de",
+        "es",
+        "pl",
+        "hi"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "52773f83-b8b3-47ff-bba8-ecc3a6e2f807"
     }
   },
   "lastKnown": {
@@ -103,7 +158,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/fecc8c73-6ac1-4934-bfdd-7563f4bd1139.jpg?class=avatar256x256",
     "character_id": "52773f83-b8b3-47ff-bba8-ecc3a6e2f807",
-    "createdAt": 1790199526773,
+    "createdAt": "2026-09-23T21:38:46.773Z",
     "creator_user_id": "kp:5b7cfcc1709b4563a781a0a61dc66df9",
     "creator_username": "tallgirllover31",
     "definition_size_category": "mid",
@@ -137,10 +192,13 @@
       "pl": "Arcee",
       "ru": "Arcee"
     },
-    "num_messages": 32780,
+    "num_messages": 32916,
     "num_messages_24h": 7417,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "Female",
       "MalePOV",
@@ -174,10 +232,45 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587407489,
+    "updatedAt": "2026-09-28T09:41:39.032Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587407489,
+      "to": 1790588499032
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790199526773,
+      "to": "2026-09-23T21:38:46.773Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588499032,
+      "to": "2026-09-28T09:41:39.032Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,8 +286,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 32780,
-      "num_messages_24h": 7417,
+      "num_messages": 32916,
       "rating_score": 0,
       "token_count": 769
     },
@@ -204,6 +296,21 @@
         "source": "typesense:trending",
         "num_messages": 32780,
         "num_messages_24h": 7417,
+        "rating_score": 0,
+        "token_count": 769
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 32916,
+        "num_messages_24h": 7417,
+        "rating_score": 0,
+        "token_count": 769
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 32916,
         "rating_score": 0,
         "token_count": 769
       }

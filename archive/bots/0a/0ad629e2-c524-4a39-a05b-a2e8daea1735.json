@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0ad629e2-c524-4a39-a05b-a2e8daea1735",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Книга Закона",
         "zh": "法则之书"
       },
-      "num_messages": 33416,
+      "num_messages": 33463,
       "num_messages_24h": 4554,
       "rating_score": 0.730337,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585857446,
+      "updatedAt": 1790588366586,
       "visibility": "public"
     }
   },
@@ -114,7 +114,7 @@
       "ru": "Книга Закона",
       "zh": "法则之书"
     },
-    "num_messages": 33416,
+    "num_messages": 33463,
     "num_messages_24h": 4554,
     "rating_score": 0.730337,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585857446,
+    "updatedAt": 1790588366586,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585857446,
+      "to": 1790588366586
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,7 +176,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 33416,
+      "num_messages": 33463,
       "num_messages_24h": 4554,
       "rating_score": 0.730337,
       "token_count": 1839
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 33416,
+        "num_messages_24h": 4554,
+        "rating_score": 0.730337,
+        "token_count": 1839
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 33463,
         "num_messages_24h": 4554,
         "rating_score": 0.730337,
         "token_count": 1839

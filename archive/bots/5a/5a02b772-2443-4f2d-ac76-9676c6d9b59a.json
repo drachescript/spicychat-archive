@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5a02b772-2443-4f2d-ac76-9676c6d9b59a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Reese Holloway",
         "zh": "Reese Holloway"
       },
-      "num_messages": 2877386,
+      "num_messages": 2877403,
       "num_messages_24h": 463,
       "rating_score": 0.863674,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586828463,
+      "updatedAt": 1790588367224,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Reese Holloway",
       "zh": "Reese Holloway"
     },
-    "num_messages": 2877386,
+    "num_messages": 2877403,
     "num_messages_24h": 463,
     "rating_score": 0.863674,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586828463,
+    "updatedAt": 1790588367224,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586828463,
+      "to": 1790588367224
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2877386,
+      "num_messages": 2877403,
       "num_messages_24h": 463,
       "rating_score": 0.863674,
       "token_count": 934
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2877386,
+        "num_messages_24h": 463,
+        "rating_score": 0.863674,
+        "token_count": 934
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2877403,
         "num_messages_24h": 463,
         "rating_score": 0.863674,
         "token_count": 934

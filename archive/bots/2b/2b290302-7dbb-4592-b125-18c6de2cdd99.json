@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2b290302-7dbb-4592-b125-18c6de2cdd99",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pt": "Lianne Arellano",
         "ru": "Lianne Arellano"
       },
-      "num_messages": 12312,
+      "num_messages": 12320,
       "num_messages_24h": 2569,
       "rating_score": 0,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587524873,
+      "updatedAt": 1790588456422,
       "visibility": "public"
     }
   },
@@ -113,7 +113,7 @@
       "pt": "Lianne Arellano",
       "ru": "Lianne Arellano"
     },
-    "num_messages": 12312,
+    "num_messages": 12320,
     "num_messages_24h": 2569,
     "rating_score": 0,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587524873,
+    "updatedAt": 1790588456422,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587524873,
+      "to": 1790588456422
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,13 +170,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2161,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2162,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 12312,
+      "num_messages": 12320,
       "num_messages_24h": 2569,
       "rating_score": 0,
       "token_count": 1386
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 12312,
+        "num_messages_24h": 2569,
+        "rating_score": 0,
+        "token_count": 1386
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 12320,
         "num_messages_24h": 2569,
         "rating_score": 0,
         "token_count": 1386

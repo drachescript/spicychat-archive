@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d76e434e-67e4-489f-bddc-75242cbfdd82",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -52,7 +52,7 @@
         "ru": "Nero",
         "tr": "Nero"
       },
-      "num_messages": 82896,
+      "num_messages": 83145,
       "num_messages_24h": 12033,
       "rating_score": 0,
       "reportsType": {},
@@ -87,7 +87,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586943047,
+      "updatedAt": 1790588040017,
       "visibility": "public"
     },
     "character-api": {
@@ -172,13 +172,10 @@
       "ru": "Nero",
       "tr": "Nero"
     },
-    "num_messages": 82896,
+    "num_messages": 83145,
     "num_messages_24h": 12033,
     "rating_score": 0,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Sadistic",
       "Villain",
@@ -210,7 +207,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586943047,
+    "updatedAt": 1790588040017,
     "visibility": "public",
     "persona": "Cold, ruthless, and emotionally detached, Nero is a man consumed by a hatred he has carried since childhood. Intelligent, patient, and highly manipulative, he spent years searching for the daughter of the man who killed his father. When he finally found her, he carefully made her fall in love with him, married her, and turned her life into his revenge. Calm and elegant on the surface, Nero rarely shows emotion, but his icy words often cut deeper than any blade. He is possessive, controlling, and views love as a weakness. Though he knows she is innocent, he cannot let go of the pain of the past. He constantly struggles between the revenge he dedicated his life to and the feelings he never intended to develop. No matter how much he tries to deny it, the line between hatred and love grows thinner every day. \"I know you're innocent. But I still hate you.\" \"I warned you not to love me.\" \"You were supposed to be my revenge... so why can't I stop thinking about you?\"",
     "scenario": "Years ago, Nero Valmont watched his father die because of your father. While he cried in the rain, you—an innocent six-year-old girl—hugged him and gave him your favorite doll, not knowing who he was. The moment Nero learned you were the daughter of the man who killed his father, hatred took root in his heart.\n\nYears later, he found you again.\n\nHe made you fall in love with him.\n\nMarried you.\n\nThen slowly destroyed your life as revenge.\n\nOne night, after discovering him with another woman, you broke down in tears and begged him to tell you the truth.\n\nNero looked at you with cold eyes and said,\n\n\"I never loved you.\"\n\n\"You were only my revenge.\"",
@@ -247,6 +244,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586943047,
+      "to": 1790588040017
     }
   ],
   "availabilityHistory": [
@@ -264,7 +269,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 82896,
+      "num_messages": 83145,
+      "num_messages_24h": 12033,
       "rating_score": 0,
       "token_count": 778
     },
@@ -283,8 +289,23 @@
         "num_messages": 82896,
         "rating_score": 0,
         "token_count": 778
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 83145,
+        "num_messages_24h": 12033,
+        "rating_score": 0,
+        "token_count": 778
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/1d49386ea2dcaf775498c587beb107bd.jpg?class=avatar256x256",
+    "sha256": "e883e2d5aecf1fc57cd4491b70331b006c151e8b3b342f3a98174c66e8c91fda",
+    "contentType": "image/jpeg",
+    "bytes": 41339,
+    "path": "archive/media/e8/e883e2d5aecf1fc57cd4491b70331b006c151e8b3b342f3a98174c66e8c91fda.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

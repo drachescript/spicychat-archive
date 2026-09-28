@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8e41d4a8-5832-4d76-b367-15a166269eb3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Girlfriends MILF Mom",
         "tr": "Kız Arkadaşımın MILF Annesi"
       },
-      "num_messages": 106954,
+      "num_messages": 107020,
       "num_messages_24h": 2451,
       "rating_score": 0.87,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587635754,
+      "updatedAt": 1790588500806,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Girlfriends MILF Mom",
       "tr": "Kız Arkadaşımın MILF Annesi"
     },
-    "num_messages": 106954,
+    "num_messages": 107020,
     "num_messages_24h": 2451,
     "rating_score": 0.87,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587635754,
+    "updatedAt": 1790588500806,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587635754,
+      "to": 1790588500806
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,13 +206,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2281,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2282,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 106954,
+      "num_messages": 107020,
       "num_messages_24h": 2451,
       "rating_score": 0.87,
       "token_count": 481
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 106954,
+        "num_messages_24h": 2451,
+        "rating_score": 0.87,
+        "token_count": 481
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 107020,
         "num_messages_24h": 2451,
         "rating_score": 0.87,
         "token_count": 481

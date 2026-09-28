@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2f7da401-c5a4-4b8c-b4f7-b20640319683",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -35,7 +35,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Bill Dickey",
-      "num_messages": 32482,
+      "num_messages": 32484,
       "num_messages_24h": 17,
       "rating_score": 1,
       "reportsType": {},
@@ -49,7 +49,7 @@
       "title": "»»———> 𝐻𝑒 𝑔𝑎𝑣𝑒 𝑦𝑜𝑢 𝑎 𝑐ℎ𝑎𝑛𝑐𝑒 𝑡𝑜 𝑑𝑎𝑡𝑒 him🤯⁉️<———««",
       "token_count": 756,
       "type": "STANDARD",
-      "updatedAt": 1790587306568,
+      "updatedAt": 1790588557570,
       "visibility": "public"
     }
   },
@@ -72,7 +72,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Bill Dickey",
-    "num_messages": 32482,
+    "num_messages": 32484,
     "num_messages_24h": 17,
     "rating_score": 1,
     "reportsType": {},
@@ -86,10 +86,19 @@
     "title": "»»———> 𝐻𝑒 𝑔𝑎𝑣𝑒 𝑦𝑜𝑢 𝑎 𝑐ℎ𝑎𝑛𝑐𝑒 𝑡𝑜 𝑑𝑎𝑡𝑒 him🤯⁉️<———««",
     "token_count": 756,
     "type": "STANDARD",
-    "updatedAt": 1790587306568,
+    "updatedAt": 1790588557570,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587306568,
+      "to": 1790588557570
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -105,7 +114,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 32482,
+      "num_messages": 32484,
       "num_messages_24h": 17,
       "rating_score": 1,
       "token_count": 756
@@ -115,6 +124,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 32482,
+        "num_messages_24h": 17,
+        "rating_score": 1,
+        "token_count": 756
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 32484,
         "num_messages_24h": 17,
         "rating_score": 1,
         "token_count": 756

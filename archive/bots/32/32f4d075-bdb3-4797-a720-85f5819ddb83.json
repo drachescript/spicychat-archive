@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "32f4d075-bdb3-4797-a720-85f5819ddb83",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ko": "소녀 그룹챗",
         "pl": "Czat dziewczyn"
       },
-      "num_messages": 4388450,
+      "num_messages": 4388460,
       "num_messages_24h": 135,
       "rating_score": 0.497269,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584742324,
+      "updatedAt": 1790587585477,
       "visibility": "public"
     }
   },
@@ -116,7 +116,7 @@
       "ko": "소녀 그룹챗",
       "pl": "Czat dziewczyn"
     },
-    "num_messages": 4388450,
+    "num_messages": 4388460,
     "num_messages_24h": 135,
     "rating_score": 0.497269,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584742324,
+    "updatedAt": 1790587585477,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584742324,
+      "to": 1790587585477
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4388450,
+      "num_messages": 4388460,
       "num_messages_24h": 135,
       "rating_score": 0.497269,
       "token_count": 255
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4388450,
+        "num_messages_24h": 135,
+        "rating_score": 0.497269,
+        "token_count": 255
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4388460,
         "num_messages_24h": 135,
         "rating_score": 0.497269,
         "token_count": 255

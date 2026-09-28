@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cfa1f6cb-2698-4e1b-9225-4a01dc1e66b0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "ABO Akademisi",
         "zh": "ABO 学院"
       },
-      "num_messages": 2566460,
+      "num_messages": 2566476,
       "num_messages_24h": 558,
       "rating_score": 0.687342,
       "tags": [
@@ -101,7 +101,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587286690,
+      "updatedAt": 1790588171099,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "ABO Akademisi",
       "zh": "ABO 学院"
     },
-    "num_messages": 2566460,
+    "num_messages": 2566476,
     "num_messages_24h": 558,
     "rating_score": 0.687342,
     "tags": [
@@ -190,10 +190,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587286690,
+    "updatedAt": 1790588171099,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587286690,
+      "to": 1790588171099
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2566460,
+      "num_messages": 2566476,
       "num_messages_24h": 558,
       "rating_score": 0.687342,
       "token_count": 595
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2566460,
+        "num_messages_24h": 558,
+        "rating_score": 0.687342,
+        "token_count": 595
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2566476,
         "num_messages_24h": 558,
         "rating_score": 0.687342,
         "token_count": 595

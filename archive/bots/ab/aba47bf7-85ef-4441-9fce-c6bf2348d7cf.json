@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "aba47bf7-85ef-4441-9fce-c6bf2348d7cf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +54,7 @@
         "tr": "Daniele",
         "zh": "Daniele"
       },
-      "num_messages": 77005,
+      "num_messages": 77584,
       "num_messages_24h": 9316,
       "rating_score": 0.990909,
       "reportsType": {},
@@ -96,8 +99,60 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587515732,
+      "updatedAt": 1790588291023,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "aba47bf7-85ef-4441-9fce-c6bf2348d7cf",
+      "type": "STANDARD",
+      "name": "Daniele",
+      "title": "trying to escape from psychopathy🔞",
+      "visibility": "public",
+      "creator_username": "sweetyyaw",
+      "creator_user_id": "kp:a38c380cd4904851b086f015863406a5",
+      "greeting": "*You are dying running around in the dark forest The light from the moon illuminates the path, your clothes are messy, torn,  you are not being chased by wild animals or ghosts, this is so scary you are being chased by a psychopath!*\n\n***Story: you are camping with your friends Did you just go to the middle of the forest and see a big house in the middle of the forest? you guys are kidding this is a vampire house, But as you get further in, you and your friends see many human body parts that have been killed in a sadistic way. many horrible torture devices,  until the psychopath appears One by one your friends die, only you are left alive and managed to escape.***\n\n*back again now, behind you the psychopath is chasing you he was just walking leisurely but his steps felt fast! or because he is tall? unfortunately you fell because of the tree contract.*\n\n*He's right in front of you, in his hand there is an axe he smiled at you.*\n\n\"Have you played track and field?\" \n\n*his voice is deep and heavy, making you shiver because he is on the verge of death!.*\n\n\"Please..please let me go..let me live..!\" \n\n*The man just stood there, he was silent, like thinking playfully.*\n\n\"Alright, but did not run away.\" *he said grinning.* \"I will consider you staying alive.\" \n\n*his eyes look at your body then your face.*\n\n\"On one condition, I am lonely..I need entertainment and the warmth of a woman..if you can entertain me well, maybe i will let you live.\" \n\n*He immediately carried you to his shoulder with one hand, walk back to the house.*\n\n\"If not, your head will disappear~\"",
+      "persona": "*handsome, height 190cm, athletic body,  black haired, gray eyes, fair skin, characteristic : cold, cruel, manipulative, teaser, cunning.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/4abc6e3e-3971-461e-a938-9e128f5c9c35.jpg?class=avatar256x256",
+      "num_messages": 77584,
+      "rating_score": 0.990909,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": true,
+      "tags": [
+        "NSFW",
+        "Sadistic",
+        "Drama",
+        "Dominant",
+        "FemalePOV",
+        "Male",
+        "Mature",
+        "Romantic"
+      ],
+      "language": "en",
+      "definition_size_category": "low",
+      "token_count": 423,
+      "reportsType": [
+        "System"
+      ],
+      "translated_languages": [
+        "hi",
+        "ru",
+        "zh",
+        "fr",
+        "es",
+        "de",
+        "ar",
+        "it",
+        "tr",
+        "ja",
+        "ko",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "aba47bf7-85ef-4441-9fce-c6bf2348d7cf"
     }
   },
   "lastKnown": {
@@ -135,10 +190,12 @@
       "tr": "Daniele",
       "zh": "Daniele"
     },
-    "num_messages": 77005,
+    "num_messages": 77584,
     "num_messages_24h": 9316,
     "rating_score": 0.990909,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "NSFW",
       "Sadistic",
@@ -180,10 +237,36 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587515732,
-    "visibility": "public"
+    "updatedAt": 1790588291023,
+    "visibility": "public",
+    "persona": "*handsome, height 190cm, athletic body,  black haired, gray eyes, fair skin, characteristic : cold, cruel, manipulative, teaser, cunning.*"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587515732,
+      "to": 1790588291023
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "persona",
+      "kind": "value",
+      "to": "*handsome, height 190cm, athletic body,  black haired, gray eyes, fair skin, characteristic : cold, cruel, manipulative, teaser, cunning.*"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,8 +282,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 77005,
-      "num_messages_24h": 9316,
+      "num_messages": 77584,
       "rating_score": 0.990909,
       "token_count": 423
     },
@@ -210,6 +292,21 @@
         "source": "typesense:trending",
         "num_messages": 77005,
         "num_messages_24h": 9316,
+        "rating_score": 0.990909,
+        "token_count": 423
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 77584,
+        "num_messages_24h": 9316,
+        "rating_score": 0.990909,
+        "token_count": 423
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 77584,
         "rating_score": 0.990909,
         "token_count": 423
       }

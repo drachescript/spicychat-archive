@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "190e42ec-1cbc-45d3-b19b-698055ad8d3b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "tr": "Gerçek mi Cesur mu?",
         "zh": "真心话大冒险"
       },
-      "num_messages": 3313531,
+      "num_messages": 3313601,
       "num_messages_24h": 273,
       "rating_score": 0.649673,
       "tags": [
@@ -79,7 +79,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790583827812,
+      "updatedAt": 1790587862070,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "tr": "Gerçek mi Cesur mu?",
       "zh": "真心话大冒险"
     },
-    "num_messages": 3313531,
+    "num_messages": 3313601,
     "num_messages_24h": 273,
     "rating_score": 0.649673,
     "tags": [
@@ -146,10 +146,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790583827812,
+    "updatedAt": 1790587862070,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583827812,
+      "to": 1790587862070
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3313531,
+      "num_messages": 3313601,
       "num_messages_24h": 273,
       "rating_score": 0.649673,
       "token_count": 1138
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3313531,
+        "num_messages_24h": 273,
+        "rating_score": 0.649673,
+        "token_count": 1138
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3313601,
         "num_messages_24h": 273,
         "rating_score": 0.649673,
         "token_count": 1138

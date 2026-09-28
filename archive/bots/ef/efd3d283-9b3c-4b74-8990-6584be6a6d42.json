@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "efd3d283-9b3c-4b74-8990-6584be6a6d42",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "RPG Древний Рим",
         "zh": "古罗马RPG"
       },
-      "num_messages": 60454,
+      "num_messages": 60501,
       "num_messages_24h": 2870,
       "rating_score": 0,
       "reportsType": {},
@@ -71,7 +71,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586940967,
+      "updatedAt": 1790588107585,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "ru": "RPG Древний Рим",
       "zh": "古罗马RPG"
     },
-    "num_messages": 60454,
+    "num_messages": 60501,
     "num_messages_24h": 2870,
     "rating_score": 0,
     "reportsType": {},
@@ -130,10 +130,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586940967,
+    "updatedAt": 1790588107585,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586940967,
+      "to": 1790588107585
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -149,7 +158,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 60454,
+      "num_messages": 60501,
       "num_messages_24h": 2870,
       "rating_score": 0,
       "token_count": 1230
@@ -159,6 +168,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 60454,
+        "num_messages_24h": 2870,
+        "rating_score": 0,
+        "token_count": 1230
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 60501,
         "num_messages_24h": 2870,
         "rating_score": 0,
         "token_count": 1230

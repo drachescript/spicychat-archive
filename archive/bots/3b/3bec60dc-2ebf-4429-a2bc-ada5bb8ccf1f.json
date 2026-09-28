@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3bec60dc-2ebf-4429-a2bc-ada5bb8ccf1f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "de": "Meowskulls",
         "pl": "Meowskulls"
       },
-      "num_messages": 4081,
+      "num_messages": 4102,
       "num_messages_24h": 2312,
       "rating_score": 0,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516551,
+      "updatedAt": 1790587766995,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
       "de": "Meowskulls",
       "pl": "Meowskulls"
     },
-    "num_messages": 4081,
+    "num_messages": 4102,
     "num_messages_24h": 2312,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516551,
+    "updatedAt": 1790587766995,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516551,
+      "to": 1790587766995
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,17 +144,17 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2447,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2448,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "latest": {
-      "rank": 2348,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2350,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 4081,
+      "num_messages": 4102,
       "num_messages_24h": 2312,
       "rating_score": 0,
       "token_count": 990
@@ -155,6 +164,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 4081,
+        "num_messages_24h": 2312,
+        "rating_score": 0,
+        "token_count": 990
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 4102,
         "num_messages_24h": 2312,
         "rating_score": 0,
         "token_count": 990

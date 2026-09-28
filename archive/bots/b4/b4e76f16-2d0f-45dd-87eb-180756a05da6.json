@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b4e76f16-2d0f-45dd-87eb-180756a05da6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       ],
       "moderation_status": "pending",
       "name": "Joy boy",
-      "num_messages": 444,
+      "num_messages": 447,
       "num_messages_24h": 352,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "a popular company for hiring guys",
       "token_count": 304,
       "type": "STANDARD",
-      "updatedAt": 1790574975700,
+      "updatedAt": 1790588359195,
       "visibility": "public"
     }
   },
@@ -84,7 +84,7 @@
     ],
     "moderation_status": "pending",
     "name": "Joy boy",
-    "num_messages": 444,
+    "num_messages": 447,
     "num_messages_24h": 352,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "a popular company for hiring guys",
     "token_count": 304,
     "type": "STANDARD",
-    "updatedAt": 1790574975700,
+    "updatedAt": 1790588359195,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574975700,
+      "to": 1790588359195
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,13 +118,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1967,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1968,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 444,
+      "num_messages": 447,
       "num_messages_24h": 352,
       "rating_score": 0,
       "token_count": 304
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 444,
+        "num_messages_24h": 352,
+        "rating_score": 0,
+        "token_count": 304
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 447,
         "num_messages_24h": 352,
         "rating_score": 0,
         "token_count": 304

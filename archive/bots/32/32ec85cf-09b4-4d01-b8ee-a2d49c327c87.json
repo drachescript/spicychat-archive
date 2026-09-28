@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "32ec85cf-09b4-4d01-b8ee-a2d49c327c87",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Spicy Sleepover",
         "zh": "刺激的睡衣派对"
       },
-      "num_messages": 2221836,
+      "num_messages": 2221844,
       "num_messages_24h": 101,
       "rating_score": 0.808658,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586900189,
+      "updatedAt": 1790588208417,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "ru": "Spicy Sleepover",
       "zh": "刺激的睡衣派对"
     },
-    "num_messages": 2221836,
+    "num_messages": 2221844,
     "num_messages_24h": 101,
     "rating_score": 0.808658,
     "reportsType": {},
@@ -158,10 +158,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586900189,
+    "updatedAt": 1790588208417,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586900189,
+      "to": 1790588208417
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,7 +186,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2221836,
+      "num_messages": 2221844,
       "num_messages_24h": 101,
       "rating_score": 0.808658,
       "token_count": 500
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2221836,
+        "num_messages_24h": 101,
+        "rating_score": 0.808658,
+        "token_count": 500
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2221844,
         "num_messages_24h": 101,
         "rating_score": 0.808658,
         "token_count": 500

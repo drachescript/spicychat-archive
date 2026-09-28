@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1c0d845e-6fd5-4c84-af74-a8c21b4deb5e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Ada Clarke",
         "zh": "Ada Clarke"
       },
-      "num_messages": 326770,
+      "num_messages": 327171,
       "num_messages_24h": 16873,
       "rating_score": 0.978916,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587476386,
+      "updatedAt": 1790588560356,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/e685f000-2aa2-47a6-9a27-4da6c1efd21d.webp?class=avatar256x256",
     "character_id": "1c0d845e-6fd5-4c84-af74-a8c21b4deb5e",
-    "createdAt": "2026-09-24T10:44:09.790Z",
+    "createdAt": 1790246649790,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -207,12 +207,10 @@
       "tr": "Ada Clarke",
       "zh": "Ada Clarke"
     },
-    "num_messages": 326770,
+    "num_messages": 327171,
     "num_messages_24h": 16873,
     "rating_score": 0.978916,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Wholesome",
@@ -260,7 +258,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:24:36.386Z",
+    "updatedAt": 1790588560356,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587476386,
       "to": "2026-09-28T09:24:36.386Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-24T10:44:09.790Z",
+      "to": 1790246649790
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:24:36.386Z",
+      "to": 1790588560356
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 326770,
+      "num_messages": 327171,
+      "num_messages_24h": 16873,
       "rating_score": 0.978916,
       "token_count": 1191
     },
@@ -324,8 +339,23 @@
         "num_messages": 326770,
         "rating_score": 0.978916,
         "token_count": 1191
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 327171,
+        "num_messages_24h": 16873,
+        "rating_score": 0.978916,
+        "token_count": 1191
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/e685f000-2aa2-47a6-9a27-4da6c1efd21d.webp?class=avatar256x256",
+    "sha256": "a0d94f64c579d2c8095992c8f211d067f379f6386b8044857c04ba6ff79f8d2c",
+    "contentType": "image/webp",
+    "bytes": 2637776,
+    "path": "archive/media/a0/a0d94f64c579d2c8095992c8f211d067f379f6386b8044857c04ba6ff79f8d2c.webp",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

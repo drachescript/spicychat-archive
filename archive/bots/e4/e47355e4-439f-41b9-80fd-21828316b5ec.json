@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e47355e4-439f-41b9-80fd-21828316b5ec",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Yandere University",
         "zh": "Yandere University"
       },
-      "num_messages": 878296,
+      "num_messages": 878334,
       "num_messages_24h": 3998,
       "rating_score": 0.930934,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587028632,
+      "updatedAt": 1790587930123,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Yandere University",
       "zh": "Yandere University"
     },
-    "num_messages": 878296,
+    "num_messages": 878334,
     "num_messages_24h": 3998,
     "rating_score": 0.930934,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587028632,
+    "updatedAt": 1790587930123,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587028632,
+      "to": 1790587930123
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 878296,
+      "num_messages": 878334,
       "num_messages_24h": 3998,
       "rating_score": 0.930934,
       "token_count": 1648
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 878296,
+        "num_messages_24h": 3998,
+        "rating_score": 0.930934,
+        "token_count": 1648
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 878334,
         "num_messages_24h": 3998,
         "rating_score": 0.930934,
         "token_count": 1648

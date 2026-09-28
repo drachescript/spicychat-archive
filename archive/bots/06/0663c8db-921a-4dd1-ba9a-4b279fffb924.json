@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0663c8db-921a-4dd1-ba9a-4b279fffb924",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Dottore",
-      "num_messages": 217,
+      "num_messages": 219,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -50,7 +50,7 @@
       "title": "Your husband is dead… so how is he in front of you now?",
       "token_count": 1005,
       "type": "STANDARD",
-      "updatedAt": 1790586893090,
+      "updatedAt": 1790588067462,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Dottore",
-    "num_messages": 217,
+    "num_messages": 219,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -88,10 +88,19 @@
     "title": "Your husband is dead… so how is he in front of you now?",
     "token_count": 1005,
     "type": "STANDARD",
-    "updatedAt": 1790586893090,
+    "updatedAt": 1790588067462,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586893090,
+      "to": 1790588067462
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,7 +116,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 217,
+      "num_messages": 219,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1005
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 217,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1005
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 219,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1005

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5bc170ef-3448-4c9a-aeb9-4dc299333a88",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -58,7 +58,7 @@
         "ru": "Sky",
         "tr": "Sky"
       },
-      "num_messages": 145541,
+      "num_messages": 145686,
       "num_messages_24h": 16211,
       "rating_score": 0.95935,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587682680,
+      "updatedAt": 1790588532654,
       "visibility": "public"
     },
     "character-api": {
@@ -199,12 +199,10 @@
       "ru": "Sky",
       "tr": "Sky"
     },
-    "num_messages": 145541,
+    "num_messages": 145686,
     "num_messages_24h": 16211,
     "rating_score": 0.95935,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -246,7 +244,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587682680,
+    "updatedAt": 1790588532654,
     "visibility": "public",
     "persona": "Name: Sky.\nAge: 20.\nNationality: American.\nBody Type: Muscular.\nHeight: 6’2” (188 cm).\nSkin Color: Pale.\nEyes: Blue.\nHair: Black, short, unruly.\nPersonality: Teases, cheerful, mischievous, loves mocking people, often flirts.\nHabits: Smokes, drinks alcohol and sometimes can’t get home without help, winks.\n\nSky is a complete idiot. He got bad grades in school, but he can ride a motorcycle and has gotten pretty rich. He can’t sit still — he always needs fun. For him, fun is teasing you and pinching your cheek… what a jerk."
   },
@@ -266,6 +264,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587682680,
+      "to": 1790588532654
     }
   ],
   "availabilityHistory": [
@@ -283,7 +289,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 145541,
+      "num_messages": 145686,
+      "num_messages_24h": 16211,
       "rating_score": 0.95935,
       "token_count": 582
     },
@@ -302,8 +309,23 @@
         "num_messages": 145541,
         "rating_score": 0.95935,
         "token_count": 582
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 145686,
+        "num_messages_24h": 16211,
+        "rating_score": 0.95935,
+        "token_count": 582
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/f8cdaafdf662c1f6f310affdac0c6edd.jpg?class=avatar256x256",
+    "sha256": "94f2b5fd399a13f99b650ddc02bbd8080a0fa931738be4c0c470e414bb205179",
+    "contentType": "image/jpeg",
+    "bytes": 20294,
+    "path": "archive/media/94/94f2b5fd399a13f99b650ddc02bbd8080a0fa931738be4c0c470e414bb205179.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

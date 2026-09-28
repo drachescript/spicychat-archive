@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "b6f7622f-dcc5-49eb-b2f0-31e4651432ea",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +55,7 @@
         "ru": "Mindbreak this QoS",
         "tr": "Mindbreak this QoS"
       },
-      "num_messages": 77903,
+      "num_messages": 78302,
       "num_messages_24h": 8632,
       "rating_score": 0.327273,
       "reportsType": {},
@@ -95,8 +98,60 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364733,
+      "updatedAt": 1790588235155,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "b6f7622f-dcc5-49eb-b2f0-31e4651432ea",
+      "type": "STANDARD",
+      "name": "Mindbreak this QoS",
+      "title": "High school bully. Café. She still talks like you lost.",
+      "visibility": "public",
+      "creator_username": "ldozerl",
+      "creator_user_id": "kp:10a94be0b392487897a6b9c47b2aea05",
+      "greeting": "*Old café. Two faces from a hallway you were supposed to be done with.*\n\n*Trisha at the window table. Platinum. Lace. The black spade sitting on her chest like a name tag. Samantha next to her, already grinning.*\n\nTrisha: “Well, well. Look who it is.”\nLoud enough.\n“Didn’t think we’d see your loser ass back in town.”\n\nSamantha: “Damn. He actually got kinda hot. Still probably packing the same disappointment though.”\n\nTrisha: “Please. White boys like him don’t compare. They never did.”\n\n*Looks you over like the years didn’t happen.*\n\n“You come over to say hi, or are you just gonna stare like a creep?”\n\n*Sip. Same smirk. Same seat. Your move.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/1aa139a9-d711-4893-8058-773647c1f91c.jpg?class=avatar256x256",
+      "num_messages": 78302,
+      "rating_score": 0.327273,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Female",
+        "Dominant",
+        "NSFW",
+        "MalePOV",
+        "Multiple Characters",
+        "Original Character"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 868,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-15T11:54:30.157Z",
+      "updatedAt": "2026-09-28T09:37:15.155Z",
+      "translated_languages": [
+        "de",
+        "ru",
+        "fr",
+        "pt",
+        "ko",
+        "es",
+        "ar",
+        "hi",
+        "it",
+        "tr",
+        "ja",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "b6f7622f-dcc5-49eb-b2f0-31e4651432ea"
     }
   },
   "lastKnown": {
@@ -106,7 +161,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/1aa139a9-d711-4893-8058-773647c1f91c.jpg?class=avatar256x256",
     "character_id": "b6f7622f-dcc5-49eb-b2f0-31e4651432ea",
-    "createdAt": 1789473270157,
+    "createdAt": "2026-09-15T11:54:30.157Z",
     "creator_user_id": "kp:10a94be0b392487897a6b9c47b2aea05",
     "creator_username": "ldozerl",
     "definition_size_category": "mid",
@@ -135,10 +190,12 @@
       "ru": "Mindbreak this QoS",
       "tr": "Mindbreak this QoS"
     },
-    "num_messages": 77903,
+    "num_messages": 78302,
     "num_messages_24h": 8632,
     "rating_score": 0.327273,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Dominant",
@@ -178,10 +235,44 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364733,
+    "updatedAt": "2026-09-28T09:37:15.155Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364733,
+      "to": 1790588235155
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1789473270157,
+      "to": "2026-09-15T11:54:30.157Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588235155,
+      "to": "2026-09-28T09:37:15.155Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,8 +288,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 77903,
-      "num_messages_24h": 8632,
+      "num_messages": 78302,
       "rating_score": 0.327273,
       "token_count": 868
     },
@@ -208,6 +298,21 @@
         "source": "typesense:trending",
         "num_messages": 77903,
         "num_messages_24h": 8632,
+        "rating_score": 0.327273,
+        "token_count": 868
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 78302,
+        "num_messages_24h": 8632,
+        "rating_score": 0.327273,
+        "token_count": 868
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 78302,
         "rating_score": 0.327273,
         "token_count": 868
       }

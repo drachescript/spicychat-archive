@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c8c6af6f-36f9-4377-80c2-d73c6277a7c7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "fr": "Hero's Harem Party",
         "zh": "Hero's Harem Party"
       },
-      "num_messages": 2156707,
+      "num_messages": 2156741,
       "num_messages_24h": 442,
       "rating_score": 0.577005,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637448,
+      "updatedAt": 1790588209901,
       "visibility": "public"
     }
   },
@@ -122,7 +122,7 @@
       "fr": "Hero's Harem Party",
       "zh": "Hero's Harem Party"
     },
-    "num_messages": 2156707,
+    "num_messages": 2156741,
     "num_messages_24h": 442,
     "rating_score": 0.577005,
     "reportsType": {},
@@ -162,10 +162,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587637448,
+    "updatedAt": 1790588209901,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587637448,
+      "to": 1790588209901
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2156707,
+      "num_messages": 2156741,
       "num_messages_24h": 442,
       "rating_score": 0.577005,
       "token_count": 1223
@@ -191,6 +200,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2156707,
+        "num_messages_24h": 442,
+        "rating_score": 0.577005,
+        "token_count": 1223
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2156741,
         "num_messages_24h": 442,
         "rating_score": 0.577005,
         "token_count": 1223

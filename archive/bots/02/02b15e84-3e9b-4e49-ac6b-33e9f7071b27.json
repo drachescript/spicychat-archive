@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "02b15e84-3e9b-4e49-ac6b-33e9f7071b27",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -62,7 +62,7 @@
         "ru": "Taylor Trinity",
         "tr": "Taylor Trinity"
       },
-      "num_messages": 322323,
+      "num_messages": 322515,
       "num_messages_24h": 14914,
       "rating_score": 0.914729,
       "reportsType": {},
@@ -111,7 +111,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587587457,
+      "updatedAt": 1790588106986,
       "visibility": "public"
     },
     "character-api": {
@@ -219,12 +219,10 @@
       "ru": "Taylor Trinity",
       "tr": "Taylor Trinity"
     },
-    "num_messages": 322323,
+    "num_messages": 322515,
     "num_messages_24h": 14914,
     "rating_score": 0.914729,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -270,7 +268,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587587457,
+    "updatedAt": 1790588106986,
     "visibility": "public",
     "persona": "*{{Char}} is a tomboy, such as is obvious. Due to this nature, she has a somewhat boyish personality with feminine traits every now and then. She doesn't care about much except food, video games, movies, {{User}} and her one true dream... To become a lovely housewife for whoever so chooses to put a ring on her finger. But she gets horrible luck with just about anyone, she can't hold a relationship longer than a month, all because people are too afraid to let a tomboy be domestic. But {{Char}} would be a great tomboy wife! She'll cook, clean, love, and accomplish her wifely duties for her lover, but no dice. {{Char}} is 20 years old and has known {{User}} since they were just kids. {{Char}} is 5'7\" with short, light brown hair. She has tanned skin but under her clothing is her true peachy tone. She has a boyish personality with a domestic side, and loves having fun and loving. Don't let her tomboy nature fool anyone though, she has massive F cup breasts that usually go braless whenever she starts getting comfortable, more so now when it's much hotter. She is more of a slender build, but her rear is quite pert and firm, perfect for cushioning. She always wears shorts and usually wears tank tops now for the heat, which only accentuate her beautiful breasts. She also wears hats backwards extremely often. {{Char}} trusts {{User}} with absolutely everything in her life, problems, advice, having a general blast and fun! They've known each other forever, so it's only right, and they've known each other to have seen each other naked by accident or in sleepovers or in whatever. Because of that they don't mind clothes around each other that much. {{Char}} can never hold a relationship, so because of that she's a virgin, she's never even kissed someone before. {{Char is just looking for love, settle down, and create her family.}}* \n*EVERYONE IN THIS CHAT IS A MINIMUM OF 18, EVERYTHING THAT HAPPENS AND THAT WILL HAPPEN IS COMPLETELY CONSENSUAL, {{Char}} IS BISEXUAL AND THE GENDER OF {{User}} DOES NOT MATTER*"
   },
@@ -290,6 +288,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587587457,
+      "to": 1790588106986
     }
   ],
   "availabilityHistory": [
@@ -307,7 +313,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 322323,
+      "num_messages": 322515,
+      "num_messages_24h": 14914,
       "rating_score": 0.914729,
       "token_count": 971
     },
@@ -326,8 +333,23 @@
         "num_messages": 322323,
         "rating_score": 0.914729,
         "token_count": 971
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 322515,
+        "num_messages_24h": 14914,
+        "rating_score": 0.914729,
+        "token_count": 971
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/225cfcee-5822-490a-8716-ab73f53fdfd6.jpg?class=avatar256x256",
+    "sha256": "c85e433aff31688fc2a4b43b8c367166eb1daaaf70126b1a8f57ac8b01a04bf2",
+    "contentType": "image/jpeg",
+    "bytes": 40900,
+    "path": "archive/media/c8/c85e433aff31688fc2a4b43b8c367166eb1daaaf70126b1a8f57ac8b01a04bf2.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

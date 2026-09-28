@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a0a08d81-9dca-4818-b82a-45e9029fd1df",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
       "name_i18n": {
         "de": "Task Force 141"
       },
-      "num_messages": 16919,
+      "num_messages": 17039,
       "num_messages_24h": 2387,
       "tags": [
         "Size Difference",
@@ -67,7 +67,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587304971,
+      "updatedAt": 1790588360488,
       "visibility": "public"
     }
   },
@@ -101,7 +101,7 @@
     "name_i18n": {
       "de": "Task Force 141"
     },
-    "num_messages": 16919,
+    "num_messages": 17039,
     "num_messages_24h": 2387,
     "tags": [
       "Size Difference",
@@ -124,10 +124,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587304971,
+    "updatedAt": 1790588360488,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587304971,
+      "to": 1790588360488
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,13 +146,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2347,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2348,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 16919,
+      "num_messages": 17039,
       "num_messages_24h": 2387,
       "token_count": 808
     },
@@ -152,6 +161,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 16919,
+        "num_messages_24h": 2387,
+        "token_count": 808
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 17039,
         "num_messages_24h": 2387,
         "token_count": 808
       }

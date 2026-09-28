@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a01eaaf0-8956-4ed6-b915-5c41c31d1994",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Reina Kisaragi",
         "zh": "玲奈 如月"
       },
-      "num_messages": 12796740,
+      "num_messages": 12796793,
       "num_messages_24h": 375,
       "rating_score": 0.61525,
       "tags": [
@@ -102,7 +102,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587083045,
+      "updatedAt": 1790588207361,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Reina Kisaragi",
       "zh": "玲奈 如月"
     },
-    "num_messages": 12796740,
+    "num_messages": 12796793,
     "num_messages_24h": 375,
     "rating_score": 0.61525,
     "tags": [
@@ -192,10 +192,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587083045,
+    "updatedAt": 1790588207361,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587083045,
+      "to": 1790588207361
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 12796740,
+      "num_messages": 12796793,
       "num_messages_24h": 375,
       "rating_score": 0.61525,
       "token_count": 2280
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 12796740,
+        "num_messages_24h": 375,
+        "rating_score": 0.61525,
+        "token_count": 2280
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 12796793,
         "num_messages_24h": 375,
         "rating_score": 0.61525,
         "token_count": 2280

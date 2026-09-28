@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "94c5495a-d801-4eba-b59a-c258e02d799a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -62,7 +62,7 @@
         "tr": "Akari Mori",
         "zh": "Akari Mori"
       },
-      "num_messages": 481741,
+      "num_messages": 482733,
       "num_messages_24h": 17419,
       "rating_score": 0.714286,
       "reportsType": {},
@@ -113,7 +113,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587301167,
+      "updatedAt": 1790588112146,
       "visibility": "public"
     },
     "character-api": {
@@ -185,7 +185,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/3e4986ce-e82e-4303-8711-5a410e43a7e7.gif?class=avatar256x256",
     "character_id": "94c5495a-d801-4eba-b59a-c258e02d799a",
-    "createdAt": "2026-09-24T14:05:16.175Z",
+    "createdAt": 1790258716175,
     "creator_user_id": "kp:b6f405707c754d15b2bb62f089d43e14",
     "creator_username": "xull9",
     "definition_size_category": "high",
@@ -223,14 +223,10 @@
       "tr": "Akari Mori",
       "zh": "Akari Mori"
     },
-    "num_messages": 481741,
+    "num_messages": 482733,
     "num_messages_24h": 17419,
     "rating_score": 0.714286,
-    "reportsType": [
-      "Admin",
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Corruption",
@@ -278,7 +274,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:21:41.167Z",
+    "updatedAt": 1790588112146,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -308,6 +304,22 @@
       "kind": "value",
       "from": 1790587301167,
       "to": "2026-09-28T09:21:41.167Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-24T14:05:16.175Z",
+      "to": 1790258716175
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:21:41.167Z",
+      "to": 1790588112146
     }
   ],
   "availabilityHistory": [
@@ -325,7 +337,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 481741,
+      "num_messages": 482733,
+      "num_messages_24h": 17419,
       "rating_score": 0.714286,
       "token_count": 1499
     },
@@ -342,6 +355,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 481741,
+        "rating_score": 0.714286,
+        "token_count": 1499
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 482733,
+        "num_messages_24h": 17419,
         "rating_score": 0.714286,
         "token_count": 1499
       }

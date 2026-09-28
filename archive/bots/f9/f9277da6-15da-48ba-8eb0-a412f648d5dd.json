@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f9277da6-15da-48ba-8eb0-a412f648d5dd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Марвел RPG v5.0",
         "zh": "漫威 RPG v5.0"
       },
-      "num_messages": 2112227,
+      "num_messages": 2112254,
       "num_messages_24h": 459,
       "rating_score": 0.734879,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587514346,
+      "updatedAt": 1790588247308,
       "visibility": "public"
     }
   },
@@ -130,7 +130,7 @@
       "ru": "Марвел RPG v5.0",
       "zh": "漫威 RPG v5.0"
     },
-    "num_messages": 2112227,
+    "num_messages": 2112254,
     "num_messages_24h": 459,
     "rating_score": 0.734879,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587514346,
+    "updatedAt": 1790588247308,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587514346,
+      "to": 1790588247308
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2112227,
+      "num_messages": 2112254,
       "num_messages_24h": 459,
       "rating_score": 0.734879,
       "token_count": 1445
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2112227,
+        "num_messages_24h": 459,
+        "rating_score": 0.734879,
+        "token_count": 1445
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2112254,
         "num_messages_24h": 459,
         "rating_score": 0.734879,
         "token_count": 1445

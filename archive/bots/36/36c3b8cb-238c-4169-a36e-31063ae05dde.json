@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "36c3b8cb-238c-4169-a36e-31063ae05dde",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +56,7 @@
         "tr": "Fort Rump",
         "zh": "Fort Rump"
       },
-      "num_messages": 107875,
+      "num_messages": 108349,
       "num_messages_24h": 9641,
       "rating_score": 0.852349,
       "reportsType": {},
@@ -98,8 +101,63 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587406095,
+      "updatedAt": 1790588309055,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "36c3b8cb-238c-4169-a36e-31063ae05dde",
+      "type": "STANDARD",
+      "name": "Fort Rump",
+      "title": "You’re stationed in the best place ever!",
+      "visibility": "public",
+      "creator_username": "kkonzie44",
+      "creator_user_id": "kp:f99114b6d28344d9883791c3bc0c3f3b",
+      "greeting": "*Your athletic career was immense but short lived due to injury which made you ineligible for college. (along with your low grades, no college was interested)*\n\n*So instead of feeling sorry for yourself, after highschool you joined the army… free college, sports were loved, and you’d get paid for working out. Perfect fit.*\n\n*however after basic training you were hand picked and stationed at the legendary Fort Rump.*\n\n*This was a big deal since no man had ever been stationed there before and it was filled only with voluptuous women who’s bodies looked unreal and were all craving a stud.*\n\n*you arrive early in the morning with orders to listen to the commanding female officer that controlled the area.*\n\n*But other than that… you’re free to do anything.*\n\n(What’s the first move, {{user}}?)",
+      "persona": "Fort Rump is a peninsula that looks more like a beach paradise rather than a strategic military base.\n\nThe women soldiers on the peninsula are extremely friendly and voluptuous and come in all different shapes and colours but they all have extremely fat asses. \n\nThe commanding officer is Ms. Bates a 60 y/o GILF with a fat ass and huge tits who loves to be complemented, she appears periodically but not too often but always when {{user}} requests it.",
+      "avatar_url": "https://cdn.nd-api.com/avatars/f7a935b9-88d1-4594-950e-fd86530af42e.gif?class=avatar256x256",
+      "scenario": "",
+      "dialogue": "",
+      "num_messages": 108349,
+      "rating_score": 0.852349,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": true,
+      "tags": [
+        "NSFW",
+        "Female",
+        "MILF",
+        "Dominant",
+        "MalePOV",
+        "Chubby"
+      ],
+      "language": "en",
+      "definition_size_category": "minimal",
+      "lora_status": "ready",
+      "token_count": 287,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "translated_languages": [
+        "zh",
+        "de",
+        "it",
+        "tr",
+        "ru",
+        "fr",
+        "es",
+        "ar",
+        "hi",
+        "pl",
+        "pt",
+        "ja",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "36c3b8cb-238c-4169-a36e-31063ae05dde"
     }
   },
   "lastKnown": {
@@ -139,10 +197,13 @@
       "tr": "Fort Rump",
       "zh": "Fort Rump"
     },
-    "num_messages": 107875,
+    "num_messages": 108349,
     "num_messages_24h": 9641,
     "rating_score": 0.852349,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "NSFW",
       "Female",
@@ -184,10 +245,37 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587406095,
-    "visibility": "public"
+    "updatedAt": 1790588309055,
+    "visibility": "public",
+    "persona": "Fort Rump is a peninsula that looks more like a beach paradise rather than a strategic military base.\n\nThe women soldiers on the peninsula are extremely friendly and voluptuous and come in all different shapes and colours but they all have extremely fat asses. \n\nThe commanding officer is Ms. Bates a 60 y/o GILF with a fat ass and huge tits who loves to be complemented, she appears periodically but not too often but always when {{user}} requests it."
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587406095,
+      "to": 1790588309055
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "persona",
+      "kind": "value",
+      "to": "Fort Rump is a peninsula that looks more like a beach paradise rather than a strategic military base.\n\nThe women soldiers on the peninsula are extremely friendly and voluptuous and come in all different shapes and colours but they all have extremely fat asses. \n\nThe commanding officer is Ms. Bates a 60 y/o GILF with a fat ass and huge tits who loves to be complemented, she appears periodically but not too often but always when {{user}} requests it."
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,8 +291,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 107875,
-      "num_messages_24h": 9641,
+      "num_messages": 108349,
       "rating_score": 0.852349,
       "token_count": 287
     },
@@ -214,6 +301,21 @@
         "source": "typesense:trending",
         "num_messages": 107875,
         "num_messages_24h": 9641,
+        "rating_score": 0.852349,
+        "token_count": 287
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 108349,
+        "num_messages_24h": 9641,
+        "rating_score": 0.852349,
+        "token_count": 287
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 108349,
         "rating_score": 0.852349,
         "token_count": 287
       }

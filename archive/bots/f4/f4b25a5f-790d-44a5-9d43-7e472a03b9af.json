@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f4b25a5f-790d-44a5-9d43-7e472a03b9af",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -36,7 +36,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Lucifer",
-      "num_messages": 53236,
+      "num_messages": 53238,
       "num_messages_24h": 172,
       "rating_score": 1,
       "tags": [
@@ -47,7 +47,7 @@
       "title": "You find him wounded (English version. Original bot from @shiiiin)",
       "token_count": 937,
       "type": "STANDARD",
-      "updatedAt": 1790587031330,
+      "updatedAt": 1790587928989,
       "visibility": "public"
     }
   },
@@ -71,7 +71,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Lucifer",
-    "num_messages": 53236,
+    "num_messages": 53238,
     "num_messages_24h": 172,
     "rating_score": 1,
     "tags": [
@@ -82,10 +82,19 @@
     "title": "You find him wounded (English version. Original bot from @shiiiin)",
     "token_count": 937,
     "type": "STANDARD",
-    "updatedAt": 1790587031330,
+    "updatedAt": 1790587928989,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587031330,
+      "to": 1790587928989
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -101,7 +110,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 53236,
+      "num_messages": 53238,
       "num_messages_24h": 172,
       "rating_score": 1,
       "token_count": 937
@@ -111,6 +120,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 53236,
+        "num_messages_24h": 172,
+        "rating_score": 1,
+        "token_count": 937
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 53238,
         "num_messages_24h": 172,
         "rating_score": 1,
         "token_count": 937

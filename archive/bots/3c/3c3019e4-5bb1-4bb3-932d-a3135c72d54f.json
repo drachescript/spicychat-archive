@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3c3019e4-5bb1-4bb3-932d-a3135c72d54f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "ru": "Maren Cole"
       },
-      "num_messages": 2553,
+      "num_messages": 2597,
       "num_messages_24h": 1524,
       "rating_score": 0,
       "reportsType": {},
@@ -62,7 +62,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586743218,
+      "updatedAt": 1790587858345,
       "visibility": "public"
     }
   },
@@ -90,7 +90,7 @@
     "name_i18n": {
       "ru": "Maren Cole"
     },
-    "num_messages": 2553,
+    "num_messages": 2597,
     "num_messages_24h": 1524,
     "rating_score": 0,
     "reportsType": {},
@@ -112,10 +112,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586743218,
+    "updatedAt": 1790587858345,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586743218,
+      "to": 1790587858345
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,7 +140,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2553,
+      "num_messages": 2597,
       "num_messages_24h": 1524,
       "rating_score": 0,
       "token_count": 1765
@@ -141,6 +150,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2553,
+        "num_messages_24h": 1524,
+        "rating_score": 0,
+        "token_count": 1765
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2597,
         "num_messages_24h": 1524,
         "rating_score": 0,
         "token_count": 1765

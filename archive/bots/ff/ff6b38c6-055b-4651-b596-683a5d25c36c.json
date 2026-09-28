@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ff6b38c6-055b-4651-b596-683a5d25c36c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "tr": "Gralzhura Bloodfang",
         "zh": "格拉兹胡拉·血牙"
       },
-      "num_messages": 3711474,
+      "num_messages": 3711488,
       "num_messages_24h": 266,
       "rating_score": 0.842812,
       "tags": [
@@ -95,7 +95,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364192,
+      "updatedAt": 1790588169987,
       "visibility": "public"
     }
   },
@@ -132,7 +132,7 @@
       "tr": "Gralzhura Bloodfang",
       "zh": "格拉兹胡拉·血牙"
     },
-    "num_messages": 3711474,
+    "num_messages": 3711488,
     "num_messages_24h": 266,
     "rating_score": 0.842812,
     "tags": [
@@ -178,10 +178,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364192,
+    "updatedAt": 1790588169987,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364192,
+      "to": 1790588169987
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3711474,
+      "num_messages": 3711488,
       "num_messages_24h": 266,
       "rating_score": 0.842812,
       "token_count": 1541
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3711474,
+        "num_messages_24h": 266,
+        "rating_score": 0.842812,
+        "token_count": 1541
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3711488,
         "num_messages_24h": 266,
         "rating_score": 0.842812,
         "token_count": 1541

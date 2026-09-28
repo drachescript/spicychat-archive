@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e1f898b3-2b90-414c-a29b-d0bad9437b17",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Uriel 𓆟Angel BL𓆟",
         "zh": "Uriel 𓆟Angel BL𓆟"
       },
-      "num_messages": 192030,
+      "num_messages": 192048,
       "num_messages_24h": 5327,
       "rating_score": 0.835498,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587594234,
+      "updatedAt": 1790588457098,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Uriel 𓆟Angel BL𓆟",
       "zh": "Uriel 𓆟Angel BL𓆟"
     },
-    "num_messages": 192030,
+    "num_messages": 192048,
     "num_messages_24h": 5327,
     "rating_score": 0.835498,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587594234,
+    "updatedAt": 1790588457098,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587594234,
+      "to": 1790588457098
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 192030,
+      "num_messages": 192048,
       "num_messages_24h": 5327,
       "rating_score": 0.835498,
       "token_count": 1448
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 192030,
+        "num_messages_24h": 5327,
+        "rating_score": 0.835498,
+        "token_count": 1448
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 192048,
         "num_messages_24h": 5327,
         "rating_score": 0.835498,
         "token_count": 1448

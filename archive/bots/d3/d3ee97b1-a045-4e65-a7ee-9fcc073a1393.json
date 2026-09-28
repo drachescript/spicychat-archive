@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d3ee97b1-a045-4e65-a7ee-9fcc073a1393",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Конвой TF 141",
         "zh": "TF 141 车队"
       },
-      "num_messages": 101986,
+      "num_messages": 102023,
       "num_messages_24h": 4118,
       "rating_score": 0,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561776,
+      "updatedAt": 1790588366546,
       "visibility": "public"
     }
   },
@@ -105,7 +105,7 @@
       "ru": "Конвой TF 141",
       "zh": "TF 141 车队"
     },
-    "num_messages": 101986,
+    "num_messages": 102023,
     "num_messages_24h": 4118,
     "rating_score": 0,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561776,
+    "updatedAt": 1790588366546,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561776,
+      "to": 1790588366546
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 101986,
+      "num_messages": 102023,
       "num_messages_24h": 4118,
       "rating_score": 0,
       "token_count": 1048
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 101986,
+        "num_messages_24h": 4118,
+        "rating_score": 0,
+        "token_count": 1048
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 102023,
         "num_messages_24h": 4118,
         "rating_score": 0,
         "token_count": 1048

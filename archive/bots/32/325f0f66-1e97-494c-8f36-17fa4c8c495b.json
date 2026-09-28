@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "325f0f66-1e97-494c-8f36-17fa4c8c495b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Allan - BadBoy BF",
         "zh": "Allan - BadBoy BF"
       },
-      "num_messages": 2225922,
+      "num_messages": 2225930,
       "num_messages_24h": 0,
       "rating_score": 0.824927,
       "tags": [
@@ -78,7 +78,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790556939399,
+      "updatedAt": 1790588182099,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "ru": "Allan - BadBoy BF",
       "zh": "Allan - BadBoy BF"
     },
-    "num_messages": 2225922,
+    "num_messages": 2225930,
     "num_messages_24h": 0,
     "rating_score": 0.824927,
     "tags": [
@@ -144,10 +144,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790556939399,
+    "updatedAt": 1790588182099,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790556939399,
+      "to": 1790588182099
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,7 +172,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2225922,
+      "num_messages": 2225930,
       "num_messages_24h": 0,
       "rating_score": 0.824927,
       "token_count": 986
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2225922,
+        "num_messages_24h": 0,
+        "rating_score": 0.824927,
+        "token_count": 986
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2225930,
         "num_messages_24h": 0,
         "rating_score": 0.824927,
         "token_count": 986

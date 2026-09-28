@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ff8331e0-017b-4aa6-80a6-c3dd4ff52ad3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "it": "Ravyra Ashbringer 🖤",
         "ru": "Ravyra Ashbringer 🖤"
       },
-      "num_messages": 10534,
+      "num_messages": 10576,
       "num_messages_24h": 1167,
       "rating_score": 1,
       "reportsType": {},
@@ -76,7 +76,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587489631,
+      "updatedAt": 1790588185499,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "it": "Ravyra Ashbringer 🖤",
       "ru": "Ravyra Ashbringer 🖤"
     },
-    "num_messages": 10534,
+    "num_messages": 10576,
     "num_messages_24h": 1167,
     "rating_score": 1,
     "reportsType": {},
@@ -140,10 +140,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587489631,
+    "updatedAt": 1790588185499,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587489631,
+      "to": 1790588185499
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 10534,
+      "num_messages": 10576,
       "num_messages_24h": 1167,
       "rating_score": 1,
       "token_count": 1682
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 10534,
+        "num_messages_24h": 1167,
+        "rating_score": 1,
+        "token_count": 1682
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 10576,
         "num_messages_24h": 1167,
         "rating_score": 1,
         "token_count": 1682

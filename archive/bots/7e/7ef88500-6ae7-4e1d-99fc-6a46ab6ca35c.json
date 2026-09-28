@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7ef88500-6ae7-4e1d-99fc-6a46ab6ca35c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Mary Sue the PigGirl",
-      "num_messages": 220,
+      "num_messages": 224,
       "num_messages_24h": 185,
       "rating_score": 0,
       "reportsType": {},
@@ -58,7 +58,7 @@
       "title": "A mud lovin', filth lovin, food lovin', extra gross MILF PigGirl you see on a farm tour. ❤️🐽",
       "token_count": 1079,
       "type": "STANDARD",
-      "updatedAt": 1790579168608,
+      "updatedAt": 1790588449998,
       "visibility": "public"
     }
   },
@@ -83,7 +83,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Mary Sue the PigGirl",
-    "num_messages": 220,
+    "num_messages": 224,
     "num_messages_24h": 185,
     "rating_score": 0,
     "reportsType": {},
@@ -104,10 +104,19 @@
     "title": "A mud lovin', filth lovin, food lovin', extra gross MILF PigGirl you see on a farm tour. ❤️🐽",
     "token_count": 1079,
     "type": "STANDARD",
-    "updatedAt": 1790579168608,
+    "updatedAt": 1790588449998,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790579168608,
+      "to": 1790588449998
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,13 +126,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2342,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2344,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 220,
+      "num_messages": 224,
       "num_messages_24h": 185,
       "rating_score": 0,
       "token_count": 1079
@@ -133,6 +142,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 220,
+        "num_messages_24h": 185,
+        "rating_score": 0,
+        "token_count": 1079
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 224,
         "num_messages_24h": 185,
         "rating_score": 0,
         "token_count": 1079

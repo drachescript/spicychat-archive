@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b149f472-d6f6-4eab-a422-15076f0635c3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Aveline, Abi & Rae",
-      "num_messages": 1926,
+      "num_messages": 1963,
       "num_messages_24h": 990,
       "rating_score": 0,
       "tags": [
@@ -56,7 +56,7 @@
       "title": "Bullied by Day. Spoiled Rotten by Night.",
       "token_count": 1721,
       "type": "STANDARD",
-      "updatedAt": 1790587304986,
+      "updatedAt": 1790588565786,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Aveline, Abi & Rae",
-    "num_messages": 1926,
+    "num_messages": 1963,
     "num_messages_24h": 990,
     "rating_score": 0,
     "tags": [
@@ -100,10 +100,19 @@
     "title": "Bullied by Day. Spoiled Rotten by Night.",
     "token_count": 1721,
     "type": "STANDARD",
-    "updatedAt": 1790587304986,
+    "updatedAt": 1790588565786,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587304986,
+      "to": 1790588565786
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,7 +128,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1926,
+      "num_messages": 1963,
       "num_messages_24h": 990,
       "rating_score": 0,
       "token_count": 1721
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1926,
+        "num_messages_24h": 990,
+        "rating_score": 0,
+        "token_count": 1721
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1963,
         "num_messages_24h": 990,
         "rating_score": 0,
         "token_count": 1721

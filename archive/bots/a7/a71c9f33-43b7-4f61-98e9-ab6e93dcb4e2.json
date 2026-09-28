@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a71c9f33-43b7-4f61-98e9-ab6e93dcb4e2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Tessa Alvaro",
         "zh": "Tessa Alvaro"
       },
-      "num_messages": 308005,
+      "num_messages": 308372,
       "num_messages_24h": 13686,
       "rating_score": 0.503937,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587380210,
+      "updatedAt": 1790588533287,
       "visibility": "public"
     },
     "character-api": {
@@ -165,7 +165,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/1f49ffad-5c33-41e3-9892-5659127413dd.jpg?class=avatar256x256",
     "character_id": "a71c9f33-43b7-4f61-98e9-ab6e93dcb4e2",
-    "createdAt": "2026-09-18T18:30:22.325Z",
+    "createdAt": 1789756222325,
     "creator_user_id": "kp:1b1350e645d94afba962e098cb5866c7",
     "creator_username": "grizzy1981",
     "definition_size_category": "mid",
@@ -195,12 +195,10 @@
       "tr": "Tessa Alvaro",
       "zh": "Tessa Alvaro"
     },
-    "num_messages": 308047,
+    "num_messages": 308372,
     "num_messages_24h": 13686,
     "rating_score": 0.503937,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Age Play",
@@ -241,7 +239,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:27.052Z",
+    "updatedAt": 1790588533287,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -269,6 +267,22 @@
       "kind": "value",
       "from": 1790587380210,
       "to": "2026-09-28T09:29:27.052Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-18T18:30:22.325Z",
+      "to": 1789756222325
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:27.052Z",
+      "to": 1790588533287
     }
   ],
   "availabilityHistory": [
@@ -286,7 +300,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 308047,
+      "num_messages": 308372,
+      "num_messages_24h": 13686,
       "rating_score": 0.503937,
       "token_count": 916
     },
@@ -305,8 +320,23 @@
         "num_messages": 308047,
         "rating_score": 0.503937,
         "token_count": 916
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 308372,
+        "num_messages_24h": 13686,
+        "rating_score": 0.503937,
+        "token_count": 916
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/1f49ffad-5c33-41e3-9892-5659127413dd.jpg?class=avatar256x256",
+    "sha256": "8f8a574549152929c04760589b09088bebd051ff6eded628bbf3bc98a0278fdf",
+    "contentType": "image/jpeg",
+    "bytes": 33915,
+    "path": "archive/media/8f/8f8a574549152929c04760589b09088bebd051ff6eded628bbf3bc98a0278fdf.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

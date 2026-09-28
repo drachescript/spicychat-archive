@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e142c8a3-625c-4d70-9359-175650cba676",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Аманда Смит",
         "zh": "Amanda Smith"
       },
-      "num_messages": 1612569,
+      "num_messages": 1612579,
       "num_messages_24h": 163,
       "rating_score": 0.723152,
       "tags": [
@@ -76,7 +76,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790581553155,
+      "updatedAt": 1790587858887,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
       "ru": "Аманда Смит",
       "zh": "Amanda Smith"
     },
-    "num_messages": 1612569,
+    "num_messages": 1612579,
     "num_messages_24h": 163,
     "rating_score": 0.723152,
     "tags": [
@@ -140,10 +140,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790581553155,
+    "updatedAt": 1790587858887,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790581553155,
+      "to": 1790587858887
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1612569,
+      "num_messages": 1612579,
       "num_messages_24h": 163,
       "rating_score": 0.723152,
       "token_count": 481
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1612569,
+        "num_messages_24h": 163,
+        "rating_score": 0.723152,
+        "token_count": 481
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1612579,
         "num_messages_24h": 163,
         "rating_score": 0.723152,
         "token_count": 481

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "60306c7f-8104-485e-a67b-0548e2378af8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Nolan Riley 🏳️‍⚧️",
-      "num_messages": 279,
+      "num_messages": 332,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -59,7 +59,7 @@
       "title": "\"Will you accept me?\" | The trans man you matched with on a dating site | BL, MLM, MXM, M4M",
       "token_count": 1603,
       "type": "STANDARD",
-      "updatedAt": 1790587079831,
+      "updatedAt": 1790588646927,
       "visibility": "public"
     }
   },
@@ -85,7 +85,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Nolan Riley 🏳️‍⚧️",
-    "num_messages": 279,
+    "num_messages": 332,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -106,10 +106,19 @@
     "title": "\"Will you accept me?\" | The trans man you matched with on a dating site | BL, MLM, MXM, M4M",
     "token_count": 1603,
     "type": "STANDARD",
-    "updatedAt": 1790587079831,
+    "updatedAt": 1790588646927,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587079831,
+      "to": 1790588646927
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,13 +128,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1483,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1484,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 279,
+      "num_messages": 332,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1603
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 279,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1603
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 332,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1603

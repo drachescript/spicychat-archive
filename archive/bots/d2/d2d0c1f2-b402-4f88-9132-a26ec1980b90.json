@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d2d0c1f2-b402-4f88-9132-a26ec1980b90",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Wren (Cheating)",
-      "num_messages": 2903,
+      "num_messages": 3030,
       "num_messages_24h": 1290,
       "rating_score": 0,
       "tags": [
@@ -55,7 +55,7 @@
       "title": "Your Roommate’s Shy Girlfriend Just Climbed Into Your Shower Asking For Help With Her OnlyFans",
       "token_count": 1143,
       "type": "STANDARD",
-      "updatedAt": 1790587487472,
+      "updatedAt": 1790588451194,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "Wren (Cheating)",
-    "num_messages": 2903,
+    "num_messages": 3030,
     "num_messages_24h": 1290,
     "rating_score": 0,
     "tags": [
@@ -98,10 +98,19 @@
     "title": "Your Roommate’s Shy Girlfriend Just Climbed Into Your Shower Asking For Help With Her OnlyFans",
     "token_count": 1143,
     "type": "STANDARD",
-    "updatedAt": 1790587487472,
+    "updatedAt": 1790588451194,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487472,
+      "to": 1790588451194
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2903,
+      "num_messages": 3030,
       "num_messages_24h": 1290,
       "rating_score": 0,
       "token_count": 1143
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2903,
+        "num_messages_24h": 1290,
+        "rating_score": 0,
+        "token_count": 1143
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 3030,
         "num_messages_24h": 1290,
         "rating_score": 0,
         "token_count": 1143

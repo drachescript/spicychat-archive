@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ce6e1455-e5f1-4256-bf4b-964203890faa",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "fr": "Grayson Wolfe",
         "hi": "Grayson Wolfe"
       },
-      "num_messages": 25828,
+      "num_messages": 25853,
       "num_messages_24h": 2474,
       "reportsType": {},
       "tags": [
@@ -75,7 +75,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587638940,
+      "updatedAt": 1790587972221,
       "visibility": "public"
     }
   },
@@ -114,7 +114,7 @@
       "fr": "Grayson Wolfe",
       "hi": "Grayson Wolfe"
     },
-    "num_messages": 25828,
+    "num_messages": 25853,
     "num_messages_24h": 2474,
     "reportsType": {},
     "tags": [
@@ -140,10 +140,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587638940,
+    "updatedAt": 1790587972221,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587638940,
+      "to": 1790587972221
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,13 +162,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2257,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2258,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 25828,
+      "num_messages": 25853,
       "num_messages_24h": 2474,
       "token_count": 1682
     },
@@ -168,6 +177,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 25828,
+        "num_messages_24h": 2474,
+        "token_count": 1682
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 25853,
         "num_messages_24h": 2474,
         "token_count": 1682
       }

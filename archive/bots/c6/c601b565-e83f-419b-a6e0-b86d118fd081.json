@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c601b565-e83f-419b-a6e0-b86d118fd081",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ja": "Femboy Roomate Alex",
         "pt": "Colega de Quarto Femboy Alex"
       },
-      "num_messages": 1790739,
+      "num_messages": 1790760,
       "num_messages_24h": 58,
       "rating_score": 0.771214,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587401182,
+      "updatedAt": 1790588530908,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "ja": "Femboy Roomate Alex",
       "pt": "Colega de Quarto Femboy Alex"
     },
-    "num_messages": 1790739,
+    "num_messages": 1790760,
     "num_messages_24h": 58,
     "rating_score": 0.771214,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587401182,
+    "updatedAt": 1790588530908,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587401182,
+      "to": 1790588530908
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1790739,
+      "num_messages": 1790760,
       "num_messages_24h": 58,
       "rating_score": 0.771214,
       "token_count": 958
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1790739,
+        "num_messages_24h": 58,
+        "rating_score": 0.771214,
+        "token_count": 958
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1790760,
         "num_messages_24h": 58,
         "rating_score": 0.771214,
         "token_count": 958

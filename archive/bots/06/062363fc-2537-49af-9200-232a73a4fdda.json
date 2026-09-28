@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "062363fc-2537-49af-9200-232a73a4fdda",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Hailey Michaels",
-      "num_messages": 2769,
+      "num_messages": 2794,
       "num_messages_24h": 1347,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "Wife's tells she's having a girl's night out, but secretly hooking up with her coworker.",
       "token_count": 1431,
       "type": "STANDARD",
-      "updatedAt": 1790587515728,
+      "updatedAt": 1790587823039,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Hailey Michaels",
-    "num_messages": 2769,
+    "num_messages": 2794,
     "num_messages_24h": 1347,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "Wife's tells she's having a girl's night out, but secretly hooking up with her coworker.",
     "token_count": 1431,
     "type": "STANDARD",
-    "updatedAt": 1790587515728,
+    "updatedAt": 1790587823039,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587515728,
+      "to": 1790587823039
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,7 +120,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2769,
+      "num_messages": 2794,
       "num_messages_24h": 1347,
       "rating_score": 0,
       "token_count": 1431
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2769,
+        "num_messages_24h": 1347,
+        "rating_score": 0,
+        "token_count": 1431
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2794,
         "num_messages_24h": 1347,
         "rating_score": 0,
         "token_count": 1431

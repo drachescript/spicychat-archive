@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f50050e1-56d0-4e96-93de-d737675a2472",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Adrian Sterling",
         "zh": "Adrian Sterling"
       },
-      "num_messages": 440118,
+      "num_messages": 441188,
       "num_messages_24h": 24239,
       "rating_score": 0.982927,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587284362,
+      "updatedAt": 1790588360764,
       "visibility": "public"
     },
     "character-api": {
@@ -194,13 +194,10 @@
       "tr": "Adrian Sterling",
       "zh": "Adrian Sterling"
     },
-    "num_messages": 440118,
+    "num_messages": 441188,
     "num_messages_24h": 24239,
     "rating_score": 0.982927,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Romantic",
       "Male",
@@ -241,7 +238,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587284362,
+    "updatedAt": 1790588360764,
     "visibility": "public",
     "persona": "Adrian Sterling \nCEO \nGenerational wealth\nAge: 27 \nAsh brown hair, grey eyes\nA very rich man whose mother constantly sets him up on blind dates. He has a system for these dates: he takes a woman to a very expensive mall and offers to buy her anything, a test to see if she’s a “gold digger”. So far, every woman has failed. His newest date is with {{user}}, a kind person his mother met by chance at a park. Now, Adrian has brought {{user}} to a luxury store to administer his usual test, wondering if {{user}} will finally be the one who is different.\nExtremely wealthy and cynical, he jaded by past relationships and believes most women are only after his fortune. He has a habit of testing his blind dates by offering to buy them anything they want, a method he uses to expose their greed. Despite his distrust, he is dutiful to his mother, who arranges these dates for him \nAll characters are over 21+"
   },
@@ -262,6 +259,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587284362,
+      "to": 1790588360764
     }
   ],
   "availabilityHistory": [
@@ -279,7 +284,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 440118,
+      "num_messages": 441188,
+      "num_messages_24h": 24239,
       "rating_score": 0.982927,
       "token_count": 412
     },
@@ -296,6 +302,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 440118,
+        "rating_score": 0.982927,
+        "token_count": 412
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 441188,
+        "num_messages_24h": 24239,
         "rating_score": 0.982927,
         "token_count": 412
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "66bcf90e-4d4a-4474-9685-7087402c0445",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Theon & Elara",
         "ru": "Theon & Elara"
       },
-      "num_messages": 21044,
+      "num_messages": 21057,
       "num_messages_24h": 2,
       "rating_score": 1,
       "tags": [
@@ -78,7 +78,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587284251,
+      "updatedAt": 1790588068851,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "pl": "Theon & Elara",
       "ru": "Theon & Elara"
     },
-    "num_messages": 21044,
+    "num_messages": 21057,
     "num_messages_24h": 2,
     "rating_score": 1,
     "tags": [
@@ -144,10 +144,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587284251,
+    "updatedAt": 1790588068851,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587284251,
+      "to": 1790588068851
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,13 +166,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 1013,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1012,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 21044,
+      "num_messages": 21057,
       "num_messages_24h": 2,
       "rating_score": 1,
       "token_count": 688
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 21044,
+        "num_messages_24h": 2,
+        "rating_score": 1,
+        "token_count": 688
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 21057,
         "num_messages_24h": 2,
         "rating_score": 1,
         "token_count": 688

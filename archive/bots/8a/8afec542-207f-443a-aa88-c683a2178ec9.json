@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8afec542-207f-443a-aa88-c683a2178ec9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "The Last Inheritance",
-      "num_messages": 11278,
+      "num_messages": 11330,
       "num_messages_24h": 3179,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "5 flawless servants, 1 secluded mansion, and you—the unexpected heir. Who truly serves whom? (18+)",
       "token_count": 2217,
       "type": "STANDARD",
-      "updatedAt": 1790587523028,
+      "updatedAt": 1790588358855,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "The Last Inheritance",
-    "num_messages": 11278,
+    "num_messages": 11330,
     "num_messages_24h": 3179,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "5 flawless servants, 1 secluded mansion, and you—the unexpected heir. Who truly serves whom? (18+)",
     "token_count": 2217,
     "type": "STANDARD",
-    "updatedAt": 1790587523028,
+    "updatedAt": 1790588358855,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587523028,
+      "to": 1790588358855
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 11278,
+      "num_messages": 11330,
       "num_messages_24h": 3179,
       "rating_score": 0,
       "token_count": 2217
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 11278,
+        "num_messages_24h": 3179,
+        "rating_score": 0,
+        "token_count": 2217
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 11330,
         "num_messages_24h": 3179,
         "rating_score": 0,
         "token_count": 2217

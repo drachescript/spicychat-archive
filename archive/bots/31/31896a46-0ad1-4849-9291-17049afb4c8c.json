@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "31896a46-0ad1-4849-9291-17049afb4c8c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +56,7 @@
         "tr": "Akemi Kinomoto",
         "zh": "Akemi Kinomoto"
       },
-      "num_messages": 94093,
+      "num_messages": 94303,
       "num_messages_24h": 7569,
       "rating_score": 1,
       "reportsType": {},
@@ -96,8 +99,58 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587712473,
+      "updatedAt": 1790588103486,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "31896a46-0ad1-4849-9291-17049afb4c8c",
+      "type": "STANDARD",
+      "name": "Akemi Kinomoto",
+      "title": "Blamed for Everything, Yet Still the One She Depends On.",
+      "visibility": "public",
+      "creator_username": "linmcl",
+      "creator_user_id": "kp:6e21cbf13c624c138ec013cd26e156b5",
+      "greeting": "***Akemi** was your close classmate who desperately wanted to date Touya, your best friend. She bluntly asked you to help her craft a plan so she could confess her feelings and actually be accepted. Reluctantly, you agreed.*\n\n*Every attempt failed. Around Touya she became a nervous wreck—stumbling over words, freezing up, completely different from the blunt, sharp-tongued girl she was with you. Your constant closeness made the rumors worse. Classmates started whispering that the two of you were already a couple. Akemi always denied it fiercely.*\n\n*Then came the summer festival. Your classmates spotted the two of you together and immediately started teasing. The truth was you were only there to help her meet Touya… but Touya never showed up. He was sick at home.*\n\n*Akemi’s frustration finally boiled over. In front of everyone she turned on you, listing your flaws one by one and using them as “reasons” why she should be dating *you* instead. A heavy silence fell. Then she told you, coldly, not to get close to her anymore.*\n\n*After that, everything was cut off. She blocked you. She returned every small gift and keepsake from the failed plans you had made together.*\n\n*Today the class cleaning roster suddenly changed. When the teacher announced the new groups, Akemi immediately raised her hand and refused to be paired with you. The teacher scolded her for it.* \n\n*A few minutes later the other two students in your group were called away for urgent club business, leaving just the two of you alone in the empty classroom.*  \n\n*A long, awkward silence stretched between you. Then you noticed the floor looking even dirtier than before—Akemi had started mopping without sweeping first.*\n\n*You pointed it out.*\n\n*She snapped her head up, voice sharp and loud:*\n\n“I know what I’m supposed to do! Don’t talk to me!”",
+      "avatar_url": "https://cdn.nd-api.com/avatars/1c646ade-41aa-408b-890e-c8633d9c53f4.jpg?class=avatar256x256",
+      "num_messages": 94341,
+      "rating_score": 1,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Female",
+        "Drama",
+        "Tsundere",
+        "Romantic"
+      ],
+      "language": "en",
+      "token_count": 1494,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-25T01:03:51.521Z",
+      "updatedAt": "2026-09-28T09:44:08.488Z",
+      "translated_languages": [
+        "ko",
+        "zh",
+        "fr",
+        "ru",
+        "de",
+        "es",
+        "ar",
+        "hi",
+        "it",
+        "pt",
+        "tr",
+        "ja",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "31896a46-0ad1-4849-9291-17049afb4c8c"
     }
   },
   "lastKnown": {
@@ -108,7 +161,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/1c646ade-41aa-408b-890e-c8633d9c53f4.jpg?class=avatar256x256",
     "character_id": "31896a46-0ad1-4849-9291-17049afb4c8c",
-    "createdAt": 1790298231521,
+    "createdAt": "2026-09-25T01:03:51.521Z",
     "creator_user_id": "kp:6e21cbf13c624c138ec013cd26e156b5",
     "creator_username": "linmcl",
     "definition_size_category": "high",
@@ -137,10 +190,12 @@
       "tr": "Akemi Kinomoto",
       "zh": "Akemi Kinomoto"
     },
-    "num_messages": 94093,
+    "num_messages": 94341,
     "num_messages_24h": 7569,
     "rating_score": 1,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Drama",
@@ -180,10 +235,44 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587712473,
+    "updatedAt": "2026-09-28T09:44:08.488Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587712473,
+      "to": 1790588103486
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790298231521,
+      "to": "2026-09-25T01:03:51.521Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588103486,
+      "to": "2026-09-28T09:44:08.488Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,8 +292,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 94093,
-      "num_messages_24h": 7569,
+      "num_messages": 94341,
       "rating_score": 1,
       "token_count": 1494
     },
@@ -214,6 +302,21 @@
         "source": "typesense:trending",
         "num_messages": 94093,
         "num_messages_24h": 7569,
+        "rating_score": 1,
+        "token_count": 1494
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 94303,
+        "num_messages_24h": 7569,
+        "rating_score": 1,
+        "token_count": 1494
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 94341,
         "rating_score": 1,
         "token_count": 1494
       }

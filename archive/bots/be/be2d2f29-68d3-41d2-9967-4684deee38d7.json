@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "be2d2f29-68d3-41d2-9967-4684deee38d7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "KarmicVow: Soulbound",
         "zh": "KarmicVow: Soulbound"
       },
-      "num_messages": 343118,
+      "num_messages": 343138,
       "num_messages_24h": 3363,
       "rating_score": 0.907336,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587360677,
+      "updatedAt": 1790588169610,
       "visibility": "public"
     }
   },
@@ -143,7 +143,7 @@
       "tr": "KarmicVow: Soulbound",
       "zh": "KarmicVow: Soulbound"
     },
-    "num_messages": 343118,
+    "num_messages": 343138,
     "num_messages_24h": 3363,
     "rating_score": 0.907336,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587360677,
+    "updatedAt": 1790588169610,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587360677,
+      "to": 1790588169610
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 343118,
+      "num_messages": 343138,
       "num_messages_24h": 3363,
       "rating_score": 0.907336,
       "token_count": 1311
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 343118,
+        "num_messages_24h": 3363,
+        "rating_score": 0.907336,
+        "token_count": 1311
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 343138,
         "num_messages_24h": 3363,
         "rating_score": 0.907336,
         "token_count": 1311

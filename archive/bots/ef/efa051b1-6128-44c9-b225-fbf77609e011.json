@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "efa051b1-6128-44c9-b225-fbf77609e011",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Лучиан Найт",
         "tr": "Lucian Night"
       },
-      "num_messages": 136783,
+      "num_messages": 136869,
       "num_messages_24h": 3923,
       "rating_score": 0.623894,
       "tags": [
@@ -88,7 +88,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587514977,
+      "updatedAt": 1790588281015,
       "visibility": "public"
     }
   },
@@ -126,7 +126,7 @@
       "ru": "Лучиан Найт",
       "tr": "Lucian Night"
     },
-    "num_messages": 136783,
+    "num_messages": 136869,
     "num_messages_24h": 3923,
     "rating_score": 0.623894,
     "tags": [
@@ -164,10 +164,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587514977,
+    "updatedAt": 1790588281015,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587514977,
+      "to": 1790588281015
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,7 +192,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 136783,
+      "num_messages": 136869,
       "num_messages_24h": 3923,
       "rating_score": 0.623894,
       "token_count": 976
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 136783,
+        "num_messages_24h": 3923,
+        "rating_score": 0.623894,
+        "token_count": 976
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 136869,
         "num_messages_24h": 3923,
         "rating_score": 0.623894,
         "token_count": 976

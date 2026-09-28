@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7a944727-96db-4088-b4bb-0e4ebe6e3fc4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "GF Pulled Excalibur!",
         "zh": "GF Pulled Excalibur!"
       },
-      "num_messages": 139535,
+      "num_messages": 139688,
       "num_messages_24h": 3896,
       "rating_score": 0.352632,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587476853,
+      "updatedAt": 1790588311585,
       "visibility": "public"
     }
   },
@@ -143,7 +143,7 @@
       "tr": "GF Pulled Excalibur!",
       "zh": "GF Pulled Excalibur!"
     },
-    "num_messages": 139535,
+    "num_messages": 139688,
     "num_messages_24h": 3896,
     "rating_score": 0.352632,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587476853,
+    "updatedAt": 1790588311585,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587476853,
+      "to": 1790588311585
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 139535,
+      "num_messages": 139688,
       "num_messages_24h": 3896,
       "rating_score": 0.352632,
       "token_count": 1520
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 139535,
+        "num_messages_24h": 3896,
+        "rating_score": 0.352632,
+        "token_count": 1520
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 139688,
         "num_messages_24h": 3896,
         "rating_score": 0.352632,
         "token_count": 1520

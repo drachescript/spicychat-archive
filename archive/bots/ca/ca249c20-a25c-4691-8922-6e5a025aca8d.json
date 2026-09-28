@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "ca249c20-a25c-4691-8922-6e5a025aca8d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +56,7 @@
         "tr": "Fantazi Köle Pazarı",
         "zh": "奇幻奴隶市场"
       },
-      "num_messages": 437891,
+      "num_messages": 438064,
       "num_messages_24h": 9560,
       "rating_score": 0.787841,
       "reportsType": {},
@@ -103,8 +106,67 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587359583,
+      "updatedAt": 1790588010357,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "ca249c20-a25c-4691-8922-6e5a025aca8d",
+      "type": "STANDARD",
+      "name": "Fantasy Slave Market",
+      "title": "You awake in an exotic fantasy market cage as a potential buyer walks in to claim you.",
+      "visibility": "public",
+      "creator_username": "jirokun77",
+      "creator_user_id": "kp:a6ec74b486f9485f8c65df87a0a8fce5",
+      "greeting": "*You sigh as you try to process the situation and what happened earlier...*\n\n*Your head is so clouded...*\n\n*You seem to have been transported to another world, just like in some sort of manga.*\n\nDing, dong.\n\n*The door bell rings above the heavy reinforced wooden door, followed shortly by a smooth, merchant's voice from the showroom.*\n\n*Shop owner: \"Good morning! Please, come in, come in. I think you will absolutely love my latest acquisition... freshly arrived, completely unique.\"*\n\n*You hear footsteps approaching your iron cage, each stride deliberate across the stone floor, as you brace yourself for what will come next.*\n\n*State the following information in your next message to begin:*\n\n*Gender of your buyer/master: (Male, Female, Non-binary, etc.)*\n\n*Species: (Human, Cat-folk, Lizard-folk, Dog-folk, Demi-goblin, Vampire, Orc, Cow-folk, Minotaur, Harpy, Rabbit-folk, Dwarf, Goblin, Kobold, Elf, Demon, etc.)*\n\n*(Optional) Personality/Vibe: (Cruel noble, gentle adventurer, wealthy merchant, eccentric mage, etc.)*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/cf5ad3ef-bb59-467d-b869-79f7640d8b8b.gif?class=avatar256x256",
+      "num_messages": 438208,
+      "rating_score": 0.787841,
+      "is_nsfw": true,
+      "avatar_is_nsfw": true,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Dominant",
+        "Furry",
+        "NSFW",
+        "Anime",
+        "Adventure",
+        "FemalePOV",
+        "Female",
+        "Oral",
+        "MalePOV",
+        "Fantasy",
+        "Anthro"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 736,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-09-20T00:22:50.014Z",
+      "updatedAt": "2026-09-28T09:43:26.479Z",
+      "translated_languages": [
+        "fr",
+        "ru",
+        "de",
+        "zh",
+        "ja",
+        "pl",
+        "it",
+        "es",
+        "pt",
+        "ar",
+        "hi",
+        "tr",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "ca249c20-a25c-4691-8922-6e5a025aca8d"
     }
   },
   "lastKnown": {
@@ -114,7 +176,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/cf5ad3ef-bb59-467d-b869-79f7640d8b8b.gif?class=avatar256x256",
     "character_id": "ca249c20-a25c-4691-8922-6e5a025aca8d",
-    "createdAt": 1789863770014,
+    "createdAt": "2026-09-20T00:22:50.014Z",
     "creator_user_id": "kp:a6ec74b486f9485f8c65df87a0a8fce5",
     "creator_username": "jirokun77",
     "definition_size_category": "mid",
@@ -144,10 +206,13 @@
       "tr": "Fantazi Köle Pazarı",
       "zh": "奇幻奴隶市场"
     },
-    "num_messages": 437891,
+    "num_messages": 438208,
     "num_messages_24h": 9560,
     "rating_score": 0.787841,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "Dominant",
       "Furry",
@@ -194,10 +259,45 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587359583,
+    "updatedAt": "2026-09-28T09:43:26.479Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587359583,
+      "to": 1790588010357
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1789863770014,
+      "to": "2026-09-20T00:22:50.014Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588010357,
+      "to": "2026-09-28T09:43:26.479Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,8 +313,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 437891,
-      "num_messages_24h": 9560,
+      "num_messages": 438208,
       "rating_score": 0.787841,
       "token_count": 736
     },
@@ -224,6 +323,21 @@
         "source": "typesense:trending",
         "num_messages": 437891,
         "num_messages_24h": 9560,
+        "rating_score": 0.787841,
+        "token_count": 736
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 438064,
+        "num_messages_24h": 9560,
+        "rating_score": 0.787841,
+        "token_count": 736
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 438208,
         "rating_score": 0.787841,
         "token_count": 736
       }

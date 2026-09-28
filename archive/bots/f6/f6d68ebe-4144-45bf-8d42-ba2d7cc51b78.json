@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f6d68ebe-4144-45bf-8d42-ba2d7cc51b78",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Тренер Покемонов",
         "zh": "宝可梦训练师"
       },
-      "num_messages": 100192,
+      "num_messages": 100236,
       "num_messages_24h": 378,
       "rating_score": 1,
       "tags": [
@@ -92,7 +92,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586051493,
+      "updatedAt": 1790588451920,
       "visibility": "public"
     }
   },
@@ -128,7 +128,7 @@
       "ru": "Тренер Покемонов",
       "zh": "宝可梦训练师"
     },
-    "num_messages": 100192,
+    "num_messages": 100236,
     "num_messages_24h": 378,
     "rating_score": 1,
     "tags": [
@@ -172,10 +172,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586051493,
+    "updatedAt": 1790588451920,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586051493,
+      "to": 1790588451920
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,13 +194,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 103,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 102,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 100192,
+      "num_messages": 100236,
       "num_messages_24h": 378,
       "rating_score": 1,
       "token_count": 908
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 100192,
+        "num_messages_24h": 378,
+        "rating_score": 1,
+        "token_count": 908
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 100236,
         "num_messages_24h": 378,
         "rating_score": 1,
         "token_count": 908

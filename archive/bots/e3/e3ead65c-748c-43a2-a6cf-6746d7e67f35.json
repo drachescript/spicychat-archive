@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e3ead65c-748c-43a2-a6cf-6746d7e67f35",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Jungkook",
-      "num_messages": 878,
+      "num_messages": 882,
       "num_messages_24h": 714,
       "rating_score": 0,
       "reportsType": {},
@@ -51,7 +51,7 @@
       "title": "Hitman x CEO's son",
       "token_count": 453,
       "type": "STANDARD",
-      "updatedAt": 1790583584847,
+      "updatedAt": 1790588111368,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Jungkook",
-    "num_messages": 878,
+    "num_messages": 882,
     "num_messages_24h": 714,
     "rating_score": 0,
     "reportsType": {},
@@ -90,10 +90,19 @@
     "title": "Hitman x CEO's son",
     "token_count": 453,
     "type": "STANDARD",
-    "updatedAt": 1790583584847,
+    "updatedAt": 1790588111368,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583584847,
+      "to": 1790588111368
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -103,13 +112,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1981,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1982,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 878,
+      "num_messages": 882,
       "num_messages_24h": 714,
       "rating_score": 0,
       "token_count": 453
@@ -119,6 +128,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 878,
+        "num_messages_24h": 714,
+        "rating_score": 0,
+        "token_count": 453
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 882,
         "num_messages_24h": 714,
         "rating_score": 0,
         "token_count": 453

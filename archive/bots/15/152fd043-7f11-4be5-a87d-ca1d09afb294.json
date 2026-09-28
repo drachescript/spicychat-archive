@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "152fd043-7f11-4be5-a87d-ca1d09afb294",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Rey Kawasaki",
-      "num_messages": 121,
+      "num_messages": 200,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "A year ago, she was about to break you. Now you're her sparring partner. She still doesn't lie.",
       "token_count": 1656,
       "type": "STANDARD",
-      "updatedAt": 1790585858466,
+      "updatedAt": 1790588453504,
       "visibility": "public"
     }
   },
@@ -83,7 +83,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Rey Kawasaki",
-    "num_messages": 121,
+    "num_messages": 200,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "A year ago, she was about to break you. Now you're her sparring partner. She still doesn't lie.",
     "token_count": 1656,
     "type": "STANDARD",
-    "updatedAt": 1790585858466,
+    "updatedAt": 1790588453504,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585858466,
+      "to": 1790588453504
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 121,
+      "num_messages": 200,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1656
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 121,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1656
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 200,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1656

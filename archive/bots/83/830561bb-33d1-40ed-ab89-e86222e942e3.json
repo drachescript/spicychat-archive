@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "830561bb-33d1-40ed-ab89-e86222e942e3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Люди Икс: Эра Мутантов V2",
         "zh": "X战警：变种人时代 V2"
       },
-      "num_messages": 182505,
+      "num_messages": 182522,
       "num_messages_24h": 3111,
       "rating_score": 0.769231,
       "reportsType": {},
@@ -76,7 +76,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587513316,
+      "updatedAt": 1790588369597,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "ru": "Люди Икс: Эра Мутантов V2",
       "zh": "X战警：变种人时代 V2"
     },
-    "num_messages": 182505,
+    "num_messages": 182522,
     "num_messages_24h": 3111,
     "rating_score": 0.769231,
     "reportsType": {},
@@ -140,10 +140,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587513316,
+    "updatedAt": 1790588369597,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587513316,
+      "to": 1790588369597
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 182505,
+      "num_messages": 182522,
       "num_messages_24h": 3111,
       "rating_score": 0.769231,
       "token_count": 1200
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 182505,
+        "num_messages_24h": 3111,
+        "rating_score": 0.769231,
+        "token_count": 1200
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 182522,
         "num_messages_24h": 3111,
         "rating_score": 0.769231,
         "token_count": 1200

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ac0abf36-f0c5-4ef4-89f5-1f9dc5402320",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "de": "BEN Drowned",
         "ru": "BEN Drowned"
       },
-      "num_messages": 151205,
+      "num_messages": 151216,
       "num_messages_24h": 327,
       "rating_score": 0.994186,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790574095186,
+      "updatedAt": 1790588450835,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "de": "BEN Drowned",
       "ru": "BEN Drowned"
     },
-    "num_messages": 151205,
+    "num_messages": 151216,
     "num_messages_24h": 327,
     "rating_score": 0.994186,
     "reportsType": {},
@@ -138,10 +138,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790574095186,
+    "updatedAt": 1790588450835,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574095186,
+      "to": 1790588450835
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 151205,
+      "num_messages": 151216,
       "num_messages_24h": 327,
       "rating_score": 0.994186,
       "token_count": 936
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 151205,
+        "num_messages_24h": 327,
+        "rating_score": 0.994186,
+        "token_count": 936
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 151216,
         "num_messages_24h": 327,
         "rating_score": 0.994186,
         "token_count": 936

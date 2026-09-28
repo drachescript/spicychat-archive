@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5a9b63fc-3b27-4ee2-abc9-e54b5069132a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -36,7 +36,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Portgas Ace",
-      "num_messages": 43090,
+      "num_messages": 43092,
       "num_messages_24h": 184,
       "rating_score": 0.992958,
       "reportsType": {},
@@ -49,7 +49,7 @@
       "title": "‧₊˚ ⋅ Toxin release.",
       "token_count": 869,
       "type": "STANDARD",
-      "updatedAt": 1790586829399,
+      "updatedAt": 1790587767790,
       "visibility": "public"
     }
   },
@@ -73,7 +73,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "Portgas Ace",
-    "num_messages": 43090,
+    "num_messages": 43092,
     "num_messages_24h": 184,
     "rating_score": 0.992958,
     "reportsType": {},
@@ -86,10 +86,19 @@
     "title": "‧₊˚ ⋅ Toxin release.",
     "token_count": 869,
     "type": "STANDARD",
-    "updatedAt": 1790586829399,
+    "updatedAt": 1790587767790,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586829399,
+      "to": 1790587767790
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -105,7 +114,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 43090,
+      "num_messages": 43092,
       "num_messages_24h": 184,
       "rating_score": 0.992958,
       "token_count": 869
@@ -115,6 +124,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 43090,
+        "num_messages_24h": 184,
+        "rating_score": 0.992958,
+        "token_count": 869
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 43092,
         "num_messages_24h": 184,
         "rating_score": 0.992958,
         "token_count": 869

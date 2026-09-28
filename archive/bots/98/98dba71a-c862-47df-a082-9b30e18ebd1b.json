@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "98dba71a-c862-47df-a082-9b30e18ebd1b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "pl": "Dziewczyny z klasy 1A MHA",
         "ru": "MHA Class 1A girls"
       },
-      "num_messages": 185715,
+      "num_messages": 185785,
       "num_messages_24h": 2793,
       "rating_score": 0.919355,
       "reportsType": {},
@@ -87,7 +87,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195009,
+      "updatedAt": 1790588366455,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "pl": "Dziewczyny z klasy 1A MHA",
       "ru": "MHA Class 1A girls"
     },
-    "num_messages": 185715,
+    "num_messages": 185785,
     "num_messages_24h": 2793,
     "rating_score": 0.919355,
     "reportsType": {},
@@ -164,10 +164,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195009,
+    "updatedAt": 1790588366455,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195009,
+      "to": 1790588366455
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,7 +192,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 185715,
+      "num_messages": 185785,
       "num_messages_24h": 2793,
       "rating_score": 0.919355,
       "token_count": 831
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 185715,
+        "num_messages_24h": 2793,
+        "rating_score": 0.919355,
+        "token_count": 831
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 185785,
         "num_messages_24h": 2793,
         "rating_score": 0.919355,
         "token_count": 831

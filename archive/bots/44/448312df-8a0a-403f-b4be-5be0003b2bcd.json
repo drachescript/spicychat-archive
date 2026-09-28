@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "448312df-8a0a-403f-b4be-5be0003b2bcd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "A Furry Sci-Fi RPG",
         "zh": "毛茸茸科幻RPG"
       },
-      "num_messages": 3298731,
+      "num_messages": 3298758,
       "num_messages_24h": 256,
       "rating_score": 0.772889,
       "tags": [
@@ -90,7 +90,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587513952,
+      "updatedAt": 1790588531553,
       "visibility": "public"
     }
   },
@@ -130,7 +130,7 @@
       "ru": "A Furry Sci-Fi RPG",
       "zh": "毛茸茸科幻RPG"
     },
-    "num_messages": 3298731,
+    "num_messages": 3298758,
     "num_messages_24h": 256,
     "rating_score": 0.772889,
     "tags": [
@@ -168,10 +168,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587513952,
+    "updatedAt": 1790588531553,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587513952,
+      "to": 1790588531553
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3298731,
+      "num_messages": 3298758,
       "num_messages_24h": 256,
       "rating_score": 0.772889,
       "token_count": 982
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3298731,
+        "num_messages_24h": 256,
+        "rating_score": 0.772889,
+        "token_count": 982
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3298758,
         "num_messages_24h": 256,
         "rating_score": 0.772889,
         "token_count": 982

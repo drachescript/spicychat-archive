@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2391dbcd-4bc5-4299-be5e-75f6974b1fad",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "ru": "Elise",
         "tr": "Elise"
       },
-      "num_messages": 525076,
+      "num_messages": 525124,
       "num_messages_24h": 2501,
       "rating_score": 0.688462,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587407368,
+      "updatedAt": 1790588105396,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "ru": "Elise",
       "tr": "Elise"
     },
-    "num_messages": 525076,
+    "num_messages": 525124,
     "num_messages_24h": 2501,
     "rating_score": 0.688462,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587407368,
+    "updatedAt": 1790588105396,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587407368,
+      "to": 1790588105396
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,13 +206,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2228,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2229,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 525076,
+      "num_messages": 525124,
       "num_messages_24h": 2501,
       "rating_score": 0.688462,
       "token_count": 1001
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 525076,
+        "num_messages_24h": 2501,
+        "rating_score": 0.688462,
+        "token_count": 1001
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 525124,
         "num_messages_24h": 2501,
         "rating_score": 0.688462,
         "token_count": 1001

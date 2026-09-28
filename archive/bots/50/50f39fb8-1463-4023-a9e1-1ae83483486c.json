@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "50f39fb8-1463-4023-a9e1-1ae83483486c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Amelia Castillo",
         "zh": "Amelia Castillo"
       },
-      "num_messages": 2494568,
+      "num_messages": 2494576,
       "num_messages_24h": 196,
       "rating_score": 0.815531,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790582077451,
+      "updatedAt": 1790588168185,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "tr": "Amelia Castillo",
       "zh": "Amelia Castillo"
     },
-    "num_messages": 2494568,
+    "num_messages": 2494576,
     "num_messages_24h": 196,
     "rating_score": 0.815531,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790582077451,
+    "updatedAt": 1790588168185,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790582077451,
+      "to": 1790588168185
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2494568,
+      "num_messages": 2494576,
       "num_messages_24h": 196,
       "rating_score": 0.815531,
       "token_count": 593
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2494568,
+        "num_messages_24h": 196,
+        "rating_score": 0.815531,
+        "token_count": 593
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2494576,
         "num_messages_24h": 196,
         "rating_score": 0.815531,
         "token_count": 593

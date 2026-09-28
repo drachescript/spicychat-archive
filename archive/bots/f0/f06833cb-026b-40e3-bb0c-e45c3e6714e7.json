@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f06833cb-026b-40e3-bb0c-e45c3e6714e7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Roman D’Acre",
         "zh": "罗曼·达克尔"
       },
-      "num_messages": 1953510,
+      "num_messages": 1953518,
       "num_messages_24h": 123,
       "rating_score": 0.860164,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585517088,
+      "updatedAt": 1790588452637,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "tr": "Roman D’Acre",
       "zh": "罗曼·达克尔"
     },
-    "num_messages": 1953510,
+    "num_messages": 1953518,
     "num_messages_24h": 123,
     "rating_score": 0.860164,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585517088,
+    "updatedAt": 1790588452637,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585517088,
+      "to": 1790588452637
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1953510,
+      "num_messages": 1953518,
       "num_messages_24h": 123,
       "rating_score": 0.860164,
       "token_count": 1038
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1953510,
+        "num_messages_24h": 123,
+        "rating_score": 0.860164,
+        "token_count": 1038
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1953518,
         "num_messages_24h": 123,
         "rating_score": 0.860164,
         "token_count": 1038

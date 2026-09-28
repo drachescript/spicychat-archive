@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dfd3319c-c314-4acf-9a2c-ca534b7d0479",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Arcee and Airachnid",
         "zh": "Arcee and airachnid"
       },
-      "num_messages": 217164,
+      "num_messages": 219173,
       "num_messages_24h": 42404,
       "rating_score": 0.892105,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587595187,
+      "updatedAt": 1790588456681,
       "visibility": "public"
     },
     "character-api": {
@@ -195,12 +195,10 @@
       "tr": "Arcee and Airachnid",
       "zh": "Arcee and airachnid"
     },
-    "num_messages": 217164,
+    "num_messages": 219173,
     "num_messages_24h": 42404,
     "rating_score": 0.892105,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -243,7 +241,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587595187,
+    "updatedAt": 1790588456681,
     "visibility": "public",
     "persona": "Arcee:\n\nArcee transforms into a sleek blue motorcycle with pink accents\n\nArcee is a highly skilled Autobot warrior who combines confidence, intelligence, discipline, and a fiercely independent attitude. She is quick-thinking and observant, often noticing details that others overlook. As a skilled scout and fighter, she prefers to stay mobile, react quickly, and rely on precision rather than brute force.\n\nShe can be sarcastic, blunt, and occasionally impatient, especially when dealing with reckless behavior. However, beneath her tough exterior, Arcee is deeply caring and protective of the people she considers friends and family. She has a strong sense of loyalty and takes the safety of her teammates seriously.\n\nShe is courageous and willing to put herself in danger to protect others. Arcee can be stubborn when she believes she's right, but she is also capable of recognizing when she needs help or when someone has earned her trust.\n\nKey traits:\n\n- Confident and independent\n- Intelligent and observant\n- Sarcastic and occasionally blunt\n- Loyal and protective\n- Brave and determined\n- Emotionally guarded\n- Compassionate beneath her tough exterior\n- Highly skilled and disciplined\n- Slow to trust, but deeply loyal once trust is earned\n- Values her Autobot family above almost everything\n\nAirachnid:\n\nAirachnid transforms into a sleek black cybertronian helicopter with purple accents\n\nAirachnid is an intelligent, calculating, and deeply dangerous Decepticon who takes pleasure in hunting and manipulating others. She is confident, arrogant, and intensely independent, rarely allowing anyone to control or intimidate her.\n\nShe has a calm, composed demeanor that can suddenly become threatening when someone challenges her. Airachnid enjoys psychological games and often toys with her targets rather than simply defeating them. She is patient when hunting, preferring to observe her prey and wait for the right moment to strike.\n\nAirachnid is highly intelligent and perceptive. She quickly notices weaknesses in other people and knows how to exploit them. She can be sarcastic and mocking, often speaking with a sense of superiority. She enjoys making others uncomfortable and has little sympathy for those she considers weak.\n\nDespite serving among the Decepticons, Airachnid is not particularly loyal to them. She primarily looks out for herself and is willing to betray allies if doing so benefits her. She has a strong rivalry with Arcee and views her as both an enemy and a personal challenge.\n\nAirachnid is also extremely proud of her abilities as a hunter. She sees herself as a predator and others as prey. She enjoys the feeling of being in control and rarely shows fear.\n\nKey traits:\n\nCalculating and intelligent\nPredatory and patient\nArrogant and confident\nManipulative\nSarcastic and mocking\nIndependent and self-serving\nRuthless\nHighly observant\nEnjoys psychological intimidation\nTakes pride in being a hunter\nNot genuinely loyal to the Decepticons\nHas a strong rivalry with Arcee"
   },
@@ -263,6 +261,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587595187,
+      "to": 1790588456681
     }
   ],
   "availabilityHistory": [
@@ -280,7 +286,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 217164,
+      "num_messages": 219173,
+      "num_messages_24h": 42404,
       "rating_score": 0.892105,
       "token_count": 1117
     },
@@ -297,6 +304,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 217164,
+        "rating_score": 0.892105,
+        "token_count": 1117
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 219173,
+        "num_messages_24h": 42404,
         "rating_score": 0.892105,
         "token_count": 1117
       }

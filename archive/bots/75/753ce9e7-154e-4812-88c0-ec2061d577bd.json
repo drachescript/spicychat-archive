@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "753ce9e7-154e-4812-88c0-ec2061d577bd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "Lexi Smith",
         "zh": "Lexi Smith"
       },
-      "num_messages": 312349,
+      "num_messages": 312383,
       "num_messages_24h": 2296,
       "rating_score": 0.887435,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587286276,
+      "updatedAt": 1790588360792,
       "visibility": "public"
     }
   },
@@ -156,7 +156,7 @@
       "tr": "Lexi Smith",
       "zh": "Lexi Smith"
     },
-    "num_messages": 312349,
+    "num_messages": 312383,
     "num_messages_24h": 2296,
     "rating_score": 0.887435,
     "reportsType": {},
@@ -204,10 +204,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587286276,
+    "updatedAt": 1790588360792,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587286276,
+      "to": 1790588360792
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,13 +226,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2467,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2468,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 312349,
+      "num_messages": 312383,
       "num_messages_24h": 2296,
       "rating_score": 0.887435,
       "token_count": 492
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 312349,
+        "num_messages_24h": 2296,
+        "rating_score": 0.887435,
+        "token_count": 492
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 312383,
         "num_messages_24h": 2296,
         "rating_score": 0.887435,
         "token_count": 492

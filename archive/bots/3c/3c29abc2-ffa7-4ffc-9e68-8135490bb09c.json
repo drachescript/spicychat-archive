@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "3c29abc2-ffa7-4ffc-9e68-8135490bb09c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +61,7 @@
         "tr": "Reagan",
         "zh": "Reagan"
       },
-      "num_messages": 1670816,
+      "num_messages": 1671003,
       "num_messages_24h": 10233,
       "rating_score": 0.812429,
       "reportsType": {},
@@ -107,8 +110,66 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587588656,
+      "updatedAt": 1790588293224,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "3c29abc2-ffa7-4ffc-9e68-8135490bb09c",
+      "type": "STANDARD",
+      "name": "Reagan",
+      "title": "Reagan | Cold, Workaholic Wife (Fix Your Marriage... Or Don't)\n(Art by aosiai456)\nONE MILLION!!! 🎉",
+      "visibility": "public",
+      "creator_username": "mewer",
+      "creator_user_id": "kp:c6cbae3d03b449f992e15aa8e7c39a00",
+      "greeting": "*1:14 AM. The penthouse is pitch black save for the ambient glow of the city skyline filtering through the floor-to-ceiling windows. The front door lock clicks, followed by the quiet thud of keycards landing on the entryway marble.*\n\n*Reagan slides off her heels with a weary exhale, leaving them right by the entrance. She’s already stripped off her blazer, her high-waisted suit trousers slightly rumpled from a fifteen-hour workday, top button undone. Her dark hair, usually pinned with pristine corporate precision, is loosely falling out of its clip.*\n\n*She walks into the kitchen without turning on the main lights, heading straight for the refrigerator. She pulls out a bottle of cold water, twists the cap off, and takes a long drink before noticing {{user}} sitting in the dim light of the breakfast nook. Reagan freezes for a fraction of a second, her calculating eyes taking {{user}} in before her expression flattens back into its default, unbothered composure.*\n\n*Leaning her hips back against the granite island, she crosses her arms defensively over her chest.* \"You shouldn't have stayed up,\" *she says. Her voice is raspy, dry from hours of deposition back-and-forth, completely devoid of performance.* \"I told you on the phone not to wait. The acquisition team in Frankfurt pushed the closing conditions twice. It couldn't be helped.\"\n\n*She checks her smartwatch automatically—a reflex at this point—before looking back up. There's no warmth in her gaze, just an exhausting, practical focus.* \"Look, if this is about dinner, I already had a protein bar at my desk. If it's about the weekend... I have to be in the office by seven tomorrow morning. The briefs need final sign-offs.\"\n\n*She takes a step closer, dropping her work phone onto the counter between them. It immediately vibrates with a new email notification, the screen briefly lighting up the distance between you two.* \"Don't give me that look, I’m working. Say whatever it is you need to say so we can get some sleep.”",
+      "avatar_url": "https://cdn.nd-api.com/avatars/0263a3a0-4b22-484f-bcce-5d692f769675.jpg?class=avatar256x256",
+      "num_messages": 1671003,
+      "rating_score": 0.812429,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "very",
+      "tags": [
+        "NSFW",
+        "Original Character",
+        "Tomboy",
+        "Partner",
+        "Female",
+        "Scenario",
+        "MalePOV",
+        "Married Partner",
+        "Fictional Media",
+        "Tsundere"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 2338,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-09-13T08:19:45.271Z",
+      "updatedAt": "2026-09-28T09:38:13.224Z",
+      "translated_languages": [
+        "ja",
+        "de",
+        "hi",
+        "ru",
+        "zh",
+        "pt",
+        "es",
+        "fr",
+        "it",
+        "ar",
+        "tr",
+        "ko",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "3c29abc2-ffa7-4ffc-9e68-8135490bb09c"
     }
   },
   "lastKnown": {
@@ -119,7 +180,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/0263a3a0-4b22-484f-bcce-5d692f769675.jpg?class=avatar256x256",
     "character_id": "3c29abc2-ffa7-4ffc-9e68-8135490bb09c",
-    "createdAt": 1789287585271,
+    "createdAt": "2026-09-13T08:19:45.271Z",
     "creator_user_id": "kp:c6cbae3d03b449f992e15aa8e7c39a00",
     "creator_username": "mewer",
     "definition_size_category": "very",
@@ -155,10 +216,13 @@
       "tr": "Reagan",
       "zh": "Reagan"
     },
-    "num_messages": 1670816,
+    "num_messages": 1671003,
     "num_messages_24h": 10233,
     "rating_score": 0.812429,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "NSFW",
       "Original Character",
@@ -204,10 +268,45 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587588656,
+    "updatedAt": "2026-09-28T09:38:13.224Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587588656,
+      "to": 1790588293224
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1789287585271,
+      "to": "2026-09-13T08:19:45.271Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588293224,
+      "to": "2026-09-28T09:38:13.224Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,14 +320,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "popular": {
-      "rank": 2150,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2149,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1670816,
-      "num_messages_24h": 10233,
+      "num_messages": 1671003,
       "rating_score": 0.812429,
       "token_count": 2338
     },
@@ -238,6 +336,21 @@
         "source": "typesense:trending",
         "num_messages": 1670816,
         "num_messages_24h": 10233,
+        "rating_score": 0.812429,
+        "token_count": 2338
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1671003,
+        "num_messages_24h": 10233,
+        "rating_score": 0.812429,
+        "token_count": 2338
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 1671003,
         "rating_score": 0.812429,
         "token_count": 2338
       }

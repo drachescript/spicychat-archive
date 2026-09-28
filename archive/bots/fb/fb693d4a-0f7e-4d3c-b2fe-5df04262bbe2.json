@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fb693d4a-0f7e-4d3c-b2fe-5df04262bbe2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "The Arcane Relic",
-      "num_messages": 946,
+      "num_messages": 982,
       "num_messages_24h": 581,
       "rating_score": 0,
       "reportsType": {},
@@ -59,7 +59,7 @@
       "title": "Thrown into a fantasy world as a slave",
       "token_count": 730,
       "type": "STANDARD",
-      "updatedAt": 1790587635922,
+      "updatedAt": 1790588500743,
       "visibility": "public"
     }
   },
@@ -85,7 +85,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "The Arcane Relic",
-    "num_messages": 946,
+    "num_messages": 982,
     "num_messages_24h": 581,
     "rating_score": 0,
     "reportsType": {},
@@ -106,10 +106,19 @@
     "title": "Thrown into a fantasy world as a slave",
     "token_count": 730,
     "type": "STANDARD",
-    "updatedAt": 1790587635922,
+    "updatedAt": 1790588500743,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587635922,
+      "to": 1790588500743
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,13 +128,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1269,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1270,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 946,
+      "num_messages": 982,
       "num_messages_24h": 581,
       "rating_score": 0,
       "token_count": 730
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 946,
+        "num_messages_24h": 581,
+        "rating_score": 0,
+        "token_count": 730
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 982,
         "num_messages_24h": 581,
         "rating_score": 0,
         "token_count": 730

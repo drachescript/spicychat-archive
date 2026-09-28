@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cf4f9a5c-bb26-41f7-9e55-5a0b3b5ea692",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "es": "Mha Infección de Lujuria",
         "pl": "Mha Lust Infection"
       },
-      "num_messages": 113755,
+      "num_messages": 113767,
       "num_messages_24h": 363,
       "rating_score": 1,
       "reportsType": {},
@@ -65,7 +65,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587302651,
+      "updatedAt": 1790588210488,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
       "es": "Mha Infección de Lujuria",
       "pl": "Mha Lust Infection"
     },
-    "num_messages": 113755,
+    "num_messages": 113767,
     "num_messages_24h": 363,
     "rating_score": 1,
     "reportsType": {},
@@ -118,10 +118,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587302651,
+    "updatedAt": 1790588210488,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587302651,
+      "to": 1790588210488
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,7 +146,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 113755,
+      "num_messages": 113767,
       "num_messages_24h": 363,
       "rating_score": 1,
       "token_count": 292
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 113755,
+        "num_messages_24h": 363,
+        "rating_score": 1,
+        "token_count": 292
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 113767,
         "num_messages_24h": 363,
         "rating_score": 1,
         "token_count": 292

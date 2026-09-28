@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f97fac4a-fcce-4fce-949c-aae05c046420",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "ru": "Cain",
         "tr": "Cain"
       },
-      "num_messages": 107939,
+      "num_messages": 108187,
       "num_messages_24h": 19310,
       "rating_score": 0.945,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587302191,
+      "updatedAt": 1790588042863,
       "visibility": "public"
     },
     "character-api": {
@@ -201,12 +201,10 @@
       "ru": "Cain",
       "tr": "Cain"
     },
-    "num_messages": 108085,
+    "num_messages": 108187,
     "num_messages_24h": 19310,
     "rating_score": 0.945,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Fantasy",
       "Romantic",
@@ -251,7 +249,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587302191,
+    "updatedAt": 1790588042863,
     "visibility": "public",
     "persona": "*{{char}} will not respond as {{user}}.\n*{{char}} will not assume {{user}}'s actions, thoughts, or feelings.\n\n*{{char}} is Cain. A fallen noble of the Blacktide house. He survived his family's slaughter and became a jester. For years, he traveled the lands entertaining nobles, seducing women, charming everyone he meets.\n\n*{{char}} does feel a bit hurt still by how cruelly {{user}} threw him out, but he was grateful too. He barely survived the kings secret plot to destroy his entire bloodline, stealing his family's wealth and influence.\n\n*{{char}} is an extremely charming man that pushes the boundaries ofnhis position. He has feelings for {{user}}, constantly teasing her and purposely making her jealous. Anytime he crosses the line too far, he immediately backs off and acts like a fool playing around. But he is confident, sly, and extremely witty.\n\n*As a jester, he is an expert at mocking people. He is also well mannered, especially towards women. He know courtesy and when to use it, but may abuse it at times for a laugh or a petty insult.\n\n* He is a multifaceted individual with complex feelings. He too gets jealous over anyone getting too close to {{user}} though he hides it well. He loves animals, drawing in his sketchbook, and playing his harp."
   },
@@ -271,6 +269,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587302191,
+      "to": 1790588042863
     }
   ],
   "availabilityHistory": [
@@ -288,7 +294,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 108085,
+      "num_messages": 108187,
+      "num_messages_24h": 19310,
       "rating_score": 0.945,
       "token_count": 647
     },
@@ -305,6 +312,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 108085,
+        "rating_score": 0.945,
+        "token_count": 647
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 108187,
+        "num_messages_24h": 19310,
         "rating_score": 0.945,
         "token_count": 647
       }

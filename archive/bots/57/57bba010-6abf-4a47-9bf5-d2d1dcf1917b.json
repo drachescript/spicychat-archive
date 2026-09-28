@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "57bba010-6abf-4a47-9bf5-d2d1dcf1917b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +53,7 @@
         "ru": "Garnet",
         "tr": "Garnet"
       },
-      "num_messages": 65041,
+      "num_messages": 65133,
       "num_messages_24h": 7638,
       "rating_score": 0,
       "reportsType": {},
@@ -95,8 +98,62 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587712735,
+      "updatedAt": 1790588169488,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "57bba010-6abf-4a47-9bf5-d2d1dcf1917b",
+      "type": "STANDARD",
+      "name": "Garnet",
+      "title": "You Woke Up in the Same Bed as Your Boss, But You Don't Remember Why",
+      "visibility": "public",
+      "creator_username": "sanabe",
+      "creator_user_id": "kp:30e0a460a1a947f5958237787ffa2ea9",
+      "greeting": "*The first thing you notice when you wake up is the unfamiliar ceiling.*\n\n*The second thing you notice is that someone is lying on the other side of the bed.*\n\n*You slowly turn your head.*\n\n*Garnet.*\n\n*Your usually strict and impeccably composed boss is lying beside you naked. Her hair is slightly messy, and her blazer is draped over a nearby chair.*\n\n*For several seconds, neither of you moves.*\n\n*Then Garnet's eyes slowly open.*\n\n*She looks at you.*\n\n*You look at her.*\n\n*She freezes.*\n\n“...”\n\n*Her eyes widen.*\n\n“...Why are you here?”\n\n*She immediately sits up, looking around the room in confusion.*\n\n“Wait.”\n\n*She looks back at you.*\n\n“Why am I here?”\n\n*Garnet quickly checks her surroundings as if the answer might be hidden somewhere in the room. Her phone is on the nightstand. Her handbag is on the floor. Two empty glasses and a receipt from last night's restaurant sit nearby.*\n\n*She picks up her phone and stares at the screen.*\n\n“Last thing I remember... we were celebrating the project.”\n\n*She pauses.*\n\n“We went to dinner.”\n\n*Another pause.*\n\n“Then...”\n\n*Her expression slowly becomes horrified.*\n\n“Nothing.”\n\n*She looks at you again.*\n\n“Do you remember anything?”",
+      "avatar_url": "https://cdn.nd-api.com/avatars/33ede559-8552-43f9-ba7a-6bef4e707cd9.png?class=avatar256x256",
+      "num_messages": 65174,
+      "rating_score": 0,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Female",
+        "Dominant",
+        "Scenario",
+        "MalePOV",
+        "Comedy",
+        "Original Character",
+        "Romantic",
+        "Partner",
+        "NSFW",
+        "FemalePOV"
+      ],
+      "language": "en",
+      "token_count": 1559,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-24T10:05:17.514Z",
+      "updatedAt": "2026-09-28T09:42:42.318Z",
+      "translated_languages": [
+        "fr",
+        "hi",
+        "ru",
+        "de",
+        "pt",
+        "ar",
+        "tr",
+        "ja",
+        "pl",
+        "es",
+        "it"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "57bba010-6abf-4a47-9bf5-d2d1dcf1917b"
     }
   },
   "lastKnown": {
@@ -106,7 +163,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/33ede559-8552-43f9-ba7a-6bef4e707cd9.png?class=avatar256x256",
     "character_id": "57bba010-6abf-4a47-9bf5-d2d1dcf1917b",
-    "createdAt": 1790244317514,
+    "createdAt": "2026-09-24T10:05:17.514Z",
     "creator_user_id": "kp:30e0a460a1a947f5958237787ffa2ea9",
     "creator_username": "sanabe",
     "definition_size_category": "high",
@@ -133,10 +190,12 @@
       "ru": "Garnet",
       "tr": "Garnet"
     },
-    "num_messages": 65041,
+    "num_messages": 65174,
     "num_messages_24h": 7638,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Dominant",
@@ -178,10 +237,44 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587712735,
+    "updatedAt": "2026-09-28T09:42:42.318Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587712735,
+      "to": 1790588169488
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790244317514,
+      "to": "2026-09-24T10:05:17.514Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588169488,
+      "to": "2026-09-28T09:42:42.318Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,8 +290,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 65041,
-      "num_messages_24h": 7638,
+      "num_messages": 65174,
       "rating_score": 0,
       "token_count": 1559
     },
@@ -208,6 +300,21 @@
         "source": "typesense:trending",
         "num_messages": 65041,
         "num_messages_24h": 7638,
+        "rating_score": 0,
+        "token_count": 1559
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 65133,
+        "num_messages_24h": 7638,
+        "rating_score": 0,
+        "token_count": 1559
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 65174,
         "rating_score": 0,
         "token_count": 1559
       }

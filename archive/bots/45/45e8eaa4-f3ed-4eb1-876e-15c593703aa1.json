@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "45e8eaa4-f3ed-4eb1-876e-15c593703aa1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "Kory Veil",
         "zh": "Kory Veil"
       },
-      "num_messages": 4495,
+      "num_messages": 4548,
       "num_messages_24h": 2159,
       "rating_score": 0,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587251413,
+      "updatedAt": 1790588497077,
       "visibility": "public"
     }
   },
@@ -102,7 +102,7 @@
       "fr": "Kory Veil",
       "zh": "Kory Veil"
     },
-    "num_messages": 4495,
+    "num_messages": 4548,
     "num_messages_24h": 2159,
     "rating_score": 0,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587251413,
+    "updatedAt": 1790588497077,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587251413,
+      "to": 1790588497077
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -145,13 +154,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1635,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1636,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 4495,
+      "num_messages": 4548,
       "num_messages_24h": 2159,
       "rating_score": 0,
       "token_count": 1367
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 4495,
+        "num_messages_24h": 2159,
+        "rating_score": 0,
+        "token_count": 1367
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 4548,
         "num_messages_24h": 2159,
         "rating_score": 0,
         "token_count": 1367

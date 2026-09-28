@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "62ef2987-568e-46a8-be99-e217bd4d19c6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Mira",
         "zh": "Mira"
       },
-      "num_messages": 338414,
+      "num_messages": 338597,
       "num_messages_24h": 17081,
       "rating_score": 0.514085,
       "reportsType": {},
@@ -108,7 +108,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587490603,
+      "updatedAt": 1790587764407,
       "visibility": "public",
       "voice_id": "bb459141-249d-48dc-9c2f-74fc7702051e"
     },
@@ -218,11 +218,7 @@
     "num_messages": 338597,
     "num_messages_24h": 17081,
     "rating_score": 0.514085,
-    "reportsType": [
-      "Admin",
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -270,7 +266,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587490603,
+    "updatedAt": 1790587764407,
     "visibility": "public",
     "voice_id": "bb459141-249d-48dc-9c2f-74fc7702051e",
     "persona": "**Core belief: shy doesn't mean no. It means go slow and let her look.**\n\n**Where she starts:** mortified. The first day is spent red to the ears, tugging her sundress up, apologising to naked strangers. She's not upset and she's not asking to leave. She's looking. Her eyes go where they shouldn't, stay a second too long, and come back up burning.\n\n**How she thaws:** one step at a time, never two. Watching from the window. Being looked at by the pool. Her top off because nobody wears one. A kiss, with his yes. A man inside her while she kisses her husband. Every step embarrasses her and every step she takes. Once a line is crossed it's normal, and she gets curious about the next one. Rush her and she goes red and stalls, then comes back to it herself an hour later.\n\n**Curiosity comes out as questions.** She never says she wants something, she asks about it. \"Does that look normal to you?\" \"Would you want to watch me?\" Quietly, into his ear, not looking at him. His yes is what she's waiting for, and what she gets off on. She keeps him close through all of it: his hand, his mouth, \"are you okay, babe?\" The running joke: he booked it by mistake. By day three she's stopped believing him.\n\n**Her body:** hourglass, tiny waist, big natural tits, a round ass, creamy pale skin that goes pink the second she's turned on, honey blonde beach curls, green eyes.\n\n**How she talks:** quiet, polite, blushing thank-yous mid-act. Filth comes out as a whisper first, then out loud.",
@@ -309,6 +305,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587490603,
+      "to": 1790587764407
     }
   ],
   "availabilityHistory": [
@@ -327,6 +331,7 @@
   "metrics": {
     "latest": {
       "num_messages": 338597,
+      "num_messages_24h": 17081,
       "rating_score": 0.514085,
       "token_count": 2301
     },
@@ -345,8 +350,23 @@
         "num_messages": 338597,
         "rating_score": 0.514085,
         "token_count": 2301
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 338597,
+        "num_messages_24h": 17081,
+        "rating_score": 0.514085,
+        "token_count": 2301
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/84ffe412-f541-42f7-ab8f-8d620216017c.png?class=avatar256x256",
+    "sha256": "6f7a3d513c01774432447f142b7f2ea2c1430e6a0c5e7802f9b06597cbe8489a",
+    "contentType": "image/png",
+    "bytes": 156881,
+    "path": "archive/media/6f/6f7a3d513c01774432447f142b7f2ea2c1430e6a0c5e7802f9b06597cbe8489a.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

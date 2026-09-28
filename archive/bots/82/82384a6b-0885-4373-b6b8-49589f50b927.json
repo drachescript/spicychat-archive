@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "82384a6b-0885-4373-b6b8-49589f50b927",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +52,7 @@
         "pt": "Tamsin Crowe",
         "ru": "Tamsin Crowe"
       },
-      "num_messages": 38842,
+      "num_messages": 39173,
       "num_messages_24h": 8672,
       "rating_score": 0.01,
       "reportsType": {},
@@ -89,8 +92,59 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587720335,
+      "updatedAt": 1790588529812,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "82384a6b-0885-4373-b6b8-49589f50b927",
+      "type": "STANDARD",
+      "name": "Tamsin Crowe",
+      "title": "Work trip. Engagement ring on. Her boss already finished in her.",
+      "visibility": "public",
+      "creator_username": "nova_novela",
+      "creator_user_id": "kp:cf482db440bb40f3980139da5e87d20e",
+      "greeting": "*Hotel carpet. Tamsin Crowe on the edge of the bed, blouse open, ring still on. Video call already live. Laptop angled for her face and the man behind her.*\n\nTamsin: \"Don't hang up. If you hang up I'll send the rest as files.\"\n\n*Her boss. Older. Shirt still on. In her from behind while she talks like a status meeting.*\n\nBoss: \"She said you should see it. I'm not performing. I'm on a clock.\"\n\nTamsin: \"He came in me twenty minutes ago. I called you instead of cleaning up. I wanted you to hear it while it was still running out of me.\"\n\n*Ring stays in frame on purpose.*\n\nTamsin: \"The promotion wasn't the deal. The deal is I like how he uses me when you're not in the building. The ring stays. The habit stays. You can keep the date or you can keep the fantasy that I'm only yours.\"\n\nBoss: \"Still yes?\"\n\nTamsin: \"Still yes.\"\n\n*She looks at the camera. She does not describe your face.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/d1e7d8df-e83b-44b4-8d67-130764c1b262.jpg?class=avatar256x256",
+      "num_messages": 39173,
+      "rating_score": 0.01,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "NSFW",
+        "Cheating",
+        "Dominant",
+        "Partner",
+        "MalePOV",
+        "Female",
+        "Original Character"
+      ],
+      "language": "en",
+      "token_count": 1099,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-09-26T01:29:25.842Z",
+      "updatedAt": "2026-09-28T09:42:09.812Z",
+      "translated_languages": [
+        "ko",
+        "de",
+        "fr",
+        "it",
+        "ru",
+        "es",
+        "hi",
+        "pt",
+        "ja",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "82384a6b-0885-4373-b6b8-49589f50b927"
     }
   },
   "lastKnown": {
@@ -100,7 +154,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/d1e7d8df-e83b-44b4-8d67-130764c1b262.jpg?class=avatar256x256",
     "character_id": "82384a6b-0885-4373-b6b8-49589f50b927",
-    "createdAt": 1790386165842,
+    "createdAt": "2026-09-26T01:29:25.842Z",
     "creator_user_id": "kp:cf482db440bb40f3980139da5e87d20e",
     "creator_username": "nova_novela",
     "definition_size_category": "mid",
@@ -126,10 +180,13 @@
       "pt": "Tamsin Crowe",
       "ru": "Tamsin Crowe"
     },
-    "num_messages": 38842,
+    "num_messages": 39173,
     "num_messages_24h": 8672,
     "rating_score": 0.01,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "NSFW",
       "Cheating",
@@ -166,10 +223,45 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587720335,
+    "updatedAt": "2026-09-28T09:42:09.812Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587720335,
+      "to": 1790588529812
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790386165842,
+      "to": "2026-09-26T01:29:25.842Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588529812,
+      "to": "2026-09-28T09:42:09.812Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,8 +277,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38842,
-      "num_messages_24h": 8672,
+      "num_messages": 39173,
       "rating_score": 0.01,
       "token_count": 1099
     },
@@ -196,6 +287,21 @@
         "source": "typesense:trending",
         "num_messages": 38842,
         "num_messages_24h": 8672,
+        "rating_score": 0.01,
+        "token_count": 1099
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 39173,
+        "num_messages_24h": 8672,
+        "rating_score": 0.01,
+        "token_count": 1099
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 39173,
         "rating_score": 0.01,
         "token_count": 1099
       }

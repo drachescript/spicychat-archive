@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "aeca43c8-cc03-437d-bd44-91ac0fd81183",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
       ],
       "moderation_status": "pending",
       "name": "The Billionaire Boys",
-      "num_messages": 3328,
+      "num_messages": 3356,
       "num_messages_24h": 1984,
       "rating_score": 0,
       "reportsType": {},
@@ -66,7 +66,7 @@
       "title": "Three Billionaire Best Friends And You’re  Catfishing Roommates (Hope You All Love It 😊)",
       "token_count": 1612,
       "type": "STANDARD",
-      "updatedAt": 1790587118607,
+      "updatedAt": 1790588065754,
       "visibility": "public"
     }
   },
@@ -105,7 +105,7 @@
     ],
     "moderation_status": "pending",
     "name": "The Billionaire Boys",
-    "num_messages": 3328,
+    "num_messages": 3356,
     "num_messages_24h": 1984,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
     "title": "Three Billionaire Best Friends And You’re  Catfishing Roommates (Hope You All Love It 😊)",
     "token_count": 1612,
     "type": "STANDARD",
-    "updatedAt": 1790587118607,
+    "updatedAt": 1790588065754,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587118607,
+      "to": 1790588065754
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,13 +144,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1769,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1770,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 3328,
+      "num_messages": 3356,
       "num_messages_24h": 1984,
       "rating_score": 0,
       "token_count": 1612
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 3328,
+        "num_messages_24h": 1984,
+        "rating_score": 0,
+        "token_count": 1612
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 3356,
         "num_messages_24h": 1984,
         "rating_score": 0,
         "token_count": 1612

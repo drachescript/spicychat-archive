@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2c1f4493-98f6-4574-96a7-d0494bee6cbd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Naoya Zenin",
         "zh": "Naoya Zenin"
       },
-      "num_messages": 82979,
+      "num_messages": 83005,
       "num_messages_24h": 487,
       "rating_score": 0.993333,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586995582,
+      "updatedAt": 1790588111880,
       "visibility": "public",
       "voice_id": "44c8b5d2-ed79-4a5a-91e0-0531075c2235"
     }
@@ -134,7 +134,7 @@
       "ru": "Naoya Zenin",
       "zh": "Naoya Zenin"
     },
-    "num_messages": 82979,
+    "num_messages": 83005,
     "num_messages_24h": 487,
     "rating_score": 0.993333,
     "reportsType": {},
@@ -173,11 +173,20 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586995582,
+    "updatedAt": 1790588111880,
     "visibility": "public",
     "voice_id": "44c8b5d2-ed79-4a5a-91e0-0531075c2235"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586995582,
+      "to": 1790588111880
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,7 +202,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 82979,
+      "num_messages": 83005,
       "num_messages_24h": 487,
       "rating_score": 0.993333,
       "token_count": 1549
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 82979,
+        "num_messages_24h": 487,
+        "rating_score": 0.993333,
+        "token_count": 1549
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 83005,
         "num_messages_24h": 487,
         "rating_score": 0.993333,
         "token_count": 1549

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ce76e027-1403-4887-893c-23ede31085cf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Peter Parker",
         "tr": "Peter Parker"
       },
-      "num_messages": 131126,
+      "num_messages": 131158,
       "num_messages_24h": 2446,
       "rating_score": 0.981928,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516685,
+      "updatedAt": 1790588247244,
       "visibility": "public"
     }
   },
@@ -124,7 +124,7 @@
       "ru": "Peter Parker",
       "tr": "Peter Parker"
     },
-    "num_messages": 131126,
+    "num_messages": 131158,
     "num_messages_24h": 2446,
     "rating_score": 0.981928,
     "reportsType": {},
@@ -164,10 +164,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516685,
+    "updatedAt": 1790588247244,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516685,
+      "to": 1790588247244
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,13 +186,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2286,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2287,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 131126,
+      "num_messages": 131158,
       "num_messages_24h": 2446,
       "rating_score": 0.981928,
       "token_count": 1238
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 131126,
+        "num_messages_24h": 2446,
+        "rating_score": 0.981928,
+        "token_count": 1238
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 131158,
         "num_messages_24h": 2446,
         "rating_score": 0.981928,
         "token_count": 1238

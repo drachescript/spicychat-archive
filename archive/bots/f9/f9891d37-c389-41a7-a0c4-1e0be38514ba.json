@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f9891d37-c389-41a7-a0c4-1e0be38514ba",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Louis Milton Volkov",
         "tr": "Louis Milton Volkov"
       },
-      "num_messages": 182950,
+      "num_messages": 183231,
       "num_messages_24h": 4264,
       "rating_score": 0.894531,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587253264,
+      "updatedAt": 1790588381839,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "ru": "Louis Milton Volkov",
       "tr": "Louis Milton Volkov"
     },
-    "num_messages": 182950,
+    "num_messages": 183231,
     "num_messages_24h": 4264,
     "rating_score": 0.894531,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587253264,
+    "updatedAt": 1790588381839,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587253264,
+      "to": 1790588381839
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 182950,
+      "num_messages": 183231,
       "num_messages_24h": 4264,
       "rating_score": 0.894531,
       "token_count": 728
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 182950,
+        "num_messages_24h": 4264,
+        "rating_score": 0.894531,
+        "token_count": 728
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 183231,
         "num_messages_24h": 4264,
         "rating_score": 0.894531,
         "token_count": 728

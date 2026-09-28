@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "921dda7b-85f6-4409-bd47-57d0eb8197a3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "pl": "Podniecony współlokator",
         "zh": "好色的室友"
       },
-      "num_messages": 1922068,
+      "num_messages": 1922072,
       "num_messages_24h": 47,
       "rating_score": 0.82083,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790580168452,
+      "updatedAt": 1790588183539,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "pl": "Podniecony współlokator",
       "zh": "好色的室友"
     },
-    "num_messages": 1922068,
+    "num_messages": 1922072,
     "num_messages_24h": 47,
     "rating_score": 0.82083,
     "reportsType": {},
@@ -164,10 +164,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790580168452,
+    "updatedAt": 1790588183539,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790580168452,
+      "to": 1790588183539
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,7 +192,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1922068,
+      "num_messages": 1922072,
       "num_messages_24h": 47,
       "rating_score": 0.82083,
       "token_count": 298
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1922068,
+        "num_messages_24h": 47,
+        "rating_score": 0.82083,
+        "token_count": 298
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1922072,
         "num_messages_24h": 47,
         "rating_score": 0.82083,
         "token_count": 298

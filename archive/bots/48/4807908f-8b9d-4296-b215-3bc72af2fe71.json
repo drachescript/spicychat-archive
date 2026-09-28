@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4807908f-8b9d-4296-b215-3bc72af2fe71",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "NSFW Life Sim RPG",
         "zh": "NSFW 生活模拟 RPG"
       },
-      "num_messages": 2605226,
+      "num_messages": 2605312,
       "num_messages_24h": 877,
       "rating_score": 0.781998,
       "tags": [
@@ -100,7 +100,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586425958,
+      "updatedAt": 1790588312763,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "tr": "NSFW Life Sim RPG",
       "zh": "NSFW 生活模拟 RPG"
     },
-    "num_messages": 2605226,
+    "num_messages": 2605312,
     "num_messages_24h": 877,
     "rating_score": 0.781998,
     "tags": [
@@ -188,10 +188,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586425958,
+    "updatedAt": 1790588312763,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586425958,
+      "to": 1790588312763
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2605226,
+      "num_messages": 2605312,
       "num_messages_24h": 877,
       "rating_score": 0.781998,
       "token_count": 1593
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2605226,
+        "num_messages_24h": 877,
+        "rating_score": 0.781998,
+        "token_count": 1593
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2605312,
         "num_messages_24h": 877,
         "rating_score": 0.781998,
         "token_count": 1593

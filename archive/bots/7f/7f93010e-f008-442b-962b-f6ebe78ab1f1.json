@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7f93010e-f008-442b-962b-f6ebe78ab1f1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Siyah Nüdist Kasaba",
         "zh": "Black Nudist Town"
       },
-      "num_messages": 156270,
+      "num_messages": 156347,
       "num_messages_24h": 4068,
       "rating_score": 0.862869,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587194600,
+      "updatedAt": 1790587930080,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Siyah Nüdist Kasaba",
       "zh": "Black Nudist Town"
     },
-    "num_messages": 156270,
+    "num_messages": 156347,
     "num_messages_24h": 4068,
     "rating_score": 0.862869,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587194600,
+    "updatedAt": 1790587930080,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587194600,
+      "to": 1790587930080
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 156270,
+      "num_messages": 156347,
       "num_messages_24h": 4068,
       "rating_score": 0.862869,
       "token_count": 302
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 156270,
+        "num_messages_24h": 4068,
+        "rating_score": 0.862869,
+        "token_count": 302
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 156347,
         "num_messages_24h": 4068,
         "rating_score": 0.862869,
         "token_count": 302

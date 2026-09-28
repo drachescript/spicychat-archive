@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "92e586e8-6b69-415b-bae2-1c96e6e749bd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +60,7 @@
         "tr": "Danica",
         "zh": "Danica"
       },
-      "num_messages": 129777,
+      "num_messages": 129786,
       "num_messages_24h": 10030,
       "rating_score": 0.851852,
       "reportsType": {},
@@ -101,8 +104,61 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587709046,
+      "updatedAt": 1790587862002,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "92e586e8-6b69-415b-bae2-1c96e6e749bd",
+      "type": "STANDARD",
+      "name": "Danica",
+      "title": "The head housemaid assassin on a train to Snezhnograd (Genshin Impact, GI)",
+      "visibility": "public",
+      "creator_username": "kyoshiki",
+      "creator_user_id": "kp:09f26603a18f4318b363102ad83c0c86",
+      "greeting": "*The train to Snezhnograd rumbled on, the only available seat was beside {{user}}, her piercing teal blue eyes scanning the stranger with a mix of curiosity and caution as she pondered on if she should sit next to them or not.*\n\n*After a few seconds of thinking, with a fluid, practiced motion, {{char}} settled into the seat, her movements economical and precise, her gaze never meeting {{user}}'s face as she arranged her dark teal hair and adjusted her white ruffled maid frill, her sharp, narrow teal blue eyes gleaming with a cold, confident light.* \n\n*The soft rustle of her layered split-maid dress and the faint clinking of the diamond-shaped metal clasps on her thigh-high white stockings filled the brief silence as she got comfortable, her soft plump rear and thick thighs was a stark contrast to her rigid, emotionless demeanor.* \n\n*As she finally started to settle in, her gaze drifted to {{user}}, her expression unchanging yet her very presence seeming to command the space around her*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/2a5391ce-4105-428f-be2c-61bf8fe8dbd4.jpg?class=avatar256x256",
+      "num_messages": 129786,
+      "rating_score": 0.851852,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Female",
+        "Dominant",
+        "Scenario",
+        "NSFW",
+        "English",
+        "Game",
+        "Gothic"
+      ],
+      "language": "en",
+      "token_count": 1440,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-08-31T05:43:45.192Z",
+      "updatedAt": "2026-09-28T09:31:02.002Z",
+      "translated_languages": [
+        "ja",
+        "de",
+        "ru",
+        "es",
+        "ar",
+        "tr",
+        "ko",
+        "fr",
+        "hi",
+        "it",
+        "pl",
+        "zh"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "92e586e8-6b69-415b-bae2-1c96e6e749bd"
     }
   },
   "lastKnown": {
@@ -112,7 +168,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/2a5391ce-4105-428f-be2c-61bf8fe8dbd4.jpg?class=avatar256x256",
     "character_id": "92e586e8-6b69-415b-bae2-1c96e6e749bd",
-    "createdAt": 1788155025192,
+    "createdAt": "2026-08-31T05:43:45.192Z",
     "creator_user_id": "kp:09f26603a18f4318b363102ad83c0c86",
     "creator_username": "kyoshiki",
     "definition_size_category": "high",
@@ -148,10 +204,13 @@
       "tr": "Danica",
       "zh": "Danica"
     },
-    "num_messages": 129777,
+    "num_messages": 129786,
     "num_messages_24h": 10030,
     "rating_score": 0.851852,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "Female",
       "Dominant",
@@ -192,10 +251,45 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587709046,
+    "updatedAt": "2026-09-28T09:31:02.002Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587709046,
+      "to": 1790587862002
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1788155025192,
+      "to": "2026-08-31T05:43:45.192Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587862002,
+      "to": "2026-09-28T09:31:02.002Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,8 +305,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 129777,
-      "num_messages_24h": 10030,
+      "num_messages": 129786,
       "rating_score": 0.851852,
       "token_count": 1440
     },
@@ -222,6 +315,21 @@
         "source": "typesense:trending",
         "num_messages": 129777,
         "num_messages_24h": 10030,
+        "rating_score": 0.851852,
+        "token_count": 1440
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 129786,
+        "num_messages_24h": 10030,
+        "rating_score": 0.851852,
+        "token_count": 1440
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 129786,
         "rating_score": 0.851852,
         "token_count": 1440
       }

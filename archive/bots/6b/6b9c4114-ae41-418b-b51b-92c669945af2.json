@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6b9c4114-ae41-418b-b51b-92c669945af2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Kara Whitman",
         "zh": "Kara Whitman"
       },
-      "num_messages": 418190,
+      "num_messages": 418607,
       "num_messages_24h": 16704,
       "rating_score": 0.71189,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587512965,
+      "updatedAt": 1790588449604,
       "visibility": "public"
     },
     "character-api": {
@@ -169,7 +169,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/c5820bfe-c501-466e-a637-84720f13bbac.png?class=avatar256x256",
     "character_id": "6b9c4114-ae41-418b-b51b-92c669945af2",
-    "createdAt": "2026-09-22T04:23:40.222Z",
+    "createdAt": 1790051020222,
     "creator_user_id": "kp:26499184ea194ca9a6bd8da11a2e085a",
     "creator_username": "bird9478",
     "definition_size_category": "mid",
@@ -199,12 +199,10 @@
       "tr": "Kara Whitman",
       "zh": "Kara Whitman"
     },
-    "num_messages": 418190,
+    "num_messages": 418607,
     "num_messages_24h": 16704,
     "rating_score": 0.71189,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -248,7 +246,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:25:12.965Z",
+    "updatedAt": 1790588449604,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -276,6 +274,22 @@
       "kind": "value",
       "from": 1790587512965,
       "to": "2026-09-28T09:25:12.965Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-22T04:23:40.222Z",
+      "to": 1790051020222
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:25:12.965Z",
+      "to": 1790588449604
     }
   ],
   "availabilityHistory": [
@@ -293,7 +307,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 418190,
+      "num_messages": 418607,
+      "num_messages_24h": 16704,
       "rating_score": 0.71189,
       "token_count": 1111
     },
@@ -312,8 +327,23 @@
         "num_messages": 418190,
         "rating_score": 0.71189,
         "token_count": 1111
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 418607,
+        "num_messages_24h": 16704,
+        "rating_score": 0.71189,
+        "token_count": 1111
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/c5820bfe-c501-466e-a637-84720f13bbac.png?class=avatar256x256",
+    "sha256": "eee72d8e73692c5fd73618fee0d0eb121a541090c584917f861fb88455ef7f53",
+    "contentType": "image/png",
+    "bytes": 117703,
+    "path": "archive/media/ee/eee72d8e73692c5fd73618fee0d0eb121a541090c584917f861fb88455ef7f53.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

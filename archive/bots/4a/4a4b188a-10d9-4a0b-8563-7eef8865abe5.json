@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4a4b188a-10d9-4a0b-8563-7eef8865abe5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "it": "Cassandra",
         "ru": "Cassandra"
       },
-      "num_messages": 26253,
+      "num_messages": 26261,
       "num_messages_24h": 182,
       "rating_score": 0.991228,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585750099,
+      "updatedAt": 1790588358971,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "it": "Cassandra",
       "ru": "Cassandra"
     },
-    "num_messages": 26253,
+    "num_messages": 26261,
     "num_messages_24h": 182,
     "rating_score": 0.991228,
     "reportsType": {},
@@ -136,10 +136,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585750099,
+    "updatedAt": 1790588358971,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585750099,
+      "to": 1790588358971
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,7 +164,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 26253,
+      "num_messages": 26261,
       "num_messages_24h": 182,
       "rating_score": 0.991228,
       "token_count": 873
@@ -165,6 +174,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 26253,
+        "num_messages_24h": 182,
+        "rating_score": 0.991228,
+        "token_count": 873
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 26261,
         "num_messages_24h": 182,
         "rating_score": 0.991228,
         "token_count": 873

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b815d4f1-b127-4127-8a66-1b647f31c6a1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "pl": "Hockey Bf — Zack",
         "ru": "Хоккейный парень — Зак"
       },
-      "num_messages": 132142,
+      "num_messages": 132157,
       "num_messages_24h": 4148,
       "rating_score": 0.775362,
       "reportsType": {},
@@ -83,7 +83,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587383029,
+      "updatedAt": 1790588169108,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "pl": "Hockey Bf — Zack",
       "ru": "Хоккейный парень — Зак"
     },
-    "num_messages": 132142,
+    "num_messages": 132157,
     "num_messages_24h": 4148,
     "rating_score": 0.775362,
     "reportsType": {},
@@ -154,10 +154,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587383029,
+    "updatedAt": 1790588169108,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587383029,
+      "to": 1790588169108
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,7 +182,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 132142,
+      "num_messages": 132157,
       "num_messages_24h": 4148,
       "rating_score": 0.775362,
       "token_count": 333
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 132142,
+        "num_messages_24h": 4148,
+        "rating_score": 0.775362,
+        "token_count": 333
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 132157,
         "num_messages_24h": 4148,
         "rating_score": 0.775362,
         "token_count": 333

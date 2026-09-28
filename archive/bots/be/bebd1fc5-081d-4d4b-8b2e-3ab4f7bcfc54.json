@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bebd1fc5-081d-4d4b-8b2e-3ab4f7bcfc54",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
       ],
       "moderation_status": "pending",
       "name": "Mikasa: AoT 5.0",
-      "num_messages": 59,
+      "num_messages": 61,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -62,7 +62,7 @@
       "title": "Attack on Titan RP | Mikasa Ackerman | Slow-Burn Relationships | 550+ Lorebook Entries | Living Worl",
       "token_count": 2384,
       "type": "STANDARD",
-      "updatedAt": 1790587409486,
+      "updatedAt": 1790588115267,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
     ],
     "moderation_status": "pending",
     "name": "Mikasa: AoT 5.0",
-    "num_messages": 59,
+    "num_messages": 61,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -114,10 +114,19 @@
     "title": "Attack on Titan RP | Mikasa Ackerman | Slow-Burn Relationships | 550+ Lorebook Entries | Living Worl",
     "token_count": 2384,
     "type": "STANDARD",
-    "updatedAt": 1790587409486,
+    "updatedAt": 1790588115267,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587409486,
+      "to": 1790588115267
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -133,7 +142,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 59,
+      "num_messages": 61,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2384
@@ -143,6 +152,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 59,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2384
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 61,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2384

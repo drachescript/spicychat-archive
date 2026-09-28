@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "076fa283-42d4-46d4-ace0-a2d83b5302bf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Cherie",
         "zh": "谢莉"
       },
-      "num_messages": 1570430,
+      "num_messages": 1570461,
       "num_messages_24h": 342,
       "rating_score": 0.741136,
       "tags": [
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586630,
+      "updatedAt": 1790587929407,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Cherie",
       "zh": "谢莉"
     },
-    "num_messages": 1570430,
+    "num_messages": 1570461,
     "num_messages_24h": 342,
     "rating_score": 0.741136,
     "tags": [
@@ -190,10 +190,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586630,
+    "updatedAt": 1790587929407,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586630,
+      "to": 1790587929407
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,13 +212,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2419,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2418,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1570430,
+      "num_messages": 1570461,
       "num_messages_24h": 342,
       "rating_score": 0.741136,
       "token_count": 1075
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1570430,
+        "num_messages_24h": 342,
+        "rating_score": 0.741136,
+        "token_count": 1075
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1570461,
         "num_messages_24h": 342,
         "rating_score": 0.741136,
         "token_count": 1075

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e79be62a-7363-4c43-9447-da8f3ecda91d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Selene Ward",
         "tr": "Selene Ward"
       },
-      "num_messages": 56852,
+      "num_messages": 56859,
       "num_messages_24h": 5785,
       "rating_score": 0.930556,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586426026,
+      "updatedAt": 1790588293426,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "ru": "Selene Ward",
       "tr": "Selene Ward"
     },
-    "num_messages": 56852,
+    "num_messages": 56859,
     "num_messages_24h": 5785,
     "rating_score": 0.930556,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586426026,
+    "updatedAt": 1790588293426,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586426026,
+      "to": 1790588293426
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,7 +194,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 56852,
+      "num_messages": 56859,
       "num_messages_24h": 5785,
       "rating_score": 0.930556,
       "token_count": 1133
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 56852,
+        "num_messages_24h": 5785,
+        "rating_score": 0.930556,
+        "token_count": 1133
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 56859,
         "num_messages_24h": 5785,
         "rating_score": 0.930556,
         "token_count": 1133

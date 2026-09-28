@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9c57a010-dc6b-43a0-9f9b-53c351d613b3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "closed",
       "name": "Jabber ^^",
-      "num_messages": 10,
+      "num_messages": 13,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -50,7 +50,7 @@
       "title": "Mankira doesn't work on ya!!(From cai)",
       "token_count": 466,
       "type": "STANDARD",
-      "updatedAt": 1790523143158,
+      "updatedAt": 1790588560361,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "en",
     "moderation_status": "closed",
     "name": "Jabber ^^",
-    "num_messages": 10,
+    "num_messages": 13,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -88,10 +88,19 @@
     "title": "Mankira doesn't work on ya!!(From cai)",
     "token_count": 466,
     "type": "STANDARD",
-    "updatedAt": 1790523143158,
+    "updatedAt": 1790588560361,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790523143158,
+      "to": 1790588560361
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -101,13 +110,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1609,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1610,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 10,
+      "num_messages": 13,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 466
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 10,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 466
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 13,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 466

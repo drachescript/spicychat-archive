@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f157528c-6481-4434-a890-ce15eb4de39c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "Accidental Isekai",
         "zh": "意外的异世界"
       },
-      "num_messages": 464081,
+      "num_messages": 464113,
       "num_messages_24h": 2385,
       "rating_score": 0.711111,
       "tags": [
@@ -106,7 +106,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587492018,
+      "updatedAt": 1790588562428,
       "visibility": "public"
     }
   },
@@ -150,7 +150,7 @@
       "tr": "Accidental Isekai",
       "zh": "意外的异世界"
     },
-    "num_messages": 464081,
+    "num_messages": 464113,
     "num_messages_24h": 2385,
     "rating_score": 0.711111,
     "tags": [
@@ -200,10 +200,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587492018,
+    "updatedAt": 1790588562428,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587492018,
+      "to": 1790588562428
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,13 +222,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2349,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2350,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 464081,
+      "num_messages": 464113,
       "num_messages_24h": 2385,
       "rating_score": 0.711111,
       "token_count": 1266
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 464081,
+        "num_messages_24h": 2385,
+        "rating_score": 0.711111,
+        "token_count": 1266
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 464113,
         "num_messages_24h": 2385,
         "rating_score": 0.711111,
         "token_count": 1266

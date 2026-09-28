@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0418acef-8f52-4d53-b345-45095c8f7069",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Büyü Okulu",
         "zh": "魔法学校"
       },
-      "num_messages": 2386522,
+      "num_messages": 2386598,
       "num_messages_24h": 709,
       "rating_score": 0.742048,
       "tags": [
@@ -99,7 +99,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587520240,
+      "updatedAt": 1790587927361,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "tr": "Büyü Okulu",
       "zh": "魔法学校"
     },
-    "num_messages": 2386522,
+    "num_messages": 2386598,
     "num_messages_24h": 709,
     "rating_score": 0.742048,
     "tags": [
@@ -186,10 +186,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587520240,
+    "updatedAt": 1790587927361,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587520240,
+      "to": 1790587927361
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2386522,
+      "num_messages": 2386598,
       "num_messages_24h": 709,
       "rating_score": 0.742048,
       "token_count": 1281
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2386522,
+        "num_messages_24h": 709,
+        "rating_score": 0.742048,
+        "token_count": 1281
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2386598,
         "num_messages_24h": 709,
         "rating_score": 0.742048,
         "token_count": 1281

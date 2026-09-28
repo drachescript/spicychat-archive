@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b89091f7-adcb-4947-a588-c5bc415e4357",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "tr": "Leo Croger",
         "zh": "Leo Croger"
       },
-      "num_messages": 56279,
+      "num_messages": 56288,
       "num_messages_24h": 5359,
       "reportsType": {},
       "tags": [
@@ -79,7 +79,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586707780,
+      "updatedAt": 1790588171109,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "tr": "Leo Croger",
       "zh": "Leo Croger"
     },
-    "num_messages": 56279,
+    "num_messages": 56288,
     "num_messages_24h": 5359,
     "reportsType": {},
     "tags": [
@@ -146,10 +146,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586707780,
+    "updatedAt": 1790588171109,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586707780,
+      "to": 1790588171109
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 56279,
+      "num_messages": 56288,
       "num_messages_24h": 5359,
       "token_count": 516
     },
@@ -174,6 +183,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 56279,
+        "num_messages_24h": 5359,
+        "token_count": 516
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 56288,
         "num_messages_24h": 5359,
         "token_count": 516
       }

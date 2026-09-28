@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a1b8db1d-6b8d-4710-ae52-bedea94f3b33",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "DKA X SEXNOTE",
-      "num_messages": 97,
+      "num_messages": 120,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "The misfits of demon king academia x Sexnote 15 female characters Available just right down the name",
       "token_count": 1352,
       "type": "STANDARD",
-      "updatedAt": 1790587249019,
+      "updatedAt": 1790588132788,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "DKA X SEXNOTE",
-    "num_messages": 97,
+    "num_messages": 120,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "The misfits of demon king academia x Sexnote 15 female characters Available just right down the name",
     "token_count": 1352,
     "type": "STANDARD",
-    "updatedAt": 1790587249019,
+    "updatedAt": 1790588132788,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587249019,
+      "to": 1790588132788
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 97,
+      "num_messages": 120,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1352
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 97,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1352
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 120,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1352

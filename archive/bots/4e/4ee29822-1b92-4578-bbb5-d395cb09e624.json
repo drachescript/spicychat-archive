@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4ee29822-1b92-4578-bbb5-d395cb09e624",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "es": "Marissa & Phoebe"
       },
-      "num_messages": 2500,
+      "num_messages": 2515,
       "num_messages_24h": 1695,
       "rating_score": 0,
       "reportsType": {},
@@ -63,7 +63,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586995547,
+      "updatedAt": 1790588007452,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
     "name_i18n": {
       "es": "Marissa & Phoebe"
     },
-    "num_messages": 2500,
+    "num_messages": 2515,
     "num_messages_24h": 1695,
     "rating_score": 0,
     "reportsType": {},
@@ -114,10 +114,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586995547,
+    "updatedAt": 1790588007452,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586995547,
+      "to": 1790588007452
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -127,13 +136,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1739,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1740,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2500,
+      "num_messages": 2515,
       "num_messages_24h": 1695,
       "rating_score": 0,
       "token_count": 1543
@@ -143,6 +152,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2500,
+        "num_messages_24h": 1695,
+        "rating_score": 0,
+        "token_count": 1543
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2515,
         "num_messages_24h": 1695,
         "rating_score": 0,
         "token_count": 1543

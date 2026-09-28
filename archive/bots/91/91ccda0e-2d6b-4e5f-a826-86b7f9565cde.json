@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "91ccda0e-2d6b-4e5f-a826-86b7f9565cde",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "Majoka-World (RPG)",
         "zh": "Majoka-World (RPG)"
       },
-      "num_messages": 210922,
+      "num_messages": 210938,
       "num_messages_24h": 4938,
       "rating_score": 0.828804,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587560596,
+      "updatedAt": 1790587764009,
       "visibility": "public"
     }
   },
@@ -149,7 +149,7 @@
       "tr": "Majoka-World (RPG)",
       "zh": "Majoka-World (RPG)"
     },
-    "num_messages": 210922,
+    "num_messages": 210938,
     "num_messages_24h": 4938,
     "rating_score": 0.828804,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587560596,
+    "updatedAt": 1790587764009,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587560596,
+      "to": 1790587764009
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 210922,
+      "num_messages": 210938,
       "num_messages_24h": 4938,
       "rating_score": 0.828804,
       "token_count": 838
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 210922,
+        "num_messages_24h": 4938,
+        "rating_score": 0.828804,
+        "token_count": 838
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 210938,
         "num_messages_24h": 4938,
         "rating_score": 0.828804,
         "token_count": 838

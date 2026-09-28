@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8c8738fc-b734-44e8-9995-5d568eab436f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ru": "РПГ Дневников вампира",
         "zh": "吸血鬼日记 RPG"
       },
-      "num_messages": 278376,
+      "num_messages": 278411,
       "num_messages_24h": 2329,
       "rating_score": 0.689441,
       "tags": [
@@ -73,7 +73,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586806621,
+      "updatedAt": 1790587925673,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "ru": "РПГ Дневников вампира",
       "zh": "吸血鬼日记 RPG"
     },
-    "num_messages": 278376,
+    "num_messages": 278411,
     "num_messages_24h": 2329,
     "rating_score": 0.689441,
     "tags": [
@@ -134,10 +134,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586806621,
+    "updatedAt": 1790587925673,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586806621,
+      "to": 1790587925673
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2429,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2430,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 278376,
+      "num_messages": 278411,
       "num_messages_24h": 2329,
       "rating_score": 0.689441,
       "token_count": 1250
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 278376,
+        "num_messages_24h": 2329,
+        "rating_score": 0.689441,
+        "token_count": 1250
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 278411,
         "num_messages_24h": 2329,
         "rating_score": 0.689441,
         "token_count": 1250

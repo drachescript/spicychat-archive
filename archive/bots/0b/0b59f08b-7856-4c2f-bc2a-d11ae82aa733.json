@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0b59f08b-7856-4c2f-bc2a-d11ae82aa733",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Церсеи Ланнистер",
         "zh": "瑟曦·兰尼斯特"
       },
-      "num_messages": 46101,
+      "num_messages": 46103,
       "num_messages_24h": 289,
       "rating_score": 1,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587251612,
+      "updatedAt": 1790588043444,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "ru": "Церсеи Ланнистер",
       "zh": "瑟曦·兰尼斯特"
     },
-    "num_messages": 46101,
+    "num_messages": 46103,
     "num_messages_24h": 289,
     "rating_score": 1,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587251612,
+    "updatedAt": 1790588043444,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587251612,
+      "to": 1790588043444
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 46101,
+      "num_messages": 46103,
       "num_messages_24h": 289,
       "rating_score": 1,
       "token_count": 832
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 46101,
+        "num_messages_24h": 289,
+        "rating_score": 1,
+        "token_count": 832
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 46103,
         "num_messages_24h": 289,
         "rating_score": 1,
         "token_count": 832

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "570e8fc6-42e8-4883-8aa4-a32416e9e3c1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Sylvaria",
         "zh": "Sylvaria"
       },
-      "num_messages": 216339,
+      "num_messages": 216437,
       "num_messages_24h": 11996,
       "rating_score": 0.760776,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587596342,
+      "updatedAt": 1790587860553,
       "visibility": "public"
     },
     "character-api": {
@@ -165,7 +165,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/cad8974982b846366a9012ab841ed17d.png?class=avatar256x256",
     "character_id": "570e8fc6-42e8-4883-8aa4-a32416e9e3c1",
-    "createdAt": "2026-01-28T15:19:20.978Z",
+    "createdAt": 1769613560978,
     "creator_user_id": "kp:61360b3ea67e42309eda19b81424b99b",
     "creator_username": "applejuiiice",
     "definition_size_category": "mid",
@@ -194,12 +194,10 @@
       "tr": "Sylvaria",
       "zh": "Sylvaria"
     },
-    "num_messages": 216417,
+    "num_messages": 216437,
     "num_messages_24h": 11996,
     "rating_score": 0.760776,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "FemalePOV",
@@ -242,7 +240,7 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:30:12.603Z",
+    "updatedAt": 1790587860553,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -270,6 +268,22 @@
       "kind": "value",
       "from": 1790587596342,
       "to": "2026-09-28T09:30:12.603Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-01-28T15:19:20.978Z",
+      "to": 1769613560978
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:30:12.603Z",
+      "to": 1790587860553
     }
   ],
   "availabilityHistory": [
@@ -287,7 +301,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 216417,
+      "num_messages": 216437,
+      "num_messages_24h": 11996,
       "rating_score": 0.760776,
       "token_count": 795
     },
@@ -306,8 +321,23 @@
         "num_messages": 216417,
         "rating_score": 0.760776,
         "token_count": 795
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 216437,
+        "num_messages_24h": 11996,
+        "rating_score": 0.760776,
+        "token_count": 795
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/cad8974982b846366a9012ab841ed17d.png?class=avatar256x256",
+    "sha256": "1287fcae35fa39dd0315d5b8c89a060aabc43fd6db11701b43411f6de6207b34",
+    "contentType": "image/png",
+    "bytes": 141547,
+    "path": "archive/media/12/1287fcae35fa39dd0315d5b8c89a060aabc43fd6db11701b43411f6de6207b34.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

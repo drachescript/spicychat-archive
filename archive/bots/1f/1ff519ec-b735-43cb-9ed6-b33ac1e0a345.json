@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1ff519ec-b735-43cb-9ed6-b33ac1e0a345",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Game of Thrones RPG",
         "zh": "权力的游戏 RPG"
       },
-      "num_messages": 867814,
+      "num_messages": 867854,
       "num_messages_24h": 2601,
       "rating_score": 0.830049,
       "tags": [
@@ -99,7 +99,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587514931,
+      "updatedAt": 1790588182463,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "tr": "Game of Thrones RPG",
       "zh": "权力的游戏 RPG"
     },
-    "num_messages": 867814,
+    "num_messages": 867854,
     "num_messages_24h": 2601,
     "rating_score": 0.830049,
     "tags": [
@@ -186,10 +186,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587514931,
+    "updatedAt": 1790588182463,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587514931,
+      "to": 1790588182463
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,13 +208,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2126,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2127,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 867814,
+      "num_messages": 867854,
       "num_messages_24h": 2601,
       "rating_score": 0.830049,
       "token_count": 878
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 867814,
+        "num_messages_24h": 2601,
+        "rating_score": 0.830049,
+        "token_count": 878
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 867854,
         "num_messages_24h": 2601,
         "rating_score": 0.830049,
         "token_count": 878

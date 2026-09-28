@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "74b88aa9-67af-4806-b576-16017418e13d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Dorm Needs Plumbing!",
         "zh": "宿舍需要管道维修！"
       },
-      "num_messages": 34457,
+      "num_messages": 34467,
       "num_messages_24h": 4072,
       "rating_score": 0,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587488283,
+      "updatedAt": 1790588565430,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "tr": "Dorm Needs Plumbing!",
       "zh": "宿舍需要管道维修！"
     },
-    "num_messages": 34457,
+    "num_messages": 34467,
     "num_messages_24h": 4072,
     "rating_score": 0,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587488283,
+    "updatedAt": 1790588565430,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587488283,
+      "to": 1790588565430
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 34457,
+      "num_messages": 34467,
       "num_messages_24h": 4072,
       "rating_score": 0,
       "token_count": 1440
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 34457,
+        "num_messages_24h": 4072,
+        "rating_score": 0,
+        "token_count": 1440
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 34467,
         "num_messages_24h": 4072,
         "rating_score": 0,
         "token_count": 1440

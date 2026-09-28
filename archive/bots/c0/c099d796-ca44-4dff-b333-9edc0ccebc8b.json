@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c099d796-ca44-4dff-b333-9edc0ccebc8b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "pl": "Mha Pick Me Male—2.0",
         "ru": "Mha Pick Me Male—2.0"
       },
-      "num_messages": 356650,
+      "num_messages": 356659,
       "num_messages_24h": 2359,
       "rating_score": 0.875,
       "tags": [
@@ -91,7 +91,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790583370457,
+      "updatedAt": 1790587680218,
       "visibility": "public"
     }
   },
@@ -130,7 +130,7 @@
       "pl": "Mha Pick Me Male—2.0",
       "ru": "Mha Pick Me Male—2.0"
     },
-    "num_messages": 356650,
+    "num_messages": 356659,
     "num_messages_24h": 2359,
     "rating_score": 0.875,
     "tags": [
@@ -170,10 +170,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790583370457,
+    "updatedAt": 1790587680218,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583370457,
+      "to": 1790587680218
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,13 +192,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2393,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2394,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 356650,
+      "num_messages": 356659,
       "num_messages_24h": 2359,
       "rating_score": 0.875,
       "token_count": 1755
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 356650,
+        "num_messages_24h": 2359,
+        "rating_score": 0.875,
+        "token_count": 1755
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 356659,
         "num_messages_24h": 2359,
         "rating_score": 0.875,
         "token_count": 1755

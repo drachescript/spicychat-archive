@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b2d768ed-cf4c-435c-96e2-705cae949bbf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "tr": "Kadın Egemen Dünya",
         "zh": "女权世界"
       },
-      "num_messages": 4389019,
+      "num_messages": 4389085,
       "num_messages_24h": 746,
       "rating_score": 0.753106,
       "tags": [
@@ -89,7 +89,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587283090,
+      "updatedAt": 1790588169459,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "tr": "Kadın Egemen Dünya",
       "zh": "女权世界"
     },
-    "num_messages": 4389019,
+    "num_messages": 4389085,
     "num_messages_24h": 746,
     "rating_score": 0.753106,
     "tags": [
@@ -166,10 +166,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587283090,
+    "updatedAt": 1790588169459,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587283090,
+      "to": 1790588169459
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,7 +194,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4389019,
+      "num_messages": 4389085,
       "num_messages_24h": 746,
       "rating_score": 0.753106,
       "token_count": 1109
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4389019,
+        "num_messages_24h": 746,
+        "rating_score": 0.753106,
+        "token_count": 1109
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4389085,
         "num_messages_24h": 746,
         "rating_score": 0.753106,
         "token_count": 1109

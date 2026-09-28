@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a3251a4b-0ea8-4dea-a85d-7a16e8ac1cef",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pl": "SCP Foundation",
         "ru": "Фонд SCP"
       },
-      "num_messages": 304352,
+      "num_messages": 304442,
       "num_messages_24h": 3415,
       "rating_score": 0.937984,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561616,
+      "updatedAt": 1790588278480,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "pl": "SCP Foundation",
       "ru": "Фонд SCP"
     },
-    "num_messages": 304352,
+    "num_messages": 304442,
     "num_messages_24h": 3415,
     "rating_score": 0.937984,
     "reportsType": {},
@@ -144,10 +144,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561616,
+    "updatedAt": 1790588278480,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561616,
+      "to": 1790588278480
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,7 +172,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 304352,
+      "num_messages": 304442,
       "num_messages_24h": 3415,
       "rating_score": 0.937984,
       "token_count": 1413
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 304352,
+        "num_messages_24h": 3415,
+        "rating_score": 0.937984,
+        "token_count": 1413
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 304442,
         "num_messages_24h": 3415,
         "rating_score": 0.937984,
         "token_count": 1413

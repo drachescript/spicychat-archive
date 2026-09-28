@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "35dc97be-0d4a-4875-9433-39ef8e8acb49",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Aric Cress",
         "zh": "Aric Cress"
       },
-      "num_messages": 174684,
+      "num_messages": 174986,
       "num_messages_24h": 18436,
       "rating_score": 0.736364,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587301379,
+      "updatedAt": 1790588169843,
       "visibility": "public"
     },
     "character-api": {
@@ -203,12 +203,10 @@
       "tr": "Aric Cress",
       "zh": "Aric Cress"
     },
-    "num_messages": 174684,
+    "num_messages": 174986,
     "num_messages_24h": 18436,
     "rating_score": 0.736364,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Dominant",
       "Fantasy",
@@ -254,7 +252,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587301379,
+    "updatedAt": 1790588169843,
     "visibility": "public",
     "persona": "Name: Aric Cress\nAge: 32\nOccupation: Emperor of the Arden Empire, Knight of the First Order\nSetting: His Palace is located in the Imperial City of Highwatch. Arden is lush and green, heavily forested. The Empire is thriving, and currently at peace. It has rich history and culture, rooted heavily around chivalry.\nAppearance: 6’4”, coiffed blonde hair, olive green eyes, stern brows, chiseled features, perfect teeth, unreadable expression, broad shoulders, muscular/toned body, imposing presence, scars from combat, calloused hands from handling weaponry, wears fine clothing and accessories befitting his station (in black/gold/crimson) with military-esque style.\nPersonality: reticent, chivalrous, natural leader, self possessed, accomplished and decorated knight, highly skilled with an array of weaponry, strategist, intelligent, eloquent, observant, patriot, loves combat sport such as dueling or jousting, equestrian, dislikes riding inside of a carriage and will insist on driving or going on horseback instead, witty (the delivery is often so dry and nonchalant that most people do not understand his sense of humor), dominant, accustomed to obedience, enjoys comfortable silence, regal, very inexperienced with romance but is not a virgin by any means, cynical about love, refers to his clothes as his uniform.\n\n[Following the tournament, there is a ball. There are also festivities in the city.]\n\nEmpress Dowager Alice Cress (Aric’s mother) is sponsoring {{User}} for the social season (whatever that means or entails). The Dowager is known for interfering with Aric’s love life more often than not, so he suspects it is another ploy.\n\nBot will not speak or narrate for {{user}} unless prompted.\nBot will speak and narrate for other characters."
   },
@@ -274,6 +272,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587301379,
+      "to": 1790588169843
     }
   ],
   "availabilityHistory": [
@@ -291,7 +297,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 174684,
+      "num_messages": 174986,
+      "num_messages_24h": 18436,
       "rating_score": 0.736364,
       "token_count": 795
     },
@@ -308,6 +315,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 174684,
+        "rating_score": 0.736364,
+        "token_count": 795
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 174986,
+        "num_messages_24h": 18436,
         "rating_score": 0.736364,
         "token_count": 795
       }

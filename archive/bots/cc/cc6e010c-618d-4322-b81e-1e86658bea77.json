@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cc6e010c-618d-4322-b81e-1e86658bea77",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Arven",
         "zh": "Arven"
       },
-      "num_messages": 1346833,
+      "num_messages": 1346850,
       "num_messages_24h": 2280,
       "rating_score": 0.826585,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587559985,
+      "updatedAt": 1790588455767,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Arven",
       "zh": "Arven"
     },
-    "num_messages": 1346833,
+    "num_messages": 1346850,
     "num_messages_24h": 2280,
     "rating_score": 0.826585,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587559985,
+    "updatedAt": 1790588455767,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587559985,
+      "to": 1790588455767
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2499,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2500,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1346833,
+      "num_messages": 1346850,
       "num_messages_24h": 2280,
       "rating_score": 0.826585,
       "token_count": 878
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1346833,
+        "num_messages_24h": 2280,
+        "rating_score": 0.826585,
+        "token_count": 878
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1346850,
         "num_messages_24h": 2280,
         "rating_score": 0.826585,
         "token_count": 878

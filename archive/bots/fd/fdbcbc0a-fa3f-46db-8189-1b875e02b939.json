@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fdbcbc0a-fa3f-46db-8189-1b875e02b939",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "ru": "Принц Вильгельм",
         "tr": "Prince Wilhelm"
       },
-      "num_messages": 84502,
+      "num_messages": 84586,
       "num_messages_24h": 4970,
       "rating_score": 0.93125,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587595986,
+      "updatedAt": 1790588457034,
       "visibility": "public"
     }
   },
@@ -146,7 +146,7 @@
       "ru": "Принц Вильгельм",
       "tr": "Prince Wilhelm"
     },
-    "num_messages": 84502,
+    "num_messages": 84586,
     "num_messages_24h": 4970,
     "rating_score": 0.93125,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587595986,
+    "updatedAt": 1790588457034,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587595986,
+      "to": 1790588457034
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 84502,
+      "num_messages": 84586,
       "num_messages_24h": 4970,
       "rating_score": 0.93125,
       "token_count": 948
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 84502,
+        "num_messages_24h": 4970,
+        "rating_score": 0.93125,
+        "token_count": 948
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 84586,
         "num_messages_24h": 4970,
         "rating_score": 0.93125,
         "token_count": 948

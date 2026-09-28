@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "52d245a7-baec-4f4b-9e40-344913b8cc8f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Erkekler Gezisi ⛺️",
         "zh": "男生旅行 ⛺️"
       },
-      "num_messages": 4109826,
+      "num_messages": 4109830,
       "num_messages_24h": 449,
       "rating_score": 0.866356,
       "tags": [
@@ -100,7 +100,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586018,
+      "updatedAt": 1790587927147,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Erkekler Gezisi ⛺️",
       "zh": "男生旅行 ⛺️"
     },
-    "num_messages": 4109826,
+    "num_messages": 4109830,
     "num_messages_24h": 449,
     "rating_score": 0.866356,
     "tags": [
@@ -188,10 +188,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586018,
+    "updatedAt": 1790587927147,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586018,
+      "to": 1790587927147
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4109826,
+      "num_messages": 4109830,
       "num_messages_24h": 449,
       "rating_score": 0.866356,
       "token_count": 1362
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4109826,
+        "num_messages_24h": 449,
+        "rating_score": 0.866356,
+        "token_count": 1362
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4109830,
         "num_messages_24h": 449,
         "rating_score": 0.866356,
         "token_count": 1362

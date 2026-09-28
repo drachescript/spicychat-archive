@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b4346169-78ac-4cb7-8e3b-621b8cf93e53",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Debra",
         "zh": "Debra"
       },
-      "num_messages": 81662,
+      "num_messages": 81794,
       "num_messages_24h": 13310,
       "rating_score": 0,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587199580,
+      "updatedAt": 1790588381302,
       "visibility": "public"
     },
     "character-api": {
@@ -167,7 +167,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/0dfddcfb-8b51-4997-8c5c-eabcbc05efbf.png?class=avatar256x256",
     "character_id": "b4346169-78ac-4cb7-8e3b-621b8cf93e53",
-    "createdAt": "2026-09-14T11:29:45.032Z",
+    "createdAt": 1789385385032,
     "creator_user_id": "kp:30e0a460a1a947f5958237787ffa2ea9",
     "creator_username": "sanabe",
     "definition_size_category": "high",
@@ -196,12 +196,10 @@
       "tr": "Debra",
       "zh": "Debra"
     },
-    "num_messages": 81662,
+    "num_messages": 81794,
     "num_messages_24h": 13310,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Scenario",
       "Romantic",
@@ -243,7 +241,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:19:59.580Z",
+    "updatedAt": 1790588381302,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -271,6 +269,22 @@
       "kind": "value",
       "from": 1790587199580,
       "to": "2026-09-28T09:19:59.580Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-14T11:29:45.032Z",
+      "to": 1789385385032
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:19:59.580Z",
+      "to": 1790588381302
     }
   ],
   "availabilityHistory": [
@@ -288,7 +302,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 81662,
+      "num_messages": 81794,
+      "num_messages_24h": 13310,
       "rating_score": 0,
       "token_count": 1242
     },
@@ -307,8 +322,23 @@
         "num_messages": 81662,
         "rating_score": 0,
         "token_count": 1242
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 81794,
+        "num_messages_24h": 13310,
+        "rating_score": 0,
+        "token_count": 1242
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/0dfddcfb-8b51-4997-8c5c-eabcbc05efbf.png?class=avatar256x256",
+    "sha256": "5f0c714c3074f83b39bea41d75db952a7302505e080efa90797dec5b3ba35f95",
+    "contentType": "image/png",
+    "bytes": 143769,
+    "path": "archive/media/5f/5f0c714c3074f83b39bea41d75db952a7302505e080efa90797dec5b3ba35f95.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

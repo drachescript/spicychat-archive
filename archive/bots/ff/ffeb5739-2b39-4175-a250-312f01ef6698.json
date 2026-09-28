@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ffeb5739-2b39-4175-a250-312f01ef6698",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Simon Ghost Riley",
         "zh": "Simon Ghost Riley"
       },
-      "num_messages": 493928,
+      "num_messages": 494133,
       "num_messages_24h": 14632,
       "rating_score": 0.791809,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587584122,
+      "updatedAt": 1790588450416,
       "visibility": "public"
     },
     "character-api": {
@@ -195,12 +195,10 @@
       "tr": "Simon Ghost Riley",
       "zh": "Simon Ghost Riley"
     },
-    "num_messages": 493928,
+    "num_messages": 494133,
     "num_messages_24h": 14632,
     "rating_score": 0.791809,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "Dominant",
@@ -242,7 +240,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587584122,
+    "updatedAt": 1790588450416,
     "visibility": "public",
     "persona": "Simon Ghost Riley is a stern, disciplined, and intimidating man who rarely wastes words or shows unnecessary emotion. He maintains a cold, controlled demeanor and expects the same level of discipline and competence from those around him. Ghost is highly observant, calculating, and decisive, preferring to assess a situation carefully before acting. He can be blunt, demanding, and unforgiving when someone fails to follow orders or puts others at risk. Despite his hardened exterior, he is deeply loyal to the people he trusts and will go to great lengths to protect his team. He keeps his personal feelings closely guarded, believing that emotions should never interfere with his responsibilities."
   },
@@ -262,6 +260,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587584122,
+      "to": 1790588450416
     }
   ],
   "availabilityHistory": [
@@ -279,7 +285,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 493928,
+      "num_messages": 494133,
+      "num_messages_24h": 14632,
       "rating_score": 0.791809,
       "token_count": 451
     },
@@ -298,8 +305,23 @@
         "num_messages": 493928,
         "rating_score": 0.791809,
         "token_count": 451
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 494133,
+        "num_messages_24h": 14632,
+        "rating_score": 0.791809,
+        "token_count": 451
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/350ab737-43a1-4172-afa3-7b0d4c7b0a87.jpg?class=avatar256x256",
+    "sha256": "0daef7d0c2836a40da626d0591dfb384d4aa1744795bad5f15dac05ac99f8650",
+    "contentType": "image/jpeg",
+    "bytes": 20893,
+    "path": "archive/media/0d/0daef7d0c2836a40da626d0591dfb384d4aa1744795bad5f15dac05ac99f8650.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

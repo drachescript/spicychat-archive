@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7b091c54-dafd-4890-a0c8-fed46db43c14",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -39,6 +39,7 @@
       "name": "Enzo Dominic",
       "name_i18n": {
         "de": "Enzo Dominic",
+        "fr": "Enzo Dominic",
         "hi": "Enzo Dominic"
       },
       "num_messages": 27754,
@@ -54,15 +55,17 @@
       "title": "—\"we're not done if you can still walk\"",
       "title_i18n": {
         "de": "—\"Wir sind noch nicht fertig, wenn du noch gehen kannst\"",
+        "fr": "—\"nous n'avons pas fini si tu peux encore marcher\"",
         "hi": "—\"अगर तुम अभी भी चल सकती हो तो हम खत्म नहीं हुए\""
       },
       "token_count": 440,
       "translated_languages": [
         "hi",
-        "de"
+        "de",
+        "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790506837306,
+      "updatedAt": 1790587985850,
       "visibility": "public"
     }
   },
@@ -89,7 +92,8 @@
     "name": "Enzo Dominic",
     "name_i18n": {
       "de": "Enzo Dominic",
-      "hi": "Enzo Dominic"
+      "hi": "Enzo Dominic",
+      "fr": "Enzo Dominic"
     },
     "num_messages": 27754,
     "num_messages_24h": 1,
@@ -104,18 +108,58 @@
     "title": "—\"we're not done if you can still walk\"",
     "title_i18n": {
       "de": "—\"Wir sind noch nicht fertig, wenn du noch gehen kannst\"",
-      "hi": "—\"अगर तुम अभी भी चल सकती हो तो हम खत्म नहीं हुए\""
+      "hi": "—\"अगर तुम अभी भी चल सकती हो तो हम खत्म नहीं हुए\"",
+      "fr": "—\"nous n'avons pas fini si tu peux encore marcher\""
     },
     "token_count": 440,
     "translated_languages": [
       "hi",
-      "de"
+      "de",
+      "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790506837306,
+    "updatedAt": 1790587985850,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "name_i18n.fr",
+      "kind": "value",
+      "to": "Enzo Dominic"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "title_i18n.fr",
+      "kind": "value",
+      "to": "—\"nous n'avons pas fini si tu peux encore marcher\""
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "translated_languages",
+      "kind": "value",
+      "from": [
+        "hi",
+        "de"
+      ],
+      "to": [
+        "hi",
+        "de",
+        "fr"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790506837306,
+      "to": 1790587985850
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",

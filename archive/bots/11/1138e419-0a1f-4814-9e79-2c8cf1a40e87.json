@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1138e419-0a1f-4814-9e79-2c8cf1a40e87",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Astolfo",
         "zh": "Astolfo"
       },
-      "num_messages": 414797,
+      "num_messages": 415313,
       "num_messages_24h": 31993,
       "rating_score": 0.875,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587560363,
+      "updatedAt": 1790588312004,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/4b6194b6-6ecf-45b9-968c-b072027de5cf.jpg?class=avatar256x256",
     "character_id": "1138e419-0a1f-4814-9e79-2c8cf1a40e87",
-    "createdAt": "2026-09-17T03:37:54.313Z",
+    "createdAt": 1789616274313,
     "creator_user_id": "kp:3911336541714111ada850c89f948e1e",
     "creator_username": "kenjaku1000yearreal",
     "definition_size_category": "mid",
@@ -207,12 +207,10 @@
       "tr": "Astolfo",
       "zh": "Astolfo"
     },
-    "num_messages": 414909,
+    "num_messages": 415313,
     "num_messages_24h": 31993,
     "rating_score": 0.875,
-    "reportsType": [
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Femboy",
       "Male",
@@ -260,7 +258,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:26.768Z",
+    "updatedAt": 1790588312004,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587560363,
       "to": "2026-09-28T09:29:26.768Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-17T03:37:54.313Z",
+      "to": 1789616274313
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:26.768Z",
+      "to": 1790588312004
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 414909,
+      "num_messages": 415313,
+      "num_messages_24h": 31993,
       "rating_score": 0.875,
       "token_count": 946
     },
@@ -322,6 +337,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 414909,
+        "rating_score": 0.875,
+        "token_count": 946
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 415313,
+        "num_messages_24h": 31993,
         "rating_score": 0.875,
         "token_count": 946
       }

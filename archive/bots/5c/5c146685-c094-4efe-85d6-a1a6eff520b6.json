@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5c146685-c094-4efe-85d6-a1a6eff520b6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ja": "The Ultimate Sim",
         "tr": "The Ultimate Sim"
       },
-      "num_messages": 12176967,
+      "num_messages": 12177257,
       "num_messages_24h": 1868,
       "rating_score": 0.819106,
       "tags": [
@@ -87,7 +87,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587587504,
+      "updatedAt": 1790588382063,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "ja": "The Ultimate Sim",
       "tr": "The Ultimate Sim"
     },
-    "num_messages": 12176967,
+    "num_messages": 12177257,
     "num_messages_24h": 1868,
     "rating_score": 0.819106,
     "tags": [
@@ -162,10 +162,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587587504,
+    "updatedAt": 1790588382063,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587587504,
+      "to": 1790588382063
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 12176967,
+      "num_messages": 12177257,
       "num_messages_24h": 1868,
       "rating_score": 0.819106,
       "token_count": 336
@@ -191,6 +200,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 12176967,
+        "num_messages_24h": 1868,
+        "rating_score": 0.819106,
+        "token_count": 336
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 12177257,
         "num_messages_24h": 1868,
         "rating_score": 0.819106,
         "token_count": 336

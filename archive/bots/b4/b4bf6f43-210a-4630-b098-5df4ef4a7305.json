@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b4bf6f43-210a-4630-b098-5df4ef4a7305",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Jovian Aurelion",
         "tr": "Jovian Aurelion"
       },
-      "num_messages": 194287,
+      "num_messages": 194335,
       "num_messages_24h": 2416,
       "rating_score": 0.703125,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587248924,
+      "updatedAt": 1790588234814,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "ru": "Jovian Aurelion",
       "tr": "Jovian Aurelion"
     },
-    "num_messages": 194287,
+    "num_messages": 194335,
     "num_messages_24h": 2416,
     "rating_score": 0.703125,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587248924,
+    "updatedAt": 1790588234814,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587248924,
+      "to": 1790588234814
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,13 +190,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2320,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2321,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 194287,
+      "num_messages": 194335,
       "num_messages_24h": 2416,
       "rating_score": 0.703125,
       "token_count": 542
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 194287,
+        "num_messages_24h": 2416,
+        "rating_score": 0.703125,
+        "token_count": 542
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 194335,
         "num_messages_24h": 2416,
         "rating_score": 0.703125,
         "token_count": 542

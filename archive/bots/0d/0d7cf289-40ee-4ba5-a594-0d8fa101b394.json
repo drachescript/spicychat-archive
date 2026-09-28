@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0d7cf289-40ee-4ba5-a594-0d8fa101b394",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ko": "뜨거운 남자로서의 삶",
         "tr": "Çekici Bir Adam Olarak Hayat"
       },
-      "num_messages": 5466264,
+      "num_messages": 5466268,
       "num_messages_24h": 519,
       "rating_score": 0.780107,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587402780,
+      "updatedAt": 1790588014254,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "ko": "뜨거운 남자로서의 삶",
       "tr": "Çekici Bir Adam Olarak Hayat"
     },
-    "num_messages": 5466264,
+    "num_messages": 5466268,
     "num_messages_24h": 519,
     "rating_score": 0.780107,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587402780,
+    "updatedAt": 1790588014254,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587402780,
+      "to": 1790588014254
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,7 +194,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5466264,
+      "num_messages": 5466268,
       "num_messages_24h": 519,
       "rating_score": 0.780107,
       "token_count": 310
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 5466264,
+        "num_messages_24h": 519,
+        "rating_score": 0.780107,
+        "token_count": 310
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 5466268,
         "num_messages_24h": 519,
         "rating_score": 0.780107,
         "token_count": 310

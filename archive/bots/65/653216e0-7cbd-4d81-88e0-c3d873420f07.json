@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "653216e0-7cbd-4d81-88e0-c3d873420f07",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -63,7 +63,7 @@
         "tr": "Enzo Benedetti",
         "zh": "Enzo Benedetti"
       },
-      "num_messages": 199852,
+      "num_messages": 199858,
       "num_messages_24h": 2394,
       "rating_score": 0.803213,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586889748,
+      "updatedAt": 1790588308832,
       "visibility": "public"
     }
   },
@@ -155,7 +155,7 @@
       "tr": "Enzo Benedetti",
       "zh": "Enzo Benedetti"
     },
-    "num_messages": 199852,
+    "num_messages": 199858,
     "num_messages_24h": 2394,
     "rating_score": 0.803213,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586889748,
+    "updatedAt": 1790588308832,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586889748,
+      "to": 1790588308832
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,13 +216,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2339,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2340,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 199852,
+      "num_messages": 199858,
       "num_messages_24h": 2394,
       "rating_score": 0.803213,
       "token_count": 1582
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 199852,
+        "num_messages_24h": 2394,
+        "rating_score": 0.803213,
+        "token_count": 1582
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 199858,
         "num_messages_24h": 2394,
         "rating_score": 0.803213,
         "token_count": 1582

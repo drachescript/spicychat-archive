@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f0e212f7-4471-4ac8-9abe-039c29321472",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Abby Hilton",
         "zh": "Abby Hilton"
       },
-      "num_messages": 679903,
+      "num_messages": 679922,
       "num_messages_24h": 3470,
       "rating_score": 0.807611,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586741554,
+      "updatedAt": 1790588131321,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Abby Hilton",
       "zh": "Abby Hilton"
     },
-    "num_messages": 679903,
+    "num_messages": 679922,
     "num_messages_24h": 3470,
     "rating_score": 0.807611,
     "reportsType": {},
@@ -182,10 +182,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586741554,
+    "updatedAt": 1790588131321,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586741554,
+      "to": 1790588131321
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,7 +210,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 679903,
+      "num_messages": 679922,
       "num_messages_24h": 3470,
       "rating_score": 0.807611,
       "token_count": 942
@@ -211,6 +220,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 679903,
+        "num_messages_24h": 3470,
+        "rating_score": 0.807611,
+        "token_count": 942
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 679922,
         "num_messages_24h": 3470,
         "rating_score": 0.807611,
         "token_count": 942

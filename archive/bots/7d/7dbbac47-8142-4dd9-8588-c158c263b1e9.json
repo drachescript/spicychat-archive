@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7dbbac47-8142-4dd9-8588-c158c263b1e9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Raymond Falcone",
         "zh": "Raymond Falcone"
       },
-      "num_messages": 316902,
+      "num_messages": 316912,
       "num_messages_24h": 2435,
       "rating_score": 0.826531,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584921166,
+      "updatedAt": 1790587767700,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Raymond Falcone",
       "zh": "Raymond Falcone"
     },
-    "num_messages": 316902,
+    "num_messages": 316912,
     "num_messages_24h": 2435,
     "rating_score": 0.826531,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584921166,
+    "updatedAt": 1790587767700,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584921166,
+      "to": 1790587767700
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,13 +220,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2296,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2297,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 316902,
+      "num_messages": 316912,
       "num_messages_24h": 2435,
       "rating_score": 0.826531,
       "token_count": 1541
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 316902,
+        "num_messages_24h": 2435,
+        "rating_score": 0.826531,
+        "token_count": 1541
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 316912,
         "num_messages_24h": 2435,
         "rating_score": 0.826531,
         "token_count": 1541

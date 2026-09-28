@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6576ce84-4cc2-405b-9864-c3b10df76ea2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "closed",
       "name": "Toby",
-      "num_messages": 189,
+      "num_messages": 199,
       "num_messages_24h": 24,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "Put this sissy in his place. | mlm, bully pov",
       "token_count": 550,
       "type": "STANDARD",
-      "updatedAt": 1790584742248,
+      "updatedAt": 1790588234861,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "closed",
     "name": "Toby",
-    "num_messages": 189,
+    "num_messages": 199,
     "num_messages_24h": 24,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "Put this sissy in his place. | mlm, bully pov",
     "token_count": 550,
     "type": "STANDARD",
-    "updatedAt": 1790584742248,
+    "updatedAt": 1790588234861,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584742248,
+      "to": 1790588234861
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,13 +122,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2080,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2082,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 189,
+      "num_messages": 199,
       "num_messages_24h": 24,
       "rating_score": 0,
       "token_count": 550
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 189,
+        "num_messages_24h": 24,
+        "rating_score": 0,
+        "token_count": 550
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 199,
         "num_messages_24h": 24,
         "rating_score": 0,
         "token_count": 550

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "be259f93-3bf5-4d70-947b-0fc8391f189c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Общая квартира",
         "tr": "Paylaşılan Daire"
       },
-      "num_messages": 164163,
+      "num_messages": 164199,
       "num_messages_24h": 2684,
       "rating_score": 0.555085,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364377,
+      "updatedAt": 1790588014239,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "ru": "Общая квартира",
       "tr": "Paylaşılan Daire"
     },
-    "num_messages": 164163,
+    "num_messages": 164199,
     "num_messages_24h": 2684,
     "rating_score": 0.555085,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364377,
+    "updatedAt": 1790588014239,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364377,
+      "to": 1790588014239
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 164163,
+      "num_messages": 164199,
       "num_messages_24h": 2684,
       "rating_score": 0.555085,
       "token_count": 1618
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 164163,
+        "num_messages_24h": 2684,
+        "rating_score": 0.555085,
+        "token_count": 1618
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 164199,
         "num_messages_24h": 2684,
         "rating_score": 0.555085,
         "token_count": 1618

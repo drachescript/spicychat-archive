@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e657f024-93e2-4b29-9540-51743541b032",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Stacy Johnson",
         "zh": "Stacy Johnson"
       },
-      "num_messages": 90527,
+      "num_messages": 91002,
       "num_messages_24h": 14406,
       "rating_score": 0.835052,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587563745,
+      "updatedAt": 1790588456427,
       "visibility": "public"
     },
     "character-api": {
@@ -178,7 +178,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/1dcc4ce9-6c93-4cb8-b193-fb17df0d8019.gif?class=avatar256x256",
     "character_id": "e657f024-93e2-4b29-9540-51743541b032",
-    "createdAt": "2026-09-21T23:53:25.474Z",
+    "createdAt": 1790034805474,
     "creator_user_id": "kp:50d896830165415487990d2e175e9cc2",
     "creator_username": "asdfdsa1",
     "definition_size_category": "mid",
@@ -208,13 +208,10 @@
       "tr": "Stacy Johnson",
       "zh": "Stacy Johnson"
     },
-    "num_messages": 90647,
+    "num_messages": 91002,
     "num_messages_24h": 14406,
     "rating_score": 0.835052,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -262,7 +259,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:24.139Z",
+    "updatedAt": 1790588456427,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -291,6 +288,22 @@
       "kind": "value",
       "from": 1790587563745,
       "to": "2026-09-28T09:29:24.139Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-21T23:53:25.474Z",
+      "to": 1790034805474
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:24.139Z",
+      "to": 1790588456427
     }
   ],
   "availabilityHistory": [
@@ -308,7 +321,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 90647,
+      "num_messages": 91002,
+      "num_messages_24h": 14406,
       "rating_score": 0.835052,
       "token_count": 707
     },
@@ -327,8 +341,23 @@
         "num_messages": 90647,
         "rating_score": 0.835052,
         "token_count": 707
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 91002,
+        "num_messages_24h": 14406,
+        "rating_score": 0.835052,
+        "token_count": 707
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/1dcc4ce9-6c93-4cb8-b193-fb17df0d8019.gif?class=avatar256x256",
+    "sha256": "a7679ff717d6cb0a7d57d41e88f4ec0cf4295d43d9297ad60315be086767f51a",
+    "contentType": "image/gif",
+    "bytes": 1557535,
+    "path": "archive/media/a7/a7679ff717d6cb0a7d57d41e88f4ec0cf4295d43d9297ad60315be086767f51a.gif",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f669b661-88f5-4e4f-b124-01986e00a42e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Lucien Veyre",
         "zh": "Lucien Veyre"
       },
-      "num_messages": 180895,
+      "num_messages": 180947,
       "num_messages_24h": 3958,
       "rating_score": 0.633721,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587031244,
+      "updatedAt": 1790588279164,
       "visibility": "public",
       "voice_id": "d685e698-c2b3-4eee-9828-8880d9f8bd6c"
     }
@@ -144,7 +144,7 @@
       "tr": "Lucien Veyre",
       "zh": "Lucien Veyre"
     },
-    "num_messages": 180895,
+    "num_messages": 180947,
     "num_messages_24h": 3958,
     "rating_score": 0.633721,
     "reportsType": {},
@@ -195,11 +195,20 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587031244,
+    "updatedAt": 1790588279164,
     "visibility": "public",
     "voice_id": "d685e698-c2b3-4eee-9828-8880d9f8bd6c"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587031244,
+      "to": 1790588279164
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 180895,
+      "num_messages": 180947,
       "num_messages_24h": 3958,
       "rating_score": 0.633721,
       "token_count": 2384
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 180895,
+        "num_messages_24h": 3958,
+        "rating_score": 0.633721,
+        "token_count": 2384
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 180947,
         "num_messages_24h": 3958,
         "rating_score": 0.633721,
         "token_count": 2384

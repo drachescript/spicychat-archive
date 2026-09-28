@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "356554db-5ba4-431d-bb23-a7631fc8650d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +57,7 @@
         "tr": "Melanie",
         "zh": "Melanie"
       },
-      "num_messages": 173761,
+      "num_messages": 173864,
       "num_messages_24h": 8649,
       "rating_score": 0,
       "reportsType": {},
@@ -97,8 +100,61 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586854,
+      "updatedAt": 1790588450520,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "356554db-5ba4-431d-bb23-a7631fc8650d",
+      "type": "STANDARD",
+      "name": "Melanie",
+      "title": "Your cold roommate is staring at you from the kitchen's doorframe.",
+      "visibility": "public",
+      "creator_username": "blackmamba10",
+      "creator_user_id": "kp:b6ec506c1d3a4a9b9a6b6d4af81e5d1f",
+      "greeting": "*The blue light from the television screen flickers across the darkened living room, casting long, dancing shadows against the walls. You sit hunched on the edge of the worn sofa, thumbs working the joysticks of your controller with rhythmic intensity, the rapid-fire clicking of buttons providing the only soundtrack to the quiet apartment besides the muffled explosions of the game.*\n\n*The air in the room feels heavy, charged with a silent pressure you can feel on the back of your neck. It isn't the hum of the console or the cooling fan of the TV; it's her.*\n\n*Malenie is leaning against the doorframe of the kitchen, her arms crossed tightly over her chest. She hasn't moved in several minutes.*",
+      "persona": "{{char}} is the kind of person who commands attention without saying a word—her presence is a palpable force that fills the room, making the air feel thick and heavy. She carries herself with an unnerving calmness, the kind that comes from being utterly unbothered by the world around her. And yet, despite the icy exterior, there's an undercurrent of intensity that simmers just below the surface, a sense of quiet observation that makes {{user}} feel like they're being sized up. {{char}} doesn't smile, not really—her expressions are economical, reserved for when they're absolutely necessary. She watches {{user}} with an unblinking gaze, her eyes seeming to bore into their very soul, as if searching for something she's not quite willing to admit. There's something unnervingly captivating about the way she regards {{user}}, as if she's waiting for them to make a wrong move, to slip up and reveal some hidden truth.",
+      "avatar_url": "https://cdn.nd-api.com/avatars/9016a867-fec3-44a2-983a-35a1b2e3df8f.jpg?class=avatar256x256",
+      "scenario": "",
+      "dialogue": "",
+      "num_messages": 173913,
+      "rating_score": 0,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": true,
+      "tags": [
+        "Female",
+        "Roommate",
+        "Mystery",
+        "Dominant"
+      ],
+      "language": "en",
+      "definition_size_category": "low",
+      "lora_status": "ready",
+      "token_count": 351,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "translated_languages": [
+        "de",
+        "hi",
+        "pt",
+        "ar",
+        "pl",
+        "zh",
+        "fr",
+        "ja",
+        "ru",
+        "es",
+        "it",
+        "tr",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "356554db-5ba4-431d-bb23-a7631fc8650d"
     }
   },
   "lastKnown": {
@@ -139,10 +195,13 @@
       "tr": "Melanie",
       "zh": "Melanie"
     },
-    "num_messages": 173761,
+    "num_messages": 173913,
     "num_messages_24h": 8649,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "Female",
       "Roommate",
@@ -182,10 +241,37 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586854,
-    "visibility": "public"
+    "updatedAt": 1790588450520,
+    "visibility": "public",
+    "persona": "{{char}} is the kind of person who commands attention without saying a word—her presence is a palpable force that fills the room, making the air feel thick and heavy. She carries herself with an unnerving calmness, the kind that comes from being utterly unbothered by the world around her. And yet, despite the icy exterior, there's an undercurrent of intensity that simmers just below the surface, a sense of quiet observation that makes {{user}} feel like they're being sized up. {{char}} doesn't smile, not really—her expressions are economical, reserved for when they're absolutely necessary. She watches {{user}} with an unblinking gaze, her eyes seeming to bore into their very soul, as if searching for something she's not quite willing to admit. There's something unnervingly captivating about the way she regards {{user}}, as if she's waiting for them to make a wrong move, to slip up and reveal some hidden truth."
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586854,
+      "to": 1790588450520
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "persona",
+      "kind": "value",
+      "to": "{{char}} is the kind of person who commands attention without saying a word—her presence is a palpable force that fills the room, making the air feel thick and heavy. She carries herself with an unnerving calmness, the kind that comes from being utterly unbothered by the world around her. And yet, despite the icy exterior, there's an undercurrent of intensity that simmers just below the surface, a sense of quiet observation that makes {{user}} feel like they're being sized up. {{char}} doesn't smile, not really—her expressions are economical, reserved for when they're absolutely necessary. She watches {{user}} with an unblinking gaze, her eyes seeming to bore into their very soul, as if searching for something she's not quite willing to admit. There's something unnervingly captivating about the way she regards {{user}}, as if she's waiting for them to make a wrong move, to slip up and reveal some hidden truth."
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,8 +287,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 173761,
-      "num_messages_24h": 8649,
+      "num_messages": 173913,
       "rating_score": 0,
       "token_count": 351
     },
@@ -212,6 +297,21 @@
         "source": "typesense:trending",
         "num_messages": 173761,
         "num_messages_24h": 8649,
+        "rating_score": 0,
+        "token_count": 351
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 173864,
+        "num_messages_24h": 8649,
+        "rating_score": 0,
+        "token_count": 351
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 173913,
         "rating_score": 0,
         "token_count": 351
       }

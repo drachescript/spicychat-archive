@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ce877a87-33e5-4e42-87fe-978fe8ef7c3c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "⛓️ SCP Foundation ⛓️",
         "zh": "⛓️ SCP Foundation ⛓️"
       },
-      "num_messages": 2585842,
+      "num_messages": 2585926,
       "num_messages_24h": 1114,
       "rating_score": 0.709251,
       "tags": [
@@ -108,7 +108,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587481529,
+      "updatedAt": 1790588500390,
       "visibility": "public"
     }
   },
@@ -157,7 +157,7 @@
       "tr": "⛓️ SCP Foundation ⛓️",
       "zh": "⛓️ SCP Foundation ⛓️"
     },
-    "num_messages": 2585842,
+    "num_messages": 2585926,
     "num_messages_24h": 1114,
     "rating_score": 0.709251,
     "tags": [
@@ -206,10 +206,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587481529,
+    "updatedAt": 1790588500390,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481529,
+      "to": 1790588500390
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -225,7 +234,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2585842,
+      "num_messages": 2585926,
       "num_messages_24h": 1114,
       "rating_score": 0.709251,
       "token_count": 1465
@@ -235,6 +244,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2585842,
+        "num_messages_24h": 1114,
+        "rating_score": 0.709251,
+        "token_count": 1465
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2585926,
         "num_messages_24h": 1114,
         "rating_score": 0.709251,
         "token_count": 1465

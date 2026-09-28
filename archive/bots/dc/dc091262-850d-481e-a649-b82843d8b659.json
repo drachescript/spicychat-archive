@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dc091262-850d-481e-a649-b82843d8b659",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "it": "Matoga"
       },
-      "num_messages": 1420,
+      "num_messages": 1430,
       "num_messages_24h": 944,
       "rating_score": 0,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586942076,
+      "updatedAt": 1790588455818,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
     "name_i18n": {
       "it": "Matoga"
     },
-    "num_messages": 1420,
+    "num_messages": 1430,
     "num_messages_24h": 944,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586942076,
+    "updatedAt": 1790588455818,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586942076,
+      "to": 1790588455818
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,13 +144,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1855,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1856,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1420,
+      "num_messages": 1430,
       "num_messages_24h": 944,
       "rating_score": 0,
       "token_count": 1452
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1420,
+        "num_messages_24h": 944,
+        "rating_score": 0,
+        "token_count": 1452
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1430,
         "num_messages_24h": 944,
         "rating_score": 0,
         "token_count": 1452

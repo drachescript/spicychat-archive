@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "81afe18b-c13b-4cf6-9d67-8e9c441c0dae",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "es": "Monica Benette",
         "hi": "Monica Benette"
       },
-      "num_messages": 5831,
+      "num_messages": 5853,
       "num_messages_24h": 3705,
       "rating_score": 0,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364601,
+      "updatedAt": 1790588455714,
       "visibility": "public"
     }
   },
@@ -100,7 +100,7 @@
       "es": "Monica Benette",
       "hi": "Monica Benette"
     },
-    "num_messages": 5831,
+    "num_messages": 5853,
     "num_messages_24h": 3705,
     "rating_score": 0,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364601,
+    "updatedAt": 1790588455714,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364601,
+      "to": 1790588455714
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -145,13 +154,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1577,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1578,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 5831,
+      "num_messages": 5853,
       "num_messages_24h": 3705,
       "rating_score": 0,
       "token_count": 1567
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5831,
+        "num_messages_24h": 3705,
+        "rating_score": 0,
+        "token_count": 1567
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5853,
         "num_messages_24h": 3705,
         "rating_score": 0,
         "token_count": 1567

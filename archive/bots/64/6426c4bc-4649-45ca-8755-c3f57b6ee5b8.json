@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6426c4bc-4649-45ca-8755-c3f57b6ee5b8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Vincent",
-      "num_messages": 1781301,
+      "num_messages": 1781316,
       "num_messages_24h": 0,
       "rating_score": 0.804076,
       "tags": [
@@ -50,7 +50,7 @@
       "title": "[He’s mad because you’re hurt…🌓]\n(Hero x Villain)",
       "token_count": 1022,
       "type": "STANDARD",
-      "updatedAt": 1790585440149,
+      "updatedAt": 1790588010814,
       "visibility": "public"
     }
   },
@@ -75,7 +75,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "Vincent",
-    "num_messages": 1781301,
+    "num_messages": 1781316,
     "num_messages_24h": 0,
     "rating_score": 0.804076,
     "tags": [
@@ -88,10 +88,19 @@
     "title": "[He’s mad because you’re hurt…🌓]\n(Hero x Villain)",
     "token_count": 1022,
     "type": "STANDARD",
-    "updatedAt": 1790585440149,
+    "updatedAt": 1790588010814,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585440149,
+      "to": 1790588010814
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,7 +116,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1781301,
+      "num_messages": 1781316,
       "num_messages_24h": 0,
       "rating_score": 0.804076,
       "token_count": 1022
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1781301,
+        "num_messages_24h": 0,
+        "rating_score": 0.804076,
+        "token_count": 1022
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1781316,
         "num_messages_24h": 0,
         "rating_score": 0.804076,
         "token_count": 1022

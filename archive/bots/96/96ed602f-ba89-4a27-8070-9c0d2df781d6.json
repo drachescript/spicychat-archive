@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "96ed602f-ba89-4a27-8070-9c0d2df781d6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Kit Bodega and Fexa",
         "tr": "Kit Bodega and Fexa"
       },
-      "num_messages": 30504,
+      "num_messages": 30600,
       "num_messages_24h": 5392,
       "rating_score": 0,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587478243,
+      "updatedAt": 1790588457213,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "ru": "Kit Bodega and Fexa",
       "tr": "Kit Bodega and Fexa"
     },
-    "num_messages": 30504,
+    "num_messages": 30600,
     "num_messages_24h": 5392,
     "rating_score": 0,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587478243,
+    "updatedAt": 1790588457213,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587478243,
+      "to": 1790588457213
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,7 +200,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 30504,
+      "num_messages": 30600,
       "num_messages_24h": 5392,
       "rating_score": 0,
       "token_count": 1065
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 30504,
+        "num_messages_24h": 5392,
+        "rating_score": 0,
+        "token_count": 1065
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 30600,
         "num_messages_24h": 5392,
         "rating_score": 0,
         "token_count": 1065

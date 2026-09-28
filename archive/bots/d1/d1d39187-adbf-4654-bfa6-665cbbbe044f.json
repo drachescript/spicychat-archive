@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d1d39187-adbf-4654-bfa6-665cbbbe044f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Kai Kagetsu",
-      "num_messages": 80,
+      "num_messages": 91,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "~yandere and obsessive vampire husband~",
       "token_count": 439,
       "type": "STANDARD",
-      "updatedAt": 1790585244743,
+      "updatedAt": 1790587681602,
       "visibility": "public"
     }
   },
@@ -83,7 +83,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Kai Kagetsu",
-    "num_messages": 80,
+    "num_messages": 91,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "~yandere and obsessive vampire husband~",
     "token_count": 439,
     "type": "STANDARD",
-    "updatedAt": 1790585244743,
+    "updatedAt": 1790587681602,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585244743,
+      "to": 1790587681602
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 80,
+      "num_messages": 91,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 439
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 80,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 439
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 91,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 439

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6e455e23-aa04-46a4-a454-8e687e9975ec",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "ru": "Геншин: Тейват",
         "zh": "原神：提瓦特"
       },
-      "num_messages": 327527,
+      "num_messages": 327565,
       "num_messages_24h": 2640,
       "rating_score": 0.878995,
       "tags": [
@@ -103,7 +103,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587022025,
+      "updatedAt": 1790587928185,
       "visibility": "public",
       "voice_id": "d862ce72-ce13-4f08-8836-36eee8e99584"
     }
@@ -153,7 +153,7 @@
       "ru": "Геншин: Тейват",
       "zh": "原神：提瓦特"
     },
-    "num_messages": 327527,
+    "num_messages": 327565,
     "num_messages_24h": 2640,
     "rating_score": 0.878995,
     "tags": [
@@ -197,11 +197,20 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587022025,
+    "updatedAt": 1790587928185,
     "visibility": "public",
     "voice_id": "d862ce72-ce13-4f08-8836-36eee8e99584"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587022025,
+      "to": 1790587928185
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,7 +226,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 327527,
+      "num_messages": 327565,
       "num_messages_24h": 2640,
       "rating_score": 0.878995,
       "token_count": 1182
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 327527,
+        "num_messages_24h": 2640,
+        "rating_score": 0.878995,
+        "token_count": 1182
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 327565,
         "num_messages_24h": 2640,
         "rating_score": 0.878995,
         "token_count": 1182

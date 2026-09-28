@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "59003876-359f-4857-bd01-3b06db9d5053",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Nora",
-      "num_messages": 452,
+      "num_messages": 474,
       "num_messages_24h": 233,
       "rating_score": 0,
       "reportsType": {},
@@ -50,7 +50,7 @@
       "title": "The quiet girl in the class",
       "token_count": 537,
       "type": "STANDARD",
-      "updatedAt": 1790586706758,
+      "updatedAt": 1790588037847,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "Nora",
-    "num_messages": 452,
+    "num_messages": 474,
     "num_messages_24h": 233,
     "rating_score": 0,
     "reportsType": {},
@@ -88,10 +88,19 @@
     "title": "The quiet girl in the class",
     "token_count": 537,
     "type": "STANDARD",
-    "updatedAt": 1790586706758,
+    "updatedAt": 1790588037847,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586706758,
+      "to": 1790588037847
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,7 +116,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 452,
+      "num_messages": 474,
       "num_messages_24h": 233,
       "rating_score": 0,
       "token_count": 537
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 452,
+        "num_messages_24h": 233,
+        "rating_score": 0,
+        "token_count": 537
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 474,
         "num_messages_24h": 233,
         "rating_score": 0,
         "token_count": 537

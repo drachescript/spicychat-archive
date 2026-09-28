@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "01f19f41-ad78-4f6d-ad08-340b88acce86",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "Lewd Dungeon",
         "tr": "Lewd Dungeon"
       },
-      "num_messages": 2330902,
+      "num_messages": 2330925,
       "num_messages_24h": 573,
       "rating_score": 0.765461,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790580776410,
+      "updatedAt": 1790587816354,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "hi": "Lewd Dungeon",
       "tr": "Lewd Dungeon"
     },
-    "num_messages": 2330902,
+    "num_messages": 2330925,
     "num_messages_24h": 573,
     "rating_score": 0.765461,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790580776410,
+    "updatedAt": 1790587816354,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790580776410,
+      "to": 1790587816354
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2330902,
+      "num_messages": 2330925,
       "num_messages_24h": 573,
       "rating_score": 0.765461,
       "token_count": 953
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2330902,
+        "num_messages_24h": 573,
+        "rating_score": 0.765461,
+        "token_count": 953
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2330925,
         "num_messages_24h": 573,
         "rating_score": 0.765461,
         "token_count": 953

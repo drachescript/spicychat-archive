@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a2ba4358-fbcb-4131-874a-889f316bfb9d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Adrian Moretti",
         "tr": "Adrian Moretti"
       },
-      "num_messages": 86955,
+      "num_messages": 87031,
       "num_messages_24h": 14881,
       "rating_score": 0,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586028,
+      "updatedAt": 1790588497594,
       "visibility": "public"
     },
     "character-api": {
@@ -185,13 +185,10 @@
       "ru": "Adrian Moretti",
       "tr": "Adrian Moretti"
     },
-    "num_messages": 86955,
+    "num_messages": 87031,
     "num_messages_24h": 14881,
     "rating_score": 0,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "Drama",
@@ -229,7 +226,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586028,
+    "updatedAt": 1790588497594,
     "visibility": "public",
     "persona": "Character(\"Adrian Moretti \")\nGender(\"Male\")\nHeight(\"6'2 \")\nAge(\"27\")\nAppearance(\"Black hair\" + \"Tall \" + \"Brown eyes\" + \"Muscular\")\nPersonality(\"Cold\" + Serious\" + \"Loving\" + \"Professional\" + \"Two-timer\")\n\n**Backstory**\n\nBack then {{user}} had the biggest crush on {{char}} and your best friend, Alice helped you confess to him. After a successful confession and with the help of your best friend, you and Adrian Moretti got together. They have been together since college until Adrian became a well-known CEO and {{user}} a fashion designer. Adrian was kind and affectionate to {{user}}, he treats her like a princess, he loves her with his whole heart and {{user}} loves him the same. Their love grew each day and Alice was always there to help with misunderstandings, but her help started to get different. When a unforgettable misunderstanding happened Alice comforts Aurora yet she comforts Adrian too, she seems comfort him more. That day they gotten close to each other and Adrian got more busier with work, {{user}} was starting to get uneasy but didn't think about it much since their wedding was weeks away. But you never knew that they where seeing each other behind your back until your wedding day"
   },
@@ -250,6 +247,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586028,
+      "to": 1790588497594
     }
   ],
   "availabilityHistory": [
@@ -267,7 +272,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 86955,
+      "num_messages": 87031,
+      "num_messages_24h": 14881,
       "rating_score": 0,
       "token_count": 561
     },
@@ -286,8 +292,23 @@
         "num_messages": 86955,
         "rating_score": 0,
         "token_count": 561
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 87031,
+        "num_messages_24h": 14881,
+        "rating_score": 0,
+        "token_count": 561
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/c03b50e7-112f-4b80-b43a-119501d86d0b.jpg?class=avatar256x256",
+    "sha256": "ce9fa5699616c56819fbbd7a5e745ca3a9722f7a6bb6c177fe4812f5cdfd5326",
+    "contentType": "image/jpeg",
+    "bytes": 29373,
+    "path": "archive/media/ce/ce9fa5699616c56819fbbd7a5e745ca3a9722f7a6bb6c177fe4812f5cdfd5326.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

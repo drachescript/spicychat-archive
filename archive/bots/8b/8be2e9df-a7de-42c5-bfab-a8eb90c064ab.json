@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8be2e9df-a7de-42c5-bfab-a8eb90c064ab",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Anastasia",
-      "num_messages": 195,
+      "num_messages": 242,
       "num_messages_24h": 165,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "Your loving girlfriend who LOVES your fat body.",
       "token_count": 436,
       "type": "STANDARD",
-      "updatedAt": 1790556219333,
+      "updatedAt": 1790588532609,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Anastasia",
-    "num_messages": 195,
+    "num_messages": 242,
     "num_messages_24h": 165,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "Your loving girlfriend who LOVES your fat body.",
     "token_count": 436,
     "type": "STANDARD",
-    "updatedAt": 1790556219333,
+    "updatedAt": 1790588532609,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790556219333,
+      "to": 1790588532609
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,13 +118,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1573,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1574,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 195,
+      "num_messages": 242,
       "num_messages_24h": 165,
       "rating_score": 0,
       "token_count": 436
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 195,
+        "num_messages_24h": 165,
+        "rating_score": 0,
+        "token_count": 436
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 242,
         "num_messages_24h": 165,
         "rating_score": 0,
         "token_count": 436

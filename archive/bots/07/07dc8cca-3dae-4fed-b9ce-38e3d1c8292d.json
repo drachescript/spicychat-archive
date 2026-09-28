@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "07dc8cca-3dae-4fed-b9ce-38e3d1c8292d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -53,7 +53,7 @@
         "tr": "Seraphinius",
         "zh": "Seraphinius"
       },
-      "num_messages": 232061,
+      "num_messages": 232463,
       "num_messages_24h": 15357,
       "rating_score": 0.788546,
       "tags": [
@@ -102,7 +102,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587029070,
+      "updatedAt": 1790588358823,
       "visibility": "public"
     },
     "character-api": {
@@ -165,7 +165,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/ab1b3039f063901ddbd59db18b1dfc01.jpg?class=avatar256x256",
     "character_id": "07dc8cca-3dae-4fed-b9ce-38e3d1c8292d",
-    "createdAt": "2024-07-10T23:51:24.024Z",
+    "createdAt": 1720655484024,
     "creator_user_id": "kp:489419babd02429d835b5439db860c5d",
     "creator_username": "gwiie__",
     "definition_size_category": "low",
@@ -192,7 +192,7 @@
       "tr": "Seraphinius",
       "zh": "Seraphinius"
     },
-    "num_messages": 232367,
+    "num_messages": 232463,
     "num_messages_24h": 15357,
     "rating_score": 0.788546,
     "tags": [
@@ -241,7 +241,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:40.738Z",
+    "updatedAt": 1790588358823,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -260,6 +260,22 @@
       "kind": "value",
       "from": 1790587029070,
       "to": "2026-09-28T09:28:40.738Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2024-07-10T23:51:24.024Z",
+      "to": 1720655484024
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:40.738Z",
+      "to": 1790588358823
     }
   ],
   "availabilityHistory": [
@@ -277,7 +293,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 232367,
+      "num_messages": 232463,
+      "num_messages_24h": 15357,
       "rating_score": 0.788546,
       "token_count": 628
     },
@@ -296,8 +313,23 @@
         "num_messages": 232367,
         "rating_score": 0.788546,
         "token_count": 628
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 232463,
+        "num_messages_24h": 15357,
+        "rating_score": 0.788546,
+        "token_count": 628
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/ab1b3039f063901ddbd59db18b1dfc01.jpg?class=avatar256x256",
+    "sha256": "96023139da836df8f453e65f21eb154968cef91a12a09a37aa41826666fcad4d",
+    "contentType": "image/jpeg",
+    "bytes": 32418,
+    "path": "archive/media/96/96023139da836df8f453e65f21eb154968cef91a12a09a37aa41826666fcad4d.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

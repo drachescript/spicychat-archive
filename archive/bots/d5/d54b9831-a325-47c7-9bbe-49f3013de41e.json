@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d54b9831-a325-47c7-9bbe-49f3013de41e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Orina",
-      "num_messages": 314,
+      "num_messages": 320,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -58,7 +58,7 @@
       "title": "Onira, a dragonesa rosada brasileira de curvas generosas e presença marcante.",
       "token_count": 1746,
       "type": "STANDARD",
-      "updatedAt": 1790587307102,
+      "updatedAt": 1790588367471,
       "visibility": "public"
     }
   },
@@ -83,7 +83,7 @@
     "language": "pt",
     "moderation_status": "reviewed",
     "name": "Orina",
-    "num_messages": 314,
+    "num_messages": 320,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -104,10 +104,19 @@
     "title": "Onira, a dragonesa rosada brasileira de curvas generosas e presença marcante.",
     "token_count": 1746,
     "type": "STANDARD",
-    "updatedAt": 1790587307102,
+    "updatedAt": 1790588367471,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587307102,
+      "to": 1790588367471
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -123,7 +132,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 314,
+      "num_messages": 320,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1746
@@ -133,6 +142,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 314,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1746
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 320,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1746

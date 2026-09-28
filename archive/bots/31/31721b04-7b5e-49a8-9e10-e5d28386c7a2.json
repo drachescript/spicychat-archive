@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "31721b04-7b5e-49a8-9e10-e5d28386c7a2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
       ],
       "moderation_status": "pending",
       "name": "Soap",
-      "num_messages": 50,
+      "num_messages": 85,
       "num_messages_24h": 41,
       "rating_score": 0,
       "reportsType": {},
@@ -58,7 +58,7 @@
       "title": "A COD character (not a fan of this so I may said false information)",
       "token_count": 314,
       "type": "STANDARD",
-      "updatedAt": 1790586412401,
+      "updatedAt": 1790588105890,
       "visibility": "public"
     }
   },
@@ -92,7 +92,7 @@
     ],
     "moderation_status": "pending",
     "name": "Soap",
-    "num_messages": 50,
+    "num_messages": 85,
     "num_messages_24h": 41,
     "rating_score": 0,
     "reportsType": {},
@@ -106,10 +106,19 @@
     "title": "A COD character (not a fan of this so I may said false information)",
     "token_count": 314,
     "type": "STANDARD",
-    "updatedAt": 1790586412401,
+    "updatedAt": 1790588105890,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586412401,
+      "to": 1790588105890
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -125,7 +134,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 50,
+      "num_messages": 85,
       "num_messages_24h": 41,
       "rating_score": 0,
       "token_count": 314
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 50,
+        "num_messages_24h": 41,
+        "rating_score": 0,
+        "token_count": 314
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 85,
         "num_messages_24h": 41,
         "rating_score": 0,
         "token_count": 314

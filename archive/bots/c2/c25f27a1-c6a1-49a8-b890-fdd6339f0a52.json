@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c25f27a1-c6a1-49a8-b890-fdd6339f0a52",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Layla Sola",
         "zh": "Layla Sola"
       },
-      "num_messages": 43147,
+      "num_messages": 43233,
       "num_messages_24h": 2612,
       "rating_score": 0,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587661946,
+      "updatedAt": 1790588362891,
       "visibility": "public"
     }
   },
@@ -122,7 +122,7 @@
       "ru": "Layla Sola",
       "zh": "Layla Sola"
     },
-    "num_messages": 43147,
+    "num_messages": 43233,
     "num_messages_24h": 2612,
     "rating_score": 0,
     "reportsType": {},
@@ -158,10 +158,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587661946,
+    "updatedAt": 1790588362891,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587661946,
+      "to": 1790588362891
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,13 +180,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2117,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2118,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 43147,
+      "num_messages": 43233,
       "num_messages_24h": 2612,
       "rating_score": 0,
       "token_count": 370
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 43147,
+        "num_messages_24h": 2612,
+        "rating_score": 0,
+        "token_count": 370
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 43233,
         "num_messages_24h": 2612,
         "rating_score": 0,
         "token_count": 370

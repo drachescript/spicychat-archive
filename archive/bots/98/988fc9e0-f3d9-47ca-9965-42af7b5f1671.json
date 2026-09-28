@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "988fc9e0-f3d9-47ca-9965-42af7b5f1671",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       "name_i18n": {
         "hi": "Miyu Takahashi"
       },
-      "num_messages": 1927,
+      "num_messages": 1962,
       "num_messages_24h": 1176,
       "rating_score": 0,
       "reportsType": {},
@@ -60,7 +60,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586435660,
+      "updatedAt": 1790588369152,
       "visibility": "public"
     }
   },
@@ -89,7 +89,7 @@
     "name_i18n": {
       "hi": "Miyu Takahashi"
     },
-    "num_messages": 1927,
+    "num_messages": 1962,
     "num_messages_24h": 1176,
     "rating_score": 0,
     "reportsType": {},
@@ -108,10 +108,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586435660,
+    "updatedAt": 1790588369152,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586435660,
+      "to": 1790588369152
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,13 +130,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2129,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2131,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1927,
+      "num_messages": 1962,
       "num_messages_24h": 1176,
       "rating_score": 0,
       "token_count": 1791
@@ -137,6 +146,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1927,
+        "num_messages_24h": 1176,
+        "rating_score": 0,
+        "token_count": 1791
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1962,
         "num_messages_24h": 1176,
         "rating_score": 0,
         "token_count": 1791

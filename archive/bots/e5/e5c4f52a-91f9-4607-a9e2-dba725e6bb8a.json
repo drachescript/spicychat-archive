@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e5c4f52a-91f9-4607-a9e2-dba725e6bb8a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "obsessed mafia ᡣ𐭩.ᐟ",
         "tr": "takıntılı mafya ᡣ𐭩.ᐟ"
       },
-      "num_messages": 60161,
+      "num_messages": 60165,
       "num_messages_24h": 335,
       "rating_score": 1,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790580212874,
+      "updatedAt": 1790588292821,
       "visibility": "public"
     }
   },
@@ -124,7 +124,7 @@
       "ru": "obsessed mafia ᡣ𐭩.ᐟ",
       "tr": "takıntılı mafya ᡣ𐭩.ᐟ"
     },
-    "num_messages": 60161,
+    "num_messages": 60165,
     "num_messages_24h": 335,
     "rating_score": 1,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790580212874,
+    "updatedAt": 1790588292821,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790580212874,
+      "to": 1790588292821
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,7 +188,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 60161,
+      "num_messages": 60165,
       "num_messages_24h": 335,
       "rating_score": 1,
       "token_count": 765
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 60161,
+        "num_messages_24h": 335,
+        "rating_score": 1,
+        "token_count": 765
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 60165,
         "num_messages_24h": 335,
         "rating_score": 1,
         "token_count": 765

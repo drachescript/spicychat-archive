@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b8775834-575c-4008-9966-b7fdd13ecc9b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pt": "Mrs. Navya Patel",
         "ru": "Миссис Навья Патель"
       },
-      "num_messages": 34175,
+      "num_messages": 34215,
       "num_messages_24h": 2318,
       "rating_score": 0,
       "reportsType": {},
@@ -77,7 +77,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587028915,
+      "updatedAt": 1790588381689,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "pt": "Mrs. Navya Patel",
       "ru": "Миссис Навья Патель"
     },
-    "num_messages": 34175,
+    "num_messages": 34215,
     "num_messages_24h": 2318,
     "rating_score": 0,
     "reportsType": {},
@@ -142,10 +142,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587028915,
+    "updatedAt": 1790588381689,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587028915,
+      "to": 1790588381689
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,13 +164,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2438,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2439,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 34175,
+      "num_messages": 34215,
       "num_messages_24h": 2318,
       "rating_score": 0,
       "token_count": 1041
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 34175,
+        "num_messages_24h": 2318,
+        "rating_score": 0,
+        "token_count": 1041
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 34215,
         "num_messages_24h": 2318,
         "rating_score": 0,
         "token_count": 1041

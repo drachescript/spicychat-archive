@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "77f0a9d1-cd34-441e-989e-5dd99df5d75b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Arne Bjornsson",
         "zh": "Arne Bjornsson"
       },
-      "num_messages": 299518,
+      "num_messages": 300338,
       "num_messages_24h": 17466,
       "rating_score": 0.956743,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585777,
+      "updatedAt": 1790588610120,
       "visibility": "public"
     },
     "character-api": {
@@ -169,7 +169,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/f419b2fd-db37-4c6a-b370-cbdf56cc98d1.jpg?class=avatar256x256",
     "character_id": "77f0a9d1-cd34-441e-989e-5dd99df5d75b",
-    "createdAt": "2026-09-22T12:54:32.617Z",
+    "createdAt": 1790081672617,
     "creator_user_id": "kp:a24755061730430a8e185025bff1613a",
     "creator_username": "stellaisobsessed",
     "definition_size_category": "high",
@@ -198,12 +198,10 @@
       "tr": "Arne Bjornsson",
       "zh": "Arne Bjornsson"
     },
-    "num_messages": 299814,
+    "num_messages": 300338,
     "num_messages_24h": 17466,
     "rating_score": 0.956743,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -247,7 +245,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:39.296Z",
+    "updatedAt": 1790588610120,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -275,6 +273,22 @@
       "kind": "value",
       "from": 1790587585777,
       "to": "2026-09-28T09:28:39.296Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-22T12:54:32.617Z",
+      "to": 1790081672617
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:39.296Z",
+      "to": 1790588610120
     }
   ],
   "availabilityHistory": [
@@ -292,7 +306,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 299814,
+      "num_messages": 300338,
+      "num_messages_24h": 17466,
       "rating_score": 0.956743,
       "token_count": 1272
     },
@@ -309,6 +324,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 299814,
+        "rating_score": 0.956743,
+        "token_count": 1272
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 300338,
+        "num_messages_24h": 17466,
         "rating_score": 0.956743,
         "token_count": 1272
       }

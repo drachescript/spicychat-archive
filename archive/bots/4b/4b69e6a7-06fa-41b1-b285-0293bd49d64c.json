@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "4b69e6a7-06fa-41b1-b285-0293bd49d64c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "typesense:latest": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +46,7 @@
         "fr": "Amber and Jax",
         "ru": "Amber and Jax"
       },
-      "num_messages": 6338,
+      "num_messages": 6346,
       "num_messages_24h": 3668,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +71,64 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587515751,
+      "updatedAt": 1790588183781,
+      "visibility": "public"
+    },
+    "typesense:latest": {
+      "aicq_manual_review_required": false,
+      "application_ids": [
+        "spicychat"
+      ],
+      "avatar_is_nsfw": true,
+      "avatar_url": "https://cdn.nd-api.com/avatars/8424e9e3-0fd7-4a62-9a10-f6b93f2ae231.gif?class=avatar256x256",
+      "character_id": "4b69e6a7-06fa-41b1-b285-0293bd49d64c",
+      "createdAt": 1790499256880,
+      "creator_user_id": "kp:e325710460ac4e2f85df02e6dd975a8a",
+      "creator_username": "post_script",
+      "definition_size_category": "high",
+      "definition_visible": false,
+      "greeting": "“Mind if I say something?”\n*The voice is low, smooth, and right next to Amber’s ear. Jax doesn’t wait for permission. He leans in just enough that his knee brushes her bare thigh under the bar.*\n“That dress is dangerous. You walk in here looking like that and every man in the room starts calculating how fast he can get you out of it.”\n*Amber’s laugh comes out soft and shaky. She shifts on the stool, the movement making the short hem ride higher. You catch it instantly — the warm, musky scent rising from between her legs, already stronger than it should be for a simple drink.\nJax’s eyes flick to you once, calm and unapologetic, then lock back on her.* “I’m Jax. And you’re already wet just from me talking to you, aren’t you?”\n*Amber’s fingers tighten around her glass. Her voice drops.* “Amber. We’re just having a drink.”\n“Lucky drink,” *he murmurs, and the way he says it makes her thighs press together hard.*\n*She glances at you, quick and guilty, then back to him like she can’t help it. The tension is already thick enough to taste.*\nWhat do you do, {{{user}}}?",
+      "group_addable": false,
+      "group_size_category": "regular",
+      "has_lorebooks": false,
+      "id": "4b69e6a7-06fa-41b1-b285-0293bd49d64c",
+      "is_nsfw": true,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "closed",
+      "name": "Amber and Jax",
+      "name_i18n": {
+        "de": "Amber and Jax",
+        "fr": "Amber and Jax",
+        "ru": "Amber and Jax"
+      },
+      "num_messages": 6373,
+      "num_messages_24h": 3668,
+      "rating_score": 0,
+      "reportsType": {},
+      "tags": [
+        "NSFW",
+        "Dominant",
+        "Married Partner",
+        "Cheating",
+        "Male",
+        "NTR"
+      ],
+      "title": "Wife’s Phone Is Full of BBC Fantasies… Tonight She Might Finally Act on One Beside You",
+      "title_i18n": {
+        "de": "Das Handy der Ehefrau ist voll von BBC-Fantasien… Heute Abend könnte sie endlich eine davon neben dir ausleben",
+        "fr": "Le téléphone de la femme est plein de fantasmes BBC… Ce soir elle pourrait enfin en réaliser un à côté de toi",
+        "ru": "Телефон жены полон фантазий о BBC… Сегодня она может наконец действовать на одну из них рядом с тобой"
+      },
+      "token_count": 1395,
+      "translated_languages": [
+        "de",
+        "fr",
+        "ru"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790588531325,
       "visibility": "public"
     }
   },
@@ -99,7 +159,7 @@
       "fr": "Amber and Jax",
       "ru": "Amber and Jax"
     },
-    "num_messages": 6338,
+    "num_messages": 6373,
     "num_messages_24h": 3668,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +184,27 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587515751,
+    "updatedAt": 1790588531325,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587515751,
+      "to": 1790588183781
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588183781,
+      "to": 1790588531325
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 6338,
+      "num_messages": 6373,
       "num_messages_24h": 3668,
       "rating_score": 0,
       "token_count": 1395
@@ -157,6 +234,22 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 6338,
+        "num_messages_24h": 3668,
+        "rating_score": 0,
+        "token_count": 1395
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 6346,
+        "num_messages_24h": 3668,
+        "rating_score": 0,
+        "token_count": 1395
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 6373,
         "num_messages_24h": 3668,
         "rating_score": 0,
         "token_count": 1395

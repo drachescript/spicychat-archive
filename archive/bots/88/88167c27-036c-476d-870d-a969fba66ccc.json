@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "88167c27-036c-476d-870d-a969fba66ccc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "fr": "Tempest elite",
         "pt": "Tempest elite"
       },
-      "num_messages": 18800,
+      "num_messages": 18824,
       "num_messages_24h": 2372,
       "rating_score": 0,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584767308,
+      "updatedAt": 1790588448074,
       "visibility": "public"
     }
   },
@@ -102,7 +102,7 @@
       "fr": "Tempest elite",
       "pt": "Tempest elite"
     },
-    "num_messages": 18800,
+    "num_messages": 18824,
     "num_messages_24h": 2372,
     "rating_score": 0,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584767308,
+    "updatedAt": 1790588448074,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584767308,
+      "to": 1790588448074
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,13 +150,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2366,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2367,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 18800,
+      "num_messages": 18824,
       "num_messages_24h": 2372,
       "rating_score": 0,
       "token_count": 1453
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 18800,
+        "num_messages_24h": 2372,
+        "rating_score": 0,
+        "token_count": 1453
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 18824,
         "num_messages_24h": 2372,
         "rating_score": 0,
         "token_count": 1453

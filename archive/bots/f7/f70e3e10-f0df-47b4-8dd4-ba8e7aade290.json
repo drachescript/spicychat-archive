@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f70e3e10-f0df-47b4-8dd4-ba8e7aade290",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Omegaverse RPG",
         "zh": "欧米茄宇宙RPG"
       },
-      "num_messages": 3018507,
+      "num_messages": 3018511,
       "num_messages_24h": 405,
       "rating_score": 0.716365,
       "tags": [
@@ -90,7 +90,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585234693,
+      "updatedAt": 1790587679930,
       "visibility": "public"
     }
   },
@@ -128,7 +128,7 @@
       "ru": "Omegaverse RPG",
       "zh": "欧米茄宇宙RPG"
     },
-    "num_messages": 3018507,
+    "num_messages": 3018511,
     "num_messages_24h": 405,
     "rating_score": 0.716365,
     "tags": [
@@ -168,10 +168,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585234693,
+    "updatedAt": 1790587679930,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585234693,
+      "to": 1790587679930
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3018507,
+      "num_messages": 3018511,
       "num_messages_24h": 405,
       "rating_score": 0.716365,
       "token_count": 1157
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3018507,
+        "num_messages_24h": 405,
+        "rating_score": 0.716365,
+        "token_count": 1157
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3018511,
         "num_messages_24h": 405,
         "rating_score": 0.716365,
         "token_count": 1157

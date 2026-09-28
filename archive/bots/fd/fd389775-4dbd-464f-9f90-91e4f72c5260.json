@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fd389775-4dbd-464f-9f90-91e4f72c5260",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Ivy",
         "tr": "Ivy"
       },
-      "num_messages": 28094,
+      "num_messages": 28173,
       "num_messages_24h": 5296,
       "reportsType": {},
       "tags": [
@@ -87,7 +87,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587480377,
+      "updatedAt": 1790588183047,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "ru": "Ivy",
       "tr": "Ivy"
     },
-    "num_messages": 28094,
+    "num_messages": 28173,
     "num_messages_24h": 5296,
     "reportsType": {},
     "tags": [
@@ -162,10 +162,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587480377,
+    "updatedAt": 1790588183047,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587480377,
+      "to": 1790588183047
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 28094,
+      "num_messages": 28173,
       "num_messages_24h": 5296,
       "token_count": 1408
     },
@@ -190,6 +199,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 28094,
+        "num_messages_24h": 5296,
+        "token_count": 1408
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 28173,
         "num_messages_24h": 5296,
         "token_count": 1408
       }

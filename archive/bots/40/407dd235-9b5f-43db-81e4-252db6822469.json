@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "407dd235-9b5f-43db-81e4-252db6822469",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "es": "Tus cuatro esposas",
         "zh": "你的四位妻子"
       },
-      "num_messages": 60745,
+      "num_messages": 60758,
       "num_messages_24h": 0,
       "rating_score": 1,
       "tags": [
@@ -74,7 +74,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790521590498,
+      "updatedAt": 1790588359255,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "es": "Tus cuatro esposas",
       "zh": "你的四位妻子"
     },
-    "num_messages": 60745,
+    "num_messages": 60758,
     "num_messages_24h": 0,
     "rating_score": 1,
     "tags": [
@@ -138,10 +138,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790521590498,
+    "updatedAt": 1790588359255,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790521590498,
+      "to": 1790588359255
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 60745,
+      "num_messages": 60758,
       "num_messages_24h": 0,
       "rating_score": 1,
       "token_count": 1916
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 60745,
+        "num_messages_24h": 0,
+        "rating_score": 1,
+        "token_count": 1916
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 60758,
         "num_messages_24h": 0,
         "rating_score": 1,
         "token_count": 1916

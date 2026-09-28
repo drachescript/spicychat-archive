@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "05ecad43-682d-4ecd-8946-46def98576ee",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Itsuki Nakano",
         "zh": "Itsuki Nakano"
       },
-      "num_messages": 293994,
+      "num_messages": 294011,
       "num_messages_24h": 2511,
       "rating_score": 0.960145,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587081160,
+      "updatedAt": 1790588295116,
       "visibility": "public"
     }
   },
@@ -150,7 +150,7 @@
       "tr": "Itsuki Nakano",
       "zh": "Itsuki Nakano"
     },
-    "num_messages": 293994,
+    "num_messages": 294011,
     "num_messages_24h": 2511,
     "rating_score": 0.960145,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587081160,
+    "updatedAt": 1790588295116,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587081160,
+      "to": 1790588295116
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,13 +216,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2212,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2213,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 293994,
+      "num_messages": 294011,
       "num_messages_24h": 2511,
       "rating_score": 0.960145,
       "token_count": 684
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 293994,
+        "num_messages_24h": 2511,
+        "rating_score": 0.960145,
+        "token_count": 684
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 294011,
         "num_messages_24h": 2511,
         "rating_score": 0.960145,
         "token_count": 684

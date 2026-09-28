@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f7929e7e-7313-4501-b363-4e6a8de61ff6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Rachel",
-      "num_messages": 1789,
+      "num_messages": 1834,
       "num_messages_24h": 730,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "Your wife's friend is excited about her first time waxing",
       "token_count": 985,
       "type": "STANDARD",
-      "updatedAt": 1790587489518,
+      "updatedAt": 1790588365099,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Rachel",
-    "num_messages": 1789,
+    "num_messages": 1834,
     "num_messages_24h": 730,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "Your wife's friend is excited about her first time waxing",
     "token_count": 985,
     "type": "STANDARD",
-    "updatedAt": 1790587489518,
+    "updatedAt": 1790588365099,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587489518,
+      "to": 1790588365099
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,7 +122,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1789,
+      "num_messages": 1834,
       "num_messages_24h": 730,
       "rating_score": 0,
       "token_count": 985
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1789,
+        "num_messages_24h": 730,
+        "rating_score": 0,
+        "token_count": 985
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1834,
         "num_messages_24h": 730,
         "rating_score": 0,
         "token_count": 985

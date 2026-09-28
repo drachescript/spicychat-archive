@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c3d8ea50-db74-471e-8775-fbba14d4520d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "pt": "Kayden Dayz",
         "ru": "Kayden Dayz"
       },
-      "num_messages": 37954,
+      "num_messages": 38000,
       "num_messages_24h": 4619,
       "rating_score": 0,
       "reportsType": {},
@@ -82,7 +82,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586256560,
+      "updatedAt": 1790588500737,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "pt": "Kayden Dayz",
       "ru": "Kayden Dayz"
     },
-    "num_messages": 37954,
+    "num_messages": 38000,
     "num_messages_24h": 4619,
     "rating_score": 0,
     "reportsType": {},
@@ -152,10 +152,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586256560,
+    "updatedAt": 1790588500737,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586256560,
+      "to": 1790588500737
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,7 +180,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 37954,
+      "num_messages": 38000,
       "num_messages_24h": 4619,
       "rating_score": 0,
       "token_count": 337
@@ -181,6 +190,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 37954,
+        "num_messages_24h": 4619,
+        "rating_score": 0,
+        "token_count": 337
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 38000,
         "num_messages_24h": 4619,
         "rating_score": 0,
         "token_count": 337

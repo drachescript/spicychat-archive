@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f9e31f10-0a39-48b7-870e-d27b2ae99028",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Crystal-Cock Junkie",
         "zh": "Crystal-Cock Junkie"
       },
-      "num_messages": 12091796,
+      "num_messages": 12092085,
       "num_messages_24h": 870,
       "rating_score": 0.79505,
       "tags": [
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587681475,
+      "updatedAt": 1790588458283,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Crystal-Cock Junkie",
       "zh": "Crystal-Cock Junkie"
     },
-    "num_messages": 12091796,
+    "num_messages": 12092085,
     "num_messages_24h": 870,
     "rating_score": 0.79505,
     "tags": [
@@ -190,10 +190,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587681475,
+    "updatedAt": 1790588458283,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587681475,
+      "to": 1790588458283
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 12091796,
+      "num_messages": 12092085,
       "num_messages_24h": 870,
       "rating_score": 0.79505,
       "token_count": 619
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 12091796,
+        "num_messages_24h": 870,
+        "rating_score": 0.79505,
+        "token_count": 619
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 12092085,
         "num_messages_24h": 870,
         "rating_score": 0.79505,
         "token_count": 619

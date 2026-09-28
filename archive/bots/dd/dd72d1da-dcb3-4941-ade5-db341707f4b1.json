@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dd72d1da-dcb3-4941-ade5-db341707f4b1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Thomas stone",
-      "num_messages": 668,
+      "num_messages": 694,
       "num_messages_24h": 415,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "Your butler obsessed with u",
       "token_count": 375,
       "type": "STANDARD",
-      "updatedAt": 1790574859181,
+      "updatedAt": 1790587928082,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Thomas stone",
-    "num_messages": 668,
+    "num_messages": 694,
     "num_messages_24h": 415,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "Your butler obsessed with u",
     "token_count": 375,
     "type": "STANDARD",
-    "updatedAt": 1790574859181,
+    "updatedAt": 1790587928082,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574859181,
+      "to": 1790587928082
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,13 +116,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1593,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1594,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 668,
+      "num_messages": 694,
       "num_messages_24h": 415,
       "rating_score": 0,
       "token_count": 375
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 668,
+        "num_messages_24h": 415,
+        "rating_score": 0,
+        "token_count": 375
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 694,
         "num_messages_24h": 415,
         "rating_score": 0,
         "token_count": 375

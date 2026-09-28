@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "53ef5948-edfa-426d-bceb-adaab6cf9f00",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Mikhail Orlov",
         "tr": "Mikhail Orlov"
       },
-      "num_messages": 154646,
+      "num_messages": 154680,
       "num_messages_24h": 2975,
       "rating_score": 0.915789,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585570711,
+      "updatedAt": 1790588130634,
       "visibility": "public"
     }
   },
@@ -132,7 +132,7 @@
       "ru": "Mikhail Orlov",
       "tr": "Mikhail Orlov"
     },
-    "num_messages": 154646,
+    "num_messages": 154680,
     "num_messages_24h": 2975,
     "rating_score": 0.915789,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585570711,
+    "updatedAt": 1790588130634,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585570711,
+      "to": 1790588130634
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 154646,
+      "num_messages": 154680,
       "num_messages_24h": 2975,
       "rating_score": 0.915789,
       "token_count": 1391
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 154646,
+        "num_messages_24h": 2975,
+        "rating_score": 0.915789,
+        "token_count": 1391
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 154680,
         "num_messages_24h": 2975,
         "rating_score": 0.915789,
         "token_count": 1391

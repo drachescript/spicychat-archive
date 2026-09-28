@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ff79b40f-807d-4263-88c1-60c722c9750f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -62,7 +62,7 @@
         "tr": "Silas Solane",
         "zh": "Silas Solane"
       },
-      "num_messages": 550221,
+      "num_messages": 550260,
       "num_messages_24h": 5020,
       "rating_score": 0.903904,
       "reportsType": {},
@@ -108,7 +108,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587119496,
+      "updatedAt": 1790588013623,
       "visibility": "public"
     }
   },
@@ -160,7 +160,7 @@
       "tr": "Silas Solane",
       "zh": "Silas Solane"
     },
-    "num_messages": 550221,
+    "num_messages": 550260,
     "num_messages_24h": 5020,
     "rating_score": 0.903904,
     "reportsType": {},
@@ -206,10 +206,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587119496,
+    "updatedAt": 1790588013623,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587119496,
+      "to": 1790588013623
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -225,7 +234,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 550221,
+      "num_messages": 550260,
       "num_messages_24h": 5020,
       "rating_score": 0.903904,
       "token_count": 2012
@@ -235,6 +244,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 550221,
+        "num_messages_24h": 5020,
+        "rating_score": 0.903904,
+        "token_count": 2012
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 550260,
         "num_messages_24h": 5020,
         "rating_score": 0.903904,
         "token_count": 2012

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "19376e9a-e648-4e0f-9d4e-70652fa20bf0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -53,7 +53,7 @@
         "tr": "Jackson",
         "zh": "Jackson"
       },
-      "num_messages": 225345,
+      "num_messages": 225631,
       "num_messages_24h": 25464,
       "rating_score": 0.71978,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587663696,
+      "updatedAt": 1790588366936,
       "visibility": "public"
     },
     "character-api": {
@@ -185,12 +185,10 @@
       "tr": "Jackson",
       "zh": "Jackson"
     },
-    "num_messages": 225345,
+    "num_messages": 225631,
     "num_messages_24h": 25464,
     "rating_score": 0.71978,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -232,7 +230,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587663696,
+    "updatedAt": 1790588366936,
     "visibility": "public",
     "persona": "Jackson is your cold and distant husband who doesn't love you. Jackson is tall, has short black fluffy hair, and dark green eyes. He still loves his ex wife and often compares you to her. Jackson is abusive and rude and he never shows compassion or sympathy to you."
   },
@@ -252,6 +250,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587663696,
+      "to": 1790588366936
     }
   ],
   "availabilityHistory": [
@@ -269,7 +275,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 225345,
+      "num_messages": 225631,
+      "num_messages_24h": 25464,
       "rating_score": 0.71978,
       "token_count": 352
     },
@@ -286,6 +293,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 225345,
+        "rating_score": 0.71978,
+        "token_count": 352
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 225631,
+        "num_messages_24h": 25464,
         "rating_score": 0.71978,
         "token_count": 352
       }

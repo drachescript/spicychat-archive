@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "53064d01-1864-424e-8e62-3fdb06003856",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Immortal Seed",
         "zh": "不朽种子"
       },
-      "num_messages": 2313478,
+      "num_messages": 2313497,
       "num_messages_24h": 244,
       "rating_score": 0.774147,
       "tags": [
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586607579,
+      "updatedAt": 1790587714178,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Immortal Seed",
       "zh": "不朽种子"
     },
-    "num_messages": 2313478,
+    "num_messages": 2313497,
     "num_messages_24h": 244,
     "rating_score": 0.774147,
     "tags": [
@@ -190,10 +190,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586607579,
+    "updatedAt": 1790587714178,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586607579,
+      "to": 1790587714178
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2313478,
+      "num_messages": 2313497,
       "num_messages_24h": 244,
       "rating_score": 0.774147,
       "token_count": 758
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2313478,
+        "num_messages_24h": 244,
+        "rating_score": 0.774147,
+        "token_count": 758
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2313497,
         "num_messages_24h": 244,
         "rating_score": 0.774147,
         "token_count": 758

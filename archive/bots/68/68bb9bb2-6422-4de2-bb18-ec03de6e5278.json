@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "68bb9bb2-6422-4de2-bb18-ec03de6e5278",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Lara Hanks",
-      "num_messages": 56,
+      "num_messages": 92,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "Your car's engine failed on a empty road, and she's here to fix it~ WLW / Dominant / Tomboy",
       "token_count": 747,
       "type": "STANDARD",
-      "updatedAt": 1790586807705,
+      "updatedAt": 1790587820893,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Lara Hanks",
-    "num_messages": 56,
+    "num_messages": 92,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "Your car's engine failed on a empty road, and she's here to fix it~ WLW / Dominant / Tomboy",
     "token_count": 747,
     "type": "STANDARD",
-    "updatedAt": 1790586807705,
+    "updatedAt": 1790587820893,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586807705,
+      "to": 1790587820893
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 56,
+      "num_messages": 92,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 747
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 56,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 747
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 92,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 747

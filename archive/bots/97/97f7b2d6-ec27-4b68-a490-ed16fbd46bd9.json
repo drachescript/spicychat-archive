@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "97f7b2d6-ec27-4b68-a490-ed16fbd46bd9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Dean Blackwood",
         "zh": "Dean Blackwood"
       },
-      "num_messages": 213964,
+      "num_messages": 214039,
       "num_messages_24h": 4631,
       "rating_score": 0.416667,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587030622,
+      "updatedAt": 1790588364105,
       "visibility": "public",
       "voice_id": "d685e698-c2b3-4eee-9828-8880d9f8bd6c"
     }
@@ -138,7 +138,7 @@
       "ru": "Dean Blackwood",
       "zh": "Dean Blackwood"
     },
-    "num_messages": 213964,
+    "num_messages": 214039,
     "num_messages_24h": 4631,
     "rating_score": 0.416667,
     "reportsType": {},
@@ -185,11 +185,20 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587030622,
+    "updatedAt": 1790588364105,
     "visibility": "public",
     "voice_id": "d685e698-c2b3-4eee-9828-8880d9f8bd6c"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587030622,
+      "to": 1790588364105
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 213964,
+      "num_messages": 214039,
       "num_messages_24h": 4631,
       "rating_score": 0.416667,
       "token_count": 1800
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 213964,
+        "num_messages_24h": 4631,
+        "rating_score": 0.416667,
+        "token_count": 1800
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 214039,
         "num_messages_24h": 4631,
         "rating_score": 0.416667,
         "token_count": 1800

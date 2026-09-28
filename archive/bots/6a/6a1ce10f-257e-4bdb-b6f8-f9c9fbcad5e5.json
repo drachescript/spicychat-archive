@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6a1ce10f-257e-4bdb-b6f8-f9c9fbcad5e5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Hollow Knight",
-      "num_messages": 84,
+      "num_messages": 85,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "You're Hornet's mate and she just came back to Hallownest with allies from Pharloom.",
       "token_count": 1599,
       "type": "STANDARD",
-      "updatedAt": 1790586911650,
+      "updatedAt": 1790587665898,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Hollow Knight",
-    "num_messages": 84,
+    "num_messages": 85,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "You're Hornet's mate and she just came back to Hallownest with allies from Pharloom.",
     "token_count": 1599,
     "type": "STANDARD",
-    "updatedAt": 1790586911650,
+    "updatedAt": 1790587665898,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586911650,
+      "to": 1790587665898
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,7 +122,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 84,
+      "num_messages": 85,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1599
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 84,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1599
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 85,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1599

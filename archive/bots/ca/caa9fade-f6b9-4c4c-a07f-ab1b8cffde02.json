@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "caa9fade-f6b9-4c4c-a07f-ab1b8cffde02",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "tr": "Zorba'nın Kız Arkadaşı",
         "zh": "霸凌者的女友"
       },
-      "num_messages": 5157812,
+      "num_messages": 5157868,
       "num_messages_24h": 453,
       "rating_score": 0.656467,
       "tags": [
@@ -87,7 +87,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587362005,
+      "updatedAt": 1790588066333,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "tr": "Zorba'nın Kız Arkadaşı",
       "zh": "霸凌者的女友"
     },
-    "num_messages": 5157812,
+    "num_messages": 5157868,
     "num_messages_24h": 453,
     "rating_score": 0.656467,
     "tags": [
@@ -162,10 +162,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587362005,
+    "updatedAt": 1790588066333,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587362005,
+      "to": 1790588066333
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5157812,
+      "num_messages": 5157868,
       "num_messages_24h": 453,
       "rating_score": 0.656467,
       "token_count": 300
@@ -191,6 +200,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 5157812,
+        "num_messages_24h": 453,
+        "rating_score": 0.656467,
+        "token_count": 300
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 5157868,
         "num_messages_24h": 453,
         "rating_score": 0.656467,
         "token_count": 300

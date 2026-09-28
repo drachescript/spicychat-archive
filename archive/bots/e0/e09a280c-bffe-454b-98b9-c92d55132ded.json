@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e09a280c-bffe-454b-98b9-c92d55132ded",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -53,7 +53,7 @@
         "pl": "Hannah Walsh",
         "ru": "Hannah Walsh"
       },
-      "num_messages": 86463,
+      "num_messages": 86660,
       "num_messages_24h": 12814,
       "rating_score": 0.901515,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587597819,
+      "updatedAt": 1790588360230,
       "visibility": "public"
     },
     "character-api": {
@@ -153,7 +153,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/c9043f6c-e77e-4bd7-8390-aaa2a4b0c060.jpg?class=avatar256x256",
     "character_id": "e09a280c-bffe-454b-98b9-c92d55132ded",
-    "createdAt": "2026-09-21T13:04:48.761Z",
+    "createdAt": 1789995888761,
     "creator_user_id": "kp:e82dfe7bb25c409cb12d621458d5422c",
     "creator_username": "whiskeybravo1000",
     "definition_size_category": "mid",
@@ -179,12 +179,10 @@
       "pl": "Hannah Walsh",
       "ru": "Hannah Walsh"
     },
-    "num_messages": 86463,
+    "num_messages": 86660,
     "num_messages_24h": 12814,
     "rating_score": 0.901515,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Scenario",
       "Romantic",
@@ -219,7 +217,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:26:37.819Z",
+    "updatedAt": 1790588360230,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -247,6 +245,22 @@
       "kind": "value",
       "from": 1790587597819,
       "to": "2026-09-28T09:26:37.819Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-21T13:04:48.761Z",
+      "to": 1789995888761
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:26:37.819Z",
+      "to": 1790588360230
     }
   ],
   "availabilityHistory": [
@@ -264,7 +278,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 86463,
+      "num_messages": 86660,
+      "num_messages_24h": 12814,
       "rating_score": 0.901515,
       "token_count": 744
     },
@@ -283,8 +298,23 @@
         "num_messages": 86463,
         "rating_score": 0.901515,
         "token_count": 744
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 86660,
+        "num_messages_24h": 12814,
+        "rating_score": 0.901515,
+        "token_count": 744
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/c9043f6c-e77e-4bd7-8390-aaa2a4b0c060.jpg?class=avatar256x256",
+    "sha256": "c31f6ebeb7eac92e88c195f0e2bd4d7f522e7f6dea19fcb34b9774b3215f918c",
+    "contentType": "image/jpeg",
+    "bytes": 26571,
+    "path": "archive/media/c3/c31f6ebeb7eac92e88c195f0e2bd4d7f522e7f6dea19fcb34b9774b3215f918c.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

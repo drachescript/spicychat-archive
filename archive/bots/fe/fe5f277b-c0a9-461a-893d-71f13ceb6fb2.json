@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fe5f277b-c0a9-461a-893d-71f13ceb6fb2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "JJK Rpg",
         "zh": "JJK Rpg"
       },
-      "num_messages": 871276,
+      "num_messages": 871538,
       "num_messages_24h": 15686,
       "rating_score": 0.842183,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587522504,
+      "updatedAt": 1790588559023,
       "visibility": "public"
     },
     "character-api": {
@@ -166,7 +166,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/7b9a702c-b754-488e-8c01-9957a555755c.webp?class=avatar256x256",
     "character_id": "fe5f277b-c0a9-461a-893d-71f13ceb6fb2",
-    "createdAt": "2026-09-09T05:10:21.580Z",
+    "createdAt": 1788930621580,
     "creator_user_id": "kp:87b9a1b849ff4a5e9efeb00ff2e06250",
     "creator_username": "thevoicemodder",
     "definition_size_category": "high",
@@ -195,13 +195,10 @@
       "tr": "JJK Rpg",
       "zh": "JJK Rpg"
     },
-    "num_messages": 871276,
+    "num_messages": 871538,
     "num_messages_24h": 15686,
     "rating_score": 0.842183,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Anime",
@@ -244,7 +241,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:25:22.504Z",
+    "updatedAt": 1790588559023,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -273,6 +270,22 @@
       "kind": "value",
       "from": 1790587522504,
       "to": "2026-09-28T09:25:22.504Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-09T05:10:21.580Z",
+      "to": 1788930621580
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:25:22.504Z",
+      "to": 1790588559023
     }
   ],
   "availabilityHistory": [
@@ -290,7 +303,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 871276,
+      "num_messages": 871538,
+      "num_messages_24h": 15686,
       "rating_score": 0.842183,
       "token_count": 1246
     },
@@ -309,8 +323,23 @@
         "num_messages": 871276,
         "rating_score": 0.842183,
         "token_count": 1246
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 871538,
+        "num_messages_24h": 15686,
+        "rating_score": 0.842183,
+        "token_count": 1246
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/7b9a702c-b754-488e-8c01-9957a555755c.webp?class=avatar256x256",
+    "sha256": "c89eb0b2dc709c6ddd62509bb33a5dd183e32fb1459c31e2ee3c153ef9724850",
+    "contentType": "image/webp",
+    "bytes": 25402,
+    "path": "archive/media/c8/c89eb0b2dc709c6ddd62509bb33a5dd183e32fb1459c31e2ee3c153ef9724850.webp",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

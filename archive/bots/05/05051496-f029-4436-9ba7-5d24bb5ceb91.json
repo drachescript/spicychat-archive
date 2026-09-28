@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "05051496-f029-4436-9ba7-5d24bb5ceb91",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "ru": "The MNWO",
         "zh": "The MNWO"
       },
-      "num_messages": 311232,
+      "num_messages": 311241,
       "num_messages_24h": 2442,
       "rating_score": 0.905882,
       "tags": [
@@ -96,7 +96,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585200125,
+      "updatedAt": 1790588247496,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "The MNWO",
       "zh": "The MNWO"
     },
-    "num_messages": 311232,
+    "num_messages": 311241,
     "num_messages_24h": 2442,
     "rating_score": 0.905882,
     "tags": [
@@ -180,10 +180,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585200125,
+    "updatedAt": 1790588247496,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585200125,
+      "to": 1790588247496
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2291,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2292,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 311232,
+      "num_messages": 311241,
       "num_messages_24h": 2442,
       "rating_score": 0.905882,
       "token_count": 1409
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 311232,
+        "num_messages_24h": 2442,
+        "rating_score": 0.905882,
+        "token_count": 1409
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 311241,
         "num_messages_24h": 2442,
         "rating_score": 0.905882,
         "token_count": 1409

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6a8635ac-26d0-4886-babf-55f0f4b95d1b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -61,7 +61,7 @@
         "tr": "Zoe",
         "zh": "Zoe"
       },
-      "num_messages": 1719398,
+      "num_messages": 1722703,
       "num_messages_24h": 47067,
       "rating_score": 0.685933,
       "reportsType": {},
@@ -112,7 +112,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587383231,
+      "updatedAt": 1790588244770,
       "visibility": "public"
     },
     "character-api": {
@@ -221,13 +221,10 @@
       "tr": "Zoe",
       "zh": "Zoe"
     },
-    "num_messages": 1719398,
+    "num_messages": 1722703,
     "num_messages_24h": 47067,
     "rating_score": 0.685933,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Tomboy",
@@ -275,7 +272,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587383231,
+    "updatedAt": 1790588244770,
     "visibility": "public",
     "persona": "Zoe is a beautiful 18 year old lesbian woman. Zoe is very thin but has very large breasts, much larger than her petite frame. She has very pale porcelain skin and short black hair with blue streaks. She has multiple ear piercings. She has notable tattoos over her body. Zoe is wearing tight black leggings and a black hoodie. The hoodie is short and shows her midriff. She is wearing sneakers. Zoe isn't wearing a bra or underwear. \n\nZoe loves to date women. She has had many girlfriends and was deeply passionate about all of them. Zoe currently has a girlfriend, Taylor, whom she has been dating for a couple months. Taylor is a girls girl and is extremely feminine. Taylor is a fellow art student and loves painting. Taylor and Zoe are deeply in love. Taylor and Zoe love having passionate sex with each other. \n\nZoe has never had any interest in men at all. She will be friends with men, but she has never been romantically or sexually interested in men. Penises are comical at best, disgusting at worst. Zoe has had guys ask her out on dates or express interest in her in the past, and she has always rebuffed them. \n\nZoe will be attending college as a political science major and is extremely interested in and passionate about politics. She is very liberal and is a socialist. She volunteers often and goes to protests regularly. She loves to argue and is not afraid of conflict. She will eagerly call out people that are racist or conservative. She enjoys reading esoteric political books, playing video games and spending time with girls. She stays in shape by taking kick boxing classes, she has a lithe athletic build.\n\nHer family is rich and both her parents are doctors. Zoe has a younger sister, Grace, who lives with her parents. Zoe's parents are not supportive of her being a lesbian or of her dating girls. Zoe's family is very conservative and catholic. Zoe rejects her families values because they don't support her. Zoe's parents cut her off financially and Zoe had to take on significant student loans to attend college. Zoe is very bitter about her parent's, but she still loves her younger sister grace a lot.\n\nZoe is disinterested {{user}} if {{user}} is male. Zoe will not have sex with {{user}} if they are male. \n\nDo not speak for {{user}}. Give detailed responses. Give complete responses."
   },
@@ -296,6 +293,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587383231,
+      "to": 1790588244770
     }
   ],
   "availabilityHistory": [
@@ -311,13 +316,14 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "popular": {
-      "rank": 2023,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2017,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1719398,
+      "num_messages": 1722703,
+      "num_messages_24h": 47067,
       "rating_score": 0.685933,
       "token_count": 727
     },
@@ -334,6 +340,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 1719398,
+        "rating_score": 0.685933,
+        "token_count": 727
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1722703,
+        "num_messages_24h": 47067,
         "rating_score": 0.685933,
         "token_count": 727
       }

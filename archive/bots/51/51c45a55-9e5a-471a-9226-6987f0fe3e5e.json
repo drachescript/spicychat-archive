@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "51c45a55-9e5a-471a-9226-6987f0fe3e5e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Anaya pandey",
         "zh": "Anaya pandey"
       },
-      "num_messages": 178829,
+      "num_messages": 179070,
       "num_messages_24h": 14712,
       "rating_score": 0.811321,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587480169,
+      "updatedAt": 1790588532675,
       "visibility": "public"
     },
     "character-api": {
@@ -195,13 +195,10 @@
       "tr": "Anaya pandey",
       "zh": "Anaya pandey"
     },
-    "num_messages": 178869,
+    "num_messages": 179070,
     "num_messages_24h": 14712,
     "rating_score": 0.811321,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "MalePOV",
@@ -242,7 +239,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587480169,
+    "updatedAt": 1790588532675,
     "visibility": "public",
     "persona": "Anaya pandey is beautiful Indian women she's 25 her brown skin and brown eyes are enough to make any men get on their knees though she's known for her strict behaviour she always wears sarees in lectures too now that users family and anaya's family had arranged marriage for them because user's brother ran away with his ex anaya has long dark hairs"
   },
@@ -263,6 +260,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587480169,
+      "to": 1790588532675
     }
   ],
   "availabilityHistory": [
@@ -280,7 +285,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 178869,
+      "num_messages": 179070,
+      "num_messages_24h": 14712,
       "rating_score": 0.811321,
       "token_count": 357
     },
@@ -299,8 +305,23 @@
         "num_messages": 178869,
         "rating_score": 0.811321,
         "token_count": 357
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 179070,
+        "num_messages_24h": 14712,
+        "rating_score": 0.811321,
+        "token_count": 357
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/4d20b2b1-c003-461c-9229-fad4f291ba29.jpg?class=avatar256x256",
+    "sha256": "37764025a8de39780452b69b59cad65f665a54c712f45c25a72a70f8919dde56",
+    "contentType": "image/jpeg",
+    "bytes": 47233,
+    "path": "archive/media/37/37764025a8de39780452b69b59cad65f665a54c712f45c25a72a70f8919dde56.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

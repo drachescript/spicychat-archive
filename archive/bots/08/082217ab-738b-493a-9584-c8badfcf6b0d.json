@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "082217ab-738b-493a-9584-c8badfcf6b0d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ru": "Вирус Сисси",
         "zh": "Sissy Virus"
       },
-      "num_messages": 1431,
+      "num_messages": 1497,
       "num_messages_24h": 471,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587587869,
+      "updatedAt": 1790588453685,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "ru": "Вирус Сисси",
       "zh": "Sissy Virus"
     },
-    "num_messages": 1431,
+    "num_messages": 1497,
     "num_messages_24h": 471,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587587869,
+    "updatedAt": 1790588453685,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587587869,
+      "to": 1790588453685
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1431,
+      "num_messages": 1497,
       "num_messages_24h": 471,
       "rating_score": 0,
       "token_count": 1835
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1431,
+        "num_messages_24h": 471,
+        "rating_score": 0,
+        "token_count": 1835
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1497,
         "num_messages_24h": 471,
         "rating_score": 0,
         "token_count": 1835

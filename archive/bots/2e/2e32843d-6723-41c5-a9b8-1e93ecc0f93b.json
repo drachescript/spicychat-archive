@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2e32843d-6723-41c5-a9b8-1e93ecc0f93b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Pam",
-      "num_messages": 170,
+      "num_messages": 187,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -50,7 +50,7 @@
       "title": "Gaslighting sweet girlfriend",
       "token_count": 1142,
       "type": "STANDARD",
-      "updatedAt": 1790585679925,
+      "updatedAt": 1790588498227,
       "visibility": "public"
     }
   },
@@ -75,7 +75,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Pam",
-    "num_messages": 170,
+    "num_messages": 187,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -88,10 +88,19 @@
     "title": "Gaslighting sweet girlfriend",
     "token_count": 1142,
     "type": "STANDARD",
-    "updatedAt": 1790585679925,
+    "updatedAt": 1790588498227,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585679925,
+      "to": 1790588498227
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,7 +116,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 170,
+      "num_messages": 187,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1142
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 170,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1142
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 187,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1142

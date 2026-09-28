@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "000e514c-e5a9-40c6-b8d0-69420a1612bb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "de": "Deine Nanny Liliana",
         "ru": "Ваша Няня Лилиана"
       },
-      "num_messages": 2153,
+      "num_messages": 2166,
       "num_messages_24h": 1457,
       "rating_score": 0,
       "reportsType": {},
@@ -69,7 +69,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587522556,
+      "updatedAt": 1790588067784,
       "visibility": "public"
     }
   },
@@ -98,7 +98,7 @@
       "de": "Deine Nanny Liliana",
       "ru": "Ваша Няня Лилиана"
     },
-    "num_messages": 2153,
+    "num_messages": 2166,
     "num_messages_24h": 1457,
     "rating_score": 0,
     "reportsType": {},
@@ -126,10 +126,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587522556,
+    "updatedAt": 1790588067784,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587522556,
+      "to": 1790588067784
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -139,13 +148,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1699,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1700,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2153,
+      "num_messages": 2166,
       "num_messages_24h": 1457,
       "rating_score": 0,
       "token_count": 1416
@@ -155,6 +164,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2153,
+        "num_messages_24h": 1457,
+        "rating_score": 0,
+        "token_count": 1416
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2166,
         "num_messages_24h": 1457,
         "rating_score": 0,
         "token_count": 1416

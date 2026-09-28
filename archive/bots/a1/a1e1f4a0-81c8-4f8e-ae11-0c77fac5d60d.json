@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a1e1f4a0-81c8-4f8e-ae11-0c77fac5d60d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Kaori Rukawa",
         "zh": "Kaori Rukawa"
       },
-      "num_messages": 104849,
+      "num_messages": 105229,
       "num_messages_24h": 12310,
       "rating_score": 0.01,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587491714,
+      "updatedAt": 1790588452041,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/f7bf05cb-6db9-4ed9-ab7e-440bd929c762.webp?class=avatar256x256",
     "character_id": "a1e1f4a0-81c8-4f8e-ae11-0c77fac5d60d",
-    "createdAt": "2026-09-25T10:38:59.739Z",
+    "createdAt": 1790332739739,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -207,12 +207,10 @@
       "tr": "Kaori Rukawa",
       "zh": "Kaori Rukawa"
     },
-    "num_messages": 104849,
+    "num_messages": 105229,
     "num_messages_24h": 12310,
     "rating_score": 0.01,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "NTR",
@@ -260,7 +258,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:24:51.714Z",
+    "updatedAt": 1790588452041,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587491714,
       "to": "2026-09-28T09:24:51.714Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-25T10:38:59.739Z",
+      "to": 1790332739739
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:24:51.714Z",
+      "to": 1790588452041
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 104849,
+      "num_messages": 105229,
+      "num_messages_24h": 12310,
       "rating_score": 0.01,
       "token_count": 915
     },
@@ -324,8 +339,23 @@
         "num_messages": 104849,
         "rating_score": 0.01,
         "token_count": 915
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 105229,
+        "num_messages_24h": 12310,
+        "rating_score": 0.01,
+        "token_count": 915
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/f7bf05cb-6db9-4ed9-ab7e-440bd929c762.webp?class=avatar256x256",
+    "sha256": "110caaace8920ae8ba7028ecedf0b1b3bc89cb8cc4e715b4fa73271068db1bc8",
+    "contentType": "image/webp",
+    "bytes": 3057700,
+    "path": "archive/media/11/110caaace8920ae8ba7028ecedf0b1b3bc89cb8cc4e715b4fa73271068db1bc8.webp",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

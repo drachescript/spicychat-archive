@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ba5d2583-e81e-4361-b253-0f94f5630c2d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "de": "Academy pet",
         "fr": "Animal de l'Académie"
       },
-      "num_messages": 3001256,
+      "num_messages": 3001311,
       "num_messages_24h": 52,
       "rating_score": 0.660223,
       "tags": [
@@ -65,7 +65,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587252077,
+      "updatedAt": 1790588234385,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
       "de": "Academy pet",
       "fr": "Animal de l'Académie"
     },
-    "num_messages": 3001256,
+    "num_messages": 3001311,
     "num_messages_24h": 52,
     "rating_score": 0.660223,
     "tags": [
@@ -118,10 +118,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587252077,
+    "updatedAt": 1790588234385,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587252077,
+      "to": 1790588234385
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,7 +146,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3001256,
+      "num_messages": 3001311,
       "num_messages_24h": 52,
       "rating_score": 0.660223,
       "token_count": 329
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3001256,
+        "num_messages_24h": 52,
+        "rating_score": 0.660223,
+        "token_count": 329
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3001311,
         "num_messages_24h": 52,
         "rating_score": 0.660223,
         "token_count": 329

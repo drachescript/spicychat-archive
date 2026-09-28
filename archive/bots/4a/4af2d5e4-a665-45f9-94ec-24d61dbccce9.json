@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4af2d5e4-a665-45f9-94ec-24d61dbccce9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       "name_i18n": {
         "de": "Lenora & Kaia"
       },
-      "num_messages": 200,
+      "num_messages": 216,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -62,7 +62,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586969342,
+      "updatedAt": 1790588310760,
       "visibility": "public",
       "voice_id": "d4c15123-db1c-4a23-acf8-c127b425fadc"
     }
@@ -92,7 +92,7 @@
     "name_i18n": {
       "de": "Lenora & Kaia"
     },
-    "num_messages": 200,
+    "num_messages": 216,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -113,11 +113,20 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586969342,
+    "updatedAt": 1790588310760,
     "visibility": "public",
     "voice_id": "d4c15123-db1c-4a23-acf8-c127b425fadc"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586969342,
+      "to": 1790588310760
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -133,7 +142,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 200,
+      "num_messages": 216,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2320
@@ -143,6 +152,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 200,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2320
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 216,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2320

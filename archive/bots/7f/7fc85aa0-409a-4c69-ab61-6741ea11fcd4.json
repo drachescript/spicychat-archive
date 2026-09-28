@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7fc85aa0-409a-4c69-ab61-6741ea11fcd4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Jujutsu High",
         "zh": "咒术高专"
       },
-      "num_messages": 304833,
+      "num_messages": 304849,
       "num_messages_24h": 2479,
       "rating_score": 0.992754,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587197254,
+      "updatedAt": 1790588276906,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "ru": "Jujutsu High",
       "zh": "咒术高专"
     },
-    "num_messages": 304833,
+    "num_messages": 304849,
     "num_messages_24h": 2479,
     "rating_score": 0.992754,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587197254,
+    "updatedAt": 1790588276906,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587197254,
+      "to": 1790588276906
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -169,8 +178,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2248,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2249,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "top-rated": {
       "rank": 1866,
@@ -179,7 +188,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 304833,
+      "num_messages": 304849,
       "num_messages_24h": 2479,
       "rating_score": 0.992754,
       "token_count": 502
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 304833,
+        "num_messages_24h": 2479,
+        "rating_score": 0.992754,
+        "token_count": 502
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 304849,
         "num_messages_24h": 2479,
         "rating_score": 0.992754,
         "token_count": 502

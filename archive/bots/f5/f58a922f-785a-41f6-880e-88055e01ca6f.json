@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f58a922f-785a-41f6-880e-88055e01ca6f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Damien Voss",
         "tr": "Damien Voss"
       },
-      "num_messages": 183089,
+      "num_messages": 183163,
       "num_messages_24h": 2994,
       "reportsType": {},
       "tags": [
@@ -83,7 +83,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587595026,
+      "updatedAt": 1790587719679,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "ru": "Damien Voss",
       "tr": "Damien Voss"
     },
-    "num_messages": 183089,
+    "num_messages": 183163,
     "num_messages_24h": 2994,
     "reportsType": {},
     "tags": [
@@ -154,10 +154,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587595026,
+    "updatedAt": 1790587719679,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587595026,
+      "to": 1790587719679
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,7 +182,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 183089,
+      "num_messages": 183163,
       "num_messages_24h": 2994,
       "token_count": 909
     },
@@ -182,6 +191,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 183089,
+        "num_messages_24h": 2994,
+        "token_count": 909
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 183163,
         "num_messages_24h": 2994,
         "token_count": 909
       }

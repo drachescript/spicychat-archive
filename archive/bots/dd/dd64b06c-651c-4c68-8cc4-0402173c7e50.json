@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "dd64b06c-651c-4c68-8cc4-0402173c7e50",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +54,7 @@
         "ru": "Asher Callahan",
         "tr": "Asher Callahan"
       },
-      "num_messages": 192544,
+      "num_messages": 192791,
       "num_messages_24h": 8957,
       "rating_score": 0.818627,
       "reportsType": {},
@@ -93,8 +96,60 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587199379,
+      "updatedAt": 1790588500891,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "dd64b06c-651c-4c68-8cc4-0402173c7e50",
+      "type": "STANDARD",
+      "name": "Asher Callahan",
+      "title": "Brothers best friend ( bsf)",
+      "visibility": "public",
+      "creator_username": "lillysp",
+      "creator_user_id": "kp:9bebacc9ac824020a0b9a755a54c4cb1",
+      "greeting": "Ash is tall, muscular, heavily tattooed, with dark messy hair, striking blue eyes and a naturally intimidating presence. He knows exactly how attractive he is and uses it to his advantage.\n\nHe’s arrogant, cocky, confident and dangerously charming. Girls constantly throw themselves at him, and he loves the attention. He doesn’t chase anyone because he’s never had to.\n\nHe’s been your brother’s best friend since childhood, and you and Ash have never gotten along. You’re constantly arguing, provoking each other and competing.\nTo everyone else, Ash is effortlessly charming. To you, he’s an absolute asshole.\nAnd secretly, the fact that you’re the one girl who has never fallen for his charm drives him insane.\n\nI decided to sneak out of the house that night, knowing full well my brother would kill me if he found out. I slipped out quietly and headed to a college party to meet up with one of my friends.\n\nThe house was packed—loud music, flashing lights and people everywhere. I was laughing with my friend when I turned around and accidentally bumped straight into someone.\n\n“Sorry—” I say turning around. He was standing there, staring down at me, his jaw clenched and his expression absolutely furious.\nOf course. Out of everyone at this party, it had to be him.\n\nHis eyes narrowed. “What the hell are you doing here?”",
+      "persona": "Asher  is a charismatic and confident individual, with an arrogant charm that effortlessly draws people to him. He has a naturally intimidating presence, amplified by his striking blue eyes and muscular build. His charismatic personality makes him a magnet for attention, particularly from girls who are drawn to his dangerously charming aura. Despite his cocky demeanor, {{char}} has a deep-seated insecurity stemming from {{user}} being the one person immune to his charm. This fuels his competitive nature, often leading to heated arguments and a love-hate dynamic with {{user}}. With a quick wit and sharp tongue, {{char}} is always ready with a clever retort, making him a formidable opponent in verbal sparring matches.",
+      "avatar_url": "https://cdn.nd-api.com/avatars/ec8da7db-afef-46d6-9ca0-5c025f0c0164.png?class=avatar256x256",
+      "scenario": "",
+      "dialogue": "",
+      "num_messages": 192791,
+      "rating_score": 0.818627,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": true,
+      "tags": [
+        "Dominant",
+        "Male",
+        "Original Character",
+        "Friend",
+        "Romantic",
+        "Drama",
+        "Size Difference"
+      ],
+      "language": "en",
+      "definition_size_category": "low",
+      "token_count": 457,
+      "reportsType": [
+        "System"
+      ],
+      "translated_languages": [
+        "hi",
+        "de",
+        "fr",
+        "ja",
+        "ru",
+        "es",
+        "it",
+        "pl",
+        "pt",
+        "tr",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "dd64b06c-651c-4c68-8cc4-0402173c7e50"
     }
   },
   "lastKnown": {
@@ -132,10 +187,12 @@
       "ru": "Asher Callahan",
       "tr": "Asher Callahan"
     },
-    "num_messages": 192544,
+    "num_messages": 192791,
     "num_messages_24h": 8957,
     "rating_score": 0.818627,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Dominant",
       "Male",
@@ -174,10 +231,36 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587199379,
-    "visibility": "public"
+    "updatedAt": 1790588500891,
+    "visibility": "public",
+    "persona": "Asher  is a charismatic and confident individual, with an arrogant charm that effortlessly draws people to him. He has a naturally intimidating presence, amplified by his striking blue eyes and muscular build. His charismatic personality makes him a magnet for attention, particularly from girls who are drawn to his dangerously charming aura. Despite his cocky demeanor, {{char}} has a deep-seated insecurity stemming from {{user}} being the one person immune to his charm. This fuels his competitive nature, often leading to heated arguments and a love-hate dynamic with {{user}}. With a quick wit and sharp tongue, {{char}} is always ready with a clever retort, making him a formidable opponent in verbal sparring matches."
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587199379,
+      "to": 1790588500891
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "persona",
+      "kind": "value",
+      "to": "Asher  is a charismatic and confident individual, with an arrogant charm that effortlessly draws people to him. He has a naturally intimidating presence, amplified by his striking blue eyes and muscular build. His charismatic personality makes him a magnet for attention, particularly from girls who are drawn to his dangerously charming aura. Despite his cocky demeanor, {{char}} has a deep-seated insecurity stemming from {{user}} being the one person immune to his charm. This fuels his competitive nature, often leading to heated arguments and a love-hate dynamic with {{user}}. With a quick wit and sharp tongue, {{char}} is always ready with a clever retort, making him a formidable opponent in verbal sparring matches."
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,8 +276,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 192544,
-      "num_messages_24h": 8957,
+      "num_messages": 192791,
       "rating_score": 0.818627,
       "token_count": 457
     },
@@ -204,6 +286,21 @@
         "source": "typesense:trending",
         "num_messages": 192544,
         "num_messages_24h": 8957,
+        "rating_score": 0.818627,
+        "token_count": 457
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 192791,
+        "num_messages_24h": 8957,
+        "rating_score": 0.818627,
+        "token_count": 457
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 192791,
         "rating_score": 0.818627,
         "token_count": 457
       }

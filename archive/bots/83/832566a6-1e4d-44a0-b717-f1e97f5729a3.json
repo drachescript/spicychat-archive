@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "832566a6-1e4d-44a0-b717-f1e97f5729a3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pt": "Alexander Sterling",
         "tr": "Alexander Sterling"
       },
-      "num_messages": 47355,
+      "num_messages": 47361,
       "num_messages_24h": 3611,
       "rating_score": 0,
       "reportsType": {},
@@ -77,7 +77,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587709985,
+      "updatedAt": 1790588233620,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "pt": "Alexander Sterling",
       "tr": "Alexander Sterling"
     },
-    "num_messages": 47355,
+    "num_messages": 47361,
     "num_messages_24h": 3611,
     "rating_score": 0,
     "reportsType": {},
@@ -142,10 +142,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587709985,
+    "updatedAt": 1790588233620,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587709985,
+      "to": 1790588233620
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,7 +170,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 47355,
+      "num_messages": 47361,
       "num_messages_24h": 3611,
       "rating_score": 0,
       "token_count": 320
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 47355,
+        "num_messages_24h": 3611,
+        "rating_score": 0,
+        "token_count": 320
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 47361,
         "num_messages_24h": 3611,
         "rating_score": 0,
         "token_count": 320

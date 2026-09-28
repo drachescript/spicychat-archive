@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7f559e3c-fa75-48fd-baa2-fdae3f8532d9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "tr": ". ✦ ݁ RPG Bot. ✦ ݁ ˖",
         "zh": ". ✦ ݁ RPG 机器人. ✦ ݁ ˖"
       },
-      "num_messages": 1677664,
+      "num_messages": 1677717,
       "num_messages_24h": 2342,
       "rating_score": 0.875856,
       "tags": [
@@ -105,7 +105,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587301047,
+      "updatedAt": 1790588448777,
       "visibility": "public"
     }
   },
@@ -148,7 +148,7 @@
       "tr": ". ✦ ݁ RPG Bot. ✦ ݁ ˖",
       "zh": ". ✦ ݁ RPG 机器人. ✦ ݁ ˖"
     },
-    "num_messages": 1677664,
+    "num_messages": 1677717,
     "num_messages_24h": 2342,
     "rating_score": 0.875856,
     "tags": [
@@ -198,10 +198,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587301047,
+    "updatedAt": 1790588448777,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587301047,
+      "to": 1790588448777
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,8 +220,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2415,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2416,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "popular": {
       "rank": 2126,
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1677664,
+      "num_messages": 1677717,
       "num_messages_24h": 2342,
       "rating_score": 0.875856,
       "token_count": 487
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1677664,
+        "num_messages_24h": 2342,
+        "rating_score": 0.875856,
+        "token_count": 487
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1677717,
         "num_messages_24h": 2342,
         "rating_score": 0.875856,
         "token_count": 487

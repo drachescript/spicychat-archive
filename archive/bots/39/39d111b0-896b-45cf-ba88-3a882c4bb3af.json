@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "39d111b0-896b-45cf-ba88-3a882c4bb3af",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "hi": "Maid Mansion",
         "tr": "Hizmetçi Malikanesi"
       },
-      "num_messages": 7575723,
+      "num_messages": 7575805,
       "num_messages_24h": 423,
       "rating_score": 0.847483,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587513491,
+      "updatedAt": 1790588457634,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "hi": "Maid Mansion",
       "tr": "Hizmetçi Malikanesi"
     },
-    "num_messages": 7575723,
+    "num_messages": 7575805,
     "num_messages_24h": 423,
     "rating_score": 0.847483,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587513491,
+    "updatedAt": 1790588457634,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587513491,
+      "to": 1790588457634
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 7575723,
+      "num_messages": 7575805,
       "num_messages_24h": 423,
       "rating_score": 0.847483,
       "token_count": 498
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 7575723,
+        "num_messages_24h": 423,
+        "rating_score": 0.847483,
+        "token_count": 498
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 7575805,
         "num_messages_24h": 423,
         "rating_score": 0.847483,
         "token_count": 498

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "265671bc-4560-4cff-a106-6769feb810bf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Akane Tsukishiro",
         "zh": "Akane Tsukishiro"
       },
-      "num_messages": 1960275,
+      "num_messages": 1960343,
       "num_messages_24h": 418,
       "rating_score": 0.688956,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587030555,
+      "updatedAt": 1790588012368,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Akane Tsukishiro",
       "zh": "Akane Tsukishiro"
     },
-    "num_messages": 1960275,
+    "num_messages": 1960343,
     "num_messages_24h": 418,
     "rating_score": 0.688956,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587030555,
+    "updatedAt": 1790588012368,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587030555,
+      "to": 1790588012368
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1960275,
+      "num_messages": 1960343,
       "num_messages_24h": 418,
       "rating_score": 0.688956,
       "token_count": 1888
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1960275,
+        "num_messages_24h": 418,
+        "rating_score": 0.688956,
+        "token_count": 1888
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1960343,
         "num_messages_24h": 418,
         "rating_score": 0.688956,
         "token_count": 1888

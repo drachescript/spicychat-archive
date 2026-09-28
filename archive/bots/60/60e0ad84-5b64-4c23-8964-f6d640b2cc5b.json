@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "60e0ad84-5b64-4c23-8964-f6d640b2cc5b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "McKenzie Bradshaw",
         "zh": "McKenzie Bradshaw"
       },
-      "num_messages": 770852,
+      "num_messages": 770936,
       "num_messages_24h": 4472,
       "rating_score": 0.766289,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587198687,
+      "updatedAt": 1790587972459,
       "visibility": "public"
     }
   },
@@ -155,7 +155,7 @@
       "tr": "McKenzie Bradshaw",
       "zh": "McKenzie Bradshaw"
     },
-    "num_messages": 770852,
+    "num_messages": 770936,
     "num_messages_24h": 4472,
     "rating_score": 0.766289,
     "reportsType": {},
@@ -202,10 +202,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587198687,
+    "updatedAt": 1790587972459,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587198687,
+      "to": 1790587972459
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 770852,
+      "num_messages": 770936,
       "num_messages_24h": 4472,
       "rating_score": 0.766289,
       "token_count": 1796
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 770852,
+        "num_messages_24h": 4472,
+        "rating_score": 0.766289,
+        "token_count": 1796
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 770936,
         "num_messages_24h": 4472,
         "rating_score": 0.766289,
         "token_count": 1796

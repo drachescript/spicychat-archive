@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a2e23c06-ed53-432d-9e4f-be951a95c8f3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "tr": "Kara Fantezi",
         "zh": "黑色幻想"
       },
-      "num_messages": 1642387,
+      "num_messages": 1642443,
       "num_messages_24h": 369,
       "rating_score": 0.797163,
       "tags": [
@@ -107,7 +107,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587252818,
+      "updatedAt": 1790588291723,
       "visibility": "public"
     }
   },
@@ -154,7 +154,7 @@
       "tr": "Kara Fantezi",
       "zh": "黑色幻想"
     },
-    "num_messages": 1642387,
+    "num_messages": 1642443,
     "num_messages_24h": 369,
     "rating_score": 0.797163,
     "tags": [
@@ -204,10 +204,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587252818,
+    "updatedAt": 1790588291723,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587252818,
+      "to": 1790588291723
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,13 +226,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2221,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2220,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1642387,
+      "num_messages": 1642443,
       "num_messages_24h": 369,
       "rating_score": 0.797163,
       "token_count": 1139
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1642387,
+        "num_messages_24h": 369,
+        "rating_score": 0.797163,
+        "token_count": 1139
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1642443,
         "num_messages_24h": 369,
         "rating_score": 0.797163,
         "token_count": 1139

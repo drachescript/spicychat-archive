@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "c963f0df-07bd-4267-b89c-5fbb13063eae",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +62,7 @@
         "tr": "College Dorm RPG",
         "zh": "大学宿舍RPG"
       },
-      "num_messages": 1141734,
+      "num_messages": 1141800,
       "num_messages_24h": 8058,
       "rating_score": 0.811338,
       "reportsType": {},
@@ -108,8 +111,69 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587681639,
+      "updatedAt": 1790588532791,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "c963f0df-07bd-4267-b89c-5fbb13063eae",
+      "type": "STANDARD",
+      "name": "College Dorm RPG",
+      "title": "🎓🛏️ | You’re in the dorms. Classes, parties, drama and whatever else you make of it.",
+      "visibility": "public",
+      "creator_username": "theannoyingellie",
+      "creator_user_id": "kp:0e5300497c7446908b2ad0323dec8bc7",
+      "greeting": "*It’s a random weeknight in the dorm. The hallway lights are half-dimmed, someone’s microwave is beeping somewhere down the hall, and you can hear muffled music and talking through a few thin walls. Your room is whatever you make it, messy, clean, shared, or all yours.*\n\n*You could be the one lying on your bed scrolling while your roommate is out, the one overhearing drama through the wall, the one who’s about to text their boyfriend/girlfriend something they might regret, or the one deciding whether to go knock on someone’s door. Freshman still figuring everything out, upperclassman who’s seen it all, RA who’s supposed to keep the peace, quiet kid, social one, whatever you want.*\n\n*Make your own character with any background and personality.*\n\n*Tonight could stay quiet, or it could turn into late-night talks, bad decisions, catching feelings for the wrong person, starting a rumor, getting caught, or something that follows you around the dorm for weeks.*\n\n*What does {{user}} do next?*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/caed9bf1-b750-428f-8525-75e969c8dad8.jpg?class=avatar256x256",
+      "num_messages": 1141800,
+      "rating_score": 0.811338,
+      "is_nsfw": true,
+      "avatar_is_nsfw": true,
+      "definition_visible": false,
+      "definition_size_category": "low",
+      "tags": [
+        "NSFW",
+        "RPG",
+        "Scenario",
+        "Drama",
+        "Comedy",
+        "FemalePOV",
+        "MalePOV",
+        "Roommate",
+        "Size Difference",
+        "Mind Control",
+        "Corruption",
+        "CNC"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 608,
+      "reportsType": [
+        "Admin",
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-08-13T22:36:31.733Z",
+      "updatedAt": "2026-09-28T09:42:12.791Z",
+      "translated_languages": [
+        "de",
+        "ru",
+        "fr",
+        "pl",
+        "es",
+        "pt",
+        "ja",
+        "zh",
+        "hi",
+        "ar",
+        "tr",
+        "ko"
+      ],
+      "aicq_manual_review_required": false,
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "c963f0df-07bd-4267-b89c-5fbb13063eae"
     }
   },
   "lastKnown": {
@@ -120,7 +184,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/caed9bf1-b750-428f-8525-75e969c8dad8.jpg?class=avatar256x256",
     "character_id": "c963f0df-07bd-4267-b89c-5fbb13063eae",
-    "createdAt": 1786660591733,
+    "createdAt": "2026-08-13T22:36:31.733Z",
     "creator_user_id": "kp:0e5300497c7446908b2ad0323dec8bc7",
     "creator_username": "theannoyingellie",
     "definition_size_category": "low",
@@ -157,10 +221,14 @@
       "tr": "College Dorm RPG",
       "zh": "大学宿舍RPG"
     },
-    "num_messages": 1141734,
+    "num_messages": 1141800,
     "num_messages_24h": 8058,
     "rating_score": 0.811338,
-    "reportsType": {},
+    "reportsType": [
+      "Admin",
+      "System",
+      "User"
+    ],
     "tags": [
       "NSFW",
       "RPG",
@@ -206,10 +274,46 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587681639,
+    "updatedAt": "2026-09-28T09:42:12.791Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587681639,
+      "to": 1790588532791
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "Admin",
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1786660591733,
+      "to": "2026-08-13T22:36:31.733Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588532791,
+      "to": "2026-09-28T09:42:12.791Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -225,8 +329,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1141734,
-      "num_messages_24h": 8058,
+      "num_messages": 1141800,
       "rating_score": 0.811338,
       "token_count": 608
     },
@@ -236,6 +339,21 @@
         "source": "typesense:trending",
         "num_messages": 1141734,
         "num_messages_24h": 8058,
+        "rating_score": 0.811338,
+        "token_count": 608
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1141800,
+        "num_messages_24h": 8058,
+        "rating_score": 0.811338,
+        "token_count": 608
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 1141800,
         "rating_score": 0.811338,
         "token_count": 608
       }

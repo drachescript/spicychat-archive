@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d6a3af89-4007-4053-9f8a-0c57f654bbcb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Becca",
-      "num_messages": 379,
+      "num_messages": 394,
       "num_messages_24h": 136,
       "rating_score": 0,
       "reportsType": {},
@@ -51,7 +51,7 @@
       "title": "Hinter der Brille: Beccas geheimes Begehren (Deutsch)",
       "token_count": 2358,
       "type": "STANDARD",
-      "updatedAt": 1790585949482,
+      "updatedAt": 1790588308821,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "de",
     "moderation_status": "reviewed",
     "name": "Becca",
-    "num_messages": 379,
+    "num_messages": 394,
     "num_messages_24h": 136,
     "rating_score": 0,
     "reportsType": {},
@@ -90,10 +90,19 @@
     "title": "Hinter der Brille: Beccas geheimes Begehren (Deutsch)",
     "token_count": 2358,
     "type": "STANDARD",
-    "updatedAt": 1790585949482,
+    "updatedAt": 1790588308821,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585949482,
+      "to": 1790588308821
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,7 +118,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 379,
+      "num_messages": 394,
       "num_messages_24h": 136,
       "rating_score": 0,
       "token_count": 2358
@@ -119,6 +128,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 379,
+        "num_messages_24h": 136,
+        "rating_score": 0,
+        "token_count": 2358
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 394,
         "num_messages_24h": 136,
         "rating_score": 0,
         "token_count": 2358

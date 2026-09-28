@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b4280d3d-73bc-44a8-84d4-69006612d7ee",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Zombie Apocalypse",
         "zh": "Zombie Apocalypse"
       },
-      "num_messages": 1622583,
+      "num_messages": 1622643,
       "num_messages_24h": 2130,
       "rating_score": 0.902609,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587400755,
+      "updatedAt": 1790587841144,
       "visibility": "public"
     }
   },
@@ -146,7 +146,7 @@
       "tr": "Zombie Apocalypse",
       "zh": "Zombie Apocalypse"
     },
-    "num_messages": 1622583,
+    "num_messages": 1622643,
     "num_messages_24h": 2130,
     "rating_score": 0.902609,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587400755,
+    "updatedAt": 1790587841144,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587400755,
+      "to": 1790587841144
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,13 +218,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2273,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2272,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1622583,
+      "num_messages": 1622643,
       "num_messages_24h": 2130,
       "rating_score": 0.902609,
       "token_count": 439
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1622583,
+        "num_messages_24h": 2130,
+        "rating_score": 0.902609,
+        "token_count": 439
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1622643,
         "num_messages_24h": 2130,
         "rating_score": 0.902609,
         "token_count": 439

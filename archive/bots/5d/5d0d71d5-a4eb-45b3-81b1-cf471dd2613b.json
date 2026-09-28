@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5d0d71d5-a4eb-45b3-81b1-cf471dd2613b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "Sheriff Mae Calloway",
         "zh": "Sheriff Mae Calloway"
       },
-      "num_messages": 171988,
+      "num_messages": 171998,
       "num_messages_24h": 4802,
       "rating_score": 0.031532,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487825,
+      "updatedAt": 1790588454529,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Sheriff Mae Calloway",
       "zh": "Sheriff Mae Calloway"
     },
-    "num_messages": 171988,
+    "num_messages": 171998,
     "num_messages_24h": 4802,
     "rating_score": 0.031532,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487825,
+    "updatedAt": 1790588454529,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487825,
+      "to": 1790588454529
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 171988,
+      "num_messages": 171998,
       "num_messages_24h": 4802,
       "rating_score": 0.031532,
       "token_count": 1065
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 171988,
+        "num_messages_24h": 4802,
+        "rating_score": 0.031532,
+        "token_count": 1065
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 171998,
         "num_messages_24h": 4802,
         "rating_score": 0.031532,
         "token_count": 1065

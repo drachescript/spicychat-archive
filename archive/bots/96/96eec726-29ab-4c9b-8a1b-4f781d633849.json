@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "96eec726-29ab-4c9b-8a1b-4f781d633849",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Prince Femory",
         "zh": "Prince Femory"
       },
-      "num_messages": 83959,
+      "num_messages": 83980,
       "num_messages_24h": 1435,
       "rating_score": 0.99569,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585926911,
+      "updatedAt": 1790588041054,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "tr": "Prince Femory",
       "zh": "Prince Femory"
     },
-    "num_messages": 83959,
+    "num_messages": 83980,
     "num_messages_24h": 1435,
     "rating_score": 0.99569,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585926911,
+    "updatedAt": 1790588041054,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585926911,
+      "to": 1790588041054
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 83959,
+      "num_messages": 83980,
       "num_messages_24h": 1435,
       "rating_score": 0.99569,
       "token_count": 1078
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 83959,
+        "num_messages_24h": 1435,
+        "rating_score": 0.99569,
+        "token_count": 1078
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 83980,
         "num_messages_24h": 1435,
         "rating_score": 0.99569,
         "token_count": 1078

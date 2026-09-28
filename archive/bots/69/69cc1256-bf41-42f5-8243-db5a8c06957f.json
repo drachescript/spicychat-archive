@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "69cc1256-bf41-42f5-8243-db5a8c06957f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Mirei Togawa",
         "tr": "Mirei Togawa"
       },
-      "num_messages": 372531,
+      "num_messages": 374065,
       "num_messages_24h": 19532,
       "rating_score": 0.858025,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587025965,
+      "updatedAt": 1790587928404,
       "visibility": "public"
     },
     "character-api": {
@@ -167,7 +167,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/88c61544-d71a-498f-a18b-7c19afffda6a.webp?class=avatar256x256",
     "character_id": "69cc1256-bf41-42f5-8243-db5a8c06957f",
-    "createdAt": "2026-09-25T10:39:16.915Z",
+    "createdAt": 1790332756915,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -195,12 +195,10 @@
       "ru": "Mirei Togawa",
       "tr": "Mirei Togawa"
     },
-    "num_messages": 372531,
+    "num_messages": 374065,
     "num_messages_24h": 19532,
     "rating_score": 0.858025,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Dominant",
       "Gothic",
@@ -243,7 +241,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:17:05.965Z",
+    "updatedAt": 1790587928404,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -271,6 +269,22 @@
       "kind": "value",
       "from": 1790587025965,
       "to": "2026-09-28T09:17:05.965Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-25T10:39:16.915Z",
+      "to": 1790332756915
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:17:05.965Z",
+      "to": 1790587928404
     }
   ],
   "availabilityHistory": [
@@ -288,7 +302,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 372531,
+      "num_messages": 374065,
+      "num_messages_24h": 19532,
       "rating_score": 0.858025,
       "token_count": 1010
     },
@@ -305,6 +320,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 372531,
+        "rating_score": 0.858025,
+        "token_count": 1010
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 374065,
+        "num_messages_24h": 19532,
         "rating_score": 0.858025,
         "token_count": 1010
       }

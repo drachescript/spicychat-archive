@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8f0c255d-0772-46df-b47e-bb5bc6081f02",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Мстители: Гражданская война",
         "zh": "复仇者联盟：内战"
       },
-      "num_messages": 137447,
+      "num_messages": 137448,
       "num_messages_24h": 2544,
       "rating_score": 0,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585411844,
+      "updatedAt": 1790588181919,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "ru": "Мстители: Гражданская война",
       "zh": "复仇者联盟：内战"
     },
-    "num_messages": 137447,
+    "num_messages": 137448,
     "num_messages_24h": 2544,
     "rating_score": 0,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585411844,
+    "updatedAt": 1790588181919,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585411844,
+      "to": 1790588181919
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,13 +200,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2181,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2182,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 137447,
+      "num_messages": 137448,
       "num_messages_24h": 2544,
       "rating_score": 0,
       "token_count": 645
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 137447,
+        "num_messages_24h": 2544,
+        "rating_score": 0,
+        "token_count": 645
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 137448,
         "num_messages_24h": 2544,
         "rating_score": 0,
         "token_count": 645

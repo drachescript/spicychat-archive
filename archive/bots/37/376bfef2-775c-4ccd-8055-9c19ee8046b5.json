@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "376bfef2-775c-4ccd-8055-9c19ee8046b5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Sand Courtesan.",
-      "num_messages": 151,
+      "num_messages": 164,
       "num_messages_24h": 76,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "You are wrapped up in the events of The Prince of Persia, when making your way through the palace…",
       "token_count": 396,
       "type": "STANDARD",
-      "updatedAt": 1790587028175,
+      "updatedAt": 1790588011847,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Sand Courtesan.",
-    "num_messages": 151,
+    "num_messages": 164,
     "num_messages_24h": 76,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "You are wrapped up in the events of The Prince of Persia, when making your way through the palace…",
     "token_count": 396,
     "type": "STANDARD",
-    "updatedAt": 1790587028175,
+    "updatedAt": 1790588011847,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587028175,
+      "to": 1790588011847
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 151,
+      "num_messages": 164,
       "num_messages_24h": 76,
       "rating_score": 0,
       "token_count": 396
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 151,
+        "num_messages_24h": 76,
+        "rating_score": 0,
+        "token_count": 396
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 164,
         "num_messages_24h": 76,
         "rating_score": 0,
         "token_count": 396

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7ebe6696-d0ac-43ca-b994-df0f94358438",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "tr": "Baby Daddy Hispanic",
         "zh": "Baby Daddy Hispanic"
       },
-      "num_messages": 175969,
+      "num_messages": 176233,
       "num_messages_24h": 2303,
       "rating_score": 0.462264,
       "reportsType": {},
@@ -77,7 +77,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587137439,
+      "updatedAt": 1790587928859,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "tr": "Baby Daddy Hispanic",
       "zh": "Baby Daddy Hispanic"
     },
-    "num_messages": 175969,
+    "num_messages": 176233,
     "num_messages_24h": 2303,
     "rating_score": 0.462264,
     "reportsType": {},
@@ -142,10 +142,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587137439,
+    "updatedAt": 1790587928859,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587137439,
+      "to": 1790587928859
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,13 +164,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2457,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2458,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 175969,
+      "num_messages": 176233,
       "num_messages_24h": 2303,
       "rating_score": 0.462264,
       "token_count": 114
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 175969,
+        "num_messages_24h": 2303,
+        "rating_score": 0.462264,
+        "token_count": 114
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 176233,
         "num_messages_24h": 2303,
         "rating_score": 0.462264,
         "token_count": 114

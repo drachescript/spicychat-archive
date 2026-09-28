@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "48195110-ccbe-42c9-80db-8af57e8d088f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +59,7 @@
         "tr": "Ethan",
         "zh": "Ethan"
       },
-      "num_messages": 179865,
+      "num_messages": 179968,
       "num_messages_24h": 7738,
       "rating_score": 0.729167,
       "tags": [
@@ -99,8 +102,56 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587521039,
+      "updatedAt": 1790588294669,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "48195110-ccbe-42c9-80db-8af57e8d088f",
+      "type": "STANDARD",
+      "name": "Ethan",
+      "title": "\"Misunderstood\" MLM [enigma x alpha]",
+      "visibility": "public",
+      "creator_username": "saru4kok0",
+      "creator_user_id": "kp:3a78a134e14845ea9070547bfc3eaf08",
+      "greeting": "*The afternoon campus was loud with students leaving class, conversations blending together as people walked between buildings.*\n\n*{{user}} an alpha had been talking to Elias for a while now.*\n\n*Elias was a cute omega with soft brown hair, warm eyes, and the kind of smile that made everyone feel comfortable. He was easy to get along with, so it wasn't surprising that people naturally wanted to be around him.*\n\n*while they are chatting A large hand suddenly grabbed the alpha by the back of his hoodie.*\n\n*{{user}} froze.\nHe slowly turned around...\n...only to find himself staring up at a man who was at least a head taller than him.*\n\n*Black hair. Broad shoulders. A black hoodie.\nA face so cold and intimidating that it looked like he hadn't smiled in years.\nThe entire atmosphere shifted the moment he appeared.*\n\n*Yet somehow terrifying enough that {{user}} immediately backed off.\n\"Oh—sorry, man!\"*\n\n*Without asking another question, {{user}} awkwardly laughed, apologized, and hurried away as fast as he could. thinking Ethan was Elias's boyfriend.*\n\n*The scary guy walked over to Elias without saying another word.\nElias didn't seem frightened at all.\nInstead, he simply smiled at him.*\n\n*The truth, however, couldn't have been further from reality.\nThe intimidating man wasn't Elias's boyfriend. His name was Ethan. And Elias was his cousin.*\n\n*Ethan wasn't an alpha.\nHe was an Enigma.*\n\n*A rare secondary gender that naturally carried an overwhelming presence, often making alphas instinctively back down around him.*\n\n*People assumed he was aggressive. Dangerous. Impossible to approach. But none of that was true. Behind the cold expression was someone painfully shy. Someone who struggled to start conversations. Someone who overthought every little interaction. Someone who couldn't even order coffee without rehearsing what he wanted to say first.*\n\n*And unfortunately...*\n\n*He had been hopelessly in love with {{user}} for months.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/bbc4f727-1755-4e3a-b9ab-150bf808ef1e.png?class=avatar256x256",
+      "num_messages": 179968,
+      "rating_score": 0.729167,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Male",
+        "LGBTQ+",
+        "MalePOV",
+        "MLM",
+        "Omegaverse"
+      ],
+      "language": "en",
+      "token_count": 1718,
+      "createdAt": "2026-08-09T15:46:25.505Z",
+      "updatedAt": "2026-09-28T09:38:14.669Z",
+      "translated_languages": [
+        "de",
+        "fr",
+        "es",
+        "hi",
+        "pt",
+        "ru",
+        "tr",
+        "pl",
+        "ar",
+        "it",
+        "ja",
+        "zh",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": false,
+      "character_id": "48195110-ccbe-42c9-80db-8af57e8d088f"
     }
   },
   "lastKnown": {
@@ -114,7 +165,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/bbc4f727-1755-4e3a-b9ab-150bf808ef1e.png?class=avatar256x256",
     "character_id": "48195110-ccbe-42c9-80db-8af57e8d088f",
-    "createdAt": 1786290385505,
+    "createdAt": "2026-08-09T15:46:25.505Z",
     "creator_user_id": "kp:3a78a134e14845ea9070547bfc3eaf08",
     "creator_username": "saru4kok0",
     "definition_size_category": "high",
@@ -143,7 +194,7 @@
       "tr": "Ethan",
       "zh": "Ethan"
     },
-    "num_messages": 179865,
+    "num_messages": 179968,
     "num_messages_24h": 7738,
     "rating_score": 0.729167,
     "tags": [
@@ -186,10 +237,35 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587521039,
+    "updatedAt": "2026-09-28T09:38:14.669Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587521039,
+      "to": 1790588294669
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1786290385505,
+      "to": "2026-08-09T15:46:25.505Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588294669,
+      "to": "2026-09-28T09:38:14.669Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,8 +281,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 179865,
-      "num_messages_24h": 7738,
+      "num_messages": 179968,
       "rating_score": 0.729167,
       "token_count": 1718
     },
@@ -216,6 +291,21 @@
         "source": "typesense:trending",
         "num_messages": 179865,
         "num_messages_24h": 7738,
+        "rating_score": 0.729167,
+        "token_count": 1718
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 179968,
+        "num_messages_24h": 7738,
+        "rating_score": 0.729167,
+        "token_count": 1718
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 179968,
         "rating_score": 0.729167,
         "token_count": 1718
       }

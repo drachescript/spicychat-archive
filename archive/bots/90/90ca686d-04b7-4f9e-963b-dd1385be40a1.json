@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "90ca686d-04b7-4f9e-963b-dd1385be40a1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Seth 𓆟Werewolf BL𓆟",
         "zh": "Seth 𓆟Werewolf BL𓆟"
       },
-      "num_messages": 1122442,
+      "num_messages": 1122491,
       "num_messages_24h": 2369,
       "rating_score": 0.923798,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586942579,
+      "updatedAt": 1790588457163,
       "visibility": "public"
     }
   },
@@ -146,7 +146,7 @@
       "tr": "Seth 𓆟Werewolf BL𓆟",
       "zh": "Seth 𓆟Werewolf BL𓆟"
     },
-    "num_messages": 1122442,
+    "num_messages": 1122491,
     "num_messages_24h": 2369,
     "rating_score": 0.923798,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586942579,
+    "updatedAt": 1790588457163,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586942579,
+      "to": 1790588457163
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,13 +218,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2373,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2374,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1122442,
+      "num_messages": 1122491,
       "num_messages_24h": 2369,
       "rating_score": 0.923798,
       "token_count": 1405
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1122442,
+        "num_messages_24h": 2369,
+        "rating_score": 0.923798,
+        "token_count": 1405
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1122491,
         "num_messages_24h": 2369,
         "rating_score": 0.923798,
         "token_count": 1405

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d17df8de-59b6-435d-bf3c-4ac22c4b0275",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "ZZZ Roleplay",
         "zh": "ZZZ 角色扮演"
       },
-      "num_messages": 1742561,
+      "num_messages": 1742605,
       "num_messages_24h": 1454,
       "rating_score": 0.879234,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587480846,
+      "updatedAt": 1790588182493,
       "visibility": "public"
     }
   },
@@ -154,7 +154,7 @@
       "tr": "ZZZ Roleplay",
       "zh": "ZZZ 角色扮演"
     },
-    "num_messages": 1742561,
+    "num_messages": 1742605,
     "num_messages_24h": 1454,
     "rating_score": 0.879234,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587480846,
+    "updatedAt": 1790588182493,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587480846,
+      "to": 1790588182493
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1742561,
+      "num_messages": 1742605,
       "num_messages_24h": 1454,
       "rating_score": 0.879234,
       "token_count": 1540
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1742561,
+        "num_messages_24h": 1454,
+        "rating_score": 0.879234,
+        "token_count": 1540
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1742605,
         "num_messages_24h": 1454,
         "rating_score": 0.879234,
         "token_count": 1540

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "901938e2-3d1a-44f0-92c6-9abf05ea2c96",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "es": "Tanjiro Kamado",
         "hi": "Tanjiro Kamado"
       },
-      "num_messages": 20206,
+      "num_messages": 20215,
       "num_messages_24h": 267,
       "rating_score": 0.992308,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585780130,
+      "updatedAt": 1790587718681,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "es": "Tanjiro Kamado",
       "hi": "Tanjiro Kamado"
     },
-    "num_messages": 20206,
+    "num_messages": 20215,
     "num_messages_24h": 267,
     "rating_score": 0.992308,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585780130,
+    "updatedAt": 1790587718681,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585780130,
+      "to": 1790587718681
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 20206,
+      "num_messages": 20215,
       "num_messages_24h": 267,
       "rating_score": 0.992308,
       "token_count": 354
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 20206,
+        "num_messages_24h": 267,
+        "rating_score": 0.992308,
+        "token_count": 354
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 20215,
         "num_messages_24h": 267,
         "rating_score": 0.992308,
         "token_count": 354

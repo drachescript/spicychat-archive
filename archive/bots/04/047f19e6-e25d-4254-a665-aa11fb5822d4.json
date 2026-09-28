@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "047f19e6-e25d-4254-a665-aa11fb5822d4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "Camilia",
         "zh": "Camilia"
       },
-      "num_messages": 195321,
+      "num_messages": 195353,
       "num_messages_24h": 2563,
       "rating_score": 0.972362,
       "reportsType": {},
@@ -110,7 +110,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195982,
+      "updatedAt": 1790587767339,
       "visibility": "public"
     }
   },
@@ -159,7 +159,7 @@
       "tr": "Camilia",
       "zh": "Camilia"
     },
-    "num_messages": 195321,
+    "num_messages": 195353,
     "num_messages_24h": 2563,
     "rating_score": 0.972362,
     "reportsType": {},
@@ -210,10 +210,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195982,
+    "updatedAt": 1790587767339,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195982,
+      "to": 1790587767339
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,13 +232,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2167,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2168,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 195321,
+      "num_messages": 195353,
       "num_messages_24h": 2563,
       "rating_score": 0.972362,
       "token_count": 792
@@ -239,6 +248,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 195321,
+        "num_messages_24h": 2563,
+        "rating_score": 0.972362,
+        "token_count": 792
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 195353,
         "num_messages_24h": 2563,
         "rating_score": 0.972362,
         "token_count": 792

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8f83e144-e252-4483-bfa8-54cf43a24850",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "The Birthday Boys",
-      "num_messages": 300,
+      "num_messages": 312,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "Your son’s five drunk friends just soaked your dress — and they’re still laughing about it",
       "token_count": 1403,
       "type": "STANDARD",
-      "updatedAt": 1790587405221,
+      "updatedAt": 1790588456296,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "The Birthday Boys",
-    "num_messages": 300,
+    "num_messages": 312,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "Your son’s five drunk friends just soaked your dress — and they’re still laughing about it",
     "token_count": 1403,
     "type": "STANDARD",
-    "updatedAt": 1790587405221,
+    "updatedAt": 1790588456296,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587405221,
+      "to": 1790588456296
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 300,
+      "num_messages": 312,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1403
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 300,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1403
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 312,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1403

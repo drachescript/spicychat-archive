@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "27c0b5ee-6c6c-4999-83e1-e9cfe53d7156",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Rainer Schlag",
         "zh": "莱纳·施拉格"
       },
-      "num_messages": 262793,
+      "num_messages": 262835,
       "num_messages_24h": 2380,
       "rating_score": 0.733108,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587523195,
+      "updatedAt": 1790588294886,
       "visibility": "public"
     }
   },
@@ -130,7 +130,7 @@
       "tr": "Rainer Schlag",
       "zh": "莱纳·施拉格"
     },
-    "num_messages": 262793,
+    "num_messages": 262835,
     "num_messages_24h": 2380,
     "rating_score": 0.733108,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587523195,
+    "updatedAt": 1790588294886,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587523195,
+      "to": 1790588294886
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,13 +192,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2356,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2357,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 262793,
+      "num_messages": 262835,
       "num_messages_24h": 2380,
       "rating_score": 0.733108,
       "token_count": 663
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 262793,
+        "num_messages_24h": 2380,
+        "rating_score": 0.733108,
+        "token_count": 663
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 262835,
         "num_messages_24h": 2380,
         "rating_score": 0.733108,
         "token_count": 663

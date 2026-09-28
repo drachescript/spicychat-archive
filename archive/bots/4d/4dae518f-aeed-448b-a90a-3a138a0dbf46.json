@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4dae518f-aeed-448b-a90a-3a138a0dbf46",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pt": "Hogwarts",
         "zh": "霍格沃茨"
       },
-      "num_messages": 1682169,
+      "num_messages": 1682219,
       "num_messages_24h": 992,
       "rating_score": 0.768879,
       "tags": [
@@ -87,7 +87,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587404997,
+      "updatedAt": 1790588367907,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "pt": "Hogwarts",
       "zh": "霍格沃茨"
     },
-    "num_messages": 1682169,
+    "num_messages": 1682219,
     "num_messages_24h": 992,
     "rating_score": 0.768879,
     "tags": [
@@ -162,10 +162,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587404997,
+    "updatedAt": 1790588367907,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587404997,
+      "to": 1790588367907
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1682169,
+      "num_messages": 1682219,
       "num_messages_24h": 992,
       "rating_score": 0.768879,
       "token_count": 303
@@ -191,6 +200,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1682169,
+        "num_messages_24h": 992,
+        "rating_score": 0.768879,
+        "token_count": 303
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1682219,
         "num_messages_24h": 992,
         "rating_score": 0.768879,
         "token_count": 303

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a1407783-e4c9-4f48-858d-42a4749b177e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "it": "Dr. Amelia Buck",
         "ru": "Dr. Amelia Buck"
       },
-      "num_messages": 17971,
+      "num_messages": 17985,
       "num_messages_24h": 12,
       "rating_score": 0.994118,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586997508,
+      "updatedAt": 1790587928914,
       "visibility": "public"
     }
   },
@@ -100,7 +100,7 @@
       "it": "Dr. Amelia Buck",
       "ru": "Dr. Amelia Buck"
     },
-    "num_messages": 17971,
+    "num_messages": 17985,
     "num_messages_24h": 12,
     "rating_score": 0.994118,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586997508,
+    "updatedAt": 1790587928914,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586997508,
+      "to": 1790587928914
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 17971,
+      "num_messages": 17985,
       "num_messages_24h": 12,
       "rating_score": 0.994118,
       "token_count": 183
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 17971,
+        "num_messages_24h": 12,
+        "rating_score": 0.994118,
+        "token_count": 183
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 17985,
         "num_messages_24h": 12,
         "rating_score": 0.994118,
         "token_count": 183

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5401ccf2-8d3c-4abc-a88d-bafb631e3174",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Cinsiyet Tersine Çevrilmiş Dünya",
         "zh": "性别反转世界"
       },
-      "num_messages": 807717,
+      "num_messages": 807779,
       "num_messages_24h": 2538,
       "rating_score": 0.849869,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586773,
+      "updatedAt": 1790588450549,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Cinsiyet Tersine Çevrilmiş Dünya",
       "zh": "性别反转世界"
     },
-    "num_messages": 807717,
+    "num_messages": 807779,
     "num_messages_24h": 2538,
     "rating_score": 0.849869,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586773,
+    "updatedAt": 1790588450549,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586773,
+      "to": 1790588450549
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,13 +220,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2187,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2188,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 807717,
+      "num_messages": 807779,
       "num_messages_24h": 2538,
       "rating_score": 0.849869,
       "token_count": 1146
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 807717,
+        "num_messages_24h": 2538,
+        "rating_score": 0.849869,
+        "token_count": 1146
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 807779,
         "num_messages_24h": 2538,
         "rating_score": 0.849869,
         "token_count": 1146

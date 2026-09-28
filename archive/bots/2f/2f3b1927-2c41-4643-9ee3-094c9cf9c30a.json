@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2f3b1927-2c41-4643-9ee3-094c9cf9c30a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "NSFW Senaryo Oluşturucu",
         "zh": "NSFW 场景制作"
       },
-      "num_messages": 11329321,
+      "num_messages": 11329671,
       "num_messages_24h": 2393,
       "rating_score": 0.860971,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587481742,
+      "updatedAt": 1790588565377,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "NSFW Senaryo Oluşturucu",
       "zh": "NSFW 场景制作"
     },
-    "num_messages": 11329321,
+    "num_messages": 11329671,
     "num_messages_24h": 2393,
     "rating_score": 0.860971,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587481742,
+    "updatedAt": 1790588565377,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481742,
+      "to": 1790588565377
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,8 +214,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2341,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2342,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "popular": {
       "rank": 31,
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 11329321,
+      "num_messages": 11329671,
       "num_messages_24h": 2393,
       "rating_score": 0.860971,
       "token_count": 1515
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 11329321,
+        "num_messages_24h": 2393,
+        "rating_score": 0.860971,
+        "token_count": 1515
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 11329671,
         "num_messages_24h": 2393,
         "rating_score": 0.860971,
         "token_count": 1515

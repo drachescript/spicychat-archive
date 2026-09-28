@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40c50878-9aa6-4eb5-b6e9-cee5d20e43a0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "es": "Cheating Cammy wife",
         "ru": "Cheating Cammy wife"
       },
-      "num_messages": 2178,
+      "num_messages": 2277,
       "num_messages_24h": 1106,
       "rating_score": 0,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587079659,
+      "updatedAt": 1790588360521,
       "visibility": "public"
     }
   },
@@ -99,7 +99,7 @@
       "es": "Cheating Cammy wife",
       "ru": "Cheating Cammy wife"
     },
-    "num_messages": 2178,
+    "num_messages": 2277,
     "num_messages_24h": 1106,
     "rating_score": 0,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587079659,
+    "updatedAt": 1790588360521,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587079659,
+      "to": 1790588360521
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,13 +150,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1602,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1603,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2178,
+      "num_messages": 2277,
       "num_messages_24h": 1106,
       "rating_score": 0,
       "token_count": 1196
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2178,
+        "num_messages_24h": 1106,
+        "rating_score": 0,
+        "token_count": 1196
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2277,
         "num_messages_24h": 1106,
         "rating_score": 0,
         "token_count": 1196

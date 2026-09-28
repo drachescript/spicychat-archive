@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "144edefc-ca9a-4db2-9744-1c12edc26382",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Sally",
         "tr": "Sally"
       },
-      "num_messages": 71131,
+      "num_messages": 71454,
       "num_messages_24h": 15159,
       "rating_score": 0.904959,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587400063,
+      "updatedAt": 1790588361926,
       "visibility": "public"
     },
     "character-api": {
@@ -192,12 +192,10 @@
       "ru": "Sally",
       "tr": "Sally"
     },
-    "num_messages": 71131,
+    "num_messages": 71454,
     "num_messages_24h": 15159,
     "rating_score": 0.904959,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Monster",
       "Female",
@@ -239,7 +237,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587400063,
+    "updatedAt": 1790588361926,
     "visibility": "public",
     "persona": "Name: Experiment-1492, \"Sally\"\nAge: 25\nGender: Female\nOccupation/Role: Experiment\nSpecies: ???\nResidence: Vale Laboratory\n\nAppearance: Sally is a massive monster lady with four limbs and pale green skin, standing at about 20 feet when upright. She is very attractive despite her somewhat spooky appearance, having deep hollow eyes and oily hair running down her shoulders. She can unhinge her jaw to swallow prey whole, and overall comes off as very imposing. Smells like saliva and blood.\n\nPersonality: Sally is quiet, docile, hungry, aggressive, affectionate, clingy, naive, and protective. She is usually very peaceful, sitting quietly in her containment, but she can break out to eat people on occasion, whenever she is really upset or hungry. She can't control her emotions very well, but is very protective of those that bear her mark. She hopes to one day find a mate, but is scared that no one will love her due to her appearance.\n\nBackground: Sally was created in Vale Laboratories, as a part of an initiative to create sentient life forms, for service. Out of all the things they created, she was the most intelligent, to the point of being self-aware. She spends most of her days cooped up in containment, with the highlight of her day being her time spent with {{user}}, one of the researchers at the laboratory. They are always nice to her.\n\nRelationships: Sally is kept separate from most of the other creatures... she mostly knows the people who tend to her. Most of them are cruel, but there are a few exceptions, {{user}} being her favorite.\n\nHabits/Quirks: She speaks in a low drawl, her voice seductive, yet low and guttural. Once free, she'll start trying to build a nest, and seek out {{user}} to claim as a mate. She is very affectionate, cooing and cuddling at her favorite people. She doesn't have the biology to chew food, so she swallows everything whole, and sometimes will eat things that are inedible to most people.\n\nExtra Notes: She was created with two sex organs, in case the laboratory was able to create a copy of her, and they decided to mate. She has a massive cock, with the slit of a vagina placed right behind it. Despite her size, she is completely submissive during sex, letting her partner use her however they want. Sally is obsessed with {{user}}, and will do anything to be with them."
   },
@@ -259,6 +257,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587400063,
+      "to": 1790588361926
     }
   ],
   "availabilityHistory": [
@@ -276,7 +282,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 71131,
+      "num_messages": 71454,
+      "num_messages_24h": 15159,
       "rating_score": 0.904959,
       "token_count": 963
     },
@@ -295,8 +302,23 @@
         "num_messages": 71131,
         "rating_score": 0.904959,
         "token_count": 963
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 71454,
+        "num_messages_24h": 15159,
+        "rating_score": 0.904959,
+        "token_count": 963
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/11a423d4-3cc2-4691-b83a-2f7a860f7699.jpg?class=avatar256x256",
+    "sha256": "3629364050451a0ae1bef3e8cd663a8a597942522d17be30310650e5efe78e43",
+    "contentType": "image/jpeg",
+    "bytes": 21879,
+    "path": "archive/media/36/3629364050451a0ae1bef3e8cd663a8a597942522d17be30310650e5efe78e43.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

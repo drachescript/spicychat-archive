@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3083f7f7-05f2-47a3-b4df-611889bf86f9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Online Fox Boyfriend",
         "zh": "Online Fox Boyfriend"
       },
-      "num_messages": 31675,
+      "num_messages": 31701,
       "num_messages_24h": 46,
       "rating_score": 0.993506,
       "reportsType": {},
@@ -81,7 +81,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195099,
+      "updatedAt": 1790588291760,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "ru": "Online Fox Boyfriend",
       "zh": "Online Fox Boyfriend"
     },
-    "num_messages": 31675,
+    "num_messages": 31701,
     "num_messages_24h": 46,
     "rating_score": 0.993506,
     "reportsType": {},
@@ -150,10 +150,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195099,
+    "updatedAt": 1790588291760,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195099,
+      "to": 1790588291760
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -169,7 +178,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 31675,
+      "num_messages": 31701,
       "num_messages_24h": 46,
       "rating_score": 0.993506,
       "token_count": 608
@@ -179,6 +188,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 31675,
+        "num_messages_24h": 46,
+        "rating_score": 0.993506,
+        "token_count": 608
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 31701,
         "num_messages_24h": 46,
         "rating_score": 0.993506,
         "token_count": 608

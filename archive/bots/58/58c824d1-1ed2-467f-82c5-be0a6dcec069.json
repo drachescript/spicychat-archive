@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "58c824d1-1ed2-467f-82c5-be0a6dcec069",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Сломанная Фута",
         "tr": "Broken Futa"
       },
-      "num_messages": 44346,
+      "num_messages": 44366,
       "num_messages_24h": 4535,
       "rating_score": 0.885965,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586717,
+      "updatedAt": 1790588184310,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "ru": "Сломанная Фута",
       "tr": "Broken Futa"
     },
-    "num_messages": 44346,
+    "num_messages": 44366,
     "num_messages_24h": 4535,
     "rating_score": 0.885965,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586717,
+    "updatedAt": 1790588184310,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586717,
+      "to": 1790588184310
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,7 +200,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 44346,
+      "num_messages": 44366,
       "num_messages_24h": 4535,
       "rating_score": 0.885965,
       "token_count": 573
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 44346,
+        "num_messages_24h": 4535,
+        "rating_score": 0.885965,
+        "token_count": 573
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 44366,
         "num_messages_24h": 4535,
         "rating_score": 0.885965,
         "token_count": 573

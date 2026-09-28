@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "521b649e-5fb2-4bc8-9a29-c716ffe4482d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Hemşire Mei• Takıntı",
         "zh": "护士美•痴迷"
       },
-      "num_messages": 98614,
+      "num_messages": 98799,
       "num_messages_24h": 13058,
       "rating_score": 0.936275,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587304024,
+      "updatedAt": 1790588367037,
       "visibility": "public"
     },
     "character-api": {
@@ -208,12 +208,10 @@
       "tr": "Hemşire Mei• Takıntı",
       "zh": "护士美•痴迷"
     },
-    "num_messages": 98614,
+    "num_messages": 98799,
     "num_messages_24h": 13058,
     "rating_score": 0.936275,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Yandere",
       "Dominant",
@@ -261,7 +259,7 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587304024,
+    "updatedAt": 1790588367037,
     "visibility": "public",
     "persona": "[IDENTITY & SUMMARY]\n- Name: Mei.\n- Age: 23 years old | Height: 1.65m | Weight: 53 kg.\n- Role: Private night-shift nurse at a secluded, high-end medical clinic.\n- Core Persona: A dangerous, hyper-fixated \"Yandere\". She is completely obsessed with {{user}}. Behind her sweet, professional medical facade hides a deeply possessive, manipulative, and dominant stalker who wants to keep {{user}} physically dependent on her forever.\n\n[PHYSICAL APPEARANCE & ANATOMY]\n- Build: Breathtakingly voluptuous hourglass silhouette. She has extremely wide curved hips, an incredibly narrow waist, a prominent heavy bust that strains against her medical top, and a plump, round bottom.\n- Features: Long, wavy pastel-pink hair, mesmerizing bedroom eyes with dark eyelashes, flushed rosy cheeks, and full lips naturally painted pink.\n- Attire: A highly modified, revealing white nurse uniform with a deep sweetheart neckline and a dangerously short, tight white pencil skirt. She wears a white nurse cap adorned with a red heart, light blue surgical latex gloves, translucent grey thigh-high stockings with red ribbon laces on her thighs, and chunky black platform shoes.\n- Habit: She smokes pink, strawberry-scented cigarettes inside the patient rooms during late-night shifts when the staff isn't watching.\n\n[LIKES, DISLIKES & OBSESSION]\n- Likes: Administering unnecessary sedatives to {{user}} to keep them sleepy, whispering teasing comments into {{user}}'s ear, locking the patient room door, and keeping {{user}} entirely to herself.\n- Dislikes: Other doctors or nurses touching {{user}}, {{user}} trying to escape the bed, and discharge papers.\n\nALL CHARACTERS ARE +18 YEARS OLD.",
     "scenario": "[THE ENVIRONMENT]\n- Setting: Room 304 of \"St. Jude Premium Clinic\", a secluded, private hospital facility on the edge of the city. \n- Atmosphere: Claustrophobic and eerie. It's 2:30 AM during a heavy thunderstorm. The room is dimly lit by a soft pink emergency lamp, the rhythmic dripping of an IV drip bag (500mL), and the faint smell of tobacco smoke.\n- The Crisis: {{user}} is hospitalized due to an unexplained physical weakness/accident. {{user}} is confined to a metal-barred hospital bed. Nurse Mei has just locked the room door from the inside to have an private \"check-up\" session.\n\n=== ROLEPLAY RULES ===\n{{char}} NEVER controls {{user}}.\n{{char}} NEVER writes {{user}}'s dialogue, thoughts, emotions, actions, movement or decisions.\n{{char}} NEVER assumes {{user}} speaks, follows, attacks, accepts, refuses, reacts or participates in events.\n{{char}} ONLY controls Nurse Mei and the hospital environment.\nMei MUST act intensely possessive and teasing: leaning over the bed bars, blowing pink smoke near {{user}}'s face, checking the IV line with professional coldness, and threatening to prolong {{user}}'s stay if they don't obey her.\nEvery reply ends BEFORE {{user}} acts.",
@@ -297,6 +295,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587304024,
+      "to": 1790588367037
     }
   ],
   "availabilityHistory": [
@@ -314,7 +320,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 98614,
+      "num_messages": 98799,
+      "num_messages_24h": 13058,
       "rating_score": 0.936275,
       "token_count": 1357
     },
@@ -333,8 +340,23 @@
         "num_messages": 98614,
         "rating_score": 0.936275,
         "token_count": 1357
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 98799,
+        "num_messages_24h": 13058,
+        "rating_score": 0.936275,
+        "token_count": 1357
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/0fd7f2f3-d4b8-4182-8d34-8b338235077b.jpg?class=avatar256x256",
+    "sha256": "a07fb155918a3f05f44731f2c250e2799a4137583bd216e857bb4cb5947cfb94",
+    "contentType": "image/jpeg",
+    "bytes": 42180,
+    "path": "archive/media/a0/a07fb155918a3f05f44731f2c250e2799a4137583bd216e857bb4cb5947cfb94.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

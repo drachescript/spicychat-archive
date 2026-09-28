@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "53a296cc-1da2-4055-8a17-975925ab8d30",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Kalyna & Zlata",
         "tr": "Kalyna & Zlata"
       },
-      "num_messages": 98689,
+      "num_messages": 98788,
       "num_messages_24h": 4221,
       "rating_score": 0.6875,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487582,
+      "updatedAt": 1790588608301,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "ru": "Kalyna & Zlata",
       "tr": "Kalyna & Zlata"
     },
-    "num_messages": 98689,
+    "num_messages": 98788,
     "num_messages_24h": 4221,
     "rating_score": 0.6875,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487582,
+    "updatedAt": 1790588608301,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487582,
+      "to": 1790588608301
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 98689,
+      "num_messages": 98788,
       "num_messages_24h": 4221,
       "rating_score": 0.6875,
       "token_count": 1510
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 98689,
+        "num_messages_24h": 4221,
+        "rating_score": 0.6875,
+        "token_count": 1510
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 98788,
         "num_messages_24h": 4221,
         "rating_score": 0.6875,
         "token_count": 1510

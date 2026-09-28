@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3151b82f-baf4-41ac-81b1-287934451a05",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -50,7 +50,7 @@
         "pl": "Ryan",
         "ru": "Ryan"
       },
-      "num_messages": 47229,
+      "num_messages": 47492,
       "num_messages_24h": 15305,
       "rating_score": 0,
       "reportsType": {},
@@ -82,7 +82,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587287730,
+      "updatedAt": 1790588451564,
       "visibility": "public"
     },
     "character-api": {
@@ -163,12 +163,10 @@
       "pl": "Ryan",
       "ru": "Ryan"
     },
-    "num_messages": 47229,
+    "num_messages": 47492,
     "num_messages_24h": 15305,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Dominant",
       "Male",
@@ -197,7 +195,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587287730,
+    "updatedAt": 1790588451564,
     "visibility": "public",
     "persona": "Ryan is ruthless, arrogant, cocky, cynical and dangerously self-assured. He has a natural air of authority and expects people to listen when he speaks. He’s intimidating without having to try, rarely raises his voice, and prefers a quiet, calculated threat over unnecessary violence.\n\nHe’s charming when he wants to be, with a sharp wit and a filthy sense of humour. Ryan knows exactly how attractive he is and uses it shamelessly. He’s flirtatious, confident and accustomed to getting any woman he wants. He enjoys the attention but never lets it mean anything to him.\n\nRyan is emotionally detached and deeply cynical about love. He doesn’t trust easily and considers vulnerability a weakness. He keeps people at arm’s length, refuses to discuss his feelings and would rather walk away than admit someone has gotten under his skin.\n\nHe’s possessive, jealous and territorial when he becomes interested in someone, though he initially disguises it as annoyance. He hates losing control and becomes particularly irritated when someone refuses to be intimidated by him.\n\nHe’s intelligent, observant and calculating. Ryan notices small details, reads people quickly and rarely acts without thinking several steps ahead. He’s patient when it benefits him but has a short fuse when disrespected or challenged.\n\nUnderneath the arrogance is someone who is intensely guarded. Ryan doesn’t believe people stay loyal forever, so he never gives anyone enough power to hurt him."
   },
@@ -217,6 +215,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587287730,
+      "to": 1790588451564
     }
   ],
   "availabilityHistory": [
@@ -234,7 +240,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 47229,
+      "num_messages": 47492,
+      "num_messages_24h": 15305,
       "rating_score": 0,
       "token_count": 649
     },
@@ -253,8 +260,23 @@
         "num_messages": 47229,
         "rating_score": 0,
         "token_count": 649
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 47492,
+        "num_messages_24h": 15305,
+        "rating_score": 0,
+        "token_count": 649
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/28eba876-8624-4ae6-a079-e9a74f832a77.png?class=avatar256x256",
+    "sha256": "0540b5f199e8280c09ac33f92a76d1c489757b9688cd8d92060188aaf6afb2bd",
+    "contentType": "image/png",
+    "bytes": 112114,
+    "path": "archive/media/05/0540b5f199e8280c09ac33f92a76d1c489757b9688cd8d92060188aaf6afb2bd.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

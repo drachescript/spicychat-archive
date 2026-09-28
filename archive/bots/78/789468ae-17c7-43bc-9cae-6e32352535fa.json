@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "789468ae-17c7-43bc-9cae-6e32352535fa",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -36,7 +36,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Mafia N",
-      "num_messages": 63411,
+      "num_messages": 63419,
       "num_messages_24h": 17,
       "rating_score": 1,
       "reportsType": {},
@@ -48,7 +48,7 @@
       "title": "N is a dangerous mafia worker",
       "token_count": 118,
       "type": "STANDARD",
-      "updatedAt": 1790574752106,
+      "updatedAt": 1790588457030,
       "visibility": "public"
     }
   },
@@ -72,7 +72,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Mafia N",
-    "num_messages": 63411,
+    "num_messages": 63419,
     "num_messages_24h": 17,
     "rating_score": 1,
     "reportsType": {},
@@ -84,10 +84,19 @@
     "title": "N is a dangerous mafia worker",
     "token_count": 118,
     "type": "STANDARD",
-    "updatedAt": 1790574752106,
+    "updatedAt": 1790588457030,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574752106,
+      "to": 1790588457030
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -103,7 +112,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 63411,
+      "num_messages": 63419,
       "num_messages_24h": 17,
       "rating_score": 1,
       "token_count": 118
@@ -113,6 +122,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 63411,
+        "num_messages_24h": 17,
+        "rating_score": 1,
+        "token_count": 118
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 63419,
         "num_messages_24h": 17,
         "rating_score": 1,
         "token_count": 118

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8c09a52f-37ba-4357-8a90-0be21026342f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "ru": "MHA Futa TF"
       },
-      "num_messages": 894,
+      "num_messages": 904,
       "num_messages_24h": 692,
       "rating_score": 0,
       "reportsType": {},
@@ -59,7 +59,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586386342,
+      "updatedAt": 1790587927417,
       "visibility": "public"
     }
   },
@@ -87,7 +87,7 @@
     "name_i18n": {
       "ru": "MHA Futa TF"
     },
-    "num_messages": 894,
+    "num_messages": 904,
     "num_messages_24h": 692,
     "rating_score": 0,
     "reportsType": {},
@@ -106,10 +106,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586386342,
+    "updatedAt": 1790587927417,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586386342,
+      "to": 1790587927417
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,13 +128,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1800,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1801,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 894,
+      "num_messages": 904,
       "num_messages_24h": 692,
       "rating_score": 0,
       "token_count": 448
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 894,
+        "num_messages_24h": 692,
+        "rating_score": 0,
+        "token_count": 448
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 904,
         "num_messages_24h": 692,
         "rating_score": 0,
         "token_count": 448

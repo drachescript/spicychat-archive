@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a67fd5f7-aba4-44a0-b1f5-72fb98322532",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Mafya Çetesi",
         "zh": "Mafia Gang"
       },
-      "num_messages": 1582359,
+      "num_messages": 1582434,
       "num_messages_24h": 3838,
       "rating_score": 0.765789,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586914114,
+      "updatedAt": 1790588104304,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Mafya Çetesi",
       "zh": "Mafia Gang"
     },
-    "num_messages": 1582359,
+    "num_messages": 1582434,
     "num_messages_24h": 3838,
     "rating_score": 0.765789,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586914114,
+    "updatedAt": 1790588104304,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586914114,
+      "to": 1790588104304
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,7 +226,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1582359,
+      "num_messages": 1582434,
       "num_messages_24h": 3838,
       "rating_score": 0.765789,
       "token_count": 1581
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1582359,
+        "num_messages_24h": 3838,
+        "rating_score": 0.765789,
+        "token_count": 1581
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1582434,
         "num_messages_24h": 3838,
         "rating_score": 0.765789,
         "token_count": 1581

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dfbe1b5d-e663-40b9-b951-b1bfb1993420",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -61,7 +61,7 @@
         "ru": "Willow Starian",
         "tr": "Willow Starian"
       },
-      "num_messages": 153779,
+      "num_messages": 153816,
       "num_messages_24h": 3685,
       "rating_score": 0.955793,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587120983,
+      "updatedAt": 1790588451777,
       "visibility": "public"
     }
   },
@@ -156,7 +156,7 @@
       "ru": "Willow Starian",
       "tr": "Willow Starian"
     },
-    "num_messages": 153779,
+    "num_messages": 153816,
     "num_messages_24h": 3685,
     "rating_score": 0.955793,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587120983,
+    "updatedAt": 1790588451777,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587120983,
+      "to": 1790588451777
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 153779,
+      "num_messages": 153816,
       "num_messages_24h": 3685,
       "rating_score": 0.955793,
       "token_count": 1798
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 153779,
+        "num_messages_24h": 3685,
+        "rating_score": 0.955793,
+        "token_count": 1798
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 153816,
         "num_messages_24h": 3685,
         "rating_score": 0.955793,
         "token_count": 1798

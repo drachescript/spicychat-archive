@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f2c9eb6f-d862-48b8-b3fd-e1a04f30e0ef",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "tr": "Penny and James",
         "zh": "Penny and James"
       },
-      "num_messages": 150781,
+      "num_messages": 150788,
       "num_messages_24h": 3674,
       "rating_score": 0.01,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587596391,
+      "updatedAt": 1790587972235,
       "visibility": "public"
     }
   },
@@ -153,7 +153,7 @@
       "tr": "Penny and James",
       "zh": "Penny and James"
     },
-    "num_messages": 150781,
+    "num_messages": 150788,
     "num_messages_24h": 3674,
     "rating_score": 0.01,
     "reportsType": {},
@@ -202,10 +202,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587596391,
+    "updatedAt": 1790587972235,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587596391,
+      "to": 1790587972235
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 150781,
+      "num_messages": 150788,
       "num_messages_24h": 3674,
       "rating_score": 0.01,
       "token_count": 840
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 150781,
+        "num_messages_24h": 3674,
+        "rating_score": 0.01,
+        "token_count": 840
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 150788,
         "num_messages_24h": 3674,
         "rating_score": 0.01,
         "token_count": 840

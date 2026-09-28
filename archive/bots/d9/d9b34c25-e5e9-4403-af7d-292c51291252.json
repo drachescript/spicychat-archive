@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d9b34c25-e5e9-4403-af7d-292c51291252",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pl": "Chris Milgram",
         "ru": "Крис Милгрэм"
       },
-      "num_messages": 53537,
+      "num_messages": 53583,
       "num_messages_24h": 2561,
       "rating_score": 0.936047,
       "tags": [
@@ -79,7 +79,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587194808,
+      "updatedAt": 1790588359997,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "pl": "Chris Milgram",
       "ru": "Крис Милгрэм"
     },
-    "num_messages": 53537,
+    "num_messages": 53583,
     "num_messages_24h": 2561,
     "rating_score": 0.936047,
     "tags": [
@@ -146,10 +146,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587194808,
+    "updatedAt": 1790588359997,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587194808,
+      "to": 1790588359997
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2171,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2172,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 53537,
+      "num_messages": 53583,
       "num_messages_24h": 2561,
       "rating_score": 0.936047,
       "token_count": 661
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 53537,
+        "num_messages_24h": 2561,
+        "rating_score": 0.936047,
+        "token_count": 661
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 53583,
         "num_messages_24h": 2561,
         "rating_score": 0.936047,
         "token_count": 661

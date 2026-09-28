@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "39dc8e4f-5b00-4c41-958d-2b59fdc03fe0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "pl": "John Price",
         "zh": "John Price"
       },
-      "num_messages": 35494,
+      "num_messages": 35501,
       "num_messages_24h": 42,
       "rating_score": 1,
       "tags": [
@@ -75,7 +75,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587511523,
+      "updatedAt": 1790588364075,
       "visibility": "public"
     }
   },
@@ -106,7 +106,7 @@
       "pl": "John Price",
       "zh": "John Price"
     },
-    "num_messages": 35494,
+    "num_messages": 35501,
     "num_messages_24h": 42,
     "rating_score": 1,
     "tags": [
@@ -138,10 +138,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587511523,
+    "updatedAt": 1790588364075,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587511523,
+      "to": 1790588364075
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 35494,
+      "num_messages": 35501,
       "num_messages_24h": 42,
       "rating_score": 1,
       "token_count": 660
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 35494,
+        "num_messages_24h": 42,
+        "rating_score": 1,
+        "token_count": 660
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 35501,
         "num_messages_24h": 42,
         "rating_score": 1,
         "token_count": 660

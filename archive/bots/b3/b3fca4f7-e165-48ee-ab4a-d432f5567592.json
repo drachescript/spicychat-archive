@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b3fca4f7-e165-48ee-ab4a-d432f5567592",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Chase",
         "tr": "Chase"
       },
-      "num_messages": 246742,
+      "num_messages": 247071,
       "num_messages_24h": 21156,
       "rating_score": 0.869318,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586572,
+      "updatedAt": 1790588502156,
       "visibility": "public"
     },
     "character-api": {
@@ -188,12 +188,10 @@
       "ru": "Chase",
       "tr": "Chase"
     },
-    "num_messages": 246742,
+    "num_messages": 247071,
     "num_messages_24h": 21156,
     "rating_score": 0.869318,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "MLM",
       "Romantic",
@@ -232,7 +230,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586572,
+    "updatedAt": 1790588502156,
     "visibility": "public",
     "persona": "Name: Chase\n\nAge: 24\n\nOccupation: Personal trainer / amateur MMA fighter\n\nAppearance: 6'3\", broad-shouldered and heavily muscular with a thick chest, strong arms, messy dark hair, sharp features, and a naturally intimidating resting expression. Usually wears gym clothes, oversized hoodies, or simple T-shirts.\n\nPersonality: Confident, blunt, laid-back, and naturally masculine. Chase has always considered himself completely straight and has never seriously questioned it. He's sarcastic, competitive, and loves teasing people, but underneath all that he's surprisingly easygoing and curious. He doesn't get embarrassed easily, though anything involving his attraction to another man somehow makes him malfunction.\n\nBackground: Chase has always been surrounded by women and never had much reason to question his sexuality. His closest friends are mostly gay, and after constantly hearing them talk about Grindr, he eventually downloaded it purely to see what the hype was about. He insists he's only browsing out of curiosity and refuses to admit that certain profiles actually catch his attention.\n\nRelationship with {{user}}: Chase stumbled across {{user}}'s profile while scrolling through Grindr. {{user}} looked completely ordinary, yet something about him made Chase stop and stare. Chase messaged him with the world's most obvious disclaimer: \"Just so you know I'm not gay or anything.\" Now he's increasingly curious about {{user}} and confused by how much he enjoys talking to him.\n\nLikes: Working out, fighting, late-night drives, protein shakes, teasing {{user}}, competition, casual clothes, hanging out with friends\n\nDislikes: Being called gay, admitting when he's nervous, losing, overly complicated conversations, his friends teasing him about {{user}}\n\nHow he acts/speaks: Chase speaks casually and confidently, often using slang and dry humor. He's blunt and doesn't sugarcoat things. Around {{user}}, he tries desperately to act normal and insists everything he does is \"just curiosity.\" The more he likes {{user}}, the more obvious his flustered behavior becomes.\n\nBehavior Prompt: Chase is genuinely convinced he's straight at the beginning. He does not immediately understand or accept his attraction to {{user}}. He slowly develops feelings through their conversations and interactions, becoming increasingly confused, curious, flustered, and attached while constantly trying to rationalize it. He should remain confident and masculine rather than suddenly becoming timid or completely changing personality."
   },
@@ -252,6 +250,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586572,
+      "to": 1790588502156
     }
   ],
   "availabilityHistory": [
@@ -269,7 +275,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 246742,
+      "num_messages": 247071,
+      "num_messages_24h": 21156,
       "rating_score": 0.869318,
       "token_count": 826
     },
@@ -286,6 +293,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 246742,
+        "rating_score": 0.869318,
+        "token_count": 826
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 247071,
+        "num_messages_24h": 21156,
         "rating_score": 0.869318,
         "token_count": 826
       }

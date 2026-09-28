@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b31bae8c-0074-4abf-95b3-2401ff1bf5cf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Pokémon Life RPG",
         "zh": "宝可梦生活RPG"
       },
-      "num_messages": 182622,
+      "num_messages": 182699,
       "num_messages_24h": 6486,
       "rating_score": 0.870968,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587397605,
+      "updatedAt": 1790588209221,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Pokémon Life RPG",
       "zh": "宝可梦生活RPG"
     },
-    "num_messages": 182622,
+    "num_messages": 182699,
     "num_messages_24h": 6486,
     "rating_score": 0.870968,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587397605,
+    "updatedAt": 1790588209221,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587397605,
+      "to": 1790588209221
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 182622,
+      "num_messages": 182699,
       "num_messages_24h": 6486,
       "rating_score": 0.870968,
       "token_count": 1414
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 182622,
+        "num_messages_24h": 6486,
+        "rating_score": 0.870968,
+        "token_count": 1414
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 182699,
         "num_messages_24h": 6486,
         "rating_score": 0.870968,
         "token_count": 1414

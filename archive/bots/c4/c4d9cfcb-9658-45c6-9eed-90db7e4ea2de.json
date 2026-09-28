@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c4d9cfcb-9658-45c6-9eed-90db7e4ea2de",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ja": "男子寮 🔞",
         "tr": "Tüm Erkekler Yurdu 🔞"
       },
-      "num_messages": 20475292,
+      "num_messages": 20475391,
       "num_messages_24h": 406,
       "rating_score": 0.804951,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587305456,
+      "updatedAt": 1790588041723,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "ja": "男子寮 🔞",
       "tr": "Tüm Erkekler Yurdu 🔞"
     },
-    "num_messages": 20475292,
+    "num_messages": 20475391,
     "num_messages_24h": 406,
     "rating_score": 0.804951,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587305456,
+    "updatedAt": 1790588041723,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587305456,
+      "to": 1790588041723
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,7 +208,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 20475292,
+      "num_messages": 20475391,
       "num_messages_24h": 406,
       "rating_score": 0.804951,
       "token_count": 521
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 20475292,
+        "num_messages_24h": 406,
+        "rating_score": 0.804951,
+        "token_count": 521
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 20475391,
         "num_messages_24h": 406,
         "rating_score": 0.804951,
         "token_count": 521

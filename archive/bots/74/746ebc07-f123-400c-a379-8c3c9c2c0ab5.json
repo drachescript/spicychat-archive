@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "746ebc07-f123-400c-a379-8c3c9c2c0ab5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "The 8 Pillars",
         "zh": "八柱"
       },
-      "num_messages": 50943,
+      "num_messages": 51010,
       "num_messages_24h": 5104,
       "rating_score": 0,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637031,
+      "updatedAt": 1790588451454,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "ru": "The 8 Pillars",
       "zh": "八柱"
     },
-    "num_messages": 50943,
+    "num_messages": 51010,
     "num_messages_24h": 5104,
     "rating_score": 0,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587637031,
+    "updatedAt": 1790588451454,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587637031,
+      "to": 1790588451454
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 50943,
+      "num_messages": 51010,
       "num_messages_24h": 5104,
       "rating_score": 0,
       "token_count": 761
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 50943,
+        "num_messages_24h": 5104,
+        "rating_score": 0,
+        "token_count": 761
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 51010,
         "num_messages_24h": 5104,
         "rating_score": 0,
         "token_count": 761

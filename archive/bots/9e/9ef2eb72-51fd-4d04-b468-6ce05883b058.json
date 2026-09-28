@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9ef2eb72-51fd-4d04-b468-6ce05883b058",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Avengers",
-      "num_messages": 184,
+      "num_messages": 196,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "You versus the Avengers for the Power of the infinity stones Will you submit or WILL YOU WIN!",
       "token_count": 1317,
       "type": "STANDARD",
-      "updatedAt": 1790587136794,
+      "updatedAt": 1790588234209,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Avengers",
-    "num_messages": 184,
+    "num_messages": 196,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "You versus the Avengers for the Power of the infinity stones Will you submit or WILL YOU WIN!",
     "token_count": 1317,
     "type": "STANDARD",
-    "updatedAt": 1790587136794,
+    "updatedAt": 1790588234209,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587136794,
+      "to": 1790588234209
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 184,
+      "num_messages": 196,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1317
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 184,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1317
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 196,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1317

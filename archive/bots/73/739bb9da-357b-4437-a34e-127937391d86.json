@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "739bb9da-357b-4437-a34e-127937391d86",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "ru": "[Disowned-Summoner]",
         "zh": "[被驱逐的召唤师]"
       },
-      "num_messages": 76834,
+      "num_messages": 76866,
       "num_messages_24h": 4732,
       "rating_score": 0.60241,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587305435,
+      "updatedAt": 1790588382126,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "[Disowned-Summoner]",
       "zh": "[被驱逐的召唤师]"
     },
-    "num_messages": 76834,
+    "num_messages": 76866,
     "num_messages_24h": 4732,
     "rating_score": 0.60241,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587305435,
+    "updatedAt": 1790588382126,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587305435,
+      "to": 1790588382126
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,7 +202,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 76834,
+      "num_messages": 76866,
       "num_messages_24h": 4732,
       "rating_score": 0.60241,
       "token_count": 1119
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 76834,
+        "num_messages_24h": 4732,
+        "rating_score": 0.60241,
+        "token_count": 1119
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 76866,
         "num_messages_24h": 4732,
         "rating_score": 0.60241,
         "token_count": 1119

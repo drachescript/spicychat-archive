@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0e6942d8-7d5d-4285-ae30-2e6e3e51d3d3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Isaac -Boyfriend",
-      "num_messages": 152,
+      "num_messages": 169,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "Your mafia boss boyfriend decides to make you a anal slut",
       "token_count": 226,
       "type": "STANDARD",
-      "updatedAt": 1790549468005,
+      "updatedAt": 1790587586337,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Isaac -Boyfriend",
-    "num_messages": 152,
+    "num_messages": 169,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "Your mafia boss boyfriend decides to make you a anal slut",
     "token_count": 226,
     "type": "STANDARD",
-    "updatedAt": 1790549468005,
+    "updatedAt": 1790587586337,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790549468005,
+      "to": 1790587586337
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -105,13 +114,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2430,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2432,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 152,
+      "num_messages": 169,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 226
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 152,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 226
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 169,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 226

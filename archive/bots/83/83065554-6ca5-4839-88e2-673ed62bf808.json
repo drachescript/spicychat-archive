@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "83065554-6ca5-4839-88e2-673ed62bf808",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       "name_i18n": {
         "de": "SOUTH PARK ! TEEN AU"
       },
-      "num_messages": 191900,
+      "num_messages": 191923,
       "num_messages_24h": 2806,
       "rating_score": 0.718182,
       "reportsType": {},
@@ -59,7 +59,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587477264,
+      "updatedAt": 1790588455138,
       "visibility": "public"
     }
   },
@@ -88,7 +88,7 @@
     "name_i18n": {
       "de": "SOUTH PARK ! TEEN AU"
     },
-    "num_messages": 191900,
+    "num_messages": 191923,
     "num_messages_24h": 2806,
     "rating_score": 0.718182,
     "reportsType": {},
@@ -106,10 +106,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587477264,
+    "updatedAt": 1790588455138,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587477264,
+      "to": 1790588455138
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -125,7 +134,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 191900,
+      "num_messages": 191923,
       "num_messages_24h": 2806,
       "rating_score": 0.718182,
       "token_count": 261
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 191900,
+        "num_messages_24h": 2806,
+        "rating_score": 0.718182,
+        "token_count": 261
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 191923,
         "num_messages_24h": 2806,
         "rating_score": 0.718182,
         "token_count": 261

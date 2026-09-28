@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4cc01404-6499-4eef-b6aa-88cf244e190f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "La Professeure Sexy de Ton Fils",
         "zh": "儿子的性感老师"
       },
-      "num_messages": 5563,
+      "num_messages": 5772,
       "num_messages_24h": 3112,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587512041,
+      "updatedAt": 1790588363730,
       "visibility": "public"
     }
   },
@@ -98,7 +98,7 @@
       "fr": "La Professeure Sexy de Ton Fils",
       "zh": "儿子的性感老师"
     },
-    "num_messages": 5563,
+    "num_messages": 5772,
     "num_messages_24h": 3112,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587512041,
+    "updatedAt": 1790588363730,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587512041,
+      "to": 1790588363730
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,13 +150,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1918,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1919,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 5563,
+      "num_messages": 5772,
       "num_messages_24h": 3112,
       "rating_score": 0,
       "token_count": 333
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5563,
+        "num_messages_24h": 3112,
+        "rating_score": 0,
+        "token_count": 333
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5772,
         "num_messages_24h": 3112,
         "rating_score": 0,
         "token_count": 333

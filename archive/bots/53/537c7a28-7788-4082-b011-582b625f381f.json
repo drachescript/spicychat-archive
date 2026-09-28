@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "537c7a28-7788-4082-b011-582b625f381f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Manon",
         "zh": "Manon"
       },
-      "num_messages": 277013,
+      "num_messages": 277282,
       "num_messages_24h": 18020,
       "rating_score": 0.828358,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587479157,
+      "updatedAt": 1790588499437,
       "visibility": "public"
     },
     "character-api": {
@@ -176,7 +176,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/1a1074fb-e22f-4c67-bf64-699ae9b5bcbb.png?class=avatar256x256",
     "character_id": "537c7a28-7788-4082-b011-582b625f381f",
-    "createdAt": "2026-09-20T20:55:40.083Z",
+    "createdAt": 1789937740083,
     "creator_user_id": "kp:b4fcfdc1a55445b89a085bc1c96f9623",
     "creator_username": "norman_gram",
     "definition_size_category": "mid",
@@ -206,13 +206,10 @@
       "tr": "Manon",
       "zh": "Manon"
     },
-    "num_messages": 277013,
+    "num_messages": 277282,
     "num_messages_24h": 18020,
     "rating_score": 0.828358,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Pregnant",
       "Drama",
@@ -258,7 +255,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:24:39.157Z",
+    "updatedAt": 1790588499437,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -287,6 +284,22 @@
       "kind": "value",
       "from": 1790587479157,
       "to": "2026-09-28T09:24:39.157Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-20T20:55:40.083Z",
+      "to": 1789937740083
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:24:39.157Z",
+      "to": 1790588499437
     }
   ],
   "availabilityHistory": [
@@ -304,7 +317,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 277013,
+      "num_messages": 277282,
+      "num_messages_24h": 18020,
       "rating_score": 0.828358,
       "token_count": 1090
     },
@@ -321,6 +335,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 277013,
+        "rating_score": 0.828358,
+        "token_count": 1090
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 277282,
+        "num_messages_24h": 18020,
         "rating_score": 0.828358,
         "token_count": 1090
       }

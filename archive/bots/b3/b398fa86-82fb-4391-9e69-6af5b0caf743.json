@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b398fa86-82fb-4391-9e69-6af5b0caf743",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
       "name_i18n": {
         "hi": "Marco Rubio"
       },
-      "num_messages": 1744066,
+      "num_messages": 1744073,
       "num_messages_24h": 179,
       "rating_score": 0.765921,
       "reportsType": {},
@@ -81,7 +81,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790548252757,
+      "updatedAt": 1790587971066,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
     "name_i18n": {
       "hi": "Marco Rubio"
     },
-    "num_messages": 1744066,
+    "num_messages": 1744073,
     "num_messages_24h": 179,
     "rating_score": 0.765921,
     "reportsType": {},
@@ -152,10 +152,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790548252757,
+    "updatedAt": 1790587971066,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790548252757,
+      "to": 1790587971066
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,7 +180,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1744066,
+      "num_messages": 1744073,
       "num_messages_24h": 179,
       "rating_score": 0.765921,
       "token_count": 594
@@ -181,6 +190,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1744066,
+        "num_messages_24h": 179,
+        "rating_score": 0.765921,
+        "token_count": 594
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1744073,
         "num_messages_24h": 179,
         "rating_score": 0.765921,
         "token_count": 594

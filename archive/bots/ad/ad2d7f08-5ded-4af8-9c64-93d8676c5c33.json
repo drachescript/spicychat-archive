@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ad2d7f08-5ded-4af8-9c64-93d8676c5c33",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "es": "Rimuru",
         "ru": "Rimuru"
       },
-      "num_messages": 48683,
+      "num_messages": 48718,
       "num_messages_24h": 2538,
       "reportsType": {},
       "tags": [
@@ -72,7 +72,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587249962,
+      "updatedAt": 1790588278550,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "es": "Rimuru",
       "ru": "Rimuru"
     },
-    "num_messages": 48683,
+    "num_messages": 48718,
     "num_messages_24h": 2538,
     "reportsType": {},
     "tags": [
@@ -134,10 +134,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587249962,
+    "updatedAt": 1790588278550,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587249962,
+      "to": 1790588278550
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2188,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2189,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 48683,
+      "num_messages": 48718,
       "num_messages_24h": 2538,
       "token_count": 1444
     },
@@ -162,6 +171,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 48683,
+        "num_messages_24h": 2538,
+        "token_count": 1444
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 48718,
         "num_messages_24h": 2538,
         "token_count": 1444
       }

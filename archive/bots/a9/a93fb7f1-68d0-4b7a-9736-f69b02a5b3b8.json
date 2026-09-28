@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a93fb7f1-68d0-4b7a-9736-f69b02a5b3b8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       "name_i18n": {
         "ru": "Reina Kurose"
       },
-      "num_messages": 4665,
+      "num_messages": 4707,
       "num_messages_24h": 2255,
       "rating_score": 0,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587481907,
+      "updatedAt": 1790588607593,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
     "name_i18n": {
       "ru": "Reina Kurose"
     },
-    "num_messages": 4665,
+    "num_messages": 4707,
     "num_messages_24h": 2255,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587481907,
+    "updatedAt": 1790588607593,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481907,
+      "to": 1790588607593
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,13 +144,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2178,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2180,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 4665,
+      "num_messages": 4707,
       "num_messages_24h": 2255,
       "rating_score": 0,
       "token_count": 1545
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 4665,
+        "num_messages_24h": 2255,
+        "rating_score": 0,
+        "token_count": 1545
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 4707,
         "num_messages_24h": 2255,
         "rating_score": 0,
         "token_count": 1545

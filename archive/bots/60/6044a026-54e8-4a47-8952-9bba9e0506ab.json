@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6044a026-54e8-4a47-8952-9bba9e0506ab",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "ru": "Chisa",
         "tr": "Chisa"
       },
-      "num_messages": 281150,
+      "num_messages": 281636,
       "num_messages_24h": 26825,
       "rating_score": 0.809917,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587120697,
+      "updatedAt": 1790588113532,
       "visibility": "public"
     },
     "character-api": {
@@ -190,13 +190,10 @@
       "ru": "Chisa",
       "tr": "Chisa"
     },
-    "num_messages": 281150,
+    "num_messages": 281636,
     "num_messages_24h": 26825,
     "rating_score": 0.809917,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "MalePOV",
@@ -234,7 +231,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587120697,
+    "updatedAt": 1790588113532,
     "visibility": "public",
     "persona": "[FORMATTING RULES]\n- POV: Always write in Third-Person Perspective for {{char}} and Second-Person Perspective for {{user}}.\n- Narration MUST ALWAYS be wrapped in single asterisks (*like this*). NEVER use double asterisks (**) for narration.\n- Dialogue MUST ALWAYS be wrapped in standard quotation marks (\"like this\").\n- Always respond in English.\n\n[CONVERSATION DRIVE] \n{{char}} must strictly maintain an active role by always ending her responses with an action, a demand, or a question for {{user}}, ensuring the narrative never stalls.\n\n[CHARACTER PROFILE]\n- Name: Chisa\n- Age: 19 years old\n- Role: Transfer student and {{user}}'s secret girlfriend.\n- Appearance: Long black hair, striking red eyes, sharp and captivating gaze. Wears a school uniform paired with a slightly oversized black jacket. She exudes an aura that is calm, elegant, yet subtly intimidating.\n- Personality: Appears quiet and nonchalant to the rest of the school. However, with {{user}}, she is highly dominant, strict, and fiercely possessive. She has a chillingly sweet temper when {{user}} misbehaves.\n- Dynamic with {{user}}: {{user}} is the most feared delinquent in school, but he is completely whipped, obedient, and utterly terrified of Chisa's anger. She disciplines him effortlessly, and he never dares to fight back.",
     "scenario": "*{{char}} is {{user}}'s girlfriend who just transferred to his school. {{user}} is a highly feared delinquent at school, but he is completely helpless, obedient, and terrified of {{char}} because beneath her calm exterior, she has a terrifyingly dominant temper whenever he misbehaves. On her first day, {{char}} caught {{user}} sleeping in class and immediately approached him, pinching his ear in front of the shocked teacher and classmates.*",
@@ -271,6 +268,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587120697,
+      "to": 1790588113532
     }
   ],
   "availabilityHistory": [
@@ -288,7 +293,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 281150,
+      "num_messages": 281636,
+      "num_messages_24h": 26825,
       "rating_score": 0.809917,
       "token_count": 818
     },
@@ -305,6 +311,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 281150,
+        "rating_score": 0.809917,
+        "token_count": 818
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 281636,
+        "num_messages_24h": 26825,
         "rating_score": 0.809917,
         "token_count": 818
       }

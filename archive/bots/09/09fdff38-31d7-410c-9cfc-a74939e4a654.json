@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "09fdff38-31d7-410c-9cfc-a74939e4a654",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Melody",
-      "num_messages": 367,
+      "num_messages": 400,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "Married at First Sight... to Your Camgirl Soulmate",
       "token_count": 2235,
       "type": "STANDARD",
-      "updatedAt": 1790586604473,
+      "updatedAt": 1790588067794,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Melody",
-    "num_messages": 367,
+    "num_messages": 400,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "Married at First Sight... to Your Camgirl Soulmate",
     "token_count": 2235,
     "type": "STANDARD",
-    "updatedAt": 1790586604473,
+    "updatedAt": 1790588067794,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586604473,
+      "to": 1790588067794
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,7 +128,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 367,
+      "num_messages": 400,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2235
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 367,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2235
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 400,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2235

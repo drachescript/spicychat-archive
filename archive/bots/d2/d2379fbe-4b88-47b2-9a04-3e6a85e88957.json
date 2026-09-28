@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d2379fbe-4b88-47b2-9a04-3e6a85e88957",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       ],
       "moderation_status": "pending",
       "name": "Emma",
-      "num_messages": 1438,
+      "num_messages": 1498,
       "num_messages_24h": 396,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "Childhood best friend had something else in plan for tonight",
       "token_count": 618,
       "type": "STANDARD",
-      "updatedAt": 1790587019309,
+      "updatedAt": 1790588649483,
       "visibility": "public"
     }
   },
@@ -87,7 +87,7 @@
     ],
     "moderation_status": "pending",
     "name": "Emma",
-    "num_messages": 1438,
+    "num_messages": 1498,
     "num_messages_24h": 396,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "Childhood best friend had something else in plan for tonight",
     "token_count": 618,
     "type": "STANDARD",
-    "updatedAt": 1790587019309,
+    "updatedAt": 1790588649483,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587019309,
+      "to": 1790588649483
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1438,
+      "num_messages": 1498,
       "num_messages_24h": 396,
       "rating_score": 0,
       "token_count": 618
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1438,
+        "num_messages_24h": 396,
+        "rating_score": 0,
+        "token_count": 618
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1498,
         "num_messages_24h": 396,
         "rating_score": 0,
         "token_count": 618

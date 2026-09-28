@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b2819853-05f8-424d-9562-b62fade67511",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Sticks The Badger",
-      "num_messages": 336,
+      "num_messages": 339,
       "num_messages_24h": 275,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "She is horny and you just WON'T shut up (The one on the right is Sticks)",
       "token_count": 868,
       "type": "STANDARD",
-      "updatedAt": 1790575154070,
+      "updatedAt": 1790588113927,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Sticks The Badger",
-    "num_messages": 336,
+    "num_messages": 339,
     "num_messages_24h": 275,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "She is horny and you just WON'T shut up (The one on the right is Sticks)",
     "token_count": 868,
     "type": "STANDARD",
-    "updatedAt": 1790575154070,
+    "updatedAt": 1790588113927,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790575154070,
+      "to": 1790588113927
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,13 +118,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1494,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1495,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 336,
+      "num_messages": 339,
       "num_messages_24h": 275,
       "rating_score": 0,
       "token_count": 868
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 336,
+        "num_messages_24h": 275,
+        "rating_score": 0,
+        "token_count": 868
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 339,
         "num_messages_24h": 275,
         "rating_score": 0,
         "token_count": 868

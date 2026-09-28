@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6948ce0f-6c6f-4c82-91a5-a162b768a92d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "hi": "Jessica Myers",
         "pl": "Jessica Myers"
       },
-      "num_messages": 16604,
+      "num_messages": 16619,
       "num_messages_24h": 2743,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587359628,
+      "updatedAt": 1790587678945,
       "visibility": "public"
     }
   },
@@ -106,7 +106,7 @@
       "hi": "Jessica Myers",
       "pl": "Jessica Myers"
     },
-    "num_messages": 16604,
+    "num_messages": 16619,
     "num_messages_24h": 2743,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587359628,
+    "updatedAt": 1790587678945,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587359628,
+      "to": 1790587678945
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 16604,
+      "num_messages": 16619,
       "num_messages_24h": 2743,
       "rating_score": 0,
       "token_count": 1005
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 16604,
+        "num_messages_24h": 2743,
+        "rating_score": 0,
+        "token_count": 1005
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 16619,
         "num_messages_24h": 2743,
         "rating_score": 0,
         "token_count": 1005

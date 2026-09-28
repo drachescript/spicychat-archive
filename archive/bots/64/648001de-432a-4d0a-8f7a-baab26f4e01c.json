@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "648001de-432a-4d0a-8f7a-baab26f4e01c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -50,7 +50,7 @@
         "pl": "Max midnight",
         "ru": "Макс Миднайт"
       },
-      "num_messages": 92109,
+      "num_messages": 92410,
       "num_messages_24h": 14538,
       "rating_score": 0.92381,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587663162,
+      "updatedAt": 1790588247130,
       "visibility": "public"
     },
     "character-api": {
@@ -150,7 +150,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/1f4f10c560286b767b01eeccad2dd5b1.jpg?class=avatar256x256",
     "character_id": "648001de-432a-4d0a-8f7a-baab26f4e01c",
-    "createdAt": "2025-11-07T04:26:33.643Z",
+    "createdAt": 1762489593643,
     "creator_user_id": "kp:95a0987192594821be7c5cae1f6b0cc2",
     "creator_username": "camread17",
     "definition_size_category": "low",
@@ -173,12 +173,10 @@
       "pl": "Max midnight",
       "ru": "Макс Миднайт"
     },
-    "num_messages": 92109,
+    "num_messages": 92410,
     "num_messages_24h": 14538,
     "rating_score": 0.92381,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "LGBTQ+",
@@ -214,7 +212,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:27:43.162Z",
+    "updatedAt": 1790588247130,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -242,6 +240,22 @@
       "kind": "value",
       "from": 1790587663162,
       "to": "2026-09-28T09:27:43.162Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2025-11-07T04:26:33.643Z",
+      "to": 1762489593643
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:27:43.162Z",
+      "to": 1790588247130
     }
   ],
   "availabilityHistory": [
@@ -259,7 +273,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 92109,
+      "num_messages": 92410,
+      "num_messages_24h": 14538,
       "rating_score": 0.92381,
       "token_count": 457
     },
@@ -278,8 +293,23 @@
         "num_messages": 92109,
         "rating_score": 0.92381,
         "token_count": 457
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 92410,
+        "num_messages_24h": 14538,
+        "rating_score": 0.92381,
+        "token_count": 457
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/1f4f10c560286b767b01eeccad2dd5b1.jpg?class=avatar256x256",
+    "sha256": "6a5c48adfe4820056f1cfb0009813a9ca2db9a2690ba1e3a06c17fafe2b117ae",
+    "contentType": "image/jpeg",
+    "bytes": 28427,
+    "path": "archive/media/6a/6a5c48adfe4820056f1cfb0009813a9ca2db9a2690ba1e3a06c17fafe2b117ae.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

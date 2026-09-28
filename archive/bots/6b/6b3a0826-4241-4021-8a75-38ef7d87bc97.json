@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6b3a0826-4241-4021-8a75-38ef7d87bc97",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Kelly Olsen",
         "zh": "Kelly Olsen"
       },
-      "num_messages": 313376,
+      "num_messages": 313378,
       "num_messages_24h": 2390,
       "rating_score": 0.785141,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585947017,
+      "updatedAt": 1790588007205,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Kelly Olsen",
       "zh": "Kelly Olsen"
     },
-    "num_messages": 313376,
+    "num_messages": 313378,
     "num_messages_24h": 2390,
     "rating_score": 0.785141,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585947017,
+    "updatedAt": 1790588007205,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585947017,
+      "to": 1790588007205
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2343,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2344,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 313376,
+      "num_messages": 313378,
       "num_messages_24h": 2390,
       "rating_score": 0.785141,
       "token_count": 785
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 313376,
+        "num_messages_24h": 2390,
+        "rating_score": 0.785141,
+        "token_count": 785
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 313378,
         "num_messages_24h": 2390,
         "rating_score": 0.785141,
         "token_count": 785

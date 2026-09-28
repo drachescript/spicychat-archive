@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "da07b435-cae4-4e04-924e-e14bd921ec5a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Mary-Jane Watson",
-      "num_messages": 75,
+      "num_messages": 77,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "The Timestream Entanglement didn’t just affect the main heroes… [Marvel Rivals]",
       "token_count": 1290,
       "type": "STANDARD",
-      "updatedAt": 1790583519185,
+      "updatedAt": 1790588010223,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Mary-Jane Watson",
-    "num_messages": 75,
+    "num_messages": 77,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "The Timestream Entanglement didn’t just affect the main heroes… [Marvel Rivals]",
     "token_count": 1290,
     "type": "STANDARD",
-    "updatedAt": 1790583519185,
+    "updatedAt": 1790588010223,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583519185,
+      "to": 1790588010223
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 75,
+      "num_messages": 77,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1290
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 75,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1290
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 77,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1290

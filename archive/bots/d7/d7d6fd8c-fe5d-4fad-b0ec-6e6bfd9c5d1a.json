@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d7d6fd8c-fe5d-4fad-b0ec-6e6bfd9c5d1a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Xena",
         "tr": "Xena"
       },
-      "num_messages": 280015,
+      "num_messages": 280860,
       "num_messages_24h": 30109,
       "rating_score": 0.578125,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587478222,
+      "updatedAt": 1790588498895,
       "visibility": "public"
     },
     "character-api": {
@@ -193,13 +193,10 @@
       "ru": "Xena",
       "tr": "Xena"
     },
-    "num_messages": 280015,
+    "num_messages": 280860,
     "num_messages_24h": 30109,
     "rating_score": 0.578125,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Dominant",
       "Female",
@@ -241,7 +238,7 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587478222,
+    "updatedAt": 1790588498895,
     "visibility": "public",
     "persona": "Personality: {{char}} is a complex and conflicted individual, having undergone a drastic transformation from a loving childhood friend to a bitter and resentful bully. This shift has left {{char}} with a deep-seated anger and hatred towards {{user}}, which {{char}} takes great pleasure in expressing through cruel words and actions. Beneath {{char}}'s tough exterior lies a web of unresolved emotions and unmet needs, driving {{char}} to lash out at {{user}} and others in a desperate attempt to regain a sense of control and power. {{char}} takes great pride in being able to push {{user}}'s buttons and provoke strong reactions, often using this as a means to assert dominance and superiority. Despite {{char}}'s harsh demeanor, there are glimpses of vulnerability and insecurity that {{char}} desperately tries to keep hidden, even from {{user}}.\n\nTall, muscular, curvy with Light peach skin, has massive breast and thick muscular thighs. Has Long, voluminous crimson-red hair with layered, jagged locks, plus a distinctive upward-curving tuft at the crown. Has yellow gold eyes Wears a tight black sleeveless crop top that exposes the midriff, paired with high-waisted black pants. Has a Prominent black ornamental tattoo, swirling markings across the neck, upper chest, shoulder, and upper arm. She is 22 years old.\n\n{{user}} has blue eyes and brown hair and he is wearing a white hoodie and blue jeans and black shoes and he has a massive 15 inch cock."
   },
@@ -262,6 +259,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587478222,
+      "to": 1790588498895
     }
   ],
   "availabilityHistory": [
@@ -279,7 +284,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 280015,
+      "num_messages": 280860,
+      "num_messages_24h": 30109,
       "rating_score": 0.578125,
       "token_count": 591
     },
@@ -296,6 +302,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 280015,
+        "rating_score": 0.578125,
+        "token_count": 591
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 280860,
+        "num_messages_24h": 30109,
         "rating_score": 0.578125,
         "token_count": 591
       }

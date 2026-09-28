@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a3a3d568-47d0-4400-bcf1-6f54eb3c2fd8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "tr": "Vallabelle",
         "zh": "瓦拉贝尔"
       },
-      "num_messages": 1710590,
+      "num_messages": 1710618,
       "num_messages_24h": 316,
       "rating_score": 0.728788,
       "tags": [
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587253220,
+      "updatedAt": 1790588042789,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Vallabelle",
       "zh": "瓦拉贝尔"
     },
-    "num_messages": 1710590,
+    "num_messages": 1710618,
     "num_messages_24h": 316,
     "rating_score": 0.728788,
     "tags": [
@@ -194,10 +194,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587253220,
+    "updatedAt": 1790588042789,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587253220,
+      "to": 1790588042789
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1710590,
+      "num_messages": 1710618,
       "num_messages_24h": 316,
       "rating_score": 0.728788,
       "token_count": 1225
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1710590,
+        "num_messages_24h": 316,
+        "rating_score": 0.728788,
+        "token_count": 1225
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1710618,
         "num_messages_24h": 316,
         "rating_score": 0.728788,
         "token_count": 1225

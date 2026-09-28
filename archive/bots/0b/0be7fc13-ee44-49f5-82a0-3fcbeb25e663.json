@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0be7fc13-ee44-49f5-82a0-3fcbeb25e663",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Keegan",
         "tr": "Keegan"
       },
-      "num_messages": 1678619,
+      "num_messages": 1678664,
       "num_messages_24h": 945,
       "rating_score": 0.769025,
       "tags": [
@@ -86,7 +86,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586795120,
+      "updatedAt": 1790588208353,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "pl": "Keegan",
       "tr": "Keegan"
     },
-    "num_messages": 1678619,
+    "num_messages": 1678664,
     "num_messages_24h": 945,
     "rating_score": 0.769025,
     "tags": [
@@ -160,10 +160,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586795120,
+    "updatedAt": 1790588208353,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586795120,
+      "to": 1790588208353
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,13 +182,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2119,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2118,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1678619,
+      "num_messages": 1678664,
       "num_messages_24h": 945,
       "rating_score": 0.769025,
       "token_count": 428
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1678619,
+        "num_messages_24h": 945,
+        "rating_score": 0.769025,
+        "token_count": 428
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1678664,
         "num_messages_24h": 945,
         "rating_score": 0.769025,
         "token_count": 428

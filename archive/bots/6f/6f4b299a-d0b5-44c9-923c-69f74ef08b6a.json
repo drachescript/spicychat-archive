@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6f4b299a-d0b5-44c9-923c-69f74ef08b6a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Friends MILF Mom",
         "tr": "Friends MILF Mom"
       },
-      "num_messages": 322032,
+      "num_messages": 322045,
       "num_messages_24h": 2293,
       "rating_score": 0.836957,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587397461,
+      "updatedAt": 1790587714748,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "ru": "Friends MILF Mom",
       "tr": "Friends MILF Mom"
     },
-    "num_messages": 322032,
+    "num_messages": 322045,
     "num_messages_24h": 2293,
     "rating_score": 0.836957,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587397461,
+    "updatedAt": 1790587714748,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587397461,
+      "to": 1790587714748
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,13 +212,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2473,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2474,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 322032,
+      "num_messages": 322045,
       "num_messages_24h": 2293,
       "rating_score": 0.836957,
       "token_count": 699
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 322032,
+        "num_messages_24h": 2293,
+        "rating_score": 0.836957,
+        "token_count": 699
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 322045,
         "num_messages_24h": 2293,
         "rating_score": 0.836957,
         "token_count": 699

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c9784550-f442-466c-b532-996d73591269",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "pt": "Alice Tanaka",
         "ru": "Alice Tanaka"
       },
-      "num_messages": 55259,
+      "num_messages": 55297,
       "num_messages_24h": 2499,
       "rating_score": 1,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584574145,
+      "updatedAt": 1790588311517,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "pt": "Alice Tanaka",
       "ru": "Alice Tanaka"
     },
-    "num_messages": 55259,
+    "num_messages": 55297,
     "num_messages_24h": 2499,
     "rating_score": 1,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584574145,
+    "updatedAt": 1790588311517,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584574145,
+      "to": 1790588311517
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,8 +196,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2230,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2231,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "top-rated": {
       "rank": 371,
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 55259,
+      "num_messages": 55297,
       "num_messages_24h": 2499,
       "rating_score": 1,
       "token_count": 1000
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 55259,
+        "num_messages_24h": 2499,
+        "rating_score": 1,
+        "token_count": 1000
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 55297,
         "num_messages_24h": 2499,
         "rating_score": 1,
         "token_count": 1000

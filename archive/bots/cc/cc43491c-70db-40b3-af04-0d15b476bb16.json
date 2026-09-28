@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cc43491c-70db-40b3-af04-0d15b476bb16",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pt": "Luna & Melissa",
         "zh": "Luna & Melissa"
       },
-      "num_messages": 15276,
+      "num_messages": 15393,
       "num_messages_24h": 1906,
       "rating_score": 1,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587308127,
+      "updatedAt": 1790588114271,
       "visibility": "public"
     }
   },
@@ -113,7 +113,7 @@
       "pt": "Luna & Melissa",
       "zh": "Luna & Melissa"
     },
-    "num_messages": 15276,
+    "num_messages": 15393,
     "num_messages_24h": 1906,
     "rating_score": 1,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587308127,
+    "updatedAt": 1790588114271,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587308127,
+      "to": 1790588114271
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,13 +170,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 1127,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1124,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 15276,
+      "num_messages": 15393,
       "num_messages_24h": 1906,
       "rating_score": 1,
       "token_count": 1125
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 15276,
+        "num_messages_24h": 1906,
+        "rating_score": 1,
+        "token_count": 1125
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 15393,
         "num_messages_24h": 1906,
         "rating_score": 1,
         "token_count": 1125

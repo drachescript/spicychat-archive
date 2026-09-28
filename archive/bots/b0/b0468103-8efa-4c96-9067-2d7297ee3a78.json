@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b0468103-8efa-4c96-9067-2d7297ee3a78",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Jasmine Day",
-      "num_messages": 323,
+      "num_messages": 344,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "One mistake with another woman. She keeps ending it. She keeps going back.",
       "token_count": 794,
       "type": "STANDARD",
-      "updatedAt": 1790587301591,
+      "updatedAt": 1790588309608,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Jasmine Day",
-    "num_messages": 323,
+    "num_messages": 344,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "One mistake with another woman. She keeps ending it. She keeps going back.",
     "token_count": 794,
     "type": "STANDARD",
-    "updatedAt": 1790587301591,
+    "updatedAt": 1790588309608,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587301591,
+      "to": 1790588309608
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 323,
+      "num_messages": 344,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 794
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 323,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 794
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 344,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 794

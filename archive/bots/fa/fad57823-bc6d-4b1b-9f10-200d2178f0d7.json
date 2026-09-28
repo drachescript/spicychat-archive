@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fad57823-bc6d-4b1b-9f10-200d2178f0d7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "REBECCA | POLITICIAN",
         "zh": "丽贝卡 | 政治家"
       },
-      "num_messages": 196648,
+      "num_messages": 196651,
       "num_messages_24h": 3744,
       "rating_score": 0.671053,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586524607,
+      "updatedAt": 1790587927858,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "REBECCA | POLITICIAN",
       "zh": "丽贝卡 | 政治家"
     },
-    "num_messages": 196648,
+    "num_messages": 196651,
     "num_messages_24h": 3744,
     "rating_score": 0.671053,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586524607,
+    "updatedAt": 1790587927858,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586524607,
+      "to": 1790587927858
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 196648,
+      "num_messages": 196651,
       "num_messages_24h": 3744,
       "rating_score": 0.671053,
       "token_count": 993
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 196648,
+        "num_messages_24h": 3744,
+        "rating_score": 0.671053,
+        "token_count": 993
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 196651,
         "num_messages_24h": 3744,
         "rating_score": 0.671053,
         "token_count": 993

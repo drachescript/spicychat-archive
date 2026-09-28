@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "08beb161-4d50-4a66-b079-6326cb830293",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pl": "Alana Devilbiss",
         "ru": "Alana Devilbiss"
       },
-      "num_messages": 68473,
+      "num_messages": 68522,
       "num_messages_24h": 2577,
       "rating_score": 0.651515,
       "reportsType": {},
@@ -76,7 +76,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587405605,
+      "updatedAt": 1790588293399,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "pl": "Alana Devilbiss",
       "ru": "Alana Devilbiss"
     },
-    "num_messages": 68473,
+    "num_messages": 68522,
     "num_messages_24h": 2577,
     "rating_score": 0.651515,
     "reportsType": {},
@@ -140,10 +140,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587405605,
+    "updatedAt": 1790588293399,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587405605,
+      "to": 1790588293399
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,13 +162,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2149,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2150,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 68473,
+      "num_messages": 68522,
       "num_messages_24h": 2577,
       "rating_score": 0.651515,
       "token_count": 1670
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 68473,
+        "num_messages_24h": 2577,
+        "rating_score": 0.651515,
+        "token_count": 1670
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 68522,
         "num_messages_24h": 2577,
         "rating_score": 0.651515,
         "token_count": 1670

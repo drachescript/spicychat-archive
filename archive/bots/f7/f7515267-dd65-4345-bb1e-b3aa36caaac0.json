@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f7515267-dd65-4345-bb1e-b3aa36caaac0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +60,7 @@
         "tr": "Isekai Open World",
         "zh": "异世界开放世界"
       },
-      "num_messages": 1788687,
+      "num_messages": 1788866,
       "num_messages_24h": 4812,
       "rating_score": 0.812713,
       "reportsType": {},
@@ -110,7 +110,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587679713,
+      "updatedAt": 1790588112295,
       "visibility": "public"
     }
   },
@@ -160,7 +160,7 @@
       "tr": "Isekai Open World",
       "zh": "异世界开放世界"
     },
-    "num_messages": 1788687,
+    "num_messages": 1788866,
     "num_messages_24h": 4812,
     "rating_score": 0.812713,
     "reportsType": {},
@@ -210,10 +210,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587679713,
+    "updatedAt": 1790588112295,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587679713,
+      "to": 1790588112295
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -227,13 +236,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "popular": {
-      "rank": 1870,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1869,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1788687,
+      "num_messages": 1788866,
       "num_messages_24h": 4812,
       "rating_score": 0.812713,
       "token_count": 814
@@ -243,6 +252,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1788687,
+        "num_messages_24h": 4812,
+        "rating_score": 0.812713,
+        "token_count": 814
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1788866,
         "num_messages_24h": 4812,
         "rating_score": 0.812713,
         "token_count": 814

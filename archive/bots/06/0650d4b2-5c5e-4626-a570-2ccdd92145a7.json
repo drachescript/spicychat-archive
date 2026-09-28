@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0650d4b2-5c5e-4626-a570-2ccdd92145a7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "pl": "Mia Schmidt",
         "ru": "Mia Schmidt"
       },
-      "num_messages": 11969,
+      "num_messages": 12007,
       "num_messages_24h": 3965,
       "rating_score": 0,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587491424,
+      "updatedAt": 1790588038516,
       "visibility": "public"
     }
   },
@@ -114,7 +114,7 @@
       "pl": "Mia Schmidt",
       "ru": "Mia Schmidt"
     },
-    "num_messages": 11969,
+    "num_messages": 12007,
     "num_messages_24h": 3965,
     "rating_score": 0,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587491424,
+    "updatedAt": 1790588038516,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587491424,
+      "to": 1790588038516
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 11969,
+      "num_messages": 12007,
       "num_messages_24h": 3965,
       "rating_score": 0,
       "token_count": 1437
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 11969,
+        "num_messages_24h": 3965,
+        "rating_score": 0,
+        "token_count": 1437
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 12007,
         "num_messages_24h": 3965,
         "rating_score": 0,
         "token_count": 1437

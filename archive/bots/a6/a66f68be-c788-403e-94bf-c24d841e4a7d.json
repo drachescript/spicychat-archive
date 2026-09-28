@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a66f68be-c788-403e-94bf-c24d841e4a7d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Femboy transformatio",
         "tr": "Femboy transformatio"
       },
-      "num_messages": 15973,
+      "num_messages": 16050,
       "num_messages_24h": 3210,
       "reportsType": {},
       "tags": [
@@ -84,7 +84,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587080810,
+      "updatedAt": 1790588449168,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "ru": "Femboy transformatio",
       "tr": "Femboy transformatio"
     },
-    "num_messages": 15973,
+    "num_messages": 16050,
     "num_messages_24h": 3210,
     "reportsType": {},
     "tags": [
@@ -156,10 +156,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587080810,
+    "updatedAt": 1790588449168,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587080810,
+      "to": 1790588449168
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 15973,
+      "num_messages": 16050,
       "num_messages_24h": 3210,
       "token_count": 363
     },
@@ -184,6 +193,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 15973,
+        "num_messages_24h": 3210,
+        "token_count": 363
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 16050,
         "num_messages_24h": 3210,
         "token_count": 363
       }

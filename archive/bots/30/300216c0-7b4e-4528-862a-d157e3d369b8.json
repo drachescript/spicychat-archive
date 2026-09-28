@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "300216c0-7b4e-4528-862a-d157e3d369b8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -61,7 +61,7 @@
         "tr": "Wellington Estate",
         "zh": "惠灵顿庄园"
       },
-      "num_messages": 1944463,
+      "num_messages": 1944499,
       "num_messages_24h": 2068,
       "rating_score": 0.867451,
       "reportsType": {},
@@ -112,7 +112,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587022567,
+      "updatedAt": 1790588498845,
       "visibility": "public"
     }
   },
@@ -163,7 +163,7 @@
       "tr": "Wellington Estate",
       "zh": "惠灵顿庄园"
     },
-    "num_messages": 1944463,
+    "num_messages": 1944499,
     "num_messages_24h": 2068,
     "rating_score": 0.867451,
     "reportsType": {},
@@ -214,10 +214,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587022567,
+    "updatedAt": 1790588498845,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587022567,
+      "to": 1790588498845
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -233,7 +242,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1944463,
+      "num_messages": 1944499,
       "num_messages_24h": 2068,
       "rating_score": 0.867451,
       "token_count": 752
@@ -243,6 +252,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1944463,
+        "num_messages_24h": 2068,
+        "rating_score": 0.867451,
+        "token_count": 752
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1944499,
         "num_messages_24h": 2068,
         "rating_score": 0.867451,
         "token_count": 752

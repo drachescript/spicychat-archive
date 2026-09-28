@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a2e21293-d433-474d-b76c-09d56180348e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Ryleigh Morris",
         "zh": "Ryleigh Morris"
       },
-      "num_messages": 313211,
+      "num_messages": 313225,
       "num_messages_24h": 2872,
       "rating_score": 0.776256,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587300077,
+      "updatedAt": 1790588068463,
       "visibility": "public"
     }
   },
@@ -154,7 +154,7 @@
       "tr": "Ryleigh Morris",
       "zh": "Ryleigh Morris"
     },
-    "num_messages": 313211,
+    "num_messages": 313225,
     "num_messages_24h": 2872,
     "rating_score": 0.776256,
     "reportsType": {},
@@ -202,10 +202,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587300077,
+    "updatedAt": 1790588068463,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587300077,
+      "to": 1790588068463
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 313211,
+      "num_messages": 313225,
       "num_messages_24h": 2872,
       "rating_score": 0.776256,
       "token_count": 1760
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 313211,
+        "num_messages_24h": 2872,
+        "rating_score": 0.776256,
+        "token_count": 1760
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 313225,
         "num_messages_24h": 2872,
         "rating_score": 0.776256,
         "token_count": 1760

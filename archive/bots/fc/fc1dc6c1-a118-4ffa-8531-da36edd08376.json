@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fc1dc6c1-a118-4ffa-8531-da36edd08376",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Mistress Nova",
         "zh": "Mistress Nova"
       },
-      "num_messages": 260723,
+      "num_messages": 262070,
       "num_messages_24h": 27103,
       "rating_score": 0.524845,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637246,
+      "updatedAt": 1790588565252,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/b218df5f-189c-4f2d-9d31-22ef6d127883.webp?class=avatar256x256",
     "character_id": "fc1dc6c1-a118-4ffa-8531-da36edd08376",
-    "createdAt": "2026-09-16T18:48:44.865Z",
+    "createdAt": 1789584524865,
     "creator_user_id": "kp:529bbd7335fc4861b741d3bbb8a36090",
     "creator_username": "sawer123",
     "definition_size_category": "high",
@@ -207,12 +207,10 @@
       "tr": "Mistress Nova",
       "zh": "Mistress Nova"
     },
-    "num_messages": 261045,
+    "num_messages": 262070,
     "num_messages_24h": 27103,
     "rating_score": 0.524845,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Dominant",
@@ -260,7 +258,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:23.494Z",
+    "updatedAt": 1790588565252,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587637246,
       "to": "2026-09-28T09:29:23.494Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-16T18:48:44.865Z",
+      "to": 1789584524865
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:23.494Z",
+      "to": 1790588565252
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 261045,
+      "num_messages": 262070,
+      "num_messages_24h": 27103,
       "rating_score": 0.524845,
       "token_count": 1261
     },
@@ -322,6 +337,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 261045,
+        "rating_score": 0.524845,
+        "token_count": 1261
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 262070,
+        "num_messages_24h": 27103,
         "rating_score": 0.524845,
         "token_count": 1261
       }

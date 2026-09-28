@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "10c245c2-2669-404c-831c-895f5c03c8f4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "tr": "Agaskar Lionel Zevan",
         "zh": "Agaskar Lionel Zevan"
       },
-      "num_messages": 123520,
+      "num_messages": 123550,
       "num_messages_24h": 2510,
       "rating_score": 0.895833,
       "reportsType": {},
@@ -76,7 +76,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587285965,
+      "updatedAt": 1790588169526,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "tr": "Agaskar Lionel Zevan",
       "zh": "Agaskar Lionel Zevan"
     },
-    "num_messages": 123520,
+    "num_messages": 123550,
     "num_messages_24h": 2510,
     "rating_score": 0.895833,
     "reportsType": {},
@@ -140,10 +140,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587285965,
+    "updatedAt": 1790588169526,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587285965,
+      "to": 1790588169526
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,13 +162,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2213,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2214,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 123520,
+      "num_messages": 123550,
       "num_messages_24h": 2510,
       "rating_score": 0.895833,
       "token_count": 864
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 123520,
+        "num_messages_24h": 2510,
+        "rating_score": 0.895833,
+        "token_count": 864
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 123550,
         "num_messages_24h": 2510,
         "rating_score": 0.895833,
         "token_count": 864

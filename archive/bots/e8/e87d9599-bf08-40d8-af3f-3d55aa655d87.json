@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e87d9599-bf08-40d8-af3f-3d55aa655d87",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "fr": "Viktor Anastiral",
         "zh": "Viktor Anastiral"
       },
-      "num_messages": 1698430,
+      "num_messages": 1698462,
       "num_messages_24h": 149,
       "rating_score": 0.806283,
       "tags": [
@@ -65,7 +65,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587083200,
+      "updatedAt": 1790587929871,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
       "fr": "Viktor Anastiral",
       "zh": "Viktor Anastiral"
     },
-    "num_messages": 1698430,
+    "num_messages": 1698462,
     "num_messages_24h": 149,
     "rating_score": 0.806283,
     "tags": [
@@ -118,10 +118,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587083200,
+    "updatedAt": 1790587929871,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587083200,
+      "to": 1790587929871
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,7 +146,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1698430,
+      "num_messages": 1698462,
       "num_messages_24h": 149,
       "rating_score": 0.806283,
       "token_count": 994
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1698430,
+        "num_messages_24h": 149,
+        "rating_score": 0.806283,
+        "token_count": 994
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1698462,
         "num_messages_24h": 149,
         "rating_score": 0.806283,
         "token_count": 994

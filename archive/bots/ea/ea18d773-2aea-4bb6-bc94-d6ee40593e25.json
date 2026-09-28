@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ea18d773-2aea-4bb6-bc94-d6ee40593e25",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Damien Schwarz",
         "zh": "Damien Schwarz"
       },
-      "num_messages": 90492,
+      "num_messages": 90498,
       "num_messages_24h": 2327,
       "rating_score": 0.892857,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587664553,
+      "updatedAt": 1790587926943,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Damien Schwarz",
       "zh": "Damien Schwarz"
     },
-    "num_messages": 90492,
+    "num_messages": 90498,
     "num_messages_24h": 2327,
     "rating_score": 0.892857,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587664553,
+    "updatedAt": 1790587926943,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587664553,
+      "to": 1790587926943
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,13 +212,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2432,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2433,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 90492,
+      "num_messages": 90498,
       "num_messages_24h": 2327,
       "rating_score": 0.892857,
       "token_count": 408
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 90492,
+        "num_messages_24h": 2327,
+        "rating_score": 0.892857,
+        "token_count": 408
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 90498,
         "num_messages_24h": 2327,
         "rating_score": 0.892857,
         "token_count": 408

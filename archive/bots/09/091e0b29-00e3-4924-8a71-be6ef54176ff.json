@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "091e0b29-00e3-4924-8a71-be6ef54176ff",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Vincent R.",
-      "num_messages": 9,
+      "num_messages": 27,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -51,7 +51,7 @@
       "title": "First sight, his softspot ♡.",
       "token_count": 524,
       "type": "STANDARD",
-      "updatedAt": 1790572100455,
+      "updatedAt": 1790588532249,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Vincent R.",
-    "num_messages": 9,
+    "num_messages": 27,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -90,10 +90,19 @@
     "title": "First sight, his softspot ♡.",
     "token_count": 524,
     "type": "STANDARD",
-    "updatedAt": 1790572100455,
+    "updatedAt": 1790588532249,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790572100455,
+      "to": 1790588532249
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,7 +118,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 9,
+      "num_messages": 27,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 524
@@ -119,6 +128,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 9,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 524
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 27,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 524

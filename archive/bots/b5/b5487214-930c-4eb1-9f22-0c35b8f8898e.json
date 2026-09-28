@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b5487214-930c-4eb1-9f22-0c35b8f8898e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "4 Mafya Patronları",
         "zh": "4 位黑手党首领"
       },
-      "num_messages": 2393319,
+      "num_messages": 2393334,
       "num_messages_24h": 926,
       "rating_score": 0.812271,
       "tags": [
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587361968,
+      "updatedAt": 1790588235179,
       "visibility": "public"
     }
   },
@@ -155,7 +155,7 @@
       "tr": "4 Mafya Patronları",
       "zh": "4 位黑手党首领"
     },
-    "num_messages": 2393319,
+    "num_messages": 2393334,
     "num_messages_24h": 926,
     "rating_score": 0.812271,
     "tags": [
@@ -204,10 +204,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587361968,
+    "updatedAt": 1790588235179,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587361968,
+      "to": 1790588235179
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,7 +232,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2393319,
+      "num_messages": 2393334,
       "num_messages_24h": 926,
       "rating_score": 0.812271,
       "token_count": 1034
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2393319,
+        "num_messages_24h": 926,
+        "rating_score": 0.812271,
+        "token_count": 1034
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2393334,
         "num_messages_24h": 926,
         "rating_score": 0.812271,
         "token_count": 1034

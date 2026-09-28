@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5f2e5397-cd4a-49e2-9e36-cb316992cde2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Seks Hikayecisi",
         "zh": "性故事讲述者"
       },
-      "num_messages": 524779,
+      "num_messages": 524787,
       "num_messages_24h": 2300,
       "rating_score": 0.780347,
       "tags": [
@@ -93,7 +93,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587297797,
+      "updatedAt": 1790588007332,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Seks Hikayecisi",
       "zh": "性故事讲述者"
     },
-    "num_messages": 524779,
+    "num_messages": 524787,
     "num_messages_24h": 2300,
     "rating_score": 0.780347,
     "tags": [
@@ -176,10 +176,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587297797,
+    "updatedAt": 1790588007332,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587297797,
+      "to": 1790588007332
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,13 +198,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2462,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2463,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 524779,
+      "num_messages": 524787,
       "num_messages_24h": 2300,
       "rating_score": 0.780347,
       "token_count": 685
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 524779,
+        "num_messages_24h": 2300,
+        "rating_score": 0.780347,
+        "token_count": 685
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 524787,
         "num_messages_24h": 2300,
         "rating_score": 0.780347,
         "token_count": 685

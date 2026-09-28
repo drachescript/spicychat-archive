@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c41ec035-b1bf-4ad9-ac3e-327f863333d5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "BDSM Simülatörü",
         "zh": "BDSM Simulator"
       },
-      "num_messages": 1624879,
+      "num_messages": 1624961,
       "num_messages_24h": 3594,
       "rating_score": 0.857657,
       "tags": [
@@ -101,7 +101,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587563162,
+      "updatedAt": 1790588182682,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "BDSM Simülatörü",
       "zh": "BDSM Simulator"
     },
-    "num_messages": 1624879,
+    "num_messages": 1624961,
     "num_messages_24h": 3594,
     "rating_score": 0.857657,
     "tags": [
@@ -190,10 +190,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587563162,
+    "updatedAt": 1790588182682,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587563162,
+      "to": 1790588182682
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1624879,
+      "num_messages": 1624961,
       "num_messages_24h": 3594,
       "rating_score": 0.857657,
       "token_count": 679
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1624879,
+        "num_messages_24h": 3594,
+        "rating_score": 0.857657,
+        "token_count": 679
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1624961,
         "num_messages_24h": 3594,
         "rating_score": 0.857657,
         "token_count": 679

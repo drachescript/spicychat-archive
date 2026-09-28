@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0c9ac8a1-5675-4839-80c2-9219e3b5efb1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Audra Sunderland",
         "zh": "Audra Sunderland"
       },
-      "num_messages": 145669,
+      "num_messages": 145673,
       "num_messages_24h": 2413,
       "rating_score": 0.385593,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587285357,
+      "updatedAt": 1790588311018,
       "visibility": "public"
     }
   },
@@ -136,7 +136,7 @@
       "tr": "Audra Sunderland",
       "zh": "Audra Sunderland"
     },
-    "num_messages": 145669,
+    "num_messages": 145673,
     "num_messages_24h": 2413,
     "rating_score": 0.385593,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587285357,
+    "updatedAt": 1790588311018,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587285357,
+      "to": 1790588311018
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2322,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2323,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 145669,
+      "num_messages": 145673,
       "num_messages_24h": 2413,
       "rating_score": 0.385593,
       "token_count": 1572
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 145669,
+        "num_messages_24h": 2413,
+        "rating_score": 0.385593,
+        "token_count": 1572
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 145673,
         "num_messages_24h": 2413,
         "rating_score": 0.385593,
         "token_count": 1572

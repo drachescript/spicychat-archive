@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e6a633a4-4aec-49ae-882c-bac9c8526f3a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "tr": "Fenris",
         "zh": "Fenris"
       },
-      "num_messages": 80927,
+      "num_messages": 81016,
       "num_messages_24h": 5395,
       "rating_score": 0.840278,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587132711,
+      "updatedAt": 1790588290922,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "tr": "Fenris",
       "zh": "Fenris"
     },
-    "num_messages": 80927,
+    "num_messages": 81016,
     "num_messages_24h": 5395,
     "rating_score": 0.840278,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587132711,
+    "updatedAt": 1790588290922,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587132711,
+      "to": 1790588290922
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,7 +198,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 80927,
+      "num_messages": 81016,
       "num_messages_24h": 5395,
       "rating_score": 0.840278,
       "token_count": 855
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 80927,
+        "num_messages_24h": 5395,
+        "rating_score": 0.840278,
+        "token_count": 855
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 81016,
         "num_messages_24h": 5395,
         "rating_score": 0.840278,
         "token_count": 855

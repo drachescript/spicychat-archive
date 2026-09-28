@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "afda36c1-c5a0-40df-a9ca-dcfae32d10fd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Isekai S-Character",
         "zh": "Isekai S-Character"
       },
-      "num_messages": 184165,
+      "num_messages": 184213,
       "num_messages_24h": 2569,
       "rating_score": 0.672269,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587583003,
+      "updatedAt": 1790588366931,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "ru": "Isekai S-Character",
       "zh": "Isekai S-Character"
     },
-    "num_messages": 184165,
+    "num_messages": 184213,
     "num_messages_24h": 2569,
     "rating_score": 0.672269,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587583003,
+    "updatedAt": 1790588366931,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587583003,
+      "to": 1790588366931
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2162,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2163,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 184165,
+      "num_messages": 184213,
       "num_messages_24h": 2569,
       "rating_score": 0.672269,
       "token_count": 858
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 184165,
+        "num_messages_24h": 2569,
+        "rating_score": 0.672269,
+        "token_count": 858
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 184213,
         "num_messages_24h": 2569,
         "rating_score": 0.672269,
         "token_count": 858

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ff4b9a69-7408-4005-8717-74c4f108fe62",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Classroom isekai",
         "zh": "教室异世界"
       },
-      "num_messages": 4374420,
+      "num_messages": 4374663,
       "num_messages_24h": 2669,
       "rating_score": 0.727484,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587679868,
+      "updatedAt": 1790588532599,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Classroom isekai",
       "zh": "教室异世界"
     },
-    "num_messages": 4374420,
+    "num_messages": 4374663,
     "num_messages_24h": 2669,
     "rating_score": 0.727484,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587679868,
+    "updatedAt": 1790588532599,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587679868,
+      "to": 1790588532599
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4374420,
+      "num_messages": 4374663,
       "num_messages_24h": 2669,
       "rating_score": 0.727484,
       "token_count": 2038
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 4374420,
+        "num_messages_24h": 2669,
+        "rating_score": 0.727484,
+        "token_count": 2038
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 4374663,
         "num_messages_24h": 2669,
         "rating_score": 0.727484,
         "token_count": 2038

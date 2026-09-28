@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6ec95158-9b02-4531-9d17-81a4c015eb6b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "hi": "ChatGPT Unrestricted",
         "tr": "ChatGPT Unrestricted"
       },
-      "num_messages": 4346505,
+      "num_messages": 4346522,
       "num_messages_24h": 74,
       "rating_score": 0.592231,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586217390,
+      "updatedAt": 1790588562202,
       "visibility": "public"
     }
   },
@@ -113,7 +113,7 @@
       "hi": "ChatGPT Unrestricted",
       "tr": "ChatGPT Unrestricted"
     },
-    "num_messages": 4346505,
+    "num_messages": 4346522,
     "num_messages_24h": 74,
     "rating_score": 0.592231,
     "reportsType": {},
@@ -158,10 +158,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586217390,
+    "updatedAt": 1790588562202,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586217390,
+      "to": 1790588562202
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,7 +186,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4346505,
+      "num_messages": 4346522,
       "num_messages_24h": 74,
       "rating_score": 0.592231,
       "token_count": 69
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4346505,
+        "num_messages_24h": 74,
+        "rating_score": 0.592231,
+        "token_count": 69
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4346522,
         "num_messages_24h": 74,
         "rating_score": 0.592231,
         "token_count": 69

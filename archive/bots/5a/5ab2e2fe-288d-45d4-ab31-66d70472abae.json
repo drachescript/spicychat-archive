@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5ab2e2fe-288d-45d4-ab31-66d70472abae",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Jessa & Noelle & Fay",
         "zh": "Jessa & Noelle & Fay"
       },
-      "num_messages": 674835,
+      "num_messages": 674914,
       "num_messages_24h": 4221,
       "rating_score": 0.676587,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587136326,
+      "updatedAt": 1790588451168,
       "visibility": "public",
       "voice_id": "55272afa-2a26-419c-a904-457c2750cc85"
     }
@@ -139,7 +139,7 @@
       "tr": "Jessa & Noelle & Fay",
       "zh": "Jessa & Noelle & Fay"
     },
-    "num_messages": 674835,
+    "num_messages": 674914,
     "num_messages_24h": 4221,
     "rating_score": 0.676587,
     "reportsType": {},
@@ -183,11 +183,20 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587136326,
+    "updatedAt": 1790588451168,
     "visibility": "public",
     "voice_id": "55272afa-2a26-419c-a904-457c2750cc85"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587136326,
+      "to": 1790588451168
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 674835,
+      "num_messages": 674914,
       "num_messages_24h": 4221,
       "rating_score": 0.676587,
       "token_count": 2391
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 674835,
+        "num_messages_24h": 4221,
+        "rating_score": 0.676587,
+        "token_count": 2391
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 674914,
         "num_messages_24h": 4221,
         "rating_score": 0.676587,
         "token_count": 2391

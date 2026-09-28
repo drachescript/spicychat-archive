@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0ead2743-8114-4c3e-bfb5-f730bb3972af",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Лора Мэтьюс",
         "tr": "Laura Matthews"
       },
-      "num_messages": 1839993,
+      "num_messages": 1840007,
       "num_messages_24h": 185,
       "rating_score": 0.89673,
       "tags": [
@@ -98,7 +98,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587363981,
+      "updatedAt": 1790587863049,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Лора Мэтьюс",
       "tr": "Laura Matthews"
     },
-    "num_messages": 1839993,
+    "num_messages": 1840007,
     "num_messages_24h": 185,
     "rating_score": 0.89673,
     "tags": [
@@ -184,10 +184,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587363981,
+    "updatedAt": 1790587863049,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587363981,
+      "to": 1790587863049
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1839993,
+      "num_messages": 1840007,
       "num_messages_24h": 185,
       "rating_score": 0.89673,
       "token_count": 317
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1839993,
+        "num_messages_24h": 185,
+        "rating_score": 0.89673,
+        "token_count": 317
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1840007,
         "num_messages_24h": 185,
         "rating_score": 0.89673,
         "token_count": 317

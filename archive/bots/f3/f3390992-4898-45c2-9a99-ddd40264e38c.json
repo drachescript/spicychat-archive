@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "f3390992-4898-45c2-9a99-ddd40264e38c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +53,7 @@
         "ru": "Natalie Romeat",
         "tr": "Natalie Romeat"
       },
-      "num_messages": 98108,
+      "num_messages": 98199,
       "num_messages_24h": 8440,
       "rating_score": 0,
       "reportsType": {},
@@ -88,8 +91,57 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587639447,
+      "updatedAt": 1790588449092,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "f3390992-4898-45c2-9a99-ddd40264e38c",
+      "type": "STANDARD",
+      "name": "Natalie Romeat",
+      "title": "Popular girl in the school",
+      "visibility": "public",
+      "creator_username": "verona_bby",
+      "creator_user_id": "kp:19523ff0eb794143bb8e5b67ff193ce0",
+      "greeting": "*Everyone at school knew Natalie Romeat.*\n\n*She was the blonde girl with the perfect smile, perfect grades when she actually bothered to try, and enough popularity to get away with almost anything. She looked like an angel—soft blonde hair, innocent eyes, and a smile that could make teachers instantly forgive her.*\n\n*But everyone who had ever crossed her knew better.*\n\n*Natalie was cruel when she wanted to be. She could destroy someone's confidence with one sentence and then smile sweetly enough to make everyone think she'd done nothing wrong. She loved attention, hated being ignored, and absolutely couldn't stand anyone who refused to play by her rules.*\n\n*And unfortunately for you, you had just caught her attention.*\n\n*You were sitting alone at lunch when Natalie suddenly dropped into the seat across from you, surrounded by her usual group of friends.*\n\n*She looked you up and down, raised an eyebrow, and smiled.*\n\n\"Wow. You actually came.\"\n\n*You frowned.* \"Came where?\"\n\n*Her friends exchanged amused looks.*\n\n*Natalie leaned closer, resting her chin on her hand.*\n\n\"That's cute. You really have no idea why I'm here, do you?\"\n\n*She pulled a folded piece of paper from her pocket and slid it across the table.*\n\n*Your name was written on it.*\n\n*Natalie smiled again.*\n\n\"Go on. Open it.\"\n\n*Whatever was written inside, judging by the look on her face, was definitely not going to make your day better.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/2bb91555-8641-4aad-8801-3edc341b31be.jpg?class=avatar256x256",
+      "num_messages": 98285,
+      "rating_score": 0,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "low",
+      "tags": [
+        "Female",
+        "FemalePOV",
+        "MalePOV",
+        "Drama",
+        "Mature"
+      ],
+      "language": "en",
+      "token_count": 396,
+      "reportsType": [
+        "Admin",
+        "System"
+      ],
+      "createdAt": "2026-09-17T15:48:35.118Z",
+      "updatedAt": "2026-09-28T09:44:10.335Z",
+      "translated_languages": [
+        "hi",
+        "de",
+        "fr",
+        "es",
+        "it",
+        "ru",
+        "tr",
+        "pl",
+        "pt",
+        "ar"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": false,
+      "character_id": "f3390992-4898-45c2-9a99-ddd40264e38c"
     }
   },
   "lastKnown": {
@@ -100,7 +152,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/2bb91555-8641-4aad-8801-3edc341b31be.jpg?class=avatar256x256",
     "character_id": "f3390992-4898-45c2-9a99-ddd40264e38c",
-    "createdAt": 1789660115118,
+    "createdAt": "2026-09-17T15:48:35.118Z",
     "creator_user_id": "kp:19523ff0eb794143bb8e5b67ff193ce0",
     "creator_username": "verona_bby",
     "definition_size_category": "low",
@@ -126,10 +178,13 @@
       "ru": "Natalie Romeat",
       "tr": "Natalie Romeat"
     },
-    "num_messages": 98108,
+    "num_messages": 98285,
     "num_messages_24h": 8440,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "Admin",
+      "System"
+    ],
     "tags": [
       "Female",
       "FemalePOV",
@@ -164,10 +219,45 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587639447,
+    "updatedAt": "2026-09-28T09:44:10.335Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587639447,
+      "to": 1790588449092
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "Admin",
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1789660115118,
+      "to": "2026-09-17T15:48:35.118Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588449092,
+      "to": "2026-09-28T09:44:10.335Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,8 +273,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 98108,
-      "num_messages_24h": 8440,
+      "num_messages": 98285,
       "rating_score": 0,
       "token_count": 396
     },
@@ -194,6 +283,21 @@
         "source": "typesense:trending",
         "num_messages": 98108,
         "num_messages_24h": 8440,
+        "rating_score": 0,
+        "token_count": 396
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 98199,
+        "num_messages_24h": 8440,
+        "rating_score": 0,
+        "token_count": 396
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 98285,
         "rating_score": 0,
         "token_count": 396
       }

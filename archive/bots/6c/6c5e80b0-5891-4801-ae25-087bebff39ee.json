@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6c5e80b0-5891-4801-ae25-087bebff39ee",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Shawn Maddox",
         "tr": "Shawn Maddox"
       },
-      "num_messages": 200185,
+      "num_messages": 200223,
       "num_messages_24h": 2555,
       "rating_score": 0.77451,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587080943,
+      "updatedAt": 1790587767011,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "ru": "Shawn Maddox",
       "tr": "Shawn Maddox"
     },
-    "num_messages": 200185,
+    "num_messages": 200223,
     "num_messages_24h": 2555,
     "rating_score": 0.77451,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587080943,
+    "updatedAt": 1790587767011,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587080943,
+      "to": 1790587767011
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,13 +190,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2176,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2177,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 200185,
+      "num_messages": 200223,
       "num_messages_24h": 2555,
       "rating_score": 0.77451,
       "token_count": 669
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 200185,
+        "num_messages_24h": 2555,
+        "rating_score": 0.77451,
+        "token_count": 669
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 200223,
         "num_messages_24h": 2555,
         "rating_score": 0.77451,
         "token_count": 669

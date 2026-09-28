@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a8ee8d63-904f-4c5d-a3d7-a20ce1e475e5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "5 Mafia Boss",
         "zh": "五位黑手党首领"
       },
-      "num_messages": 5183200,
+      "num_messages": 5183268,
       "num_messages_24h": 697,
       "rating_score": 0.835071,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586629927,
+      "updatedAt": 1790587924585,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "tr": "5 Mafia Boss",
       "zh": "五位黑手党首领"
     },
-    "num_messages": 5183200,
+    "num_messages": 5183268,
     "num_messages_24h": 697,
     "rating_score": 0.835071,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586629927,
+    "updatedAt": 1790587924585,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586629927,
+      "to": 1790587924585
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5183200,
+      "num_messages": 5183268,
       "num_messages_24h": 697,
       "rating_score": 0.835071,
       "token_count": 803
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 5183200,
+        "num_messages_24h": 697,
+        "rating_score": 0.835071,
+        "token_count": 803
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 5183268,
         "num_messages_24h": 697,
         "rating_score": 0.835071,
         "token_count": 803

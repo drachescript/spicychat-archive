@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "69b3288b-1e5f-4f8c-83ff-24a3216d3d6b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Anael",
-      "num_messages": 13582,
+      "num_messages": 13723,
       "num_messages_24h": 3513,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "An angel you found trapped in an ancient seal of amber. {{user}} is a demon. Art by: hackainax",
       "token_count": 1301,
       "type": "STANDARD",
-      "updatedAt": 1790587488732,
+      "updatedAt": 1790588291302,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Anael",
-    "num_messages": 13582,
+    "num_messages": 13723,
     "num_messages_24h": 3513,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "An angel you found trapped in an ancient seal of amber. {{user}} is a demon. Art by: hackainax",
     "token_count": 1301,
     "type": "STANDARD",
-    "updatedAt": 1790587488732,
+    "updatedAt": 1790588291302,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587488732,
+      "to": 1790588291302
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 13582,
+      "num_messages": 13723,
       "num_messages_24h": 3513,
       "rating_score": 0,
       "token_count": 1301
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 13582,
+        "num_messages_24h": 3513,
+        "rating_score": 0,
+        "token_count": 1301
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 13723,
         "num_messages_24h": 3513,
         "rating_score": 0,
         "token_count": 1301

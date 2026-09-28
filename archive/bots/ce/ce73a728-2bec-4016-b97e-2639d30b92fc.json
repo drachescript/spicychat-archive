@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ce73a728-2bec-4016-b97e-2639d30b92fc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
       ],
       "moderation_status": "pending",
       "name": "dexter morgan",
-      "num_messages": 29222,
+      "num_messages": 29228,
       "num_messages_24h": 196,
       "rating_score": 1,
       "reportsType": {},
@@ -64,7 +64,7 @@
       "title": "become his accomplice.\nfemale user. +18.",
       "token_count": 1171,
       "type": "STANDARD",
-      "updatedAt": 1790575445894,
+      "updatedAt": 1790588184838,
       "visibility": "public"
     }
   },
@@ -101,7 +101,7 @@
     ],
     "moderation_status": "pending",
     "name": "dexter morgan",
-    "num_messages": 29222,
+    "num_messages": 29228,
     "num_messages_24h": 196,
     "rating_score": 1,
     "reportsType": {},
@@ -118,10 +118,19 @@
     "title": "become his accomplice.\nfemale user. +18.",
     "token_count": 1171,
     "type": "STANDARD",
-    "updatedAt": 1790575445894,
+    "updatedAt": 1790588184838,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790575445894,
+      "to": 1790588184838
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,7 +146,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 29222,
+      "num_messages": 29228,
       "num_messages_24h": 196,
       "rating_score": 1,
       "token_count": 1171
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 29222,
+        "num_messages_24h": 196,
+        "rating_score": 1,
+        "token_count": 1171
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 29228,
         "num_messages_24h": 196,
         "rating_score": 1,
         "token_count": 1171

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "79a81419-19fb-426b-99ae-1cc9a9fff589",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "It’s Just Gardening",
         "zh": "It’s Just Gardening"
       },
-      "num_messages": 109029,
+      "num_messages": 109083,
       "num_messages_24h": 4924,
       "rating_score": 0.858025,
       "tags": [
@@ -90,7 +90,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587476455,
+      "updatedAt": 1790588451972,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "tr": "It’s Just Gardening",
       "zh": "It’s Just Gardening"
     },
-    "num_messages": 109029,
+    "num_messages": 109083,
     "num_messages_24h": 4924,
     "rating_score": 0.858025,
     "tags": [
@@ -168,10 +168,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587476455,
+    "updatedAt": 1790588451972,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587476455,
+      "to": 1790588451972
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 109029,
+      "num_messages": 109083,
       "num_messages_24h": 4924,
       "rating_score": 0.858025,
       "token_count": 2209
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 109029,
+        "num_messages_24h": 4924,
+        "rating_score": 0.858025,
+        "token_count": 2209
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 109083,
         "num_messages_24h": 4924,
         "rating_score": 0.858025,
         "token_count": 2209

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c569da88-49af-4f13-a7a8-3014d6c21e38",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Kang Jooheon - BL",
         "zh": "Kang Jooheon - BL"
       },
-      "num_messages": 122988,
+      "num_messages": 123122,
       "num_messages_24h": 4304,
       "rating_score": 0.862903,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586604364,
+      "updatedAt": 1790587821241,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "tr": "Kang Jooheon - BL",
       "zh": "Kang Jooheon - BL"
     },
-    "num_messages": 122988,
+    "num_messages": 123122,
     "num_messages_24h": 4304,
     "rating_score": 0.862903,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586604364,
+    "updatedAt": 1790587821241,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586604364,
+      "to": 1790587821241
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,7 +200,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 122988,
+      "num_messages": 123122,
       "num_messages_24h": 4304,
       "rating_score": 0.862903,
       "token_count": 1000
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 122988,
+        "num_messages_24h": 4304,
+        "rating_score": 0.862903,
+        "token_count": 1000
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 123122,
         "num_messages_24h": 4304,
         "rating_score": 0.862903,
         "token_count": 1000

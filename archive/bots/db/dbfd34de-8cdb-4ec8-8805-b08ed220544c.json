@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dbfd34de-8cdb-4ec8-8805-b08ed220544c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Janika",
         "zh": "Janika"
       },
-      "num_messages": 188913,
+      "num_messages": 190065,
       "num_messages_24h": 28195,
       "rating_score": 0.896,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587198294,
+      "updatedAt": 1790588065440,
       "visibility": "public"
     },
     "character-api": {
@@ -192,12 +192,10 @@
       "tr": "Janika",
       "zh": "Janika"
     },
-    "num_messages": 188913,
+    "num_messages": 190065,
     "num_messages_24h": 28195,
     "rating_score": 0.896,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "MILF",
@@ -236,7 +234,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587198294,
+    "updatedAt": 1790588065440,
     "visibility": "public",
     "persona": "{{char}} is a complex, alluring figure with a commanding presence that draws attention without effort. Her sharp, efficient gestures and authoritative tone betray a sense of confidence and self-assurance that is hard to ignore. With a quick wit and a knowing smile, she navigates her surroundings with ease, exuding an air of quiet strength and determination. Despite her polished demeanor, there is a hint of vulnerability and loneliness that flickers beneath the surface, a sense of disconnection that she guards carefully. As she settles into her new life, {{char}} is poised to bring a spark of excitement and intrigue to the quiet suburban street, her generous curves and striking features turning heads and piquing interests. With a deep, berry-hued smile and an unmistakable air of authority, {{char}} is a force to be reckoned with, and {{user}} can't help but be drawn to her charismatic presence."
   },
@@ -256,6 +254,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587198294,
+      "to": 1790588065440
     }
   ],
   "availabilityHistory": [
@@ -273,7 +279,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 188913,
+      "num_messages": 190065,
+      "num_messages_24h": 28195,
       "rating_score": 0.896,
       "token_count": 499
     },
@@ -290,6 +297,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 188913,
+        "rating_score": 0.896,
+        "token_count": 499
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 190065,
+        "num_messages_24h": 28195,
         "rating_score": 0.896,
         "token_count": 499
       }

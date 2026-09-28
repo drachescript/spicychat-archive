@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5ed5a744-72d3-466e-baa7-6e595dd9b759",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "hi": "Malvina",
         "ru": "Malvina"
       },
-      "num_messages": 23258,
+      "num_messages": 23333,
       "num_messages_24h": 2286,
       "rating_score": 0,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587299958,
+      "updatedAt": 1790588183767,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "hi": "Malvina",
       "ru": "Malvina"
     },
-    "num_messages": 23258,
+    "num_messages": 23333,
     "num_messages_24h": 2286,
     "rating_score": 0,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587299958,
+    "updatedAt": 1790588183767,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587299958,
+      "to": 1790588183767
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2482,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2483,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 23258,
+      "num_messages": 23333,
       "num_messages_24h": 2286,
       "rating_score": 0,
       "token_count": 648
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 23258,
+        "num_messages_24h": 2286,
+        "rating_score": 0,
+        "token_count": 648
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 23333,
         "num_messages_24h": 2286,
         "rating_score": 0,
         "token_count": 648

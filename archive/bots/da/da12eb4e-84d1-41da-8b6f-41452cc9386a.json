@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "da12eb4e-84d1-41da-8b6f-41452cc9386a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Simon ‘Ghost’ Riley",
         "tr": "Simon ‘Ghost’ Riley"
       },
-      "num_messages": 128887,
+      "num_messages": 128907,
       "num_messages_24h": 3277,
       "reportsType": {},
       "tags": [
@@ -94,7 +94,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586355760,
+      "updatedAt": 1790587681554,
       "visibility": "public"
     }
   },
@@ -136,7 +136,7 @@
       "ru": "Simon ‘Ghost’ Riley",
       "tr": "Simon ‘Ghost’ Riley"
     },
-    "num_messages": 128887,
+    "num_messages": 128907,
     "num_messages_24h": 3277,
     "reportsType": {},
     "tags": [
@@ -178,10 +178,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586355760,
+    "updatedAt": 1790587681554,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586355760,
+      "to": 1790587681554
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 128887,
+      "num_messages": 128907,
       "num_messages_24h": 3277,
       "token_count": 561
     },
@@ -206,6 +215,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 128887,
+        "num_messages_24h": 3277,
+        "token_count": 561
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 128907,
         "num_messages_24h": 3277,
         "token_count": 561
       }

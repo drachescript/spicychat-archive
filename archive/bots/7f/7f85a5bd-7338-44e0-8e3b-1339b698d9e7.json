@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7f85a5bd-7338-44e0-8e3b-1339b698d9e7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -61,7 +61,7 @@
         "tr": "Sarah Hayes",
         "zh": "Sarah Hayes"
       },
-      "num_messages": 187547,
+      "num_messages": 187563,
       "num_messages_24h": 4279,
       "rating_score": 0.935185,
       "reportsType": {},
@@ -110,7 +110,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587521086,
+      "updatedAt": 1790588169977,
       "visibility": "public"
     }
   },
@@ -161,7 +161,7 @@
       "tr": "Sarah Hayes",
       "zh": "Sarah Hayes"
     },
-    "num_messages": 187547,
+    "num_messages": 187563,
     "num_messages_24h": 4279,
     "rating_score": 0.935185,
     "reportsType": {},
@@ -210,10 +210,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587521086,
+    "updatedAt": 1790588169977,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587521086,
+      "to": 1790588169977
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -229,7 +238,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 187547,
+      "num_messages": 187563,
       "num_messages_24h": 4279,
       "rating_score": 0.935185,
       "token_count": 1004
@@ -239,6 +248,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 187547,
+        "num_messages_24h": 4279,
+        "rating_score": 0.935185,
+        "token_count": 1004
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 187563,
         "num_messages_24h": 4279,
         "rating_score": 0.935185,
         "token_count": 1004

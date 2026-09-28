@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "31928f4c-2a50-4e28-82b1-44735b95a309",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ru": "Молодая справедливость",
         "zh": "少年正义"
       },
-      "num_messages": 192563,
+      "num_messages": 192574,
       "num_messages_24h": 3775,
       "rating_score": 0.860294,
       "reportsType": {},
@@ -69,7 +69,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586706224,
+      "updatedAt": 1790587764724,
       "visibility": "public"
     }
   },
@@ -100,7 +100,7 @@
       "ru": "Молодая справедливость",
       "zh": "少年正义"
     },
-    "num_messages": 192563,
+    "num_messages": 192574,
     "num_messages_24h": 3775,
     "rating_score": 0.860294,
     "reportsType": {},
@@ -126,10 +126,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586706224,
+    "updatedAt": 1790587764724,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586706224,
+      "to": 1790587764724
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -145,7 +154,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 192563,
+      "num_messages": 192574,
       "num_messages_24h": 3775,
       "rating_score": 0.860294,
       "token_count": 1203
@@ -155,6 +164,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 192563,
+        "num_messages_24h": 3775,
+        "rating_score": 0.860294,
+        "token_count": 1203
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 192574,
         "num_messages_24h": 3775,
         "rating_score": 0.860294,
         "token_count": 1203

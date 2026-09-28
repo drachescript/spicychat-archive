@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cb95aa97-efb5-482b-b2ef-ba3eccf82808",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,6 +37,9 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Brigitte",
+      "name_i18n": {
+        "ru": "Brigitte"
+      },
       "num_messages": 453,
       "num_messages_24h": 389,
       "rating_score": 0,
@@ -50,9 +53,15 @@
         "Size Difference"
       ],
       "title": "Open relationship",
+      "title_i18n": {
+        "ru": "Открытые отношения"
+      },
       "token_count": 1121,
+      "translated_languages": [
+        "ru"
+      ],
       "type": "STANDARD",
-      "updatedAt": 1790584767511,
+      "updatedAt": 1790588351836,
       "visibility": "public"
     }
   },
@@ -92,10 +101,51 @@
     "title": "Open relationship",
     "token_count": 1121,
     "type": "STANDARD",
-    "updatedAt": 1790584767511,
-    "visibility": "public"
+    "updatedAt": 1790588351836,
+    "visibility": "public",
+    "name_i18n": {
+      "ru": "Brigitte"
+    },
+    "title_i18n": {
+      "ru": "Открытые отношения"
+    },
+    "translated_languages": [
+      "ru"
+    ]
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "name_i18n.ru",
+      "kind": "value",
+      "to": "Brigitte"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "title_i18n.ru",
+      "kind": "value",
+      "to": "Открытые отношения"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "translated_languages",
+      "kind": "value",
+      "to": [
+        "ru"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584767511,
+      "to": 1790588351836
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",

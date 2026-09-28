@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "767ef268-b978-4952-a8fe-0ddfce16a0d2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Трансформеры РПГ",
         "zh": "变形金刚 RPG"
       },
-      "num_messages": 634857,
+      "num_messages": 634944,
       "num_messages_24h": 2338,
       "rating_score": 0.868217,
       "reportsType": {},
@@ -83,7 +83,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587190784,
+      "updatedAt": 1790588168660,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "ru": "Трансформеры РПГ",
       "zh": "变形金刚 RPG"
     },
-    "num_messages": 634857,
+    "num_messages": 634944,
     "num_messages_24h": 2338,
     "rating_score": 0.868217,
     "reportsType": {},
@@ -154,10 +154,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587190784,
+    "updatedAt": 1790588168660,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587190784,
+      "to": 1790588168660
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,13 +176,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2421,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2422,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 634857,
+      "num_messages": 634944,
       "num_messages_24h": 2338,
       "rating_score": 0.868217,
       "token_count": 1621
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 634857,
+        "num_messages_24h": 2338,
+        "rating_score": 0.868217,
+        "token_count": 1621
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 634944,
         "num_messages_24h": 2338,
         "rating_score": 0.868217,
         "token_count": 1621

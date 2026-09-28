@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "20fe980b-2b20-4ed8-ae94-5c538dc6c5ce",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "假小子想要男人？！"
       },
-      "num_messages": 1273,
+      "num_messages": 1298,
       "num_messages_24h": 523,
       "rating_score": 0,
       "reportsType": {},
@@ -65,7 +65,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586637936,
+      "updatedAt": 1790587766397,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
     "name_i18n": {
       "zh": "假小子想要男人？！"
     },
-    "num_messages": 1273,
+    "num_messages": 1298,
     "num_messages_24h": 523,
     "rating_score": 0,
     "reportsType": {},
@@ -118,10 +118,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586637936,
+    "updatedAt": 1790587766397,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586637936,
+      "to": 1790587766397
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,7 +146,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1273,
+      "num_messages": 1298,
       "num_messages_24h": 523,
       "rating_score": 0,
       "token_count": 1545
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1273,
+        "num_messages_24h": 523,
+        "rating_score": 0,
+        "token_count": 1545
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1298,
         "num_messages_24h": 523,
         "rating_score": 0,
         "token_count": 1545

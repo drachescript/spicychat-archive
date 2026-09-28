@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a413362b-6776-4570-ab34-c313476f0db3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "de": "Freche Prinzessin",
         "ru": "Балованная принцесса"
       },
-      "num_messages": 2262,
+      "num_messages": 2271,
       "num_messages_24h": 1450,
       "rating_score": 0,
       "reportsType": {},
@@ -66,7 +66,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586803358,
+      "updatedAt": 1790588608467,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
       "de": "Freche Prinzessin",
       "ru": "Балованная принцесса"
     },
-    "num_messages": 2262,
+    "num_messages": 2271,
     "num_messages_24h": 1450,
     "rating_score": 0,
     "reportsType": {},
@@ -120,10 +120,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586803358,
+    "updatedAt": 1790588608467,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586803358,
+      "to": 1790588608467
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -133,13 +142,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1714,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1715,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2262,
+      "num_messages": 2271,
       "num_messages_24h": 1450,
       "rating_score": 0,
       "token_count": 321
@@ -149,6 +158,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2262,
+        "num_messages_24h": 1450,
+        "rating_score": 0,
+        "token_count": 321
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2271,
         "num_messages_24h": 1450,
         "rating_score": 0,
         "token_count": 321

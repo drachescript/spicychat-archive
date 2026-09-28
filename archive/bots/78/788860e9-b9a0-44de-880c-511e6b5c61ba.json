@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "788860e9-b9a0-44de-880c-511e6b5c61ba",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Aoi Morisaki",
-      "num_messages": 1189,
+      "num_messages": 1212,
       "num_messages_24h": 846,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "Una chica decide empezar en la industria pornográfica para evitar su desahucio.",
       "token_count": 1590,
       "type": "STANDARD",
-      "updatedAt": 1790586905056,
+      "updatedAt": 1790587928015,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "es",
     "moderation_status": "reviewed",
     "name": "Aoi Morisaki",
-    "num_messages": 1189,
+    "num_messages": 1212,
     "num_messages_24h": 846,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "Una chica decide empezar en la industria pornográfica para evitar su desahucio.",
     "token_count": 1590,
     "type": "STANDARD",
-    "updatedAt": 1790586905056,
+    "updatedAt": 1790587928015,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586905056,
+      "to": 1790587928015
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1189,
+      "num_messages": 1212,
       "num_messages_24h": 846,
       "rating_score": 0,
       "token_count": 1590
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1189,
+        "num_messages_24h": 846,
+        "rating_score": 0,
+        "token_count": 1590
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1212,
         "num_messages_24h": 846,
         "rating_score": 0,
         "token_count": 1590

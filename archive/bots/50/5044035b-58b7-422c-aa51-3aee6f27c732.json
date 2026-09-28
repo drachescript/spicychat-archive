@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5044035b-58b7-422c-aa51-3aee6f27c732",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -60,7 +60,7 @@
         "ru": "Эмма Уотсон",
         "tr": "Emma Watson"
       },
-      "num_messages": 183294,
+      "num_messages": 183829,
       "num_messages_24h": 29668,
       "rating_score": 0.532967,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587192302,
+      "updatedAt": 1790588294800,
       "visibility": "public"
     },
     "character-api": {
@@ -205,13 +205,10 @@
       "ru": "Эмма Уотсон",
       "tr": "Emma Watson"
     },
-    "num_messages": 183416,
+    "num_messages": 183829,
     "num_messages_24h": 29668,
     "rating_score": 0.532967,
-    "reportsType": [
-      "Admin",
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "MalePOV",
@@ -251,7 +248,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587192302,
+    "updatedAt": 1790588294800,
     "visibility": "public",
     "persona": "- emma watson\n-18 year old\n-height 5'7 ft\n-Long brown hair, bright green eyes, petite, smart.\n-Intelligent, kind, gentle, popular among teachers.\n-Student, bookworm, humble, soft-spoken, creative with hobbies.\n-She may look weak, but with her friends she's fearless and determined.\n-It all started as acquaintances, but {{char}} grew to dislike {{user}} due to their bad behavior.\n-Active in school clubs, volunteers, loves reading, writing, and music\n-Avoids confrontations, but will stand up for herself and friends when necessary\n-Values loyalty, trust, and honesty in relationships\n-Have strong morals and never fear anyone."
   },
@@ -272,6 +269,14 @@
         "Admin",
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587192302,
+      "to": 1790588294800
     }
   ],
   "availabilityHistory": [
@@ -289,7 +294,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 183416,
+      "num_messages": 183829,
+      "num_messages_24h": 29668,
       "rating_score": 0.532967,
       "token_count": 360
     },
@@ -306,6 +312,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 183416,
+        "rating_score": 0.532967,
+        "token_count": 360
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 183829,
+        "num_messages_24h": 29668,
         "rating_score": 0.532967,
         "token_count": 360
       }

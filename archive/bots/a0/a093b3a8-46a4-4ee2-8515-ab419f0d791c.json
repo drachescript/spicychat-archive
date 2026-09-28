@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a093b3a8-46a4-4ee2-8515-ab419f0d791c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "SCP - Dr. L. Halden",
         "zh": "SCP - Dr. L. Halden"
       },
-      "num_messages": 2473047,
+      "num_messages": 2473057,
       "num_messages_24h": 398,
       "rating_score": 0.75936,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587520775,
+      "updatedAt": 1790588309495,
       "visibility": "public"
     }
   },
@@ -143,7 +143,7 @@
       "tr": "SCP - Dr. L. Halden",
       "zh": "SCP - Dr. L. Halden"
     },
-    "num_messages": 2473047,
+    "num_messages": 2473057,
     "num_messages_24h": 398,
     "rating_score": 0.75936,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587520775,
+    "updatedAt": 1790588309495,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587520775,
+      "to": 1790588309495
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,13 +216,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 960,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 961,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2473047,
+      "num_messages": 2473057,
       "num_messages_24h": 398,
       "rating_score": 0.75936,
       "token_count": 810
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2473047,
+        "num_messages_24h": 398,
+        "rating_score": 0.75936,
+        "token_count": 810
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2473057,
         "num_messages_24h": 398,
         "rating_score": 0.75936,
         "token_count": 810

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "98be46a9-bf90-4f25-bb9b-35bc4a176a23",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Ashley Sterling",
         "zh": "Ashley Sterling"
       },
-      "num_messages": 297257,
+      "num_messages": 297625,
       "num_messages_24h": 12575,
       "rating_score": 0.9375,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399818,
+      "updatedAt": 1790588384286,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/de7f210e-9639-4d87-bb44-0f002dfe1a42.webp?class=avatar256x256",
     "character_id": "98be46a9-bf90-4f25-bb9b-35bc4a176a23",
-    "createdAt": "2026-09-24T10:44:00.064Z",
+    "createdAt": 1790246640064,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -207,12 +207,10 @@
       "tr": "Ashley Sterling",
       "zh": "Ashley Sterling"
     },
-    "num_messages": 297363,
+    "num_messages": 297625,
     "num_messages_24h": 12575,
     "rating_score": 0.9375,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Married Partner",
@@ -260,7 +258,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:25.250Z",
+    "updatedAt": 1790588384286,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587399818,
       "to": "2026-09-28T09:29:25.250Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-24T10:44:00.064Z",
+      "to": 1790246640064
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:25.250Z",
+      "to": 1790588384286
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 297363,
+      "num_messages": 297625,
+      "num_messages_24h": 12575,
       "rating_score": 0.9375,
       "token_count": 1195
     },
@@ -324,8 +339,23 @@
         "num_messages": 297363,
         "rating_score": 0.9375,
         "token_count": 1195
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 297625,
+        "num_messages_24h": 12575,
+        "rating_score": 0.9375,
+        "token_count": 1195
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/de7f210e-9639-4d87-bb44-0f002dfe1a42.webp?class=avatar256x256",
+    "sha256": "9b0e7c2a1a14e7e6719ad6ccb2c73853311de8f70f8600b0c0474b95b4d05a76",
+    "contentType": "image/webp",
+    "bytes": 5711014,
+    "path": "archive/media/9b/9b0e7c2a1a14e7e6719ad6ccb2c73853311de8f70f8600b0c0474b95b4d05a76.webp",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

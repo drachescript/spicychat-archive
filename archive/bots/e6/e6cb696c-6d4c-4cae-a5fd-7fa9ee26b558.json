@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e6cb696c-6d4c-4cae-a5fd-7fa9ee26b558",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "es": "Astral Express Crew",
         "ru": "Astral Express Crew"
       },
-      "num_messages": 105064,
+      "num_messages": 105079,
       "num_messages_24h": 1072,
       "rating_score": 0.993827,
       "reportsType": {},
@@ -75,7 +75,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587478228,
+      "updatedAt": 1790588499355,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "es": "Astral Express Crew",
       "ru": "Astral Express Crew"
     },
-    "num_messages": 105064,
+    "num_messages": 105079,
     "num_messages_24h": 1072,
     "rating_score": 0.993827,
     "reportsType": {},
@@ -140,10 +140,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587478228,
+    "updatedAt": 1790588499355,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587478228,
+      "to": 1790588499355
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 105064,
+      "num_messages": 105079,
       "num_messages_24h": 1072,
       "rating_score": 0.993827,
       "token_count": 1312
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 105064,
+        "num_messages_24h": 1072,
+        "rating_score": 0.993827,
+        "token_count": 1312
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 105079,
         "num_messages_24h": 1072,
         "rating_score": 0.993827,
         "token_count": 1312

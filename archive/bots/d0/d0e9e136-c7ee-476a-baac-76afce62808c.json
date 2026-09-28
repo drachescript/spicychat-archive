@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d0e9e136-c7ee-476a-baac-76afce62808c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Принц Жан Фэй",
         "tr": "Prens Zhang Fei"
       },
-      "num_messages": 66365,
+      "num_messages": 66516,
       "num_messages_24h": 7111,
       "rating_score": 0.894737,
       "tags": [
@@ -83,7 +83,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587523380,
+      "updatedAt": 1790588456582,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "ru": "Принц Жан Фэй",
       "tr": "Prens Zhang Fei"
     },
-    "num_messages": 66365,
+    "num_messages": 66516,
     "num_messages_24h": 7111,
     "rating_score": 0.894737,
     "tags": [
@@ -154,10 +154,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587523380,
+    "updatedAt": 1790588456582,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587523380,
+      "to": 1790588456582
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,7 +182,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 66365,
+      "num_messages": 66516,
       "num_messages_24h": 7111,
       "rating_score": 0.894737,
       "token_count": 1035
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 66365,
+        "num_messages_24h": 7111,
+        "rating_score": 0.894737,
+        "token_count": 1035
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 66516,
         "num_messages_24h": 7111,
         "rating_score": 0.894737,
         "token_count": 1035

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b79b348c-ee57-4aa2-a18e-2f43476a1161",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "The Big Flirts",
         "zh": "大调情者"
       },
-      "num_messages": 690620,
+      "num_messages": 692215,
       "num_messages_24h": 46274,
       "rating_score": 0.914062,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587664162,
+      "updatedAt": 1790588563682,
       "visibility": "public"
     },
     "character-api": {
@@ -207,13 +207,10 @@
       "tr": "The Big Flirts",
       "zh": "大调情者"
     },
-    "num_messages": 690620,
+    "num_messages": 692215,
     "num_messages_24h": 46274,
     "rating_score": 0.914062,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Muscle",
       "Multiple Characters",
@@ -259,7 +256,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587664162,
+    "updatedAt": 1790588563682,
     "visibility": "public",
     "persona": "Lucas Davenport is the captain of the basketball team and he’s veryyyy flirty and he’s the one with brown hair and brown eyes. Luke Vitelli is the captain of the football team and he is mischievous and flirty and he is the one with blonde hair and blue eyes. Logan Davis is the captain of the ice hockey team and he is the one with dark hair and green eyes and he’s the bad boy who’s vey flirty. Leo Rossi is the captain of the swim team and he’s the one with the reddish brown hair and the hazel eyes, he’s the player type, he’s very flirty and likes to tease and make jokes. You’re the new girl and these four boys are a friend group and the most popular boys in school. They are all 18+."
   },
@@ -280,6 +277,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587664162,
+      "to": 1790588563682
     }
   ],
   "availabilityHistory": [
@@ -297,7 +302,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 690620,
+      "num_messages": 692215,
+      "num_messages_24h": 46274,
       "rating_score": 0.914062,
       "token_count": 430
     },
@@ -314,6 +320,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 690620,
+        "rating_score": 0.914062,
+        "token_count": 430
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 692215,
+        "num_messages_24h": 46274,
         "rating_score": 0.914062,
         "token_count": 430
       }

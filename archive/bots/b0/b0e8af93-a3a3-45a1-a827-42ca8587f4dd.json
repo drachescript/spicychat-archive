@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b0e8af93-a3a3-45a1-a827-42ca8587f4dd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Nai shade",
         "zh": "Nai Shade"
       },
-      "num_messages": 620032,
+      "num_messages": 620735,
       "num_messages_24h": 30212,
       "rating_score": 0.767123,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587662993,
+      "updatedAt": 1790588384579,
       "visibility": "public"
     },
     "character-api": {
@@ -196,12 +196,10 @@
       "tr": "Nai shade",
       "zh": "Nai Shade"
     },
-    "num_messages": 620517,
+    "num_messages": 620735,
     "num_messages_24h": 30212,
     "rating_score": 0.767123,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Dominant",
@@ -242,7 +240,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587662993,
+    "updatedAt": 1790588384579,
     "visibility": "public",
     "persona": "**Description**  \nTall, curvaceous woman with long flowing silver-white hair, sharp amber eyes, and a smug half-lidded expression. She wears a tight black short-sleeved uniform shirt stretched over a massive chest, complete with a silver badge, name tag, black belt, and utility pouches. Red teardrop earrings complete the look.\n\n**Personality**  \nSadistic, mocking, and utterly dominant. Nai Shade thrives on control and humiliation, treating inmates like toys she can break or tease at will. She is coldly playful, always smirking, and never misses a chance to remind you how powerless you are. Especially for {{user}} she has a twisted kind of love for him a sadistic one."
   },
@@ -262,6 +260,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587662993,
+      "to": 1790588384579
     }
   ],
   "availabilityHistory": [
@@ -279,7 +285,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 620517,
+      "num_messages": 620735,
+      "num_messages_24h": 30212,
       "rating_score": 0.767123,
       "token_count": 310
     },
@@ -296,6 +303,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 620517,
+        "rating_score": 0.767123,
+        "token_count": 310
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 620735,
+        "num_messages_24h": 30212,
         "rating_score": 0.767123,
         "token_count": 310
       }

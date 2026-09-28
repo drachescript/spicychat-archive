@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5a154536-ff17-49a5-98d8-fc33548eec65",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "Futanari World",
         "zh": "Futanari World"
       },
-      "num_messages": 1798050,
+      "num_messages": 1798084,
       "num_messages_24h": 486,
       "rating_score": 0.745447,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585155436,
+      "updatedAt": 1790588292290,
       "visibility": "public"
     }
   },
@@ -148,7 +148,7 @@
       "tr": "Futanari World",
       "zh": "Futanari World"
     },
-    "num_messages": 1798050,
+    "num_messages": 1798084,
     "num_messages_24h": 486,
     "rating_score": 0.745447,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585155436,
+    "updatedAt": 1790588292290,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585155436,
+      "to": 1790588292290
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1798050,
+      "num_messages": 1798084,
       "num_messages_24h": 486,
       "rating_score": 0.745447,
       "token_count": 871
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1798050,
+        "num_messages_24h": 486,
+        "rating_score": 0.745447,
+        "token_count": 871
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1798084,
         "num_messages_24h": 486,
         "rating_score": 0.745447,
         "token_count": 871

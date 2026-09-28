@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "efe50da6-0d39-4248-90ab-8c7d95976caf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Colton",
-      "num_messages": 997,
+      "num_messages": 1030,
       "num_messages_24h": 315,
       "rating_score": 0,
       "reportsType": {},
@@ -58,7 +58,7 @@
       "title": "Noisy neighbors fuck loud all day You locked yourself outside your apartment and need their help",
       "token_count": 225,
       "type": "STANDARD",
-      "updatedAt": 1790577526289,
+      "updatedAt": 1790588650648,
       "visibility": "public"
     }
   },
@@ -83,7 +83,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Colton",
-    "num_messages": 997,
+    "num_messages": 1030,
     "num_messages_24h": 315,
     "rating_score": 0,
     "reportsType": {},
@@ -104,10 +104,19 @@
     "title": "Noisy neighbors fuck loud all day You locked yourself outside your apartment and need their help",
     "token_count": 225,
     "type": "STANDARD",
-    "updatedAt": 1790577526289,
+    "updatedAt": 1790588650648,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790577526289,
+      "to": 1790588650648
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,13 +126,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2116,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2118,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 997,
+      "num_messages": 1030,
       "num_messages_24h": 315,
       "rating_score": 0,
       "token_count": 225
@@ -133,6 +142,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 997,
+        "num_messages_24h": 315,
+        "rating_score": 0,
+        "token_count": 225
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1030,
         "num_messages_24h": 315,
         "rating_score": 0,
         "token_count": 225

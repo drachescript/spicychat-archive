@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "af4f8a49-c81b-4931-bc91-f069ec6666c5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Vampire Hunter| Keir",
         "zh": "吸血鬼猎人 | Keir"
       },
-      "num_messages": 1872279,
+      "num_messages": 1872282,
       "num_messages_24h": 361,
       "rating_score": 0.84153,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587481372,
+      "updatedAt": 1790588236763,
       "visibility": "public"
     }
   },
@@ -154,7 +154,7 @@
       "tr": "Vampire Hunter| Keir",
       "zh": "吸血鬼猎人 | Keir"
     },
-    "num_messages": 1872279,
+    "num_messages": 1872282,
     "num_messages_24h": 361,
     "rating_score": 0.84153,
     "reportsType": {},
@@ -202,10 +202,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587481372,
+    "updatedAt": 1790588236763,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481372,
+      "to": 1790588236763
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1872279,
+      "num_messages": 1872282,
       "num_messages_24h": 361,
       "rating_score": 0.84153,
       "token_count": 985
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1872279,
+        "num_messages_24h": 361,
+        "rating_score": 0.84153,
+        "token_count": 985
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1872282,
         "num_messages_24h": 361,
         "rating_score": 0.84153,
         "token_count": 985

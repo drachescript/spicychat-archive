@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fd822580-c3b0-442c-bae1-307365368c8f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ko": "Fatima Abdullah",
         "tr": "Fatima Abdullah"
       },
-      "num_messages": 5888,
+      "num_messages": 5905,
       "num_messages_24h": 2370,
       "rating_score": 0,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587405799,
+      "updatedAt": 1790588233852,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "ko": "Fatima Abdullah",
       "tr": "Fatima Abdullah"
     },
-    "num_messages": 5888,
+    "num_messages": 5905,
     "num_messages_24h": 2370,
     "rating_score": 0,
     "reportsType": {},
@@ -136,10 +136,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587405799,
+    "updatedAt": 1790588233852,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587405799,
+      "to": 1790588233852
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -149,13 +158,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2369,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2370,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 5888,
+      "num_messages": 5905,
       "num_messages_24h": 2370,
       "rating_score": 0,
       "token_count": 298
@@ -165,6 +174,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5888,
+        "num_messages_24h": 2370,
+        "rating_score": 0,
+        "token_count": 298
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5905,
         "num_messages_24h": 2370,
         "rating_score": 0,
         "token_count": 298

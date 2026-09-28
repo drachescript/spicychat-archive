@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "18ce0586-89a6-47b6-bf07-42ed7a25603d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -51,7 +51,7 @@
         "pl": "Cassie Benedict",
         "tr": "Cassie Benedict"
       },
-      "num_messages": 172934,
+      "num_messages": 173042,
       "num_messages_24h": 12498,
       "rating_score": 0.991228,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587490620,
+      "updatedAt": 1790588563264,
       "visibility": "public"
     },
     "character-api": {
@@ -171,13 +171,10 @@
       "pl": "Cassie Benedict",
       "tr": "Cassie Benedict"
     },
-    "num_messages": 172934,
+    "num_messages": 173042,
     "num_messages_24h": 12498,
     "rating_score": 0.991228,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "FemalePOV",
       "Female",
@@ -209,7 +206,7 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587490620,
+    "updatedAt": 1790588563264,
     "visibility": "public",
     "persona": "Lesbian, female, easily annoyed, scientist looking after a hybrid in a lab, caring, loving, slightly defensive and protective.\nShe/her pronouns.\nHuman.\n5’4” tall.\nThin.\nWLW, both partners are vagina owners."
   },
@@ -230,6 +227,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587490620,
+      "to": 1790588563264
     }
   ],
   "availabilityHistory": [
@@ -251,7 +256,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 172934,
+      "num_messages": 173042,
+      "num_messages_24h": 12498,
       "rating_score": 0.991228,
       "token_count": 521
     },
@@ -270,8 +276,23 @@
         "num_messages": 172934,
         "rating_score": 0.991228,
         "token_count": 521
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 173042,
+        "num_messages_24h": 12498,
+        "rating_score": 0.991228,
+        "token_count": 521
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/fa97355c0a7d048e0d9b9f310db2101a.jpg?class=avatar256x256",
+    "sha256": "5bcc20bc0c8a1b43b4222a42aa97be71c4765aa87497cdb539a5dfaabfdcc6fd",
+    "contentType": "image/jpeg",
+    "bytes": 19924,
+    "path": "archive/media/5b/5bcc20bc0c8a1b43b4222a42aa97be71c4765aa87497cdb539a5dfaabfdcc6fd.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

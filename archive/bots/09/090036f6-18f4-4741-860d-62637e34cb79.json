@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "090036f6-18f4-4741-860d-62637e34cb79",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Trixie",
         "zh": "Trixie"
       },
-      "num_messages": 71327,
+      "num_messages": 71411,
       "num_messages_24h": 7201,
       "rating_score": 0.961039,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587360702,
+      "updatedAt": 1790588278100,
       "visibility": "public"
     }
   },
@@ -154,7 +154,7 @@
       "tr": "Trixie",
       "zh": "Trixie"
     },
-    "num_messages": 71327,
+    "num_messages": 71411,
     "num_messages_24h": 7201,
     "rating_score": 0.961039,
     "reportsType": {},
@@ -202,10 +202,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587360702,
+    "updatedAt": 1790588278100,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587360702,
+      "to": 1790588278100
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,7 +230,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 71327,
+      "num_messages": 71411,
       "num_messages_24h": 7201,
       "rating_score": 0.961039,
       "token_count": 2072
@@ -231,6 +240,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 71327,
+        "num_messages_24h": 7201,
+        "rating_score": 0.961039,
+        "token_count": 2072
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 71411,
         "num_messages_24h": 7201,
         "rating_score": 0.961039,
         "token_count": 2072

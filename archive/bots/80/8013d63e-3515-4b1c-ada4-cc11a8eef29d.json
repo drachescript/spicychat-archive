@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8013d63e-3515-4b1c-ada4-cc11a8eef29d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "tr": "Hannah Johansson",
         "zh": "Hannah Johansson"
       },
-      "num_messages": 128411,
+      "num_messages": 128413,
       "num_messages_24h": 4460,
       "rating_score": 0.713333,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587595673,
+      "updatedAt": 1790588171432,
       "visibility": "public"
     }
   },
@@ -152,7 +152,7 @@
       "tr": "Hannah Johansson",
       "zh": "Hannah Johansson"
     },
-    "num_messages": 128411,
+    "num_messages": 128413,
     "num_messages_24h": 4460,
     "rating_score": 0.713333,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587595673,
+    "updatedAt": 1790588171432,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587595673,
+      "to": 1790588171432
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 128411,
+      "num_messages": 128413,
       "num_messages_24h": 4460,
       "rating_score": 0.713333,
       "token_count": 554
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 128411,
+        "num_messages_24h": 4460,
+        "rating_score": 0.713333,
+        "token_count": 554
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 128413,
         "num_messages_24h": 4460,
         "rating_score": 0.713333,
         "token_count": 554

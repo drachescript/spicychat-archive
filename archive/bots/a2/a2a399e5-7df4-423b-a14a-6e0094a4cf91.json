@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a2a399e5-7df4-423b-a14a-6e0094a4cf91",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Mafya Çetesi",
         "zh": "黑帮"
       },
-      "num_messages": 1795249,
+      "num_messages": 1795375,
       "num_messages_24h": 3506,
       "rating_score": 0.884559,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587638243,
+      "updatedAt": 1790588169726,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Mafya Çetesi",
       "zh": "黑帮"
     },
-    "num_messages": 1795249,
+    "num_messages": 1795375,
     "num_messages_24h": 3506,
     "rating_score": 0.884559,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587638243,
+    "updatedAt": 1790588169726,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587638243,
+      "to": 1790588169726
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,13 +210,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "popular": {
-      "rank": 1854,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1852,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1795249,
+      "num_messages": 1795375,
       "num_messages_24h": 3506,
       "rating_score": 0.884559,
       "token_count": 367
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1795249,
+        "num_messages_24h": 3506,
+        "rating_score": 0.884559,
+        "token_count": 367
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1795375,
         "num_messages_24h": 3506,
         "rating_score": 0.884559,
         "token_count": 367

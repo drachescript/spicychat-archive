@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "48791add-bbad-48d6-acf4-51080aba4a37",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Бархатный Лаундж",
         "zh": "天鹅绒酒廊"
       },
-      "num_messages": 1892922,
+      "num_messages": 1892927,
       "num_messages_24h": 425,
       "rating_score": 0.781502,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586435720,
+      "updatedAt": 1790588066425,
       "visibility": "public"
     }
   },
@@ -122,7 +122,7 @@
       "ru": "Бархатный Лаундж",
       "zh": "天鹅绒酒廊"
     },
-    "num_messages": 1892922,
+    "num_messages": 1892927,
     "num_messages_24h": 425,
     "rating_score": 0.781502,
     "reportsType": {},
@@ -164,10 +164,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586435720,
+    "updatedAt": 1790588066425,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586435720,
+      "to": 1790588066425
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,7 +192,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1892922,
+      "num_messages": 1892927,
       "num_messages_24h": 425,
       "rating_score": 0.781502,
       "token_count": 977
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1892922,
+        "num_messages_24h": 425,
+        "rating_score": 0.781502,
+        "token_count": 977
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1892927,
         "num_messages_24h": 425,
         "rating_score": 0.781502,
         "token_count": 977

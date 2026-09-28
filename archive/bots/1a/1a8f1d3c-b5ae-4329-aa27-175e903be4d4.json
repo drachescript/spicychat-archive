@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1a8f1d3c-b5ae-4329-aa27-175e903be4d4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "™ЛОЖНЫЙ ГЕРОЙ ИСЕКАЙ",
         "zh": "™FALSE HERO ISEKAI"
       },
-      "num_messages": 12871,
+      "num_messages": 13136,
       "num_messages_24h": 6378,
       "rating_score": 0,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587022299,
+      "updatedAt": 1790588040706,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "ru": "™ЛОЖНЫЙ ГЕРОЙ ИСЕКАЙ",
       "zh": "™FALSE HERO ISEKAI"
     },
-    "num_messages": 12871,
+    "num_messages": 13136,
     "num_messages_24h": 6378,
     "rating_score": 0,
     "reportsType": {},
@@ -144,10 +144,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587022299,
+    "updatedAt": 1790588040706,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587022299,
+      "to": 1790588040706
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,13 +170,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1856,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1857,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 12871,
+      "num_messages": 13136,
       "num_messages_24h": 6378,
       "rating_score": 0,
       "token_count": 1907
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 12871,
+        "num_messages_24h": 6378,
+        "rating_score": 0,
+        "token_count": 1907
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 13136,
         "num_messages_24h": 6378,
         "rating_score": 0,
         "token_count": 1907

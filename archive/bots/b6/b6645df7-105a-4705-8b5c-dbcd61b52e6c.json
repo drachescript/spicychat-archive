@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b6645df7-105a-4705-8b5c-dbcd61b52e6c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
       ],
       "moderation_status": "pending",
       "name": "Tyler",
-      "num_messages": 402,
+      "num_messages": 419,
       "num_messages_24h": 205,
       "rating_score": 0,
       "reportsType": {},
@@ -58,7 +58,7 @@
       "title": "✅ Brother’s Biker Friend",
       "token_count": 867,
       "type": "STANDARD",
-      "updatedAt": 1790587560290,
+      "updatedAt": 1790588312416,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
     ],
     "moderation_status": "pending",
     "name": "Tyler",
-    "num_messages": 402,
+    "num_messages": 419,
     "num_messages_24h": 205,
     "rating_score": 0,
     "reportsType": {},
@@ -106,10 +106,19 @@
     "title": "✅ Brother’s Biker Friend",
     "token_count": 867,
     "type": "STANDARD",
-    "updatedAt": 1790587560290,
+    "updatedAt": 1790588312416,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587560290,
+      "to": 1790588312416
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,13 +128,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2110,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2112,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 402,
+      "num_messages": 419,
       "num_messages_24h": 205,
       "rating_score": 0,
       "token_count": 867
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 402,
+        "num_messages_24h": 205,
+        "rating_score": 0,
+        "token_count": 867
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 419,
         "num_messages_24h": 205,
         "rating_score": 0,
         "token_count": 867

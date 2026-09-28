@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f6ad00a7-c73d-4eb8-91f9-89d7c180c12c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Airi",
         "zh": "Airi"
       },
-      "num_messages": 363213,
+      "num_messages": 363616,
       "num_messages_24h": 13992,
       "rating_score": 0.913889,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587308166,
+      "updatedAt": 1790588360248,
       "visibility": "public"
     },
     "character-api": {
@@ -171,7 +171,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/a93a52b8-c630-455c-9057-b95e65bc3b0e.png?class=avatar256x256",
     "character_id": "f6ad00a7-c73d-4eb8-91f9-89d7c180c12c",
-    "createdAt": "2026-09-22T19:15:49.341Z",
+    "createdAt": 1790104549341,
     "creator_user_id": "kp:30e0a460a1a947f5958237787ffa2ea9",
     "creator_username": "sanabe",
     "definition_size_category": "high",
@@ -201,12 +201,10 @@
       "tr": "Airi",
       "zh": "Airi"
     },
-    "num_messages": 363388,
+    "num_messages": 363616,
     "num_messages_24h": 13992,
     "rating_score": 0.913889,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Friend",
@@ -250,7 +248,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:38.646Z",
+    "updatedAt": 1790588360248,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -278,6 +276,22 @@
       "kind": "value",
       "from": 1790587308166,
       "to": "2026-09-28T09:28:38.646Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-22T19:15:49.341Z",
+      "to": 1790104549341
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:38.646Z",
+      "to": 1790588360248
     }
   ],
   "availabilityHistory": [
@@ -295,7 +309,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 363388,
+      "num_messages": 363616,
+      "num_messages_24h": 13992,
       "rating_score": 0.913889,
       "token_count": 1339
     },
@@ -314,8 +329,23 @@
         "num_messages": 363388,
         "rating_score": 0.913889,
         "token_count": 1339
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 363616,
+        "num_messages_24h": 13992,
+        "rating_score": 0.913889,
+        "token_count": 1339
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/a93a52b8-c630-455c-9057-b95e65bc3b0e.png?class=avatar256x256",
+    "sha256": "167e55017c84a66953a53981084700d57d10cd2ba1a678cfcc905ac2e4c91e58",
+    "contentType": "image/png",
+    "bytes": 130877,
+    "path": "archive/media/16/167e55017c84a66953a53981084700d57d10cd2ba1a678cfcc905ac2e4c91e58.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

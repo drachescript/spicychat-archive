@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b18b9c5a-3aef-4d7f-a491-ee14884a3b7b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +60,7 @@
         "tr": "GoldShip",
         "zh": "黄金船"
       },
-      "num_messages": 93179,
+      "num_messages": 93202,
       "num_messages_24h": 4868,
       "rating_score": 0.85567,
       "reportsType": {},
@@ -111,7 +111,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587249974,
+      "updatedAt": 1790588382137,
       "visibility": "public"
     }
   },
@@ -161,7 +161,7 @@
       "tr": "GoldShip",
       "zh": "黄金船"
     },
-    "num_messages": 93179,
+    "num_messages": 93202,
     "num_messages_24h": 4868,
     "rating_score": 0.85567,
     "reportsType": {},
@@ -212,10 +212,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587249974,
+    "updatedAt": 1790588382137,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587249974,
+      "to": 1790588382137
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -231,7 +240,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 93179,
+      "num_messages": 93202,
       "num_messages_24h": 4868,
       "rating_score": 0.85567,
       "token_count": 1143
@@ -241,6 +250,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 93179,
+        "num_messages_24h": 4868,
+        "rating_score": 0.85567,
+        "token_count": 1143
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 93202,
         "num_messages_24h": 4868,
         "rating_score": 0.85567,
         "token_count": 1143

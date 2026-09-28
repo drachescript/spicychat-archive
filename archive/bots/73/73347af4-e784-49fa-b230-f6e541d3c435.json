@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "73347af4-e784-49fa-b230-f6e541d3c435",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -174,10 +174,7 @@
     "num_messages": 49387,
     "num_messages_24h": 12331,
     "rating_score": 0,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Dominant",
       "Mature",
@@ -249,6 +246,7 @@
   "metrics": {
     "latest": {
       "num_messages": 49387,
+      "num_messages_24h": 12331,
       "rating_score": 0,
       "token_count": 643
     },
@@ -267,8 +265,23 @@
         "num_messages": 49387,
         "rating_score": 0,
         "token_count": 643
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 49387,
+        "num_messages_24h": 12331,
+        "rating_score": 0,
+        "token_count": 643
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/adf93142-5f37-461a-b371-73a0d637cbfe.png?class=avatar256x256",
+    "sha256": "adde7c2bda56b38a72ecc7552df2523afce9c56a216533254ca49f55913beb1c",
+    "contentType": "image/png",
+    "bytes": 144522,
+    "path": "archive/media/ad/adde7c2bda56b38a72ecc7552df2523afce9c56a216533254ca49f55913beb1c.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

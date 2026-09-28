@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3e298ea9-d288-44d5-b6f6-4bc292b34cd4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Lushi Mikoto",
-      "num_messages": 252,
+      "num_messages": 295,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "Your Dominant And Motherly Maid Girlfriend",
       "token_count": 507,
       "type": "STANDARD",
-      "updatedAt": 1790586128569,
+      "updatedAt": 1790588293273,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Lushi Mikoto",
-    "num_messages": 252,
+    "num_messages": 295,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "Your Dominant And Motherly Maid Girlfriend",
     "token_count": 507,
     "type": "STANDARD",
-    "updatedAt": 1790586128569,
+    "updatedAt": 1790588293273,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586128569,
+      "to": 1790588293273
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 252,
+      "num_messages": 295,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 507
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 252,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 507
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 295,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 507

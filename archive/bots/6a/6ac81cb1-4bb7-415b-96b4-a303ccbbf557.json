@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6ac81cb1-4bb7-415b-96b4-a303ccbbf557",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Mercedez Winthrop",
-      "num_messages": 725,
+      "num_messages": 742,
       "num_messages_24h": 317,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "Trophy wife summons a demon to get back her perfect body",
       "token_count": 1415,
       "type": "STANDARD",
-      "updatedAt": 1790587663179,
+      "updatedAt": 1790588451029,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Mercedez Winthrop",
-    "num_messages": 725,
+    "num_messages": 742,
     "num_messages_24h": 317,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "Trophy wife summons a demon to get back her perfect body",
     "token_count": 1415,
     "type": "STANDARD",
-    "updatedAt": 1790587663179,
+    "updatedAt": 1790588451029,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587663179,
+      "to": 1790588451029
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 725,
+      "num_messages": 742,
       "num_messages_24h": 317,
       "rating_score": 0,
       "token_count": 1415
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 725,
+        "num_messages_24h": 317,
+        "rating_score": 0,
+        "token_count": 1415
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 742,
         "num_messages_24h": 317,
         "rating_score": 0,
         "token_count": 1415

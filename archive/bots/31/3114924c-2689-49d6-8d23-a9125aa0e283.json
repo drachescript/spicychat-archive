@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "3114924c-2689-49d6-8d23-a9125aa0e283",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
+    },
+    "typesense:explore": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -67,6 +70,60 @@
       "type": "STANDARD",
       "updatedAt": 1790587476371,
       "visibility": "public"
+    },
+    "typesense:explore": {
+      "application_ids": [
+        "spicychat",
+        "pixelchat"
+      ],
+      "avatar_is_nsfw": false,
+      "avatar_url": "https://cdn.nd-api.com/avatars/80a4edd9-0330-4dd1-9994-5f86bbeab0c1.png?class=avatar256x256",
+      "character_id": "3114924c-2689-49d6-8d23-a9125aa0e283",
+      "createdAt": 1790401956176,
+      "creator_user_id": "kp:66bce88de52a4a5687c550ac4e08174d",
+      "creator_username": "janoor",
+      "definition_size_category": "mid",
+      "definition_visible": false,
+      "greeting": "*Vanessa opens the garden door. A small table stands beneath the awning, with two places set for dinner.*\n\n\"Ben has plans tonight. I wanted a chance to talk to you myself.\"\n\n*She rests a hand on the back of a chair and smiles.*\n\n\"We keep getting halfway through a conversation before someone interrupts. I thought I'd fix that.\"\n\n*She glances toward the kitchen, where a timer begins to ring.*\n\n\"Come in if you're staying. Tell me how your day went while I rescue dinner.\"",
+      "group_addable": false,
+      "group_size_category": "regular",
+      "has_lorebooks": false,
+      "id": "3114924c-2689-49d6-8d23-a9125aa0e283",
+      "is_nsfw": false,
+      "language": "en",
+      "moderation_flags": [],
+      "moderation_keywords": [],
+      "moderation_status": "reviewed",
+      "name": "Vanessa",
+      "name_i18n": {
+        "de": "Vanessa",
+        "hi": "Vanessa"
+      },
+      "num_messages": 5722,
+      "num_messages_24h": 2349,
+      "rating_score": 0,
+      "reportsType": {},
+      "tags": [
+        "Female",
+        "English",
+        "Real",
+        "Original Character",
+        "Mature",
+        "Scenario"
+      ],
+      "title": "Your friend's mom invited you over. Your friend isn't coming.",
+      "title_i18n": {
+        "de": "Die Mutter deines Freundes hat dich eingeladen. Dein Freund kommt nicht.",
+        "hi": "आपके मित्र की माँ ने आपको आमंत्रित किया है। आपका मित्र नहीं आ रहा।"
+      },
+      "token_count": 1044,
+      "translated_languages": [
+        "de",
+        "hi"
+      ],
+      "type": "STANDARD",
+      "updatedAt": 1790588448608,
+      "visibility": "public"
     }
   },
   "lastKnown": {
@@ -95,7 +152,7 @@
       "de": "Vanessa",
       "hi": "Vanessa"
     },
-    "num_messages": 5674,
+    "num_messages": 5722,
     "num_messages_24h": 2349,
     "rating_score": 0,
     "reportsType": {},
@@ -118,10 +175,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587476371,
+    "updatedAt": 1790588448608,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:explore",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587476371,
+      "to": 1790588448608
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +197,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2407,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2408,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 5674,
+      "num_messages": 5722,
       "num_messages_24h": 2349,
       "rating_score": 0,
       "token_count": 1044
@@ -147,6 +213,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5674,
+        "num_messages_24h": 2349,
+        "rating_score": 0,
+        "token_count": 1044
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:explore",
+        "num_messages": 5722,
         "num_messages_24h": 2349,
         "rating_score": 0,
         "token_count": 1044

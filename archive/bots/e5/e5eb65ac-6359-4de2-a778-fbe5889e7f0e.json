@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e5eb65ac-6359-4de2-a778-fbe5889e7f0e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "tr": "Emperor Kaelith Vary",
         "zh": "Emperor Kaelith Vary"
       },
-      "num_messages": 195271,
+      "num_messages": 195307,
       "num_messages_24h": 2934,
       "rating_score": 0.824468,
       "reportsType": {},
@@ -82,7 +82,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587285872,
+      "updatedAt": 1790588207441,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "tr": "Emperor Kaelith Vary",
       "zh": "Emperor Kaelith Vary"
     },
-    "num_messages": 195271,
+    "num_messages": 195307,
     "num_messages_24h": 2934,
     "rating_score": 0.824468,
     "reportsType": {},
@@ -152,10 +152,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587285872,
+    "updatedAt": 1790588207441,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587285872,
+      "to": 1790588207441
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,7 +180,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 195271,
+      "num_messages": 195307,
       "num_messages_24h": 2934,
       "rating_score": 0.824468,
       "token_count": 886
@@ -181,6 +190,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 195271,
+        "num_messages_24h": 2934,
+        "rating_score": 0.824468,
+        "token_count": 886
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 195307,
         "num_messages_24h": 2934,
         "rating_score": 0.824468,
         "token_count": 886

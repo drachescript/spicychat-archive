@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f552b993-0de1-455f-98ab-97a5a4a59e58",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Lyra & Kael",
         "zh": "莉拉与凯尔"
       },
-      "num_messages": 2359545,
+      "num_messages": 2359635,
       "num_messages_24h": 936,
       "rating_score": 0.226475,
       "tags": [
@@ -98,7 +98,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587382603,
+      "updatedAt": 1790588007631,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "tr": "Lyra & Kael",
       "zh": "莉拉与凯尔"
     },
-    "num_messages": 2359545,
+    "num_messages": 2359635,
     "num_messages_24h": 936,
     "rating_score": 0.226475,
     "tags": [
@@ -184,10 +184,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587382603,
+    "updatedAt": 1790588007631,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587382603,
+      "to": 1790588007631
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2359545,
+      "num_messages": 2359635,
       "num_messages_24h": 936,
       "rating_score": 0.226475,
       "token_count": 1573
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2359545,
+        "num_messages_24h": 936,
+        "rating_score": 0.226475,
+        "token_count": 1573
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2359635,
         "num_messages_24h": 936,
         "rating_score": 0.226475,
         "token_count": 1573

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bc315cc9-4a88-4ee6-8bfb-16bafd87192e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Evangeline St. Clair",
         "zh": "Evangeline St. Clair"
       },
-      "num_messages": 144075,
+      "num_messages": 144124,
       "num_messages_24h": 2390,
       "rating_score": 0.834559,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587636606,
+      "updatedAt": 1790588312758,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Evangeline St. Clair",
       "zh": "Evangeline St. Clair"
     },
-    "num_messages": 144075,
+    "num_messages": 144124,
     "num_messages_24h": 2390,
     "rating_score": 0.834559,
     "reportsType": {},
@@ -188,10 +188,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587636606,
+    "updatedAt": 1790588312758,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587636606,
+      "to": 1790588312758
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,13 +210,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2344,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2345,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 144075,
+      "num_messages": 144124,
       "num_messages_24h": 2390,
       "rating_score": 0.834559,
       "token_count": 455
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 144075,
+        "num_messages_24h": 2390,
+        "rating_score": 0.834559,
+        "token_count": 455
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 144124,
         "num_messages_24h": 2390,
         "rating_score": 0.834559,
         "token_count": 455

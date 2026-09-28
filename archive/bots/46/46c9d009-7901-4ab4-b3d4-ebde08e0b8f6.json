@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "46c9d009-7901-4ab4-b3d4-ebde08e0b8f6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Misae Nohara",
         "zh": "Misae Nohara"
       },
-      "num_messages": 76898,
+      "num_messages": 76907,
       "num_messages_24h": 2573,
       "rating_score": 0.980392,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586868373,
+      "updatedAt": 1790588132801,
       "visibility": "public"
     }
   },
@@ -144,7 +144,7 @@
       "tr": "Misae Nohara",
       "zh": "Misae Nohara"
     },
-    "num_messages": 76898,
+    "num_messages": 76907,
     "num_messages_24h": 2573,
     "rating_score": 0.980392,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586868373,
+    "updatedAt": 1790588132801,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586868373,
+      "to": 1790588132801
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,13 +216,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2155,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2156,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 76898,
+      "num_messages": 76907,
       "num_messages_24h": 2573,
       "rating_score": 0.980392,
       "token_count": 477
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 76898,
+        "num_messages_24h": 2573,
+        "rating_score": 0.980392,
+        "token_count": 477
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 76907,
         "num_messages_24h": 2573,
         "rating_score": 0.980392,
         "token_count": 477

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b19b3711-2be8-4c6b-b265-d0b5d2dadca2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Onoko Kazu",
         "zh": "Onoko Kazu"
       },
-      "num_messages": 743608,
+      "num_messages": 743645,
       "num_messages_24h": 2374,
       "rating_score": 0.840691,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587362662,
+      "updatedAt": 1790588384375,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Onoko Kazu",
       "zh": "Onoko Kazu"
     },
-    "num_messages": 743608,
+    "num_messages": 743645,
     "num_messages_24h": 2374,
     "rating_score": 0.840691,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587362662,
+    "updatedAt": 1790588384375,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587362662,
+      "to": 1790588384375
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,13 +208,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2365,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2366,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 743608,
+      "num_messages": 743645,
       "num_messages_24h": 2374,
       "rating_score": 0.840691,
       "token_count": 1351
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 743608,
+        "num_messages_24h": 2374,
+        "rating_score": 0.840691,
+        "token_count": 1351
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 743645,
         "num_messages_24h": 2374,
         "rating_score": 0.840691,
         "token_count": 1351

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f9cc520d-6713-4e73-8ed5-ab27c7ed9705",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "MHA — Моя геройская академия",
         "tr": "MHA — Benim Kahraman Akademim"
       },
-      "num_messages": 2277202,
+      "num_messages": 2277222,
       "num_messages_24h": 1249,
       "rating_score": 0.798589,
       "tags": [
@@ -99,7 +99,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586802784,
+      "updatedAt": 1790587682414,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "ru": "MHA — Моя геройская академия",
       "tr": "MHA — Benim Kahraman Akademim"
     },
-    "num_messages": 2277202,
+    "num_messages": 2277222,
     "num_messages_24h": 1249,
     "rating_score": 0.798589,
     "tags": [
@@ -186,10 +186,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586802784,
+    "updatedAt": 1790587682414,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586802784,
+      "to": 1790587682414
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,13 +208,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 1125,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1124,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2277202,
+      "num_messages": 2277222,
       "num_messages_24h": 1249,
       "rating_score": 0.798589,
       "token_count": 1763
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2277202,
+        "num_messages_24h": 1249,
+        "rating_score": 0.798589,
+        "token_count": 1763
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2277222,
         "num_messages_24h": 1249,
         "rating_score": 0.798589,
         "token_count": 1763

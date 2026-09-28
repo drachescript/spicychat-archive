@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2cc47a53-42a4-4934-ae6a-9e420dde1999",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "hi": "BBC Whorehouse",
         "tr": "BBC Whorehouse"
       },
-      "num_messages": 1722275,
+      "num_messages": 1722324,
       "num_messages_24h": 444,
       "rating_score": 0.69812,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587382363,
+      "updatedAt": 1790588360983,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "hi": "BBC Whorehouse",
       "tr": "BBC Whorehouse"
     },
-    "num_messages": 1722275,
+    "num_messages": 1722324,
     "num_messages_24h": 444,
     "rating_score": 0.69812,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587382363,
+    "updatedAt": 1790588360983,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587382363,
+      "to": 1790588360983
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,13 +200,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2017,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2018,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1722275,
+      "num_messages": 1722324,
       "num_messages_24h": 444,
       "rating_score": 0.69812,
       "token_count": 926
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1722275,
+        "num_messages_24h": 444,
+        "rating_score": 0.69812,
+        "token_count": 926
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1722324,
         "num_messages_24h": 444,
         "rating_score": 0.69812,
         "token_count": 926

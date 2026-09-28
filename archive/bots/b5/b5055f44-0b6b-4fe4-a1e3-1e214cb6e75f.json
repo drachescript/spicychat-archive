@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b5055f44-0b6b-4fe4-a1e3-1e214cb6e75f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Тенсура РПГ",
         "zh": "Tensura Rpg"
       },
-      "num_messages": 188630,
+      "num_messages": 188726,
       "num_messages_24h": 4791,
       "rating_score": 0.932432,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586827967,
+      "updatedAt": 1790588247788,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "ru": "Тенсура РПГ",
       "zh": "Tensura Rpg"
     },
-    "num_messages": 188630,
+    "num_messages": 188726,
     "num_messages_24h": 4791,
     "rating_score": 0.932432,
     "reportsType": {},
@@ -158,10 +158,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586827967,
+    "updatedAt": 1790588247788,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586827967,
+      "to": 1790588247788
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,7 +186,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 188630,
+      "num_messages": 188726,
       "num_messages_24h": 4791,
       "rating_score": 0.932432,
       "token_count": 1382
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 188630,
+        "num_messages_24h": 4791,
+        "rating_score": 0.932432,
+        "token_count": 1382
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 188726,
         "num_messages_24h": 4791,
         "rating_score": 0.932432,
         "token_count": 1382

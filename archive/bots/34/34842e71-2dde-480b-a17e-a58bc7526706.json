@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "34842e71-2dde-480b-a17e-a58bc7526706",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "Cylon Sycolahn",
         "tr": "Cylon Sycolahn"
       },
-      "num_messages": 4329086,
+      "num_messages": 4329098,
       "num_messages_24h": 191,
       "rating_score": 0.71896,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586792348,
+      "updatedAt": 1790587973065,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "hi": "Cylon Sycolahn",
       "tr": "Cylon Sycolahn"
     },
-    "num_messages": 4329086,
+    "num_messages": 4329098,
     "num_messages_24h": 191,
     "rating_score": 0.71896,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586792348,
+    "updatedAt": 1790587973065,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586792348,
+      "to": 1790587973065
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,7 +188,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4329086,
+      "num_messages": 4329098,
       "num_messages_24h": 191,
       "rating_score": 0.71896,
       "token_count": 512
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4329086,
+        "num_messages_24h": 191,
+        "rating_score": 0.71896,
+        "token_count": 512
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4329098,
         "num_messages_24h": 191,
         "rating_score": 0.71896,
         "token_count": 512

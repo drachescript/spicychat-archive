@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9825a7f2-d2ca-43de-bb4a-654cc40fc93a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       "name_i18n": {
         "de": "Higoro"
       },
-      "num_messages": 3948,
+      "num_messages": 3960,
       "num_messages_24h": 2637,
       "rating_score": 0,
       "reportsType": {},
@@ -62,7 +62,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587562515,
+      "updatedAt": 1790588449430,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
     "name_i18n": {
       "de": "Higoro"
     },
-    "num_messages": 3948,
+    "num_messages": 3960,
     "num_messages_24h": 2637,
     "rating_score": 0,
     "reportsType": {},
@@ -112,10 +112,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587562515,
+    "updatedAt": 1790588449430,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587562515,
+      "to": 1790588449430
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,13 +138,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1982,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1983,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 3948,
+      "num_messages": 3960,
       "num_messages_24h": 2637,
       "rating_score": 0,
       "token_count": 1673
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 3948,
+        "num_messages_24h": 2637,
+        "rating_score": 0,
+        "token_count": 1673
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 3960,
         "num_messages_24h": 2637,
         "rating_score": 0,
         "token_count": 1673

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e812af56-1500-45c0-aba9-6a524d500eb1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Riley Quinn",
         "zh": "Riley Quinn"
       },
-      "num_messages": 157596,
+      "num_messages": 157601,
       "num_messages_24h": 4868,
       "rating_score": 0.83913,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586640059,
+      "updatedAt": 1790587930411,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Riley Quinn",
       "zh": "Riley Quinn"
     },
-    "num_messages": 157596,
+    "num_messages": 157601,
     "num_messages_24h": 4868,
     "rating_score": 0.83913,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586640059,
+    "updatedAt": 1790587930411,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586640059,
+      "to": 1790587930411
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 157596,
+      "num_messages": 157601,
       "num_messages_24h": 4868,
       "rating_score": 0.83913,
       "token_count": 1483
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 157596,
+        "num_messages_24h": 4868,
+        "rating_score": 0.83913,
+        "token_count": 1483
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 157601,
         "num_messages_24h": 4868,
         "rating_score": 0.83913,
         "token_count": 1483

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "328966ef-e7f7-4c7d-b8aa-7a7b285a4c97",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "de": "Marvel rivals school",
         "pl": "Marvel rivals school"
       },
-      "num_messages": 78423,
+      "num_messages": 78447,
       "num_messages_24h": 259,
       "rating_score": 0.99359,
       "reportsType": {},
@@ -62,7 +62,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586632399,
+      "updatedAt": 1790587637194,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
       "de": "Marvel rivals school",
       "pl": "Marvel rivals school"
     },
-    "num_messages": 78423,
+    "num_messages": 78447,
     "num_messages_24h": 259,
     "rating_score": 0.99359,
     "reportsType": {},
@@ -112,10 +112,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586632399,
+    "updatedAt": 1790587637194,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586632399,
+      "to": 1790587637194
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,7 +140,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 78423,
+      "num_messages": 78447,
       "num_messages_24h": 259,
       "rating_score": 0.99359,
       "token_count": 583
@@ -141,6 +150,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 78423,
+        "num_messages_24h": 259,
+        "rating_score": 0.99359,
+        "token_count": 583
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 78447,
         "num_messages_24h": 259,
         "rating_score": 0.99359,
         "token_count": 583

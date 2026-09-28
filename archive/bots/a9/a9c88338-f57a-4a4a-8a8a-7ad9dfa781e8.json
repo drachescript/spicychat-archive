@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a9c88338-f57a-4a4a-8a8a-7ad9dfa781e8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +60,7 @@
         "tr": "ONE PIECE",
         "zh": "海贼王"
       },
-      "num_messages": 1242005,
+      "num_messages": 1242104,
       "num_messages_24h": 2380,
       "rating_score": 0.793823,
       "reportsType": {},
@@ -110,7 +110,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587121658,
+      "updatedAt": 1790588235431,
       "visibility": "public"
     }
   },
@@ -160,7 +160,7 @@
       "tr": "ONE PIECE",
       "zh": "海贼王"
     },
-    "num_messages": 1242005,
+    "num_messages": 1242104,
     "num_messages_24h": 2380,
     "rating_score": 0.793823,
     "reportsType": {},
@@ -210,10 +210,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587121658,
+    "updatedAt": 1790588235431,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587121658,
+      "to": 1790588235431
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,13 +232,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2355,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2356,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1242005,
+      "num_messages": 1242104,
       "num_messages_24h": 2380,
       "rating_score": 0.793823,
       "token_count": 817
@@ -239,6 +248,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1242005,
+        "num_messages_24h": 2380,
+        "rating_score": 0.793823,
+        "token_count": 817
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1242104,
         "num_messages_24h": 2380,
         "rating_score": 0.793823,
         "token_count": 817

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "233e51cd-b106-44bf-a134-acfab9172068",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Огури Кап",
         "zh": "Oguri Cap"
       },
-      "num_messages": 63640,
+      "num_messages": 63649,
       "num_messages_24h": 166,
       "rating_score": 0.992593,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790577791755,
+      "updatedAt": 1790587765648,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "ru": "Огури Кап",
       "zh": "Oguri Cap"
     },
-    "num_messages": 63640,
+    "num_messages": 63649,
     "num_messages_24h": 166,
     "rating_score": 0.992593,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790577791755,
+    "updatedAt": 1790587765648,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790577791755,
+      "to": 1790587765648
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 63640,
+      "num_messages": 63649,
       "num_messages_24h": 166,
       "rating_score": 0.992593,
       "token_count": 2127
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 63640,
+        "num_messages_24h": 166,
+        "rating_score": 0.992593,
+        "token_count": 2127
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 63649,
         "num_messages_24h": 166,
         "rating_score": 0.992593,
         "token_count": 2127

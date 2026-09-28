@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "51096244-e936-401b-bd00-98ba614faa4c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "ru": "Charlotte Renger"
       },
-      "num_messages": 961,
+      "num_messages": 969,
       "num_messages_24h": 587,
       "rating_score": 0,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586436613,
+      "updatedAt": 1790588232720,
       "visibility": "public"
     }
   },
@@ -92,7 +92,7 @@
     "name_i18n": {
       "ru": "Charlotte Renger"
     },
-    "num_messages": 961,
+    "num_messages": 969,
     "num_messages_24h": 587,
     "rating_score": 0,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586436613,
+    "updatedAt": 1790588232720,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586436613,
+      "to": 1790588232720
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,13 +138,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1829,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1830,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 961,
+      "num_messages": 969,
       "num_messages_24h": 587,
       "rating_score": 0,
       "token_count": 1184
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 961,
+        "num_messages_24h": 587,
+        "rating_score": 0,
+        "token_count": 1184
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 969,
         "num_messages_24h": 587,
         "rating_score": 0,
         "token_count": 1184

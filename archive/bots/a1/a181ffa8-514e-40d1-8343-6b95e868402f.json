@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a181ffa8-514e-40d1-8343-6b95e868402f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "MHA 3A Sınıfı",
         "zh": "MHA的3A班"
       },
-      "num_messages": 13246975,
+      "num_messages": 13246991,
       "num_messages_24h": 239,
       "rating_score": 0.747526,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585802,
+      "updatedAt": 1790588362222,
       "visibility": "public"
     }
   },
@@ -152,7 +152,7 @@
       "tr": "MHA 3A Sınıfı",
       "zh": "MHA的3A班"
     },
-    "num_messages": 13246975,
+    "num_messages": 13246991,
     "num_messages_24h": 239,
     "rating_score": 0.747526,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587585802,
+    "updatedAt": 1790588362222,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587585802,
+      "to": 1790588362222
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 13246975,
+      "num_messages": 13246991,
       "num_messages_24h": 239,
       "rating_score": 0.747526,
       "token_count": 1438
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 13246975,
+        "num_messages_24h": 239,
+        "rating_score": 0.747526,
+        "token_count": 1438
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 13246991,
         "num_messages_24h": 239,
         "rating_score": 0.747526,
         "token_count": 1438

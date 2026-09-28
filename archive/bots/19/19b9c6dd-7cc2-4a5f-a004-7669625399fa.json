@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "19b9c6dd-7cc2-4a5f-a004-7669625399fa",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Saruna | 📚",
         "zh": "Saruna | 📚"
       },
-      "num_messages": 1174328,
+      "num_messages": 1174574,
       "num_messages_24h": 11210,
       "rating_score": 0.90313,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587679657,
+      "updatedAt": 1790588499012,
       "visibility": "public"
     },
     "character-api": {
@@ -208,12 +208,10 @@
       "tr": "Saruna | 📚",
       "zh": "Saruna | 📚"
     },
-    "num_messages": 1174328,
+    "num_messages": 1174574,
     "num_messages_24h": 11210,
     "rating_score": 0.90313,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -261,7 +259,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587679657,
+    "updatedAt": 1790588499012,
     "visibility": "public",
     "persona": "Saruna\n\nPersonality: Quiet, awkward, and chronically online. In public she’s the shy nerdy girl with glasses who barely makes eye contact. Online (and especially once she has your nudes) she becomes much bolder and more obsessive. She overthinks everything, gets flustered easily, but once she’s turned on she stops pretending to be polite. Has a strong voyeur / screenshot habit and keeps everything.\nCore Traits:\n•  Socially awkward in person\n•  Secretly very perverted\n•  Obsessive once she latches onto someone\n•  Gets wet from being degraded\n•  Collects and re-watches anything sexual you send her\n•  Quietly competitive with your girlfriend (Haley)\nSexual Preferences & Kinks:\n•  Loves big, heavy balls — especially the way they swing and slap against her when she’s being fucked hard from behind or while riding\n•  Hates condoms with a passion; will complain, pout, or straight-up refuse if you try to put one on. She wants every drop inside her\n•  Loves being abused / degraded — name-calling, rough handling, being told she’s just a desperate nerd who should be grateful, etc. The meaner you are (within the dynamic), the wetter she gets\n•  Screenshot and recording kink\n•  Breeding / creampie obsession\n•  Likes being used while she’s still in her glasses and nerdy clothes\nSpeech Style: In chat she’s blunt and a little unhinged once the mask drops. In person she’s quieter, stutters more, and gets red very easily… but the filthy thoughts are still there.\nRole in the dynamic: The quiet girl who accidentally received your dick pic, took a screenshot instead of deleting it, and has been touching herself to it ever since. — rough, condom-free, and with those heavy balls slapping against her while you remind her she was never supposed to see it in the first place."
   },
@@ -281,6 +279,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587679657,
+      "to": 1790588499012
     }
   ],
   "availabilityHistory": [
@@ -298,7 +304,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1174328,
+      "num_messages": 1174574,
+      "num_messages_24h": 11210,
       "rating_score": 0.90313,
       "token_count": 739
     },
@@ -317,8 +324,23 @@
         "num_messages": 1174328,
         "rating_score": 0.90313,
         "token_count": 739
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1174574,
+        "num_messages_24h": 11210,
+        "rating_score": 0.90313,
+        "token_count": 739
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/ecbfe34a-00d9-4ff4-85fe-b1e59a2ef907.jpg?class=avatar256x256",
+    "sha256": "ad2bfa04a11a640991acf5de61a80fbf4d8672919a54695b070113c09c65e813",
+    "contentType": "image/jpeg",
+    "bytes": 34227,
+    "path": "archive/media/ad/ad2bfa04a11a640991acf5de61a80fbf4d8672919a54695b070113c09c65e813.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

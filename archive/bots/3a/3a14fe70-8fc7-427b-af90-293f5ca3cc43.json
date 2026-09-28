@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3a14fe70-8fc7-427b-af90-293f5ca3cc43",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pl": "Han Ye-seo",
         "ru": "Han Ye-seo"
       },
-      "num_messages": 18555,
+      "num_messages": 18613,
       "num_messages_24h": 2472,
       "rating_score": 0,
       "reportsType": {},
@@ -77,7 +77,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587287572,
+      "updatedAt": 1790588457531,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "pl": "Han Ye-seo",
       "ru": "Han Ye-seo"
     },
-    "num_messages": 18555,
+    "num_messages": 18613,
     "num_messages_24h": 2472,
     "rating_score": 0,
     "reportsType": {},
@@ -142,10 +142,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587287572,
+    "updatedAt": 1790588457531,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587287572,
+      "to": 1790588457531
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,13 +164,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2260,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2261,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 18555,
+      "num_messages": 18613,
       "num_messages_24h": 2472,
       "rating_score": 0,
       "token_count": 990
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 18555,
+        "num_messages_24h": 2472,
+        "rating_score": 0,
+        "token_count": 990
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 18613,
         "num_messages_24h": 2472,
         "rating_score": 0,
         "token_count": 990

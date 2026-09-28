@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "89f9343e-36b6-4eb3-9374-870e9dd97b44",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -59,7 +59,7 @@
         "tr": "Friend's Futa Sister",
         "zh": "朋友的扶他妹妹"
       },
-      "num_messages": 319807,
+      "num_messages": 320259,
       "num_messages_24h": 26903,
       "rating_score": 0.785106,
       "tags": [
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561199,
+      "updatedAt": 1790588360892,
       "visibility": "public"
     },
     "character-api": {
@@ -169,7 +169,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/cb36daa7-8917-46d0-9bad-fbd4e6606dc2.png?class=avatar256x256",
     "character_id": "89f9343e-36b6-4eb3-9374-870e9dd97b44",
-    "createdAt": "2026-09-16T19:50:40.504Z",
+    "createdAt": 1789588240504,
     "creator_user_id": "kp:08d0ee606c5f4b16a4d4f23f0c0fabfc",
     "creator_username": "justjonathan2012",
     "definition_size_category": "low",
@@ -199,7 +199,7 @@
       "tr": "Friend's Futa Sister",
       "zh": "朋友的扶他妹妹"
     },
-    "num_messages": 319897,
+    "num_messages": 320259,
     "num_messages_24h": 26903,
     "rating_score": 0.785106,
     "tags": [
@@ -244,7 +244,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:28.457Z",
+    "updatedAt": 1790588360892,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -263,6 +263,22 @@
       "kind": "value",
       "from": 1790587561199,
       "to": "2026-09-28T09:29:28.457Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-16T19:50:40.504Z",
+      "to": 1789588240504
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:28.457Z",
+      "to": 1790588360892
     }
   ],
   "availabilityHistory": [
@@ -280,7 +296,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 319897,
+      "num_messages": 320259,
+      "num_messages_24h": 26903,
       "rating_score": 0.785106,
       "token_count": 415
     },
@@ -297,6 +314,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 319897,
+        "rating_score": 0.785106,
+        "token_count": 415
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 320259,
+        "num_messages_24h": 26903,
         "rating_score": 0.785106,
         "token_count": 415
       }

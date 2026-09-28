@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "93c81a46-e45a-4196-a459-5eece34d4bd7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "pl": "The Danger Zone",
         "zh": "危险地带"
       },
-      "num_messages": 3600386,
+      "num_messages": 3600418,
       "num_messages_24h": 64,
       "rating_score": 0.776102,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587283421,
+      "updatedAt": 1790588169897,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
       "pl": "The Danger Zone",
       "zh": "危险地带"
     },
-    "num_messages": 3600386,
+    "num_messages": 3600418,
     "num_messages_24h": 64,
     "rating_score": 0.776102,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587283421,
+    "updatedAt": 1790588169897,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587283421,
+      "to": 1790588169897
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3600386,
+      "num_messages": 3600418,
       "num_messages_24h": 64,
       "rating_score": 0.776102,
       "token_count": 481
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3600386,
+        "num_messages_24h": 64,
+        "rating_score": 0.776102,
+        "token_count": 481
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3600418,
         "num_messages_24h": 64,
         "rating_score": 0.776102,
         "token_count": 481

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cde02e5c-381e-4e99-99bf-e7d6d0072a88",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Ryoshi",
         "zh": "Ryoshi"
       },
-      "num_messages": 870308,
+      "num_messages": 870330,
       "num_messages_24h": 2575,
       "rating_score": 0.939124,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587681166,
+      "updatedAt": 1790587722024,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Ryoshi",
       "zh": "Ryoshi"
     },
-    "num_messages": 870308,
+    "num_messages": 870330,
     "num_messages_24h": 2575,
     "rating_score": 0.939124,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587681166,
+    "updatedAt": 1790587722024,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587681166,
+      "to": 1790587722024
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,13 +218,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2152,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2153,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 870308,
+      "num_messages": 870330,
       "num_messages_24h": 2575,
       "rating_score": 0.939124,
       "token_count": 1211
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 870308,
+        "num_messages_24h": 2575,
+        "rating_score": 0.939124,
+        "token_count": 1211
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 870330,
         "num_messages_24h": 2575,
         "rating_score": 0.939124,
         "token_count": 1211

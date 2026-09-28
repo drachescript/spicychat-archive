@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e1c3dc02-0a59-483f-8a62-d5d67c4c980b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Maru",
         "zh": "Maru"
       },
-      "num_messages": 433841,
+      "num_messages": 434481,
       "num_messages_24h": 23383,
       "rating_score": 0.694828,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587583473,
+      "updatedAt": 1790588454550,
       "visibility": "public"
     },
     "character-api": {
@@ -171,7 +171,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/a9461c3d-fa42-4d4f-ae9a-2381e0d65b33.png?class=avatar256x256",
     "character_id": "e1c3dc02-0a59-483f-8a62-d5d67c4c980b",
-    "createdAt": "2026-09-19T10:36:16.989Z",
+    "createdAt": 1789814176989,
     "creator_user_id": "kp:30e0a460a1a947f5958237787ffa2ea9",
     "creator_username": "sanabe",
     "definition_size_category": "high",
@@ -201,12 +201,10 @@
       "tr": "Maru",
       "zh": "Maru"
     },
-    "num_messages": 433841,
+    "num_messages": 434481,
     "num_messages_24h": 23383,
     "rating_score": 0.694828,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "MalePOV",
@@ -250,7 +248,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:26:23.473Z",
+    "updatedAt": 1790588454550,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -278,6 +276,22 @@
       "kind": "value",
       "from": 1790587583473,
       "to": "2026-09-28T09:26:23.473Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-19T10:36:16.989Z",
+      "to": 1789814176989
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:26:23.473Z",
+      "to": 1790588454550
     }
   ],
   "availabilityHistory": [
@@ -295,7 +309,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 433841,
+      "num_messages": 434481,
+      "num_messages_24h": 23383,
       "rating_score": 0.694828,
       "token_count": 1776
     },
@@ -312,6 +327,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 433841,
+        "rating_score": 0.694828,
+        "token_count": 1776
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 434481,
+        "num_messages_24h": 23383,
         "rating_score": 0.694828,
         "token_count": 1776
       }

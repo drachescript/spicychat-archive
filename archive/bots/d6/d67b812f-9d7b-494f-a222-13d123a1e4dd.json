@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d67b812f-9d7b-494f-a222-13d123a1e4dd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Roxy Quinn",
         "zh": "Roxy Quinn"
       },
-      "num_messages": 105508,
+      "num_messages": 105633,
       "num_messages_24h": 2583,
       "rating_score": 0.586207,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587563876,
+      "updatedAt": 1790588383994,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Roxy Quinn",
       "zh": "Roxy Quinn"
     },
-    "num_messages": 105508,
+    "num_messages": 105633,
     "num_messages_24h": 2583,
     "rating_score": 0.586207,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587563876,
+    "updatedAt": 1790588383994,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587563876,
+      "to": 1790588383994
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,13 +206,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2144,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2145,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 105508,
+      "num_messages": 105633,
       "num_messages_24h": 2583,
       "rating_score": 0.586207,
       "token_count": 2002
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 105508,
+        "num_messages_24h": 2583,
+        "rating_score": 0.586207,
+        "token_count": 2002
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 105633,
         "num_messages_24h": 2583,
         "rating_score": 0.586207,
         "token_count": 2002

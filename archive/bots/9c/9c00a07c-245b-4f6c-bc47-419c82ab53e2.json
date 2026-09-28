@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9c00a07c-245b-4f6c-bc47-419c82ab53e2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "tr": "Monster Girl Isekai",
         "zh": "怪物女孩异世界"
       },
-      "num_messages": 1795796,
+      "num_messages": 1795825,
       "num_messages_24h": 198,
       "rating_score": 0.802343,
       "tags": [
@@ -94,7 +94,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587192316,
+      "updatedAt": 1790587930028,
       "visibility": "public"
     }
   },
@@ -126,7 +126,7 @@
       "tr": "Monster Girl Isekai",
       "zh": "怪物女孩异世界"
     },
-    "num_messages": 1795796,
+    "num_messages": 1795825,
     "num_messages_24h": 198,
     "rating_score": 0.802343,
     "tags": [
@@ -176,10 +176,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587192316,
+    "updatedAt": 1790587930028,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587192316,
+      "to": 1790587930028
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1795796,
+      "num_messages": 1795825,
       "num_messages_24h": 198,
       "rating_score": 0.802343,
       "token_count": 673
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1795796,
+        "num_messages_24h": 198,
+        "rating_score": 0.802343,
+        "token_count": 673
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1795825,
         "num_messages_24h": 198,
         "rating_score": 0.802343,
         "token_count": 673

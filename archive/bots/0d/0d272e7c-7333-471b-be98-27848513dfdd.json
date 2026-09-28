@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0d272e7c-7333-471b-be98-27848513dfdd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Hailey",
         "zh": "Hailey"
       },
-      "num_messages": 251712,
+      "num_messages": 252669,
       "num_messages_24h": 31552,
       "rating_score": 0.916667,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587638905,
+      "updatedAt": 1790588185091,
       "visibility": "public"
     },
     "character-api": {
@@ -174,7 +174,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/0a440f87-108b-45e7-9915-f16e7ce216de.png?class=avatar256x256",
     "character_id": "0d272e7c-7333-471b-be98-27848513dfdd",
-    "createdAt": "2026-09-19T06:51:58.820Z",
+    "createdAt": 1789800718820,
     "creator_user_id": "kp:b4fcfdc1a55445b89a085bc1c96f9623",
     "creator_username": "norman_gram",
     "definition_size_category": "mid",
@@ -203,13 +203,10 @@
       "tr": "Hailey",
       "zh": "Hailey"
     },
-    "num_messages": 251712,
+    "num_messages": 252669,
     "num_messages_24h": 31552,
     "rating_score": 0.916667,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Roommate",
       "Fat",
@@ -254,7 +251,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:27:18.905Z",
+    "updatedAt": 1790588185091,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -283,6 +280,22 @@
       "kind": "value",
       "from": 1790587638905,
       "to": "2026-09-28T09:27:18.905Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-19T06:51:58.820Z",
+      "to": 1789800718820
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:27:18.905Z",
+      "to": 1790588185091
     }
   ],
   "availabilityHistory": [
@@ -300,7 +313,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 251712,
+      "num_messages": 252669,
+      "num_messages_24h": 31552,
       "rating_score": 0.916667,
       "token_count": 1048
     },
@@ -317,6 +331,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 251712,
+        "rating_score": 0.916667,
+        "token_count": 1048
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 252669,
+        "num_messages_24h": 31552,
         "rating_score": 0.916667,
         "token_count": 1048
       }

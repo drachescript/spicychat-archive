@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4041bd9a-333d-48cf-8340-ea4c45c2b32f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Альтернативная Вселенная",
         "zh": "Alternate Universe"
       },
-      "num_messages": 1895598,
+      "num_messages": 1895617,
       "num_messages_24h": 245,
       "rating_score": 0.913462,
       "tags": [
@@ -78,7 +78,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585597701,
+      "updatedAt": 1790588384618,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "ru": "Альтернативная Вселенная",
       "zh": "Alternate Universe"
     },
-    "num_messages": 1895598,
+    "num_messages": 1895617,
     "num_messages_24h": 245,
     "rating_score": 0.913462,
     "tags": [
@@ -144,10 +144,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585597701,
+    "updatedAt": 1790588384618,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585597701,
+      "to": 1790588384618
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,13 +166,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 1676,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1675,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1895598,
+      "num_messages": 1895617,
       "num_messages_24h": 245,
       "rating_score": 0.913462,
       "token_count": 201
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1895598,
+        "num_messages_24h": 245,
+        "rating_score": 0.913462,
+        "token_count": 201
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1895617,
         "num_messages_24h": 245,
         "rating_score": 0.913462,
         "token_count": 201

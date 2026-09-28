@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d430a29f-2708-49c0-a94a-fdad0f4eff84",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +60,7 @@
         "tr": "Yaz Kampı!",
         "zh": "Summer Camp!"
       },
-      "num_messages": 2907298,
+      "num_messages": 2907362,
       "num_messages_24h": 374,
       "rating_score": 0.813892,
       "reportsType": {},
@@ -111,7 +111,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586604909,
+      "updatedAt": 1790587859435,
       "visibility": "public"
     }
   },
@@ -161,7 +161,7 @@
       "tr": "Yaz Kampı!",
       "zh": "Summer Camp!"
     },
-    "num_messages": 2907298,
+    "num_messages": 2907362,
     "num_messages_24h": 374,
     "rating_score": 0.813892,
     "reportsType": {},
@@ -212,10 +212,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586604909,
+    "updatedAt": 1790587859435,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586604909,
+      "to": 1790587859435
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -231,7 +240,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2907298,
+      "num_messages": 2907362,
       "num_messages_24h": 374,
       "rating_score": 0.813892,
       "token_count": 709
@@ -241,6 +250,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2907298,
+        "num_messages_24h": 374,
+        "rating_score": 0.813892,
+        "token_count": 709
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2907362,
         "num_messages_24h": 374,
         "rating_score": 0.813892,
         "token_count": 709

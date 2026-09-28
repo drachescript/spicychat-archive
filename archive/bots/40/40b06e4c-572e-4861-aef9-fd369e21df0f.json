@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40b06e4c-572e-4861-aef9-fd369e21df0f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "jjk trio but pick me",
         "zh": "jjk trio but pick me"
       },
-      "num_messages": 166446,
+      "num_messages": 166542,
       "num_messages_24h": 4745,
       "rating_score": 0.339744,
       "reportsType": {},
@@ -83,7 +83,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586603660,
+      "updatedAt": 1790588065256,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "ru": "jjk trio but pick me",
       "zh": "jjk trio but pick me"
     },
-    "num_messages": 166446,
+    "num_messages": 166542,
     "num_messages_24h": 4745,
     "rating_score": 0.339744,
     "reportsType": {},
@@ -154,10 +154,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586603660,
+    "updatedAt": 1790588065256,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586603660,
+      "to": 1790588065256
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,7 +182,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 166446,
+      "num_messages": 166542,
       "num_messages_24h": 4745,
       "rating_score": 0.339744,
       "token_count": 296
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 166446,
+        "num_messages_24h": 4745,
+        "rating_score": 0.339744,
+        "token_count": 296
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 166542,
         "num_messages_24h": 4745,
         "rating_score": 0.339744,
         "token_count": 296

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9a72db8a-c953-409e-89a9-95a77b657cf3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "hi": "Draco Malfoy",
         "zh": "Draco Malfoy"
       },
-      "num_messages": 43451,
+      "num_messages": 43478,
       "num_messages_24h": 2563,
       "rating_score": 0,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587582956,
+      "updatedAt": 1790587825124,
       "visibility": "public",
       "voice_id": "6e73aaf7-8faf-4f9a-8466-2cb78d3fb74f"
     }
@@ -116,7 +116,7 @@
       "hi": "Draco Malfoy",
       "zh": "Draco Malfoy"
     },
-    "num_messages": 43451,
+    "num_messages": 43478,
     "num_messages_24h": 2563,
     "rating_score": 0,
     "reportsType": {},
@@ -147,11 +147,20 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587582956,
+    "updatedAt": 1790587825124,
     "visibility": "public",
     "voice_id": "6e73aaf7-8faf-4f9a-8466-2cb78d3fb74f"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587582956,
+      "to": 1790587825124
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,13 +170,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2168,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2169,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 43451,
+      "num_messages": 43478,
       "num_messages_24h": 2563,
       "rating_score": 0,
       "token_count": 1244
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 43451,
+        "num_messages_24h": 2563,
+        "rating_score": 0,
+        "token_count": 1244
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 43478,
         "num_messages_24h": 2563,
         "rating_score": 0,
         "token_count": 1244

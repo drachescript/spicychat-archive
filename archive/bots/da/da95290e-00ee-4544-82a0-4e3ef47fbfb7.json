@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "da95290e-00ee-4544-82a0-4e3ef47fbfb7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Denise Merritt",
-      "num_messages": 28,
+      "num_messages": 39,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "You higher an expensive escort to make your ex jealous",
       "token_count": 1374,
       "type": "STANDARD",
-      "updatedAt": 1790576306638,
+      "updatedAt": 1790588132872,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Denise Merritt",
-    "num_messages": 28,
+    "num_messages": 39,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "You higher an expensive escort to make your ex jealous",
     "token_count": 1374,
     "type": "STANDARD",
-    "updatedAt": 1790576306638,
+    "updatedAt": 1790588132872,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790576306638,
+      "to": 1790588132872
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 28,
+      "num_messages": 39,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1374
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 28,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1374
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 39,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1374

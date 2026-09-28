@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d4bce1b0-0960-4c76-9594-8961c0eb696e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ar": "Nikki Wagner",
         "hi": "Nikki Wagner"
       },
-      "num_messages": 5031286,
+      "num_messages": 5031361,
       "num_messages_24h": 479,
       "rating_score": 0.801058,
       "tags": [
@@ -97,7 +97,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585944232,
+      "updatedAt": 1790588244400,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "ar": "Nikki Wagner",
       "hi": "Nikki Wagner"
     },
-    "num_messages": 5031286,
+    "num_messages": 5031361,
     "num_messages_24h": 479,
     "rating_score": 0.801058,
     "tags": [
@@ -184,10 +184,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585944232,
+    "updatedAt": 1790588244400,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585944232,
+      "to": 1790588244400
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5031286,
+      "num_messages": 5031361,
       "num_messages_24h": 479,
       "rating_score": 0.801058,
       "token_count": 1026
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 5031286,
+        "num_messages_24h": 479,
+        "rating_score": 0.801058,
+        "token_count": 1026
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 5031361,
         "num_messages_24h": 479,
         "rating_score": 0.801058,
         "token_count": 1026

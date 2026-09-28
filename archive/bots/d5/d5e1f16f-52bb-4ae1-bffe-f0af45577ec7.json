@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d5e1f16f-52bb-4ae1-bffe-f0af45577ec7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Darth Yendris",
-      "num_messages": 147,
+      "num_messages": 161,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "Where the White Blade Waits -  \"Some wounds never heal. Some enemies make certain of it.”",
       "token_count": 2256,
       "type": "STANDARD",
-      "updatedAt": 1790587662725,
+      "updatedAt": 1790588209657,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Darth Yendris",
-    "num_messages": 147,
+    "num_messages": 161,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "Where the White Blade Waits -  \"Some wounds never heal. Some enemies make certain of it.”",
     "token_count": 2256,
     "type": "STANDARD",
-    "updatedAt": 1790587662725,
+    "updatedAt": 1790588209657,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587662725,
+      "to": 1790588209657
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 147,
+      "num_messages": 161,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2256
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 147,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2256
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 161,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2256

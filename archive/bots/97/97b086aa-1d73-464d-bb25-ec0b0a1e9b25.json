@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "97b086aa-1d73-464d-bb25-ec0b0a1e9b25",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "de": "Ushijima Wakatoshi",
         "ru": "Ushijima Wakatoshi"
       },
-      "num_messages": 89524,
+      "num_messages": 89528,
       "num_messages_24h": 860,
       "rating_score": 1,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195216,
+      "updatedAt": 1790588452517,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
       "de": "Ushijima Wakatoshi",
       "ru": "Ushijima Wakatoshi"
     },
-    "num_messages": 89524,
+    "num_messages": 89528,
     "num_messages_24h": 860,
     "rating_score": 1,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195216,
+    "updatedAt": 1790588452517,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195216,
+      "to": 1790588452517
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,7 +150,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 89524,
+      "num_messages": 89528,
       "num_messages_24h": 860,
       "rating_score": 1,
       "token_count": 710
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 89524,
+        "num_messages_24h": 860,
+        "rating_score": 1,
+        "token_count": 710
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 89528,
         "num_messages_24h": 860,
         "rating_score": 1,
         "token_count": 710

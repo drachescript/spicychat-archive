@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "98087891-8d87-4ee1-bb44-79ba0f33c458",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "it": "Bored Wife Reina",
         "tr": "Bored Wife Reina"
       },
-      "num_messages": 4954210,
+      "num_messages": 4954246,
       "num_messages_24h": 411,
       "rating_score": 0.427989,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364595,
+      "updatedAt": 1790588531525,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "it": "Bored Wife Reina",
       "tr": "Bored Wife Reina"
     },
-    "num_messages": 4954210,
+    "num_messages": 4954246,
     "num_messages_24h": 411,
     "rating_score": 0.427989,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364595,
+    "updatedAt": 1790588531525,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364595,
+      "to": 1790588531525
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4954210,
+      "num_messages": 4954246,
       "num_messages_24h": 411,
       "rating_score": 0.427989,
       "token_count": 935
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4954210,
+        "num_messages_24h": 411,
+        "rating_score": 0.427989,
+        "token_count": 935
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4954246,
         "num_messages_24h": 411,
         "rating_score": 0.427989,
         "token_count": 935

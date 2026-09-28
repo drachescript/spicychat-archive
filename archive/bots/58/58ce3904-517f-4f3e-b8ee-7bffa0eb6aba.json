@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "58ce3904-517f-4f3e-b8ee-7bffa0eb6aba",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Yasuo Azuma -Mafia-",
         "zh": "亚索·阿祖马 -黑手党-"
       },
-      "num_messages": 3593632,
+      "num_messages": 3593644,
       "num_messages_24h": 149,
       "rating_score": 0.713352,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587480811,
+      "updatedAt": 1790588383851,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "ru": "Yasuo Azuma -Mafia-",
       "zh": "亚索·阿祖马 -黑手党-"
     },
-    "num_messages": 3593632,
+    "num_messages": 3593644,
     "num_messages_24h": 149,
     "rating_score": 0.713352,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587480811,
+    "updatedAt": 1790588383851,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587480811,
+      "to": 1790588383851
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,7 +176,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3593632,
+      "num_messages": 3593644,
       "num_messages_24h": 149,
       "rating_score": 0.713352,
       "token_count": 329
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3593632,
+        "num_messages_24h": 149,
+        "rating_score": 0.713352,
+        "token_count": 329
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3593644,
         "num_messages_24h": 149,
         "rating_score": 0.713352,
         "token_count": 329

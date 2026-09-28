@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f00c6764-dcf0-43c7-a802-9b15f2e66519",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Julian to Julia",
-      "num_messages": 127,
+      "num_messages": 160,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "Your friend who turned into a girl who has to date you because of a promise that was made as a joke",
       "token_count": 408,
       "type": "STANDARD",
-      "updatedAt": 1790586094543,
+      "updatedAt": 1790588384657,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Julian to Julia",
-    "num_messages": 127,
+    "num_messages": 160,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "Your friend who turned into a girl who has to date you because of a promise that was made as a joke",
     "token_count": 408,
     "type": "STANDARD",
-    "updatedAt": 1790586094543,
+    "updatedAt": 1790588384657,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586094543,
+      "to": 1790588384657
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,7 +120,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 127,
+      "num_messages": 160,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 408
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 127,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 408
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 160,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 408

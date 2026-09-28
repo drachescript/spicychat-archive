@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4d9b3b1b-c44a-42b2-98e9-2d0d58550936",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Rachel",
-      "num_messages": 750,
+      "num_messages": 873,
       "num_messages_24h": 341,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "Your friends bet you you couldn't seduce this girl... they're probably right",
       "token_count": 558,
       "type": "STANDARD",
-      "updatedAt": 1790587306007,
+      "updatedAt": 1790588115111,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Rachel",
-    "num_messages": 750,
+    "num_messages": 873,
     "num_messages_24h": 341,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "Your friends bet you you couldn't seduce this girl... they're probably right",
     "token_count": 558,
     "type": "STANDARD",
-    "updatedAt": 1790587306007,
+    "updatedAt": 1790588115111,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587306007,
+      "to": 1790588115111
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,13 +116,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1399,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1400,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 750,
+      "num_messages": 873,
       "num_messages_24h": 341,
       "rating_score": 0,
       "token_count": 558
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 750,
+        "num_messages_24h": 341,
+        "rating_score": 0,
+        "token_count": 558
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 873,
         "num_messages_24h": 341,
         "rating_score": 0,
         "token_count": 558

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5aa42902-899b-4123-ac9d-19d06425d90d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Mark Zuckerberg",
         "zh": "Mark Zuckerberg"
       },
-      "num_messages": 96456,
+      "num_messages": 96538,
       "num_messages_24h": 4618,
       "rating_score": 0.916667,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587382946,
+      "updatedAt": 1790587635851,
       "visibility": "public"
     }
   },
@@ -155,7 +155,7 @@
       "tr": "Mark Zuckerberg",
       "zh": "Mark Zuckerberg"
     },
-    "num_messages": 96456,
+    "num_messages": 96538,
     "num_messages_24h": 4618,
     "rating_score": 0.916667,
     "reportsType": {},
@@ -204,10 +204,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587382946,
+    "updatedAt": 1790587635851,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587382946,
+      "to": 1790587635851
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,7 +232,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 96456,
+      "num_messages": 96538,
       "num_messages_24h": 4618,
       "rating_score": 0.916667,
       "token_count": 1166
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 96456,
+        "num_messages_24h": 4618,
+        "rating_score": 0.916667,
+        "token_count": 1166
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 96538,
         "num_messages_24h": 4618,
         "rating_score": 0.916667,
         "token_count": 1166

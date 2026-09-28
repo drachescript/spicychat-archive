@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e5bb891c-6e9e-4091-a7c1-0f8448354495",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "ru": "Warhammer 40,000 RPG",
         "zh": "战锤40,000 RPG"
       },
-      "num_messages": 278878,
+      "num_messages": 278957,
       "num_messages_24h": 2395,
       "rating_score": 0.871359,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587400664,
+      "updatedAt": 1790588292540,
       "visibility": "public"
     }
   },
@@ -136,7 +136,7 @@
       "ru": "Warhammer 40,000 RPG",
       "zh": "战锤40,000 RPG"
     },
-    "num_messages": 278878,
+    "num_messages": 278957,
     "num_messages_24h": 2395,
     "rating_score": 0.871359,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587400664,
+    "updatedAt": 1790588292540,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587400664,
+      "to": 1790588292540
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,13 +194,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2338,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2339,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 278878,
+      "num_messages": 278957,
       "num_messages_24h": 2395,
       "rating_score": 0.871359,
       "token_count": 2087
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 278878,
+        "num_messages_24h": 2395,
+        "rating_score": 0.871359,
+        "token_count": 2087
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 278957,
         "num_messages_24h": 2395,
         "rating_score": 0.871359,
         "token_count": 2087

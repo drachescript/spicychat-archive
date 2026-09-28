@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a9a0c49b-9cdb-403c-8c75-1cdf4fc39ae2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Kyran Reeves",
         "zh": "凯兰·里夫斯"
       },
-      "num_messages": 1682148,
+      "num_messages": 1682161,
       "num_messages_24h": 310,
       "rating_score": 0.728676,
       "tags": [
@@ -97,7 +97,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516978,
+      "updatedAt": 1790588362300,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Kyran Reeves",
       "zh": "凯兰·里夫斯"
     },
-    "num_messages": 1682148,
+    "num_messages": 1682161,
     "num_messages_24h": 310,
     "rating_score": 0.728676,
     "tags": [
@@ -182,10 +182,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516978,
+    "updatedAt": 1790588362300,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516978,
+      "to": 1790588362300
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,13 +204,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2113,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2112,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1682148,
+      "num_messages": 1682161,
       "num_messages_24h": 310,
       "rating_score": 0.728676,
       "token_count": 617
@@ -211,6 +220,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1682148,
+        "num_messages_24h": 310,
+        "rating_score": 0.728676,
+        "token_count": 617
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1682161,
         "num_messages_24h": 310,
         "rating_score": 0.728676,
         "token_count": 617

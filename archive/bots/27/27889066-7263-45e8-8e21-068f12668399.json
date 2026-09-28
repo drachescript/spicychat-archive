@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "27889066-7263-45e8-8e21-068f12668399",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "Gossip Girl"
       },
-      "num_messages": 688,
+      "num_messages": 702,
       "num_messages_24h": 461,
       "rating_score": 0,
       "reportsType": {},
@@ -59,7 +59,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586969665,
+      "updatedAt": 1790588066636,
       "visibility": "public"
     }
   },
@@ -87,7 +87,7 @@
     "name_i18n": {
       "zh": "Gossip Girl"
     },
-    "num_messages": 688,
+    "num_messages": 702,
     "num_messages_24h": 461,
     "rating_score": 0,
     "reportsType": {},
@@ -106,10 +106,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586969665,
+    "updatedAt": 1790588066636,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586969665,
+      "to": 1790588066636
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -125,7 +134,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 688,
+      "num_messages": 702,
       "num_messages_24h": 461,
       "rating_score": 0,
       "token_count": 1439
@@ -135,6 +144,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 688,
+        "num_messages_24h": 461,
+        "rating_score": 0,
+        "token_count": 1439
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 702,
         "num_messages_24h": 461,
         "rating_score": 0,
         "token_count": 1439

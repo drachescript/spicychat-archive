@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2195e438-b6c6-4d47-8ef7-cca815e16101",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Felix",
         "tr": "Felix"
       },
-      "num_messages": 120346,
+      "num_messages": 120454,
       "num_messages_24h": 15618,
       "rating_score": 0.87291,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587664767,
+      "updatedAt": 1790588383276,
       "visibility": "public"
     },
     "character-api": {
@@ -173,7 +173,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/35738e63-c4ef-4f1b-b7c1-c8ae20e5c1f7.jpg?class=avatar256x256",
     "character_id": "2195e438-b6c6-4d47-8ef7-cca815e16101",
-    "createdAt": "2026-09-17T15:02:32.101Z",
+    "createdAt": 1789657352101,
     "creator_user_id": "kp:3911336541714111ada850c89f948e1e",
     "creator_username": "kenjaku1000yearreal",
     "definition_size_category": "mid",
@@ -202,12 +202,10 @@
       "ru": "Felix",
       "tr": "Felix"
     },
-    "num_messages": 120346,
+    "num_messages": 120454,
     "num_messages_24h": 15618,
     "rating_score": 0.87291,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Femboy",
       "FemalePOV",
@@ -253,7 +251,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:27:44.767Z",
+    "updatedAt": 1790588383276,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -281,6 +279,22 @@
       "kind": "value",
       "from": 1790587664767,
       "to": "2026-09-28T09:27:44.767Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-17T15:02:32.101Z",
+      "to": 1789657352101
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:27:44.767Z",
+      "to": 1790588383276
     }
   ],
   "availabilityHistory": [
@@ -298,7 +312,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 120346,
+      "num_messages": 120454,
+      "num_messages_24h": 15618,
       "rating_score": 0.87291,
       "token_count": 862
     },
@@ -317,8 +332,23 @@
         "num_messages": 120346,
         "rating_score": 0.87291,
         "token_count": 862
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 120454,
+        "num_messages_24h": 15618,
+        "rating_score": 0.87291,
+        "token_count": 862
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/35738e63-c4ef-4f1b-b7c1-c8ae20e5c1f7.jpg?class=avatar256x256",
+    "sha256": "7c15a25914a08cb26310e5544be1cdd3e27cbbd93d6712f271946b1ad296f283",
+    "contentType": "image/jpeg",
+    "bytes": 28852,
+    "path": "archive/media/7c/7c15a25914a08cb26310e5544be1cdd3e27cbbd93d6712f271946b1ad296f283.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

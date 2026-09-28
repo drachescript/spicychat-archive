@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a1972e2c-5c3e-458c-9cb9-f35dc5c2aa71",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Сарада и Сакура",
         "zh": "萨拉达与小樱"
       },
-      "num_messages": 10372,
+      "num_messages": 10401,
       "num_messages_24h": 3201,
       "rating_score": 0,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586865125,
+      "updatedAt": 1790588014345,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "ru": "Сарада и Сакура",
       "zh": "萨拉达与小樱"
     },
-    "num_messages": 10372,
+    "num_messages": 10401,
     "num_messages_24h": 3201,
     "rating_score": 0,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586865125,
+    "updatedAt": 1790588014345,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586865125,
+      "to": 1790588014345
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,7 +202,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 10372,
+      "num_messages": 10401,
       "num_messages_24h": 3201,
       "rating_score": 0,
       "token_count": 657
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 10372,
+        "num_messages_24h": 3201,
+        "rating_score": 0,
+        "token_count": 657
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 10401,
         "num_messages_24h": 3201,
         "rating_score": 0,
         "token_count": 657

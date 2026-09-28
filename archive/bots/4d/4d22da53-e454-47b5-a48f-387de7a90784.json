@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4d22da53-e454-47b5-a48f-387de7a90784",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -53,7 +53,7 @@
         "ru": "Blaise Calder",
         "tr": "Blaise Calder"
       },
-      "num_messages": 70256,
+      "num_messages": 70433,
       "num_messages_24h": 20018,
       "rating_score": 0.965347,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587636516,
+      "updatedAt": 1790587973390,
       "visibility": "public"
     },
     "character-api": {
@@ -161,7 +161,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/cb86f8b2-3859-43a3-a444-ae2fffb85d5e.jpg?class=avatar256x256",
     "character_id": "4d22da53-e454-47b5-a48f-387de7a90784",
-    "createdAt": "2026-09-21T23:50:43.914Z",
+    "createdAt": 1790034643914,
     "creator_user_id": "kp:a24755061730430a8e185025bff1613a",
     "creator_username": "stellaisobsessed",
     "definition_size_category": "high",
@@ -188,12 +188,10 @@
       "ru": "Blaise Calder",
       "tr": "Blaise Calder"
     },
-    "num_messages": 70364,
+    "num_messages": 70433,
     "num_messages_24h": 20018,
     "rating_score": 0.965347,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -234,7 +232,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:25.409Z",
+    "updatedAt": 1790587973390,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -262,6 +260,22 @@
       "kind": "value",
       "from": 1790587636516,
       "to": "2026-09-28T09:29:25.409Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-21T23:50:43.914Z",
+      "to": 1790034643914
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:25.409Z",
+      "to": 1790587973390
     }
   ],
   "availabilityHistory": [
@@ -279,7 +293,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 70364,
+      "num_messages": 70433,
+      "num_messages_24h": 20018,
       "rating_score": 0.965347,
       "token_count": 1311
     },
@@ -296,6 +311,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 70364,
+        "rating_score": 0.965347,
+        "token_count": 1311
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 70433,
+        "num_messages_24h": 20018,
         "rating_score": 0.965347,
         "token_count": 1311
       }

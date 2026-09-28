@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "946db5d8-93e0-4534-aa95-53c27f453cba",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -55,7 +55,7 @@
         "tr": "Pornstar RPG",
         "zh": "色情明星RPG"
       },
-      "num_messages": 111561,
+      "num_messages": 111608,
       "num_messages_24h": 4160,
       "rating_score": 0.801724,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587563766,
+      "updatedAt": 1790588384104,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Pornstar RPG",
       "zh": "色情明星RPG"
     },
-    "num_messages": 111561,
+    "num_messages": 111608,
     "num_messages_24h": 4160,
     "rating_score": 0.801724,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587563766,
+    "updatedAt": 1790588384104,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587563766,
+      "to": 1790588384104
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 111561,
+      "num_messages": 111608,
       "num_messages_24h": 4160,
       "rating_score": 0.801724,
       "token_count": 1165
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 111561,
+        "num_messages_24h": 4160,
+        "rating_score": 0.801724,
+        "token_count": 1165
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 111608,
         "num_messages_24h": 4160,
         "rating_score": 0.801724,
         "token_count": 1165

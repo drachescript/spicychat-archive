@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "90ed3f12-b183-4cc2-b27a-85dafe344268",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "pl": "Lena and Isaiah",
         "ru": "Lena and Isaiah"
       },
-      "num_messages": 41579,
+      "num_messages": 41604,
       "num_messages_24h": 2284,
       "rating_score": 0.01,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586940712,
+      "updatedAt": 1790587927070,
       "visibility": "public"
     }
   },
@@ -119,7 +119,7 @@
       "pl": "Lena and Isaiah",
       "ru": "Lena and Isaiah"
     },
-    "num_messages": 41579,
+    "num_messages": 41604,
     "num_messages_24h": 2284,
     "rating_score": 0.01,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586940712,
+    "updatedAt": 1790587927070,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586940712,
+      "to": 1790587927070
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -169,13 +178,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2490,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2491,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 41579,
+      "num_messages": 41604,
       "num_messages_24h": 2284,
       "rating_score": 0.01,
       "token_count": 1090
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 41579,
+        "num_messages_24h": 2284,
+        "rating_score": 0.01,
+        "token_count": 1090
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 41604,
         "num_messages_24h": 2284,
         "rating_score": 0.01,
         "token_count": 1090

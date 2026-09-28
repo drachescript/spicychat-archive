@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4572b851-7c59-4624-8258-a93e83d889d7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "tr": "Yalnızca Kadınlar Hapishanesi",
         "zh": "全女性监狱"
       },
-      "num_messages": 5080150,
+      "num_messages": 5080253,
       "num_messages_24h": 373,
       "rating_score": 0.754956,
       "tags": [
@@ -76,7 +76,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586891791,
+      "updatedAt": 1790588066080,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "tr": "Yalnızca Kadınlar Hapishanesi",
       "zh": "全女性监狱"
     },
-    "num_messages": 5080150,
+    "num_messages": 5080253,
     "num_messages_24h": 373,
     "rating_score": 0.754956,
     "tags": [
@@ -140,10 +140,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586891791,
+    "updatedAt": 1790588066080,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586891791,
+      "to": 1790588066080
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,7 +168,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5080150,
+      "num_messages": 5080253,
       "num_messages_24h": 373,
       "rating_score": 0.754956,
       "token_count": 436
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 5080150,
+        "num_messages_24h": 373,
+        "rating_score": 0.754956,
+        "token_count": 436
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 5080253,
         "num_messages_24h": 373,
         "rating_score": 0.754956,
         "token_count": 436

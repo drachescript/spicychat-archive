@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "01a85bfb-4613-4340-b1f2-c6404d971ba5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "ru": "Nikki Galrani"
       },
-      "num_messages": 499,
+      "num_messages": 502,
       "num_messages_24h": 209,
       "rating_score": 0,
       "reportsType": {},
@@ -62,7 +62,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487028,
+      "updatedAt": 1790588311920,
       "visibility": "public"
     }
   },
@@ -90,7 +90,7 @@
     "name_i18n": {
       "ru": "Nikki Galrani"
     },
-    "num_messages": 499,
+    "num_messages": 502,
     "num_messages_24h": 209,
     "rating_score": 0,
     "reportsType": {},
@@ -112,10 +112,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487028,
+    "updatedAt": 1790588311920,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487028,
+      "to": 1790588311920
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,7 +140,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 499,
+      "num_messages": 502,
       "num_messages_24h": 209,
       "rating_score": 0,
       "token_count": 315
@@ -141,6 +150,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 499,
+        "num_messages_24h": 209,
+        "rating_score": 0,
+        "token_count": 315
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 502,
         "num_messages_24h": 209,
         "rating_score": 0,
         "token_count": 315

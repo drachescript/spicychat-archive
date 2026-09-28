@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "83a533ae-6828-4a47-a214-d1393215e066",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Kusuo Saiki",
-      "num_messages": 6224,
+      "num_messages": 6287,
       "num_messages_24h": 2565,
       "rating_score": 0,
       "reportsType": {},
@@ -51,7 +51,7 @@
       "title": "☆| Mind reading boyfriend \n                      × \n  Dirty-Minded Gf|☆\n\nBy Suguru_onenonly on cai",
       "token_count": 1676,
       "type": "STANDARD",
-      "updatedAt": 1790586904518,
+      "updatedAt": 1790588450133,
       "visibility": "public"
     }
   },
@@ -76,7 +76,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Kusuo Saiki",
-    "num_messages": 6224,
+    "num_messages": 6287,
     "num_messages_24h": 2565,
     "rating_score": 0,
     "reportsType": {},
@@ -90,10 +90,19 @@
     "title": "☆| Mind reading boyfriend \n                      × \n  Dirty-Minded Gf|☆\n\nBy Suguru_onenonly on cai",
     "token_count": 1676,
     "type": "STANDARD",
-    "updatedAt": 1790586904518,
+    "updatedAt": 1790588450133,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586904518,
+      "to": 1790588450133
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -103,13 +112,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2165,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2166,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 6224,
+      "num_messages": 6287,
       "num_messages_24h": 2565,
       "rating_score": 0,
       "token_count": 1676
@@ -119,6 +128,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 6224,
+        "num_messages_24h": 2565,
+        "rating_score": 0,
+        "token_count": 1676
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 6287,
         "num_messages_24h": 2565,
         "rating_score": 0,
         "token_count": 1676

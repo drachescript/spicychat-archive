@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0bbe78b1-76d0-4293-bba4-65257d0a350b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "pt": "Delaney Keane",
         "ru": "Delaney Keane"
       },
-      "num_messages": 80698,
+      "num_messages": 80708,
       "num_messages_24h": 3734,
       "rating_score": 0.371795,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587361438,
+      "updatedAt": 1790588366441,
       "visibility": "public",
       "voice_id": "f1916992-590b-4579-8d4e-f86d32bc4c49"
     }
@@ -139,7 +139,7 @@
       "pt": "Delaney Keane",
       "ru": "Delaney Keane"
     },
-    "num_messages": 80698,
+    "num_messages": 80708,
     "num_messages_24h": 3734,
     "rating_score": 0.371795,
     "reportsType": {},
@@ -179,11 +179,20 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587361438,
+    "updatedAt": 1790588366441,
     "visibility": "public",
     "voice_id": "f1916992-590b-4579-8d4e-f86d32bc4c49"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587361438,
+      "to": 1790588366441
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,7 +208,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 80698,
+      "num_messages": 80708,
       "num_messages_24h": 3734,
       "rating_score": 0.371795,
       "token_count": 2259
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 80698,
+        "num_messages_24h": 3734,
+        "rating_score": 0.371795,
+        "token_count": 2259
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 80708,
         "num_messages_24h": 3734,
         "rating_score": 0.371795,
         "token_count": 2259

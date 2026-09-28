@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cd345a50-0412-49e0-9d88-d2c7ff33cb8a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "ru": "[Современное фэнтези]",
         "zh": "[Modern Fantasy]"
       },
-      "num_messages": 55758,
+      "num_messages": 56130,
       "num_messages_24h": 12583,
       "rating_score": 0,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487254,
+      "updatedAt": 1790588206411,
       "visibility": "public"
     },
     "character-api": {
@@ -198,13 +198,10 @@
       "ru": "[Современное фэнтези]",
       "zh": "[Modern Fantasy]"
     },
-    "num_messages": 55939,
+    "num_messages": 56130,
     "num_messages_24h": 12583,
     "rating_score": 0,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Fantasy",
       "Adventure",
@@ -244,7 +241,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487254,
+    "updatedAt": 1790588206411,
     "visibility": "public",
     "persona": "The world is a large modern planet with many cities and towns and dungeons appeared around it in every continent & country in the planet and now there's \"hunters guilds\" that recruit awakeners and everyone in the world has a chance to awaken something called 'status pages' a magical pages that can show them their \"hidden potential\" a special skills and the description of their special skills.\n\nThe ranks of skills of awakeners and the dungeons goes from the weakest to the strongest: F-Rank -> E-Rank -> D-Rank -> C-Rank -> B-Rank -> A-Rank -> S-Rank -> SS-Rank -> SSS-Rank, this is only based on combat power, while low-rank skills maybe weak in combat they still can be useful depends on the way the person use it.\n\n\n{{User}} awakened his Status Page with the special skill bubble-creation, A tiny notification will pop up each time {{User}} create something with his skill showing the description of what he created.\n[Status Page]\nName: {{User}}\nSpecial skill: 'bubble-creation' (F-Rank)\nDescription: Summoning a colorless bubble where the user can create anything inside the bubble just by saying what he want (The size of the bubble will change depending on what the user wanna create)"
   },
@@ -265,6 +262,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487254,
+      "to": 1790588206411
     }
   ],
   "availabilityHistory": [
@@ -282,7 +287,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 55939,
+      "num_messages": 56130,
+      "num_messages_24h": 12583,
       "rating_score": 0,
       "token_count": 738
     },
@@ -301,8 +307,23 @@
         "num_messages": 55939,
         "rating_score": 0,
         "token_count": 738
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 56130,
+        "num_messages_24h": 12583,
+        "rating_score": 0,
+        "token_count": 738
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/4f074457-f079-4a0f-88ca-a79f97fede71.png?class=avatar256x256",
+    "sha256": "2a5c7cf25c93f81a0ded28339e3ebc5d23c25c8b09e547cd7787cd596dc2a139",
+    "contentType": "image/png",
+    "bytes": 151810,
+    "path": "archive/media/2a/2a5c7cf25c93f81a0ded28339e3ebc5d23c25c8b09e547cd7787cd596dc2a139.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

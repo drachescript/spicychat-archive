@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40e060df-f92a-42f6-b804-5f5e8f93960e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Dr. Elise",
         "zh": "艾莉丝博士"
       },
-      "num_messages": 8500242,
+      "num_messages": 8500257,
       "num_messages_24h": 161,
       "rating_score": 0.729752,
       "tags": [
@@ -98,7 +98,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586559200,
+      "updatedAt": 1790587860343,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Dr. Elise",
       "zh": "艾莉丝博士"
     },
-    "num_messages": 8500242,
+    "num_messages": 8500257,
     "num_messages_24h": 161,
     "rating_score": 0.729752,
     "tags": [
@@ -184,10 +184,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586559200,
+    "updatedAt": 1790587860343,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586559200,
+      "to": 1790587860343
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 8500242,
+      "num_messages": 8500257,
       "num_messages_24h": 161,
       "rating_score": 0.729752,
       "token_count": 522
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 8500242,
+        "num_messages_24h": 161,
+        "rating_score": 0.729752,
+        "token_count": 522
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 8500257,
         "num_messages_24h": 161,
         "rating_score": 0.729752,
         "token_count": 522

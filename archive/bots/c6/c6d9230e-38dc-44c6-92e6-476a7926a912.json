@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c6d9230e-38dc-44c6-92e6-476a7926a912",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "TF141",
-      "num_messages": 800,
+      "num_messages": 821,
       "num_messages_24h": 572,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "“Soap”  || Everyone knows you're flirting with him, but he kissed someone else in front of you.💔",
       "token_count": 748,
       "type": "STANDARD",
-      "updatedAt": 1790584320728,
+      "updatedAt": 1790587765999,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "TF141",
-    "num_messages": 800,
+    "num_messages": 821,
     "num_messages_24h": 572,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "“Soap”  || Everyone knows you're flirting with him, but he kissed someone else in front of you.💔",
     "token_count": 748,
     "type": "STANDARD",
-    "updatedAt": 1790584320728,
+    "updatedAt": 1790587765999,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584320728,
+      "to": 1790587765999
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,13 +116,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2267,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2269,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 800,
+      "num_messages": 821,
       "num_messages_24h": 572,
       "rating_score": 0,
       "token_count": 748
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 800,
+        "num_messages_24h": 572,
+        "rating_score": 0,
+        "token_count": 748
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 821,
         "num_messages_24h": 572,
         "rating_score": 0,
         "token_count": 748

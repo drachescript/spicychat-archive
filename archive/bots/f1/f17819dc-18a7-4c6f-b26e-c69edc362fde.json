@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f17819dc-18a7-4c6f-b26e-c69edc362fde",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "de": "Pierro",
         "ru": "Пьерро"
       },
-      "num_messages": 166371,
+      "num_messages": 166375,
       "num_messages_24h": 1411,
       "rating_score": 0.994624,
       "tags": [],
@@ -55,7 +55,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586793883,
+      "updatedAt": 1790588007509,
       "visibility": "public"
     }
   },
@@ -83,7 +83,7 @@
       "de": "Pierro",
       "ru": "Пьерро"
     },
-    "num_messages": 166371,
+    "num_messages": 166375,
     "num_messages_24h": 1411,
     "rating_score": 0.994624,
     "title": "Director of Fatui Harbingers",
@@ -97,10 +97,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586793883,
+    "updatedAt": 1790588007509,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586793883,
+      "to": 1790588007509
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -116,7 +125,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 166371,
+      "num_messages": 166375,
       "num_messages_24h": 1411,
       "rating_score": 0.994624,
       "token_count": 802
@@ -126,6 +135,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 166371,
+        "num_messages_24h": 1411,
+        "rating_score": 0.994624,
+        "token_count": 802
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 166375,
         "num_messages_24h": 1411,
         "rating_score": 0.994624,
         "token_count": 802

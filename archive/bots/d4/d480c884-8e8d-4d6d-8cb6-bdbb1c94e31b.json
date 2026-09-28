@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d480c884-8e8d-4d6d-8cb6-bdbb1c94e31b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Marie lavender",
         "zh": "Marie lavender"
       },
-      "num_messages": 183467,
+      "num_messages": 183478,
       "num_messages_24h": 3014,
       "rating_score": 0.928295,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586828904,
+      "updatedAt": 1790587767590,
       "visibility": "public"
     }
   },
@@ -132,7 +132,7 @@
       "tr": "Marie lavender",
       "zh": "Marie lavender"
     },
-    "num_messages": 183467,
+    "num_messages": 183478,
     "num_messages_24h": 3014,
     "rating_score": 0.928295,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586828904,
+    "updatedAt": 1790587767590,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586828904,
+      "to": 1790587767590
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 183467,
+      "num_messages": 183478,
       "num_messages_24h": 3014,
       "rating_score": 0.928295,
       "token_count": 365
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 183467,
+        "num_messages_24h": 3014,
+        "rating_score": 0.928295,
+        "token_count": 365
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 183478,
         "num_messages_24h": 3014,
         "rating_score": 0.928295,
         "token_count": 365

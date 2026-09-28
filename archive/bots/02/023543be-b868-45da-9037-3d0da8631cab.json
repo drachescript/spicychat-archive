@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "023543be-b868-45da-9037-3d0da8631cab",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Cyberpunk 2077 RPG",
         "zh": "Cyberpunk 2077 RPG"
       },
-      "num_messages": 2250930,
+      "num_messages": 2251052,
       "num_messages_24h": 1841,
       "rating_score": 0.817543,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587361563,
+      "updatedAt": 1790588310543,
       "visibility": "public"
     }
   },
@@ -144,7 +144,7 @@
       "tr": "Cyberpunk 2077 RPG",
       "zh": "Cyberpunk 2077 RPG"
     },
-    "num_messages": 2250930,
+    "num_messages": 2251052,
     "num_messages_24h": 1841,
     "rating_score": 0.817543,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587361563,
+    "updatedAt": 1790588310543,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587361563,
+      "to": 1790588310543
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,7 +226,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2250930,
+      "num_messages": 2251052,
       "num_messages_24h": 1841,
       "rating_score": 0.817543,
       "token_count": 1598
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2250930,
+        "num_messages_24h": 1841,
+        "rating_score": 0.817543,
+        "token_count": 1598
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2251052,
         "num_messages_24h": 1841,
         "rating_score": 0.817543,
         "token_count": 1598

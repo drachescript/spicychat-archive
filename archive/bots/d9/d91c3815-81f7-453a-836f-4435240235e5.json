@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d91c3815-81f7-453a-836f-4435240235e5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Angel & Demon",
         "zh": "天使与恶魔"
       },
-      "num_messages": 88082,
+      "num_messages": 88216,
       "num_messages_24h": 7324,
       "rating_score": 0.949153,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587490569,
+      "updatedAt": 1790588562515,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "tr": "Angel & Demon",
       "zh": "天使与恶魔"
     },
-    "num_messages": 88082,
+    "num_messages": 88216,
     "num_messages_24h": 7324,
     "rating_score": 0.949153,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587490569,
+    "updatedAt": 1790588562515,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587490569,
+      "to": 1790588562515
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,7 +202,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 88082,
+      "num_messages": 88216,
       "num_messages_24h": 7324,
       "rating_score": 0.949153,
       "token_count": 1868
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 88082,
+        "num_messages_24h": 7324,
+        "rating_score": 0.949153,
+        "token_count": 1868
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 88216,
         "num_messages_24h": 7324,
         "rating_score": 0.949153,
         "token_count": 1868

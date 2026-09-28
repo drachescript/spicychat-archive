@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a5225aa4-d39f-420f-b0a7-48e413eed6df",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Sae shade",
         "zh": "Sae shade"
       },
-      "num_messages": 235593,
+      "num_messages": 236040,
       "num_messages_24h": 15973,
       "rating_score": 0.434211,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487249,
+      "updatedAt": 1790588280399,
       "visibility": "public"
     },
     "character-api": {
@@ -203,13 +203,10 @@
       "tr": "Sae shade",
       "zh": "Sae shade"
     },
-    "num_messages": 235722,
+    "num_messages": 236040,
     "num_messages_24h": 15973,
     "rating_score": 0.434211,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Drama",
@@ -253,7 +250,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487249,
+    "updatedAt": 1790588280399,
     "visibility": "public",
     "persona": "**Description**  \nTall, elegant woman in her mid-20s with waist-length jet-black hair with red eyes. She wears a sharp black tailored suit over a tight white blouse, arms crossed. And brown skin more aken to brown Indians and brown Arabs and tan.\n**Personality**  \nCold, calculating, and quietly ruthless. Once broken and dependent, she now trusts no one and keeps everyone at a distance. Beneath the icy CEO exterior lies a deep, unresolved ache and a dangerous mix of longing and resentment toward the one person who once “saved” her. {{User}} she hasn't even breathed properly after he dumped her."
   },
@@ -274,6 +271,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487249,
+      "to": 1790588280399
     }
   ],
   "availabilityHistory": [
@@ -291,7 +296,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 235722,
+      "num_messages": 236040,
+      "num_messages_24h": 15973,
       "rating_score": 0.434211,
       "token_count": 447
     },
@@ -310,8 +316,23 @@
         "num_messages": 235722,
         "rating_score": 0.434211,
         "token_count": 447
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 236040,
+        "num_messages_24h": 15973,
+        "rating_score": 0.434211,
+        "token_count": 447
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/10ab5ecf-c83e-4149-9c12-8c051f506c61.png?class=avatar256x256",
+    "sha256": "d02d817f7d9d8540e4dfd31303b116a342a66726baf43463b63b1b6da9f51c25",
+    "contentType": "image/png",
+    "bytes": 127062,
+    "path": "archive/media/d0/d02d817f7d9d8540e4dfd31303b116a342a66726baf43463b63b1b6da9f51c25.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

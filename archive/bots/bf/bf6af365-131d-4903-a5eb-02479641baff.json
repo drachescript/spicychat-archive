@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bf6af365-131d-4903-a5eb-02479641baff",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "fr": "Linda Bluefaye",
         "hi": "Linda Bluefaye"
       },
-      "num_messages": 10371,
+      "num_messages": 10390,
       "num_messages_24h": 281,
       "rating_score": 1,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790579907285,
+      "updatedAt": 1790588243739,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "fr": "Linda Bluefaye",
       "hi": "Linda Bluefaye"
     },
-    "num_messages": 10371,
+    "num_messages": 10390,
     "num_messages_24h": 281,
     "rating_score": 1,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790579907285,
+    "updatedAt": 1790588243739,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790579907285,
+      "to": 1790588243739
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 10371,
+      "num_messages": 10390,
       "num_messages_24h": 281,
       "rating_score": 1,
       "token_count": 486
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 10371,
+        "num_messages_24h": 281,
+        "rating_score": 1,
+        "token_count": 486
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 10390,
         "num_messages_24h": 281,
         "rating_score": 1,
         "token_count": 486

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7f6ba935-b1e8-4586-9f43-b7a155f3a75a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pl": "The Hidden CEO",
         "ru": "The Hidden CEO"
       },
-      "num_messages": 36326,
+      "num_messages": 36712,
       "num_messages_24h": 6383,
       "rating_score": 0,
       "tags": [
@@ -81,7 +81,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587402740,
+      "updatedAt": 1790588499964,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "pl": "The Hidden CEO",
       "ru": "The Hidden CEO"
     },
-    "num_messages": 36326,
+    "num_messages": 36712,
     "num_messages_24h": 6383,
     "rating_score": 0,
     "tags": [
@@ -150,10 +150,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587402740,
+    "updatedAt": 1790588499964,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587402740,
+      "to": 1790588499964
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -169,7 +178,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 36326,
+      "num_messages": 36712,
       "num_messages_24h": 6383,
       "rating_score": 0,
       "token_count": 1283
@@ -179,6 +188,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 36326,
+        "num_messages_24h": 6383,
+        "rating_score": 0,
+        "token_count": 1283
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 36712,
         "num_messages_24h": 6383,
         "rating_score": 0,
         "token_count": 1283

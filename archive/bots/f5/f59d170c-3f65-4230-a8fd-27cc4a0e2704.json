@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "f59d170c-3f65-4230-a8fd-27cc4a0e2704",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +60,7 @@
         "tr": "MHA",
         "zh": "MHA"
       },
-      "num_messages": 5082368,
+      "num_messages": 5082639,
       "num_messages_24h": 7437,
       "rating_score": 0.838816,
       "reportsType": {},
@@ -103,8 +106,62 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587712569,
+      "updatedAt": 1790588560565,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "f59d170c-3f65-4230-a8fd-27cc4a0e2704",
+      "type": "STANDARD",
+      "name": "MHA",
+      "title": "New student! (Yep it’s you, 16/20 students have detailed char info)",
+      "visibility": "public",
+      "creator_username": "jjzluv",
+      "creator_user_id": "kp:21bdbf9c852442c0a675369642347a18",
+      "greeting": "*The bell chimed and Iida stood up, one hand pressed firmly against his side while the other raised.* \n\nIida: “Everyone! You must now take your seats! Class has begun!”\n\n*The class was so quiet you could practically hear a cricket chirping from a mile away.*\n\nSero: “yeah you’re the only one standing dude..” \n\n*Iida choked on his spit to Sero’s comment and immediately sat down, head low in shame. Their teacher, Mr Aizawa, walked in with his usual annoyed expression.*\n\nMr Aizawa: “Alright class, watch yourselves. We have a new student.”\n\n*The class immediately erupted into chatter.* \n\nMina: “Woah really?! I hope it’s a girl! This class could use more ladies.” *She said excitedly, pink hair bobbing*\n\nJiro: “I agree.” *She chuckled and twirled one earphone jack around her pointer finger.*\n\nKirishima: “Alright sick! Whoever they are I bet they’re totally manly- err womanly if they’re a girl.” *Kirishima grinned and rubbed the back of his head awkwardly.*\n\nDenki: “Ooo I new babe? I hope so.”\n\nMineta: *Praying the new kid is a girl*\n\nBakugo: “Tch. Whoever they are they won’t be better than me.” *He rolled his eyes.*\n\nMidoriya: *He pulled out his notebook and pen, eager to take notes on the new kid’s quirk.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/5c553b19-d0f4-4f88-87ae-da7cd6129b70.png?class=avatar256x256",
+      "num_messages": 5082639,
+      "rating_score": 0.838816,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Multiple Characters",
+        "Anime",
+        "Hero",
+        "Male",
+        "Female",
+        "FemalePOV",
+        "MalePOV"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 1535,
+      "reportsType": [
+        "User"
+      ],
+      "createdAt": "2026-03-06T03:45:54.535Z",
+      "updatedAt": "2026-09-28T09:42:40.565Z",
+      "translated_languages": [
+        "de",
+        "ru",
+        "it",
+        "fr",
+        "hi",
+        "es",
+        "ar",
+        "pt",
+        "tr",
+        "ja",
+        "ko",
+        "pl",
+        "zh"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": false,
+      "character_id": "f59d170c-3f65-4230-a8fd-27cc4a0e2704"
     }
   },
   "lastKnown": {
@@ -118,7 +175,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/5c553b19-d0f4-4f88-87ae-da7cd6129b70.png?class=avatar256x256",
     "character_id": "f59d170c-3f65-4230-a8fd-27cc4a0e2704",
-    "createdAt": 1772768754535,
+    "createdAt": "2026-03-06T03:45:54.535Z",
     "creator_user_id": "kp:21bdbf9c852442c0a675369642347a18",
     "creator_username": "jjzluv",
     "definition_size_category": "high",
@@ -148,10 +205,12 @@
       "tr": "MHA",
       "zh": "MHA"
     },
-    "num_messages": 5082368,
+    "num_messages": 5082639,
     "num_messages_24h": 7437,
     "rating_score": 0.838816,
-    "reportsType": {},
+    "reportsType": [
+      "User"
+    ],
     "tags": [
       "Multiple Characters",
       "Anime",
@@ -194,10 +253,44 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587712569,
+    "updatedAt": "2026-09-28T09:42:40.565Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587712569,
+      "to": 1790588560565
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1772768754535,
+      "to": "2026-03-06T03:45:54.535Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588560565,
+      "to": "2026-09-28T09:42:40.565Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,8 +310,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5082368,
-      "num_messages_24h": 7437,
+      "num_messages": 5082639,
       "rating_score": 0.838816,
       "token_count": 1535
     },
@@ -228,6 +320,21 @@
         "source": "typesense:trending",
         "num_messages": 5082368,
         "num_messages_24h": 7437,
+        "rating_score": 0.838816,
+        "token_count": 1535
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5082639,
+        "num_messages_24h": 7437,
+        "rating_score": 0.838816,
+        "token_count": 1535
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 5082639,
         "rating_score": 0.838816,
         "token_count": 1535
       }

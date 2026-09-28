@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5d932cf5-1cd8-4ae6-8fa9-3395a2231a1d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -58,7 +58,7 @@
         "tr": "Glenwood Academy",
         "zh": "格伦伍德学院"
       },
-      "num_messages": 125437,
+      "num_messages": 125840,
       "num_messages_24h": 13657,
       "rating_score": 0.778689,
       "reportsType": {},
@@ -109,7 +109,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587286134,
+      "updatedAt": 1790588360819,
       "visibility": "public"
     },
     "character-api": {
@@ -193,7 +193,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/330d3fff-64e1-494f-b2ff-1e6c120506df.jpg?class=avatar256x256",
     "character_id": "5d932cf5-1cd8-4ae6-8fa9-3395a2231a1d",
-    "createdAt": "2026-09-14T17:40:27.421Z",
+    "createdAt": 1789407627421,
     "creator_user_id": "kp:dc4b6f67a3ca41b79fbff9e56bf5e102",
     "creator_username": "unreowned",
     "definition_size_category": "high",
@@ -222,12 +222,10 @@
       "tr": "Glenwood Academy",
       "zh": "格伦伍德学院"
     },
-    "num_messages": 125528,
+    "num_messages": 125840,
     "num_messages_24h": 13657,
     "rating_score": 0.778689,
-    "reportsType": [
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Fantasy",
@@ -275,7 +273,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:33.480Z",
+    "updatedAt": 1790588360819,
     "visibility": "public",
     "lorebooks": [
       {
@@ -335,6 +333,22 @@
           "entries": []
         }
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-14T17:40:27.421Z",
+      "to": 1789407627421
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:33.480Z",
+      "to": 1790588360819
     }
   ],
   "availabilityHistory": [
@@ -352,7 +366,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 125528,
+      "num_messages": 125840,
+      "num_messages_24h": 13657,
       "rating_score": 0.778689,
       "token_count": 1389
     },
@@ -371,8 +386,23 @@
         "num_messages": 125528,
         "rating_score": 0.778689,
         "token_count": 1389
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 125840,
+        "num_messages_24h": 13657,
+        "rating_score": 0.778689,
+        "token_count": 1389
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/330d3fff-64e1-494f-b2ff-1e6c120506df.jpg?class=avatar256x256",
+    "sha256": "50859fd6e5423bdaf73574ba4c2b9821761c2d3c4e1eb4d883e0fa2dfbeaac20",
+    "contentType": "image/jpeg",
+    "bytes": 38971,
+    "path": "archive/media/50/50859fd6e5423bdaf73574ba4c2b9821761c2d3c4e1eb4d883e0fa2dfbeaac20.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

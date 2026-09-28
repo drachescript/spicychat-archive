@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "05ec822c-16ce-4bea-87a7-d11bf5eea849",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Seven Mafia Bosses",
         "zh": "七位黑手党首领"
       },
-      "num_messages": 2177354,
+      "num_messages": 2177381,
       "num_messages_24h": 584,
       "rating_score": 0.875655,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586830787,
+      "updatedAt": 1790588103794,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Seven Mafia Bosses",
       "zh": "七位黑手党首领"
     },
-    "num_messages": 2177354,
+    "num_messages": 2177381,
     "num_messages_24h": 584,
     "rating_score": 0.875655,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586830787,
+    "updatedAt": 1790588103794,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586830787,
+      "to": 1790588103794
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,13 +214,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 1246,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1245,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2177354,
+      "num_messages": 2177381,
       "num_messages_24h": 584,
       "rating_score": 0.875655,
       "token_count": 450
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2177354,
+        "num_messages_24h": 584,
+        "rating_score": 0.875655,
+        "token_count": 450
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2177381,
         "num_messages_24h": 584,
         "rating_score": 0.875655,
         "token_count": 450

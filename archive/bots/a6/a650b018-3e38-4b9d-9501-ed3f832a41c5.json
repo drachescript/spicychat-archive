@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a650b018-3e38-4b9d-9501-ed3f832a41c5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Леон Хейл",
         "tr": "࿓LEON HALEꜝꜝ"
       },
-      "num_messages": 24545,
+      "num_messages": 24579,
       "num_messages_24h": 3417,
       "reportsType": {},
       "tags": [
@@ -82,7 +82,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586692947,
+      "updatedAt": 1790588557134,
       "visibility": "public"
     }
   },
@@ -116,7 +116,7 @@
       "ru": "Леон Хейл",
       "tr": "࿓LEON HALEꜝꜝ"
     },
-    "num_messages": 24545,
+    "num_messages": 24579,
     "num_messages_24h": 3417,
     "reportsType": {},
     "tags": [
@@ -152,10 +152,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586692947,
+    "updatedAt": 1790588557134,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586692947,
+      "to": 1790588557134
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -171,7 +180,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 24545,
+      "num_messages": 24579,
       "num_messages_24h": 3417,
       "token_count": 1648
     },
@@ -180,6 +189,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 24545,
+        "num_messages_24h": 3417,
+        "token_count": 1648
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 24579,
         "num_messages_24h": 3417,
         "token_count": 1648
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6b53578e-1477-417b-b8f0-e89e8ae56128",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Развратная жена",
         "tr": "Slutty wife"
       },
-      "num_messages": 58887,
+      "num_messages": 58941,
       "num_messages_24h": 3698,
       "rating_score": 0.01,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587030531,
+      "updatedAt": 1790588607036,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Развратная жена",
       "tr": "Slutty wife"
     },
-    "num_messages": 58887,
+    "num_messages": 58941,
     "num_messages_24h": 3698,
     "rating_score": 0.01,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587030531,
+    "updatedAt": 1790588607036,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587030531,
+      "to": 1790588607036
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 58887,
+      "num_messages": 58941,
       "num_messages_24h": 3698,
       "rating_score": 0.01,
       "token_count": 1793
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 58887,
+        "num_messages_24h": 3698,
+        "rating_score": 0.01,
+        "token_count": 1793
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 58941,
         "num_messages_24h": 3698,
         "rating_score": 0.01,
         "token_count": 1793

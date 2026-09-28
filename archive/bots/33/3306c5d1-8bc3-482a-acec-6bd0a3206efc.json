@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3306c5d1-8bc3-482a-acec-6bd0a3206efc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "es": "Esposo Abusado",
         "hi": "पीड़ित पति"
       },
-      "num_messages": 2098308,
+      "num_messages": 2098326,
       "num_messages_24h": 383,
       "rating_score": 0.349089,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790583832941,
+      "updatedAt": 1790588106764,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
       "es": "Esposo Abusado",
       "hi": "पीड़ित पति"
     },
-    "num_messages": 2098308,
+    "num_messages": 2098326,
     "num_messages_24h": 383,
     "rating_score": 0.349089,
     "reportsType": {},
@@ -138,10 +138,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790583832941,
+    "updatedAt": 1790588106764,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583832941,
+      "to": 1790588106764
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2098308,
+      "num_messages": 2098326,
       "num_messages_24h": 383,
       "rating_score": 0.349089,
       "token_count": 737
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2098308,
+        "num_messages_24h": 383,
+        "rating_score": 0.349089,
+        "token_count": 737
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2098326,
         "num_messages_24h": 383,
         "rating_score": 0.349089,
         "token_count": 737

@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "f5f12e52-eb38-4bfb-bb42-f512384d152a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +56,7 @@
         "tr": "Rahibe Lucrezia",
         "zh": "Sister Lucrezia"
       },
-      "num_messages": 129458,
+      "num_messages": 129512,
       "num_messages_24h": 7638,
       "rating_score": 0.754545,
       "reportsType": {},
@@ -101,8 +104,64 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587525163,
+      "updatedAt": 1790588279447,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "f5f12e52-eb38-4bfb-bb42-f512384d152a",
+      "type": "STANDARD",
+      "name": "Sister Lucrezia",
+      "title": "Bringing God to monsters is a risky job.",
+      "visibility": "public",
+      "creator_username": "eigwuajabrusiai",
+      "creator_user_id": "kp:e0f0fe787b404362a734e82eb6d58d1a",
+      "greeting": "*The lantern in her hand has nearly burned to nothing, but Lucrezia hasn't noticed. She's kneeling in the wet leaves a few feet from the treeline, murmuring something low and rhythmic under her breath — not quite a prayer, not quite a song, the kind of thing said more for the saying than for being heard. Her veil has slipped back off one shoulder. The habit fits a shade too well for something meant to make her disappear — old tailoring habits die hard. There's a tear in the sleeve she hasn't bothered to mend, and dried blood on the hem that isn't hers.*\n\n*She goes still the moment she hears you. Doesn't reach for anything, doesn't back away, doesn't so much as raise her lantern to see you better. Just tilts her head, unhurried, the way someone might turn toward a sound they'd been half-expecting all night.*\n\n\"There you are.\" *Her voice carries none of the caution it probably should — warm, amused, faintly aristocratic in a way the habit doesn't quite cover up.* \"I did wonder what would find me first out here.\" *She sets the lantern down beside her, deliberately, both hands visible, and settles back on her heels like she has nowhere else to be.* \"I don't suppose you'd tell me your name, before we get to whatever happens next?\"",
+      "avatar_url": "https://cdn.nd-api.com/avatars/48211c76-586f-4d01-b3fe-f99721774e19.jpg?class=avatar256x256",
+      "num_messages": 129512,
+      "rating_score": 0.754545,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Fantasy",
+        "Monster",
+        "Female",
+        "FemalePOV",
+        "Romantic",
+        "MalePOV",
+        "Submissive",
+        "Horror",
+        "Wholesome"
+      ],
+      "language": "en",
+      "token_count": 1404,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-09-22T19:18:24.708Z",
+      "updatedAt": "2026-09-28T09:37:59.447Z",
+      "translated_languages": [
+        "zh",
+        "de",
+        "pl",
+        "hi",
+        "ru",
+        "fr",
+        "es",
+        "pt",
+        "ar",
+        "it",
+        "tr",
+        "ja",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "f5f12e52-eb38-4bfb-bb42-f512384d152a"
     }
   },
   "lastKnown": {
@@ -113,7 +172,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/48211c76-586f-4d01-b3fe-f99721774e19.jpg?class=avatar256x256",
     "character_id": "f5f12e52-eb38-4bfb-bb42-f512384d152a",
-    "createdAt": 1790104704708,
+    "createdAt": "2026-09-22T19:18:24.708Z",
     "creator_user_id": "kp:e0f0fe787b404362a734e82eb6d58d1a",
     "creator_username": "eigwuajabrusiai",
     "definition_size_category": "high",
@@ -142,10 +201,13 @@
       "tr": "Rahibe Lucrezia",
       "zh": "Sister Lucrezia"
     },
-    "num_messages": 129458,
+    "num_messages": 129512,
     "num_messages_24h": 7638,
     "rating_score": 0.754545,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "Fantasy",
       "Monster",
@@ -190,10 +252,45 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587525163,
+    "updatedAt": "2026-09-28T09:37:59.447Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587525163,
+      "to": 1790588279447
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790104704708,
+      "to": "2026-09-22T19:18:24.708Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588279447,
+      "to": "2026-09-28T09:37:59.447Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,8 +306,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 129458,
-      "num_messages_24h": 7638,
+      "num_messages": 129512,
       "rating_score": 0.754545,
       "token_count": 1404
     },
@@ -220,6 +316,21 @@
         "source": "typesense:trending",
         "num_messages": 129458,
         "num_messages_24h": 7638,
+        "rating_score": 0.754545,
+        "token_count": 1404
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 129512,
+        "num_messages_24h": 7638,
+        "rating_score": 0.754545,
+        "token_count": 1404
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 129512,
         "rating_score": 0.754545,
         "token_count": 1404
       }

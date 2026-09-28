@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c0b8b309-0acd-43e2-abbd-4d55e11befc7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Elizabeth",
         "tr": "Elizabeth"
       },
-      "num_messages": 147728,
+      "num_messages": 147732,
       "num_messages_24h": 2308,
       "rating_score": 0.973684,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586523760,
+      "updatedAt": 1790587841041,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "ru": "Elizabeth",
       "tr": "Elizabeth"
     },
-    "num_messages": 147728,
+    "num_messages": 147732,
     "num_messages_24h": 2308,
     "rating_score": 0.973684,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586523760,
+    "updatedAt": 1790587841041,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586523760,
+      "to": 1790587841041
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,13 +182,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2451,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2452,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 147728,
+      "num_messages": 147732,
       "num_messages_24h": 2308,
       "rating_score": 0.973684,
       "token_count": 1338
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 147728,
+        "num_messages_24h": 2308,
+        "rating_score": 0.973684,
+        "token_count": 1338
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 147732,
         "num_messages_24h": 2308,
         "rating_score": 0.973684,
         "token_count": 1338

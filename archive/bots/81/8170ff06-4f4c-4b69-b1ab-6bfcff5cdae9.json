@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "8170ff06-4f4c-4b69-b1ab-6bfcff5cdae9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +55,7 @@
         "ru": "Ella",
         "tr": "Ella"
       },
-      "num_messages": 43665,
+      "num_messages": 43741,
       "num_messages_24h": 7708,
       "rating_score": 0,
       "reportsType": {},
@@ -98,8 +101,63 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587521257,
+      "updatedAt": 1790588276968,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "8170ff06-4f4c-4b69-b1ab-6bfcff5cdae9",
+      "type": "STANDARD",
+      "name": "Ella",
+      "title": "Your Older Girlfriend Left for a Week. Her Daughter Has Been Waiting for This",
+      "visibility": "public",
+      "creator_username": "skarab69",
+      "creator_user_id": "kp:089916fcf0de483081a4ca34ace914c2",
+      "greeting": "**You hear porn playing from the bedroom you share with your older girlfriend. She left this morning for a week-long business trip, so there is only one other person in the house: her 22-year-old daughter Ella, who has lived here throughout the year that you've gradually become part of their home. The bedroom door is open.**\n\n*Ella is stretched on her stomach across your double bed, phone in front of her, wearing a white crop tee and an extremely short black skirt. No panties. As you approach, she turns her head, sees you looking and smiles instead of covering herself.*\n\n“Oh. Hi.”\n\n*She bends both legs lazily toward her ass and gives the smallest wriggle against the white bedding, making the view unmistakably deliberate.*\n\n“Was it too loud?”\n\n*Her eyes stay on you, bright with amusement.*\n\n“I can turn it down.”\n\n*She makes absolutely no move toward the phone.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/9ec3b93a-18ca-4bc8-a26c-d330d56b5dc7.webp?class=avatar256x256",
+      "num_messages": 43790,
+      "rating_score": 0,
+      "is_nsfw": true,
+      "avatar_is_nsfw": true,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Female",
+        "Romantic",
+        "Partner",
+        "Drama",
+        "MalePOV",
+        "FemalePOV",
+        "Original Character",
+        "Scenario",
+        "NSFW"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 1182,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-23T11:29:42.657Z",
+      "updatedAt": "2026-09-28T09:44:10.257Z",
+      "translated_languages": [
+        "de",
+        "fr",
+        "ru",
+        "es",
+        "ar",
+        "hi",
+        "it",
+        "tr",
+        "ko",
+        "pl",
+        "pt",
+        "ja"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "8170ff06-4f4c-4b69-b1ab-6bfcff5cdae9"
     }
   },
   "lastKnown": {
@@ -109,7 +167,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/9ec3b93a-18ca-4bc8-a26c-d330d56b5dc7.webp?class=avatar256x256",
     "character_id": "8170ff06-4f4c-4b69-b1ab-6bfcff5cdae9",
-    "createdAt": 1790162982657,
+    "createdAt": "2026-09-23T11:29:42.657Z",
     "creator_user_id": "kp:089916fcf0de483081a4ca34ace914c2",
     "creator_username": "skarab69",
     "definition_size_category": "mid",
@@ -138,10 +196,12 @@
       "ru": "Ella",
       "tr": "Ella"
     },
-    "num_messages": 43665,
+    "num_messages": 43790,
     "num_messages_24h": 7708,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Romantic",
@@ -184,10 +244,44 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587521257,
+    "updatedAt": "2026-09-28T09:44:10.257Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587521257,
+      "to": 1790588276968
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790162982657,
+      "to": "2026-09-23T11:29:42.657Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588276968,
+      "to": "2026-09-28T09:44:10.257Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,8 +297,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 43665,
-      "num_messages_24h": 7708,
+      "num_messages": 43790,
       "rating_score": 0,
       "token_count": 1182
     },
@@ -214,6 +307,21 @@
         "source": "typesense:trending",
         "num_messages": 43665,
         "num_messages_24h": 7708,
+        "rating_score": 0,
+        "token_count": 1182
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 43741,
+        "num_messages_24h": 7708,
+        "rating_score": 0,
+        "token_count": 1182
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 43790,
         "rating_score": 0,
         "token_count": 1182
       }

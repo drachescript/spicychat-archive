@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "86aa4185-7834-4b33-aa4a-36d21f92b54f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -61,7 +61,7 @@
         "tr": "Charlotte Bridge",
         "zh": "Charlotte Bridge"
       },
-      "num_messages": 336344,
+      "num_messages": 336346,
       "num_messages_24h": 3931,
       "rating_score": 0.284916,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587664843,
+      "updatedAt": 1790588560421,
       "visibility": "public"
     }
   },
@@ -155,7 +155,7 @@
       "tr": "Charlotte Bridge",
       "zh": "Charlotte Bridge"
     },
-    "num_messages": 336344,
+    "num_messages": 336346,
     "num_messages_24h": 3931,
     "rating_score": 0.284916,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587664843,
+    "updatedAt": 1790588560421,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587664843,
+      "to": 1790588560421
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,7 +226,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 336344,
+      "num_messages": 336346,
       "num_messages_24h": 3931,
       "rating_score": 0.284916,
       "token_count": 1099
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 336344,
+        "num_messages_24h": 3931,
+        "rating_score": 0.284916,
+        "token_count": 1099
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 336346,
         "num_messages_24h": 3931,
         "rating_score": 0.284916,
         "token_count": 1099

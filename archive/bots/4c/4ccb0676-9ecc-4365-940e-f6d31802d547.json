@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4ccb0676-9ecc-4365-940e-f6d31802d547",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "tr": "Pet Human RPG v5",
         "zh": "宠物人类 RPG v5"
       },
-      "num_messages": 1750184,
+      "num_messages": 1750252,
       "num_messages_24h": 1637,
       "rating_score": 0.795695,
       "reportsType": {},
@@ -109,7 +109,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587709078,
+      "updatedAt": 1790588560744,
       "visibility": "public"
     }
   },
@@ -156,7 +156,7 @@
       "tr": "Pet Human RPG v5",
       "zh": "宠物人类 RPG v5"
     },
-    "num_messages": 1750184,
+    "num_messages": 1750252,
     "num_messages_24h": 1637,
     "rating_score": 0.795695,
     "reportsType": {},
@@ -208,10 +208,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587709078,
+    "updatedAt": 1790588560744,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587709078,
+      "to": 1790588560744
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -227,7 +236,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1750184,
+      "num_messages": 1750252,
       "num_messages_24h": 1637,
       "rating_score": 0.795695,
       "token_count": 1604
@@ -237,6 +246,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1750184,
+        "num_messages_24h": 1637,
+        "rating_score": 0.795695,
+        "token_count": 1604
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1750252,
         "num_messages_24h": 1637,
         "rating_score": 0.795695,
         "token_count": 1604

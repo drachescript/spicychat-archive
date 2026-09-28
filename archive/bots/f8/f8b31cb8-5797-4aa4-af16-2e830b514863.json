@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f8b31cb8-5797-4aa4-af16-2e830b514863",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "de": "Stranger Things",
         "fr": "Stranger Things"
       },
-      "num_messages": 58743,
+      "num_messages": 58779,
       "num_messages_24h": 2504,
       "rating_score": 0,
       "reportsType": {},
@@ -65,7 +65,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587515158,
+      "updatedAt": 1790588247215,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
       "de": "Stranger Things",
       "fr": "Stranger Things"
     },
-    "num_messages": 58743,
+    "num_messages": 58779,
     "num_messages_24h": 2504,
     "rating_score": 0,
     "reportsType": {},
@@ -118,10 +118,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587515158,
+    "updatedAt": 1790588247215,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587515158,
+      "to": 1790588247215
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +140,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2220,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2221,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 58743,
+      "num_messages": 58779,
       "num_messages_24h": 2504,
       "rating_score": 0,
       "token_count": 307
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 58743,
+        "num_messages_24h": 2504,
+        "rating_score": 0,
+        "token_count": 307
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 58779,
         "num_messages_24h": 2504,
         "rating_score": 0,
         "token_count": 307

@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "d31751fc-4950-47f8-96e7-9d81ddbec21d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +63,7 @@
         "tr": "Chelsea “Chez” Mitch",
         "zh": "Chelsea “Chez” Mitch"
       },
-      "num_messages": 355136,
+      "num_messages": 355381,
       "num_messages_24h": 8135,
       "rating_score": 0.872054,
       "reportsType": {},
@@ -105,8 +108,62 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637828,
+      "updatedAt": 1790588280326,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "d31751fc-4950-47f8-96e7-9d81ddbec21d",
+      "type": "STANDARD",
+      "name": "Chelsea “Chez” Mitch",
+      "title": "A British chav you meet at night. Very detailed. 1700 Tokens.",
+      "visibility": "public",
+      "creator_username": "slavalcars",
+      "creator_user_id": "kp:0b647e840339449180c60966682c6c32",
+      "greeting": "*{{User}} is walking down the street late at night when he notices {{Char}} sitting on a bench outside a convenience store, scrolling through her phone. As {{User}} walks past, he briefly glances at her. {{Char}} looks up, notices him staring, and narrows her eyes.*\n\n\"Oi! What are you looking at?\"\n\n*{{User}}:* \"Nothing.\"\n\n*{{Char}}:* \"Nothing? You were proper staring at me, mate. What's your problem?\"\n\n*{{Char}} puts her phone away and raises an eyebrow.*\n\n\"Go on then, spit it out. What were you looking at?\"",
+      "avatar_url": "https://cdn.nd-api.com/avatars/d47d9d5b-113c-49f2-aaed-2df677e0564d.gif?class=avatar256x256",
+      "num_messages": 355489,
+      "rating_score": 0.872054,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Female",
+        "MalePOV",
+        "Drama",
+        "Romantic",
+        "Submissive",
+        "English"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 1770,
+      "reportsType": [
+        "System",
+        "User"
+      ],
+      "createdAt": "2026-08-27T21:39:16.072Z",
+      "updatedAt": "2026-09-28T09:44:13.589Z",
+      "translated_languages": [
+        "de",
+        "zh",
+        "pl",
+        "fr",
+        "es",
+        "hi",
+        "ru",
+        "it",
+        "ar",
+        "tr",
+        "ko",
+        "pt",
+        "ja"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "d31751fc-4950-47f8-96e7-9d81ddbec21d"
     }
   },
   "lastKnown": {
@@ -117,7 +174,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/d47d9d5b-113c-49f2-aaed-2df677e0564d.gif?class=avatar256x256",
     "character_id": "d31751fc-4950-47f8-96e7-9d81ddbec21d",
-    "createdAt": 1787866756072,
+    "createdAt": "2026-08-27T21:39:16.072Z",
     "creator_user_id": "kp:0b647e840339449180c60966682c6c32",
     "creator_username": "slavalcars",
     "definition_size_category": "high",
@@ -155,10 +212,13 @@
       "tr": "Chelsea “Chez” Mitch",
       "zh": "Chelsea “Chez” Mitch"
     },
-    "num_messages": 355136,
+    "num_messages": 355489,
     "num_messages_24h": 8135,
     "rating_score": 0.872054,
-    "reportsType": {},
+    "reportsType": [
+      "System",
+      "User"
+    ],
     "tags": [
       "Female",
       "MalePOV",
@@ -200,10 +260,45 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587637828,
+    "updatedAt": "2026-09-28T09:44:13.589Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587637828,
+      "to": 1790588280326
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System",
+        "User"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1787866756072,
+      "to": "2026-08-27T21:39:16.072Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588280326,
+      "to": "2026-09-28T09:44:13.589Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,8 +314,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 355136,
-      "num_messages_24h": 8135,
+      "num_messages": 355489,
       "rating_score": 0.872054,
       "token_count": 1770
     },
@@ -230,6 +324,21 @@
         "source": "typesense:trending",
         "num_messages": 355136,
         "num_messages_24h": 8135,
+        "rating_score": 0.872054,
+        "token_count": 1770
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 355381,
+        "num_messages_24h": 8135,
+        "rating_score": 0.872054,
+        "token_count": 1770
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 355489,
         "rating_score": 0.872054,
         "token_count": 1770
       }

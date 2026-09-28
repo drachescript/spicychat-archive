@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dc7b2eee-452c-4c58-ae4d-6f5aa8acf940",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "ru": "Archon Mona",
         "tr": "Archon Mona"
       },
-      "num_messages": 47711,
+      "num_messages": 47729,
       "num_messages_24h": 4806,
       "rating_score": 0.838983,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587119244,
+      "updatedAt": 1790588040285,
       "visibility": "public"
     }
   },
@@ -149,7 +149,7 @@
       "ru": "Archon Mona",
       "tr": "Archon Mona"
     },
-    "num_messages": 47711,
+    "num_messages": 47729,
     "num_messages_24h": 4806,
     "rating_score": 0.838983,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587119244,
+    "updatedAt": 1790588040285,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587119244,
+      "to": 1790588040285
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 47711,
+      "num_messages": 47729,
       "num_messages_24h": 4806,
       "rating_score": 0.838983,
       "token_count": 1440
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 47711,
+        "num_messages_24h": 4806,
+        "rating_score": 0.838983,
+        "token_count": 1440
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 47729,
         "num_messages_24h": 4806,
         "rating_score": 0.838983,
         "token_count": 1440

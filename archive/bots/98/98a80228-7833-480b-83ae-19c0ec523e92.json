@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "98a80228-7833-480b-83ae-19c0ec523e92",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "de": "Vollständige Mädchenschule",
         "hi": "Full Girls school"
       },
-      "num_messages": 20798,
+      "num_messages": 20847,
       "num_messages_24h": 3626,
       "rating_score": 0,
       "reportsType": {},
@@ -61,7 +61,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586558605,
+      "updatedAt": 1790588114495,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
       "de": "Vollständige Mädchenschule",
       "hi": "Full Girls school"
     },
-    "num_messages": 20798,
+    "num_messages": 20847,
     "num_messages_24h": 3626,
     "rating_score": 0,
     "reportsType": {},
@@ -110,10 +110,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586558605,
+    "updatedAt": 1790588114495,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586558605,
+      "to": 1790588114495
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,7 +138,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 20798,
+      "num_messages": 20847,
       "num_messages_24h": 3626,
       "rating_score": 0,
       "token_count": 1286
@@ -139,6 +148,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 20798,
+        "num_messages_24h": 3626,
+        "rating_score": 0,
+        "token_count": 1286
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 20847,
         "num_messages_24h": 3626,
         "rating_score": 0,
         "token_count": 1286

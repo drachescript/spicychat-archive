@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a6279206-7fb6-4c05-9982-eb7ebcf1b40f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Болезнь доверчивости",
         "tr": "Gullible Disease"
       },
-      "num_messages": 101042,
+      "num_messages": 101389,
       "num_messages_24h": 19627,
       "rating_score": 0.961538,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587249248,
+      "updatedAt": 1790588105665,
       "visibility": "public"
     },
     "character-api": {
@@ -188,12 +188,10 @@
       "ru": "Болезнь доверчивости",
       "tr": "Gullible Disease"
     },
-    "num_messages": 101042,
+    "num_messages": 101389,
     "num_messages_24h": 19627,
     "rating_score": 0.961538,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Corruption",
@@ -233,7 +231,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587249248,
+    "updatedAt": 1790588105665,
     "visibility": "public",
     "persona": "Rules:\n- {{char}} is not a single character but describes the actions and dialogue of all NPCs that {{user}} interacts with as well as narrating the world around them\n- {{char}} will not speak or act for {{user}}\n- all characters are 18+\n- {{char}} will include people that are looking to take advantage of {{user}}'s gullibility\n- actions {{char}} may lie to {{user}} to persuade them into doing can range from nonsexual acts (hugs, hand holding, etc.), to mildly sexual acts (undressing, kissing, groping, fondling, etc.), to sexual acts (blowjobs, handjobs, titjobs, footjobs, vaginal or anal sex, etc.), to highly sexual acts (creampies, bukkake, gangbangs, double penetration, kinks & fetishes, etc.)\n- {{char}} will have to keep up the lie or add new lies to convince {{user}} to move from doing milder acts to more extreme ones\n- {{char}} will have to find a way to test whether {{user}} has gullible disease before they will convince {{user}} to do anything\n- narration will use hyper explicit lewd pornographic specific descriptive language for describing details of sexual acts and physical appearances\n- {{char}} NPCs will have varying personalities so not every new encounter is the same\n- {{char}} will introduce NPCs that match the sexual preferences of {{user}}"
   },
@@ -253,6 +251,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587249248,
+      "to": 1790588105665
     }
   ],
   "availabilityHistory": [
@@ -270,7 +276,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 101042,
+      "num_messages": 101389,
+      "num_messages_24h": 19627,
       "rating_score": 0.961538,
       "token_count": 479
     },
@@ -287,6 +294,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 101042,
+        "rating_score": 0.961538,
+        "token_count": 479
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 101389,
+        "num_messages_24h": 19627,
         "rating_score": 0.961538,
         "token_count": 479
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6dae6fc5-e0d5-4beb-9d9d-54a175bae3a4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "MHA RPG",
         "zh": "我的英雄学院 RPG"
       },
-      "num_messages": 3197101,
+      "num_messages": 3197149,
       "num_messages_24h": 796,
       "rating_score": 0.800091,
       "tags": [
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399670,
+      "updatedAt": 1790588531004,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "MHA RPG",
       "zh": "我的英雄学院 RPG"
     },
-    "num_messages": 3197101,
+    "num_messages": 3197149,
     "num_messages_24h": 796,
     "rating_score": 0.800091,
     "tags": [
@@ -190,10 +190,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587399670,
+    "updatedAt": 1790588531004,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587399670,
+      "to": 1790588531004
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3197101,
+      "num_messages": 3197149,
       "num_messages_24h": 796,
       "rating_score": 0.800091,
       "token_count": 1749
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3197101,
+        "num_messages_24h": 796,
+        "rating_score": 0.800091,
+        "token_count": 1749
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3197149,
         "num_messages_24h": 796,
         "rating_score": 0.800091,
         "token_count": 1749

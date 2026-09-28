@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "21da1752-8986-4a76-aad8-d55b88479162",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Pet Goblin NTR",
         "zh": "Pet Goblin NTR"
       },
-      "num_messages": 2889335,
+      "num_messages": 2889395,
       "num_messages_24h": 947,
       "rating_score": 0.456926,
       "tags": [
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587298633,
+      "updatedAt": 1790588279112,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Pet Goblin NTR",
       "zh": "Pet Goblin NTR"
     },
-    "num_messages": 2889335,
+    "num_messages": 2889395,
     "num_messages_24h": 947,
     "rating_score": 0.456926,
     "tags": [
@@ -190,10 +190,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587298633,
+    "updatedAt": 1790588279112,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587298633,
+      "to": 1790588279112
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2889335,
+      "num_messages": 2889395,
       "num_messages_24h": 947,
       "rating_score": 0.456926,
       "token_count": 1101
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2889335,
+        "num_messages_24h": 947,
+        "rating_score": 0.456926,
+        "token_count": 1101
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2889395,
         "num_messages_24h": 947,
         "rating_score": 0.456926,
         "token_count": 1101

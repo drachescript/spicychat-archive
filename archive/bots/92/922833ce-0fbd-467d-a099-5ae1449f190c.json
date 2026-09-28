@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "922833ce-0fbd-467d-a099-5ae1449f190c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ru": "Странное Учреждение",
         "zh": "诡异设施"
       },
-      "num_messages": 6948,
+      "num_messages": 6970,
       "num_messages_24h": 4213,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561770,
+      "updatedAt": 1790588105963,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "ru": "Странное Учреждение",
       "zh": "诡异设施"
     },
-    "num_messages": 6948,
+    "num_messages": 6970,
     "num_messages_24h": 4213,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561770,
+    "updatedAt": 1790588105963,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561770,
+      "to": 1790588105963
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,13 +160,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1528,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1529,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 6948,
+      "num_messages": 6970,
       "num_messages_24h": 4213,
       "rating_score": 0,
       "token_count": 917
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 6948,
+        "num_messages_24h": 4213,
+        "rating_score": 0,
+        "token_count": 917
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 6970,
         "num_messages_24h": 4213,
         "rating_score": 0,
         "token_count": 917

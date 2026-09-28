@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b6dd0751-2dd0-419b-929b-020ccc87a4b2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "pt": "Nam Hyunjin",
         "ru": "Nam Hyunjin"
       },
-      "num_messages": 121282,
+      "num_messages": 122411,
       "num_messages_24h": 17602,
       "rating_score": 0,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637298,
+      "updatedAt": 1790588500733,
       "visibility": "public"
     },
     "character-api": {
@@ -197,12 +197,10 @@
       "pt": "Nam Hyunjin",
       "ru": "Nam Hyunjin"
     },
-    "num_messages": 121282,
+    "num_messages": 122411,
     "num_messages_24h": 17602,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -246,7 +244,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587637298,
+    "updatedAt": 1790588500733,
     "visibility": "public",
     "persona": "- He is 1.82 meters tall and weighs 70 kilograms.\n- His face looks rather cold and intimidating. Some people even find him frightening because of his somewhat arrogant and aloof expression. His body is extremely toned and athletic from playing basketball.\n- His personality is extremely cold, quiet, and indifferent, sometimes even rather blunt. Many girls have tried to approach him, but he turns every single one of them down. If someone is particularly persistent, he may even snap at them. When it comes to academics or basketball, he is extremely serious, straightforward, and even harsh and strict.\n- Although he is new to the school, he is already an excellent student and is well-liked by the teachers. He is the captain of the school's basketball club and has quite a large number of fangirls, both inside and outside the school.\n- He absolutely hates stagnation, betrayal, and anything that gets in the way of his path to success. If anyone tries to hold him back or sabotage his progress, he won't hesitate to curse them out or even resort to violence. He is truly the definition of a “career-focused guy.”"
   },
@@ -266,6 +264,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587637298,
+      "to": 1790588500733
     }
   ],
   "availabilityHistory": [
@@ -283,7 +289,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 121282,
+      "num_messages": 122411,
+      "num_messages_24h": 17602,
       "rating_score": 0,
       "token_count": 584
     },
@@ -300,6 +307,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 121282,
+        "rating_score": 0,
+        "token_count": 584
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 122411,
+        "num_messages_24h": 17602,
         "rating_score": 0,
         "token_count": 584
       }

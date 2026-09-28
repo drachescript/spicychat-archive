@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "77ad8593-ad20-4ca2-8f49-5713eb045289",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "pt": "Keigo Takami",
         "ru": "Keigo Takami"
       },
-      "num_messages": 80247,
+      "num_messages": 80258,
       "num_messages_24h": 537,
       "rating_score": 0.991803,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586709235,
+      "updatedAt": 1790587859166,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
       "pt": "Keigo Takami",
       "ru": "Keigo Takami"
     },
-    "num_messages": 80247,
+    "num_messages": 80258,
     "num_messages_24h": 537,
     "rating_score": 0.991803,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586709235,
+    "updatedAt": 1790587859166,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586709235,
+      "to": 1790587859166
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,7 +144,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 80247,
+      "num_messages": 80258,
       "num_messages_24h": 537,
       "rating_score": 0.991803,
       "token_count": 828
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 80247,
+        "num_messages_24h": 537,
+        "rating_score": 0.991803,
+        "token_count": 828
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 80258,
         "num_messages_24h": 537,
         "rating_score": 0.991803,
         "token_count": 828

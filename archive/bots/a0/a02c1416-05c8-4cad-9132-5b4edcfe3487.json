@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a02c1416-05c8-4cad-9132-5b4edcfe3487",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "pl": "Caleb",
         "ru": "Caleb"
       },
-      "num_messages": 16807,
+      "num_messages": 16888,
       "num_messages_24h": 5679,
       "rating_score": 0,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587595298,
+      "updatedAt": 1790588358891,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "pl": "Caleb",
       "ru": "Caleb"
     },
-    "num_messages": 16807,
+    "num_messages": 16888,
     "num_messages_24h": 5679,
     "rating_score": 0,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587595298,
+    "updatedAt": 1790588358891,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587595298,
+      "to": 1790588358891
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,13 +186,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 2235,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2237,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 16807,
+      "num_messages": 16888,
       "num_messages_24h": 5679,
       "rating_score": 0,
       "token_count": 1692
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 16807,
+        "num_messages_24h": 5679,
+        "rating_score": 0,
+        "token_count": 1692
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 16888,
         "num_messages_24h": 5679,
         "rating_score": 0,
         "token_count": 1692

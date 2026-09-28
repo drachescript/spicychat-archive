@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5fcb5511-f17d-474b-b10d-9c3807b3d715",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Zayn Vescari",
         "tr": "Zayn Vescari"
       },
-      "num_messages": 128097,
+      "num_messages": 128801,
       "num_messages_24h": 12707,
       "rating_score": 0.911765,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587594234,
+      "updatedAt": 1790588368780,
       "visibility": "public"
     },
     "character-api": {
@@ -196,12 +196,10 @@
       "ru": "Zayn Vescari",
       "tr": "Zayn Vescari"
     },
-    "num_messages": 128312,
+    "num_messages": 128801,
     "num_messages_24h": 12707,
     "rating_score": 0.911765,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -245,7 +243,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587594234,
+    "updatedAt": 1790588368780,
     "visibility": "public",
     "persona": "cold, indifferent, dominant"
   },
@@ -265,6 +263,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587594234,
+      "to": 1790588368780
     }
   ],
   "availabilityHistory": [
@@ -282,7 +288,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 128312,
+      "num_messages": 128801,
+      "num_messages_24h": 12707,
       "rating_score": 0.911765,
       "token_count": 327
     },
@@ -301,8 +308,23 @@
         "num_messages": 128312,
         "rating_score": 0.911765,
         "token_count": 327
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 128801,
+        "num_messages_24h": 12707,
+        "rating_score": 0.911765,
+        "token_count": 327
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/0ea3488b-ed24-4b33-ae37-cd973d001517.jpg?class=avatar256x256",
+    "sha256": "8ae4d2f2af7c1ca58dcc0939cddca5241cbd1e11b64c244eb2608ac06c4aff20",
+    "contentType": "image/jpeg",
+    "bytes": 18959,
+    "path": "archive/media/8a/8ae4d2f2af7c1ca58dcc0939cddca5241cbd1e11b64c244eb2608ac06c4aff20.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

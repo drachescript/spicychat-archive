@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f6af5c2a-7f12-4ecf-a425-7429904595ac",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Siana",
-      "num_messages": 285,
+      "num_messages": 290,
       "num_messages_24h": 157,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "She is the babysitter.",
       "token_count": 2024,
       "type": "STANDARD",
-      "updatedAt": 1790558253169,
+      "updatedAt": 1790587769430,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Siana",
-    "num_messages": 285,
+    "num_messages": 290,
     "num_messages_24h": 157,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "She is the babysitter.",
     "token_count": 2024,
     "type": "STANDARD",
-    "updatedAt": 1790558253169,
+    "updatedAt": 1790587769430,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790558253169,
+      "to": 1790587769430
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,13 +120,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1456,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1457,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 285,
+      "num_messages": 290,
       "num_messages_24h": 157,
       "rating_score": 0,
       "token_count": 2024
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 285,
+        "num_messages_24h": 157,
+        "rating_score": 0,
+        "token_count": 2024
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 290,
         "num_messages_24h": 157,
         "rating_score": 0,
         "token_count": 2024

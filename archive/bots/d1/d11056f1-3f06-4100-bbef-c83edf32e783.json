@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d11056f1-3f06-4100-bbef-c83edf32e783",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "tr": "Ranveer",
         "zh": "Ranveer"
       },
-      "num_messages": 119043,
+      "num_messages": 119080,
       "num_messages_24h": 2418,
       "rating_score": 0,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586914229,
+      "updatedAt": 1790587665600,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "tr": "Ranveer",
       "zh": "Ranveer"
     },
-    "num_messages": 119043,
+    "num_messages": 119080,
     "num_messages_24h": 2418,
     "rating_score": 0,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586914229,
+    "updatedAt": 1790587665600,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586914229,
+      "to": 1790587665600
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,13 +188,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2318,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2319,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 119043,
+      "num_messages": 119080,
       "num_messages_24h": 2418,
       "rating_score": 0,
       "token_count": 624
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 119043,
+        "num_messages_24h": 2418,
+        "rating_score": 0,
+        "token_count": 624
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 119080,
         "num_messages_24h": 2418,
         "rating_score": 0,
         "token_count": 624

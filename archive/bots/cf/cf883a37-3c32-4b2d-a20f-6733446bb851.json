@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cf883a37-3c32-4b2d-a20f-6733446bb851",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Obie (bot from cai)",
         "zh": "Obie (bot from cai)"
       },
-      "num_messages": 1560549,
+      "num_messages": 1560590,
       "num_messages_24h": 171,
       "rating_score": 0.738966,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586470158,
+      "updatedAt": 1790588038487,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Obie (bot from cai)",
       "zh": "Obie (bot from cai)"
     },
-    "num_messages": 1560549,
+    "num_messages": 1560590,
     "num_messages_24h": 171,
     "rating_score": 0.738966,
     "reportsType": {},
@@ -188,10 +188,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586470158,
+    "updatedAt": 1790588038487,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586470158,
+      "to": 1790588038487
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1560549,
+      "num_messages": 1560590,
       "num_messages_24h": 171,
       "rating_score": 0.738966,
       "token_count": 342
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1560549,
+        "num_messages_24h": 171,
+        "rating_score": 0.738966,
+        "token_count": 342
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1560590,
         "num_messages_24h": 171,
         "rating_score": 0.738966,
         "token_count": 342

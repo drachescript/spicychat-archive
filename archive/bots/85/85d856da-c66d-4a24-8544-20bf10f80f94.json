@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "85d856da-c66d-4a24-8544-20bf10f80f94",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Jingran",
-      "num_messages": 1280,
+      "num_messages": 1322,
       "num_messages_24h": 568,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "Jingran from Wuthering Waves - You are looking for him...",
       "token_count": 568,
       "type": "STANDARD",
-      "updatedAt": 1790587514797,
+      "updatedAt": 1790588292803,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Jingran",
-    "num_messages": 1280,
+    "num_messages": 1322,
     "num_messages_24h": 568,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "Jingran from Wuthering Waves - You are looking for him...",
     "token_count": 568,
     "type": "STANDARD",
-    "updatedAt": 1790587514797,
+    "updatedAt": 1790588292803,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587514797,
+      "to": 1790588292803
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -105,13 +114,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2202,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2204,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1280,
+      "num_messages": 1322,
       "num_messages_24h": 568,
       "rating_score": 0,
       "token_count": 568
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1280,
+        "num_messages_24h": 568,
+        "rating_score": 0,
+        "token_count": 568
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1322,
         "num_messages_24h": 568,
         "rating_score": 0,
         "token_count": 568

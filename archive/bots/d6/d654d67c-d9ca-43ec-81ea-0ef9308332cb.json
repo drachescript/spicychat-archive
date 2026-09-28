@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d654d67c-d9ca-43ec-81ea-0ef9308332cb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Isaac Robinson",
         "zh": "Isaac Robinson"
       },
-      "num_messages": 522963,
+      "num_messages": 523983,
       "num_messages_24h": 43530,
       "rating_score": 0.90184,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587365005,
+      "updatedAt": 1790588359929,
       "visibility": "public"
     },
     "character-api": {
@@ -181,7 +181,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/b0803679-c5f2-48a3-aa41-4ff8b880b49f.jpg?class=avatar256x256",
     "character_id": "d654d67c-d9ca-43ec-81ea-0ef9308332cb",
-    "createdAt": "2026-08-29T07:38:47.873Z",
+    "createdAt": 1787989127873,
     "creator_user_id": "kp:0358d26d968e48b9a9cb739c9967243e",
     "creator_username": "lilitlouis",
     "definition_size_category": "high",
@@ -211,12 +211,10 @@
       "tr": "Isaac Robinson",
       "zh": "Isaac Robinson"
     },
-    "num_messages": 523405,
+    "num_messages": 523983,
     "num_messages_24h": 43530,
     "rating_score": 0.90184,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Male",
@@ -260,7 +258,7 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:27:58.877Z",
+    "updatedAt": 1790588359929,
     "visibility": "public",
     "lorebooks": [
       {
@@ -320,6 +318,22 @@
           "entries": []
         }
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-08-29T07:38:47.873Z",
+      "to": 1787989127873
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:27:58.877Z",
+      "to": 1790588359929
     }
   ],
   "availabilityHistory": [
@@ -337,7 +351,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 523405,
+      "num_messages": 523983,
+      "num_messages_24h": 43530,
       "rating_score": 0.90184,
       "token_count": 1795
     },
@@ -354,6 +369,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 523405,
+        "rating_score": 0.90184,
+        "token_count": 1795
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 523983,
+        "num_messages_24h": 43530,
         "rating_score": 0.90184,
         "token_count": 1795
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "57996bd9-5f51-48d6-a22b-d2a2ea381ce5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "closed",
       "name": "Luna paws",
-      "num_messages": 5272,
+      "num_messages": 5312,
       "num_messages_24h": 2715,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "Your beautiful panda friend who has bad luck with relationships. Maybe you’re the right one for her",
       "token_count": 731,
       "type": "STANDARD",
-      "updatedAt": 1790587586439,
+      "updatedAt": 1790588291254,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "closed",
     "name": "Luna paws",
-    "num_messages": 5272,
+    "num_messages": 5312,
     "num_messages_24h": 2715,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "Your beautiful panda friend who has bad luck with relationships. Maybe you’re the right one for her",
     "token_count": 731,
     "type": "STANDARD",
-    "updatedAt": 1790587586439,
+    "updatedAt": 1790588291254,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586439,
+      "to": 1790588291254
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5272,
+      "num_messages": 5312,
       "num_messages_24h": 2715,
       "rating_score": 0,
       "token_count": 731
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5272,
+        "num_messages_24h": 2715,
+        "rating_score": 0,
+        "token_count": 731
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5312,
         "num_messages_24h": 2715,
         "rating_score": 0,
         "token_count": 731

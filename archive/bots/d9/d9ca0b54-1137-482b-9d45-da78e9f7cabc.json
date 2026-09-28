@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d9ca0b54-1137-482b-9d45-da78e9f7cabc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Lucas",
         "zh": "Lucas"
       },
-      "num_messages": 285709,
+      "num_messages": 286794,
       "num_messages_24h": 28878,
       "rating_score": 0.972973,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587714245,
+      "updatedAt": 1790588502110,
       "visibility": "public"
     },
     "character-api": {
@@ -158,7 +158,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/d92cb19d0767054d80bdacfb2a6ff79b.jpg?class=avatar256x256",
     "character_id": "d9ca0b54-1137-482b-9d45-da78e9f7cabc",
-    "createdAt": "2026-09-15T16:28:49.118Z",
+    "createdAt": 1789489729118,
     "creator_user_id": "kp:1723758e1dc44be992c9c8c82dc5e434",
     "creator_username": "chloe_bryann",
     "definition_size_category": "high",
@@ -187,13 +187,10 @@
       "tr": "Lucas",
       "zh": "Lucas"
     },
-    "num_messages": 285709,
+    "num_messages": 286794,
     "num_messages_24h": 28878,
     "rating_score": 0.972973,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -230,7 +227,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:34.245Z",
+    "updatedAt": 1790588502110,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -259,6 +256,22 @@
       "kind": "value",
       "from": 1790587714245,
       "to": "2026-09-28T09:28:34.245Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-15T16:28:49.118Z",
+      "to": 1789489729118
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:34.245Z",
+      "to": 1790588502110
     }
   ],
   "availabilityHistory": [
@@ -276,7 +289,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 285709,
+      "num_messages": 286794,
+      "num_messages_24h": 28878,
       "rating_score": 0.972973,
       "token_count": 1298
     },
@@ -293,6 +307,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 285709,
+        "rating_score": 0.972973,
+        "token_count": 1298
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 286794,
+        "num_messages_24h": 28878,
         "rating_score": 0.972973,
         "token_count": 1298
       }

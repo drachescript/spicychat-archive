@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bda06aea-c1f5-4c2d-9f7e-ed4769d7a828",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "es": "Dean Winchester",
         "ru": "Dean Winchester"
       },
-      "num_messages": 82132,
+      "num_messages": 82152,
       "num_messages_24h": 237,
       "rating_score": 0.992308,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587198001,
+      "updatedAt": 1790588455060,
       "visibility": "public"
     }
   },
@@ -122,7 +122,7 @@
       "es": "Dean Winchester",
       "ru": "Dean Winchester"
     },
-    "num_messages": 82132,
+    "num_messages": 82152,
     "num_messages_24h": 237,
     "rating_score": 0.992308,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587198001,
+    "updatedAt": 1790588455060,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587198001,
+      "to": 1790588455060
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,7 +174,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 82132,
+      "num_messages": 82152,
       "num_messages_24h": 237,
       "rating_score": 0.992308,
       "token_count": 803
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 82132,
+        "num_messages_24h": 237,
+        "rating_score": 0.992308,
+        "token_count": 803
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 82152,
         "num_messages_24h": 237,
         "rating_score": 0.992308,
         "token_count": 803

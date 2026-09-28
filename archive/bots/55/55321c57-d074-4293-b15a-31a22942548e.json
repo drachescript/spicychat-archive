@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "55321c57-d074-4293-b15a-31a22942548e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "de": "Wizards vs Demigods"
       },
-      "num_messages": 134305,
+      "num_messages": 134411,
       "num_messages_24h": 2181,
       "rating_score": 1,
       "reportsType": {},
@@ -57,7 +57,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586738982,
+      "updatedAt": 1790588360365,
       "visibility": "public"
     }
   },
@@ -85,7 +85,7 @@
     "name_i18n": {
       "de": "Wizards vs Demigods"
     },
-    "num_messages": 134305,
+    "num_messages": 134411,
     "num_messages_24h": 2181,
     "rating_score": 1,
     "reportsType": {},
@@ -102,10 +102,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586738982,
+    "updatedAt": 1790588360365,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586738982,
+      "to": 1790588360365
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 134305,
+      "num_messages": 134411,
       "num_messages_24h": 2181,
       "rating_score": 1,
       "token_count": 525
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 134305,
+        "num_messages_24h": 2181,
+        "rating_score": 1,
+        "token_count": 525
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 134411,
         "num_messages_24h": 2181,
         "rating_score": 1,
         "token_count": 525

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ef93a684-e6bc-48ee-99a1-807443ec424a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Kemono - Family Time",
-      "num_messages": 1582,
+      "num_messages": 1593,
       "num_messages_24h": 1059,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "Your beautiful kemono wife!",
       "token_count": 365,
       "type": "STANDARD",
-      "updatedAt": 1790587492178,
+      "updatedAt": 1790588280493,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "Kemono - Family Time",
-    "num_messages": 1582,
+    "num_messages": 1593,
     "num_messages_24h": 1059,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "Your beautiful kemono wife!",
     "token_count": 365,
     "type": "STANDARD",
-    "updatedAt": 1790587492178,
+    "updatedAt": 1790588280493,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587492178,
+      "to": 1790588280493
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,13 +122,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2014,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2015,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1582,
+      "num_messages": 1593,
       "num_messages_24h": 1059,
       "rating_score": 0,
       "token_count": 365
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1582,
+        "num_messages_24h": 1059,
+        "rating_score": 0,
+        "token_count": 365
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1593,
         "num_messages_24h": 1059,
         "rating_score": 0,
         "token_count": 365

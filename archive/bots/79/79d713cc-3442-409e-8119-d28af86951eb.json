@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "79d713cc-3442-409e-8119-d28af86951eb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Kael Draven",
         "zh": "Kael Draven"
       },
-      "num_messages": 4938595,
+      "num_messages": 4938604,
       "num_messages_24h": 135,
       "rating_score": 0.743604,
       "reportsType": {},
@@ -83,7 +83,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790578568099,
+      "updatedAt": 1790588166777,
       "visibility": "public"
     }
   },
@@ -124,7 +124,7 @@
       "ru": "Kael Draven",
       "zh": "Kael Draven"
     },
-    "num_messages": 4938595,
+    "num_messages": 4938604,
     "num_messages_24h": 135,
     "rating_score": 0.743604,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790578568099,
+    "updatedAt": 1790588166777,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790578568099,
+      "to": 1790588166777
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4938595,
+      "num_messages": 4938604,
       "num_messages_24h": 135,
       "rating_score": 0.743604,
       "token_count": 537
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4938595,
+        "num_messages_24h": 135,
+        "rating_score": 0.743604,
+        "token_count": 537
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4938604,
         "num_messages_24h": 135,
         "rating_score": 0.743604,
         "token_count": 537

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "36389df9-c713-4ee8-9a78-8233433c84f5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "pt": "My Hero Academia",
         "ru": "My Hero Academia"
       },
-      "num_messages": 1795270,
+      "num_messages": 1795287,
       "num_messages_24h": 1317,
       "rating_score": 0.677941,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587490574,
+      "updatedAt": 1790588366964,
       "visibility": "public"
     }
   },
@@ -131,7 +131,7 @@
       "pt": "My Hero Academia",
       "ru": "My Hero Academia"
     },
-    "num_messages": 1795270,
+    "num_messages": 1795287,
     "num_messages_24h": 1317,
     "rating_score": 0.677941,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587490574,
+    "updatedAt": 1790588366964,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587490574,
+      "to": 1790588366964
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,13 +190,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 1853,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1854,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1795270,
+      "num_messages": 1795287,
       "num_messages_24h": 1317,
       "rating_score": 0.677941,
       "token_count": 949
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1795270,
+        "num_messages_24h": 1317,
+        "rating_score": 0.677941,
+        "token_count": 949
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1795287,
         "num_messages_24h": 1317,
         "rating_score": 0.677941,
         "token_count": 949

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "45ade110-3292-4498-87f6-2e7911b68a19",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "The Replacement Date",
-      "num_messages": 477,
+      "num_messages": 485,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "Alyssa said no. Maria said yes... and now she is taking the role much more seriously than expected.",
       "token_count": 2025,
       "type": "STANDARD",
-      "updatedAt": 1790587404997,
+      "updatedAt": 1790588246789,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "The Replacement Date",
-    "num_messages": 477,
+    "num_messages": 485,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "Alyssa said no. Maria said yes... and now she is taking the role much more seriously than expected.",
     "token_count": 2025,
     "type": "STANDARD",
-    "updatedAt": 1790587404997,
+    "updatedAt": 1790588246789,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587404997,
+      "to": 1790588246789
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,13 +120,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1950,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1951,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 477,
+      "num_messages": 485,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 2025
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 477,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 2025
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 485,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 2025

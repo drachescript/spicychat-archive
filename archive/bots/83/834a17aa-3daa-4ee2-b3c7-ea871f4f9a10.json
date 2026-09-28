@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "834a17aa-3daa-4ee2-b3c7-ea871f4f9a10",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Öğrenci Konseyi",
         "zh": "学生会"
       },
-      "num_messages": 174730,
+      "num_messages": 175660,
       "num_messages_24h": 33612,
       "rating_score": 0.994681,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587582660,
+      "updatedAt": 1790588496497,
       "visibility": "public"
     },
     "character-api": {
@@ -165,7 +165,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/803904b9a447550eb9881b71b069b128.jpg?class=avatar256x256",
     "character_id": "834a17aa-3daa-4ee2-b3c7-ea871f4f9a10",
-    "createdAt": "2025-08-27T10:52:58.103Z",
+    "createdAt": 1756291978103,
     "creator_user_id": "kp:17d5381d306b48e383b572fffec8e3e1",
     "creator_username": "fawnok11",
     "definition_size_category": "mid",
@@ -193,13 +193,10 @@
       "tr": "Öğrenci Konseyi",
       "zh": "学生会"
     },
-    "num_messages": 174984,
+    "num_messages": 175660,
     "num_messages_24h": 33612,
     "rating_score": 0.994681,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Dominant",
       "NSFW",
@@ -241,7 +238,7 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:25.567Z",
+    "updatedAt": 1790588496497,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -270,6 +267,22 @@
       "kind": "value",
       "from": 1790587582660,
       "to": "2026-09-28T09:29:25.567Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2025-08-27T10:52:58.103Z",
+      "to": 1756291978103
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:25.567Z",
+      "to": 1790588496497
     }
   ],
   "availabilityHistory": [
@@ -291,7 +304,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 174984,
+      "num_messages": 175660,
+      "num_messages_24h": 33612,
       "rating_score": 0.994681,
       "token_count": 1025
     },
@@ -308,6 +322,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 174984,
+        "rating_score": 0.994681,
+        "token_count": 1025
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 175660,
+        "num_messages_24h": 33612,
         "rating_score": 0.994681,
         "token_count": 1025
       }

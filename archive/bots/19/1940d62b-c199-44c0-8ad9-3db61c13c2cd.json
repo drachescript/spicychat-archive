@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1940d62b-c199-44c0-8ad9-3db61c13c2cd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Prenses Rose",
         "zh": "公主罗斯"
       },
-      "num_messages": 120686,
+      "num_messages": 120693,
       "num_messages_24h": 2375,
       "rating_score": 0.966346,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586524483,
+      "updatedAt": 1790588382433,
       "visibility": "public"
     }
   },
@@ -132,7 +132,7 @@
       "tr": "Prenses Rose",
       "zh": "公主罗斯"
     },
-    "num_messages": 120686,
+    "num_messages": 120693,
     "num_messages_24h": 2375,
     "rating_score": 0.966346,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586524483,
+    "updatedAt": 1790588382433,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586524483,
+      "to": 1790588382433
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,13 +196,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2362,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2363,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 120686,
+      "num_messages": 120693,
       "num_messages_24h": 2375,
       "rating_score": 0.966346,
       "token_count": 1532
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 120686,
+        "num_messages_24h": 2375,
+        "rating_score": 0.966346,
+        "token_count": 1532
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 120693,
         "num_messages_24h": 2375,
         "rating_score": 0.966346,
         "token_count": 1532

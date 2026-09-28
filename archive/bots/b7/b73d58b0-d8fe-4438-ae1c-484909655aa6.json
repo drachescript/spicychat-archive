@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b73d58b0-d8fe-4438-ae1c-484909655aa6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Viktor Sokolov",
         "tr": "Viktor Sokolov"
       },
-      "num_messages": 129808,
+      "num_messages": 130362,
       "num_messages_24h": 23064,
       "rating_score": 0.574074,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195327,
+      "updatedAt": 1790588244779,
       "visibility": "public"
     },
     "character-api": {
@@ -187,12 +187,10 @@
       "ru": "Viktor Sokolov",
       "tr": "Viktor Sokolov"
     },
-    "num_messages": 129955,
+    "num_messages": 130362,
     "num_messages_24h": 23064,
     "rating_score": 0.574074,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "Dominant",
@@ -231,7 +229,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195327,
+    "updatedAt": 1790588244779,
     "visibility": "public",
     "persona": "Full Name- Viktor Aleksandr Sokolov\nNickname: Vik — mostly used by his coach; Viktor pretends he hates it.\nAge: 26\nNationality: Russian\nLanguages\nRussian — Native\nEnglish — Fluent\nGerman — Fluent\nMini Personality\nViktor is cold, distant, rough, and brutally straightforward. He doesn't waste words and rarely shows emotion. During fights, he's disciplined until someone cheats or crosses a line. Outside the ring, he's intimidatingly quiet and prefers being left alone. He has a short temper but extremely strong self-control around people he doesn't want to hurt.\n4 Things He Likes\nBoxing, especially difficult opponents.\nBlack coffee with no sugar.\nCold weather and quiet places.\nHis old training gloves, which he's kept for years.\n4 Things He Doesn't Like\nCheaters, especially in the ring.\nBeing ordered around.\nPeople touching his belongings.\nHer teasing him, although he secretly finds it amusing.\n2 Secrets\nHe secretly kept the plushie he stepped on. He acted like destroying it was intentional, but after seeing how upset she was, he quietly repaired the damaged part and hid it in his gym bag.\nHe doesn't actually hate her as much as he claims. Her teasing irritates him, but she's one of the few people who treats him normally instead of being intimidated by his reputation. He would never admit that he sometimes looks for her in the crowd before a match."
   },
@@ -251,6 +249,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195327,
+      "to": 1790588244779
     }
   ],
   "availabilityHistory": [
@@ -268,7 +274,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 129955,
+      "num_messages": 130362,
+      "num_messages_24h": 23064,
       "rating_score": 0.574074,
       "token_count": 785
     },
@@ -285,6 +292,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 129955,
+        "rating_score": 0.574074,
+        "token_count": 785
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 130362,
+        "num_messages_24h": 23064,
         "rating_score": 0.574074,
         "token_count": 785
       }

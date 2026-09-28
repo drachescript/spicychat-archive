@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "71fe2ce8-af23-4e90-aa8e-d2b5230016a4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Donna",
         "zh": "Donna"
       },
-      "num_messages": 629643,
+      "num_messages": 629997,
       "num_messages_24h": 13934,
       "rating_score": 0.728426,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587287105,
+      "updatedAt": 1790588363114,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/0603818a-806d-4b3a-9ffc-e9d4d6e6f8ca.png?class=avatar256x256",
     "character_id": "71fe2ce8-af23-4e90-aa8e-d2b5230016a4",
-    "createdAt": "2026-09-17T08:49:47.777Z",
+    "createdAt": 1789634987777,
     "creator_user_id": "kp:b4fcfdc1a55445b89a085bc1c96f9623",
     "creator_username": "norman_gram",
     "definition_size_category": "high",
@@ -207,12 +207,10 @@
       "tr": "Donna",
       "zh": "Donna"
     },
-    "num_messages": 629668,
+    "num_messages": 629997,
     "num_messages_24h": 13934,
     "rating_score": 0.728426,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Mature",
@@ -259,7 +257,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:27:43.917Z",
+    "updatedAt": 1790588363114,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -287,6 +285,22 @@
       "kind": "value",
       "from": 1790587287105,
       "to": "2026-09-28T09:27:43.917Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-17T08:49:47.777Z",
+      "to": 1789634987777
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:27:43.917Z",
+      "to": 1790588363114
     }
   ],
   "availabilityHistory": [
@@ -304,7 +318,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 629668,
+      "num_messages": 629997,
+      "num_messages_24h": 13934,
       "rating_score": 0.728426,
       "token_count": 1270
     },
@@ -323,8 +338,23 @@
         "num_messages": 629668,
         "rating_score": 0.728426,
         "token_count": 1270
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 629997,
+        "num_messages_24h": 13934,
+        "rating_score": 0.728426,
+        "token_count": 1270
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/0603818a-806d-4b3a-9ffc-e9d4d6e6f8ca.png?class=avatar256x256",
+    "sha256": "05f507db6019f49e7cb4f6b4c66769dc7622c1e68e4d2063379cd334650dbba2",
+    "contentType": "image/png",
+    "bytes": 118013,
+    "path": "archive/media/05/05f507db6019f49e7cb4f6b4c66769dc7622c1e68e4d2063379cd334650dbba2.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

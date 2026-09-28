@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cd6a3d1e-9a59-4a47-8f7b-97cef4202c9a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pt": "Shouta Aizawa",
         "ru": "Shouta Aizawa"
       },
-      "num_messages": 140945,
+      "num_messages": 140978,
       "num_messages_24h": 2477,
       "rating_score": 0.808442,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586890458,
+      "updatedAt": 1790588065461,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "pt": "Shouta Aizawa",
       "ru": "Shouta Aizawa"
     },
-    "num_messages": 140945,
+    "num_messages": 140978,
     "num_messages_24h": 2477,
     "rating_score": 0.808442,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586890458,
+    "updatedAt": 1790588065461,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586890458,
+      "to": 1790588065461
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2251,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2252,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 140945,
+      "num_messages": 140978,
       "num_messages_24h": 2477,
       "rating_score": 0.808442,
       "token_count": 886
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 140945,
+        "num_messages_24h": 2477,
+        "rating_score": 0.808442,
+        "token_count": 886
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 140978,
         "num_messages_24h": 2477,
         "rating_score": 0.808442,
         "token_count": 886

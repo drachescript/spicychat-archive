@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "90821eb1-52a6-42b0-9bb5-91d0aa58f1b5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Olga & Arya",
         "zh": "Olga & Arya"
       },
-      "num_messages": 288155,
+      "num_messages": 290517,
       "num_messages_24h": 39528,
       "rating_score": 0.604167,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587490746,
+      "updatedAt": 1790588531860,
       "visibility": "public"
     },
     "character-api": {
@@ -175,7 +175,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/2dc00a36-498a-48c1-b0af-95287fc86520.png?class=avatar256x256",
     "character_id": "90821eb1-52a6-42b0-9bb5-91d0aa58f1b5",
-    "createdAt": "2026-09-22T13:35:03.660Z",
+    "createdAt": 1790084103660,
     "creator_user_id": "kp:b4fcfdc1a55445b89a085bc1c96f9623",
     "creator_username": "norman_gram",
     "definition_size_category": "high",
@@ -205,12 +205,10 @@
       "tr": "Olga & Arya",
       "zh": "Olga & Arya"
     },
-    "num_messages": 289355,
+    "num_messages": 290517,
     "num_messages_24h": 39528,
     "rating_score": 0.604167,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Roommate",
       "Female",
@@ -256,7 +254,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:31.333Z",
+    "updatedAt": 1790588531860,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -284,6 +282,22 @@
       "kind": "value",
       "from": 1790587490746,
       "to": "2026-09-28T09:28:31.333Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-22T13:35:03.660Z",
+      "to": 1790084103660
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:31.333Z",
+      "to": 1790588531860
     }
   ],
   "availabilityHistory": [
@@ -301,7 +315,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 289355,
+      "num_messages": 290517,
+      "num_messages_24h": 39528,
       "rating_score": 0.604167,
       "token_count": 1238
     },
@@ -318,6 +333,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 289355,
+        "rating_score": 0.604167,
+        "token_count": 1238
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 290517,
+        "num_messages_24h": 39528,
         "rating_score": 0.604167,
         "token_count": 1238
       }

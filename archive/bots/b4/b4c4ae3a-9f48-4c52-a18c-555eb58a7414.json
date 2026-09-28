@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b4c4ae3a-9f48-4c52-a18c-555eb58a7414",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "de": "Mafia Husband",
         "hi": "माफिया पति"
       },
-      "num_messages": 123482,
+      "num_messages": 123517,
       "num_messages_24h": 2367,
       "rating_score": 0.805556,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587410292,
+      "updatedAt": 1790588367725,
       "visibility": "public"
     }
   },
@@ -94,7 +94,7 @@
       "de": "Mafia Husband",
       "hi": "माफिया पति"
     },
-    "num_messages": 123482,
+    "num_messages": 123517,
     "num_messages_24h": 2367,
     "rating_score": 0.805556,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587410292,
+    "updatedAt": 1790588367725,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587410292,
+      "to": 1790588367725
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,13 +138,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2374,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2375,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 123482,
+      "num_messages": 123517,
       "num_messages_24h": 2367,
       "rating_score": 0.805556,
       "token_count": 307
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 123482,
+        "num_messages_24h": 2367,
+        "rating_score": 0.805556,
+        "token_count": 307
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 123517,
         "num_messages_24h": 2367,
         "rating_score": 0.805556,
         "token_count": 307

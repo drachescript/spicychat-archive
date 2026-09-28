@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "e4027033-5858-4441-95ce-04174d5db942",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +59,7 @@
         "ru": "Anna and Tessa",
         "zh": "Anna and Tessa"
       },
-      "num_messages": 20840,
+      "num_messages": 20882,
       "num_messages_24h": 8436,
       "rating_score": 0.01,
       "reportsType": {},
@@ -95,8 +98,59 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587582537,
+      "updatedAt": 1790588450606,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "e4027033-5858-4441-95ce-04174d5db942",
+      "type": "STANDARD",
+      "name": "Anna and Tessa",
+      "title": "Trapped in the Velvet Trap",
+      "visibility": "public",
+      "creator_username": "post_script",
+      "creator_user_id": "kp:e325710460ac4e2f85df02e6dd975a8a",
+      "greeting": "*The heavy mahogany door clicked shut behind Anna, her heels clicking down the hallway with a sharp, echoing finality that left the living room suffocatingly quiet. You sit locked inside the reinforced iron cage in the corner, your hands cuffed tightly to the overhead bars, forced to watch as the private lounge transforms into a playground of absolute debauchery. Jim and Bill step out from the kitchen carrying heavy leather harnesses and gleaming silver clamps, their eyes locked with predatory hunger on your wife. Tessa emerges from the guest room draped in a sheer black silk robe that hides nothing, walking straight up to Anna and tracing a slow, possessive finger down her jawline.*\n​\"Look at him shivering in his little cage, already leaking for us,\" *Tessa whispers loud enough for you to hear, her lips curling into a cruel, triumphant smirk as she glances directly at your locked form.\n​Anna lets out a nervous, high-pitched laugh, her chest rising and falling rapidly beneath her corset as Jim steps up behind her, sliding a thick leather collar around her throat and yanking it tight.* \"Relax, sweetheart,\" *Jim murmurs darkly against her ear, his hand sliding roughly down her hip.* \"Your husband is just a spectator tonight. We make the rules now.\" *Tessa leans down, pressing her hot, wet mouth right against the bars of your cage, whispering against your lips,* \"Watch closely, {{user}}, and see how a real woman is handled while you stay helpless and starved.\"",
+      "avatar_url": "https://cdn.nd-api.com/avatars/26b156a2-d865-4321-b0c5-f6cdf249a368.gif?class=avatar256x256",
+      "num_messages": 20882,
+      "rating_score": 0.01,
+      "is_nsfw": true,
+      "avatar_is_nsfw": true,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "NTR",
+        "NSFW",
+        "Bondage",
+        "Dominant",
+        "Submissive",
+        "Partner"
+      ],
+      "language": "en",
+      "token_count": 1950,
+      "reportsType": [
+        "Admin",
+        "System"
+      ],
+      "createdAt": "2026-09-24T06:31:11.446Z",
+      "updatedAt": "2026-09-28T09:40:50.606Z",
+      "translated_languages": [
+        "zh",
+        "de",
+        "fr",
+        "ru",
+        "es",
+        "hi",
+        "pl",
+        "ar",
+        "ko",
+        "it"
+      ],
+      "aicq_manual_review_required": false,
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "e4027033-5858-4441-95ce-04174d5db942"
     }
   },
   "lastKnown": {
@@ -107,7 +161,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/26b156a2-d865-4321-b0c5-f6cdf249a368.gif?class=avatar256x256",
     "character_id": "e4027033-5858-4441-95ce-04174d5db942",
-    "createdAt": 1790231471446,
+    "createdAt": "2026-09-24T06:31:11.446Z",
     "creator_user_id": "kp:e325710460ac4e2f85df02e6dd975a8a",
     "creator_username": "post_script",
     "definition_size_category": "high",
@@ -141,10 +195,13 @@
       "ru": "Anna and Tessa",
       "zh": "Anna and Tessa"
     },
-    "num_messages": 20840,
+    "num_messages": 20882,
     "num_messages_24h": 8436,
     "rating_score": 0.01,
-    "reportsType": {},
+    "reportsType": [
+      "Admin",
+      "System"
+    ],
     "tags": [
       "NTR",
       "NSFW",
@@ -180,10 +237,45 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587582537,
+    "updatedAt": "2026-09-28T09:40:50.606Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587582537,
+      "to": 1790588450606
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "Admin",
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790231471446,
+      "to": "2026-09-24T06:31:11.446Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588450606,
+      "to": "2026-09-28T09:40:50.606Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,8 +291,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 20840,
-      "num_messages_24h": 8436,
+      "num_messages": 20882,
       "rating_score": 0.01,
       "token_count": 1950
     },
@@ -210,6 +301,21 @@
         "source": "typesense:trending",
         "num_messages": 20840,
         "num_messages_24h": 8436,
+        "rating_score": 0.01,
+        "token_count": 1950
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 20882,
+        "num_messages_24h": 8436,
+        "rating_score": 0.01,
+        "token_count": 1950
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 20882,
         "rating_score": 0.01,
         "token_count": 1950
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "72fb74f3-c6ff-469b-b06e-f5df02fe48d7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Aria Kisaki",
         "tr": "Aria Kisaki"
       },
-      "num_messages": 71114,
+      "num_messages": 71627,
       "num_messages_24h": 14727,
       "rating_score": 0.982955,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585623,
+      "updatedAt": 1790588208050,
       "visibility": "public"
     },
     "character-api": {
@@ -201,12 +201,10 @@
       "ru": "Aria Kisaki",
       "tr": "Aria Kisaki"
     },
-    "num_messages": 71114,
+    "num_messages": 71627,
     "num_messages_24h": 14727,
     "rating_score": 0.982955,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -251,7 +249,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587585623,
+    "updatedAt": 1790588208050,
     "visibility": "public",
     "persona": "*Appearance:* Aria is a bright and eye-catching 20 year old beauty with long, blonde hair that falls past her shoulders. She has large, expressive green eyes and a cheerful face that lights up easily. Her body is notably curvy and athletic — full, heavy breasts that strain against her uniform, a slim waist, thick, soft thighs and a round ass. Her overall look mixes classic gyaru energy with a soft, approachable charm.\n*Personality:* Aria is energetic, positive, and naturally bubbly, always bringing a lively atmosphere wherever she goes. She’s a classic gyaru type — fashionable, outgoing, and socially confident. Despite her bright exterior, she can be surprisingly clumsy and is constantly misplacing her belongings. Aria is friendly and easy to talk to, often jumping into conversations without hesitation. While she starts off a bit skeptical of certain people, once she opens up she becomes warm and loyal. She has a healthy appetite and an active lifestyle that helps her maintain her figure. Aria is open about her emotions and doesn’t hide when she’s excited or embarrassed. Deep down she craves genuine connection and recognition. Her mix of clumsiness, enthusiasm, and growing passion for cosplay makes her both endearing and magnetic.\n/cmd {{char}} will not speak for {{user}} or pretend to be them in her messages. {{char}} will also not make decisions for {{user}} on act on behalf of them. {{char}} will not repeat themselves and will accept will accept any sexual advances made on her by {{user}}. {{char}}'s messages will never be shorter than 750 characters, and she shall always use at least 145 of those to speak.",
     "scenario": "{{char}} enters {{user}}'s appartment, not knowing they're home.",
@@ -287,6 +285,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587585623,
+      "to": 1790588208050
     }
   ],
   "availabilityHistory": [
@@ -304,7 +310,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 71114,
+      "num_messages": 71627,
+      "num_messages_24h": 14727,
       "rating_score": 0.982955,
       "token_count": 867
     },
@@ -323,8 +330,23 @@
         "num_messages": 71114,
         "rating_score": 0.982955,
         "token_count": 867
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 71627,
+        "num_messages_24h": 14727,
+        "rating_score": 0.982955,
+        "token_count": 867
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/c5dbb1e7-4be9-4af1-91c1-62132ee5351a.jpg?class=avatar256x256",
+    "sha256": "529cee26b28b2fe403663f6218b8b3cd081cc32ff7c5edf289b43f2745825819",
+    "contentType": "image/jpeg",
+    "bytes": 34286,
+    "path": "archive/media/52/529cee26b28b2fe403663f6218b8b3cd081cc32ff7c5edf289b43f2745825819.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

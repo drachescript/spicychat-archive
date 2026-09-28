@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d1568393-564f-41ec-be0c-f85479dd3958",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pt": "Bakugo",
         "ru": "Bakugo"
       },
-      "num_messages": 30296,
+      "num_messages": 30377,
       "num_messages_24h": 4680,
       "tags": [
         "Male",
@@ -71,7 +71,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516779,
+      "updatedAt": 1790588233519,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "pt": "Bakugo",
       "ru": "Bakugo"
     },
-    "num_messages": 30296,
+    "num_messages": 30377,
     "num_messages_24h": 4680,
     "tags": [
       "Male",
@@ -130,10 +130,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516779,
+    "updatedAt": 1790588233519,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516779,
+      "to": 1790588233519
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -149,7 +158,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 30296,
+      "num_messages": 30377,
       "num_messages_24h": 4680,
       "token_count": 506
     },
@@ -158,6 +167,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 30296,
+        "num_messages_24h": 4680,
+        "token_count": 506
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 30377,
         "num_messages_24h": 4680,
         "token_count": 506
       }

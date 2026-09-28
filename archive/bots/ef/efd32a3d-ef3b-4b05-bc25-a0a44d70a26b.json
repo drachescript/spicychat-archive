@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "efd32a3d-ef3b-4b05-bc25-a0a44d70a26b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Jessica",
-      "num_messages": 349,
+      "num_messages": 371,
       "num_messages_24h": 247,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "Your roommate's BF refused to take her virginity, again.",
       "token_count": 1122,
       "type": "STANDARD",
-      "updatedAt": 1790587719074,
+      "updatedAt": 1790588113332,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "lora_status": "ready",
     "moderation_status": "reviewed",
     "name": "Jessica",
-    "num_messages": 349,
+    "num_messages": 371,
     "num_messages_24h": 247,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "Your roommate's BF refused to take her virginity, again.",
     "token_count": 1122,
     "type": "STANDARD",
-    "updatedAt": 1790587719074,
+    "updatedAt": 1790588113332,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587719074,
+      "to": 1790588113332
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 349,
+      "num_messages": 371,
       "num_messages_24h": 247,
       "rating_score": 0,
       "token_count": 1122
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 349,
+        "num_messages_24h": 247,
+        "rating_score": 0,
+        "token_count": 1122
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 371,
         "num_messages_24h": 247,
         "rating_score": 0,
         "token_count": 1122

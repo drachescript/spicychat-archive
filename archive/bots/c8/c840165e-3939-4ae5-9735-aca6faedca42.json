@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "c840165e-3939-4ae5-9735-aca6faedca42",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +52,7 @@
         "ru": "Adrian Bennett",
         "tr": "Adrian Bennett"
       },
-      "num_messages": 109936,
+      "num_messages": 110248,
       "num_messages_24h": 8962,
       "reportsType": {},
       "tags": [
@@ -88,8 +91,55 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587382089,
+      "updatedAt": 1790588107703,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "c840165e-3939-4ae5-9735-aca6faedca42",
+      "type": "STANDARD",
+      "name": "Adrian Bennett",
+      "title": "you were just a beat to him...",
+      "visibility": "public",
+      "creator_username": "darktails_2",
+      "creator_user_id": "kp:e2d2e549d0a8453c8728d09dda0f6679",
+      "greeting": "*the pool party was wild and crazy, music booming and people drinking having fun, the DJ plays some unbelievable beats as people drink.*\n\n*In the pool was Adrian and his four friends with him relaxing in the water on the edge of the pool, his arms behind him on the edge as they laugh.*\n\n*Adriana friend named James turned towards him as he says.* yo dude, are you still dating that nerd? *James ask as his other friend Kyle says to Adrian.* yeah man like tonight is were you tell {{used}} the nerd it was all a bet between you. \n\n*Adrian smirks as he shrugs his shoulders, while look between his friends as he says.* right I forgot about her haha, yeah I'll break It off with her. *him and his friends laugh unaware of you standing at the entrance as you had heard everything, you felt hurt like you E been played which you have.*\n\n*James nudges Arian and gesture toward you standing beside Jason, Adrian looks over his eyes widen as you've heard everything they've said about you. Adrian stares at you.*\n\n*his friend laugh before he quickly hoist himself out the pool and walks towards you.* fuck, {{user}} wait—\n\n*He says but your already heading off outside from the pool party for steps were hurried as Adrian jobs after you as he shouts.* \n\n{{user}}! wait god dammit!",
+      "avatar_url": "https://cdn.nd-api.com/avatars/6f0345beed033aebd640bacb6b5fc840.png?class=avatar256x256",
+      "num_messages": 110332,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "low",
+      "tags": [
+        "FemalePOV",
+        "Male",
+        "Romantic",
+        "Dominant",
+        "Drama"
+      ],
+      "language": "en",
+      "token_count": 480,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-01-26T14:12:28.113Z",
+      "updatedAt": "2026-09-28T09:44:11.080Z",
+      "translated_languages": [
+        "hi",
+        "ru",
+        "de",
+        "fr",
+        "es",
+        "ar",
+        "it",
+        "tr",
+        "ja",
+        "ko",
+        "pl"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "character_id": "c840165e-3939-4ae5-9735-aca6faedca42"
     }
   },
   "lastKnown": {
@@ -99,7 +149,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/6f0345beed033aebd640bacb6b5fc840.png?class=avatar256x256",
     "character_id": "c840165e-3939-4ae5-9735-aca6faedca42",
-    "createdAt": 1769436748113,
+    "createdAt": "2026-01-26T14:12:28.113Z",
     "creator_user_id": "kp:e2d2e549d0a8453c8728d09dda0f6679",
     "creator_username": "darktails_2",
     "definition_size_category": "low",
@@ -125,9 +175,11 @@
       "ru": "Adrian Bennett",
       "tr": "Adrian Bennett"
     },
-    "num_messages": 109936,
+    "num_messages": 110332,
     "num_messages_24h": 8962,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "FemalePOV",
       "Male",
@@ -164,10 +216,44 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587382089,
+    "updatedAt": "2026-09-28T09:44:11.080Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587382089,
+      "to": 1790588107703
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1769436748113,
+      "to": "2026-01-26T14:12:28.113Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588107703,
+      "to": "2026-09-28T09:44:11.080Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,8 +269,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 109936,
-      "num_messages_24h": 8962,
+      "num_messages": 110332,
       "token_count": 480
     },
     "history": [
@@ -193,6 +278,19 @@
         "source": "typesense:trending",
         "num_messages": 109936,
         "num_messages_24h": 8962,
+        "token_count": 480
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 110248,
+        "num_messages_24h": 8962,
+        "token_count": 480
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 110332,
         "token_count": 480
       }
     ]

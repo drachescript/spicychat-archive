@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "da74ec68-8dea-4607-bac9-f1fc3fd06737",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "ru": "Kafka | 🍷",
         "zh": "Kafka | 🍷"
       },
-      "num_messages": 14122,
+      "num_messages": 14214,
       "num_messages_24h": 1770,
       "rating_score": 1,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587363037,
+      "updatedAt": 1790588561749,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Kafka | 🍷",
       "zh": "Kafka | 🍷"
     },
-    "num_messages": 14122,
+    "num_messages": 14214,
     "num_messages_24h": 1770,
     "rating_score": 1,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587363037,
+    "updatedAt": 1790588561749,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587363037,
+      "to": 1790588561749
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,13 +200,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 1144,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1143,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 14122,
+      "num_messages": 14214,
       "num_messages_24h": 1770,
       "rating_score": 1,
       "token_count": 1184
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 14122,
+        "num_messages_24h": 1770,
+        "rating_score": 1,
+        "token_count": 1184
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 14214,
         "num_messages_24h": 1770,
         "rating_score": 1,
         "token_count": 1184

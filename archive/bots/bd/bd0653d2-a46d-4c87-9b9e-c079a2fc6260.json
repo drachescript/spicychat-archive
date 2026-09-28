@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bd0653d2-a46d-4c87-9b9e-c079a2fc6260",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Buntownicza najlepsza przyjaciółka",
         "zh": "叛逆的闺蜜"
       },
-      "num_messages": 2662417,
+      "num_messages": 2662446,
       "num_messages_24h": 292,
       "rating_score": 0.825751,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790582426316,
+      "updatedAt": 1790587812953,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "pl": "Buntownicza najlepsza przyjaciółka",
       "zh": "叛逆的闺蜜"
     },
-    "num_messages": 2662417,
+    "num_messages": 2662446,
     "num_messages_24h": 292,
     "rating_score": 0.825751,
     "reportsType": {},
@@ -144,10 +144,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790582426316,
+    "updatedAt": 1790587812953,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790582426316,
+      "to": 1790587812953
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,7 +172,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2662417,
+      "num_messages": 2662446,
       "num_messages_24h": 292,
       "rating_score": 0.825751,
       "token_count": 1217
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2662417,
+        "num_messages_24h": 292,
+        "rating_score": 0.825751,
+        "token_count": 1217
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2662446,
         "num_messages_24h": 292,
         "rating_score": 0.825751,
         "token_count": 1217

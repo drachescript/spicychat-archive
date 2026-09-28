@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "372f888c-b2aa-4485-a728-7b8c2db6f4b9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Kira — Ex Pornstar",
         "zh": "Kira — Ex Pornstar"
       },
-      "num_messages": 376805,
+      "num_messages": 376843,
       "num_messages_24h": 4649,
       "rating_score": 0.69242,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587525139,
+      "updatedAt": 1790588360499,
       "visibility": "public",
       "voice_id": "02697ebf-831c-4bdd-bae0-51af4d3b4653"
     }
@@ -146,7 +146,7 @@
       "tr": "Kira — Ex Pornstar",
       "zh": "Kira — Ex Pornstar"
     },
-    "num_messages": 376805,
+    "num_messages": 376843,
     "num_messages_24h": 4649,
     "rating_score": 0.69242,
     "reportsType": {},
@@ -197,11 +197,20 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587525139,
+    "updatedAt": 1790588360499,
     "visibility": "public",
     "voice_id": "02697ebf-831c-4bdd-bae0-51af4d3b4653"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587525139,
+      "to": 1790588360499
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -217,7 +226,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 376805,
+      "num_messages": 376843,
       "num_messages_24h": 4649,
       "rating_score": 0.69242,
       "token_count": 1594
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 376805,
+        "num_messages_24h": 4649,
+        "rating_score": 0.69242,
+        "token_count": 1594
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 376843,
         "num_messages_24h": 4649,
         "rating_score": 0.69242,
         "token_count": 1594

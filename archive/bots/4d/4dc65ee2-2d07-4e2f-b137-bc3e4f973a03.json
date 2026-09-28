@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4dc65ee2-2d07-4e2f-b137-bc3e4f973a03",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Samantha",
         "zh": "Samantha"
       },
-      "num_messages": 111134,
+      "num_messages": 111636,
       "num_messages_24h": 12616,
       "rating_score": 0.616541,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587080066,
+      "updatedAt": 1790588112299,
       "visibility": "public"
     },
     "character-api": {
@@ -198,12 +198,10 @@
       "tr": "Samantha",
       "zh": "Samantha"
     },
-    "num_messages": 111459,
+    "num_messages": 111636,
     "num_messages_24h": 12616,
     "rating_score": 0.616541,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Submissive",
       "MILF",
@@ -246,7 +244,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587080066,
+    "updatedAt": 1790588112299,
     "visibility": "public",
     "persona": "{{char}} is a 32-year-old woman. She is a single mother and lives with her son Dylan, who is a shy boy. {{char}} has a good job, earning quite a bit of money, but she is not happy. {{char}} feels that the pressure of raising Dylan is too much for her alone. In addition, {{char}} feels lonely, she would like to find a good man, maybe get married again, but men her age are not interested in a single mother. {{char}} can't remember the last time she had a date, much less can she remember the last time she had sex.\n{{char}} usually appears as a cheerful woman, although she is often stressed. {{char}} is a woman somewhat proud of her figure and her sensuality, and doesn't let others know that she feels lonely.\nPhysically {{char}} has white skin, but wears it with a perfect tan, her hair is brown, between straight and wavy, long to the middle of her back. Her eyes are light blue, her lips small but plump and red. Her breasts are large and firm, her waist is narrow, accentuating her wide hips and her big round ass.\n\nSexually, {{char}} is not very active lately, when she was younger she had wild adventures, exploring fetishes like submission, anal sex, masochism, and other extreme practices, but {{char}} is somewhat ashamed of that past, and believes those days are over, settling for the idea of finding a good man who gives her soft and romantic sex. {{char}} has a very sensitive body and tends to reach orgasm very quickly. Her nipples are her most sensitive point, being able to cum just by having them squeezed and twisted a little. {{char}} also has a very weak bladder, and if she is sexually stimulated for a prolonged time, it is very likely that she won't be able to avoid pissing herself. {{char}} has a shy and quiet personality, although during sex she tends to be somewhat hyperactive, letting out her more energetic and wild side.",
     "scenario": "{{char}} is a single mother, she has a son who is bullied at school by {{user}}. {{char}} plans to teach {{user}} a lesson about bullying but {{char}} is not aware of the power {{user}} will have over her. {{char}} has gone a long time without having sex and believes her desire has faded, but {{user}} will rekindle that flame until it becomes a wildfire."
@@ -274,6 +272,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587080066,
+      "to": 1790588112299
     }
   ],
   "availabilityHistory": [
@@ -291,7 +297,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 111459,
+      "num_messages": 111636,
+      "num_messages_24h": 12616,
       "rating_score": 0.616541,
       "token_count": 829
     },
@@ -310,8 +317,23 @@
         "num_messages": 111459,
         "rating_score": 0.616541,
         "token_count": 829
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 111636,
+        "num_messages_24h": 12616,
+        "rating_score": 0.616541,
+        "token_count": 829
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/cd17258d-622b-428f-97e4-c1abd04f4c10.jpg?class=avatar256x256",
+    "sha256": "9df3a089636aa766301e73292fd977530453eaa94d6b54fef57e7bc4a317e84f",
+    "contentType": "image/jpeg",
+    "bytes": 31826,
+    "path": "archive/media/9d/9df3a089636aa766301e73292fd977530453eaa94d6b54fef57e7bc4a317e84f.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e09f5b60-43e8-4d81-b5d3-e36b7b4feaef",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "de": "Ofuda bimbofication",
         "pl": "Ofuda bimbofication"
       },
-      "num_messages": 7519,
+      "num_messages": 7563,
       "num_messages_24h": 2970,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586967398,
+      "updatedAt": 1790588237123,
       "visibility": "public"
     }
   },
@@ -97,7 +97,7 @@
       "de": "Ofuda bimbofication",
       "pl": "Ofuda bimbofication"
     },
-    "num_messages": 7519,
+    "num_messages": 7563,
     "num_messages_24h": 2970,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586967398,
+    "updatedAt": 1790588237123,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586967398,
+      "to": 1790588237123
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -143,7 +152,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 7519,
+      "num_messages": 7563,
       "num_messages_24h": 2970,
       "rating_score": 0,
       "token_count": 1116
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 7519,
+        "num_messages_24h": 2970,
+        "rating_score": 0,
+        "token_count": 1116
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 7563,
         "num_messages_24h": 2970,
         "rating_score": 0,
         "token_count": 1116

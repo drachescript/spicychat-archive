@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7082b0b8-5eac-4722-b0c8-575d28e13ef0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Dark Fantasy",
         "zh": "黑暗幻想"
       },
-      "num_messages": 38237,
+      "num_messages": 38325,
       "num_messages_24h": 3810,
       "rating_score": 0,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586998073,
+      "updatedAt": 1790588131541,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "ru": "Dark Fantasy",
       "zh": "黑暗幻想"
     },
-    "num_messages": 38237,
+    "num_messages": 38325,
     "num_messages_24h": 3810,
     "rating_score": 0,
     "reportsType": {},
@@ -150,10 +150,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586998073,
+    "updatedAt": 1790588131541,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586998073,
+      "to": 1790588131541
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -169,7 +178,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38237,
+      "num_messages": 38325,
       "num_messages_24h": 3810,
       "rating_score": 0,
       "token_count": 1442
@@ -179,6 +188,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 38237,
+        "num_messages_24h": 3810,
+        "rating_score": 0,
+        "token_count": 1442
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 38325,
         "num_messages_24h": 3810,
         "rating_score": 0,
         "token_count": 1442

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "854a672d-959b-4450-af63-f8217be3668a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Hizmetçi ve Malikane",
         "zh": "女仆与庄园"
       },
-      "num_messages": 505704,
+      "num_messages": 505785,
       "num_messages_24h": 2295,
       "rating_score": 0.845721,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587120945,
+      "updatedAt": 1790588359372,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Hizmetçi ve Malikane",
       "zh": "女仆与庄园"
     },
-    "num_messages": 505704,
+    "num_messages": 505785,
     "num_messages_24h": 2295,
     "rating_score": 0.845721,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587120945,
+    "updatedAt": 1790588359372,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587120945,
+      "to": 1790588359372
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,13 +218,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2469,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2470,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 505704,
+      "num_messages": 505785,
       "num_messages_24h": 2295,
       "rating_score": 0.845721,
       "token_count": 1144
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 505704,
+        "num_messages_24h": 2295,
+        "rating_score": 0.845721,
+        "token_count": 1144
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 505785,
         "num_messages_24h": 2295,
         "rating_score": 0.845721,
         "token_count": 1144

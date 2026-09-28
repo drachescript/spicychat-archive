@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bc8cdfa3-6d11-4a71-9e32-2c88f539addb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -35,7 +35,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "THERIAN SCHOOL ❤️",
-      "num_messages": 27270,
+      "num_messages": 27293,
       "num_messages_24h": 66,
       "rating_score": 1,
       "reportsType": {},
@@ -47,7 +47,7 @@
       "title": "a therian school- for otherkin and therians to roleplay with!",
       "token_count": 154,
       "type": "STANDARD",
-      "updatedAt": 1790587198350,
+      "updatedAt": 1790588208597,
       "visibility": "public"
     }
   },
@@ -70,7 +70,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "THERIAN SCHOOL ❤️",
-    "num_messages": 27270,
+    "num_messages": 27293,
     "num_messages_24h": 66,
     "rating_score": 1,
     "reportsType": {},
@@ -82,10 +82,19 @@
     "title": "a therian school- for otherkin and therians to roleplay with!",
     "token_count": 154,
     "type": "STANDARD",
-    "updatedAt": 1790587198350,
+    "updatedAt": 1790588208597,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587198350,
+      "to": 1790588208597
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -95,13 +104,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 855,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 854,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 27270,
+      "num_messages": 27293,
       "num_messages_24h": 66,
       "rating_score": 1,
       "token_count": 154
@@ -111,6 +120,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 27270,
+        "num_messages_24h": 66,
+        "rating_score": 1,
+        "token_count": 154
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 27293,
         "num_messages_24h": 66,
         "rating_score": 1,
         "token_count": 154

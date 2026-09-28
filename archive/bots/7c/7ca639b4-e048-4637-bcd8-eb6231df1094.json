@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7ca639b4-e048-4637-bcd8-eb6231df1094",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Ethan & Chloe",
         "zh": "Ethan & Chloe"
       },
-      "num_messages": 1015572,
+      "num_messages": 1015607,
       "num_messages_24h": 4854,
       "rating_score": 0.379493,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587287491,
+      "updatedAt": 1790588606592,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Ethan & Chloe",
       "zh": "Ethan & Chloe"
     },
-    "num_messages": 1015572,
+    "num_messages": 1015607,
     "num_messages_24h": 4854,
     "rating_score": 0.379493,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587287491,
+    "updatedAt": 1790588606592,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587287491,
+      "to": 1790588606592
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1015572,
+      "num_messages": 1015607,
       "num_messages_24h": 4854,
       "rating_score": 0.379493,
       "token_count": 2033
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1015572,
+        "num_messages_24h": 4854,
+        "rating_score": 0.379493,
+        "token_count": 2033
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1015607,
         "num_messages_24h": 4854,
         "rating_score": 0.379493,
         "token_count": 2033

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7d96394d-5513-4223-b85a-f72d4645ba07",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "es": "Julian Night",
         "ru": "Julian Night"
       },
-      "num_messages": 23321,
+      "num_messages": 23348,
       "num_messages_24h": 2842,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584306247,
+      "updatedAt": 1790588563218,
       "visibility": "public"
     }
   },
@@ -98,7 +98,7 @@
       "es": "Julian Night",
       "ru": "Julian Night"
     },
-    "num_messages": 23321,
+    "num_messages": 23348,
     "num_messages_24h": 2842,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584306247,
+    "updatedAt": 1790588563218,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584306247,
+      "to": 1790588563218
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -143,7 +152,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 23321,
+      "num_messages": 23348,
       "num_messages_24h": 2842,
       "rating_score": 0,
       "token_count": 469
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 23321,
+        "num_messages_24h": 2842,
+        "rating_score": 0,
+        "token_count": 469
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 23348,
         "num_messages_24h": 2842,
         "rating_score": 0,
         "token_count": 469

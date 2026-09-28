@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b6499a99-301e-4ef0-8ac9-7f33faf175c1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ru": "RDR2 RPG",
         "zh": "RDR2 RPG"
       },
-      "num_messages": 130000,
+      "num_messages": 130005,
       "num_messages_24h": 3473,
       "rating_score": 0,
       "tags": [
@@ -73,7 +73,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587478185,
+      "updatedAt": 1790588383909,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "ru": "RDR2 RPG",
       "zh": "RDR2 RPG"
     },
-    "num_messages": 130000,
+    "num_messages": 130005,
     "num_messages_24h": 3473,
     "rating_score": 0,
     "tags": [
@@ -134,10 +134,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587478185,
+    "updatedAt": 1790588383909,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587478185,
+      "to": 1790588383909
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 130000,
+      "num_messages": 130005,
       "num_messages_24h": 3473,
       "rating_score": 0,
       "token_count": 794
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 130000,
+        "num_messages_24h": 3473,
+        "rating_score": 0,
+        "token_count": 794
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 130005,
         "num_messages_24h": 3473,
         "rating_score": 0,
         "token_count": 794

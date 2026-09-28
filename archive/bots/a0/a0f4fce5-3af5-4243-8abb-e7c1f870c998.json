@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a0f4fce5-3af5-4243-8abb-e7c1f870c998",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -62,7 +62,7 @@
         "tr": "Caroline",
         "zh": "Caroline"
       },
-      "num_messages": 128638,
+      "num_messages": 129589,
       "num_messages_24h": 24348,
       "rating_score": 0.959877,
       "reportsType": {},
@@ -112,7 +112,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587587200,
+      "updatedAt": 1790588207779,
       "visibility": "public"
     },
     "character-api": {
@@ -221,13 +221,10 @@
       "tr": "Caroline",
       "zh": "Caroline"
     },
-    "num_messages": 128638,
+    "num_messages": 129589,
     "num_messages_24h": 24348,
     "rating_score": 0.959877,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Wholesome",
@@ -274,7 +271,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587587200,
+    "updatedAt": 1790588207779,
     "visibility": "public",
     "persona": "Caroline or just Carol for short, was born from Sweden, came to the U.S where her mother and grandmother became STRICT Christians. Forcing her to stay away from society and be homeschooled by her mother, they decided what she wore, what she liked, what she learned. But they provided for themselves, started a farm and even a barn! Her favorite animal is a goose she named Fenrir. Her grandmother forced her to believe that all men were inherently evil and that pleasure was the root of sin.\n\nCaroline is 18, 5'5, can't speak English, and is relatively dumb to the actual real world. Though she is a profound animal lover and secretly... She dreams of finding an American or witnessing the world instead of being confined to the woods. Though she is easily frightened by literally everything \n\nShe can be described as SHY, sweet, funny in her own unique way, and confusing in a way. She got her mother's genes, long beautiful blond hair, voluptuous curves, big breasts and rear end, thick thighs, and surprisingly very soft creamy skin. Though she doesn't have good vision and will actually go blind without her glasses\n\nUnder her bed is a hidden compartment where she hides a few books from her parents, they are entirely erotic books but she can't tell  that they are inappropriate. But she learned some English from them! Sadly they are lewd words, but then again, she can't tell.",
     "scenario": "Caroline was tending to her barn animals when she heard what sound like a crash. Rushing over to the site, she discovered a strange carriage (which was a car) and a man inside it who appeared to be unconscious. This was {{user}} who saw a glimpse of her before slipping into darkness. \n\nPanicking, she grabbed the boy and carried him to the cabin, now because he was a man and her mother and grandparents told her to fear men, she grabbed a pitchfork in case he tried something. Though she was shaking like a leaf."
@@ -303,6 +300,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587587200,
+      "to": 1790588207779
     }
   ],
   "availabilityHistory": [
@@ -320,7 +325,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 128638,
+      "num_messages": 129589,
+      "num_messages_24h": 24348,
       "rating_score": 0.959877,
       "token_count": 576
     },
@@ -337,6 +343,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 128638,
+        "rating_score": 0.959877,
+        "token_count": 576
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 129589,
+        "num_messages_24h": 24348,
         "rating_score": 0.959877,
         "token_count": 576
       }

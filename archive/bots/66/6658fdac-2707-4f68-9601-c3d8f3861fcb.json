@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6658fdac-2707-4f68-9601-c3d8f3861fcb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "fr": "Hazbin Hotel",
         "ru": "Hazbin Hotel"
       },
-      "num_messages": 250902,
+      "num_messages": 250970,
       "num_messages_24h": 2504,
       "rating_score": 0.89527,
       "tags": [
@@ -61,7 +61,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587639629,
+      "updatedAt": 1790588560299,
       "visibility": "public"
     }
   },
@@ -89,7 +89,7 @@
       "fr": "Hazbin Hotel",
       "ru": "Hazbin Hotel"
     },
-    "num_messages": 250902,
+    "num_messages": 250970,
     "num_messages_24h": 2504,
     "rating_score": 0.89527,
     "tags": [
@@ -110,10 +110,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587639629,
+    "updatedAt": 1790588560299,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587639629,
+      "to": 1790588560299
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -123,13 +132,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2223,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2224,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 250902,
+      "num_messages": 250970,
       "num_messages_24h": 2504,
       "rating_score": 0.89527,
       "token_count": 910
@@ -139,6 +148,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 250902,
+        "num_messages_24h": 2504,
+        "rating_score": 0.89527,
+        "token_count": 910
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 250970,
         "num_messages_24h": 2504,
         "rating_score": 0.89527,
         "token_count": 910

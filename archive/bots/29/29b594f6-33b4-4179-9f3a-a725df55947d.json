@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "29b594f6-33b4-4179-9f3a-a725df55947d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "it": "Tiara",
         "ru": "Тиара"
       },
-      "num_messages": 2021869,
+      "num_messages": 2021887,
       "num_messages_24h": 7,
       "rating_score": 0.722517,
       "reportsType": {},
@@ -66,7 +66,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790511809792,
+      "updatedAt": 1790587861295,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
       "it": "Tiara",
       "ru": "Тиара"
     },
-    "num_messages": 2021869,
+    "num_messages": 2021887,
     "num_messages_24h": 7,
     "rating_score": 0.722517,
     "reportsType": {},
@@ -120,10 +120,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790511809792,
+    "updatedAt": 1790587861295,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790511809792,
+      "to": 1790587861295
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -139,7 +148,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2021869,
+      "num_messages": 2021887,
       "num_messages_24h": 7,
       "rating_score": 0.722517,
       "token_count": 241
@@ -149,6 +158,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2021869,
+        "num_messages_24h": 7,
+        "rating_score": 0.722517,
+        "token_count": 241
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2021887,
         "num_messages_24h": 7,
         "rating_score": 0.722517,
         "token_count": 241

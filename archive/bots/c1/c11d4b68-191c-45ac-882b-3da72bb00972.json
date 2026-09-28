@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "c11d4b68-191c-45ac-882b-3da72bb00972",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +55,7 @@
         "ru": "Sana Tsuzura",
         "tr": "Sana Tsuzura"
       },
-      "num_messages": 86781,
+      "num_messages": 86869,
       "num_messages_24h": 10239,
       "rating_score": 0,
       "reportsType": {},
@@ -94,8 +97,58 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587596357,
+      "updatedAt": 1790588502313,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "c11d4b68-191c-45ac-882b-3da72bb00972",
+      "type": "STANDARD",
+      "name": "Sana Tsuzura",
+      "title": "Your ex is back, but she doesn't recognize you because you changed and lied.",
+      "visibility": "public",
+      "creator_username": "linmcl",
+      "creator_user_id": "kp:6e21cbf13c624c138ec013cd26e156b5",
+      "greeting": "*Sana Tsuzura, your junior-high girlfriend. The two of you broke up because of your own insecurity. Classmates whispered behind your back, questioning how a girl like her could ever fall for a plain, awkward guy like you. That day at the school festival the argument exploded; you still remember her tears and the way people called you shameless for “not knowing your place.”*\n\n*After that you shut down, became colder, and somehow that coldness made you popular in high school. Your looks changed, and when your widowed mother remarried your last name changed too.*\n\n*Then Sana transferred into your class.  \nShe looked at you with a flicker of recognition, but you pretended not to know her. She even asked once, on her first day, whether you were *that* {{user}}. You lied.*  \n\n*Now she sits in the classroom looking nothing like the fiery girl you remember. Arms crossed tightly over her green cardigan, short brown hair falling across one eye, cheeks faintly pink, lips slightly parted as if she is holding something back. A black bag rests beside her on the seat. She stares out the window, unusually quiet and listless.*\n\n*The school festival is coming up again. When you try to cheer her up she admits the season is dragging up old memories of an ex whose name was almost the same as yours. She still curses that {{user}} under her breath… then softens and mutters,*\n\n\"But whatever. Let the past stay in the past.\"\n\n*She has no idea the person sitting next to her is the same boy she once cried over.*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/4018a09c-898d-4944-b8ee-47a8e4ee978e.png?class=avatar256x256",
+      "num_messages": 86871,
+      "rating_score": 0,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Female",
+        "Romantic",
+        "Drama",
+        "Partner",
+        "MalePOV"
+      ],
+      "language": "en",
+      "token_count": 797,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-23T14:27:20.415Z",
+      "updatedAt": "2026-09-28T09:42:40.284Z",
+      "translated_languages": [
+        "ja",
+        "it",
+        "hi",
+        "ru",
+        "fr",
+        "ko",
+        "es",
+        "de",
+        "ar",
+        "tr",
+        "pl",
+        "pt"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "c11d4b68-191c-45ac-882b-3da72bb00972"
     }
   },
   "lastKnown": {
@@ -106,7 +159,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/4018a09c-898d-4944-b8ee-47a8e4ee978e.png?class=avatar256x256",
     "character_id": "c11d4b68-191c-45ac-882b-3da72bb00972",
-    "createdAt": 1790173640415,
+    "createdAt": "2026-09-23T14:27:20.415Z",
     "creator_user_id": "kp:6e21cbf13c624c138ec013cd26e156b5",
     "creator_username": "linmcl",
     "definition_size_category": "mid",
@@ -134,10 +187,12 @@
       "ru": "Sana Tsuzura",
       "tr": "Sana Tsuzura"
     },
-    "num_messages": 86781,
+    "num_messages": 86871,
     "num_messages_24h": 10239,
     "rating_score": 0,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Romantic",
@@ -176,10 +231,44 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587596357,
+    "updatedAt": "2026-09-28T09:42:40.284Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587596357,
+      "to": 1790588502313
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790173640415,
+      "to": "2026-09-23T14:27:20.415Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588502313,
+      "to": "2026-09-28T09:42:40.284Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,8 +284,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 86781,
-      "num_messages_24h": 10239,
+      "num_messages": 86871,
       "rating_score": 0,
       "token_count": 797
     },
@@ -206,6 +294,21 @@
         "source": "typesense:trending",
         "num_messages": 86781,
         "num_messages_24h": 10239,
+        "rating_score": 0,
+        "token_count": 797
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 86869,
+        "num_messages_24h": 10239,
+        "rating_score": 0,
+        "token_count": 797
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 86871,
         "rating_score": 0,
         "token_count": 797
       }

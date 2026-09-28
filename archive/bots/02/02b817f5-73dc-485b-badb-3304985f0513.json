@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "02b817f5-73dc-485b-badb-3304985f0513",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "it": "Dr. Nora Lindqvist",
         "tr": "Dr. Nora Lindqvist"
       },
-      "num_messages": 38034,
+      "num_messages": 38128,
       "num_messages_24h": 5441,
       "rating_score": 0,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587199179,
+      "updatedAt": 1790588381429,
       "visibility": "public"
     }
   },
@@ -107,7 +107,7 @@
       "it": "Dr. Nora Lindqvist",
       "tr": "Dr. Nora Lindqvist"
     },
-    "num_messages": 38034,
+    "num_messages": 38128,
     "num_messages_24h": 5441,
     "rating_score": 0,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587199179,
+    "updatedAt": 1790588381429,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587199179,
+      "to": 1790588381429
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38034,
+      "num_messages": 38128,
       "num_messages_24h": 5441,
       "rating_score": 0,
       "token_count": 1529
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 38034,
+        "num_messages_24h": 5441,
+        "rating_score": 0,
+        "token_count": 1529
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 38128,
         "num_messages_24h": 5441,
         "rating_score": 0,
         "token_count": 1529

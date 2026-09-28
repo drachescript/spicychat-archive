@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "944bc7ba-b627-4e2b-87ee-8bf805c322ff",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Grace Miller",
         "zh": "Grace Miller"
       },
-      "num_messages": 440330,
+      "num_messages": 440386,
       "num_messages_24h": 2441,
       "rating_score": 0.831395,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587080644,
+      "updatedAt": 1790588359303,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Grace Miller",
       "zh": "Grace Miller"
     },
-    "num_messages": 440330,
+    "num_messages": 440386,
     "num_messages_24h": 2441,
     "rating_score": 0.831395,
     "reportsType": {},
@@ -188,10 +188,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587080644,
+    "updatedAt": 1790588359303,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587080644,
+      "to": 1790588359303
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,13 +210,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2292,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2293,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 440330,
+      "num_messages": 440386,
       "num_messages_24h": 2441,
       "rating_score": 0.831395,
       "token_count": 448
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 440330,
+        "num_messages_24h": 2441,
+        "rating_score": 0.831395,
+        "token_count": 448
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 440386,
         "num_messages_24h": 2441,
         "rating_score": 0.831395,
         "token_count": 448

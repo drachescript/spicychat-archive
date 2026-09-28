@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cecedae6-273c-4354-9568-d527ad2de724",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Dylan Anderson",
         "zh": "Dylan Anderson"
       },
-      "num_messages": 42400,
+      "num_messages": 42449,
       "num_messages_24h": 2290,
       "reportsType": {},
       "tags": [
@@ -80,7 +80,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587363102,
+      "updatedAt": 1790588359629,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "ru": "Dylan Anderson",
       "zh": "Dylan Anderson"
     },
-    "num_messages": 42400,
+    "num_messages": 42449,
     "num_messages_24h": 2290,
     "reportsType": {},
     "tags": [
@@ -150,10 +150,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587363102,
+    "updatedAt": 1790588359629,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587363102,
+      "to": 1790588359629
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,13 +172,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2476,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2477,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 42400,
+      "num_messages": 42449,
       "num_messages_24h": 2290,
       "token_count": 1619
     },
@@ -178,6 +187,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 42400,
+        "num_messages_24h": 2290,
+        "token_count": 1619
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 42449,
         "num_messages_24h": 2290,
         "token_count": 1619
       }

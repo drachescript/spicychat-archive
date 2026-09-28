@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2ba2bb76-ded5-4f45-b871-25b7f68bd018",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Isaac (key holder)",
-      "num_messages": 432,
+      "num_messages": 451,
       "num_messages_24h": 348,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "You lost the key and someone found it",
       "token_count": 370,
       "type": "STANDARD",
-      "updatedAt": 1790578761911,
+      "updatedAt": 1790588008122,
       "visibility": "public"
     }
   },
@@ -79,7 +79,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Isaac (key holder)",
-    "num_messages": 432,
+    "num_messages": 451,
     "num_messages_24h": 348,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "You lost the key and someone found it",
     "token_count": 370,
     "type": "STANDARD",
-    "updatedAt": 1790578761911,
+    "updatedAt": 1790588008122,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790578761911,
+      "to": 1790588008122
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,13 +118,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2355,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2357,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 432,
+      "num_messages": 451,
       "num_messages_24h": 348,
       "rating_score": 0,
       "token_count": 370
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 432,
+        "num_messages_24h": 348,
+        "rating_score": 0,
+        "token_count": 370
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 451,
         "num_messages_24h": 348,
         "rating_score": 0,
         "token_count": 370

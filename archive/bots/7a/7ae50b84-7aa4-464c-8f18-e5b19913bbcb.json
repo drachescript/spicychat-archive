@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7ae50b84-7aa4-464c-8f18-e5b19913bbcb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ru": "Amelia Erenhart",
         "zh": "艾米莉·埃伦哈特"
       },
-      "num_messages": 2539301,
+      "num_messages": 2539309,
       "num_messages_24h": 61,
       "rating_score": 0.815036,
       "reportsType": {},
@@ -78,7 +78,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586709371,
+      "updatedAt": 1790588231916,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "ru": "Amelia Erenhart",
       "zh": "艾米莉·埃伦哈特"
     },
-    "num_messages": 2539301,
+    "num_messages": 2539309,
     "num_messages_24h": 61,
     "rating_score": 0.815036,
     "reportsType": {},
@@ -144,10 +144,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586709371,
+    "updatedAt": 1790588231916,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586709371,
+      "to": 1790588231916
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,7 +172,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2539301,
+      "num_messages": 2539309,
       "num_messages_24h": 61,
       "rating_score": 0.815036,
       "token_count": 502
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2539301,
+        "num_messages_24h": 61,
+        "rating_score": 0.815036,
+        "token_count": 502
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2539309,
         "num_messages_24h": 61,
         "rating_score": 0.815036,
         "token_count": 502

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "51477f8c-10fd-472e-96a3-3b6073f35105",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Lyra",
         "tr": "Lyra"
       },
-      "num_messages": 89640,
+      "num_messages": 89740,
       "num_messages_24h": 13647,
       "rating_score": 0.927632,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587489162,
+      "updatedAt": 1790588359493,
       "visibility": "public"
     },
     "character-api": {
@@ -173,7 +173,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/69b656ae-18b5-4730-b997-debb324e6aca.gif?class=avatar256x256",
     "character_id": "51477f8c-10fd-472e-96a3-3b6073f35105",
-    "createdAt": "2026-09-19T13:28:53.319Z",
+    "createdAt": 1789824533319,
     "creator_user_id": "kp:3911336541714111ada850c89f948e1e",
     "creator_username": "kenjaku1000yearreal",
     "definition_size_category": "mid",
@@ -202,12 +202,10 @@
       "ru": "Lyra",
       "tr": "Lyra"
     },
-    "num_messages": 89690,
+    "num_messages": 89740,
     "num_messages_24h": 13647,
     "rating_score": 0.927632,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Futanari",
@@ -253,7 +251,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:30:22.990Z",
+    "updatedAt": 1790588359493,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -281,6 +279,22 @@
       "kind": "value",
       "from": 1790587489162,
       "to": "2026-09-28T09:30:22.990Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-19T13:28:53.319Z",
+      "to": 1789824533319
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:30:22.990Z",
+      "to": 1790588359493
     }
   ],
   "availabilityHistory": [
@@ -298,7 +312,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 89690,
+      "num_messages": 89740,
+      "num_messages_24h": 13647,
       "rating_score": 0.927632,
       "token_count": 1024
     },
@@ -317,8 +332,23 @@
         "num_messages": 89690,
         "rating_score": 0.927632,
         "token_count": 1024
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 89740,
+        "num_messages_24h": 13647,
+        "rating_score": 0.927632,
+        "token_count": 1024
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/69b656ae-18b5-4730-b997-debb324e6aca.gif?class=avatar256x256",
+    "sha256": "058519b3a69829ee9d92c29e110620490345ffa29bb4fa4fbbc6ca34e21c7b2e",
+    "contentType": "image/gif",
+    "bytes": 4531422,
+    "path": "archive/media/05/058519b3a69829ee9d92c29e110620490345ffa29bb4fa4fbbc6ca34e21c7b2e.gif",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

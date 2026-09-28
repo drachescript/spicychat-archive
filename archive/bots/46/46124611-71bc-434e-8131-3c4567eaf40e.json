@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "46124611-71bc-434e-8131-3c4567eaf40e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Prens Aaric",
         "zh": "Prince Aaric"
       },
-      "num_messages": 7515062,
+      "num_messages": 7515084,
       "num_messages_24h": 419,
       "rating_score": 0.775699,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587712177,
+      "updatedAt": 1790587928100,
       "visibility": "public"
     }
   },
@@ -153,7 +153,7 @@
       "tr": "Prens Aaric",
       "zh": "Prince Aaric"
     },
-    "num_messages": 7515062,
+    "num_messages": 7515084,
     "num_messages_24h": 419,
     "rating_score": 0.775699,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587712177,
+    "updatedAt": 1790587928100,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587712177,
+      "to": 1790587928100
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 7515062,
+      "num_messages": 7515084,
       "num_messages_24h": 419,
       "rating_score": 0.775699,
       "token_count": 1048
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 7515062,
+        "num_messages_24h": 419,
+        "rating_score": 0.775699,
+        "token_count": 1048
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 7515084,
         "num_messages_24h": 419,
         "rating_score": 0.775699,
         "token_count": 1048

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d200dad7-3a91-4bb5-82d4-6abb53307473",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "RecordOfRagnarok RPG",
         "zh": "RecordOfRagnarok RPG"
       },
-      "num_messages": 221282,
+      "num_messages": 221331,
       "num_messages_24h": 4362,
       "rating_score": 0.715517,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587030398,
+      "updatedAt": 1790588012235,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "ru": "RecordOfRagnarok RPG",
       "zh": "RecordOfRagnarok RPG"
     },
-    "num_messages": 221282,
+    "num_messages": 221331,
     "num_messages_24h": 4362,
     "rating_score": 0.715517,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587030398,
+    "updatedAt": 1790588012235,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587030398,
+      "to": 1790588012235
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,7 +208,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 221282,
+      "num_messages": 221331,
       "num_messages_24h": 4362,
       "rating_score": 0.715517,
       "token_count": 1485
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 221282,
+        "num_messages_24h": 4362,
+        "rating_score": 0.715517,
+        "token_count": 1485
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 221331,
         "num_messages_24h": 4362,
         "rating_score": 0.715517,
         "token_count": 1485

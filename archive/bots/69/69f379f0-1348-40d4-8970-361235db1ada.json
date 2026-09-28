@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "69f379f0-1348-40d4-8970-361235db1ada",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -60,7 +60,7 @@
         "tr": "Chihiro Bessho",
         "zh": "Chihiro Bessho"
       },
-      "num_messages": 323033,
+      "num_messages": 324047,
       "num_messages_24h": 18046,
       "rating_score": 0.844828,
       "reportsType": {},
@@ -108,7 +108,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587409947,
+      "updatedAt": 1790588557842,
       "visibility": "public"
     },
     "character-api": {
@@ -176,7 +176,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/9c2da17c-9c08-4b63-a5ff-675cc42573db.gif?class=avatar256x256",
     "character_id": "69f379f0-1348-40d4-8970-361235db1ada",
-    "createdAt": "2026-09-25T14:30:14.472Z",
+    "createdAt": 1790346614472,
     "creator_user_id": "kp:b6f405707c754d15b2bb62f089d43e14",
     "creator_username": "xull9",
     "definition_size_category": "high",
@@ -212,13 +212,10 @@
       "tr": "Chihiro Bessho",
       "zh": "Chihiro Bessho"
     },
-    "num_messages": 323033,
+    "num_messages": 324047,
     "num_messages_24h": 18046,
     "rating_score": 0.844828,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Corruption",
@@ -263,7 +260,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:23:29.947Z",
+    "updatedAt": 1790588557842,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -292,6 +289,22 @@
       "kind": "value",
       "from": 1790587409947,
       "to": "2026-09-28T09:23:29.947Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-25T14:30:14.472Z",
+      "to": 1790346614472
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:23:29.947Z",
+      "to": 1790588557842
     }
   ],
   "availabilityHistory": [
@@ -309,7 +322,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 323033,
+      "num_messages": 324047,
+      "num_messages_24h": 18046,
       "rating_score": 0.844828,
       "token_count": 1535
     },
@@ -326,6 +340,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 323033,
+        "rating_score": 0.844828,
+        "token_count": 1535
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 324047,
+        "num_messages_24h": 18046,
         "rating_score": 0.844828,
         "token_count": 1535
       }

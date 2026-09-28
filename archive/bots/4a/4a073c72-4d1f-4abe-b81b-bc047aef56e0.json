@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4a073c72-4d1f-4abe-b81b-bc047aef56e0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Alex Smith",
-      "num_messages": 1025,
+      "num_messages": 1063,
       "num_messages_24h": 407,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "You were left to look after your best friend's daughter",
       "token_count": 569,
       "type": "STANDARD",
-      "updatedAt": 1790587359781,
+      "updatedAt": 1790588498119,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Alex Smith",
-    "num_messages": 1025,
+    "num_messages": 1063,
     "num_messages_24h": 407,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "You were left to look after your best friend's daughter",
     "token_count": 569,
     "type": "STANDARD",
-    "updatedAt": 1790587359781,
+    "updatedAt": 1790588498119,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587359781,
+      "to": 1790588498119
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,7 +128,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1025,
+      "num_messages": 1063,
       "num_messages_24h": 407,
       "rating_score": 0,
       "token_count": 569
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1025,
+        "num_messages_24h": 407,
+        "rating_score": 0,
+        "token_count": 569
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1063,
         "num_messages_24h": 407,
         "rating_score": 0,
         "token_count": 569

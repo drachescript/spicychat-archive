@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "48cb0577-922f-4f22-9ff9-6731f12a0038",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "pl": "Avenger's",
         "zh": "复仇者"
       },
-      "num_messages": 2279803,
+      "num_messages": 2279843,
       "num_messages_24h": 2285,
       "rating_score": 0.773639,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587562995,
+      "updatedAt": 1790588455194,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "pl": "Avenger's",
       "zh": "复仇者"
     },
-    "num_messages": 2279803,
+    "num_messages": 2279843,
     "num_messages_24h": 2285,
     "rating_score": 0.773639,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587562995,
+    "updatedAt": 1790588455194,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587562995,
+      "to": 1790588455194
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,8 +194,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2489,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2490,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "popular": {
       "rank": 1122,
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2279803,
+      "num_messages": 2279843,
       "num_messages_24h": 2285,
       "rating_score": 0.773639,
       "token_count": 603
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 2279803,
+        "num_messages_24h": 2285,
+        "rating_score": 0.773639,
+        "token_count": 603
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 2279843,
         "num_messages_24h": 2285,
         "rating_score": 0.773639,
         "token_count": 603

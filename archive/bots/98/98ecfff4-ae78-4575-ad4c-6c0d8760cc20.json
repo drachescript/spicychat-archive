@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "98ecfff4-ae78-4575-ad4c-6c0d8760cc20",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Thalia Elling",
         "tr": "Thalia Elling"
       },
-      "num_messages": 83376,
+      "num_messages": 83382,
       "num_messages_24h": 2500,
       "rating_score": 0.5,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587635995,
+      "updatedAt": 1790588106214,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "ru": "Thalia Elling",
       "tr": "Thalia Elling"
     },
-    "num_messages": 83376,
+    "num_messages": 83382,
     "num_messages_24h": 2500,
     "rating_score": 0.5,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587635995,
+    "updatedAt": 1790588106214,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587635995,
+      "to": 1790588106214
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,13 +196,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2229,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2230,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 83376,
+      "num_messages": 83382,
       "num_messages_24h": 2500,
       "rating_score": 0.5,
       "token_count": 2341
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 83376,
+        "num_messages_24h": 2500,
+        "rating_score": 0.5,
+        "token_count": 2341
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 83382,
         "num_messages_24h": 2500,
         "rating_score": 0.5,
         "token_count": 2341

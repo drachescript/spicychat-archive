@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "af8ab851-630b-4abb-8e00-627fbba035f9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -62,7 +62,7 @@
         "tr": "Darcy Gray",
         "zh": "Darcy Gray"
       },
-      "num_messages": 1632370,
+      "num_messages": 1632413,
       "num_messages_24h": 1000,
       "rating_score": 0.816683,
       "reportsType": {},
@@ -108,7 +108,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587194384,
+      "updatedAt": 1790588359266,
       "visibility": "public"
     }
   },
@@ -160,7 +160,7 @@
       "tr": "Darcy Gray",
       "zh": "Darcy Gray"
     },
-    "num_messages": 1632370,
+    "num_messages": 1632413,
     "num_messages_24h": 1000,
     "rating_score": 0.816683,
     "reportsType": {},
@@ -206,10 +206,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587194384,
+    "updatedAt": 1790588359266,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587194384,
+      "to": 1790588359266
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -225,7 +234,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1632370,
+      "num_messages": 1632413,
       "num_messages_24h": 1000,
       "rating_score": 0.816683,
       "token_count": 1515
@@ -235,6 +244,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1632370,
+        "num_messages_24h": 1000,
+        "rating_score": 0.816683,
+        "token_count": 1515
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1632413,
         "num_messages_24h": 1000,
         "rating_score": 0.816683,
         "token_count": 1515

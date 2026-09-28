@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ea9596fb-5ba6-4f9b-b34e-03558d413124",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Simon \"Ghost\" Riley",
         "zh": "Simon \"Ghost\" Riley"
       },
-      "num_messages": 207864,
+      "num_messages": 207868,
       "num_messages_24h": 4536,
       "rating_score": 0.903727,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586997422,
+      "updatedAt": 1790588291444,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Simon \"Ghost\" Riley",
       "zh": "Simon \"Ghost\" Riley"
     },
-    "num_messages": 207864,
+    "num_messages": 207868,
     "num_messages_24h": 4536,
     "rating_score": 0.903727,
     "reportsType": {},
@@ -188,10 +188,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586997422,
+    "updatedAt": 1790588291444,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586997422,
+      "to": 1790588291444
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 207864,
+      "num_messages": 207868,
       "num_messages_24h": 4536,
       "rating_score": 0.903727,
       "token_count": 859
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 207864,
+        "num_messages_24h": 4536,
+        "rating_score": 0.903727,
+        "token_count": 859
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 207868,
         "num_messages_24h": 4536,
         "rating_score": 0.903727,
         "token_count": 859

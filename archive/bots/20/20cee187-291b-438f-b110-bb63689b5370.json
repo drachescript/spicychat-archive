@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "20cee187-291b-438f-b110-bb63689b5370",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "tr": "Satoru Gojo",
         "zh": "五条悟"
       },
-      "num_messages": 142567,
+      "num_messages": 142584,
       "num_messages_24h": 2417,
       "rating_score": 0.89433,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586967047,
+      "updatedAt": 1790587722264,
       "visibility": "public"
     }
   },
@@ -114,7 +114,7 @@
       "tr": "Satoru Gojo",
       "zh": "五条悟"
     },
-    "num_messages": 142567,
+    "num_messages": 142584,
     "num_messages_24h": 2417,
     "rating_score": 0.89433,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586967047,
+    "updatedAt": 1790587722264,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586967047,
+      "to": 1790587722264
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,13 +170,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2319,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2320,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 142567,
+      "num_messages": 142584,
       "num_messages_24h": 2417,
       "rating_score": 0.89433,
       "token_count": 995
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 142567,
+        "num_messages_24h": 2417,
+        "rating_score": 0.89433,
+        "token_count": 995
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 142584,
         "num_messages_24h": 2417,
         "rating_score": 0.89433,
         "token_count": 995

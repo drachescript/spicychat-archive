@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a11621d7-258c-4611-bcd2-14615fff231c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "ru": "Инициатива Мстителей",
         "zh": "复仇者倡议"
       },
-      "num_messages": 1118944,
+      "num_messages": 1118967,
       "num_messages_24h": 2628,
       "rating_score": 0.787097,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586739111,
+      "updatedAt": 1790588561858,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "ru": "Инициатива Мстителей",
       "zh": "复仇者倡议"
     },
-    "num_messages": 1118944,
+    "num_messages": 1118967,
     "num_messages_24h": 2628,
     "rating_score": 0.787097,
     "reportsType": {},
@@ -192,10 +192,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586739111,
+    "updatedAt": 1790588561858,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586739111,
+      "to": 1790588561858
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1118944,
+      "num_messages": 1118967,
       "num_messages_24h": 2628,
       "rating_score": 0.787097,
       "token_count": 2356
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1118944,
+        "num_messages_24h": 2628,
+        "rating_score": 0.787097,
+        "token_count": 2356
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1118967,
         "num_messages_24h": 2628,
         "rating_score": 0.787097,
         "token_count": 2356

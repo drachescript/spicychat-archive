@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8923fa3c-038d-4cdf-b37c-9a9a29609cf9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "tr": "Naruto RPG",
         "zh": "Naruto RPG"
       },
-      "num_messages": 628653,
+      "num_messages": 628699,
       "num_messages_24h": 2841,
       "rating_score": 0.781853,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587301254,
+      "updatedAt": 1790588107032,
       "visibility": "public"
     }
   },
@@ -126,7 +126,7 @@
       "tr": "Naruto RPG",
       "zh": "Naruto RPG"
     },
-    "num_messages": 628653,
+    "num_messages": 628699,
     "num_messages_24h": 2841,
     "rating_score": 0.781853,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587301254,
+    "updatedAt": 1790588107032,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587301254,
+      "to": 1790588107032
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 628653,
+      "num_messages": 628699,
       "num_messages_24h": 2841,
       "rating_score": 0.781853,
       "token_count": 2002
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 628653,
+        "num_messages_24h": 2841,
+        "rating_score": 0.781853,
+        "token_count": 2002
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 628699,
         "num_messages_24h": 2841,
         "rating_score": 0.781853,
         "token_count": 2002

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "957b2269-1bce-4e56-a5fd-b0fc69aeb517",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "tr": "Öğretmen Amelia",
         "zh": "Tutor Amelia"
       },
-      "num_messages": 1611601,
+      "num_messages": 1611613,
       "num_messages_24h": 379,
       "rating_score": 0.78175,
       "reportsType": {},
@@ -87,7 +87,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790561524534,
+      "updatedAt": 1790587860962,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "tr": "Öğretmen Amelia",
       "zh": "Tutor Amelia"
     },
-    "num_messages": 1611601,
+    "num_messages": 1611613,
     "num_messages_24h": 379,
     "rating_score": 0.78175,
     "reportsType": {},
@@ -162,10 +162,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790561524534,
+    "updatedAt": 1790587860962,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790561524534,
+      "to": 1790587860962
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1611601,
+      "num_messages": 1611613,
       "num_messages_24h": 379,
       "rating_score": 0.78175,
       "token_count": 308
@@ -191,6 +200,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1611601,
+        "num_messages_24h": 379,
+        "rating_score": 0.78175,
+        "token_count": 308
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1611613,
         "num_messages_24h": 379,
         "rating_score": 0.78175,
         "token_count": 308

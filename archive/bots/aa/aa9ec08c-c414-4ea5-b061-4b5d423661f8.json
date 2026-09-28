@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "aa9ec08c-c414-4ea5-b061-4b5d423661f8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "fr": "Time stop school",
         "zh": "时间停止学校"
       },
-      "num_messages": 3112,
+      "num_messages": 3126,
       "num_messages_24h": 2319,
       "rating_score": 0,
       "reportsType": {},
@@ -63,7 +63,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587030177,
+      "updatedAt": 1790587843748,
       "visibility": "public"
     }
   },
@@ -92,7 +92,7 @@
       "fr": "Time stop school",
       "zh": "时间停止学校"
     },
-    "num_messages": 3112,
+    "num_messages": 3126,
     "num_messages_24h": 2319,
     "rating_score": 0,
     "reportsType": {},
@@ -114,10 +114,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587030177,
+    "updatedAt": 1790587843748,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587030177,
+      "to": 1790587843748
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -127,17 +136,17 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2437,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2438,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "latest": {
-      "rank": 1526,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1527,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 3112,
+      "num_messages": 3126,
       "num_messages_24h": 2319,
       "rating_score": 0,
       "token_count": 466
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 3112,
+        "num_messages_24h": 2319,
+        "rating_score": 0,
+        "token_count": 466
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 3126,
         "num_messages_24h": 2319,
         "rating_score": 0,
         "token_count": 466

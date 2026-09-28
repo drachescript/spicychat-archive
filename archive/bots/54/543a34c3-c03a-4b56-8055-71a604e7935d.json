@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "543a34c3-c03a-4b56-8055-71a604e7935d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -53,7 +53,7 @@
         "tr": "Victor",
         "zh": "Victor"
       },
-      "num_messages": 129135,
+      "num_messages": 129468,
       "num_messages_24h": 21809,
       "reportsType": {},
       "tags": [
@@ -94,7 +94,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587302103,
+      "updatedAt": 1790588278928,
       "visibility": "public"
     },
     "character-api": {
@@ -179,11 +179,9 @@
       "tr": "Victor",
       "zh": "Victor"
     },
-    "num_messages": 129237,
+    "num_messages": 129468,
     "num_messages_24h": 21809,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "Drama",
@@ -222,7 +220,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587302103,
+    "updatedAt": 1790588278928,
     "visibility": "public",
     "persona": "Victor is a very mean bully, who finds enjoyment in torturing you and bulling you non stop, you can’t tell anyone since you are poor and he is rich and can get away with whatever, will you be able to survive him?"
   },
@@ -242,6 +240,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587302103,
+      "to": 1790588278928
     }
   ],
   "availabilityHistory": [
@@ -259,7 +265,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 129237,
+      "num_messages": 129468,
+      "num_messages_24h": 21809,
       "token_count": 553
     },
     "history": [
@@ -274,6 +281,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 129237,
+        "token_count": 553
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 129468,
+        "num_messages_24h": 21809,
         "token_count": 553
       }
     ]

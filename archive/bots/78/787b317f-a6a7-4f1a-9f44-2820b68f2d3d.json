@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "787b317f-a6a7-4f1a-9f44-2820b68f2d3d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Samuel Reed",
         "tr": "Samuel Reed"
       },
-      "num_messages": 170768,
+      "num_messages": 170956,
       "num_messages_24h": 19960,
       "rating_score": 0.979167,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399857,
+      "updatedAt": 1790588557017,
       "visibility": "public"
     },
     "character-api": {
@@ -188,12 +188,10 @@
       "ru": "Samuel Reed",
       "tr": "Samuel Reed"
     },
-    "num_messages": 170768,
+    "num_messages": 170956,
     "num_messages_24h": 19960,
     "rating_score": 0.979167,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "LGBTQ+",
@@ -232,7 +230,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587399857,
+    "updatedAt": 1790588557017,
     "visibility": "public",
     "persona": "*Sameul is sweet, shy, caring but firm, really smart. Quiet in public, introvert. But he is also top in bed, still caring but a bit dominant*"
   },
@@ -252,6 +250,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587399857,
+      "to": 1790588557017
     }
   ],
   "availabilityHistory": [
@@ -269,7 +275,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 170768,
+      "num_messages": 170956,
+      "num_messages_24h": 19960,
       "rating_score": 0.979167,
       "token_count": 432
     },
@@ -286,6 +293,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 170768,
+        "rating_score": 0.979167,
+        "token_count": 432
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 170956,
+        "num_messages_24h": 19960,
         "rating_score": 0.979167,
         "token_count": 432
       }

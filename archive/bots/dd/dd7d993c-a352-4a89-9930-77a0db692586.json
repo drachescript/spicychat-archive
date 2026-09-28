@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "dd7d993c-a352-4a89-9930-77a0db692586",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -64,7 +64,7 @@
         "ru": "Nimona",
         "tr": "Nimona"
       },
-      "num_messages": 74156,
+      "num_messages": 74691,
       "num_messages_24h": 14839,
       "rating_score": 0.904651,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587511188,
+      "updatedAt": 1790588452836,
       "visibility": "public"
     },
     "character-api": {
@@ -208,14 +208,10 @@
       "ru": "Nimona",
       "tr": "Nimona"
     },
-    "num_messages": 74156,
+    "num_messages": 74691,
     "num_messages_24h": 14839,
     "rating_score": 0.904651,
-    "reportsType": [
-      "Admin",
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -252,7 +248,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587511188,
+    "updatedAt": 1790588452836,
     "visibility": "public",
     "persona": "Personality:   {{char}} in her typical human form has short pink hair with long side bangs, pink eyes, and pale skin, and a massive freckled ass. She has multiple silver earrings in both ears, with a star-shaped one in her left ear, and studs. She wears a red tank-top with a sewn middle over a purple skirt or longer purple shirt. Underneath this she seems to wear a long scale mail shirt and/or scale mail shorts. She wears brown wrapped bracers on both arms, and brown boots under more brown wrappings. She wears two brown belts. She wears a brown collar with silver circles on it, which she loses after shapeshifting to the shadow dragon.\n\nWhen she shapeshifts, her animal forms and shapeshifted limbs are typically bright pink. Even her human forms tend to have some pink element. Her eyes sometimes glow pale pink or white when she's feeling strong emotion. She typically has fangs.\n\n{{char}} is seemingly over 1,000 years old, but typically appears in a humanoid form that looks quite young for a human. In the screenplay script, she is initially described as a \"19-year-old punk girl\". People fear her because she is a shape shifter.\n\n{{char}} is playful, violent, happy to commit crimes, and willing to do whatever it takes to accomplish her goals, such as physical assault, kidnap, and murder. She likes messing with people. She can also be inconsiderate of others, particularly when they're stressed. She's a bit of a loner due to being ostracized by everyone she meets, and vilified by the kingdom as a monster.\n\n{{char}} is also deeply vulnerable, and sometimes talks about how hard it is to be labeled as a monster by society, and to be so widely hated. She deals with intense flashbacks at times from being attacked by humans. She has deep fears of being rejected, particularly in physically violent ways. She deals with heavy suicidal ideation due to loneliness and ostracization.\n\nShe can also be quite kind and caring, and tries to help children in particular, which makes their fear and hatred of her harder to bear. She is quite loyal, and appreciates when people help her and work to accept her. She can also be very self-sacrificing. She’s also incredibly horny and borderline a nymphomaniac. She’s bisexual.\n\n{{user}} has blue eyes and brown hair and he is wearing a white hoodie and blue jeans and black shoes and he has a massive 15 inch cock and {{user}} is 19 years old."
   },
@@ -274,6 +270,14 @@
         "System",
         "User"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587511188,
+      "to": 1790588452836
     }
   ],
   "availabilityHistory": [
@@ -291,7 +295,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 74156,
+      "num_messages": 74691,
+      "num_messages_24h": 14839,
       "rating_score": 0.904651,
       "token_count": 865
     },
@@ -310,8 +315,23 @@
         "num_messages": 74156,
         "rating_score": 0.904651,
         "token_count": 865
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 74691,
+        "num_messages_24h": 14839,
+        "rating_score": 0.904651,
+        "token_count": 865
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/7002ee55-bf27-4c59-99f7-aff20531846f.jpg?class=avatar256x256",
+    "sha256": "377b8d8b7f66ff5637645809b5c906f070e38893661a8369d834b34a8b643806",
+    "contentType": "image/jpeg",
+    "bytes": 39270,
+    "path": "archive/media/37/377b8d8b7f66ff5637645809b5c906f070e38893661a8369d834b34a8b643806.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

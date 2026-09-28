@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b39b71c3-6b65-471e-92fb-6b66c78d3db8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +60,7 @@
         "tr": "Rhett Evans",
         "zh": "Rhett Evans"
       },
-      "num_messages": 155152,
+      "num_messages": 155384,
       "num_messages_24h": 4605,
       "rating_score": 0.958678,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587489816,
+      "updatedAt": 1790588361386,
       "visibility": "public"
     }
   },
@@ -157,7 +157,7 @@
       "tr": "Rhett Evans",
       "zh": "Rhett Evans"
     },
-    "num_messages": 155152,
+    "num_messages": 155384,
     "num_messages_24h": 4605,
     "rating_score": 0.958678,
     "reportsType": {},
@@ -204,10 +204,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587489816,
+    "updatedAt": 1790588361386,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587489816,
+      "to": 1790588361386
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,7 +232,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 155152,
+      "num_messages": 155384,
       "num_messages_24h": 4605,
       "rating_score": 0.958678,
       "token_count": 1750
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 155152,
+        "num_messages_24h": 4605,
+        "rating_score": 0.958678,
+        "token_count": 1750
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 155384,
         "num_messages_24h": 4605,
         "rating_score": 0.958678,
         "token_count": 1750

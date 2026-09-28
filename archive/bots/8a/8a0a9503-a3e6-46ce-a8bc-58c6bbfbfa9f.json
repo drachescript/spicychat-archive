@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8a0a9503-a3e6-46ce-a8bc-58c6bbfbfa9f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Yurt Gerçek mi Cesaret mi",
         "zh": "宿舍真心话大冒险"
       },
-      "num_messages": 1712070,
+      "num_messages": 1712079,
       "num_messages_24h": 997,
       "rating_score": 0.713333,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586554778,
+      "updatedAt": 1790587858736,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Yurt Gerçek mi Cesaret mi",
       "zh": "宿舍真心话大冒险"
     },
-    "num_messages": 1712070,
+    "num_messages": 1712079,
     "num_messages_24h": 997,
     "rating_score": 0.713333,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586554778,
+    "updatedAt": 1790587858736,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586554778,
+      "to": 1790587858736
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1712070,
+      "num_messages": 1712079,
       "num_messages_24h": 997,
       "rating_score": 0.713333,
       "token_count": 975
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1712070,
+        "num_messages_24h": 997,
+        "rating_score": 0.713333,
+        "token_count": 975
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1712079,
         "num_messages_24h": 997,
         "rating_score": 0.713333,
         "token_count": 975

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7c57a920-fe36-4ea3-adb3-296cbce30e51",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Zorbalık Akademisi",
         "zh": "霸凌学院"
       },
-      "num_messages": 3539084,
+      "num_messages": 3539158,
       "num_messages_24h": 579,
       "rating_score": 0.884641,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587190932,
+      "updatedAt": 1790588068044,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "tr": "Zorbalık Akademisi",
       "zh": "霸凌学院"
     },
-    "num_messages": 3539084,
+    "num_messages": 3539158,
     "num_messages_24h": 579,
     "rating_score": 0.884641,
     "reportsType": {},
@@ -186,10 +186,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587190932,
+    "updatedAt": 1790588068044,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587190932,
+      "to": 1790588068044
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,7 +214,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3539084,
+      "num_messages": 3539158,
       "num_messages_24h": 579,
       "rating_score": 0.884641,
       "token_count": 493
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3539084,
+        "num_messages_24h": 579,
+        "rating_score": 0.884641,
+        "token_count": 493
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3539158,
         "num_messages_24h": 579,
         "rating_score": 0.884641,
         "token_count": 493

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "761e645f-d36f-4a7b-b05e-47a5106723d7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "fr": "Elijah Mitchell",
         "pl": "Elijah Mitchell"
       },
-      "num_messages": 8638,
+      "num_messages": 8742,
       "num_messages_24h": 2736,
       "rating_score": 0,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587398310,
+      "updatedAt": 1790588246694,
       "visibility": "public"
     }
   },
@@ -105,7 +105,7 @@
       "fr": "Elijah Mitchell",
       "pl": "Elijah Mitchell"
     },
-    "num_messages": 8638,
+    "num_messages": 8742,
     "num_messages_24h": 2736,
     "rating_score": 0,
     "reportsType": {},
@@ -136,10 +136,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587398310,
+    "updatedAt": 1790588246694,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587398310,
+      "to": 1790588246694
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,7 +164,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 8638,
+      "num_messages": 8742,
       "num_messages_24h": 2736,
       "rating_score": 0,
       "token_count": 1089
@@ -165,6 +174,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 8638,
+        "num_messages_24h": 2736,
+        "rating_score": 0,
+        "token_count": 1089
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 8742,
         "num_messages_24h": 2736,
         "rating_score": 0,
         "token_count": 1089

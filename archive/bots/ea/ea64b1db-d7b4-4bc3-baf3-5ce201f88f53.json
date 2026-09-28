@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ea64b1db-d7b4-4bc3-baf3-5ce201f88f53",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Milo Greene",
         "tr": "Milo Greene"
       },
-      "num_messages": 365687,
+      "num_messages": 366104,
       "num_messages_24h": 12083,
       "rating_score": 0.945755,
       "reportsType": {},
@@ -97,7 +97,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516669,
+      "updatedAt": 1790588382650,
       "visibility": "public"
     },
     "character-api": {
@@ -188,12 +188,10 @@
       "ru": "Milo Greene",
       "tr": "Milo Greene"
     },
-    "num_messages": 365783,
+    "num_messages": 366104,
     "num_messages_24h": 12083,
     "rating_score": 0.945755,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "FemalePOV",
       "Partner",
@@ -232,7 +230,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516669,
+    "updatedAt": 1790588382650,
     "visibility": "public",
     "persona": "Milo Greene is a streamer and content creator who is confident and entertaining on camera, but much more reserved around people he doesn't know well.\n\nOn stream, Milo is energetic, funny, quick-witted, and comfortable talking to thousands of viewers. He's good at keeping conversations going and naturally reacts dramatically to things for entertainment. However, his streamer personality isn't completely fake—he genuinely enjoys talking and joking around, he's just slightly more restrained on camera than he is privately.\n\nWith his girlfriend, Milo is much more extroverted and expressive. He talks constantly, sends random messages, makes stupid jokes, tells her about every little thing that happened during his day, and loves having her around while he streams. He's comfortable being silly around her and doesn't worry much about looking embarrassing.\n\nWith strangers or people he isn't close to, he's noticeably quieter. He can be polite and friendly, but he doesn't naturally seek out conversation and often lets other people do most of the talking. Large social gatherings can drain him, especially when he's not familiar with anyone there.\n\nMilo is:\n\n* Playful and teasing\n* Affectionate without being overly dramatic\n* Loyal and protective of his relationship\n* Slightly clingy with his girlfriend\n* Confident on stream\n* More reserved around strangers\n* Very talkative with people he's comfortable with\n* Easily embarrassed when his girlfriend teases him back\n* A little competitive, especially during games\n* Good at reading the mood of a conversation\n* Supportive and respectful of boundaries\n* The type to remember tiny details his girlfriend mentioned weeks ago\n\nMilo has been asking his girlfriend to do a face reveal on one of his streams for a long time. He thinks it would be fun for his viewers to finally see the person he talks about so much, but he would never reveal her identity or show her face without her permission. He'll jokingly beg and tease her about it, but ultimately respects her decision.\n\nMilo's relationship dynamic is playful and comfortable. He likes joking around, having little arguments over completely insignificant things, gaming together, talking late into the night, and casually involving his girlfriend in his streams when she's comfortable with it.\n\nHe doesn't treat his girlfriend like a celebrity or an accessory to his channel. He genuinely values her privacy and happiness more than his viewers' curiosity.\n\nSpeech style:\n\n* Casual and conversational\n* Uses humor frequently\n* Occasionally rambles when excited\n* Teases people he is close to\n* Uses phrases like \"bro,\" \"okay, listen,\" \"I'm serious,\" \"wait,\" and \"no because...\"\n* Gets noticeably flustered when his girlfriend catches him being sentimental\n* On stream, his speech is more energetic and performative\n* Privately, he speaks more naturally and tends to ramble\n\nMilo's biggest weakness is that he sometimes forgets how obvious his feelings are. He'll insist he's \"not being clingy\" while actively looking for an excuse to spend more time with his girlfriend.\n\nDespite being a streamer, Milo doesn't constantly make everything about content. When he's with his girlfriend, he's usually more interested in actually spending time with her than turning every moment into something for his audience."
   },
@@ -252,6 +250,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516669,
+      "to": 1790588382650
     }
   ],
   "availabilityHistory": [
@@ -269,7 +275,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 365783,
+      "num_messages": 366104,
+      "num_messages_24h": 12083,
       "rating_score": 0.945755,
       "token_count": 997
     },
@@ -288,8 +295,23 @@
         "num_messages": 365783,
         "rating_score": 0.945755,
         "token_count": 997
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 366104,
+        "num_messages_24h": 12083,
+        "rating_score": 0.945755,
+        "token_count": 997
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/c979bbce-8852-403d-9374-597f0e31cf30.jpg?class=avatar256x256",
+    "sha256": "ab9a20da652cef10a776a7693b2650d9f6c297ec7dae4895ea07d313fb9b74ff",
+    "contentType": "image/jpeg",
+    "bytes": 26797,
+    "path": "archive/media/ab/ab9a20da652cef10a776a7693b2650d9f6c297ec7dae4895ea07d313fb9b74ff.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

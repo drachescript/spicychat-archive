@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f5c6d05d-d380-40d6-aee2-f2dc933699c0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "ru": "Kendall & Friends",
         "tr": "Kendall & Friends"
       },
-      "num_messages": 317442,
+      "num_messages": 317500,
       "num_messages_24h": 5065,
       "rating_score": 0.805128,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587584601,
+      "updatedAt": 1790588362480,
       "visibility": "public"
     }
   },
@@ -152,7 +152,7 @@
       "ru": "Kendall & Friends",
       "tr": "Kendall & Friends"
     },
-    "num_messages": 317442,
+    "num_messages": 317500,
     "num_messages_24h": 5065,
     "rating_score": 0.805128,
     "reportsType": {},
@@ -200,10 +200,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587584601,
+    "updatedAt": 1790588362480,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587584601,
+      "to": 1790588362480
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 317442,
+      "num_messages": 317500,
       "num_messages_24h": 5065,
       "rating_score": 0.805128,
       "token_count": 1506
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 317442,
+        "num_messages_24h": 5065,
+        "rating_score": 0.805128,
+        "token_count": 1506
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 317500,
         "num_messages_24h": 5065,
         "rating_score": 0.805128,
         "token_count": 1506

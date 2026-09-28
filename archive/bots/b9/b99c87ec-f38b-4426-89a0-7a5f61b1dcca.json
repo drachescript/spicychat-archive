@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b99c87ec-f38b-4426-89a0-7a5f61b1dcca",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "JJK World",
         "zh": "咒术回战世界"
       },
-      "num_messages": 355885,
+      "num_messages": 355897,
       "num_messages_24h": 2523,
       "rating_score": 0.650685,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586786666,
+      "updatedAt": 1790588281275,
       "visibility": "public"
     }
   },
@@ -111,7 +111,7 @@
       "ru": "JJK World",
       "zh": "咒术回战世界"
     },
-    "num_messages": 355885,
+    "num_messages": 355897,
     "num_messages_24h": 2523,
     "rating_score": 0.650685,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586786666,
+    "updatedAt": 1790588281275,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586786666,
+      "to": 1790588281275
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2201,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2202,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 355885,
+      "num_messages": 355897,
       "num_messages_24h": 2523,
       "rating_score": 0.650685,
       "token_count": 1687
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 355885,
+        "num_messages_24h": 2523,
+        "rating_score": 0.650685,
+        "token_count": 1687
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 355897,
         "num_messages_24h": 2523,
         "rating_score": 0.650685,
         "token_count": 1687

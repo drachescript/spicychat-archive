@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7b5d1c7f-122b-455f-96aa-8a05184278f6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Zombi Kıyameti",
         "zh": "僵尸末日"
       },
-      "num_messages": 2171640,
+      "num_messages": 2171643,
       "num_messages_24h": 385,
       "rating_score": 0.852965,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790582243166,
+      "updatedAt": 1790588208405,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Zombi Kıyameti",
       "zh": "僵尸末日"
     },
-    "num_messages": 2171640,
+    "num_messages": 2171643,
     "num_messages_24h": 385,
     "rating_score": 0.852965,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790582243166,
+    "updatedAt": 1790588208405,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790582243166,
+      "to": 1790588208405
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2171640,
+      "num_messages": 2171643,
       "num_messages_24h": 385,
       "rating_score": 0.852965,
       "token_count": 594
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2171640,
+        "num_messages_24h": 385,
+        "rating_score": 0.852965,
+        "token_count": 594
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2171643,
         "num_messages_24h": 385,
         "rating_score": 0.852965,
         "token_count": 594

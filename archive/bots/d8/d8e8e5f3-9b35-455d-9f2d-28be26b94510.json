@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d8e8e5f3-9b35-455d-9f2d-28be26b94510",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "Toxic Boyfriend",
         "tr": "Zehirli Erkek Arkadaş"
       },
-      "num_messages": 3888068,
+      "num_messages": 3888084,
       "num_messages_24h": 166,
       "rating_score": 0.580601,
       "tags": [
@@ -86,7 +86,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587582975,
+      "updatedAt": 1790588362065,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "hi": "Toxic Boyfriend",
       "tr": "Zehirli Erkek Arkadaş"
     },
-    "num_messages": 3888068,
+    "num_messages": 3888084,
     "num_messages_24h": 166,
     "rating_score": 0.580601,
     "tags": [
@@ -160,10 +160,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587582975,
+    "updatedAt": 1790588362065,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587582975,
+      "to": 1790588362065
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,7 +188,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3888068,
+      "num_messages": 3888084,
       "num_messages_24h": 166,
       "rating_score": 0.580601,
       "token_count": 536
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3888068,
+        "num_messages_24h": 166,
+        "rating_score": 0.580601,
+        "token_count": 536
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3888084,
         "num_messages_24h": 166,
         "rating_score": 0.580601,
         "token_count": 536

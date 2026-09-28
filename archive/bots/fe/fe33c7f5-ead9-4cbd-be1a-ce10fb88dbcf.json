@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fe33c7f5-ead9-4cbd-be1a-ce10fb88dbcf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "fr": "Mara Vale"
       },
-      "num_messages": 1120,
+      "num_messages": 1124,
       "num_messages_24h": 552,
       "rating_score": 0,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587513856,
+      "updatedAt": 1790588171519,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
     "name_i18n": {
       "fr": "Mara Vale"
     },
-    "num_messages": 1120,
+    "num_messages": 1124,
     "num_messages_24h": 552,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587513856,
+    "updatedAt": 1790588171519,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587513856,
+      "to": 1790588171519
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,13 +144,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2086,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2088,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1120,
+      "num_messages": 1124,
       "num_messages_24h": 552,
       "rating_score": 0,
       "token_count": 1270
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1120,
+        "num_messages_24h": 552,
+        "rating_score": 0,
+        "token_count": 1270
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1124,
         "num_messages_24h": 552,
         "rating_score": 0,
         "token_count": 1270

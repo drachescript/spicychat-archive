@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9abad6e1-410e-4beb-8a2b-142013068d93",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pl": "Vanilla the Rabbit",
         "ru": "Ванилла Кролик"
       },
-      "num_messages": 52576,
+      "num_messages": 52621,
       "num_messages_24h": 2083,
       "rating_score": 0.995192,
       "tags": [
@@ -84,7 +84,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587299061,
+      "updatedAt": 1790588560726,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "pl": "Vanilla the Rabbit",
       "ru": "Ванилла Кролик"
     },
-    "num_messages": 52576,
+    "num_messages": 52621,
     "num_messages_24h": 2083,
     "rating_score": 0.995192,
     "tags": [
@@ -156,10 +156,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587299061,
+    "updatedAt": 1790588560726,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587299061,
+      "to": 1790588560726
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 52576,
+      "num_messages": 52621,
       "num_messages_24h": 2083,
       "rating_score": 0.995192,
       "token_count": 1389
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 52576,
+        "num_messages_24h": 2083,
+        "rating_score": 0.995192,
+        "token_count": 1389
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 52621,
         "num_messages_24h": 2083,
         "rating_score": 0.995192,
         "token_count": 1389

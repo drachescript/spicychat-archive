@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5e96f977-508e-4379-89d6-3ee77e7c86ec",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Salvius Reis Ivanov",
         "tr": "Salvius Reis Ivanov"
       },
-      "num_messages": 26013,
+      "num_messages": 26029,
       "num_messages_24h": 5181,
       "rating_score": 0,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587190454,
+      "updatedAt": 1790588361440,
       "visibility": "public"
     }
   },
@@ -105,7 +105,7 @@
       "ru": "Salvius Reis Ivanov",
       "tr": "Salvius Reis Ivanov"
     },
-    "num_messages": 26013,
+    "num_messages": 26029,
     "num_messages_24h": 5181,
     "rating_score": 0,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587190454,
+    "updatedAt": 1790588361440,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587190454,
+      "to": 1790588361440
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 26013,
+      "num_messages": 26029,
       "num_messages_24h": 5181,
       "rating_score": 0,
       "token_count": 1023
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 26013,
+        "num_messages_24h": 5181,
+        "rating_score": 0,
+        "token_count": 1023
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 26029,
         "num_messages_24h": 5181,
         "rating_score": 0,
         "token_count": 1023

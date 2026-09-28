@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2f6a45ea-f518-43b5-97f8-b65d8326481b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -22,7 +22,7 @@
       "avatar_is_nsfw": false,
       "avatar_url": "https://cdn.nd-api.com/avatars/b6125fd4-fa61-40c9-aa7b-d062fa3ba6bc.jpg?class=avatar256x256",
       "character_id": "2f6a45ea-f518-43b5-97f8-b65d8326481b",
-      "createdAt": 1790448977000,
+      "createdAt": 1790448977322,
       "creator_user_id": "kp:ce2ebc17b3374ddd814467a267b73d86",
       "creator_username": "sm9",
       "definition_size_category": "low",
@@ -54,7 +54,7 @@
       "title": "\"Why didn't you bring a umbrella, you couch potato?\" ☂️ 🥔\n(Picture isn't mine btw!)",
       "token_count": 384,
       "type": "STANDARD",
-      "updatedAt": 1790587678000,
+      "updatedAt": 1790587679742,
       "visibility": "public"
     }
   },
@@ -66,7 +66,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/b6125fd4-fa61-40c9-aa7b-d062fa3ba6bc.jpg?class=avatar256x256",
     "character_id": "2f6a45ea-f518-43b5-97f8-b65d8326481b",
-    "createdAt": 1790448977000,
+    "createdAt": 1790448977322,
     "creator_user_id": "kp:ce2ebc17b3374ddd814467a267b73d86",
     "creator_username": "sm9",
     "definition_size_category": "low",
@@ -96,10 +96,27 @@
     "title": "\"Why didn't you bring a umbrella, you couch potato?\" ☂️ 🥔\n(Picture isn't mine btw!)",
     "token_count": 384,
     "type": "STANDARD",
-    "updatedAt": 1790587678000,
+    "updatedAt": 1790587679742,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790448977000,
+      "to": 1790448977322
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587678000,
+      "to": 1790587679742
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,8 +126,8 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1858,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1859,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {

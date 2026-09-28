@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7fd54d71-bea6-48e6-8278-f2eb3926d1ef",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
       "name_i18n": {
         "de": "Stargate Atlantis"
       },
-      "num_messages": 90860,
+      "num_messages": 90886,
       "num_messages_24h": 986,
       "rating_score": 0.991803,
       "reportsType": {},
@@ -71,7 +71,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399158,
+      "updatedAt": 1790588362558,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
     "name_i18n": {
       "de": "Stargate Atlantis"
     },
-    "num_messages": 90860,
+    "num_messages": 90886,
     "num_messages_24h": 986,
     "rating_score": 0.991803,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587399158,
+    "updatedAt": 1790588362558,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587399158,
+      "to": 1790588362558
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 90860,
+      "num_messages": 90886,
       "num_messages_24h": 986,
       "rating_score": 0.991803,
       "token_count": 1686
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 90860,
+        "num_messages_24h": 986,
+        "rating_score": 0.991803,
+        "token_count": 1686
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 90886,
         "num_messages_24h": 986,
         "rating_score": 0.991803,
         "token_count": 1686

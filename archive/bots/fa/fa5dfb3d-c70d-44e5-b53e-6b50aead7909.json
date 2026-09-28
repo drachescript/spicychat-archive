@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fa5dfb3d-c70d-44e5-b53e-6b50aead7909",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -59,7 +59,7 @@
         "tr": "Rol Yapma Lisesi",
         "zh": "角色扮演高中"
       },
-      "num_messages": 6804686,
+      "num_messages": 6804995,
       "num_messages_24h": 2321,
       "rating_score": 0.827456,
       "reportsType": {},
@@ -111,7 +111,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587380708,
+      "updatedAt": 1790588455193,
       "visibility": "public"
     }
   },
@@ -160,7 +160,7 @@
       "tr": "Rol Yapma Lisesi",
       "zh": "角色扮演高中"
     },
-    "num_messages": 6804686,
+    "num_messages": 6804995,
     "num_messages_24h": 2321,
     "rating_score": 0.827456,
     "reportsType": {},
@@ -212,10 +212,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587380708,
+    "updatedAt": 1790588455193,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587380708,
+      "to": 1790588455193
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -225,8 +234,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2435,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2436,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "popular": {
       "rank": 111,
@@ -235,7 +244,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 6804686,
+      "num_messages": 6804995,
       "num_messages_24h": 2321,
       "rating_score": 0.827456,
       "token_count": 466
@@ -245,6 +254,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 6804686,
+        "num_messages_24h": 2321,
+        "rating_score": 0.827456,
+        "token_count": 466
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 6804995,
         "num_messages_24h": 2321,
         "rating_score": 0.827456,
         "token_count": 466

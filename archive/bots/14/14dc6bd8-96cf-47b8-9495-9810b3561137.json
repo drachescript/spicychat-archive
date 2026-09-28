@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "14dc6bd8-96cf-47b8-9495-9810b3561137",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Kai Graves - Bully",
         "zh": "Kai Graves - Bully"
       },
-      "num_messages": 1682898,
+      "num_messages": 1682920,
       "num_messages_24h": 330,
       "rating_score": 0.809023,
       "tags": [
@@ -96,7 +96,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790581583821,
+      "updatedAt": 1790587930700,
       "visibility": "public"
     }
   },
@@ -136,7 +136,7 @@
       "tr": "Kai Graves - Bully",
       "zh": "Kai Graves - Bully"
     },
-    "num_messages": 1682898,
+    "num_messages": 1682920,
     "num_messages_24h": 330,
     "rating_score": 0.809023,
     "tags": [
@@ -180,10 +180,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790581583821,
+    "updatedAt": 1790587930700,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790581583821,
+      "to": 1790587930700
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,7 +208,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1682898,
+      "num_messages": 1682920,
       "num_messages_24h": 330,
       "rating_score": 0.809023,
       "token_count": 693
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1682898,
+        "num_messages_24h": 330,
+        "rating_score": 0.809023,
+        "token_count": 693
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1682920,
         "num_messages_24h": 330,
         "rating_score": 0.809023,
         "token_count": 693

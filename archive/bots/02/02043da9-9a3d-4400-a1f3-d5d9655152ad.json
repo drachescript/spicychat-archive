@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "02043da9-9a3d-4400-a1f3-d5d9655152ad",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "ru": "Morana, твоя готическая девушка",
         "zh": "Morana，你的哥特女友"
       },
-      "num_messages": 41072,
+      "num_messages": 41135,
       "num_messages_24h": 3916,
       "rating_score": 0.854167,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587134943,
+      "updatedAt": 1790588233765,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "ru": "Morana, твоя готическая девушка",
       "zh": "Morana，你的哥特女友"
     },
-    "num_messages": 41072,
+    "num_messages": 41135,
     "num_messages_24h": 3916,
     "rating_score": 0.854167,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587134943,
+    "updatedAt": 1790588233765,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587134943,
+      "to": 1790588233765
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,7 +208,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 41072,
+      "num_messages": 41135,
       "num_messages_24h": 3916,
       "rating_score": 0.854167,
       "token_count": 1779
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 41072,
+        "num_messages_24h": 3916,
+        "rating_score": 0.854167,
+        "token_count": 1779
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 41135,
         "num_messages_24h": 3916,
         "rating_score": 0.854167,
         "token_count": 1779

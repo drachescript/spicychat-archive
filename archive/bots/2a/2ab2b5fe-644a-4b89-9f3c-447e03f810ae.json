@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2ab2b5fe-644a-4b89-9f3c-447e03f810ae",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Seth Ander",
         "zh": "Seth Ander"
       },
-      "num_messages": 165722,
+      "num_messages": 165771,
       "num_messages_24h": 2508,
       "rating_score": 0.911215,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587284071,
+      "updatedAt": 1790588169709,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "tr": "Seth Ander",
       "zh": "Seth Ander"
     },
-    "num_messages": 165722,
+    "num_messages": 165771,
     "num_messages_24h": 2508,
     "rating_score": 0.911215,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587284071,
+    "updatedAt": 1790588169709,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587284071,
+      "to": 1790588169709
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2216,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2217,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 165722,
+      "num_messages": 165771,
       "num_messages_24h": 2508,
       "rating_score": 0.911215,
       "token_count": 327
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 165722,
+        "num_messages_24h": 2508,
+        "rating_score": 0.911215,
+        "token_count": 327
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 165771,
         "num_messages_24h": 2508,
         "rating_score": 0.911215,
         "token_count": 327

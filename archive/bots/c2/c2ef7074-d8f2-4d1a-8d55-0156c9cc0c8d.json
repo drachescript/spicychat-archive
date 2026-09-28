@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c2ef7074-d8f2-4d1a-8d55-0156c9cc0c8d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Juna",
-      "num_messages": 252,
+      "num_messages": 264,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "Childhood bully with benefits",
       "token_count": 1511,
       "type": "STANDARD",
-      "updatedAt": 1790586385844,
+      "updatedAt": 1790588131906,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Juna",
-    "num_messages": 252,
+    "num_messages": 264,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "Childhood bully with benefits",
     "token_count": 1511,
     "type": "STANDARD",
-    "updatedAt": 1790586385844,
+    "updatedAt": 1790588131906,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586385844,
+      "to": 1790588131906
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,7 +120,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 252,
+      "num_messages": 264,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1511
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 252,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1511
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 264,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1511

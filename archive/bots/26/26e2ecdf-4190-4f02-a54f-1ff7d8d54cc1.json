@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "26e2ecdf-4190-4f02-a54f-1ff7d8d54cc1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "de": "Jungkook",
         "hi": "Jungkook"
       },
-      "num_messages": 2564,
+      "num_messages": 2588,
       "num_messages_24h": 1269,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587360412,
+      "updatedAt": 1790588114033,
       "visibility": "public"
     }
   },
@@ -98,7 +98,7 @@
       "de": "Jungkook",
       "hi": "Jungkook"
     },
-    "num_messages": 2564,
+    "num_messages": 2588,
     "num_messages_24h": 1269,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587360412,
+    "updatedAt": 1790588114033,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587360412,
+      "to": 1790588114033
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,13 +146,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2159,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2161,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2564,
+      "num_messages": 2588,
       "num_messages_24h": 1269,
       "rating_score": 0,
       "token_count": 362
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2564,
+        "num_messages_24h": 1269,
+        "rating_score": 0,
+        "token_count": 362
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2588,
         "num_messages_24h": 1269,
         "rating_score": 0,
         "token_count": 362

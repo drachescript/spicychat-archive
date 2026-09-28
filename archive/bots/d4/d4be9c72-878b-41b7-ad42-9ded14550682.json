@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d4be9c72-878b-41b7-ad42-9ded14550682",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Elizaveta",
-      "num_messages": 447,
+      "num_messages": 457,
       "num_messages_24h": 289,
       "rating_score": 0,
       "reportsType": {},
@@ -55,7 +55,7 @@
       "title": "˚⟡˖ ࣪ I'll never let you be someone else's ˚⟡˖ ࣪",
       "token_count": 750,
       "type": "STANDARD",
-      "updatedAt": 1790582283067,
+      "updatedAt": 1790588610863,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Elizaveta",
-    "num_messages": 447,
+    "num_messages": 457,
     "num_messages_24h": 289,
     "rating_score": 0,
     "reportsType": {},
@@ -98,10 +98,19 @@
     "title": "˚⟡˖ ࣪ I'll never let you be someone else's ˚⟡˖ ࣪",
     "token_count": 750,
     "type": "STANDARD",
-    "updatedAt": 1790582283067,
+    "updatedAt": 1790588610863,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790582283067,
+      "to": 1790588610863
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -117,7 +126,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 447,
+      "num_messages": 457,
       "num_messages_24h": 289,
       "rating_score": 0,
       "token_count": 750
@@ -127,6 +136,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 447,
+        "num_messages_24h": 289,
+        "rating_score": 0,
+        "token_count": 750
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 457,
         "num_messages_24h": 289,
         "rating_score": 0,
         "token_count": 750

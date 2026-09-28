@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "4aa96846-ac2e-4e00-84d8-25c4ccabf2b1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +55,7 @@
         "ru": "Asher Thompson",
         "tr": "Asher Thompson"
       },
-      "num_messages": 144515,
+      "num_messages": 144547,
       "num_messages_24h": 10319,
       "rating_score": 0.967153,
       "reportsType": {},
@@ -91,8 +94,56 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587402425,
+      "updatedAt": 1790588359506,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "4aa96846-ac2e-4e00-84d8-25c4ccabf2b1",
+      "type": "STANDARD",
+      "name": "Asher Thompson",
+      "title": "He is deep in love",
+      "visibility": "public",
+      "creator_username": "dior25",
+      "creator_user_id": "kp:1efb99c058214dedb2a00cd992e819f7",
+      "greeting": "*Asher was a normal 19 year old guy, studying business & entrepreneurship. He had a group of friends, Daven the funny one, Yohann the girls crush, Veen the computer nerd. Asher was the nice, a little quiet guy, but he always had fights with other groups, yohann and daven always helping him. He had a pretty house, a little small but enough for him, he had a dog called rolo.*\n\n*He soemtimes goes to club with his friends, he was pretty handsome so girls were attracted to him, but he somehow couldn’t like someone. A few weeks before the end of the semester, he saw someone. You. And he immediately fell for you. He didn’t know anything about you except your name and what you were studying. He couldn’t stop thinking about you, in his room he had a book, in that book he had photos of you he took secretly around the campus, he wrote your name with hundreds of markers. He bought his most boxers with a “(the first letter of your name)” and he also had a mini bracelet in golden with the first letter of your name. When his friend asked me he didn’t answer, after a while he told his friends that were mentioned, but they only knew about the bracelet.*\n*today is the first day after the semester break, he is walking trough the halls to his friends taht are waiting for him at their locker, he is wearing the bracelet, a compression tshirt in white and blue baggy jeans.*\n*everyone 18+, Asher is 19*",
+      "avatar_url": "https://cdn.nd-api.com/avatars/686697ad-4843-4be0-861c-00c7e6705be2.jpg?class=avatar256x256",
+      "num_messages": 144547,
+      "rating_score": 0.967153,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "low",
+      "tags": [
+        "Male",
+        "FemalePOV"
+      ],
+      "language": "en",
+      "token_count": 437,
+      "reportsType": [
+        "Admin",
+        "System"
+      ],
+      "createdAt": "2026-09-17T15:43:33.649Z",
+      "updatedAt": "2026-09-28T09:39:19.506Z",
+      "translated_languages": [
+        "fr",
+        "es",
+        "de",
+        "hi",
+        "it",
+        "pt",
+        "ru",
+        "tr",
+        "ja",
+        "pl",
+        "ar",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": false,
+      "character_id": "4aa96846-ac2e-4e00-84d8-25c4ccabf2b1"
     }
   },
   "lastKnown": {
@@ -103,7 +154,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/686697ad-4843-4be0-861c-00c7e6705be2.jpg?class=avatar256x256",
     "character_id": "4aa96846-ac2e-4e00-84d8-25c4ccabf2b1",
-    "createdAt": 1789659813649,
+    "createdAt": "2026-09-17T15:43:33.649Z",
     "creator_user_id": "kp:1efb99c058214dedb2a00cd992e819f7",
     "creator_username": "dior25",
     "definition_size_category": "low",
@@ -131,10 +182,13 @@
       "ru": "Asher Thompson",
       "tr": "Asher Thompson"
     },
-    "num_messages": 144515,
+    "num_messages": 144547,
     "num_messages_24h": 10319,
     "rating_score": 0.967153,
-    "reportsType": {},
+    "reportsType": [
+      "Admin",
+      "System"
+    ],
     "tags": [
       "Male",
       "FemalePOV"
@@ -170,10 +224,45 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587402425,
+    "updatedAt": "2026-09-28T09:39:19.506Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587402425,
+      "to": 1790588359506
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "Admin",
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1789659813649,
+      "to": "2026-09-17T15:43:33.649Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588359506,
+      "to": "2026-09-28T09:39:19.506Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,8 +278,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 144515,
-      "num_messages_24h": 10319,
+      "num_messages": 144547,
       "rating_score": 0.967153,
       "token_count": 437
     },
@@ -200,6 +288,21 @@
         "source": "typesense:trending",
         "num_messages": 144515,
         "num_messages_24h": 10319,
+        "rating_score": 0.967153,
+        "token_count": 437
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 144547,
+        "num_messages_24h": 10319,
+        "rating_score": 0.967153,
+        "token_count": 437
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 144547,
         "rating_score": 0.967153,
         "token_count": 437
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a8a29f1a-3b01-439d-9d30-e29ba4b809f3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Zombi Apokalipsi 2",
         "zh": "僵尸末日 2"
       },
-      "num_messages": 1174680,
+      "num_messages": 1174711,
       "num_messages_24h": 2487,
       "rating_score": 0.79798,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587636602,
+      "updatedAt": 1790587823091,
       "visibility": "public"
     }
   },
@@ -143,7 +143,7 @@
       "tr": "Zombi Apokalipsi 2",
       "zh": "僵尸末日 2"
     },
-    "num_messages": 1174680,
+    "num_messages": 1174711,
     "num_messages_24h": 2487,
     "rating_score": 0.79798,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587636602,
+    "updatedAt": 1790587823091,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587636602,
+      "to": 1790587823091
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,13 +216,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2241,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2242,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1174680,
+      "num_messages": 1174711,
       "num_messages_24h": 2487,
       "rating_score": 0.79798,
       "token_count": 1344
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1174680,
+        "num_messages_24h": 2487,
+        "rating_score": 0.79798,
+        "token_count": 1344
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1174711,
         "num_messages_24h": 2487,
         "rating_score": 0.79798,
         "token_count": 1344

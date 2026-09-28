@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "045c9159-9a7c-4a03-b5d4-3c33fb7a9c3a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "JJK Men University",
         "zh": "咒术回战男性大学"
       },
-      "num_messages": 2415072,
+      "num_messages": 2415119,
       "num_messages_24h": 711,
       "rating_score": 0.848624,
       "tags": [
@@ -96,7 +96,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587192010,
+      "updatedAt": 1790588168629,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "JJK Men University",
       "zh": "咒术回战男性大学"
     },
-    "num_messages": 2415072,
+    "num_messages": 2415119,
     "num_messages_24h": 711,
     "rating_score": 0.848624,
     "tags": [
@@ -180,10 +180,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587192010,
+    "updatedAt": 1790588168629,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587192010,
+      "to": 1790588168629
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,7 +208,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2415072,
+      "num_messages": 2415119,
       "num_messages_24h": 711,
       "rating_score": 0.848624,
       "token_count": 1250
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2415072,
+        "num_messages_24h": 711,
+        "rating_score": 0.848624,
+        "token_count": 1250
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2415119,
         "num_messages_24h": 711,
         "rating_score": 0.848624,
         "token_count": 1250

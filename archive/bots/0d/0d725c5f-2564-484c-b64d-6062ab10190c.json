@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0d725c5f-2564-484c-b64d-6062ab10190c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Yune & Momiji",
         "zh": "Yune & Momiji"
       },
-      "num_messages": 96092,
+      "num_messages": 96523,
       "num_messages_24h": 14608,
       "rating_score": 0.917526,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585633,
+      "updatedAt": 1790588455281,
       "visibility": "public"
     },
     "character-api": {
@@ -189,7 +189,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/cd3dc3ce-f377-4d18-a87c-8c5c9fb72201.png?class=avatar256x256",
     "character_id": "0d725c5f-2564-484c-b64d-6062ab10190c",
-    "createdAt": "2026-09-22T05:02:01.609Z",
+    "createdAt": 1790053321609,
     "creator_user_id": "kp:b6f405707c754d15b2bb62f089d43e14",
     "creator_username": "xull9",
     "definition_size_category": "high",
@@ -219,13 +219,10 @@
       "tr": "Yune & Momiji",
       "zh": "Yune & Momiji"
     },
-    "num_messages": 96231,
+    "num_messages": 96523,
     "num_messages_24h": 14608,
     "rating_score": 0.917526,
-    "reportsType": [
-      "Admin",
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Cheating",
@@ -271,7 +268,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:23.460Z",
+    "updatedAt": 1790588455281,
     "visibility": "public",
     "lorebooks": [
       {
@@ -332,6 +329,22 @@
           "entries": []
         }
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-22T05:02:01.609Z",
+      "to": 1790053321609
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:23.460Z",
+      "to": 1790588455281
     }
   ],
   "availabilityHistory": [
@@ -349,7 +362,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 96231,
+      "num_messages": 96523,
+      "num_messages_24h": 14608,
       "rating_score": 0.917526,
       "token_count": 1747
     },
@@ -368,8 +382,23 @@
         "num_messages": 96231,
         "rating_score": 0.917526,
         "token_count": 1747
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 96523,
+        "num_messages_24h": 14608,
+        "rating_score": 0.917526,
+        "token_count": 1747
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/cd3dc3ce-f377-4d18-a87c-8c5c9fb72201.png?class=avatar256x256",
+    "sha256": "d3c072dc0702a778941ac72676689a37de3cd777654e8476dd98ca60cc5081de",
+    "contentType": "image/png",
+    "bytes": 144241,
+    "path": "archive/media/d3/d3c072dc0702a778941ac72676689a37de3cd777654e8476dd98ca60cc5081de.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

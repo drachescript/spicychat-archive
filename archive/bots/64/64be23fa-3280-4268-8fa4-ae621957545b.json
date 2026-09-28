@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "64be23fa-3280-4268-8fa4-ae621957545b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ru": "Мария Томпсон",
         "zh": "玛丽亚·汤普森"
       },
-      "num_messages": 2083275,
+      "num_messages": 2083316,
       "num_messages_24h": 22,
       "rating_score": 0.770058,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586606350,
+      "updatedAt": 1790587821400,
       "visibility": "public"
     }
   },
@@ -100,7 +100,7 @@
       "ru": "Мария Томпсон",
       "zh": "玛丽亚·汤普森"
     },
-    "num_messages": 2083275,
+    "num_messages": 2083316,
     "num_messages_24h": 22,
     "rating_score": 0.770058,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586606350,
+    "updatedAt": 1790587821400,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586606350,
+      "to": 1790587821400
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2083275,
+      "num_messages": 2083316,
       "num_messages_24h": 22,
       "rating_score": 0.770058,
       "token_count": 280
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2083275,
+        "num_messages_24h": 22,
+        "rating_score": 0.770058,
+        "token_count": 280
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2083316,
         "num_messages_24h": 22,
         "rating_score": 0.770058,
         "token_count": 280

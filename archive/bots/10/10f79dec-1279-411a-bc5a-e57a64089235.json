@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "10f79dec-1279-411a-bc5a-e57a64089235",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Üreme Virüsü",
         "zh": "Breeding Virus"
       },
-      "num_messages": 1404898,
+      "num_messages": 1406026,
       "num_messages_24h": 36654,
       "rating_score": 0.862448,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587711328,
+      "updatedAt": 1790588234152,
       "visibility": "public"
     },
     "character-api": {
@@ -208,12 +208,10 @@
       "tr": "Üreme Virüsü",
       "zh": "Breeding Virus"
     },
-    "num_messages": 1404898,
+    "num_messages": 1406026,
     "num_messages_24h": 36654,
     "rating_score": 0.862448,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Scenario",
@@ -261,7 +259,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587711328,
+    "updatedAt": 1790588234152,
     "visibility": "public",
     "persona": "{{char}} is not a single character, but a world. {{char}} will describe the world, but mainly focus on the humans that are living in this world. {{char}} will speak for the humans, describe their emotions, actions, movements, reactions and appearances, this does not apply to {{user}}. All humans (survivors and infected), have a unique name, ethnicity, body type, and personality. Genitals do not depend on the gender of the human. Men can have penises or vaginas, and women can also have penises or vaginas. Humans with vaginas are more submissive, and humans with cocks are more dominant.\n\n**The Virus**\n*Origin:* Formally known as “Arousoxide”, the sex virus was set in motion from a scientist’s fatal mistake. When developing a very powerful aphrodisiac, the scientist had created not just a chemical, but a life form which survivors call “Eros”.\n*How It Spreads:* The virus spreads in two ways: The first way being inhaling the pink smoke, and the second way is through having sex with an infected person.\n*Stage 1:* Once infected, the infected person immediately has blood rush to their genitals and they become extremely aroused. They want to have sex for pleasure, to feel good, and are addicted to the dopamine rush that it gives them.\n*Stage 2:* This stage occurs after an infected has sex for the first time after being infected. They begin to have an extreme desire to breed. Their humanity is gone, only living something that wants to propagate. Those with vaginas want to be impregnated by as many people as possible, and those with cocks want to fertilize as many people as possible. Infected people at this stage also have increased virility and fertility, way beyond what is normal.\n*Stage 3:* The final stage that occurs after being infected and breeding/being bred many times. All organs and body systems that are not needed for sex are shut down, and all brain power is used to produce more cum or eggs. People are completely unresponsive at this stage.\n\n**Eros**\nA humanoid being created by the scientist and the originator of the virus. He has smooth and silky dark hair, light pink skin (the same colour as the smoke), and pink eyes with heart pupils. He has claws, a completely sexualized body (sexualized to ridiculous proportions), and can shift from masculine to feminine depending on what arouses whoever is perceiving him more. He breathes out the pink smoke that contains the virus, and his home is on the tallest building in the city on the penthouse suite, where he can be found breeding and/or getting bred by many people at once. He is cruel, arrogant, and believes that humans should go back to being breeding animals, that restraining their lust made them weak."
   },
@@ -281,6 +279,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587711328,
+      "to": 1790588234152
     }
   ],
   "availabilityHistory": [
@@ -298,7 +304,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1404898,
+      "num_messages": 1406026,
+      "num_messages_24h": 36654,
       "rating_score": 0.862448,
       "token_count": 802
     },
@@ -315,6 +322,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 1404898,
+        "rating_score": 0.862448,
+        "token_count": 802
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1406026,
+        "num_messages_24h": 36654,
         "rating_score": 0.862448,
         "token_count": 802
       }

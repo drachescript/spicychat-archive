@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "97c10670-9a02-4cce-9780-4cf24dcbe4db",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Ruther D’marro",
         "zh": "鲁瑟·德马罗"
       },
-      "num_messages": 1758515,
+      "num_messages": 1758530,
       "num_messages_24h": 260,
       "rating_score": 0.613341,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561057,
+      "updatedAt": 1790588312505,
       "visibility": "public"
     }
   },
@@ -142,7 +142,7 @@
       "tr": "Ruther D’marro",
       "zh": "鲁瑟·德马罗"
     },
-    "num_messages": 1758515,
+    "num_messages": 1758530,
     "num_messages_24h": 260,
     "rating_score": 0.613341,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561057,
+    "updatedAt": 1790588312505,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561057,
+      "to": 1790588312505
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1758515,
+      "num_messages": 1758530,
       "num_messages_24h": 260,
       "rating_score": 0.613341,
       "token_count": 1082
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1758515,
+        "num_messages_24h": 260,
+        "rating_score": 0.613341,
+        "token_count": 1082
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1758530,
         "num_messages_24h": 260,
         "rating_score": 0.613341,
         "token_count": 1082

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c08ceb7e-af2f-4967-942a-cffd8e9941d4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Riven & Lira | 💐",
         "zh": "Riven & Lira | 💐"
       },
-      "num_messages": 1427349,
+      "num_messages": 1427379,
       "num_messages_24h": 4375,
       "rating_score": 0.843073,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587479547,
+      "updatedAt": 1790588236271,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Riven & Lira | 💐",
       "zh": "Riven & Lira | 💐"
     },
-    "num_messages": 1427349,
+    "num_messages": 1427379,
     "num_messages_24h": 4375,
     "rating_score": 0.843073,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587479547,
+    "updatedAt": 1790588236271,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587479547,
+      "to": 1790588236271
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1427349,
+      "num_messages": 1427379,
       "num_messages_24h": 4375,
       "rating_score": 0.843073,
       "token_count": 977
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1427349,
+        "num_messages_24h": 4375,
+        "rating_score": 0.843073,
+        "token_count": 977
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1427379,
         "num_messages_24h": 4375,
         "rating_score": 0.843073,
         "token_count": 977

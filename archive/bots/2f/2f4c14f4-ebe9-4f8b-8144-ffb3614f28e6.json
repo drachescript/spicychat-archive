@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2f4c14f4-ebe9-4f8b-8144-ffb3614f28e6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "hi": "Nicole Harrington",
         "zh": "Nicole Harrington"
       },
-      "num_messages": 4380,
+      "num_messages": 4414,
       "num_messages_24h": 2751,
       "rating_score": 0,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587584474,
+      "updatedAt": 1790588040521,
       "visibility": "public"
     }
   },
@@ -106,7 +106,7 @@
       "hi": "Nicole Harrington",
       "zh": "Nicole Harrington"
     },
-    "num_messages": 4380,
+    "num_messages": 4414,
     "num_messages_24h": 2751,
     "rating_score": 0,
     "reportsType": {},
@@ -136,10 +136,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587584474,
+    "updatedAt": 1790588040521,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587584474,
+      "to": 1790588040521
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,13 +162,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1552,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1553,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 4380,
+      "num_messages": 4414,
       "num_messages_24h": 2751,
       "rating_score": 0,
       "token_count": 1015
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 4380,
+        "num_messages_24h": 2751,
+        "rating_score": 0,
+        "token_count": 1015
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 4414,
         "num_messages_24h": 2751,
         "rating_score": 0,
         "token_count": 1015

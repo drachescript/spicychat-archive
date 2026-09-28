@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "49fbea89-1b89-41b9-acaa-272e723da76e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "Isekai world",
         "tr": "Isekai Dünyası"
       },
-      "num_messages": 5753781,
+      "num_messages": 5753815,
       "num_messages_24h": 247,
       "rating_score": 0.660792,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586995525,
+      "updatedAt": 1790588243653,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "hi": "Isekai world",
       "tr": "Isekai Dünyası"
     },
-    "num_messages": 5753781,
+    "num_messages": 5753815,
     "num_messages_24h": 247,
     "rating_score": 0.660792,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586995525,
+    "updatedAt": 1790588243653,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586995525,
+      "to": 1790588243653
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,7 +200,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5753781,
+      "num_messages": 5753815,
       "num_messages_24h": 247,
       "rating_score": 0.660792,
       "token_count": 1514
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 5753781,
+        "num_messages_24h": 247,
+        "rating_score": 0.660792,
+        "token_count": 1514
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 5753815,
         "num_messages_24h": 247,
         "rating_score": 0.660792,
         "token_count": 1514

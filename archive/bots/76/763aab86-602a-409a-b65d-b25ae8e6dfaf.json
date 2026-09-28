@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "763aab86-602a-409a-b65d-b25ae8e6dfaf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Natalie Perez",
         "zh": "娜塔莉·佩雷斯"
       },
-      "num_messages": 1724803,
+      "num_messages": 1724812,
       "num_messages_24h": 10,
       "rating_score": 0.733333,
       "tags": [
@@ -94,7 +94,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587136584,
+      "updatedAt": 1790588382106,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "tr": "Natalie Perez",
       "zh": "娜塔莉·佩雷斯"
     },
-    "num_messages": 1724803,
+    "num_messages": 1724812,
     "num_messages_24h": 10,
     "rating_score": 0.733333,
     "tags": [
@@ -176,10 +176,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587136584,
+    "updatedAt": 1790588382106,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587136584,
+      "to": 1790588382106
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1724803,
+      "num_messages": 1724812,
       "num_messages_24h": 10,
       "rating_score": 0.733333,
       "token_count": 453
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1724803,
+        "num_messages_24h": 10,
+        "rating_score": 0.733333,
+        "token_count": 453
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1724812,
         "num_messages_24h": 10,
         "rating_score": 0.733333,
         "token_count": 453

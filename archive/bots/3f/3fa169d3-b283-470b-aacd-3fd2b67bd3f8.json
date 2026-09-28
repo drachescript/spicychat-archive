@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3fa169d3-b283-470b-aacd-3fd2b67bd3f8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "Victoria",
         "zh": "Victoria"
       },
-      "num_messages": 150508,
+      "num_messages": 150540,
       "num_messages_24h": 2342,
       "rating_score": 0.210526,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587584574,
+      "updatedAt": 1790588362151,
       "visibility": "public"
     }
   },
@@ -148,7 +148,7 @@
       "tr": "Victoria",
       "zh": "Victoria"
     },
-    "num_messages": 150508,
+    "num_messages": 150540,
     "num_messages_24h": 2342,
     "rating_score": 0.210526,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587584574,
+    "updatedAt": 1790588362151,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587584574,
+      "to": 1790588362151
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,13 +216,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2416,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2417,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 150508,
+      "num_messages": 150540,
       "num_messages_24h": 2342,
       "rating_score": 0.210526,
       "token_count": 1051
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 150508,
+        "num_messages_24h": 2342,
+        "rating_score": 0.210526,
+        "token_count": 1051
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 150540,
         "num_messages_24h": 2342,
         "rating_score": 0.210526,
         "token_count": 1051

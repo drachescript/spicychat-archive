@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "41d33438-a6a8-4282-b4c1-a97138e47fd1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Emma (Bully Girl)",
         "zh": "艾玛（恶霸女孩）"
       },
-      "num_messages": 30109,
+      "num_messages": 30140,
       "num_messages_24h": 3946,
       "rating_score": 0,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586944273,
+      "updatedAt": 1790587927334,
       "visibility": "public"
     }
   },
@@ -128,7 +128,7 @@
       "tr": "Emma (Bully Girl)",
       "zh": "艾玛（恶霸女孩）"
     },
-    "num_messages": 30109,
+    "num_messages": 30140,
     "num_messages_24h": 3946,
     "rating_score": 0,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586944273,
+    "updatedAt": 1790587927334,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586944273,
+      "to": 1790587927334
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 30109,
+      "num_messages": 30140,
       "num_messages_24h": 3946,
       "rating_score": 0,
       "token_count": 388
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 30109,
+        "num_messages_24h": 3946,
+        "rating_score": 0,
+        "token_count": 388
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 30140,
         "num_messages_24h": 3946,
         "rating_score": 0,
         "token_count": 388

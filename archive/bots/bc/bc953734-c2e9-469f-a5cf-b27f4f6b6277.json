@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bc953734-c2e9-469f-a5cf-b27f4f6b6277",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Mackenzie Hale",
         "tr": "Mackenzie Hale"
       },
-      "num_messages": 75170,
+      "num_messages": 75279,
       "num_messages_24h": 5516,
       "rating_score": 0.892086,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587663953,
+      "updatedAt": 1790588040541,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "ru": "Mackenzie Hale",
       "tr": "Mackenzie Hale"
     },
-    "num_messages": 75170,
+    "num_messages": 75279,
     "num_messages_24h": 5516,
     "rating_score": 0.892086,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587663953,
+    "updatedAt": 1790588040541,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587663953,
+      "to": 1790588040541
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -203,7 +212,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 75170,
+      "num_messages": 75279,
       "num_messages_24h": 5516,
       "rating_score": 0.892086,
       "token_count": 995
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 75170,
+        "num_messages_24h": 5516,
+        "rating_score": 0.892086,
+        "token_count": 995
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 75279,
         "num_messages_24h": 5516,
         "rating_score": 0.892086,
         "token_count": 995

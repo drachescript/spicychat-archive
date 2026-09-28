@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bf81c9a6-a35f-4010-9332-616e65b40f80",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "S.L.A.V.E. Gym Crush",
         "zh": "S.L.A.V.E. Gym Crush"
       },
-      "num_messages": 46426,
+      "num_messages": 46463,
       "num_messages_24h": 4895,
       "rating_score": 0.628205,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587559816,
+      "updatedAt": 1790588113523,
       "visibility": "public",
       "voice_id": "4f6ac4c2-063c-414c-b720-0d6ffba5e124"
     }
@@ -136,7 +136,7 @@
       "tr": "S.L.A.V.E. Gym Crush",
       "zh": "S.L.A.V.E. Gym Crush"
     },
-    "num_messages": 46426,
+    "num_messages": 46463,
     "num_messages_24h": 4895,
     "rating_score": 0.628205,
     "reportsType": {},
@@ -181,11 +181,20 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587559816,
+    "updatedAt": 1790588113523,
     "visibility": "public",
     "voice_id": "4f6ac4c2-063c-414c-b720-0d6ffba5e124"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587559816,
+      "to": 1790588113523
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -201,7 +210,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 46426,
+      "num_messages": 46463,
       "num_messages_24h": 4895,
       "rating_score": 0.628205,
       "token_count": 1844
@@ -211,6 +220,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 46426,
+        "num_messages_24h": 4895,
+        "rating_score": 0.628205,
+        "token_count": 1844
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 46463,
         "num_messages_24h": 4895,
         "rating_score": 0.628205,
         "token_count": 1844

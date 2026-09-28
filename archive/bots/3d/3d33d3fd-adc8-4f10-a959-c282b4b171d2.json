@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3d33d3fd-adc8-4f10-a959-c282b4b171d2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "tr": "Omega Prensi",
         "zh": "欧米茄王子"
       },
-      "num_messages": 3727543,
+      "num_messages": 3727546,
       "num_messages_24h": 493,
       "rating_score": 0.867075,
       "tags": [
@@ -94,7 +94,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587714150,
+      "updatedAt": 1790587764094,
       "visibility": "public"
     }
   },
@@ -130,7 +130,7 @@
       "tr": "Omega Prensi",
       "zh": "欧米茄王子"
     },
-    "num_messages": 3727543,
+    "num_messages": 3727546,
     "num_messages_24h": 493,
     "rating_score": 0.867075,
     "tags": [
@@ -176,10 +176,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587714150,
+    "updatedAt": 1790587764094,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587714150,
+      "to": 1790587764094
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3727543,
+      "num_messages": 3727546,
       "num_messages_24h": 493,
       "rating_score": 0.867075,
       "token_count": 1239
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3727543,
+        "num_messages_24h": 493,
+        "rating_score": 0.867075,
+        "token_count": 1239
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3727546,
         "num_messages_24h": 493,
         "rating_score": 0.867075,
         "token_count": 1239

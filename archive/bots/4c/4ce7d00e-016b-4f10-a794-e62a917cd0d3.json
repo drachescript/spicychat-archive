@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4ce7d00e-016b-4f10-a794-e62a917cd0d3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Sloane Archer",
         "zh": "Sloane Archer"
       },
-      "num_messages": 39511,
+      "num_messages": 39532,
       "num_messages_24h": 2320,
       "rating_score": 0,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585942955,
+      "updatedAt": 1790588363145,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "tr": "Sloane Archer",
       "zh": "Sloane Archer"
     },
-    "num_messages": 39511,
+    "num_messages": 39532,
     "num_messages_24h": 2320,
     "rating_score": 0,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585942955,
+    "updatedAt": 1790588363145,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585942955,
+      "to": 1790588363145
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,13 +196,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2436,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2437,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 39511,
+      "num_messages": 39532,
       "num_messages_24h": 2320,
       "rating_score": 0,
       "token_count": 1258
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 39511,
+        "num_messages_24h": 2320,
+        "rating_score": 0,
+        "token_count": 1258
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 39532,
         "num_messages_24h": 2320,
         "rating_score": 0,
         "token_count": 1258

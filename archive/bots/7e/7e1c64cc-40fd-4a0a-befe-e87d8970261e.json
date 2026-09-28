@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7e1c64cc-40fd-4a0a-befe-e87d8970261e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Yue Yao",
-      "num_messages": 140,
+      "num_messages": 147,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "The Empress of the Immortal Realm's Divine Court",
       "token_count": 1465,
       "type": "STANDARD",
-      "updatedAt": 1790587020356,
+      "updatedAt": 1790588005073,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Yue Yao",
-    "num_messages": 140,
+    "num_messages": 147,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "The Empress of the Immortal Realm's Divine Court",
     "token_count": 1465,
     "type": "STANDARD",
-    "updatedAt": 1790587020356,
+    "updatedAt": 1790588005073,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587020356,
+      "to": 1790588005073
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -115,7 +124,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 140,
+      "num_messages": 147,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1465
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 140,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1465
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 147,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1465

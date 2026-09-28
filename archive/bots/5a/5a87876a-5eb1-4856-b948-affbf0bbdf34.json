@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5a87876a-5eb1-4856-b948-affbf0bbdf34",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -51,7 +51,7 @@
         "ru": "Сестра Серафина",
         "tr": "Rahibe Seraphine"
       },
-      "num_messages": 37632,
+      "num_messages": 37843,
       "num_messages_24h": 12411,
       "rating_score": 0,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587298479,
+      "updatedAt": 1790588361092,
       "visibility": "public"
     },
     "character-api": {
@@ -149,7 +149,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/38906921-7992-471e-98f7-99feeacd6ec3.jpg?class=avatar256x256",
     "character_id": "5a87876a-5eb1-4856-b948-affbf0bbdf34",
-    "createdAt": "2026-09-22T12:31:00.526Z",
+    "createdAt": 1790080260526,
     "creator_user_id": "kp:e0f0fe787b404362a734e82eb6d58d1a",
     "creator_username": "eigwuajabrusiai",
     "definition_size_category": "high",
@@ -173,12 +173,10 @@
       "ru": "Сестра Серафина",
       "tr": "Rahibe Seraphine"
     },
-    "num_messages": 37660,
+    "num_messages": 37843,
     "num_messages_24h": 12411,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Fantasy",
       "Action",
@@ -212,7 +210,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:30:16.613Z",
+    "updatedAt": 1790588361092,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -240,6 +238,22 @@
       "kind": "value",
       "from": 1790587298479,
       "to": "2026-09-28T09:30:16.613Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-22T12:31:00.526Z",
+      "to": 1790080260526
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:30:16.613Z",
+      "to": 1790588361092
     }
   ],
   "availabilityHistory": [
@@ -257,7 +271,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 37660,
+      "num_messages": 37843,
+      "num_messages_24h": 12411,
       "rating_score": 0,
       "token_count": 1278
     },
@@ -276,8 +291,23 @@
         "num_messages": 37660,
         "rating_score": 0,
         "token_count": 1278
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 37843,
+        "num_messages_24h": 12411,
+        "rating_score": 0,
+        "token_count": 1278
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/38906921-7992-471e-98f7-99feeacd6ec3.jpg?class=avatar256x256",
+    "sha256": "b85740ced5bdb93fdd5d5f24e63b4d022db1fc983b59ccf03ec7d65d02eb6aae",
+    "contentType": "image/jpeg",
+    "bytes": 39145,
+    "path": "archive/media/b8/b85740ced5bdb93fdd5d5f24e63b4d022db1fc983b59ccf03ec7d65d02eb6aae.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

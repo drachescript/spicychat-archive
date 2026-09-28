@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "eef07dd4-2d77-4158-bc67-b70891fcbf01",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "2Weeks Naked School",
         "zh": "2Weeks Naked School"
       },
-      "num_messages": 744021,
+      "num_messages": 745154,
       "num_messages_24h": 36069,
       "rating_score": 0.819629,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587582811,
+      "updatedAt": 1790588280941,
       "visibility": "public"
     },
     "character-api": {
@@ -170,7 +170,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/3943ae06-ceb1-40d5-aee7-e6a579fabaa5.webp?class=avatar256x256",
     "character_id": "eef07dd4-2d77-4158-bc67-b70891fcbf01",
-    "createdAt": "2026-09-13T09:19:10.222Z",
+    "createdAt": 1789291150222,
     "creator_user_id": "kp:3c7f56d97e2e43269398dda6373b674f",
     "creator_username": "phild14",
     "definition_size_category": "low",
@@ -199,13 +199,10 @@
       "tr": "2Weeks Naked School",
       "zh": "2Weeks Naked School"
     },
-    "num_messages": 744021,
+    "num_messages": 745154,
     "num_messages_24h": 36069,
     "rating_score": 0.819629,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Male",
@@ -249,7 +246,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:26:22.811Z",
+    "updatedAt": 1790588280941,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -278,6 +275,22 @@
       "kind": "value",
       "from": 1790587582811,
       "to": "2026-09-28T09:26:22.811Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-13T09:19:10.222Z",
+      "to": 1789291150222
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:26:22.811Z",
+      "to": 1790588280941
     }
   ],
   "availabilityHistory": [
@@ -295,7 +308,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 744021,
+      "num_messages": 745154,
+      "num_messages_24h": 36069,
       "rating_score": 0.819629,
       "token_count": 665
     },
@@ -312,6 +326,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 744021,
+        "rating_score": 0.819629,
+        "token_count": 665
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 745154,
+        "num_messages_24h": 36069,
         "rating_score": 0.819629,
         "token_count": 665
       }

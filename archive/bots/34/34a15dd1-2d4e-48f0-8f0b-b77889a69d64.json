@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "34a15dd1-2d4e-48f0-8f0b-b77889a69d64",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Amelia Hart",
         "zh": "艾米莉亚·哈特"
       },
-      "num_messages": 221556,
+      "num_messages": 221573,
       "num_messages_24h": 2317,
       "rating_score": 0.863128,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586607429,
+      "updatedAt": 1790588234053,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Amelia Hart",
       "zh": "艾米莉亚·哈特"
     },
-    "num_messages": 221556,
+    "num_messages": 221573,
     "num_messages_24h": 2317,
     "rating_score": 0.863128,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586607429,
+    "updatedAt": 1790588234053,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586607429,
+      "to": 1790588234053
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,13 +206,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2441,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2442,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 221556,
+      "num_messages": 221573,
       "num_messages_24h": 2317,
       "rating_score": 0.863128,
       "token_count": 1461
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 221556,
+        "num_messages_24h": 2317,
+        "rating_score": 0.863128,
+        "token_count": 1461
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 221573,
         "num_messages_24h": 2317,
         "rating_score": 0.863128,
         "token_count": 1461

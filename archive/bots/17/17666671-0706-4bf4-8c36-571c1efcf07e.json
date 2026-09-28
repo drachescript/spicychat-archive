@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "17666671-0706-4bf4-8c36-571c1efcf07e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Da Hood School",
         "ru": "Da Hood School"
       },
-      "num_messages": 215229,
+      "num_messages": 215266,
       "num_messages_24h": 2530,
       "rating_score": 0.616667,
       "reportsType": {},
@@ -76,7 +76,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586359254,
+      "updatedAt": 1790588501535,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
       "pl": "Da Hood School",
       "ru": "Da Hood School"
     },
-    "num_messages": 215229,
+    "num_messages": 215266,
     "num_messages_24h": 2530,
     "rating_score": 0.616667,
     "reportsType": {},
@@ -140,10 +140,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586359254,
+    "updatedAt": 1790588501535,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586359254,
+      "to": 1790588501535
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,13 +162,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2192,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2193,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 215229,
+      "num_messages": 215266,
       "num_messages_24h": 2530,
       "rating_score": 0.616667,
       "token_count": 407
@@ -169,6 +178,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 215229,
+        "num_messages_24h": 2530,
+        "rating_score": 0.616667,
+        "token_count": 407
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 215266,
         "num_messages_24h": 2530,
         "rating_score": 0.616667,
         "token_count": 407

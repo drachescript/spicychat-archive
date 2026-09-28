@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "18d41613-4e8b-49c0-982d-340e0892afc6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "Faith - Wife",
         "ru": "Faith - Wife"
       },
-      "num_messages": 4404,
+      "num_messages": 4425,
       "num_messages_24h": 3242,
       "rating_score": 0,
       "reportsType": {},
@@ -69,7 +69,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586522833,
+      "updatedAt": 1790588311893,
       "visibility": "public",
       "voice_id": "5ced5dab-dd51-4a3c-96ad-3931dd8ceaef"
     }
@@ -100,7 +100,7 @@
       "fr": "Faith - Wife",
       "ru": "Faith - Wife"
     },
-    "num_messages": 4404,
+    "num_messages": 4425,
     "num_messages_24h": 3242,
     "rating_score": 0,
     "reportsType": {},
@@ -127,11 +127,20 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586522833,
+    "updatedAt": 1790588311893,
     "visibility": "public",
     "voice_id": "5ced5dab-dd51-4a3c-96ad-3931dd8ceaef"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586522833,
+      "to": 1790588311893
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -145,13 +154,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1625,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1626,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 4404,
+      "num_messages": 4425,
       "num_messages_24h": 3242,
       "rating_score": 0,
       "token_count": 1188
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 4404,
+        "num_messages_24h": 3242,
+        "rating_score": 0,
+        "token_count": 1188
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 4425,
         "num_messages_24h": 3242,
         "rating_score": 0,
         "token_count": 1188

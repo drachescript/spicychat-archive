@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "daf44915-4503-42de-8709-9cfda38c33b3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ko": "Azur Lane NTR world",
         "tr": "Azur Lane NTR world"
       },
-      "num_messages": 1700391,
+      "num_messages": 1700479,
       "num_messages_24h": 693,
       "rating_score": 0.232972,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587382790,
+      "updatedAt": 1790588206953,
       "visibility": "public"
     }
   },
@@ -128,7 +128,7 @@
       "ko": "Azur Lane NTR world",
       "tr": "Azur Lane NTR world"
     },
-    "num_messages": 1700391,
+    "num_messages": 1700479,
     "num_messages_24h": 693,
     "rating_score": 0.232972,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587382790,
+    "updatedAt": 1790588206953,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587382790,
+      "to": 1790588206953
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1700391,
+      "num_messages": 1700479,
       "num_messages_24h": 693,
       "rating_score": 0.232972,
       "token_count": 520
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1700391,
+        "num_messages_24h": 693,
+        "rating_score": 0.232972,
+        "token_count": 520
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1700479,
         "num_messages_24h": 693,
         "rating_score": 0.232972,
         "token_count": 520

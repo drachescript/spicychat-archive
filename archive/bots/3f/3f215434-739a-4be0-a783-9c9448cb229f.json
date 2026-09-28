@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3f215434-739a-4be0-a783-9c9448cb229f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Мир Наруто",
         "zh": "火影世界"
       },
-      "num_messages": 148162,
+      "num_messages": 148295,
       "num_messages_24h": 2402,
       "rating_score": 0.914063,
       "reportsType": {},
@@ -88,7 +88,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586604169,
+      "updatedAt": 1790588531154,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "ru": "Мир Наруто",
       "zh": "火影世界"
     },
-    "num_messages": 148162,
+    "num_messages": 148295,
     "num_messages_24h": 2402,
     "rating_score": 0.914063,
     "reportsType": {},
@@ -164,10 +164,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586604169,
+    "updatedAt": 1790588531154,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586604169,
+      "to": 1790588531154
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,13 +186,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2332,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2333,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 148162,
+      "num_messages": 148295,
       "num_messages_24h": 2402,
       "rating_score": 0.914063,
       "token_count": 690
@@ -193,6 +202,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 148162,
+        "num_messages_24h": 2402,
+        "rating_score": 0.914063,
+        "token_count": 690
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 148295,
         "num_messages_24h": 2402,
         "rating_score": 0.914063,
         "token_count": 690

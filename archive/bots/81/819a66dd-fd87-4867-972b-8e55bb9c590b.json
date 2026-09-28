@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "819a66dd-fd87-4867-972b-8e55bb9c590b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
       ],
       "moderation_status": "pending",
       "name": "Belle Zahar",
-      "num_messages": 599,
+      "num_messages": 638,
       "num_messages_24h": 462,
       "rating_score": 0,
       "reportsType": {},
@@ -60,7 +60,7 @@
       "title": "A 19-year-old otaku maid who is somewhat lazy. (contains exclusive images in her greeting)",
       "token_count": 1118,
       "type": "STANDARD",
-      "updatedAt": 1790574783783,
+      "updatedAt": 1790587813316,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
     ],
     "moderation_status": "pending",
     "name": "Belle Zahar",
-    "num_messages": 599,
+    "num_messages": 638,
     "num_messages_24h": 462,
     "rating_score": 0,
     "reportsType": {},
@@ -110,10 +110,19 @@
     "title": "A 19-year-old otaku maid who is somewhat lazy. (contains exclusive images in her greeting)",
     "token_count": 1118,
     "type": "STANDARD",
-    "updatedAt": 1790574783783,
+    "updatedAt": 1790587813316,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574783783,
+      "to": 1790587813316
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -123,13 +132,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2091,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2093,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 599,
+      "num_messages": 638,
       "num_messages_24h": 462,
       "rating_score": 0,
       "token_count": 1118
@@ -139,6 +148,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 599,
+        "num_messages_24h": 462,
+        "rating_score": 0,
+        "token_count": 1118
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 638,
         "num_messages_24h": 462,
         "rating_score": 0,
         "token_count": 1118

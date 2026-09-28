@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b27d38e1-2d4d-4603-b370-0c486d2e549a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "Android corruption"
       },
-      "num_messages": 263,
+      "num_messages": 311,
       "num_messages_24h": 202,
       "rating_score": 0,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587084915,
+      "updatedAt": 1790588368223,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
     "name_i18n": {
       "zh": "Android corruption"
     },
-    "num_messages": 263,
+    "num_messages": 311,
     "num_messages_24h": 202,
     "rating_score": 0,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587084915,
+    "updatedAt": 1790588368223,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587084915,
+      "to": 1790588368223
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,7 +150,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 263,
+      "num_messages": 311,
       "num_messages_24h": 202,
       "rating_score": 0,
       "token_count": 711
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 263,
+        "num_messages_24h": 202,
+        "rating_score": 0,
+        "token_count": 711
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 311,
         "num_messages_24h": 202,
         "rating_score": 0,
         "token_count": 711

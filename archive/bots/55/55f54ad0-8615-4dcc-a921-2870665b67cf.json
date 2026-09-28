@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "55f54ad0-8615-4dcc-a921-2870665b67cf",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "Hot party boys",
         "pl": "Gorący chłopcy z imprezy"
       },
-      "num_messages": 1945570,
+      "num_messages": 1945609,
       "num_messages_24h": 122,
       "rating_score": 0.756786,
       "reportsType": {},
@@ -73,7 +73,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587639494,
+      "updatedAt": 1790588500822,
       "visibility": "public"
     }
   },
@@ -102,7 +102,7 @@
       "hi": "Hot party boys",
       "pl": "Gorący chłopcy z imprezy"
     },
-    "num_messages": 1945570,
+    "num_messages": 1945609,
     "num_messages_24h": 122,
     "rating_score": 0.756786,
     "reportsType": {},
@@ -134,10 +134,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587639494,
+    "updatedAt": 1790588500822,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587639494,
+      "to": 1790588500822
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -153,7 +162,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1945570,
+      "num_messages": 1945609,
       "num_messages_24h": 122,
       "rating_score": 0.756786,
       "token_count": 371
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1945570,
+        "num_messages_24h": 122,
+        "rating_score": 0.756786,
+        "token_count": 371
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1945609,
         "num_messages_24h": 122,
         "rating_score": 0.756786,
         "token_count": 371

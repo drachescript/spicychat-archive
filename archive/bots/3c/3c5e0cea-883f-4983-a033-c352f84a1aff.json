@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3c5e0cea-883f-4983-a033-c352f84a1aff",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Hayashi Kaito",
         "tr": "Hayashi Kaito"
       },
-      "num_messages": 61950,
+      "num_messages": 62079,
       "num_messages_24h": 3761,
       "tags": [
         "Anal",
@@ -77,7 +77,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587399347,
+      "updatedAt": 1790588452026,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "ru": "Hayashi Kaito",
       "tr": "Hayashi Kaito"
     },
-    "num_messages": 61950,
+    "num_messages": 62079,
     "num_messages_24h": 3761,
     "tags": [
       "Anal",
@@ -142,10 +142,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587399347,
+    "updatedAt": 1790588452026,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587399347,
+      "to": 1790588452026
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,7 +170,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 61950,
+      "num_messages": 62079,
       "num_messages_24h": 3761,
       "token_count": 648
     },
@@ -170,6 +179,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 61950,
+        "num_messages_24h": 3761,
+        "token_count": 648
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 62079,
         "num_messages_24h": 3761,
         "token_count": 648
       }

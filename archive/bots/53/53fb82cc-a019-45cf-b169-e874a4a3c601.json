@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "53fb82cc-a019-45cf-b169-e874a4a3c601",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pl": "Tali",
         "ru": "Tali"
       },
-      "num_messages": 40807,
+      "num_messages": 40829,
       "num_messages_24h": 3585,
       "reportsType": {},
       "tags": [
@@ -84,7 +84,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195208,
+      "updatedAt": 1790587711202,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "pl": "Tali",
       "ru": "Tali"
     },
-    "num_messages": 40807,
+    "num_messages": 40829,
     "num_messages_24h": 3585,
     "reportsType": {},
     "tags": [
@@ -156,10 +156,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195208,
+    "updatedAt": 1790587711202,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195208,
+      "to": 1790587711202
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 40807,
+      "num_messages": 40829,
       "num_messages_24h": 3585,
       "token_count": 863
     },
@@ -184,6 +193,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 40807,
+        "num_messages_24h": 3585,
+        "token_count": 863
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 40829,
         "num_messages_24h": 3585,
         "token_count": 863
       }

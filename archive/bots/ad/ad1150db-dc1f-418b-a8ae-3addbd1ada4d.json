@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ad1150db-dc1f-418b-a8ae-3addbd1ada4d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "Annoyingly Hot bully"
       },
-      "num_messages": 2319,
+      "num_messages": 2365,
       "num_messages_24h": 754,
       "rating_score": 0,
       "reportsType": {},
@@ -65,7 +65,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586901378,
+      "updatedAt": 1790588209695,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
     "name_i18n": {
       "zh": "Annoyingly Hot bully"
     },
-    "num_messages": 2319,
+    "num_messages": 2365,
     "num_messages_24h": 754,
     "rating_score": 0,
     "reportsType": {},
@@ -118,10 +118,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586901378,
+    "updatedAt": 1790588209695,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586901378,
+      "to": 1790588209695
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +140,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1901,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1902,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2319,
+      "num_messages": 2365,
       "num_messages_24h": 754,
       "rating_score": 0,
       "token_count": 273
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 2319,
+        "num_messages_24h": 754,
+        "rating_score": 0,
+        "token_count": 273
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2365,
         "num_messages_24h": 754,
         "rating_score": 0,
         "token_count": 273

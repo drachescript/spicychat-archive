@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fdd96df5-fe2f-4942-964b-983854be2126",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Атлас Стюарт",
         "tr": "Atlas Stewart"
       },
-      "num_messages": 53994,
+      "num_messages": 54008,
       "num_messages_24h": 4045,
       "reportsType": {},
       "tags": [
@@ -89,7 +89,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586942890,
+      "updatedAt": 1790588130809,
       "visibility": "public"
     }
   },
@@ -124,7 +124,7 @@
       "ru": "Атлас Стюарт",
       "tr": "Atlas Stewart"
     },
-    "num_messages": 53994,
+    "num_messages": 54008,
     "num_messages_24h": 4045,
     "reportsType": {},
     "tags": [
@@ -166,10 +166,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586942890,
+    "updatedAt": 1790588130809,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586942890,
+      "to": 1790588130809
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,7 +194,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 53994,
+      "num_messages": 54008,
       "num_messages_24h": 4045,
       "token_count": 543
     },
@@ -194,6 +203,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 53994,
+        "num_messages_24h": 4045,
+        "token_count": 543
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 54008,
         "num_messages_24h": 4045,
         "token_count": 543
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b70310af-cf65-4926-9c6d-88881f4c3e73",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "tr": "Niko",
         "zh": "Niko"
       },
-      "num_messages": 91726,
+      "num_messages": 91733,
       "num_messages_24h": 358,
       "rating_score": 1,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586785580,
+      "updatedAt": 1790588382707,
       "visibility": "public"
     }
   },
@@ -128,7 +128,7 @@
       "tr": "Niko",
       "zh": "Niko"
     },
-    "num_messages": 91726,
+    "num_messages": 91733,
     "num_messages_24h": 358,
     "rating_score": 1,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586785580,
+    "updatedAt": 1790588382707,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586785580,
+      "to": 1790588382707
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 91726,
+      "num_messages": 91733,
       "num_messages_24h": 358,
       "rating_score": 1,
       "token_count": 898
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 91726,
+        "num_messages_24h": 358,
+        "rating_score": 1,
+        "token_count": 898
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 91733,
         "num_messages_24h": 358,
         "rating_score": 1,
         "token_count": 898

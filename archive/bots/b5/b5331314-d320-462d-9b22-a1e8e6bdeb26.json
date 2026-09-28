@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b5331314-d320-462d-9b22-a1e8e6bdeb26",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Indy",
         "zh": "Indy"
       },
-      "num_messages": 604892,
+      "num_messages": 606509,
       "num_messages_24h": 28083,
       "rating_score": 0.836323,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587486618,
+      "updatedAt": 1790588451984,
       "visibility": "public"
     },
     "character-api": {
@@ -173,7 +173,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/872d7b14-f912-465a-9e7d-6756ab929caf.png?class=avatar256x256",
     "character_id": "b5331314-d320-462d-9b22-a1e8e6bdeb26",
-    "createdAt": "2026-09-20T11:56:37.704Z",
+    "createdAt": 1789905397704,
     "creator_user_id": "kp:30e0a460a1a947f5958237787ffa2ea9",
     "creator_username": "sanabe",
     "definition_size_category": "mid",
@@ -203,12 +203,10 @@
       "tr": "Indy",
       "zh": "Indy"
     },
-    "num_messages": 604892,
+    "num_messages": 606509,
     "num_messages_24h": 28083,
     "rating_score": 0.836323,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Tomboy",
@@ -253,7 +251,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:24:46.618Z",
+    "updatedAt": 1790588451984,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -281,6 +279,22 @@
       "kind": "value",
       "from": 1790587486618,
       "to": "2026-09-28T09:24:46.618Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-20T11:56:37.704Z",
+      "to": 1789905397704
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:24:46.618Z",
+      "to": 1790588451984
     }
   ],
   "availabilityHistory": [
@@ -298,7 +312,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 604892,
+      "num_messages": 606509,
+      "num_messages_24h": 28083,
       "rating_score": 0.836323,
       "token_count": 1053
     },
@@ -315,6 +330,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 604892,
+        "rating_score": 0.836323,
+        "token_count": 1053
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 606509,
+        "num_messages_24h": 28083,
         "rating_score": 0.836323,
         "token_count": 1053
       }

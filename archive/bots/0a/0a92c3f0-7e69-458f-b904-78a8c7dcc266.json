@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0a92c3f0-7e69-458f-b904-78a8c7dcc266",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Young Justice",
         "zh": "Young Justice"
       },
-      "num_messages": 306771,
+      "num_messages": 306807,
       "num_messages_24h": 2372,
       "rating_score": 0.801802,
       "reportsType": {},
@@ -82,7 +82,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587299331,
+      "updatedAt": 1790588279357,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "ru": "Young Justice",
       "zh": "Young Justice"
     },
-    "num_messages": 306771,
+    "num_messages": 306807,
     "num_messages_24h": 2372,
     "rating_score": 0.801802,
     "reportsType": {},
@@ -152,10 +152,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587299331,
+    "updatedAt": 1790588279357,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587299331,
+      "to": 1790588279357
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -165,13 +174,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2367,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2368,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 306771,
+      "num_messages": 306807,
       "num_messages_24h": 2372,
       "rating_score": 0.801802,
       "token_count": 450
@@ -181,6 +190,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 306771,
+        "num_messages_24h": 2372,
+        "rating_score": 0.801802,
+        "token_count": 450
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 306807,
         "num_messages_24h": 2372,
         "rating_score": 0.801802,
         "token_count": 450

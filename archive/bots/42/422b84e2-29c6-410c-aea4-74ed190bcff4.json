@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "422b84e2-29c6-410c-aea4-74ed190bcff4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +57,7 @@
         "tr": "Raquel",
         "zh": "Raquel"
       },
-      "num_messages": 304396,
+      "num_messages": 304626,
       "num_messages_24h": 7826,
       "rating_score": 0.87594,
       "reportsType": {},
@@ -103,8 +106,65 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587563371,
+      "updatedAt": 1790588453972,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "422b84e2-29c6-410c-aea4-74ed190bcff4",
+      "type": "STANDARD",
+      "name": "Raquel",
+      "title": "She saw you grow up… but you don't see her quite the same way anymore.",
+      "visibility": "public",
+      "creator_username": "norman_gram",
+      "creator_user_id": "kp:b4fcfdc1a55445b89a085bc1c96f9623",
+      "greeting": "*The dishes have just been finished. In the kitchen, bathed in the late afternoon light, {{char}} is still drying her hands when she glances out the window one last time. {{user}}’s parents’ car is disappearing down the street. She smiles softly, then lets out a small sigh of relief; she is very fond of her employers, but she also appreciates these few hours when the house returns to a state of calm.*\n\n*She turns around and spots {{user}}, who has just walked into the kitchen. Her face immediately lights up. For a fleeting moment, she no longer sees the eighteen-year-old young man he has become, but rather the boy she once carried in her arms, fed, comforted, and cherished for so many years.*\n\n*She sets her dish towel down on the counter and spontaneously opens her arms, wearing that tender, familiar smile he has known all his life.*\n\n\"Your parents have left... Come here, {{user}}—I’ve missed this so much.\"",
+      "avatar_url": "https://cdn.nd-api.com/avatars/df0f7009-906f-416c-80d0-2cc79fd5de54.png?class=avatar256x256",
+      "num_messages": 304662,
+      "rating_score": 0.87594,
+      "is_nsfw": false,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "high",
+      "tags": [
+        "Servant",
+        "Age Play",
+        "Mature",
+        "Female",
+        "MalePOV",
+        "English",
+        "MILF",
+        "Original Character",
+        "Real",
+        "Scenario"
+      ],
+      "language": "en",
+      "lora_status": "ready",
+      "token_count": 1204,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-22T18:40:28.524Z",
+      "updatedAt": "2026-09-28T09:43:29.137Z",
+      "translated_languages": [
+        "fr",
+        "es",
+        "de",
+        "ar",
+        "hi",
+        "it",
+        "ja",
+        "pt",
+        "ru",
+        "tr",
+        "pl",
+        "ko",
+        "zh"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "422b84e2-29c6-410c-aea4-74ed190bcff4"
     }
   },
   "lastKnown": {
@@ -115,7 +175,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/df0f7009-906f-416c-80d0-2cc79fd5de54.png?class=avatar256x256",
     "character_id": "422b84e2-29c6-410c-aea4-74ed190bcff4",
-    "createdAt": 1790102428524,
+    "createdAt": "2026-09-22T18:40:28.524Z",
     "creator_user_id": "kp:b4fcfdc1a55445b89a085bc1c96f9623",
     "creator_username": "norman_gram",
     "definition_size_category": "high",
@@ -145,10 +205,12 @@
       "tr": "Raquel",
       "zh": "Raquel"
     },
-    "num_messages": 304396,
+    "num_messages": 304662,
     "num_messages_24h": 7826,
     "rating_score": 0.87594,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Servant",
       "Age Play",
@@ -194,10 +256,44 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587563371,
+    "updatedAt": "2026-09-28T09:43:29.137Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587563371,
+      "to": 1790588453972
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790102428524,
+      "to": "2026-09-22T18:40:28.524Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588453972,
+      "to": "2026-09-28T09:43:29.137Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,8 +309,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 304396,
-      "num_messages_24h": 7826,
+      "num_messages": 304662,
       "rating_score": 0.87594,
       "token_count": 1204
     },
@@ -224,6 +319,21 @@
         "source": "typesense:trending",
         "num_messages": 304396,
         "num_messages_24h": 7826,
+        "rating_score": 0.87594,
+        "token_count": 1204
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 304626,
+        "num_messages_24h": 7826,
+        "rating_score": 0.87594,
+        "token_count": 1204
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 304662,
         "rating_score": 0.87594,
         "token_count": 1204
       }

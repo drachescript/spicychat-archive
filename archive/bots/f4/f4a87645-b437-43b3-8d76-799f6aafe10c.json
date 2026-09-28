@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f4a87645-b437-43b3-8d76-799f6aafe10c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "tr": "Keith Rothwell",
         "zh": "Keith Rothwell"
       },
-      "num_messages": 83561,
+      "num_messages": 83636,
       "num_messages_24h": 2613,
       "rating_score": 0,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585632220,
+      "updatedAt": 1790588110903,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "tr": "Keith Rothwell",
       "zh": "Keith Rothwell"
     },
-    "num_messages": 83561,
+    "num_messages": 83636,
     "num_messages_24h": 2613,
     "rating_score": 0,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585632220,
+    "updatedAt": 1790588110903,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585632220,
+      "to": 1790588110903
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,13 +182,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2116,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2117,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 83561,
+      "num_messages": 83636,
       "num_messages_24h": 2613,
       "rating_score": 0,
       "token_count": 485
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 83561,
+        "num_messages_24h": 2613,
+        "rating_score": 0,
+        "token_count": 485
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 83636,
         "num_messages_24h": 2613,
         "rating_score": 0,
         "token_count": 485

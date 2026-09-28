@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bcaeae50-0a9e-4b29-82fb-dc89b4604304",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Джейми",
         "tr": "Jamie"
       },
-      "num_messages": 101405,
+      "num_messages": 101465,
       "num_messages_24h": 2424,
       "rating_score": 0.904348,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587488045,
+      "updatedAt": 1790588361411,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "ru": "Джейми",
       "tr": "Jamie"
     },
-    "num_messages": 101405,
+    "num_messages": 101465,
     "num_messages_24h": 2424,
     "rating_score": 0.904348,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587488045,
+    "updatedAt": 1790588361411,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587488045,
+      "to": 1790588361411
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,13 +188,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2310,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2311,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 101405,
+      "num_messages": 101465,
       "num_messages_24h": 2424,
       "rating_score": 0.904348,
       "token_count": 1527
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 101405,
+        "num_messages_24h": 2424,
+        "rating_score": 0.904348,
+        "token_count": 1527
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 101465,
         "num_messages_24h": 2424,
         "rating_score": 0.904348,
         "token_count": 1527

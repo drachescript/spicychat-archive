@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a95b04d3-5407-4acb-9f45-9fe895af6cf4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ru": "Девушка-викинг",
         "zh": "维京女孩"
       },
-      "num_messages": 1557,
+      "num_messages": 1568,
       "num_messages_24h": 849,
       "rating_score": 0,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585047679,
+      "updatedAt": 1790587721660,
       "visibility": "public"
     }
   },
@@ -98,7 +98,7 @@
       "ru": "Девушка-викинг",
       "zh": "维京女孩"
     },
-    "num_messages": 1557,
+    "num_messages": 1568,
     "num_messages_24h": 849,
     "rating_score": 0,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585047679,
+    "updatedAt": 1790587721660,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585047679,
+      "to": 1790587721660
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,13 +146,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1775,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1776,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1557,
+      "num_messages": 1568,
       "num_messages_24h": 849,
       "rating_score": 0,
       "token_count": 384
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1557,
+        "num_messages_24h": 849,
+        "rating_score": 0,
+        "token_count": 384
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1568,
         "num_messages_24h": 849,
         "rating_score": 0,
         "token_count": 384

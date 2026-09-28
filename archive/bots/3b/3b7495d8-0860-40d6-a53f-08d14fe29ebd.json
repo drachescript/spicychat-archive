@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3b7495d8-0860-40d6-a53f-08d14fe29ebd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -36,7 +36,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Sumeru Boys",
-      "num_messages": 65644,
+      "num_messages": 65673,
       "num_messages_24h": 18,
       "rating_score": 1,
       "tags": [
@@ -47,7 +47,7 @@
       "title": "Roommate with Alhaitham, Kaveh, Cyno, and Tighnari",
       "token_count": 173,
       "type": "STANDARD",
-      "updatedAt": 1790587585544,
+      "updatedAt": 1790588532007,
       "visibility": "public"
     }
   },
@@ -71,7 +71,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Sumeru Boys",
-    "num_messages": 65644,
+    "num_messages": 65673,
     "num_messages_24h": 18,
     "rating_score": 1,
     "tags": [
@@ -82,10 +82,19 @@
     "title": "Roommate with Alhaitham, Kaveh, Cyno, and Tighnari",
     "token_count": 173,
     "type": "STANDARD",
-    "updatedAt": 1790587585544,
+    "updatedAt": 1790588532007,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587585544,
+      "to": 1790588532007
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -101,7 +110,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 65644,
+      "num_messages": 65673,
       "num_messages_24h": 18,
       "rating_score": 1,
       "token_count": 173
@@ -111,6 +120,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 65644,
+        "num_messages_24h": 18,
+        "rating_score": 1,
+        "token_count": 173
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 65673,
         "num_messages_24h": 18,
         "rating_score": 1,
         "token_count": 173

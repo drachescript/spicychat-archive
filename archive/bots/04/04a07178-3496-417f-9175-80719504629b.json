@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "04a07178-3496-417f-9175-80719504629b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Oni Kuro",
-      "num_messages": 483,
+      "num_messages": 496,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "A Thicc ass Succubus you meet in Japan",
       "token_count": 289,
       "type": "STANDARD",
-      "updatedAt": 1790587284083,
+      "updatedAt": 1790588529812,
       "visibility": "public"
     }
   },
@@ -77,7 +77,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Oni Kuro",
-    "num_messages": 483,
+    "num_messages": 496,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "A Thicc ass Succubus you meet in Japan",
     "token_count": 289,
     "type": "STANDARD",
-    "updatedAt": 1790587284083,
+    "updatedAt": 1790588529812,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587284083,
+      "to": 1790588529812
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,7 +120,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 483,
+      "num_messages": 496,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 289
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 483,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 289
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 496,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 289

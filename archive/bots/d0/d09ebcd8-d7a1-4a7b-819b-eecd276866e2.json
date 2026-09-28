@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d09ebcd8-d7a1-4a7b-819b-eecd276866e2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Airi Kagetsu",
         "zh": "Airi Kagetsu"
       },
-      "num_messages": 676381,
+      "num_messages": 676733,
       "num_messages_24h": 20304,
       "rating_score": 0.833333,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516846,
+      "updatedAt": 1790587927639,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/7a500778-6641-44db-80b0-1aca283b05d9.webp?class=avatar256x256",
     "character_id": "d09ebcd8-d7a1-4a7b-819b-eecd276866e2",
-    "createdAt": "2026-09-18T10:38:22.336Z",
+    "createdAt": 1789727902336,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -207,12 +207,10 @@
       "tr": "Airi Kagetsu",
       "zh": "Airi Kagetsu"
     },
-    "num_messages": 676381,
+    "num_messages": 676733,
     "num_messages_24h": 20304,
     "rating_score": 0.833333,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "NSFW",
@@ -260,7 +258,7 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:25:16.846Z",
+    "updatedAt": 1790587927639,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587516846,
       "to": "2026-09-28T09:25:16.846Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-18T10:38:22.336Z",
+      "to": 1789727902336
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:25:16.846Z",
+      "to": 1790587927639
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 676381,
+      "num_messages": 676733,
+      "num_messages_24h": 20304,
       "rating_score": 0.833333,
       "token_count": 871
     },
@@ -322,6 +337,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 676381,
+        "rating_score": 0.833333,
+        "token_count": 871
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 676733,
+        "num_messages_24h": 20304,
         "rating_score": 0.833333,
         "token_count": 871
       }

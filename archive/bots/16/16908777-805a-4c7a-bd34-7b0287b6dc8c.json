@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "16908777-805a-4c7a-bd34-7b0287b6dc8c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Kaori Rukawa",
         "zh": "Kaori Rukawa"
       },
-      "num_messages": 293546,
+      "num_messages": 293549,
       "num_messages_24h": 2376,
       "rating_score": 0.777672,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586631527,
+      "updatedAt": 1790588104532,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Kaori Rukawa",
       "zh": "Kaori Rukawa"
     },
-    "num_messages": 293546,
+    "num_messages": 293549,
     "num_messages_24h": 2376,
     "rating_score": 0.777672,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586631527,
+    "updatedAt": 1790588104532,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586631527,
+      "to": 1790588104532
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,13 +218,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2358,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2359,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 293546,
+      "num_messages": 293549,
       "num_messages_24h": 2376,
       "rating_score": 0.777672,
       "token_count": 902
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 293546,
+        "num_messages_24h": 2376,
+        "rating_score": 0.777672,
+        "token_count": 902
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 293549,
         "num_messages_24h": 2376,
         "rating_score": 0.777672,
         "token_count": 902

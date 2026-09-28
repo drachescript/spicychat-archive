@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d32d1687-ff33-4e94-b895-95330dd46621",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "ar": "Murder drones prom",
         "de": "Murder drones prom"
       },
-      "num_messages": 8048,
+      "num_messages": 8118,
       "num_messages_24h": 2571,
       "rating_score": 0,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586629464,
+      "updatedAt": 1790588451222,
       "visibility": "public"
     }
   },
@@ -93,7 +93,7 @@
       "ar": "Murder drones prom",
       "de": "Murder drones prom"
     },
-    "num_messages": 8048,
+    "num_messages": 8118,
     "num_messages_24h": 2571,
     "rating_score": 0,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586629464,
+    "updatedAt": 1790588451222,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586629464,
+      "to": 1790588451222
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,13 +138,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2157,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2158,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 8048,
+      "num_messages": 8118,
       "num_messages_24h": 2571,
       "rating_score": 0,
       "token_count": 1548
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 8048,
+        "num_messages_24h": 2571,
+        "rating_score": 0,
+        "token_count": 1548
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 8118,
         "num_messages_24h": 2571,
         "rating_score": 0,
         "token_count": 1548

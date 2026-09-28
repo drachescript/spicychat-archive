@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "668fed3d-b78b-496f-a045-00218dc824c5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "Ralsei"
       },
-      "num_messages": 257,
+      "num_messages": 276,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -63,7 +63,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790568095527,
+      "updatedAt": 1790588447781,
       "visibility": "public"
     }
   },
@@ -91,7 +91,7 @@
     "name_i18n": {
       "zh": "Ralsei"
     },
-    "num_messages": 257,
+    "num_messages": 276,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -114,10 +114,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790568095527,
+    "updatedAt": 1790588447781,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790568095527,
+      "to": 1790588447781
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -127,13 +136,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2420,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2422,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 257,
+      "num_messages": 276,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 128
@@ -143,6 +152,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 257,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 128
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 276,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 128

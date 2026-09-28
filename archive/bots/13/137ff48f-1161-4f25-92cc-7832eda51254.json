@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "137ff48f-1161-4f25-92cc-7832eda51254",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Kyoka Jiro",
         "tr": "Kyoka Jiro"
       },
-      "num_messages": 196688,
+      "num_messages": 196725,
       "num_messages_24h": 2315,
       "rating_score": 0.929577,
       "reportsType": {},
@@ -93,7 +93,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587363127,
+      "updatedAt": 1790588382659,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "ru": "Kyoka Jiro",
       "tr": "Kyoka Jiro"
     },
-    "num_messages": 196688,
+    "num_messages": 196725,
     "num_messages_24h": 2315,
     "rating_score": 0.929577,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587363127,
+    "updatedAt": 1790588382659,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587363127,
+      "to": 1790588382659
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,13 +196,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2443,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2444,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 196688,
+      "num_messages": 196725,
       "num_messages_24h": 2315,
       "rating_score": 0.929577,
       "token_count": 607
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 196688,
+        "num_messages_24h": 2315,
+        "rating_score": 0.929577,
+        "token_count": 607
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 196725,
         "num_messages_24h": 2315,
         "rating_score": 0.929577,
         "token_count": 607

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8c342cbe-c981-4cec-bfd6-ec591045a3d0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "es": "Dragon ball wifes"
       },
-      "num_messages": 130,
+      "num_messages": 143,
       "num_messages_24h": 91,
       "rating_score": 0,
       "reportsType": {},
@@ -60,7 +60,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790575580604,
+      "updatedAt": 1790587842577,
       "visibility": "public"
     }
   },
@@ -88,7 +88,7 @@
     "name_i18n": {
       "es": "Dragon ball wifes"
     },
-    "num_messages": 130,
+    "num_messages": 143,
     "num_messages_24h": 91,
     "rating_score": 0,
     "reportsType": {},
@@ -108,10 +108,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790575580604,
+    "updatedAt": 1790587842577,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790575580604,
+      "to": 1790587842577
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,13 +130,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1813,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1814,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 130,
+      "num_messages": 143,
       "num_messages_24h": 91,
       "rating_score": 0,
       "token_count": 520
@@ -137,6 +146,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 130,
+        "num_messages_24h": 91,
+        "rating_score": 0,
+        "token_count": 520
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 143,
         "num_messages_24h": 91,
         "rating_score": 0,
         "token_count": 520

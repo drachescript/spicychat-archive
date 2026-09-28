@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "46cf7354-1086-4e5f-bba7-b8c48f97e76d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "ja": "Mel と私の片思い",
         "tr": "Mel ve Benim Aşkım"
       },
-      "num_messages": 9131908,
+      "num_messages": 9131954,
       "num_messages_24h": 367,
       "rating_score": 0.31482,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586795094,
+      "updatedAt": 1790588244373,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "ja": "Mel と私の片思い",
       "tr": "Mel ve Benim Aşkım"
     },
-    "num_messages": 9131908,
+    "num_messages": 9131954,
     "num_messages_24h": 367,
     "rating_score": 0.31482,
     "reportsType": {},
@@ -136,10 +136,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586795094,
+    "updatedAt": 1790588244373,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586795094,
+      "to": 1790588244373
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,7 +164,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 9131908,
+      "num_messages": 9131954,
       "num_messages_24h": 367,
       "rating_score": 0.31482,
       "token_count": 973
@@ -165,6 +174,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 9131908,
+        "num_messages_24h": 367,
+        "rating_score": 0.31482,
+        "token_count": 973
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 9131954,
         "num_messages_24h": 367,
         "rating_score": 0.31482,
         "token_count": 973

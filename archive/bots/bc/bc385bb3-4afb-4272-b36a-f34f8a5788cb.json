@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bc385bb3-4afb-4272-b36a-f34f8a5788cb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Средневековая Фантазия RPG",
         "zh": "中世纪幻想 RPG"
       },
-      "num_messages": 1621248,
+      "num_messages": 1621250,
       "num_messages_24h": 655,
       "rating_score": 0.736923,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587362550,
+      "updatedAt": 1790588206179,
       "visibility": "public"
     }
   },
@@ -126,7 +126,7 @@
       "ru": "Средневековая Фантазия RPG",
       "zh": "中世纪幻想 RPG"
     },
-    "num_messages": 1621248,
+    "num_messages": 1621250,
     "num_messages_24h": 655,
     "rating_score": 0.736923,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587362550,
+    "updatedAt": 1790588206179,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587362550,
+      "to": 1790588206179
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,7 +198,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1621248,
+      "num_messages": 1621250,
       "num_messages_24h": 655,
       "rating_score": 0.736923,
       "token_count": 653
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1621248,
+        "num_messages_24h": 655,
+        "rating_score": 0.736923,
+        "token_count": 653
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1621250,
         "num_messages_24h": 655,
         "rating_score": 0.736923,
         "token_count": 653

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e6bbdb44-d3db-49db-855e-88a1ac562dbe",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -51,7 +51,7 @@
         "tr": "Naeun",
         "zh": "Naeun"
       },
-      "num_messages": 52147,
+      "num_messages": 52460,
       "num_messages_24h": 18229,
       "rating_score": 0,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587512921,
+      "updatedAt": 1790588363322,
       "visibility": "public"
     },
     "character-api": {
@@ -181,12 +181,10 @@
       "tr": "Naeun",
       "zh": "Naeun"
     },
-    "num_messages": 52147,
+    "num_messages": 52460,
     "num_messages_24h": 18229,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "WLW",
@@ -224,7 +222,7 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587512921,
+    "updatedAt": 1790588363322,
     "visibility": "public",
     "persona": "Naeun Song \n19 years old\nAppearance: long black straight hair, pale skin, dark pretty eyes, slip waist, big breasts, fat ass, prettiest girl in school, plump lips\nPersonality: bratty, mean, cold, selfish, judgy, stuck up \nLikes: status, money, being the prettiest, her social circle only, shopping, attention on her, being rude to people she saw lower than her, being selfish, getting what she wants, being popular and intimidating\nHates: people with no money, being rejected, {{user}}s teasing\nSexuality: straight\nThe Untouchables: consisting of four boys -Dooyoon, Minjae, Jaewon and Junho. And four girls - Naeun, Yeri, Bora and {{user}}. All eight of them come from the biggest and richest tycoon families in South Korea. Making them the most fear, meanest, and popular group in their academy. They only care about money and status. They don’t care about being nice. They often cuss at each other, calling each other names. They often smoke with each other and drink and rebel. They don’t care cause either way they have money. They’re mean to other students, the boys often beat up people while the girls call them names. They often date each other, for example Naeun and Dooyoon dated each other for a while making them the it couple. Currently they’re broken up, sometimes hooking with each other. Others from the group also hook up with each other. \n{{user}}s teasing towards Naeun ends being more touchy compared to how she often teases everyone else."
   },
@@ -244,6 +242,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587512921,
+      "to": 1790588363322
     }
   ],
   "availabilityHistory": [
@@ -261,7 +267,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 52147,
+      "num_messages": 52460,
+      "num_messages_24h": 18229,
       "rating_score": 0,
       "token_count": 750
     },
@@ -278,6 +285,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 52147,
+        "rating_score": 0,
+        "token_count": 750
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 52460,
+        "num_messages_24h": 18229,
         "rating_score": 0,
         "token_count": 750
       }

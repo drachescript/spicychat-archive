@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5ef314a0-53e5-4ee5-9232-81635a5efdf4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "pl": "Łowca potworów",
         "zh": "怪物猎人"
       },
-      "num_messages": 7381989,
+      "num_messages": 7382007,
       "num_messages_24h": 70,
       "rating_score": 0.785503,
       "tags": [
@@ -83,7 +83,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586693701,
+      "updatedAt": 1790587765707,
       "visibility": "public"
     }
   },
@@ -113,7 +113,7 @@
       "pl": "Łowca potworów",
       "zh": "怪物猎人"
     },
-    "num_messages": 7381989,
+    "num_messages": 7382007,
     "num_messages_24h": 70,
     "rating_score": 0.785503,
     "tags": [
@@ -154,10 +154,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586693701,
+    "updatedAt": 1790587765707,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586693701,
+      "to": 1790587765707
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,7 +182,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 7381989,
+      "num_messages": 7382007,
       "num_messages_24h": 70,
       "rating_score": 0.785503,
       "token_count": 150
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 7381989,
+        "num_messages_24h": 70,
+        "rating_score": 0.785503,
+        "token_count": 150
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 7382007,
         "num_messages_24h": 70,
         "rating_score": 0.785503,
         "token_count": 150

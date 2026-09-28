@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9ecfd2b4-6ff1-4648-b834-ed2b81b96991",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "tr": "Mafia boss husband",
         "zh": "黑帮老大丈夫"
       },
-      "num_messages": 135582,
+      "num_messages": 135585,
       "num_messages_24h": 324,
       "rating_score": 0.995238,
       "reportsType": {},
@@ -87,7 +87,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790582639628,
+      "updatedAt": 1790587824775,
       "visibility": "public"
     }
   },
@@ -124,7 +124,7 @@
       "tr": "Mafia boss husband",
       "zh": "黑帮老大丈夫"
     },
-    "num_messages": 135582,
+    "num_messages": 135585,
     "num_messages_24h": 324,
     "rating_score": 0.995238,
     "reportsType": {},
@@ -162,10 +162,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790582639628,
+    "updatedAt": 1790587824775,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790582639628,
+      "to": 1790587824775
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -181,7 +190,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 135582,
+      "num_messages": 135585,
       "num_messages_24h": 324,
       "rating_score": 0.995238,
       "token_count": 186
@@ -191,6 +200,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 135582,
+        "num_messages_24h": 324,
+        "rating_score": 0.995238,
+        "token_count": 186
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 135585,
         "num_messages_24h": 324,
         "rating_score": 0.995238,
         "token_count": 186

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d5114c8f-2c8c-4a45-bcc6-376cdae96d53",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -60,7 +60,7 @@
         "tr": "Eski Karım (Deli Kız)",
         "zh": "Ex-wife (Crazy Girl)"
       },
-      "num_messages": 171820,
+      "num_messages": 171967,
       "num_messages_24h": 4478,
       "rating_score": 0.838235,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587191094,
+      "updatedAt": 1790588245762,
       "visibility": "public"
     }
   },
@@ -157,7 +157,7 @@
       "tr": "Eski Karım (Deli Kız)",
       "zh": "Ex-wife (Crazy Girl)"
     },
-    "num_messages": 171820,
+    "num_messages": 171967,
     "num_messages_24h": 4478,
     "rating_score": 0.838235,
     "reportsType": {},
@@ -204,10 +204,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587191094,
+    "updatedAt": 1790588245762,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587191094,
+      "to": 1790588245762
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,7 +232,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 171820,
+      "num_messages": 171967,
       "num_messages_24h": 4478,
       "rating_score": 0.838235,
       "token_count": 518
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 171820,
+        "num_messages_24h": 4478,
+        "rating_score": 0.838235,
+        "token_count": 518
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 171967,
         "num_messages_24h": 4478,
         "rating_score": 0.838235,
         "token_count": 518

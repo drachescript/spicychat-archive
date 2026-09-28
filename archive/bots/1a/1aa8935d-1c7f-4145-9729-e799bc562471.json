@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1aa8935d-1c7f-4145-9729-e799bc562471",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "ru": "Униженный котобой",
         "zh": "被降职的猫男孩"
       },
-      "num_messages": 2545848,
+      "num_messages": 2545883,
       "num_messages_24h": 28,
       "rating_score": 0.706608,
       "reportsType": {},
@@ -68,7 +68,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561644,
+      "updatedAt": 1790588236954,
       "visibility": "public"
     }
   },
@@ -97,7 +97,7 @@
       "ru": "Униженный котобой",
       "zh": "被降职的猫男孩"
     },
-    "num_messages": 2545848,
+    "num_messages": 2545883,
     "num_messages_24h": 28,
     "rating_score": 0.706608,
     "reportsType": {},
@@ -124,10 +124,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561644,
+    "updatedAt": 1790588236954,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561644,
+      "to": 1790588236954
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -143,7 +152,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2545848,
+      "num_messages": 2545883,
       "num_messages_24h": 28,
       "rating_score": 0.706608,
       "token_count": 986
@@ -153,6 +162,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2545848,
+        "num_messages_24h": 28,
+        "rating_score": 0.706608,
+        "token_count": 986
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2545883,
         "num_messages_24h": 28,
         "rating_score": 0.706608,
         "token_count": 986

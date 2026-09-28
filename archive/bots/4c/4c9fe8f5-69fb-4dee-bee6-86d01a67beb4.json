@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4c9fe8f5-69fb-4dee-bee6-86d01a67beb4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Valeria Serrano",
         "zh": "Valeria Serrano"
       },
-      "num_messages": 16942,
+      "num_messages": 17041,
       "num_messages_24h": 2496,
       "rating_score": 0,
       "reportsType": {},
@@ -98,7 +98,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587251114,
+      "updatedAt": 1790588234349,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "Valeria Serrano",
       "zh": "Valeria Serrano"
     },
-    "num_messages": 16942,
+    "num_messages": 17041,
     "num_messages_24h": 2496,
     "rating_score": 0,
     "reportsType": {},
@@ -184,10 +184,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587251114,
+    "updatedAt": 1790588234349,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587251114,
+      "to": 1790588234349
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,13 +206,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2232,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2233,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 16942,
+      "num_messages": 17041,
       "num_messages_24h": 2496,
       "rating_score": 0,
       "token_count": 2054
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 16942,
+        "num_messages_24h": 2496,
+        "rating_score": 0,
+        "token_count": 2054
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 17041,
         "num_messages_24h": 2496,
         "rating_score": 0,
         "token_count": 2054

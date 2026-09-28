@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "68e49873-2cda-4f1e-b692-eef867a712b9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "NTR Adventure Party",
         "zh": "NTR 冒险小队"
       },
-      "num_messages": 159832,
+      "num_messages": 159941,
       "num_messages_24h": 2854,
       "rating_score": 0.262238,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587488237,
+      "updatedAt": 1790588041282,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "ru": "NTR Adventure Party",
       "zh": "NTR 冒险小队"
     },
-    "num_messages": 159832,
+    "num_messages": 159941,
     "num_messages_24h": 2854,
     "rating_score": 0.262238,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587488237,
+    "updatedAt": 1790588041282,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587488237,
+      "to": 1790588041282
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 159832,
+      "num_messages": 159941,
       "num_messages_24h": 2854,
       "rating_score": 0.262238,
       "token_count": 927
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 159832,
+        "num_messages_24h": 2854,
+        "rating_score": 0.262238,
+        "token_count": 927
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 159941,
         "num_messages_24h": 2854,
         "rating_score": 0.262238,
         "token_count": 927

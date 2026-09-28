@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3749c08f-dd60-40d8-a2dc-1d08827ab8d6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Adrian Velmont",
         "tr": "Adrian Velmont"
       },
-      "num_messages": 64434,
+      "num_messages": 64446,
       "num_messages_24h": 2627,
       "rating_score": 0.927536,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586739425,
+      "updatedAt": 1790587711353,
       "visibility": "public"
     }
   },
@@ -122,7 +122,7 @@
       "ru": "Adrian Velmont",
       "tr": "Adrian Velmont"
     },
-    "num_messages": 64434,
+    "num_messages": 64446,
     "num_messages_24h": 2627,
     "rating_score": 0.927536,
     "reportsType": {},
@@ -158,10 +158,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586739425,
+    "updatedAt": 1790587711353,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586739425,
+      "to": 1790587711353
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,7 +186,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 64434,
+      "num_messages": 64446,
       "num_messages_24h": 2627,
       "rating_score": 0.927536,
       "token_count": 1130
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 64434,
+        "num_messages_24h": 2627,
+        "rating_score": 0.927536,
+        "token_count": 1130
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 64446,
         "num_messages_24h": 2627,
         "rating_score": 0.927536,
         "token_count": 1130

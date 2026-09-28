@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bfae46f3-6bf7-4213-b8f1-eef1f1439efa",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Vesper Marlowe",
         "zh": "Vesper Marlowe"
       },
-      "num_messages": 180943,
+      "num_messages": 181019,
       "num_messages_24h": 3048,
       "rating_score": 0.586387,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587360335,
+      "updatedAt": 1790587973098,
       "visibility": "public",
       "voice_id": "376ef844-142e-4167-b10c-c94d92a0f506"
     }
@@ -142,7 +142,7 @@
       "tr": "Vesper Marlowe",
       "zh": "Vesper Marlowe"
     },
-    "num_messages": 180943,
+    "num_messages": 181019,
     "num_messages_24h": 3048,
     "rating_score": 0.586387,
     "reportsType": {},
@@ -187,11 +187,20 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587360335,
+    "updatedAt": 1790587973098,
     "visibility": "public",
     "voice_id": "376ef844-142e-4167-b10c-c94d92a0f506"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587360335,
+      "to": 1790587973098
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 180943,
+      "num_messages": 181019,
       "num_messages_24h": 3048,
       "rating_score": 0.586387,
       "token_count": 2038
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 180943,
+        "num_messages_24h": 3048,
+        "rating_score": 0.586387,
+        "token_count": 2038
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 181019,
         "num_messages_24h": 3048,
         "rating_score": 0.586387,
         "token_count": 2038

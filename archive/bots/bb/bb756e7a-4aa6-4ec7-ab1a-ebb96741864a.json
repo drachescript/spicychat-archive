@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bb756e7a-4aa6-4ec7-ab1a-ebb96741864a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "pt": "Multiverse Harem App",
         "ru": "Multiverse Harem App"
       },
-      "num_messages": 97039,
+      "num_messages": 97109,
       "num_messages_24h": 2504,
       "rating_score": 0.977941,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586793380,
+      "updatedAt": 1790588038708,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "pt": "Multiverse Harem App",
       "ru": "Multiverse Harem App"
     },
-    "num_messages": 97039,
+    "num_messages": 97109,
     "num_messages_24h": 2504,
     "rating_score": 0.977941,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586793380,
+    "updatedAt": 1790588038708,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586793380,
+      "to": 1790588038708
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,13 +188,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2222,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2223,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 97039,
+      "num_messages": 97109,
       "num_messages_24h": 2504,
       "rating_score": 0.977941,
       "token_count": 408
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 97039,
+        "num_messages_24h": 2504,
+        "rating_score": 0.977941,
+        "token_count": 408
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 97109,
         "num_messages_24h": 2504,
         "rating_score": 0.977941,
         "token_count": 408

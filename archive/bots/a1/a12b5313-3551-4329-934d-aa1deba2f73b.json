@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a12b5313-3551-4329-934d-aa1deba2f73b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "es": "Campamento de Verano",
         "pl": "Summer Camp"
       },
-      "num_messages": 100564,
+      "num_messages": 100592,
       "num_messages_24h": 2902,
       "rating_score": 0,
       "tags": [
@@ -65,7 +65,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587400765,
+      "updatedAt": 1790587825168,
       "visibility": "public"
     }
   },
@@ -95,7 +95,7 @@
       "es": "Campamento de Verano",
       "pl": "Summer Camp"
     },
-    "num_messages": 100564,
+    "num_messages": 100592,
     "num_messages_24h": 2902,
     "rating_score": 0,
     "tags": [
@@ -118,10 +118,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587400765,
+    "updatedAt": 1790587825168,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587400765,
+      "to": 1790587825168
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -137,7 +146,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 100564,
+      "num_messages": 100592,
       "num_messages_24h": 2902,
       "rating_score": 0,
       "token_count": 711
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 100564,
+        "num_messages_24h": 2902,
+        "rating_score": 0,
+        "token_count": 711
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 100592,
         "num_messages_24h": 2902,
         "rating_score": 0,
         "token_count": 711

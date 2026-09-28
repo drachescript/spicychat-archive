@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c159d6af-998d-4b3d-a910-625b662874d5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "fr": "Courtney Blackwell",
         "hi": "Courtney Blackwell"
       },
-      "num_messages": 12818,
+      "num_messages": 12824,
       "num_messages_24h": 5766,
       "rating_score": 0,
       "reportsType": {},
@@ -71,7 +71,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587405349,
+      "updatedAt": 1790588362991,
       "visibility": "public"
     }
   },
@@ -101,7 +101,7 @@
       "fr": "Courtney Blackwell",
       "hi": "Courtney Blackwell"
     },
-    "num_messages": 12818,
+    "num_messages": 12824,
     "num_messages_24h": 5766,
     "rating_score": 0,
     "reportsType": {},
@@ -130,10 +130,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587405349,
+    "updatedAt": 1790588362991,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587405349,
+      "to": 1790588362991
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 1748,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1749,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 12818,
+      "num_messages": 12824,
       "num_messages_24h": 5766,
       "rating_score": 0,
       "token_count": 1453
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 12818,
+        "num_messages_24h": 5766,
+        "rating_score": 0,
+        "token_count": 1453
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 12824,
         "num_messages_24h": 5766,
         "rating_score": 0,
         "token_count": 1453

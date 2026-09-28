@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6b6e66ca-43e6-42e8-98e3-c0292e28eb8d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,8 @@
       "moderation_status": "pending",
       "name": "Astra & Evelyn",
       "name_i18n": {
-        "de": "Astra & Evelyn"
+        "de": "Astra & Evelyn",
+        "zh": "Astra & Evelyn"
       },
       "num_messages": 506,
       "num_messages_24h": 0,
@@ -64,14 +65,16 @@
       ],
       "title": "Exhausted by their schedules, Astra and Evelyn's suppressed desires reach a breaking point.",
       "title_i18n": {
-        "de": "Erschöpft von ihrem Zeitplan erreichen die unterdrückten Wünsche von Astra und Evelyn einen kritischen Punkt."
+        "de": "Erschöpft von ihrem Zeitplan erreichen die unterdrückten Wünsche von Astra und Evelyn einen kritischen Punkt.",
+        "zh": "因日程安排而精疲力尽，Astra和Evelyn被压抑的欲望达到了临界点。"
       },
       "token_count": 2385,
       "translated_languages": [
-        "de"
+        "de",
+        "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587192714,
+      "updatedAt": 1790587798185,
       "visibility": "public"
     }
   },
@@ -106,7 +109,8 @@
     "moderation_status": "pending",
     "name": "Astra & Evelyn",
     "name_i18n": {
-      "de": "Astra & Evelyn"
+      "de": "Astra & Evelyn",
+      "zh": "Astra & Evelyn"
     },
     "num_messages": 506,
     "num_messages_24h": 0,
@@ -125,17 +129,55 @@
     ],
     "title": "Exhausted by their schedules, Astra and Evelyn's suppressed desires reach a breaking point.",
     "title_i18n": {
-      "de": "Erschöpft von ihrem Zeitplan erreichen die unterdrückten Wünsche von Astra und Evelyn einen kritischen Punkt."
+      "de": "Erschöpft von ihrem Zeitplan erreichen die unterdrückten Wünsche von Astra und Evelyn einen kritischen Punkt.",
+      "zh": "因日程安排而精疲力尽，Astra和Evelyn被压抑的欲望达到了临界点。"
     },
     "token_count": 2385,
     "translated_languages": [
-      "de"
+      "de",
+      "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587192714,
+    "updatedAt": 1790587798185,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "name_i18n.zh",
+      "kind": "value",
+      "to": "Astra & Evelyn"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "title_i18n.zh",
+      "kind": "value",
+      "to": "因日程安排而精疲力尽，Astra和Evelyn被压抑的欲望达到了临界点。"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "translated_languages",
+      "kind": "value",
+      "from": [
+        "de"
+      ],
+      "to": [
+        "de",
+        "zh"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587192714,
+      "to": 1790587798185
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",

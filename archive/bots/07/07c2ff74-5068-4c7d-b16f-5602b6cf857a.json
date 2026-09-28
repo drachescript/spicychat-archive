@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "07c2ff74-5068-4c7d-b16f-5602b6cf857a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "de": "Liora Ravenscroft",
         "hi": "Liora Ravenscroft"
       },
-      "num_messages": 5829,
+      "num_messages": 5831,
       "num_messages_24h": 2854,
       "rating_score": 0,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195419,
+      "updatedAt": 1790588012104,
       "visibility": "public"
     }
   },
@@ -94,7 +94,7 @@
       "de": "Liora Ravenscroft",
       "hi": "Liora Ravenscroft"
     },
-    "num_messages": 5829,
+    "num_messages": 5831,
     "num_messages_24h": 2854,
     "rating_score": 0,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195419,
+    "updatedAt": 1790588012104,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195419,
+      "to": 1790588012104
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -133,13 +142,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 2061,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2063,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 5829,
+      "num_messages": 5831,
       "num_messages_24h": 2854,
       "rating_score": 0,
       "token_count": 555
@@ -149,6 +158,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5829,
+        "num_messages_24h": 2854,
+        "rating_score": 0,
+        "token_count": 555
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5831,
         "num_messages_24h": 2854,
         "rating_score": 0,
         "token_count": 555

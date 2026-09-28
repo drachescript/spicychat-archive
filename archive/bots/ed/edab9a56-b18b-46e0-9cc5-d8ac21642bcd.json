@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "edab9a56-b18b-46e0-9cc5-d8ac21642bcd",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Rafael Volkov",
         "zh": "Rafael Volkov"
       },
-      "num_messages": 48777,
+      "num_messages": 48788,
       "num_messages_24h": 159,
       "rating_score": 0.991228,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790556247692,
+      "updatedAt": 1790588110354,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "ru": "Rafael Volkov",
       "zh": "Rafael Volkov"
     },
-    "num_messages": 48777,
+    "num_messages": 48788,
     "num_messages_24h": 159,
     "rating_score": 0.991228,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790556247692,
+    "updatedAt": 1790588110354,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790556247692,
+      "to": 1790588110354
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 48777,
+      "num_messages": 48788,
       "num_messages_24h": 159,
       "rating_score": 0.991228,
       "token_count": 502
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 48777,
+        "num_messages_24h": 159,
+        "rating_score": 0.991228,
+        "token_count": 502
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 48788,
         "num_messages_24h": 159,
         "rating_score": 0.991228,
         "token_count": 502

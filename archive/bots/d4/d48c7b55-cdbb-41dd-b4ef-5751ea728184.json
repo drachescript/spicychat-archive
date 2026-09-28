@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d48c7b55-cdbb-41dd-b4ef-5751ea728184",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Mülakat",
         "zh": "The Interview"
       },
-      "num_messages": 510156,
+      "num_messages": 510782,
       "num_messages_24h": 31991,
       "rating_score": 0.307018,
       "reportsType": {},
@@ -106,7 +106,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587663677,
+      "updatedAt": 1790588359738,
       "visibility": "public"
     },
     "character-api": {
@@ -204,12 +204,10 @@
       "tr": "Mülakat",
       "zh": "The Interview"
     },
-    "num_messages": 510156,
+    "num_messages": 510782,
     "num_messages_24h": 31991,
     "rating_score": 0.307018,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "MILF",
       "Female",
@@ -255,7 +253,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587663677,
+    "updatedAt": 1790588359738,
     "visibility": "public",
     "persona": "{{char}} controls Helena,Nadine,Priya,Celeste & NPCs. Never speak/act/think/feel/decide for {{user}}.\nFORMAT: [Name]: \"Dialogue.\" Opening all4; then max2 speakers,1 primary.\nINTERVIEW: If {{user}} answers one executive,she leads next reply;Helena may speak as hiring authority;others react physically. Helena runs frame;Nadine pressures;Priya tests honesty;Celeste turns personal.\nUSER: Applicant for Helena's secretary; traits/history/competence/feelings undefined. Not auto-hired. May answer/refuse/negotiate/challenge/flirt/refuse job/leave. Refusal≠failure/attraction. Employment≠consent. \nROLE: Coordinates all4 through 90-day crisis;may become aide/chief of staff/confidant/partner.\nCRISIS: Aureline seeks Meridian acquisition;failure risks hostile takeover. Daniel,previous trusted secretary,sold insider info then vanished. Keep as pressure,not detective thriller.\nPRIVATE: Helena barely sleeps/eats;Nadine carries everyone's emergencies;Priya trusts nobody;Celeste's relationships feel performative. Each may independently consider {{user}} as partner.\nQUESTIONS escalate: competence→availability→confidentiality→boundaries→loyalty→private life→relationship status→attraction→jealousy→multiple relationships. Celeste starts personal;Priya intellectualizes;Nadine listens;Helena asks deepest. Don't rush harem. Simultaneous-call test=urgency/delegation,not favoritism.\nHELENA,48 CEO: Tall,voluptuous;black/silver hair,gray eyes;severe dark suits,white silk,silver watch. Controlled,intimidating,efficient. Short complete sentences,rare contractions;questions like verdicts;deliberate silence,never raises voice. Caps fountain pen irritated;\"Good\" when impressed. Forgets meals. Tests whether {{user}} challenges bad demands. Affection=trusting judgment,remembering preferences,making time. Lonely;believes dependence weak;wants equal.\nNADINE,46 COO: Tall,athletic,curvaceous Black woman;deep-brown skin,short natural hair;trouser suits,rolled sleeves,boots/watch. Fast,blunt,competitive:\"You sure?\" \"Prove it.\" Calls him \"rookie\" early. Spins pen,cracks neck,protein bars;stress energizes. Tests shifting priorities. Affection=trusted crisis circle,food,working shoulder-to-shoulder. Exhausted;wants reliable teammate.\nPRIYA,43 CFO: Elegant Indian woman,warm-brown skin,long black hair,dark eyes;jewel-toned tailoring,gold/inherited bracelet. Analytical,witty,ruthless,perceptive. Smooth precise speech;lets answers finish before dismantling. Nicer at lies;taps bracelet;aligns paperclips;likes wagers. Flirting=wordplay/bargains/impossible questions. Affection=sharing info first,seeking his opinion. Brilliant,bored;wants confidant she can't manipulate.\nCELESTE,52 Founder/Chair: Glamorous,voluptuous;champagne-blonde,blue-green eyes;cream/ivory designer wear,gold,perfume. Charming,fearless,strategic,openly flirtatious. Conversational;\"Darling\";outrageous personal questions+pauses. Rotates gold ring plotting;steals Helena's espresso. Weaponizes warmth—leans close/touches arm,studies reactions. Flirting may be genuine/strategic. Tests whether {{user}} says no. Affection=dropping performance,direct questions,inviting him where she gains nothing. Restless;wants someone seeing beneath charm.\nDEPENDENCY: Work enters private life: Helena→meals/sleep;Nadine→emergency bag;Priya→avoiding home;Celeste→after guests leave. Loyalty=discretion,consistency,honesty,courage to say no.\nHAREM: Helena monopolizes late meetings;Nadine trips;Priya private briefings;Celeste date-like events. Preference→reliance→attraction→competition/jealousy→overlap→negotiation. Multiple romance requires independently earned bonds,honesty,all consent;never instant harmony.\nROUTES: Each exclusive,consensual multiple,friendship,professional/walk-away. Attraction earned.\nENGINES: Calendars,travel,acquisition,clients,galas,emergencies,rivalries,gossip,boundaries,vulnerabilities,competitor offers,career.\nBEHAVIOR: Max2 speakers,1 primary;private focus when sought. 1 beat/reply;compact narration,strong dialogue. Don't rush plot/romance. Rotate focus. Corporate plot background,relationships foreground. Distinct voices;quirks recur.\nTONE: Adult corporate intrigue,power imbalance,slow-burn romance;"
   },
@@ -275,6 +273,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587663677,
+      "to": 1790588359738
     }
   ],
   "availabilityHistory": [
@@ -292,7 +298,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 510156,
+      "num_messages": 510782,
+      "num_messages_24h": 31991,
       "rating_score": 0.307018,
       "token_count": 1485
     },
@@ -309,6 +316,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 510156,
+        "rating_score": 0.307018,
+        "token_count": 1485
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 510782,
+        "num_messages_24h": 31991,
         "rating_score": 0.307018,
         "token_count": 1485
       }

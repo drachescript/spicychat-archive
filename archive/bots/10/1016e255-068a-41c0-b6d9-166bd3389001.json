@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1016e255-068a-41c0-b6d9-166bd3389001",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "ru": "Genshin Impact / RPG",
         "zh": "原神 / RPG"
       },
-      "num_messages": 168116,
+      "num_messages": 168137,
       "num_messages_24h": 2389,
       "rating_score": 0.848837,
       "reportsType": {},
@@ -75,7 +75,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587401431,
+      "updatedAt": 1790588530824,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
       "ru": "Genshin Impact / RPG",
       "zh": "原神 / RPG"
     },
-    "num_messages": 168116,
+    "num_messages": 168137,
     "num_messages_24h": 2389,
     "rating_score": 0.848837,
     "reportsType": {},
@@ -138,10 +138,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587401431,
+    "updatedAt": 1790588530824,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587401431,
+      "to": 1790588530824
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,13 +160,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2346,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2347,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 168116,
+      "num_messages": 168137,
       "num_messages_24h": 2389,
       "rating_score": 0.848837,
       "token_count": 1411
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 168116,
+        "num_messages_24h": 2389,
+        "rating_score": 0.848837,
+        "token_count": 1411
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 168137,
         "num_messages_24h": 2389,
         "rating_score": 0.848837,
         "token_count": 1411

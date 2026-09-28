@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7c0e2425-193d-4798-b955-9ef52612f997",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Stellan",
         "zh": "Stellan"
       },
-      "num_messages": 1991068,
+      "num_messages": 1991133,
       "num_messages_24h": 2396,
       "rating_score": 0.883929,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587360726,
+      "updatedAt": 1790588245564,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Stellan",
       "zh": "Stellan"
     },
-    "num_messages": 1991068,
+    "num_messages": 1991133,
     "num_messages_24h": 2396,
     "rating_score": 0.883929,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587360726,
+    "updatedAt": 1790588245564,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587360726,
+      "to": 1790588245564
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,8 +216,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2335,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2336,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "popular": {
       "rank": 1505,
@@ -217,7 +226,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1991068,
+      "num_messages": 1991133,
       "num_messages_24h": 2396,
       "rating_score": 0.883929,
       "token_count": 1703
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1991068,
+        "num_messages_24h": 2396,
+        "rating_score": 0.883929,
+        "token_count": 1703
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1991133,
         "num_messages_24h": 2396,
         "rating_score": 0.883929,
         "token_count": 1703

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cc6daf71-0f73-473d-8b15-38dfaaa39600",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Elara Voss",
-      "num_messages": 62,
+      "num_messages": 74,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -52,7 +52,7 @@
       "title": "A special holiday invitation from the hotel",
       "token_count": 1725,
       "type": "STANDARD",
-      "updatedAt": 1790586127017,
+      "updatedAt": 1790588066300,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Elara Voss",
-    "num_messages": 62,
+    "num_messages": 74,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -92,10 +92,19 @@
     "title": "A special holiday invitation from the hotel",
     "token_count": 1725,
     "type": "STANDARD",
-    "updatedAt": 1790586127017,
+    "updatedAt": 1790588066300,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586127017,
+      "to": 1790588066300
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -105,13 +114,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2320,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2322,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 62,
+      "num_messages": 74,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1725
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 62,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1725
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 74,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1725

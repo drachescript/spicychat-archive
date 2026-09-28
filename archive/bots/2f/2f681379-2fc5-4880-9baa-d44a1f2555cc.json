@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2f681379-2fc5-4880-9baa-d44a1f2555cc",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -57,7 +57,7 @@
         "tr": "Lyra Vance",
         "zh": "Lyra Vance"
       },
-      "num_messages": 144434,
+      "num_messages": 144570,
       "num_messages_24h": 13418,
       "rating_score": 0.840278,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587559788,
+      "updatedAt": 1790588454630,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/cf09ef8e-b39b-4349-9686-f9df50cf1831.gif?class=avatar256x256",
     "character_id": "2f681379-2fc5-4880-9baa-d44a1f2555cc",
-    "createdAt": "2026-09-20T13:20:53.562Z",
+    "createdAt": 1789910453562,
     "creator_user_id": "kp:8bfbeb02185b4f4f81c7e53d89718243",
     "creator_username": "duke77",
     "definition_size_category": "high",
@@ -207,12 +207,10 @@
       "tr": "Lyra Vance",
       "zh": "Lyra Vance"
     },
-    "num_messages": 144434,
+    "num_messages": 144570,
     "num_messages_24h": 13418,
     "rating_score": 0.840278,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Fantasy",
       "Adventure",
@@ -259,7 +257,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:25:59.788Z",
+    "updatedAt": 1790588454630,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -287,6 +285,22 @@
       "kind": "value",
       "from": 1790587559788,
       "to": "2026-09-28T09:25:59.788Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-20T13:20:53.562Z",
+      "to": 1789910453562
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:25:59.788Z",
+      "to": 1790588454630
     }
   ],
   "availabilityHistory": [
@@ -304,7 +318,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 144434,
+      "num_messages": 144570,
+      "num_messages_24h": 13418,
       "rating_score": 0.840278,
       "token_count": 1584
     },
@@ -323,8 +338,23 @@
         "num_messages": 144434,
         "rating_score": 0.840278,
         "token_count": 1584
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 144570,
+        "num_messages_24h": 13418,
+        "rating_score": 0.840278,
+        "token_count": 1584
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/cf09ef8e-b39b-4349-9686-f9df50cf1831.gif?class=avatar256x256",
+    "sha256": "3eb003551895b3ad1117ba580f753732f526cfc13d1f71b2b391bf718b6bf030",
+    "contentType": "image/gif",
+    "bytes": 4714300,
+    "path": "archive/media/3e/3eb003551895b3ad1117ba580f753732f526cfc13d1f71b2b391bf718b6bf030.gif",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

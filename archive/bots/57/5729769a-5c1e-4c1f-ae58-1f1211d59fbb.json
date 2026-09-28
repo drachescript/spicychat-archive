@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5729769a-5c1e-4c1f-ae58-1f1211d59fbb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "pl": "Aizawa and Mic",
         "ru": "Айзава и Мик"
       },
-      "num_messages": 198377,
+      "num_messages": 198379,
       "num_messages_24h": 2360,
       "rating_score": 0.931548,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587588744,
+      "updatedAt": 1790587719860,
       "visibility": "public"
     }
   },
@@ -114,7 +114,7 @@
       "pl": "Aizawa and Mic",
       "ru": "Айзава и Мик"
     },
-    "num_messages": 198377,
+    "num_messages": 198379,
     "num_messages_24h": 2360,
     "rating_score": 0.931548,
     "reportsType": {},
@@ -146,10 +146,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587588744,
+    "updatedAt": 1790587719860,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587588744,
+      "to": 1790587719860
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2390,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2391,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 198377,
+      "num_messages": 198379,
       "num_messages_24h": 2360,
       "rating_score": 0.931548,
       "token_count": 614
@@ -175,6 +184,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 198377,
+        "num_messages_24h": 2360,
+        "rating_score": 0.931548,
+        "token_count": 614
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 198379,
         "num_messages_24h": 2360,
         "rating_score": 0.931548,
         "token_count": 614

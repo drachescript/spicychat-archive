@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ad59aca4-bbeb-427a-ba4f-431b081cfb8a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "Lora, Shasara & Drel"
       },
-      "num_messages": 576,
+      "num_messages": 593,
       "num_messages_24h": 0,
       "rating_score": 0,
       "tags": [
@@ -64,7 +64,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587282917,
+      "updatedAt": 1790588169926,
       "visibility": "public"
     }
   },
@@ -92,7 +92,7 @@
     "name_i18n": {
       "zh": "Lora, Shasara & Drel"
     },
-    "num_messages": 576,
+    "num_messages": 593,
     "num_messages_24h": 0,
     "rating_score": 0,
     "tags": [
@@ -116,10 +116,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587282917,
+    "updatedAt": 1790588169926,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587282917,
+      "to": 1790588169926
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -135,7 +144,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 576,
+      "num_messages": 593,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1788
@@ -145,6 +154,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 576,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1788
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 593,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1788

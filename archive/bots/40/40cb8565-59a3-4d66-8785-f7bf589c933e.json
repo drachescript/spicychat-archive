@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "40cb8565-59a3-4d66-8785-f7bf589c933e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Task Force 141",
         "zh": "141特遣队"
       },
-      "num_messages": 57473,
+      "num_messages": 57499,
       "num_messages_24h": 2341,
       "rating_score": 0,
       "reportsType": {},
@@ -86,7 +86,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587308791,
+      "updatedAt": 1790588359357,
       "visibility": "public"
     }
   },
@@ -121,7 +121,7 @@
       "ru": "Task Force 141",
       "zh": "141特遣队"
     },
-    "num_messages": 57473,
+    "num_messages": 57499,
     "num_messages_24h": 2341,
     "rating_score": 0,
     "reportsType": {},
@@ -160,10 +160,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587308791,
+    "updatedAt": 1790588359357,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587308791,
+      "to": 1790588359357
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -173,13 +182,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2417,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2418,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 57473,
+      "num_messages": 57499,
       "num_messages_24h": 2341,
       "rating_score": 0,
       "token_count": 487
@@ -189,6 +198,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 57473,
+        "num_messages_24h": 2341,
+        "rating_score": 0,
+        "token_count": 487
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 57499,
         "num_messages_24h": 2341,
         "rating_score": 0,
         "token_count": 487

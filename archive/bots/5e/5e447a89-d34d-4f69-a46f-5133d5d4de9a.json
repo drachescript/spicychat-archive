@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5e447a89-d34d-4f69-a46f-5133d5d4de9a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Simon",
-      "num_messages": 597,
+      "num_messages": 635,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "He came for the money, but now he's interested in your femboy ass. (femboy pov / feminization / BBC)",
       "token_count": 786,
       "type": "STANDARD",
-      "updatedAt": 1790587118683,
+      "updatedAt": 1790588363671,
       "visibility": "public"
     }
   },
@@ -81,7 +81,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Simon",
-    "num_messages": 597,
+    "num_messages": 635,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "He came for the money, but now he's interested in your femboy ass. (femboy pov / feminization / BBC)",
     "token_count": 786,
     "type": "STANDARD",
-    "updatedAt": 1790587118683,
+    "updatedAt": 1790588363671,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587118683,
+      "to": 1790588363671
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,7 +128,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 597,
+      "num_messages": 635,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 786
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 597,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 786
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 635,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 786

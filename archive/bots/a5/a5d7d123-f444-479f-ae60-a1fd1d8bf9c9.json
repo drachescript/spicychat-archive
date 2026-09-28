@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a5d7d123-f444-479f-ae60-a1fd1d8bf9c9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "tr": "JJK Men Dorm",
         "zh": "咒术回战男生宿舍"
       },
-      "num_messages": 3344879,
+      "num_messages": 3344899,
       "num_messages_24h": 452,
       "rating_score": 0.878922,
       "tags": [
@@ -101,7 +101,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586915127,
+      "updatedAt": 1790587860697,
       "visibility": "public"
     }
   },
@@ -148,7 +148,7 @@
       "tr": "JJK Men Dorm",
       "zh": "咒术回战男生宿舍"
     },
-    "num_messages": 3344879,
+    "num_messages": 3344899,
     "num_messages_24h": 452,
     "rating_score": 0.878922,
     "tags": [
@@ -192,10 +192,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586915127,
+    "updatedAt": 1790587860697,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586915127,
+      "to": 1790587860697
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,13 +214,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 518,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 517,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 3344879,
+      "num_messages": 3344899,
       "num_messages_24h": 452,
       "rating_score": 0.878922,
       "token_count": 1248
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3344879,
+        "num_messages_24h": 452,
+        "rating_score": 0.878922,
+        "token_count": 1248
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3344899,
         "num_messages_24h": 452,
         "rating_score": 0.878922,
         "token_count": 1248

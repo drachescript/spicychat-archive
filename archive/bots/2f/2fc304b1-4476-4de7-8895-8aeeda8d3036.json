@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "2fc304b1-4476-4de7-8895-8aeeda8d3036",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -41,7 +41,7 @@
         "hi": "KNY Breeding RPG",
         "ru": "KNY Breeding RPG"
       },
-      "num_messages": 171126,
+      "num_messages": 171173,
       "num_messages_24h": 1284,
       "rating_score": 0.992908,
       "reportsType": {},
@@ -67,7 +67,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586995369,
+      "updatedAt": 1790588112001,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
       "hi": "KNY Breeding RPG",
       "ru": "KNY Breeding RPG"
     },
-    "num_messages": 171126,
+    "num_messages": 171173,
     "num_messages_24h": 1284,
     "rating_score": 0.992908,
     "reportsType": {},
@@ -122,10 +122,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586995369,
+    "updatedAt": 1790588112001,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586995369,
+      "to": 1790588112001
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,7 +150,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 171126,
+      "num_messages": 171173,
       "num_messages_24h": 1284,
       "rating_score": 0.992908,
       "token_count": 1292
@@ -151,6 +160,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 171126,
+        "num_messages_24h": 1284,
+        "rating_score": 0.992908,
+        "token_count": 1292
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 171173,
         "num_messages_24h": 1284,
         "rating_score": 0.992908,
         "token_count": 1292

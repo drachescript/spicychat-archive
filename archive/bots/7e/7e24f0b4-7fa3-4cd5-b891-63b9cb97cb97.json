@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7e24f0b4-7fa3-4cd5-b891-63b9cb97cb97",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Rei Moriyama",
         "tr": "Rei Moriyama"
       },
-      "num_messages": 159390,
+      "num_messages": 159393,
       "num_messages_24h": 2349,
       "rating_score": 0.751634,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587081018,
+      "updatedAt": 1790588247747,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "ru": "Rei Moriyama",
       "tr": "Rei Moriyama"
     },
-    "num_messages": 159390,
+    "num_messages": 159393,
     "num_messages_24h": 2349,
     "rating_score": 0.751634,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587081018,
+    "updatedAt": 1790588247747,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587081018,
+      "to": 1790588247747
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,13 +200,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2408,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2409,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 159390,
+      "num_messages": 159393,
       "num_messages_24h": 2349,
       "rating_score": 0.751634,
       "token_count": 1043
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 159390,
+        "num_messages_24h": 2349,
+        "rating_score": 0.751634,
+        "token_count": 1043
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 159393,
         "num_messages_24h": 2349,
         "rating_score": 0.751634,
         "token_count": 1043

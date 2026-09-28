@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9a2d62de-8436-48a0-9d5e-fa5a5285284d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "pt": "Hannah Nightingale",
         "ru": "Hannah Nightingale"
       },
-      "num_messages": 36702,
+      "num_messages": 36739,
       "num_messages_24h": 2716,
       "rating_score": 0,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587380567,
+      "updatedAt": 1790588361134,
       "visibility": "public"
     }
   },
@@ -127,7 +127,7 @@
       "pt": "Hannah Nightingale",
       "ru": "Hannah Nightingale"
     },
-    "num_messages": 36702,
+    "num_messages": 36739,
     "num_messages_24h": 2716,
     "rating_score": 0,
     "reportsType": {},
@@ -168,10 +168,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587380567,
+    "updatedAt": 1790588361134,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587380567,
+      "to": 1790588361134
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,7 +196,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 36702,
+      "num_messages": 36739,
       "num_messages_24h": 2716,
       "rating_score": 0,
       "token_count": 887
@@ -197,6 +206,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 36702,
+        "num_messages_24h": 2716,
+        "rating_score": 0,
+        "token_count": 887
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 36739,
         "num_messages_24h": 2716,
         "rating_score": 0,
         "token_count": 887

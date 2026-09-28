@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d29a97d6-f076-4b9b-9e34-14c23a02c12b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "Casual Seks Toplumu",
         "zh": "随意性爱社会"
       },
-      "num_messages": 5421876,
+      "num_messages": 5422089,
       "num_messages_24h": 2408,
       "rating_score": 0.861311,
       "tags": [
@@ -102,7 +102,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587595799,
+      "updatedAt": 1790588360836,
       "visibility": "public"
     }
   },
@@ -146,7 +146,7 @@
       "tr": "Casual Seks Toplumu",
       "zh": "随意性爱社会"
     },
-    "num_messages": 5421876,
+    "num_messages": 5422089,
     "num_messages_24h": 2408,
     "rating_score": 0.861311,
     "tags": [
@@ -192,10 +192,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587595799,
+    "updatedAt": 1790588360836,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587595799,
+      "to": 1790588360836
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,8 +214,8 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2326,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2327,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "popular": {
       "rank": 182,
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5421876,
+      "num_messages": 5422089,
       "num_messages_24h": 2408,
       "rating_score": 0.861311,
       "token_count": 667
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5421876,
+        "num_messages_24h": 2408,
+        "rating_score": 0.861311,
+        "token_count": 667
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5422089,
         "num_messages_24h": 2408,
         "rating_score": 0.861311,
         "token_count": 667

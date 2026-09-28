@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c2007282-309f-4d0a-95b3-a8d1c7080a6e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Meg Armitage",
-      "num_messages": 1583,
+      "num_messages": 1604,
       "num_messages_24h": 712,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "The Ice Princess at a magic academy, you are her partner. Cold physically and emotionally.",
       "token_count": 2163,
       "type": "STANDARD",
-      "updatedAt": 1790586998292,
+      "updatedAt": 1790588363384,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Meg Armitage",
-    "num_messages": 1583,
+    "num_messages": 1604,
     "num_messages_24h": 712,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "The Ice Princess at a magic academy, you are her partner. Cold physically and emotionally.",
     "token_count": 2163,
     "type": "STANDARD",
-    "updatedAt": 1790586998292,
+    "updatedAt": 1790588363384,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586998292,
+      "to": 1790588363384
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1583,
+      "num_messages": 1604,
       "num_messages_24h": 712,
       "rating_score": 0,
       "token_count": 2163
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1583,
+        "num_messages_24h": 712,
+        "rating_score": 0,
+        "token_count": 2163
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 1604,
         "num_messages_24h": 712,
         "rating_score": 0,
         "token_count": 2163

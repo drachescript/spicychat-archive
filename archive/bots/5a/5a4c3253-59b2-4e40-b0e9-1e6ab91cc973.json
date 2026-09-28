@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5a4c3253-59b2-4e40-b0e9-1e6ab91cc973",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Futanari Classroom",
         "zh": "Futanari Classroom"
       },
-      "num_messages": 126419,
+      "num_messages": 126436,
       "num_messages_24h": 2467,
       "rating_score": 0.905579,
       "reportsType": {},
@@ -91,7 +91,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587410287,
+      "updatedAt": 1790588367792,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "tr": "Futanari Classroom",
       "zh": "Futanari Classroom"
     },
-    "num_messages": 126419,
+    "num_messages": 126436,
     "num_messages_24h": 2467,
     "rating_score": 0.905579,
     "reportsType": {},
@@ -170,10 +170,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587410287,
+    "updatedAt": 1790588367792,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587410287,
+      "to": 1790588367792
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -183,13 +192,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2268,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2269,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 126419,
+      "num_messages": 126436,
       "num_messages_24h": 2467,
       "rating_score": 0.905579,
       "token_count": 1136
@@ -199,6 +208,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 126419,
+        "num_messages_24h": 2467,
+        "rating_score": 0.905579,
+        "token_count": 1136
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 126436,
         "num_messages_24h": 2467,
         "rating_score": 0.905579,
         "token_count": 1136

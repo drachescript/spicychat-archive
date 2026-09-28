@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1e9ddc78-d803-4921-995b-27c3651d2967",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ru": "Tammy & Rachel",
         "zh": "Tammy & Rachel"
       },
-      "num_messages": 19931,
+      "num_messages": 20028,
       "num_messages_24h": 5115,
       "rating_score": 0,
       "tags": [
@@ -81,7 +81,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586691435,
+      "updatedAt": 1790587859692,
       "visibility": "public"
     }
   },
@@ -115,7 +115,7 @@
       "ru": "Tammy & Rachel",
       "zh": "Tammy & Rachel"
     },
-    "num_messages": 19931,
+    "num_messages": 20028,
     "num_messages_24h": 5115,
     "rating_score": 0,
     "tags": [
@@ -150,10 +150,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586691435,
+    "updatedAt": 1790587859692,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586691435,
+      "to": 1790587859692
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,13 +176,13 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 2047,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2049,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 19931,
+      "num_messages": 20028,
       "num_messages_24h": 5115,
       "rating_score": 0,
       "token_count": 1694
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 19931,
+        "num_messages_24h": 5115,
+        "rating_score": 0,
+        "token_count": 1694
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 20028,
         "num_messages_24h": 5115,
         "rating_score": 0,
         "token_count": 1694

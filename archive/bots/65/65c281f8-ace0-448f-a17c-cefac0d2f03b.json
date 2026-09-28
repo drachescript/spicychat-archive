@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "65c281f8-ace0-448f-a17c-cefac0d2f03b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "pl": "MHA - Wieś",
         "ru": "MHA - Сельская местность"
       },
-      "num_messages": 53875,
+      "num_messages": 53913,
       "num_messages_24h": 5249,
       "rating_score": 0,
       "reportsType": {},
@@ -74,7 +74,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586912459,
+      "updatedAt": 1790587665360,
       "visibility": "public"
     }
   },
@@ -108,7 +108,7 @@
       "pl": "MHA - Wieś",
       "ru": "MHA - Сельская местность"
     },
-    "num_messages": 53875,
+    "num_messages": 53913,
     "num_messages_24h": 5249,
     "rating_score": 0,
     "reportsType": {},
@@ -136,10 +136,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586912459,
+    "updatedAt": 1790587665360,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586912459,
+      "to": 1790587665360
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,7 +164,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 53875,
+      "num_messages": 53913,
       "num_messages_24h": 5249,
       "rating_score": 0,
       "token_count": 1630
@@ -165,6 +174,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 53875,
+        "num_messages_24h": 5249,
+        "rating_score": 0,
+        "token_count": 1630
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 53913,
         "num_messages_24h": 5249,
         "rating_score": 0,
         "token_count": 1630

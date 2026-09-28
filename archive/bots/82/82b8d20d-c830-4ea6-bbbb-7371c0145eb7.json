@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "82b8d20d-c830-4ea6-bbbb-7371c0145eb7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Cathrine",
-      "num_messages": 389,
+      "num_messages": 430,
       "num_messages_24h": 234,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "Employee of your company, about to get promotion, came to negotiate to you about it, manipulate her",
       "token_count": 348,
       "type": "STANDARD",
-      "updatedAt": 1790586607084,
+      "updatedAt": 1790588561847,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Cathrine",
-    "num_messages": 389,
+    "num_messages": 430,
     "num_messages_24h": 234,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "Employee of your company, about to get promotion, came to negotiate to you about it, manipulate her",
     "token_count": 348,
     "type": "STANDARD",
-    "updatedAt": 1790586607084,
+    "updatedAt": 1790588561847,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586607084,
+      "to": 1790588561847
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,7 +122,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 389,
+      "num_messages": 430,
       "num_messages_24h": 234,
       "rating_score": 0,
       "token_count": 348
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 389,
+        "num_messages_24h": 234,
+        "rating_score": 0,
+        "token_count": 348
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 430,
         "num_messages_24h": 234,
         "rating_score": 0,
         "token_count": 348

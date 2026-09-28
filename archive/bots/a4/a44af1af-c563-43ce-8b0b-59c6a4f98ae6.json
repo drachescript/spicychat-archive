@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a44af1af-c563-43ce-8b0b-59c6a4f98ae6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "pl": "Jungkook",
         "tr": "Jeon Jungkook"
       },
-      "num_messages": 89598,
+      "num_messages": 89659,
       "num_messages_24h": 2558,
       "rating_score": 0.91129,
       "tags": [
@@ -73,7 +73,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586969692,
+      "updatedAt": 1790588451427,
       "visibility": "public"
     }
   },
@@ -109,7 +109,7 @@
       "pl": "Jungkook",
       "tr": "Jeon Jungkook"
     },
-    "num_messages": 89598,
+    "num_messages": 89659,
     "num_messages_24h": 2558,
     "rating_score": 0.91129,
     "tags": [
@@ -134,10 +134,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586969692,
+    "updatedAt": 1790588451427,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586969692,
+      "to": 1790588451427
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,13 +156,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2173,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2174,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 89598,
+      "num_messages": 89659,
       "num_messages_24h": 2558,
       "rating_score": 0.91129,
       "token_count": 829
@@ -163,6 +172,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 89598,
+        "num_messages_24h": 2558,
+        "rating_score": 0.91129,
+        "token_count": 829
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 89659,
         "num_messages_24h": 2558,
         "rating_score": 0.91129,
         "token_count": 829

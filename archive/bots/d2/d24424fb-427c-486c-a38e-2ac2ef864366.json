@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d24424fb-427c-486c-a38e-2ac2ef864366",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -62,7 +62,7 @@
         "tr": "Aaliyah & Marina",
         "zh": "Aaliyah & Marina"
       },
-      "num_messages": 667560,
+      "num_messages": 667589,
       "num_messages_24h": 2346,
       "rating_score": 0.823529,
       "reportsType": {},
@@ -109,7 +109,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587476488,
+      "updatedAt": 1790588362960,
       "visibility": "public"
     }
   },
@@ -161,7 +161,7 @@
       "tr": "Aaliyah & Marina",
       "zh": "Aaliyah & Marina"
     },
-    "num_messages": 667560,
+    "num_messages": 667589,
     "num_messages_24h": 2346,
     "rating_score": 0.823529,
     "reportsType": {},
@@ -208,10 +208,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587476488,
+    "updatedAt": 1790588362960,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587476488,
+      "to": 1790588362960
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -221,13 +230,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2410,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2411,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 667560,
+      "num_messages": 667589,
       "num_messages_24h": 2346,
       "rating_score": 0.823529,
       "token_count": 1487
@@ -237,6 +246,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 667560,
+        "num_messages_24h": 2346,
+        "rating_score": 0.823529,
+        "token_count": 1487
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 667589,
         "num_messages_24h": 2346,
         "rating_score": 0.823529,
         "token_count": 1487

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3f2a7590-e514-47de-a0bd-5c5ac4e9e72b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Kırmızı Kurdele Kraliçeleri",
         "zh": "红丝带女王"
       },
-      "num_messages": 1226896,
+      "num_messages": 1227066,
       "num_messages_24h": 4970,
       "rating_score": 0.919103,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587477400,
+      "updatedAt": 1790588236417,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Kırmızı Kurdele Kraliçeleri",
       "zh": "红丝带女王"
     },
-    "num_messages": 1226896,
+    "num_messages": 1227066,
     "num_messages_24h": 4970,
     "rating_score": 0.919103,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587477400,
+    "updatedAt": 1790588236417,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587477400,
+      "to": 1790588236417
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1226896,
+      "num_messages": 1227066,
       "num_messages_24h": 4970,
       "rating_score": 0.919103,
       "token_count": 1567
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 1226896,
+        "num_messages_24h": 4970,
+        "rating_score": 0.919103,
+        "token_count": 1567
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1227066,
         "num_messages_24h": 4970,
         "rating_score": 0.919103,
         "token_count": 1567

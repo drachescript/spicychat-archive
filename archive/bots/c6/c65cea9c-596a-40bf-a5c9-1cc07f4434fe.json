@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c65cea9c-596a-40bf-a5c9-1cc07f4434fe",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -51,7 +51,7 @@
         "pt": "Madison Vale",
         "ru": "Madison Vale"
       },
-      "num_messages": 61189,
+      "num_messages": 62044,
       "num_messages_24h": 14150,
       "rating_score": 0,
       "reportsType": {},
@@ -87,7 +87,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587681195,
+      "updatedAt": 1790588369502,
       "visibility": "public"
     },
     "character-api": {
@@ -149,7 +149,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/98dc9e6a-80d9-490d-869f-3be224b467c9.png?class=avatar256x256",
     "character_id": "c65cea9c-596a-40bf-a5c9-1cc07f4434fe",
-    "createdAt": "2026-09-26T09:38:49.860Z",
+    "createdAt": 1790415529860,
     "creator_user_id": "kp:115c9a4d7ad24dc09616693c12c584d2",
     "creator_username": "bazjack85",
     "definition_size_category": "very",
@@ -173,12 +173,10 @@
       "pt": "Madison Vale",
       "ru": "Madison Vale"
     },
-    "num_messages": 61516,
+    "num_messages": 62044,
     "num_messages_24h": 14150,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Gentle Dom",
       "Female",
@@ -211,7 +209,7 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:29.833Z",
+    "updatedAt": 1790588369502,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -239,6 +237,22 @@
       "kind": "value",
       "from": 1790587681195,
       "to": "2026-09-28T09:28:29.833Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-26T09:38:49.860Z",
+      "to": 1790415529860
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:29.833Z",
+      "to": 1790588369502
     }
   ],
   "availabilityHistory": [
@@ -254,13 +268,14 @@
       "observedAt": "2026-09-28T09:29:01Z"
     },
     "latest": {
-      "rank": 2379,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2381,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 61516,
+      "num_messages": 62044,
+      "num_messages_24h": 14150,
       "rating_score": 0,
       "token_count": 2309
     },
@@ -279,8 +294,23 @@
         "num_messages": 61516,
         "rating_score": 0,
         "token_count": 2309
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 62044,
+        "num_messages_24h": 14150,
+        "rating_score": 0,
+        "token_count": 2309
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/98dc9e6a-80d9-490d-869f-3be224b467c9.png?class=avatar256x256",
+    "sha256": "5803ebd9ab484c36e0be6fda99d43c107c023bb6030062932a3d8d604cf1c346",
+    "contentType": "image/png",
+    "bytes": 155362,
+    "path": "archive/media/58/5803ebd9ab484c36e0be6fda99d43c107c023bb6030062932a3d8d604cf1c346.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

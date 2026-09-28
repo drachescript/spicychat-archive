@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7ecc7865-e81d-4e35-8cfb-759cb7234489",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -46,7 +46,7 @@
         "ko": "SCP-10001",
         "ru": "SCP-10001"
       },
-      "num_messages": 30798,
+      "num_messages": 30844,
       "num_messages_24h": 1857,
       "rating_score": 1,
       "reportsType": {},
@@ -83,7 +83,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587027666,
+      "updatedAt": 1790588456633,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "ko": "SCP-10001",
       "ru": "SCP-10001"
     },
-    "num_messages": 30798,
+    "num_messages": 30844,
     "num_messages_24h": 1857,
     "rating_score": 1,
     "reportsType": {},
@@ -154,10 +154,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587027666,
+    "updatedAt": 1790588456633,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587027666,
+      "to": 1790588456633
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,13 +176,13 @@
   ],
   "listings": {
     "top-rated": {
-      "rank": 777,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 776,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 30798,
+      "num_messages": 30844,
       "num_messages_24h": 1857,
       "rating_score": 1,
       "token_count": 917
@@ -183,6 +192,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 30798,
+        "num_messages_24h": 1857,
+        "rating_score": 1,
+        "token_count": 917
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 30844,
         "num_messages_24h": 1857,
         "rating_score": 1,
         "token_count": 917

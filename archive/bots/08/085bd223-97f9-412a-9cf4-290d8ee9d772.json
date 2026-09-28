@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "085bd223-97f9-412a-9cf4-290d8ee9d772",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Fatui Dinner",
         "tr": "Fatui Dinner"
       },
-      "num_messages": 210303,
+      "num_messages": 210367,
       "num_messages_24h": 4536,
       "rating_score": 0.866667,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587482238,
+      "updatedAt": 1790588279237,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "ru": "Fatui Dinner",
       "tr": "Fatui Dinner"
     },
-    "num_messages": 210303,
+    "num_messages": 210367,
     "num_messages_24h": 4536,
     "rating_score": 0.866667,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587482238,
+    "updatedAt": 1790588279237,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587482238,
+      "to": 1790588279237
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 210303,
+      "num_messages": 210367,
       "num_messages_24h": 4536,
       "rating_score": 0.866667,
       "token_count": 1195
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 210303,
+        "num_messages_24h": 4536,
+        "rating_score": 0.866667,
+        "token_count": 1195
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 210367,
         "num_messages_24h": 4536,
         "rating_score": 0.866667,
         "token_count": 1195

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fb9da756-3cf9-4d42-a12c-d9b7c6f9eec8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pt": "Bruce Wayne | Batman",
         "zh": "布鲁斯·韦恩 | 蝙蝠侠"
       },
-      "num_messages": 106056,
+      "num_messages": 106062,
       "num_messages_24h": 2767,
       "rating_score": 0.605634,
       "reportsType": {},
@@ -80,7 +80,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587083952,
+      "updatedAt": 1790588207229,
       "visibility": "public"
     }
   },
@@ -113,7 +113,7 @@
       "pt": "Bruce Wayne | Batman",
       "zh": "布鲁斯·韦恩 | 蝙蝠侠"
     },
-    "num_messages": 106056,
+    "num_messages": 106062,
     "num_messages_24h": 2767,
     "rating_score": 0.605634,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587083952,
+    "updatedAt": 1790588207229,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587083952,
+      "to": 1790588207229
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,7 +176,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 106056,
+      "num_messages": 106062,
       "num_messages_24h": 2767,
       "rating_score": 0.605634,
       "token_count": 1624
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 106056,
+        "num_messages_24h": 2767,
+        "rating_score": 0.605634,
+        "token_count": 1624
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 106062,
         "num_messages_24h": 2767,
         "rating_score": 0.605634,
         "token_count": 1624

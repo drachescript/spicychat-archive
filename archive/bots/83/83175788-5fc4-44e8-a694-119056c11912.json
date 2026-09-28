@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "83175788-5fc4-44e8-a694-119056c11912",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Duke Alistair",
         "zh": "阿利斯泰尔公爵"
       },
-      "num_messages": 1571028,
+      "num_messages": 1571030,
       "num_messages_24h": 1148,
       "rating_score": 0.720913,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587560389,
+      "updatedAt": 1790587974344,
       "visibility": "public"
     }
   },
@@ -144,7 +144,7 @@
       "tr": "Duke Alistair",
       "zh": "阿利斯泰尔公爵"
     },
-    "num_messages": 1571028,
+    "num_messages": 1571030,
     "num_messages_24h": 1148,
     "rating_score": 0.720913,
     "reportsType": {},
@@ -194,10 +194,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587560389,
+    "updatedAt": 1790587974344,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587560389,
+      "to": 1790587974344
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -213,7 +222,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1571028,
+      "num_messages": 1571030,
       "num_messages_24h": 1148,
       "rating_score": 0.720913,
       "token_count": 1811
@@ -223,6 +232,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1571028,
+        "num_messages_24h": 1148,
+        "rating_score": 0.720913,
+        "token_count": 1811
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1571030,
         "num_messages_24h": 1148,
         "rating_score": 0.720913,
         "token_count": 1811

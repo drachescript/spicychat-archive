@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "a7d6ee7f-e4a6-4e62-a323-a1de57bbe7d1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Rika Kanzaki",
         "zh": "Rika Kanzaki"
       },
-      "num_messages": 1154719,
+      "num_messages": 1156381,
       "num_messages_24h": 35163,
       "rating_score": 0.87806,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587250023,
+      "updatedAt": 1790588454362,
       "visibility": "public"
     },
     "character-api": {
@@ -178,7 +178,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/d4b55510-671e-4f63-9d57-c7bf5a660598.webp?class=avatar256x256",
     "character_id": "a7d6ee7f-e4a6-4e62-a323-a1de57bbe7d1",
-    "createdAt": "2026-09-18T10:43:27.037Z",
+    "createdAt": 1789728207037,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -208,13 +208,10 @@
       "tr": "Rika Kanzaki",
       "zh": "Rika Kanzaki"
     },
-    "num_messages": 1155305,
+    "num_messages": 1156381,
     "num_messages_24h": 35163,
     "rating_score": 0.87806,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -262,7 +259,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:29:26.912Z",
+    "updatedAt": 1790588454362,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -291,6 +288,22 @@
       "kind": "value",
       "from": 1790587250023,
       "to": "2026-09-28T09:29:26.912Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-18T10:43:27.037Z",
+      "to": 1789728207037
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:29:26.912Z",
+      "to": 1790588454362
     }
   ],
   "availabilityHistory": [
@@ -308,7 +321,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1155305,
+      "num_messages": 1156381,
+      "num_messages_24h": 35163,
       "rating_score": 0.87806,
       "token_count": 1010
     },
@@ -325,6 +339,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 1155305,
+        "rating_score": 0.87806,
+        "token_count": 1010
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1156381,
+        "num_messages_24h": 35163,
         "rating_score": 0.87806,
         "token_count": 1010
       }

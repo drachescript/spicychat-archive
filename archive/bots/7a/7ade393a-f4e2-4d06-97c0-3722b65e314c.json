@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7ade393a-f4e2-4d06-97c0-3722b65e314c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Kaori Shibata",
         "zh": "Kaori Shibata"
       },
-      "num_messages": 436925,
+      "num_messages": 437449,
       "num_messages_24h": 31926,
       "rating_score": 0.901442,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637864,
+      "updatedAt": 1790587971520,
       "visibility": "public"
     },
     "character-api": {
@@ -178,7 +178,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/5ab74e1d-27ce-43ed-97a1-cda38e31ddb3.webp?class=avatar256x256",
     "character_id": "7ade393a-f4e2-4d06-97c0-3722b65e314c",
-    "createdAt": "2026-09-18T10:38:21.417Z",
+    "createdAt": 1789727901417,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -208,13 +208,10 @@
       "tr": "Kaori Shibata",
       "zh": "Kaori Shibata"
     },
-    "num_messages": 436925,
+    "num_messages": 437449,
     "num_messages_24h": 31926,
     "rating_score": 0.901442,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "MILF",
       "Female",
@@ -262,7 +259,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:27:17.864Z",
+    "updatedAt": 1790587971520,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -291,6 +288,22 @@
       "kind": "value",
       "from": 1790587637864,
       "to": "2026-09-28T09:27:17.864Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-18T10:38:21.417Z",
+      "to": 1789727901417
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:27:17.864Z",
+      "to": 1790587971520
     }
   ],
   "availabilityHistory": [
@@ -308,7 +321,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 436925,
+      "num_messages": 437449,
+      "num_messages_24h": 31926,
       "rating_score": 0.901442,
       "token_count": 949
     },
@@ -325,6 +339,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 436925,
+        "rating_score": 0.901442,
+        "token_count": 949
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 437449,
+        "num_messages_24h": 31926,
         "rating_score": 0.901442,
         "token_count": 949
       }

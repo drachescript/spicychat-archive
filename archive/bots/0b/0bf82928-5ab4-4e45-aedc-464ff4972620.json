@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0bf82928-5ab4-4e45-aedc-464ff4972620",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "pl": "Katsuki Bakugo",
         "ru": "Katsuki Bakugo"
       },
-      "num_messages": 37681,
+      "num_messages": 37719,
       "num_messages_24h": 4732,
       "reportsType": {},
       "tags": [
@@ -74,7 +74,7 @@
         "ar"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586905313,
+      "updatedAt": 1790588499738,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "pl": "Katsuki Bakugo",
       "ru": "Katsuki Bakugo"
     },
-    "num_messages": 37681,
+    "num_messages": 37719,
     "num_messages_24h": 4732,
     "reportsType": {},
     "tags": [
@@ -138,10 +138,19 @@
       "ar"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586905313,
+    "updatedAt": 1790588499738,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586905313,
+      "to": 1790588499738
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 37681,
+      "num_messages": 37719,
       "num_messages_24h": 4732,
       "token_count": 490
     },
@@ -166,6 +175,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 37681,
+        "num_messages_24h": 4732,
+        "token_count": 490
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 37719,
         "num_messages_24h": 4732,
         "token_count": 490
       }

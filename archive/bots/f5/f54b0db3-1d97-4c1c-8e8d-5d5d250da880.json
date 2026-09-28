@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f54b0db3-1d97-4c1c-8e8d-5d5d250da880",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "pl": "Ludwig Hoffmann",
         "ru": "Ludwig Hoffmann"
       },
-      "num_messages": 38267,
+      "num_messages": 38274,
       "num_messages_24h": 3854,
       "reportsType": {},
       "tags": [
@@ -74,7 +74,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587520621,
+      "updatedAt": 1790588042060,
       "visibility": "public"
     }
   },
@@ -106,7 +106,7 @@
       "pl": "Ludwig Hoffmann",
       "ru": "Ludwig Hoffmann"
     },
-    "num_messages": 38267,
+    "num_messages": 38274,
     "num_messages_24h": 3854,
     "reportsType": {},
     "tags": [
@@ -136,10 +136,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587520621,
+    "updatedAt": 1790588042060,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587520621,
+      "to": 1790588042060
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,7 +164,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38267,
+      "num_messages": 38274,
       "num_messages_24h": 3854,
       "token_count": 1588
     },
@@ -164,6 +173,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 38267,
+        "num_messages_24h": 3854,
+        "token_count": 1588
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 38274,
         "num_messages_24h": 3854,
         "token_count": 1588
       }

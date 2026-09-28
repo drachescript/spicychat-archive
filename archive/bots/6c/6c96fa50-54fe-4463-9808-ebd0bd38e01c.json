@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6c96fa50-54fe-4463-9808-ebd0bd38e01c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ru": "Драма знати",
         "zh": "贵族戏剧"
       },
-      "num_messages": 25233,
+      "num_messages": 25244,
       "num_messages_24h": 5106,
       "rating_score": 0,
       "reportsType": {},
@@ -75,7 +75,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364748,
+      "updatedAt": 1790588247616,
       "visibility": "public"
     }
   },
@@ -106,7 +106,7 @@
       "ru": "Драма знати",
       "zh": "贵族戏剧"
     },
-    "num_messages": 25233,
+    "num_messages": 25244,
     "num_messages_24h": 5106,
     "rating_score": 0,
     "reportsType": {},
@@ -138,10 +138,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364748,
+    "updatedAt": 1790588247616,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364748,
+      "to": 1790588247616
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 25233,
+      "num_messages": 25244,
       "num_messages_24h": 5106,
       "rating_score": 0,
       "token_count": 1333
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 25233,
+        "num_messages_24h": 5106,
+        "rating_score": 0,
+        "token_count": 1333
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 25244,
         "num_messages_24h": 5106,
         "rating_score": 0,
         "token_count": 1333

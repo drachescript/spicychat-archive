@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1f6232cb-d7a5-43b5-a289-c630490df7a0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "NORRIS KINGSLEY",
         "zh": "NORRIS KINGSLEY"
       },
-      "num_messages": 84377,
+      "num_messages": 84402,
       "num_messages_24h": 4279,
       "rating_score": 0.920635,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586437453,
+      "updatedAt": 1790588533045,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "tr": "NORRIS KINGSLEY",
       "zh": "NORRIS KINGSLEY"
     },
-    "num_messages": 84377,
+    "num_messages": 84402,
     "num_messages_24h": 4279,
     "rating_score": 0.920635,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586437453,
+    "updatedAt": 1790588533045,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586437453,
+      "to": 1790588533045
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 84377,
+      "num_messages": 84402,
       "num_messages_24h": 4279,
       "rating_score": 0.920635,
       "token_count": 715
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 84377,
+        "num_messages_24h": 4279,
+        "rating_score": 0.920635,
+        "token_count": 715
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 84402,
         "num_messages_24h": 4279,
         "rating_score": 0.920635,
         "token_count": 715

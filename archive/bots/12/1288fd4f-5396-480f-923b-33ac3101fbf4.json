@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1288fd4f-5396-480f-923b-33ac3101fbf4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       ],
       "moderation_status": "pending",
       "name": "The Beatles",
-      "num_messages": 116486,
+      "num_messages": 116542,
       "num_messages_24h": 2568,
       "reportsType": {},
       "tags": [
@@ -50,7 +50,7 @@
       "title": "・|They just arrived in America!|・",
       "token_count": 464,
       "type": "STANDARD",
-      "updatedAt": 1790587301906,
+      "updatedAt": 1790588107310,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     ],
     "moderation_status": "pending",
     "name": "The Beatles",
-    "num_messages": 116486,
+    "num_messages": 116542,
     "num_messages_24h": 2568,
     "reportsType": {},
     "tags": [
@@ -90,10 +90,19 @@
     "title": "・|They just arrived in America!|・",
     "token_count": 464,
     "type": "STANDARD",
-    "updatedAt": 1790587301906,
+    "updatedAt": 1790588107310,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587301906,
+      "to": 1790588107310
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -103,13 +112,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2163,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2164,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 116486,
+      "num_messages": 116542,
       "num_messages_24h": 2568,
       "token_count": 464
     },
@@ -118,6 +127,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 116486,
+        "num_messages_24h": 2568,
+        "token_count": 464
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 116542,
         "num_messages_24h": 2568,
         "token_count": 464
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9a25d8ca-3332-4a64-821d-c82d25cd7fef",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "ru": "Mirei Karasuma",
         "tr": "Mirei Karasuma"
       },
-      "num_messages": 81828,
+      "num_messages": 82292,
       "num_messages_24h": 12254,
       "rating_score": 0.813433,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587525226,
+      "updatedAt": 1790588456200,
       "visibility": "public"
     },
     "character-api": {
@@ -174,7 +174,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/ed398468-3f91-4c01-b056-49bd33669af3.webp?class=avatar256x256",
     "character_id": "9a25d8ca-3332-4a64-821d-c82d25cd7fef",
-    "createdAt": "2026-09-25T10:39:29.740Z",
+    "createdAt": 1790332769740,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -203,13 +203,10 @@
       "ru": "Mirei Karasuma",
       "tr": "Mirei Karasuma"
     },
-    "num_messages": 81828,
+    "num_messages": 82292,
     "num_messages_24h": 12254,
     "rating_score": 0.813433,
-    "reportsType": [
-      "System",
-      "User"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Futanari",
@@ -255,7 +252,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:25:25.226Z",
+    "updatedAt": 1790588456200,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -284,6 +281,22 @@
       "kind": "value",
       "from": 1790587525226,
       "to": "2026-09-28T09:25:25.226Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-25T10:39:29.740Z",
+      "to": 1790332769740
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:25:25.226Z",
+      "to": 1790588456200
     }
   ],
   "availabilityHistory": [
@@ -301,7 +314,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 81828,
+      "num_messages": 82292,
+      "num_messages_24h": 12254,
       "rating_score": 0.813433,
       "token_count": 909
     },
@@ -320,8 +334,23 @@
         "num_messages": 81828,
         "rating_score": 0.813433,
         "token_count": 909
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 82292,
+        "num_messages_24h": 12254,
+        "rating_score": 0.813433,
+        "token_count": 909
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/ed398468-3f91-4c01-b056-49bd33669af3.webp?class=avatar256x256",
+    "sha256": "14a98a8f10c143e9100611946865a8316cb3194e09630959a4acc6ebfc13f4c9",
+    "contentType": "image/webp",
+    "bytes": 2757030,
+    "path": "archive/media/14/14a98a8f10c143e9100611946865a8316cb3194e09630959a4acc6ebfc13f4c9.webp",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

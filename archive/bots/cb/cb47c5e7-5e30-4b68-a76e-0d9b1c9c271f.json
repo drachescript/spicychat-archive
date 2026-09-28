@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cb47c5e7-5e30-4b68-a76e-0d9b1c9c271f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Доктор Брауэр",
         "zh": "布劳尔医生"
       },
-      "num_messages": 4420420,
+      "num_messages": 4420430,
       "num_messages_24h": 136,
       "rating_score": 0.770126,
       "tags": [
@@ -78,7 +78,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586994663,
+      "updatedAt": 1790587825578,
       "visibility": "public"
     }
   },
@@ -110,7 +110,7 @@
       "ru": "Доктор Брауэр",
       "zh": "布劳尔医生"
     },
-    "num_messages": 4420420,
+    "num_messages": 4420430,
     "num_messages_24h": 136,
     "rating_score": 0.770126,
     "tags": [
@@ -144,10 +144,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586994663,
+    "updatedAt": 1790587825578,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586994663,
+      "to": 1790587825578
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -163,7 +172,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4420420,
+      "num_messages": 4420430,
       "num_messages_24h": 136,
       "rating_score": 0.770126,
       "token_count": 1104
@@ -173,6 +182,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4420420,
+        "num_messages_24h": 136,
+        "rating_score": 0.770126,
+        "token_count": 1104
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4420430,
         "num_messages_24h": 136,
         "rating_score": 0.770126,
         "token_count": 1104

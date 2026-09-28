@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4d3bbfec-54ae-4993-a0c3-27f3bb7c768b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "Мисс Миядзаки",
         "zh": "Ms. Miyazaki"
       },
-      "num_messages": 22450,
+      "num_messages": 22453,
       "num_messages_24h": 559,
       "rating_score": 1,
       "reportsType": {},
@@ -85,7 +85,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587523165,
+      "updatedAt": 1790587842160,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "ru": "Мисс Миядзаки",
       "zh": "Ms. Miyazaki"
     },
-    "num_messages": 22450,
+    "num_messages": 22453,
     "num_messages_24h": 559,
     "rating_score": 1,
     "reportsType": {},
@@ -158,10 +158,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587523165,
+    "updatedAt": 1790587842160,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587523165,
+      "to": 1790587842160
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,7 +186,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 22450,
+      "num_messages": 22453,
       "num_messages_24h": 559,
       "rating_score": 1,
       "token_count": 977
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 22450,
+        "num_messages_24h": 559,
+        "rating_score": 1,
+        "token_count": 977
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 22453,
         "num_messages_24h": 559,
         "rating_score": 1,
         "token_count": 977

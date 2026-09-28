@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ceca9a48-cc0d-4623-b518-91b4ef8e896a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -55,7 +55,7 @@
         "tr": "Big Guy",
         "zh": "大个子"
       },
-      "num_messages": 217620,
+      "num_messages": 217786,
       "num_messages_24h": 19141,
       "rating_score": 0.826923,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587682419,
+      "updatedAt": 1790588280069,
       "visibility": "public"
     },
     "character-api": {
@@ -167,7 +167,7 @@
     "avatar_is_nsfw": true,
     "avatar_url": "https://cdn.nd-api.com/avatars/51b927dc-c418-4579-9638-f9c474e0c5a0.jpg?class=avatar256x256",
     "character_id": "ceca9a48-cc0d-4623-b518-91b4ef8e896a",
-    "createdAt": "2026-09-13T02:01:12.752Z",
+    "createdAt": 1789264872752,
     "creator_user_id": "kp:0c46eb9014cb4accb22921c08dec23ea",
     "creator_username": "larydev",
     "definition_size_category": "mid",
@@ -196,12 +196,10 @@
       "tr": "Big Guy",
       "zh": "大个子"
     },
-    "num_messages": 217620,
+    "num_messages": 217786,
     "num_messages_24h": 19141,
     "rating_score": 0.826923,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "Dominant",
@@ -245,7 +243,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:02.419Z",
+    "updatedAt": 1790588280069,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -273,6 +271,22 @@
       "kind": "value",
       "from": 1790587682419,
       "to": "2026-09-28T09:28:02.419Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-13T02:01:12.752Z",
+      "to": 1789264872752
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:02.419Z",
+      "to": 1790588280069
     }
   ],
   "availabilityHistory": [
@@ -290,7 +304,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 217620,
+      "num_messages": 217786,
+      "num_messages_24h": 19141,
       "rating_score": 0.826923,
       "token_count": 962
     },
@@ -307,6 +322,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 217620,
+        "rating_score": 0.826923,
+        "token_count": 962
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 217786,
+        "num_messages_24h": 19141,
         "rating_score": 0.826923,
         "token_count": 962
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b9177ebf-8dcd-46f0-b42a-a18684586473",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -35,7 +35,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "RL Tord [Eddsworld]",
-      "num_messages": 31421,
+      "num_messages": 31427,
       "num_messages_24h": 6,
       "rating_score": 1,
       "tags": [
@@ -52,7 +52,7 @@
       "title": "🔫❤️| he came back after ‘The End’ (all genders)",
       "token_count": 182,
       "type": "STANDARD",
-      "updatedAt": 1790586788355,
+      "updatedAt": 1790587925889,
       "visibility": "public"
     }
   },
@@ -75,7 +75,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "RL Tord [Eddsworld]",
-    "num_messages": 31421,
+    "num_messages": 31427,
     "num_messages_24h": 6,
     "rating_score": 1,
     "tags": [
@@ -92,10 +92,19 @@
     "title": "🔫❤️| he came back after ‘The End’ (all genders)",
     "token_count": 182,
     "type": "STANDARD",
-    "updatedAt": 1790586788355,
+    "updatedAt": 1790587925889,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586788355,
+      "to": 1790587925889
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -111,7 +120,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 31421,
+      "num_messages": 31427,
       "num_messages_24h": 6,
       "rating_score": 1,
       "token_count": 182
@@ -121,6 +130,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 31421,
+        "num_messages_24h": 6,
+        "rating_score": 1,
+        "token_count": 182
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 31427,
         "num_messages_24h": 6,
         "rating_score": 1,
         "token_count": 182

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ec3d6baf-eecf-4fdd-b654-46bea892f9c1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "pt": "Academia do Familiar",
         "ru": "Академия Фамильяров"
       },
-      "num_messages": 193709,
+      "num_messages": 193720,
       "num_messages_24h": 3010,
       "rating_score": 0.855,
       "tags": [
@@ -77,7 +77,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487293,
+      "updatedAt": 1790588361573,
       "visibility": "public"
     }
   },
@@ -113,7 +113,7 @@
       "pt": "Academia do Familiar",
       "ru": "Академия Фамильяров"
     },
-    "num_messages": 193709,
+    "num_messages": 193720,
     "num_messages_24h": 3010,
     "rating_score": 0.855,
     "tags": [
@@ -142,10 +142,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487293,
+    "updatedAt": 1790588361573,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487293,
+      "to": 1790588361573
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -161,7 +170,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 193709,
+      "num_messages": 193720,
       "num_messages_24h": 3010,
       "rating_score": 0.855,
       "token_count": 708
@@ -171,6 +180,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 193709,
+        "num_messages_24h": 3010,
+        "rating_score": 0.855,
+        "token_count": 708
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 193720,
         "num_messages_24h": 3010,
         "rating_score": 0.855,
         "token_count": 708

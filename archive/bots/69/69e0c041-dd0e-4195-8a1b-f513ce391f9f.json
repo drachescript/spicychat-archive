@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "69e0c041-dd0e-4195-8a1b-f513ce391f9f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Доктор Амелия Бак",
         "zh": "艾米莉亚·巴克博士"
       },
-      "num_messages": 3479070,
+      "num_messages": 3479073,
       "num_messages_24h": 83,
       "rating_score": 0.79725,
       "tags": [
@@ -79,7 +79,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790584389536,
+      "updatedAt": 1790588209736,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "ru": "Доктор Амелия Бак",
       "zh": "艾米莉亚·巴克博士"
     },
-    "num_messages": 3479070,
+    "num_messages": 3479073,
     "num_messages_24h": 83,
     "rating_score": 0.79725,
     "tags": [
@@ -148,10 +148,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790584389536,
+    "updatedAt": 1790588209736,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790584389536,
+      "to": 1790588209736
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,7 +176,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3479070,
+      "num_messages": 3479073,
       "num_messages_24h": 83,
       "rating_score": 0.79725,
       "token_count": 203
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3479070,
+        "num_messages_24h": 83,
+        "rating_score": 0.79725,
+        "token_count": 203
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3479073,
         "num_messages_24h": 83,
         "rating_score": 0.79725,
         "token_count": 203

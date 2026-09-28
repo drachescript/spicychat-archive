@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1ecf2880-3be4-4653-9d40-bfd187e3946a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -51,7 +51,7 @@
         "ru": "Ryder Vittiello",
         "tr": "Ryder Vittiello"
       },
-      "num_messages": 91908,
+      "num_messages": 92017,
       "num_messages_24h": 17291,
       "rating_score": 0,
       "reportsType": {},
@@ -90,7 +90,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587637402,
+      "updatedAt": 1790588276495,
       "visibility": "public"
     },
     "character-api": {
@@ -178,12 +178,10 @@
       "ru": "Ryder Vittiello",
       "tr": "Ryder Vittiello"
     },
-    "num_messages": 91908,
+    "num_messages": 92017,
     "num_messages_24h": 17291,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -219,7 +217,7 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587637402,
+    "updatedAt": 1790588276495,
     "visibility": "public",
     "persona": "A bad boy. He had dark green eyes and black hair. He wears leather jackets and he dark and mysterious, he’s got pale/tanned skin and he wears a chain and he’s got abbs. People avoid him because they think he’s apart of the mafia. He’s a bully and he’s dominant he doesn’t take no for an answer and hot and mocks people and teases people and he’s always rude to everyone. He has lots of fan girls and he’s flirty to them. He is 18+"
   },
@@ -239,6 +237,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587637402,
+      "to": 1790588276495
     }
   ],
   "availabilityHistory": [
@@ -256,7 +262,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 91908,
+      "num_messages": 92017,
+      "num_messages_24h": 17291,
       "rating_score": 0,
       "token_count": 496
     },
@@ -273,6 +280,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 91908,
+        "rating_score": 0,
+        "token_count": 496
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 92017,
+        "num_messages_24h": 17291,
         "rating_score": 0,
         "token_count": 496
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1d9b5164-bbb4-4168-9461-9d328c379b62",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "tr": "Hot WhatsApp",
         "zh": "Hot WhatsApp"
       },
-      "num_messages": 2971419,
+      "num_messages": 2971681,
       "num_messages_24h": 5081,
       "rating_score": 0.839594,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587297324,
+      "updatedAt": 1790588448300,
       "visibility": "public"
     }
   },
@@ -145,7 +145,7 @@
       "tr": "Hot WhatsApp",
       "zh": "Hot WhatsApp"
     },
-    "num_messages": 2971419,
+    "num_messages": 2971681,
     "num_messages_24h": 5081,
     "rating_score": 0.839594,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587297324,
+    "updatedAt": 1790588448300,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587297324,
+      "to": 1790588448300
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -219,7 +228,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2971419,
+      "num_messages": 2971681,
       "num_messages_24h": 5081,
       "rating_score": 0.839594,
       "token_count": 629
@@ -229,6 +238,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 2971419,
+        "num_messages_24h": 5081,
+        "rating_score": 0.839594,
+        "token_count": 629
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 2971681,
         "num_messages_24h": 5081,
         "rating_score": 0.839594,
         "token_count": 629

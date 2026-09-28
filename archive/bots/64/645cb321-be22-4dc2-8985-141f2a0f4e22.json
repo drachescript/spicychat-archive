@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "645cb321-be22-4dc2-8985-141f2a0f4e22",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
       "name_i18n": {
         "de": "Mina Ashido"
       },
-      "num_messages": 103,
+      "num_messages": 110,
       "num_messages_24h": 41,
       "rating_score": 0,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "de"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585858254,
+      "updatedAt": 1790588531067,
       "visibility": "public"
     }
   },
@@ -101,7 +101,7 @@
     "name_i18n": {
       "de": "Mina Ashido"
     },
-    "num_messages": 103,
+    "num_messages": 110,
     "num_messages_24h": 41,
     "rating_score": 0,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "de"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585858254,
+    "updatedAt": 1790588531067,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585858254,
+      "to": 1790588531067
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -141,13 +150,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2276,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2278,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 103,
+      "num_messages": 110,
       "num_messages_24h": 41,
       "rating_score": 0,
       "token_count": 291
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 103,
+        "num_messages_24h": 41,
+        "rating_score": 0,
+        "token_count": 291
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 110,
         "num_messages_24h": 41,
         "rating_score": 0,
         "token_count": 291

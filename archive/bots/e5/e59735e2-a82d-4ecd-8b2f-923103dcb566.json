@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e59735e2-a82d-4ecd-8b2f-923103dcb566",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "zh": "Cassindra \"Sin\" Drav"
       },
-      "num_messages": 902,
+      "num_messages": 917,
       "num_messages_24h": 533,
       "rating_score": 0,
       "reportsType": {},
@@ -66,7 +66,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790583584196,
+      "updatedAt": 1790588181674,
       "visibility": "public"
     }
   },
@@ -94,7 +94,7 @@
     "name_i18n": {
       "zh": "Cassindra \"Sin\" Drav"
     },
-    "num_messages": 902,
+    "num_messages": 917,
     "num_messages_24h": 533,
     "rating_score": 0,
     "reportsType": {},
@@ -120,10 +120,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790583584196,
+    "updatedAt": 1790588181674,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790583584196,
+      "to": 1790588181674
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -133,13 +142,13 @@
   ],
   "listings": {
     "latest": {
-      "rank": 2153,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2155,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 902,
+      "num_messages": 917,
       "num_messages_24h": 533,
       "rating_score": 0,
       "token_count": 2407
@@ -149,6 +158,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 902,
+        "num_messages_24h": 533,
+        "rating_score": 0,
+        "token_count": 2407
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 917,
         "num_messages_24h": 533,
         "rating_score": 0,
         "token_count": 2407

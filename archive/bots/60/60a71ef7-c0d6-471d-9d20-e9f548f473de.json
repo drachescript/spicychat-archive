@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "60a71ef7-c0d6-471d-9d20-e9f548f473de",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -49,7 +49,7 @@
         "ru": "Rynza mimi",
         "zh": "Rynza mimi"
       },
-      "num_messages": 103232,
+      "num_messages": 103234,
       "num_messages_24h": 2474,
       "rating_score": 0.871795,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587191605,
+      "updatedAt": 1790588168810,
       "visibility": "public"
     }
   },
@@ -129,7 +129,7 @@
       "ru": "Rynza mimi",
       "zh": "Rynza mimi"
     },
-    "num_messages": 103232,
+    "num_messages": 103234,
     "num_messages_24h": 2474,
     "rating_score": 0.871795,
     "reportsType": {},
@@ -172,10 +172,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587191605,
+    "updatedAt": 1790588168810,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587191605,
+      "to": 1790588168810
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -185,13 +194,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2256,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2257,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 103232,
+      "num_messages": 103234,
       "num_messages_24h": 2474,
       "rating_score": 0.871795,
       "token_count": 326
@@ -201,6 +210,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 103232,
+        "num_messages_24h": 2474,
+        "rating_score": 0.871795,
+        "token_count": 326
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 103234,
         "num_messages_24h": 2474,
         "rating_score": 0.871795,
         "token_count": 326

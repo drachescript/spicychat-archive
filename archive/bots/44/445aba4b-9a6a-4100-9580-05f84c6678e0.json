@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "445aba4b-9a6a-4100-9580-05f84c6678e0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "One Piece: Senin Yolun",
         "zh": "海贼王：Your Way"
       },
-      "num_messages": 2714191,
+      "num_messages": 2714274,
       "num_messages_24h": 703,
       "rating_score": 0.804756,
       "tags": [
@@ -98,7 +98,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586805838,
+      "updatedAt": 1790587970354,
       "visibility": "public"
     }
   },
@@ -137,7 +137,7 @@
       "tr": "One Piece: Senin Yolun",
       "zh": "海贼王：Your Way"
     },
-    "num_messages": 2714191,
+    "num_messages": 2714274,
     "num_messages_24h": 703,
     "rating_score": 0.804756,
     "tags": [
@@ -184,10 +184,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586805838,
+    "updatedAt": 1790587970354,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586805838,
+      "to": 1790587970354
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,13 +206,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 796,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 795,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 2714191,
+      "num_messages": 2714274,
       "num_messages_24h": 703,
       "rating_score": 0.804756,
       "token_count": 1407
@@ -213,6 +222,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2714191,
+        "num_messages_24h": 703,
+        "rating_score": 0.804756,
+        "token_count": 1407
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2714274,
         "num_messages_24h": 703,
         "rating_score": 0.804756,
         "token_count": 1407

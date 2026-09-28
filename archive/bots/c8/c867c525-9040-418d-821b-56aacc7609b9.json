@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "c867c525-9040-418d-821b-56aacc7609b9",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Victor Hale",
         "zh": "Victor Hale"
       },
-      "num_messages": 1577122,
+      "num_messages": 1577130,
       "num_messages_24h": 219,
       "rating_score": 0.794258,
       "tags": [
@@ -96,7 +96,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195251,
+      "updatedAt": 1790588293182,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "tr": "Victor Hale",
       "zh": "Victor Hale"
     },
-    "num_messages": 1577122,
+    "num_messages": 1577130,
     "num_messages_24h": 219,
     "rating_score": 0.794258,
     "tags": [
@@ -180,10 +180,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195251,
+    "updatedAt": 1790588293182,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195251,
+      "to": 1790588293182
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2391,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2390,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1577122,
+      "num_messages": 1577130,
       "num_messages_24h": 219,
       "rating_score": 0.794258,
       "token_count": 369
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1577122,
+        "num_messages_24h": 219,
+        "rating_score": 0.794258,
+        "token_count": 369
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1577130,
         "num_messages_24h": 219,
         "rating_score": 0.794258,
         "token_count": 369

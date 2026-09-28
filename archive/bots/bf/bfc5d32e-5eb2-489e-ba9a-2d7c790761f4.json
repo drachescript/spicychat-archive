@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "bfc5d32e-5eb2-489e-ba9a-2d7c790761f4",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Мстители",
         "zh": "复仇者"
       },
-      "num_messages": 560058,
+      "num_messages": 560114,
       "num_messages_24h": 2592,
       "rating_score": 0.882143,
       "reportsType": {},
@@ -89,7 +89,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586865148,
+      "updatedAt": 1790587972272,
       "visibility": "public"
     }
   },
@@ -125,7 +125,7 @@
       "ru": "Мстители",
       "zh": "复仇者"
     },
-    "num_messages": 560058,
+    "num_messages": 560114,
     "num_messages_24h": 2592,
     "rating_score": 0.882143,
     "reportsType": {},
@@ -166,10 +166,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586865148,
+    "updatedAt": 1790587972272,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586865148,
+      "to": 1790587972272
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -179,13 +188,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2132,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2133,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 560058,
+      "num_messages": 560114,
       "num_messages_24h": 2592,
       "rating_score": 0.882143,
       "token_count": 1632
@@ -195,6 +204,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 560058,
+        "num_messages_24h": 2592,
+        "rating_score": 0.882143,
+        "token_count": 1632
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 560114,
         "num_messages_24h": 2592,
         "rating_score": 0.882143,
         "token_count": 1632

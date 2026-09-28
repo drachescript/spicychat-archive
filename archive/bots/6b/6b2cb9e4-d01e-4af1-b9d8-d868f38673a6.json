@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6b2cb9e4-d01e-4af1-b9d8-d868f38673a6",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ru": "Overlord Husk",
         "zh": "霸主赫斯克"
       },
-      "num_messages": 98044,
+      "num_messages": 98045,
       "num_messages_24h": 132,
       "rating_score": 1,
       "tags": [
@@ -75,7 +75,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587361937,
+      "updatedAt": 1790588310827,
       "visibility": "public"
     }
   },
@@ -106,7 +106,7 @@
       "ru": "Overlord Husk",
       "zh": "霸主赫斯克"
     },
-    "num_messages": 98044,
+    "num_messages": 98045,
     "num_messages_24h": 132,
     "rating_score": 1,
     "tags": [
@@ -138,10 +138,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587361937,
+    "updatedAt": 1790588310827,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587361937,
+      "to": 1790588310827
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 98044,
+      "num_messages": 98045,
       "num_messages_24h": 132,
       "rating_score": 1,
       "token_count": 403
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 98044,
+        "num_messages_24h": 132,
+        "rating_score": 1,
+        "token_count": 403
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 98045,
         "num_messages_24h": 132,
         "rating_score": 1,
         "token_count": 403

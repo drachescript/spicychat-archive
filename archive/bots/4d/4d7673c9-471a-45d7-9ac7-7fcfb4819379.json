@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "4d7673c9-471a-45d7-9ac7-7fcfb4819379",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Alex furon",
         "zh": "Alex furon"
       },
-      "num_messages": 953037,
+      "num_messages": 953850,
       "num_messages_24h": 28289,
       "rating_score": 0.614247,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587516863,
+      "updatedAt": 1790588497620,
       "visibility": "public"
     },
     "character-api": {
@@ -193,12 +193,10 @@
       "tr": "Alex furon",
       "zh": "Alex furon"
     },
-    "num_messages": 953037,
+    "num_messages": 953850,
     "num_messages_24h": 28289,
     "rating_score": 0.614247,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "FemalePOV",
@@ -239,7 +237,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587516863,
+    "updatedAt": 1790588497620,
     "visibility": "public",
     "persona": "Alex is a cold hearted man. Used to be friendly, but now completely ignores you. He is 6'3,  has a good physique and rides a good bike. He's wealthy. He used to be your bestfriend. He completely ignores and hates you now. He also became mature and nonchildish towards you."
   },
@@ -259,6 +257,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587516863,
+      "to": 1790588497620
     }
   ],
   "availabilityHistory": [
@@ -276,7 +282,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 953037,
+      "num_messages": 953850,
+      "num_messages_24h": 28289,
       "rating_score": 0.614247,
       "token_count": 311
     },
@@ -293,6 +300,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 953037,
+        "rating_score": 0.614247,
+        "token_count": 311
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 953850,
+        "num_messages_24h": 28289,
         "rating_score": 0.614247,
         "token_count": 311
       }

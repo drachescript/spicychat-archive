@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6fcdd6cf-692e-4ec3-8fb0-cfd715485fb8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -58,7 +58,7 @@
         "tr": "Fantasy RPG[NSFW/SFW",
         "zh": "奇幻 RPG [NSFW/SFW]"
       },
-      "num_messages": 29493176,
+      "num_messages": 29493237,
       "num_messages_24h": 199,
       "rating_score": 0.739759,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587585813,
+      "updatedAt": 1790588366129,
       "visibility": "public"
     }
   },
@@ -155,7 +155,7 @@
       "tr": "Fantasy RPG[NSFW/SFW",
       "zh": "奇幻 RPG [NSFW/SFW]"
     },
-    "num_messages": 29493176,
+    "num_messages": 29493237,
     "num_messages_24h": 199,
     "rating_score": 0.739759,
     "reportsType": {},
@@ -204,10 +204,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587585813,
+    "updatedAt": 1790588366129,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587585813,
+      "to": 1790588366129
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -223,7 +232,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 29493176,
+      "num_messages": 29493237,
       "num_messages_24h": 199,
       "rating_score": 0.739759,
       "token_count": 886
@@ -233,6 +242,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 29493176,
+        "num_messages_24h": 199,
+        "rating_score": 0.739759,
+        "token_count": 886
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 29493237,
         "num_messages_24h": 199,
         "rating_score": 0.739759,
         "token_count": 886

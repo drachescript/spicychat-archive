@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "1c3f51cc-90ed-4dc5-bf73-e638fb85210f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "hi": "Marcus, Bianca&Julia",
         "ru": "Marcus, Bianca&Julia"
       },
-      "num_messages": 5405,
+      "num_messages": 5491,
       "num_messages_24h": 3480,
       "rating_score": 0,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "ru"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587300042,
+      "updatedAt": 1790588359940,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "hi": "Marcus, Bianca&Julia",
       "ru": "Marcus, Bianca&Julia"
     },
-    "num_messages": 5405,
+    "num_messages": 5491,
     "num_messages_24h": 3480,
     "rating_score": 0,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "ru"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587300042,
+    "updatedAt": 1790588359940,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587300042,
+      "to": 1790588359940
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -155,7 +164,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 5405,
+      "num_messages": 5491,
       "num_messages_24h": 3480,
       "rating_score": 0,
       "token_count": 1570
@@ -165,6 +174,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5405,
+        "num_messages_24h": 3480,
+        "rating_score": 0,
+        "token_count": 1570
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5491,
         "num_messages_24h": 3480,
         "rating_score": 0,
         "token_count": 1570

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "af0e582d-759e-40d9-90d9-21e3f9ff6039",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "hi": "Emily Carter",
         "pt": "Emily Carter"
       },
-      "num_messages": 15614,
+      "num_messages": 15785,
       "num_messages_24h": 3379,
       "rating_score": 0,
       "reportsType": {},
@@ -79,7 +79,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586968828,
+      "updatedAt": 1790588066134,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "hi": "Emily Carter",
       "pt": "Emily Carter"
     },
-    "num_messages": 15614,
+    "num_messages": 15785,
     "num_messages_24h": 3379,
     "rating_score": 0,
     "reportsType": {},
@@ -148,10 +148,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586968828,
+    "updatedAt": 1790588066134,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586968828,
+      "to": 1790588066134
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -167,7 +176,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 15614,
+      "num_messages": 15785,
       "num_messages_24h": 3379,
       "rating_score": 0,
       "token_count": 507
@@ -177,6 +186,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 15614,
+        "num_messages_24h": 3379,
+        "rating_score": 0,
+        "token_count": 507
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 15785,
         "num_messages_24h": 3379,
         "rating_score": 0,
         "token_count": 507

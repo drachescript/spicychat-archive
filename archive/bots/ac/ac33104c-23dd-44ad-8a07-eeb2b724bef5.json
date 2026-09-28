@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ac33104c-23dd-44ad-8a07-eeb2b724bef5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Ms. Elizabeth Waller",
         "zh": "Ms. Elizabeth Waller"
       },
-      "num_messages": 1559147,
+      "num_messages": 1559164,
       "num_messages_24h": 428,
       "rating_score": 0.855697,
       "tags": [
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587132504,
+      "updatedAt": 1790588233433,
       "visibility": "public"
     }
   },
@@ -144,7 +144,7 @@
       "tr": "Ms. Elizabeth Waller",
       "zh": "Ms. Elizabeth Waller"
     },
-    "num_messages": 1559147,
+    "num_messages": 1559164,
     "num_messages_24h": 428,
     "rating_score": 0.855697,
     "tags": [
@@ -192,10 +192,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587132504,
+    "updatedAt": 1790588233433,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587132504,
+      "to": 1790588233433
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -205,13 +214,13 @@
   ],
   "listings": {
     "popular": {
-      "rank": 2458,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2457,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 1559147,
+      "num_messages": 1559164,
       "num_messages_24h": 428,
       "rating_score": 0.855697,
       "token_count": 1575
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1559147,
+        "num_messages_24h": 428,
+        "rating_score": 0.855697,
+        "token_count": 1575
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1559164,
         "num_messages_24h": 428,
         "rating_score": 0.855697,
         "token_count": 1575

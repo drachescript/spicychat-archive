@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ac8b8d71-bd33-4765-aaed-3f76017f7de1",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "tr": "JJK Erkek Banyosu",
         "zh": "JJK 男厕所"
       },
-      "num_messages": 131760,
+      "num_messages": 131899,
       "num_messages_24h": 4018,
       "rating_score": 0.9375,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587476776,
+      "updatedAt": 1790588560327,
       "visibility": "public"
     }
   },
@@ -149,7 +149,7 @@
       "tr": "JJK Erkek Banyosu",
       "zh": "JJK 男厕所"
     },
-    "num_messages": 131760,
+    "num_messages": 131899,
     "num_messages_24h": 4018,
     "rating_score": 0.9375,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587476776,
+    "updatedAt": 1790588560327,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587476776,
+      "to": 1790588560327
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 131760,
+      "num_messages": 131899,
       "num_messages_24h": 4018,
       "rating_score": 0.9375,
       "token_count": 1612
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 131760,
+        "num_messages_24h": 4018,
+        "rating_score": 0.9375,
+        "token_count": 1612
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 131899,
         "num_messages_24h": 4018,
         "rating_score": 0.9375,
         "token_count": 1612

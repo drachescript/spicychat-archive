@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "3a6dc331-c88b-4d81-a193-abdfc03d282d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
         "de": "Marco Moretti",
         "hi": "Marco Moretti"
       },
-      "num_messages": 13582,
+      "num_messages": 13689,
       "num_messages_24h": 3644,
       "rating_score": 0,
       "reportsType": {},
@@ -62,7 +62,7 @@
         "hi"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587586648,
+      "updatedAt": 1790588450767,
       "visibility": "public"
     }
   },
@@ -90,7 +90,7 @@
       "de": "Marco Moretti",
       "hi": "Marco Moretti"
     },
-    "num_messages": 13582,
+    "num_messages": 13689,
     "num_messages_24h": 3644,
     "rating_score": 0,
     "reportsType": {},
@@ -112,10 +112,19 @@
       "hi"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587586648,
+    "updatedAt": 1790588450767,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587586648,
+      "to": 1790588450767
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,7 +140,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 13582,
+      "num_messages": 13689,
       "num_messages_24h": 3644,
       "rating_score": 0,
       "token_count": 298
@@ -141,6 +150,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 13582,
+        "num_messages_24h": 3644,
+        "rating_score": 0,
+        "token_count": 298
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 13689,
         "num_messages_24h": 3644,
         "rating_score": 0,
         "token_count": 298

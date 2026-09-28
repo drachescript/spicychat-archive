@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "284a6277-70aa-4918-b1b8-ce3b8f1357d0",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "ru": "Меру Суккуб",
         "zh": "Meru the Succubus"
       },
-      "num_messages": 99757,
+      "num_messages": 99802,
       "num_messages_24h": 3620,
       "rating_score": 0.91195,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587197605,
+      "updatedAt": 1790587931334,
       "visibility": "public"
     }
   },
@@ -150,7 +150,7 @@
       "ru": "Меру Суккуб",
       "zh": "Meru the Succubus"
     },
-    "num_messages": 99757,
+    "num_messages": 99802,
     "num_messages_24h": 3620,
     "rating_score": 0.91195,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587197605,
+    "updatedAt": 1790587931334,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587197605,
+      "to": 1790587931334
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -215,7 +224,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 99757,
+      "num_messages": 99802,
       "num_messages_24h": 3620,
       "rating_score": 0.91195,
       "token_count": 887
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 99757,
+        "num_messages_24h": 3620,
+        "rating_score": 0.91195,
+        "token_count": 887
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 99802,
         "num_messages_24h": 3620,
         "rating_score": 0.91195,
         "token_count": 887

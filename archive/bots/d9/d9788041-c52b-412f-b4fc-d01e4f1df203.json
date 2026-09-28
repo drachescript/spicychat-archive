@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d9788041-c52b-412f-b4fc-d01e4f1df203",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -196,9 +196,7 @@
     "num_messages": 129916,
     "num_messages_24h": 12921,
     "rating_score": 0.957143,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "NSFW",
       "Female",
@@ -278,6 +276,7 @@
   "metrics": {
     "latest": {
       "num_messages": 129916,
+      "num_messages_24h": 12921,
       "rating_score": 0.957143,
       "token_count": 332
     },
@@ -296,8 +295,23 @@
         "num_messages": 129916,
         "rating_score": 0.957143,
         "token_count": 332
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 129916,
+        "num_messages_24h": 12921,
+        "rating_score": 0.957143,
+        "token_count": 332
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/1eca4cc9-0170-4cf6-8063-f191f2938c6f.png?class=avatar256x256",
+    "sha256": "62d625231068be578c3ef376666425360a0af12e77733a991d3c7a753d750b7d",
+    "contentType": "image/png",
+    "bytes": 140769,
+    "path": "archive/media/62/62d625231068be578c3ef376666425360a0af12e77733a991d3c7a753d750b7d.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

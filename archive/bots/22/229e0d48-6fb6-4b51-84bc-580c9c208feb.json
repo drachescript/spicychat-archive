@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "229e0d48-6fb6-4b51-84bc-580c9c208feb",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -35,7 +35,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Burning spice cookie",
-      "num_messages": 50306,
+      "num_messages": 50307,
       "num_messages_24h": 226,
       "rating_score": 0.994048,
       "reportsType": {},
@@ -46,7 +46,7 @@
       "title": "Fire & flowers human au",
       "token_count": 462,
       "type": "STANDARD",
-      "updatedAt": 1790586741145,
+      "updatedAt": 1790587769051,
       "visibility": "public"
     }
   },
@@ -69,7 +69,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Burning spice cookie",
-    "num_messages": 50306,
+    "num_messages": 50307,
     "num_messages_24h": 226,
     "rating_score": 0.994048,
     "reportsType": {},
@@ -80,10 +80,19 @@
     "title": "Fire & flowers human au",
     "token_count": 462,
     "type": "STANDARD",
-    "updatedAt": 1790586741145,
+    "updatedAt": 1790587769051,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586741145,
+      "to": 1790587769051
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -99,7 +108,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 50306,
+      "num_messages": 50307,
       "num_messages_24h": 226,
       "rating_score": 0.994048,
       "token_count": 462
@@ -109,6 +118,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 50306,
+        "num_messages_24h": 226,
+        "rating_score": 0.994048,
+        "token_count": 462
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 50307,
         "num_messages_24h": 226,
         "rating_score": 0.994048,
         "token_count": 462

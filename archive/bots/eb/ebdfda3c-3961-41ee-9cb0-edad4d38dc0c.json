@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ebdfda3c-3961-41ee-9cb0-edad4d38dc0c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Ferya❤️Diego❤️‍🔥you",
-      "num_messages": 1996,
+      "num_messages": 2022,
       "num_messages_24h": 1001,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "Your fiancée's ex-boyfriend has returned and wants a new chance..❤️‍🔥❤️‍🔥\nBut you...🤷‍♂️",
       "token_count": 978,
       "type": "STANDARD",
-      "updatedAt": 1790587479419,
+      "updatedAt": 1790588311214,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Ferya❤️Diego❤️‍🔥you",
-    "num_messages": 1996,
+    "num_messages": 2022,
     "num_messages_24h": 1001,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "Your fiancée's ex-boyfriend has returned and wants a new chance..❤️‍🔥❤️‍🔥\nBut you...🤷‍♂️",
     "token_count": 978,
     "type": "STANDARD",
-    "updatedAt": 1790587479419,
+    "updatedAt": 1790588311214,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587479419,
+      "to": 1790588311214
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1996,
+      "num_messages": 2022,
       "num_messages_24h": 1001,
       "rating_score": 0,
       "token_count": 978
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 1996,
+        "num_messages_24h": 1001,
+        "rating_score": 0,
+        "token_count": 978
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 2022,
         "num_messages_24h": 1001,
         "rating_score": 0,
         "token_count": 978

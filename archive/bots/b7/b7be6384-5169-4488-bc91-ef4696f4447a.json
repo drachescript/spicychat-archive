@@ -2,15 +2,18 @@
   "schemaVersion": 1,
   "id": "b7be6384-5169-4488-bc91-ef4696f4447a",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
+    },
+    "character-api": {
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +54,7 @@
         "ru": "Aiko Takamura",
         "tr": "Aiko Takamura"
       },
-      "num_messages": 63036,
+      "num_messages": 63118,
       "num_messages_24h": 7443,
       "rating_score": 0.990385,
       "reportsType": {},
@@ -94,8 +97,59 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587307267,
+      "updatedAt": 1790588107115,
       "visibility": "public"
+    },
+    "character-api": {
+      "id": "b7be6384-5169-4488-bc91-ef4696f4447a",
+      "type": "STANDARD",
+      "name": "Aiko Takamura",
+      "title": "The mother of your friend always flirts",
+      "visibility": "public",
+      "creator_username": "linmcl",
+      "creator_user_id": "kp:6e21cbf13c624c138ec013cd26e156b5",
+      "greeting": "**Aiko – Daichi’s mother**\n\n*Aiko is the widowed mother of your close friend Daichi. She’s grown increasingly frustrated with how persistently flirtatious you’ve been toward her. Every time you try to push for something more, she shuts it down—at least she tries. Even when you gently remind her she’s single now, her answer never changes: you’re her son’s friend, and that boundary is non-negotiable.*\n\n*Tonight you’re staying over again under the usual excuse of gaming with Daichi. The looks you keep giving her, the casual touches that linger a second too long… they’ve been making her flustered all evening. Finally she can’t take it anymore. She offers to go prepare some snacks, hoping a little distance will help. Instead you follow her into the kitchen, offering “help.”*\n\n*Now she’s standing there, arms crossed, frowning at you.*\n\n“Why are you so dense, {{user}}? I told you already—I don’t feel comfortable with this.”",
+      "avatar_url": "https://cdn.nd-api.com/avatars/275ddf30-5413-48cc-b1de-6b55b672f64c.png?class=avatar256x256",
+      "num_messages": 63118,
+      "rating_score": 0.990385,
+      "is_nsfw": true,
+      "avatar_is_nsfw": false,
+      "definition_visible": false,
+      "definition_size_category": "mid",
+      "tags": [
+        "Female",
+        "Romantic",
+        "MILF",
+        "Mature",
+        "Comedy",
+        "Wholesome"
+      ],
+      "language": "en",
+      "token_count": 901,
+      "reportsType": [
+        "System"
+      ],
+      "createdAt": "2026-09-24T00:23:42.021Z",
+      "updatedAt": "2026-09-28T09:35:07.115Z",
+      "translated_languages": [
+        "hi",
+        "it",
+        "ru",
+        "fr",
+        "es",
+        "de",
+        "ar",
+        "tr",
+        "pl",
+        "pt",
+        "ja",
+        "ko"
+      ],
+      "lorebooks": [],
+      "has_lorebooks": false,
+      "group_size_category": "regular",
+      "group_addable": true,
+      "character_id": "b7be6384-5169-4488-bc91-ef4696f4447a"
     }
   },
   "lastKnown": {
@@ -105,7 +159,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/275ddf30-5413-48cc-b1de-6b55b672f64c.png?class=avatar256x256",
     "character_id": "b7be6384-5169-4488-bc91-ef4696f4447a",
-    "createdAt": 1790209422021,
+    "createdAt": "2026-09-24T00:23:42.021Z",
     "creator_user_id": "kp:6e21cbf13c624c138ec013cd26e156b5",
     "creator_username": "linmcl",
     "definition_size_category": "mid",
@@ -133,10 +187,12 @@
       "ru": "Aiko Takamura",
       "tr": "Aiko Takamura"
     },
-    "num_messages": 63036,
+    "num_messages": 63118,
     "num_messages_24h": 7443,
     "rating_score": 0.990385,
-    "reportsType": {},
+    "reportsType": [
+      "System"
+    ],
     "tags": [
       "Female",
       "Romantic",
@@ -176,10 +232,44 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587307267,
+    "updatedAt": "2026-09-28T09:35:07.115Z",
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587307267,
+      "to": 1790588107115
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "reportsType",
+      "kind": "value",
+      "to": [
+        "System"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "createdAt",
+      "kind": "value",
+      "from": 1790209422021,
+      "to": "2026-09-24T00:23:42.021Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "character-api",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790588107115,
+      "to": "2026-09-28T09:35:07.115Z"
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,8 +285,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 63036,
-      "num_messages_24h": 7443,
+      "num_messages": 63118,
       "rating_score": 0.990385,
       "token_count": 901
     },
@@ -206,6 +295,21 @@
         "source": "typesense:trending",
         "num_messages": 63036,
         "num_messages_24h": 7443,
+        "rating_score": 0.990385,
+        "token_count": 901
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 63118,
+        "num_messages_24h": 7443,
+        "rating_score": 0.990385,
+        "token_count": 901
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "character-api",
+        "num_messages": 63118,
         "rating_score": 0.990385,
         "token_count": 901
       }

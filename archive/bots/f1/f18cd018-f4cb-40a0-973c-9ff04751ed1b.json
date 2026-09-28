@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f18cd018-f4cb-40a0-973c-9ff04751ed1b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Blake Callahan",
         "zh": "Blake Callahan"
       },
-      "num_messages": 323104,
+      "num_messages": 323507,
       "num_messages_24h": 18682,
       "rating_score": 0.787234,
       "reportsType": {},
@@ -102,7 +102,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587514280,
+      "updatedAt": 1790588453173,
       "visibility": "public"
     },
     "character-api": {
@@ -197,12 +197,10 @@
       "tr": "Blake Callahan",
       "zh": "Blake Callahan"
     },
-    "num_messages": 323104,
+    "num_messages": 323507,
     "num_messages_24h": 18682,
     "rating_score": 0.787234,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Male",
       "Romantic",
@@ -245,7 +243,7 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587514280,
+    "updatedAt": 1790588453173,
     "visibility": "public",
     "persona": "Name: Blake Callahan\nAge: 28\nHeight: 6’2” (188 cm)\n\nPersonality\n\nBlake Callahan is the quintessential bad boy. Cocky, arrogant, charming and completely aware of how attractive he is. He lives life on the edge, rarely thinks twice before doing something reckless and has a reputation for getting whatever—or whoever—he wants.\n\nHe’s a notorious playboy who doesn’t do relationships. Women come and go, and Blake makes sure nobody gets close enough to see anything beneath the confident exterior.\n\nHe’s sarcastic, provocative and loves getting under people’s skin, especially {{user}}‘s. He’s spent years treating her like his little brother’s annoying best friend, teasing her and deliberately pushing her buttons.\n\nBut Blake is also fiercely protective of the people he loves. Beneath the arrogance is someone intensely loyal, possessive and surprisingly vulnerable when his guard finally comes down.\n\nAnd lately, he’s beginning to see {{user}}",
     "scenario": "{{char}} has been best friends with Alex Callaghan for 10 years and for those full 10 years she’s been utterly in love with him, though Alex only sees her as a friend.  then there is Blake Callahan Alex’s older brother, always treated {{user}} like his annoying little sister.",
@@ -281,6 +279,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587514280,
+      "to": 1790588453173
     }
   ],
   "availabilityHistory": [
@@ -298,7 +304,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 323104,
+      "num_messages": 323507,
+      "num_messages_24h": 18682,
       "rating_score": 0.787234,
       "token_count": 1174
     },
@@ -315,6 +322,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 323104,
+        "rating_score": 0.787234,
+        "token_count": 1174
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 323507,
+        "num_messages_24h": 18682,
         "rating_score": 0.787234,
         "token_count": 1174
       }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8e2969a5-054a-4123-99bc-d51c3ff9768b",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "ru": "Elowen & Jack",
         "tr": "Elowen & Jack"
       },
-      "num_messages": 195305,
+      "num_messages": 195314,
       "num_messages_24h": 2356,
       "rating_score": 0.140921,
       "reportsType": {},
@@ -104,7 +104,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587031524,
+      "updatedAt": 1790588013055,
       "visibility": "public"
     }
   },
@@ -150,7 +150,7 @@
       "ru": "Elowen & Jack",
       "tr": "Elowen & Jack"
     },
-    "num_messages": 195305,
+    "num_messages": 195314,
     "num_messages_24h": 2356,
     "rating_score": 0.140921,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587031524,
+    "updatedAt": 1790588013055,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587031524,
+      "to": 1790588013055
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,13 +220,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2396,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2397,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 195305,
+      "num_messages": 195314,
       "num_messages_24h": 2356,
       "rating_score": 0.140921,
       "token_count": 859
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 195305,
+        "num_messages_24h": 2356,
+        "rating_score": 0.140921,
+        "token_count": 859
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 195314,
         "num_messages_24h": 2356,
         "rating_score": 0.140921,
         "token_count": 859

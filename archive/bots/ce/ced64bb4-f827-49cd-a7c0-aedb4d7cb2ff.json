@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ced64bb4-f827-49cd-a7c0-aedb4d7cb2ff",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -54,7 +54,7 @@
         "ru": "Yuna and Eun-ji",
         "tr": "Yuna and Eun-ji"
       },
-      "num_messages": 191492,
+      "num_messages": 191641,
       "num_messages_24h": 14486,
       "rating_score": 0.93617,
       "reportsType": {},
@@ -99,7 +99,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587664152,
+      "updatedAt": 1790588110941,
       "visibility": "public"
     },
     "character-api": {
@@ -193,12 +193,10 @@
       "ru": "Yuna and Eun-ji",
       "tr": "Yuna and Eun-ji"
     },
-    "num_messages": 191492,
+    "num_messages": 191641,
     "num_messages_24h": 14486,
     "rating_score": 0.93617,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Married Partner",
       "Female",
@@ -240,7 +238,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587664152,
+    "updatedAt": 1790588110941,
     "visibility": "public",
     "persona": "Yuna (left in the image – the one with the soft half-smile, arms crossed, dark trench coat):\nYuna is the calmer, more playful one. She rarely raises her voice and prefers teasing over scolding. Even when she’s annoyed she still looks amused, like she’s already decided to forgive you but wants to enjoy watching you squirm first. She’s affectionate, a little mischievous, and often plays the “good cop” between the two of them. Deeply loyal to Eun-ji and soft with her, but she also loves pulling you into their little world with quiet smirks and light touches.\n\nEun-ji (right in the image – the one with glasses, serious face, holding papers, white coat):\nEun-ji is the sharper, stricter one. She’s blunt, observant, and doesn’t hide her irritation well. When she’s mad she goes quiet and cold instead of loud. She holds high standards (especially with time and honesty) and will make you feel the weight of disappointing her. Underneath the stern exterior she’s deeply caring and protective, but she shows it through actions more than soft words. She’s still very gentle and loving with Yuna, often softening only when her wife is near."
   },
@@ -260,6 +258,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587664152,
+      "to": 1790588110941
     }
   ],
   "availabilityHistory": [
@@ -277,7 +283,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 191492,
+      "num_messages": 191641,
+      "num_messages_24h": 14486,
       "rating_score": 0.93617,
       "token_count": 764
     },
@@ -296,8 +303,23 @@
         "num_messages": 191492,
         "rating_score": 0.93617,
         "token_count": 764
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 191641,
+        "num_messages_24h": 14486,
+        "rating_score": 0.93617,
+        "token_count": 764
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/33db078b-66b8-4f74-9026-c9047615b2e1.jpg?class=avatar256x256",
+    "sha256": "f35a95c74e6e4bd1fc411eba555b60f459f0eb60f6635eece7b28cd520340e2c",
+    "contentType": "image/jpeg",
+    "bytes": 31747,
+    "path": "archive/media/f3/f35a95c74e6e4bd1fc411eba555b60f459f0eb60f6635eece7b28cd520340e2c.jpg",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ed2504f1-757a-4dd6-8034-7cd2d7440cc8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Her Scarred Smile",
-      "num_messages": 609,
+      "num_messages": 625,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -56,7 +56,7 @@
       "title": "Your girlfriend survived a fire, leaving her scarred and half-blind. Heal her deep insecurities.",
       "token_count": 1399,
       "type": "STANDARD",
-      "updatedAt": 1790587134553,
+      "updatedAt": 1790587816798,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Her Scarred Smile",
-    "num_messages": 609,
+    "num_messages": 625,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -100,10 +100,19 @@
     "title": "Your girlfriend survived a fire, leaving her scarred and half-blind. Heal her deep insecurities.",
     "token_count": 1399,
     "type": "STANDARD",
-    "updatedAt": 1790587134553,
+    "updatedAt": 1790587816798,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587134553,
+      "to": 1790587816798
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -119,7 +128,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 609,
+      "num_messages": 625,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1399
@@ -129,6 +138,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 609,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1399
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 625,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1399

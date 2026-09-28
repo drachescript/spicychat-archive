@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "b8b89d0a-7120-4fc2-801f-e14268f57c06",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -67,7 +67,7 @@
         "tr": "Misaki, Ryoko & Yuka",
         "zh": "Misaki, Ryoko & Yuka"
       },
-      "num_messages": 4527417,
+      "num_messages": 4527492,
       "num_messages_24h": 1509,
       "rating_score": 0.712722,
       "reportsType": {},
@@ -114,7 +114,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587477259,
+      "updatedAt": 1790587858453,
       "visibility": "public"
     }
   },
@@ -171,7 +171,7 @@
       "tr": "Misaki, Ryoko & Yuka",
       "zh": "Misaki, Ryoko & Yuka"
     },
-    "num_messages": 4527417,
+    "num_messages": 4527492,
     "num_messages_24h": 1509,
     "rating_score": 0.712722,
     "reportsType": {},
@@ -218,10 +218,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587477259,
+    "updatedAt": 1790587858453,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587477259,
+      "to": 1790587858453
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -237,7 +246,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4527417,
+      "num_messages": 4527492,
       "num_messages_24h": 1509,
       "rating_score": 0.712722,
       "token_count": 1916
@@ -247,6 +256,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4527417,
+        "num_messages_24h": 1509,
+        "rating_score": 0.712722,
+        "token_count": 1916
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4527492,
         "num_messages_24h": 1509,
         "rating_score": 0.712722,
         "token_count": 1916

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "8cc642a3-588c-47d9-a35a-d29e243a0049",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Richter the 'Rock'",
-      "num_messages": 547,
+      "num_messages": 556,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -57,7 +57,7 @@
       "title": "UFC Fighter and your best-friend's ex.",
       "token_count": 168,
       "type": "STANDARD",
-      "updatedAt": 1790548639507,
+      "updatedAt": 1790587861807,
       "visibility": "public"
     }
   },
@@ -82,7 +82,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Richter the 'Rock'",
-    "num_messages": 547,
+    "num_messages": 556,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -102,10 +102,19 @@
     "title": "UFC Fighter and your best-friend's ex.",
     "token_count": 168,
     "type": "STANDARD",
-    "updatedAt": 1790548639507,
+    "updatedAt": 1790587861807,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790548639507,
+      "to": 1790587861807
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -121,7 +130,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 547,
+      "num_messages": 556,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 168
@@ -131,6 +140,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 547,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 168
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 556,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 168

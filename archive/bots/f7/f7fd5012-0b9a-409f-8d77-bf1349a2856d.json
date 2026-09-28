@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f7fd5012-0b9a-409f-8d77-bf1349a2856d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Josie — Ex Pornstar",
         "zh": "Josie — Ex Pornstar"
       },
-      "num_messages": 76071,
+      "num_messages": 76260,
       "num_messages_24h": 6980,
       "rating_score": 0.760417,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587514275,
+      "updatedAt": 1790588366848,
       "visibility": "public",
       "voice_id": "5181ec75-0d55-4a9b-bc34-165abc0473c2"
     }
@@ -142,7 +142,7 @@
       "tr": "Josie — Ex Pornstar",
       "zh": "Josie — Ex Pornstar"
     },
-    "num_messages": 76071,
+    "num_messages": 76260,
     "num_messages_24h": 6980,
     "rating_score": 0.760417,
     "reportsType": {},
@@ -191,11 +191,20 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587514275,
+    "updatedAt": 1790588366848,
     "visibility": "public",
     "voice_id": "5181ec75-0d55-4a9b-bc34-165abc0473c2"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587514275,
+      "to": 1790588366848
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,7 +220,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 76071,
+      "num_messages": 76260,
       "num_messages_24h": 6980,
       "rating_score": 0.760417,
       "token_count": 1581
@@ -221,6 +230,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 76071,
+        "num_messages_24h": 6980,
+        "rating_score": 0.760417,
+        "token_count": 1581
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 76260,
         "num_messages_24h": 6980,
         "rating_score": 0.760417,
         "token_count": 1581

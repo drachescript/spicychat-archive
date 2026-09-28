@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6ad89b25-2d67-48b2-981f-b787580f5f05",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -57,7 +57,7 @@
         "ru": "Tokyo Revengers RPG",
         "zh": "东京复仇者 RPG"
       },
-      "num_messages": 633027,
+      "num_messages": 633058,
       "num_messages_24h": 2653,
       "rating_score": 0.813679,
       "reportsType": {},
@@ -100,7 +100,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587664461,
+      "updatedAt": 1790588363028,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "ru": "Tokyo Revengers RPG",
       "zh": "东京复仇者 RPG"
     },
-    "num_messages": 633027,
+    "num_messages": 633058,
     "num_messages_24h": 2653,
     "rating_score": 0.813679,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587664461,
+    "updatedAt": 1790588363028,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587664461,
+      "to": 1790588363028
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 633027,
+      "num_messages": 633058,
       "num_messages_24h": 2653,
       "rating_score": 0.813679,
       "token_count": 1665
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 633027,
+        "num_messages_24h": 2653,
+        "rating_score": 0.813679,
+        "token_count": 1665
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 633058,
         "num_messages_24h": 2653,
         "rating_score": 0.813679,
         "token_count": 1665

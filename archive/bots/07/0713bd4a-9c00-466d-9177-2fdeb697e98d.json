@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0713bd4a-9c00-466d-9177-2fdeb697e98d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Shirai Yumi",
         "zh": "Shirai Yumi"
       },
-      "num_messages": 350412,
+      "num_messages": 350863,
       "num_messages_24h": 15944,
       "rating_score": 0.723301,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587297538,
+      "updatedAt": 1790588366502,
       "visibility": "public"
     },
     "character-api": {
@@ -177,7 +177,7 @@
     "avatar_is_nsfw": false,
     "avatar_url": "https://cdn.nd-api.com/avatars/a251fe7c-d39e-4933-96d8-8e87fdc59d3f.webp?class=avatar256x256",
     "character_id": "0713bd4a-9c00-466d-9177-2fdeb697e98d",
-    "createdAt": "2026-09-21T10:40:55.828Z",
+    "createdAt": 1789987255828,
     "creator_user_id": "kp:f0925f917cad41b398e1023c0c990ff6",
     "creator_username": "blackcatmilo",
     "definition_size_category": "mid",
@@ -207,12 +207,10 @@
       "tr": "Shirai Yumi",
       "zh": "Shirai Yumi"
     },
-    "num_messages": 350446,
+    "num_messages": 350863,
     "num_messages_24h": 15944,
     "rating_score": 0.723301,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Female",
       "Size Difference",
@@ -260,7 +258,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": "2026-09-28T09:28:42.294Z",
+    "updatedAt": 1790588366502,
     "visibility": "public"
   },
   "fieldHistory": [
@@ -288,6 +286,22 @@
       "kind": "value",
       "from": 1790587297538,
       "to": "2026-09-28T09:28:42.294Z"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "createdAt",
+      "kind": "value",
+      "from": "2026-09-21T10:40:55.828Z",
+      "to": 1789987255828
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": "2026-09-28T09:28:42.294Z",
+      "to": 1790588366502
     }
   ],
   "availabilityHistory": [
@@ -305,7 +319,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 350446,
+      "num_messages": 350863,
+      "num_messages_24h": 15944,
       "rating_score": 0.723301,
       "token_count": 1120
     },
@@ -324,8 +339,23 @@
         "num_messages": 350446,
         "rating_score": 0.723301,
         "token_count": 1120
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 350863,
+        "num_messages_24h": 15944,
+        "rating_score": 0.723301,
+        "token_count": 1120
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/a251fe7c-d39e-4933-96d8-8e87fdc59d3f.webp?class=avatar256x256",
+    "sha256": "4192641c300a4ca6e06732ed093e056bf9316457047a144f3773589c66fe0ec6",
+    "contentType": "image/webp",
+    "bytes": 7217086,
+    "path": "archive/media/41/4192641c300a4ca6e06732ed093e056bf9316457047a144f3773589c66fe0ec6.webp",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

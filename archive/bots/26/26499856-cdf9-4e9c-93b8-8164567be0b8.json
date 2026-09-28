@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "26499856-cdf9-4e9c-93b8-8164567be0b8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "es": "Kailey",
         "it": "Kailey"
       },
-      "num_messages": 3902,
+      "num_messages": 3974,
       "num_messages_24h": 2369,
       "rating_score": 0,
       "reportsType": {},
@@ -64,7 +64,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587402267,
+      "updatedAt": 1790588499873,
       "visibility": "public"
     }
   },
@@ -94,7 +94,7 @@
       "es": "Kailey",
       "it": "Kailey"
     },
-    "num_messages": 3902,
+    "num_messages": 3974,
     "num_messages_24h": 2369,
     "rating_score": 0,
     "reportsType": {},
@@ -116,10 +116,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587402267,
+    "updatedAt": 1790588499873,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587402267,
+      "to": 1790588499873
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -129,17 +138,17 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2371,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2372,
+      "observedAt": "2026-09-28T09:43:45Z"
     },
     "latest": {
-      "rank": 1728,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1729,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 3902,
+      "num_messages": 3974,
       "num_messages_24h": 2369,
       "rating_score": 0,
       "token_count": 467
@@ -149,6 +158,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 3902,
+        "num_messages_24h": 2369,
+        "rating_score": 0,
+        "token_count": 467
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 3974,
         "num_messages_24h": 2369,
         "rating_score": 0,
         "token_count": 467

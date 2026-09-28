@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d2cf2a45-1a2b-4550-beda-c35ef1ad3b52",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Hentai High School",
         "zh": "变态高中"
       },
-      "num_messages": 16010510,
+      "num_messages": 16010536,
       "num_messages_24h": 532,
       "rating_score": 0.819595,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587481304,
+      "updatedAt": 1790587926680,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Hentai High School",
       "zh": "变态高中"
     },
-    "num_messages": 16010510,
+    "num_messages": 16010536,
     "num_messages_24h": 532,
     "rating_score": 0.819595,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587481304,
+    "updatedAt": 1790587926680,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587481304,
+      "to": 1790587926680
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 16010510,
+      "num_messages": 16010536,
       "num_messages_24h": 532,
       "rating_score": 0.819595,
       "token_count": 921
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 16010510,
+        "num_messages_24h": 532,
+        "rating_score": 0.819595,
+        "token_count": 921
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 16010536,
         "num_messages_24h": 532,
         "rating_score": 0.819595,
         "token_count": 921

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "08754369-f62d-4bd0-8fec-1e1dcf58f2f3",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -38,7 +38,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Verity cast & pickme",
-      "num_messages": 5668,
+      "num_messages": 5687,
       "num_messages_24h": 2429,
       "rating_score": 0,
       "reportsType": {},
@@ -54,7 +54,7 @@
       "title": "Pick me in the verity cast?…again?!😩",
       "token_count": 331,
       "type": "STANDARD",
-      "updatedAt": 1790587563956,
+      "updatedAt": 1790588499771,
       "visibility": "public"
     }
   },
@@ -80,7 +80,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Verity cast & pickme",
-    "num_messages": 5668,
+    "num_messages": 5687,
     "num_messages_24h": 2429,
     "rating_score": 0,
     "reportsType": {},
@@ -96,10 +96,19 @@
     "title": "Pick me in the verity cast?…again?!😩",
     "token_count": 331,
     "type": "STANDARD",
-    "updatedAt": 1790587563956,
+    "updatedAt": 1790588499771,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587563956,
+      "to": 1790588499771
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -109,13 +118,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2303,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2304,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 5668,
+      "num_messages": 5687,
       "num_messages_24h": 2429,
       "rating_score": 0,
       "token_count": 331
@@ -125,6 +134,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 5668,
+        "num_messages_24h": 2429,
+        "rating_score": 0,
+        "token_count": 331
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 5687,
         "num_messages_24h": 2429,
         "rating_score": 0,
         "token_count": 331

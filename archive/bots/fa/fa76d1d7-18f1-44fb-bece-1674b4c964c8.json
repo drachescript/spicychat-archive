@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "fa76d1d7-18f1-44fb-bece-1674b4c964c8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Alexa Morgan",
         "tr": "Alexa Morgan"
       },
-      "num_messages": 139042,
+      "num_messages": 139140,
       "num_messages_24h": 3930,
       "rating_score": 0.796748,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587251037,
+      "updatedAt": 1790588363982,
       "visibility": "public",
       "voice_id": "a78fd1d5-fb97-414c-8343-485ec8a76194"
     }
@@ -135,7 +135,7 @@
       "ru": "Alexa Morgan",
       "tr": "Alexa Morgan"
     },
-    "num_messages": 139042,
+    "num_messages": 139140,
     "num_messages_24h": 3930,
     "rating_score": 0.796748,
     "reportsType": {},
@@ -177,11 +177,20 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587251037,
+    "updatedAt": 1790588363982,
     "visibility": "public",
     "voice_id": "a78fd1d5-fb97-414c-8343-485ec8a76194"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587251037,
+      "to": 1790588363982
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -197,7 +206,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 139042,
+      "num_messages": 139140,
       "num_messages_24h": 3930,
       "rating_score": 0.796748,
       "token_count": 1174
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 139042,
+        "num_messages_24h": 3930,
+        "rating_score": 0.796748,
+        "token_count": 1174
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 139140,
         "num_messages_24h": 3930,
         "rating_score": 0.796748,
         "token_count": 1174

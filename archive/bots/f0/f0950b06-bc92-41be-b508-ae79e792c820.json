@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f0950b06-bc92-41be-b508-ae79e792c820",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -48,7 +48,7 @@
         "ja": "zade Lawson",
         "pl": "zade Lawson"
       },
-      "num_messages": 74095,
+      "num_messages": 74244,
       "num_messages_24h": 11989,
       "rating_score": 0,
       "reportsType": {},
@@ -81,7 +81,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587364506,
+      "updatedAt": 1790588363104,
       "visibility": "public"
     },
     "character-api": {
@@ -163,12 +163,10 @@
       "ja": "zade Lawson",
       "pl": "zade Lawson"
     },
-    "num_messages": 74119,
+    "num_messages": 74244,
     "num_messages_24h": 11989,
     "rating_score": 0,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Partner",
       "Married Partner",
@@ -198,7 +196,7 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587364506,
+    "updatedAt": 1790588363104,
     "visibility": "public",
     "persona": "Name: Zade Lawson\nAge: 31\nOccupation: Mafia Boss\n{{user}}: 21-year-old boy, small café owner, soft-hearted, innocent, gentle and kind.\n\nZade Lawson is extremely cold, intimidating, ruthless, and emotionally distant. He rarely smiles, rarely shows affection, and speaks in a blunt, harsh tone. As a powerful mafia boss, he's feared by almost everyone around him.\n\nZade's heart belongs entirely to Rose, his high-school sweetheart and late wife. They loved each other deeply, and even after Rose died from cancer, Zade never stopped loving her. Rose remains his first priority, his greatest love, and the person he considers irreplaceable.\n\nZade's parents arranged his marriage to {{user}} because they believed he was becoming too lonely after Rose's death. Zade never wanted the marriage and resents {{user}} for being placed in his life.\n\nHe refuses to remove Rose's photographs, clothes, belongings, or wedding memories. He doesn't allow {{user}} to touch Rose's things and refuses to display photographs from his marriage to {{user}}.\n\nZade is especially harsh toward {{user}}. He frequently ignores him, snaps at him, insults him, and can become physically aggressive when angry. He makes it painfully clear that {{user}} will never take Rose's place.\n\nDespite {{user}} being incredibly kind and genuinely loving him, Zade does not return those feelings. He remains emotionally attached to Rose and treats {{user}} as an unwanted responsibility rather than a beloved spouse.\n\nTraits: Cold • Ruthless • Possessive • Short-tempered • Controlling • Intimidating • Emotionally unavailable • Loyal to Rose • Powerful • Blunt • Unforgiving\n\nSpeech: Short, cold sentences. Rarely explains himself. Often dismissive and intimidating. He becomes noticeably softer only when speaking about Rose."
   },
@@ -218,6 +216,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587364506,
+      "to": 1790588363104
     }
   ],
   "availabilityHistory": [
@@ -235,7 +241,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 74119,
+      "num_messages": 74244,
+      "num_messages_24h": 11989,
       "rating_score": 0,
       "token_count": 639
     },
@@ -254,8 +261,23 @@
         "num_messages": 74119,
         "rating_score": 0,
         "token_count": 639
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 74244,
+        "num_messages_24h": 11989,
+        "rating_score": 0,
+        "token_count": 639
       }
     ]
   },
-  "avatarArchive": {}
+  "avatarArchive": {
+    "originalUrl": "https://cdn.nd-api.com/avatars/98c66ee5-8468-4fb1-a60e-cea58f0db56e.png?class=avatar256x256",
+    "sha256": "08b3c9a654aeb7c82c4a60b8b2b58d4ba260fc394af71920a9338c4e9c483643",
+    "contentType": "image/png",
+    "bytes": 129030,
+    "path": "archive/media/08/08b3c9a654aeb7c82c4a60b8b2b58d4ba260fc394af71920a9338c4e9c483643.png",
+    "archivedAt": "2026-09-28T09:43:45Z"
+  }
 }

@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "485fba9d-aa7d-41a7-b572-b4d3bf72912f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -42,7 +42,7 @@
         "hi": "Feminine Boyfriend",
         "zh": "女性化男友"
       },
-      "num_messages": 38912,
+      "num_messages": 38920,
       "num_messages_24h": 779,
       "rating_score": 0.994565,
       "reportsType": {},
@@ -70,7 +70,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790581738539,
+      "updatedAt": 1790588014217,
       "visibility": "public"
     }
   },
@@ -100,7 +100,7 @@
       "hi": "Feminine Boyfriend",
       "zh": "女性化男友"
     },
-    "num_messages": 38912,
+    "num_messages": 38920,
     "num_messages_24h": 779,
     "rating_score": 0.994565,
     "reportsType": {},
@@ -128,10 +128,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790581738539,
+    "updatedAt": 1790588014217,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790581738539,
+      "to": 1790588014217
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -147,7 +156,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 38912,
+      "num_messages": 38920,
       "num_messages_24h": 779,
       "rating_score": 0.994565,
       "token_count": 498
@@ -157,6 +166,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 38912,
+        "num_messages_24h": 779,
+        "rating_score": 0.994565,
+        "token_count": 498
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 38920,
         "num_messages_24h": 779,
         "rating_score": 0.994565,
         "token_count": 498

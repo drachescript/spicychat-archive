@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "73972dba-fc4f-488f-8f50-4e4abb9fad5c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Tüm Erkekler Okulu",
         "zh": "全男孩学校"
       },
-      "num_messages": 3040057,
+      "num_messages": 3040080,
       "num_messages_24h": 397,
       "rating_score": 0.851214,
       "tags": [
@@ -100,7 +100,7 @@
         "tr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587515717,
+      "updatedAt": 1790588277761,
       "visibility": "public"
     }
   },
@@ -139,7 +139,7 @@
       "tr": "Tüm Erkekler Okulu",
       "zh": "全男孩学校"
     },
-    "num_messages": 3040057,
+    "num_messages": 3040080,
     "num_messages_24h": 397,
     "rating_score": 0.851214,
     "tags": [
@@ -188,10 +188,19 @@
       "tr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587515717,
+    "updatedAt": 1790588277761,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587515717,
+      "to": 1790588277761
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -207,7 +216,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3040057,
+      "num_messages": 3040080,
       "num_messages_24h": 397,
       "rating_score": 0.851214,
       "token_count": 519
@@ -217,6 +226,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3040057,
+        "num_messages_24h": 397,
+        "rating_score": 0.851214,
+        "token_count": 519
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3040080,
         "num_messages_24h": 397,
         "rating_score": 0.851214,
         "token_count": 519

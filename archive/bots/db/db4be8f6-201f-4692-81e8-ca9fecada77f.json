@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "db4be8f6-201f-4692-81e8-ca9fecada77f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "it": "Luna the kitsune",
         "zh": "露娜 狐狸精"
       },
-      "num_messages": 1589572,
+      "num_messages": 1589577,
       "num_messages_24h": 176,
       "rating_score": 0.879872,
       "tags": [
@@ -83,7 +83,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586555174,
+      "updatedAt": 1790587763614,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "it": "Luna the kitsune",
       "zh": "露娜 狐狸精"
     },
-    "num_messages": 1589572,
+    "num_messages": 1589577,
     "num_messages_24h": 176,
     "rating_score": 0.879872,
     "tags": [
@@ -156,10 +156,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586555174,
+    "updatedAt": 1790587763614,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586555174,
+      "to": 1790587763614
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1589572,
+      "num_messages": 1589577,
       "num_messages_24h": 176,
       "rating_score": 0.879872,
       "token_count": 980
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 1589572,
+        "num_messages_24h": 176,
+        "rating_score": 0.879872,
+        "token_count": 980
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 1589577,
         "num_messages_24h": 176,
         "rating_score": 0.879872,
         "token_count": 980

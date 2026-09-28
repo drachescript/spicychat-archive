@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "57b1afe7-4cc9-4077-a70b-05b4862a9650",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "ru": "Penelope Forreston",
         "zh": "Penelope Forreston"
       },
-      "num_messages": 117817,
+      "num_messages": 117830,
       "num_messages_24h": 1019,
       "rating_score": 1,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587252196,
+      "updatedAt": 1790587929953,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "ru": "Penelope Forreston",
       "zh": "Penelope Forreston"
     },
-    "num_messages": 117817,
+    "num_messages": 117830,
     "num_messages_24h": 1019,
     "rating_score": 1,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587252196,
+    "updatedAt": 1790587929953,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587252196,
+      "to": 1790587929953
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 117817,
+      "num_messages": 117830,
       "num_messages_24h": 1019,
       "rating_score": 1,
       "token_count": 1319
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 117817,
+        "num_messages_24h": 1019,
+        "rating_score": 1,
+        "token_count": 1319
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 117830,
         "num_messages_24h": 1019,
         "rating_score": 1,
         "token_count": 1319

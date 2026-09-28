@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "ef53af19-2dae-4b9c-98c1-75eebee49752",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "ru": "Хогвартс",
         "zh": "霍格沃茨"
       },
-      "num_messages": 177974,
+      "num_messages": 177979,
       "num_messages_24h": 2474,
       "rating_score": 0.907143,
       "reportsType": {},
@@ -71,7 +71,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587195733,
+      "updatedAt": 1790588454133,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
       "ru": "Хогвартс",
       "zh": "霍格沃茨"
     },
-    "num_messages": 177974,
+    "num_messages": 177979,
     "num_messages_24h": 2474,
     "rating_score": 0.907143,
     "reportsType": {},
@@ -130,10 +130,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587195733,
+    "updatedAt": 1790588454133,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587195733,
+      "to": 1790588454133
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -143,13 +152,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2258,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2259,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 177974,
+      "num_messages": 177979,
       "num_messages_24h": 2474,
       "rating_score": 0.907143,
       "token_count": 612
@@ -159,6 +168,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 177974,
+        "num_messages_24h": 2474,
+        "rating_score": 0.907143,
+        "token_count": 612
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 177979,
         "num_messages_24h": 2474,
         "rating_score": 0.907143,
         "token_count": 612

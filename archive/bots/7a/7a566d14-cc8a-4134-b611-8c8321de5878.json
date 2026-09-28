@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "7a566d14-cc8a-4134-b611-8c8321de5878",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -47,7 +47,7 @@
         "ru": "[COD] Task Force 141",
         "zh": "[COD] 特遣队 141"
       },
-      "num_messages": 610287,
+      "num_messages": 610331,
       "num_messages_24h": 3117,
       "rating_score": 0.993651,
       "tags": [
@@ -83,7 +83,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587019274,
+      "updatedAt": 1790588232756,
       "visibility": "public"
     }
   },
@@ -118,7 +118,7 @@
       "ru": "[COD] Task Force 141",
       "zh": "[COD] 特遣队 141"
     },
-    "num_messages": 610287,
+    "num_messages": 610331,
     "num_messages_24h": 3117,
     "rating_score": 0.993651,
     "tags": [
@@ -154,10 +154,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587019274,
+    "updatedAt": 1790588232756,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587019274,
+      "to": 1790588232756
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -177,7 +186,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 610287,
+      "num_messages": 610331,
       "num_messages_24h": 3117,
       "rating_score": 0.993651,
       "token_count": 1956
@@ -187,6 +196,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 610287,
+        "num_messages_24h": 3117,
+        "rating_score": 0.993651,
+        "token_count": 1956
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 610331,
         "num_messages_24h": 3117,
         "rating_score": 0.993651,
         "token_count": 1956

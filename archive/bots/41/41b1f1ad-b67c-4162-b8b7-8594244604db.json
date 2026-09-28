@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "41b1f1ad-b67c-4162-b8b7-8594244604db",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Ünlü Yetiştirme",
         "zh": "名人繁育"
       },
-      "num_messages": 136376,
+      "num_messages": 136477,
       "num_messages_24h": 2363,
       "rating_score": 0.710744,
       "reportsType": {},
@@ -95,7 +95,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587287007,
+      "updatedAt": 1790588530881,
       "visibility": "public"
     }
   },
@@ -134,7 +134,7 @@
       "tr": "Ünlü Yetiştirme",
       "zh": "名人繁育"
     },
-    "num_messages": 136376,
+    "num_messages": 136477,
     "num_messages_24h": 2363,
     "rating_score": 0.710744,
     "reportsType": {},
@@ -178,10 +178,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587287007,
+    "updatedAt": 1790588530881,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587287007,
+      "to": 1790588530881
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -191,13 +200,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2382,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2383,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 136376,
+      "num_messages": 136477,
       "num_messages_24h": 2363,
       "rating_score": 0.710744,
       "token_count": 624
@@ -207,6 +216,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 136376,
+        "num_messages_24h": 2363,
+        "rating_score": 0.710744,
+        "token_count": 624
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 136477,
         "num_messages_24h": 2363,
         "rating_score": 0.710744,
         "token_count": 624

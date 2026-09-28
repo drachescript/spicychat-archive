@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "0db0793c-03b3-46a3-9e4d-43bb041c6409",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "tr": "Ethan Carter",
         "zh": "伊森·卡特"
       },
-      "num_messages": 2587867,
+      "num_messages": 2587888,
       "num_messages_24h": 744,
       "rating_score": 0.903431,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587678984,
+      "updatedAt": 1790587926019,
       "visibility": "public"
     }
   },
@@ -141,7 +141,7 @@
       "tr": "Ethan Carter",
       "zh": "伊森·卡特"
     },
-    "num_messages": 2587867,
+    "num_messages": 2587888,
     "num_messages_24h": 744,
     "rating_score": 0.903431,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587678984,
+    "updatedAt": 1790587926019,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587678984,
+      "to": 1790587926019
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2587867,
+      "num_messages": 2587888,
       "num_messages_24h": 744,
       "rating_score": 0.903431,
       "token_count": 1191
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2587867,
+        "num_messages_24h": 744,
+        "rating_score": 0.903431,
+        "token_count": 1191
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2587888,
         "num_messages_24h": 744,
         "rating_score": 0.903431,
         "token_count": 1191

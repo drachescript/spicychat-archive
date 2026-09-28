@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "50b85922-94de-4eeb-a8e6-d702f810620f",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -52,7 +52,7 @@
         "ru": "Ann Gene",
         "zh": "Ann Gene"
       },
-      "num_messages": 169344,
+      "num_messages": 169374,
       "num_messages_24h": 2366,
       "rating_score": 0.901747,
       "reportsType": {},
@@ -96,7 +96,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587487605,
+      "updatedAt": 1790587975152,
       "visibility": "public"
     }
   },
@@ -136,7 +136,7 @@
       "ru": "Ann Gene",
       "zh": "Ann Gene"
     },
-    "num_messages": 169344,
+    "num_messages": 169374,
     "num_messages_24h": 2366,
     "rating_score": 0.901747,
     "reportsType": {},
@@ -180,10 +180,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587487605,
+    "updatedAt": 1790587975152,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587487605,
+      "to": 1790587975152
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -193,13 +202,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2377,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2378,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 169344,
+      "num_messages": 169374,
       "num_messages_24h": 2366,
       "rating_score": 0.901747,
       "token_count": 376
@@ -209,6 +218,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 169344,
+        "num_messages_24h": 2366,
+        "rating_score": 0.901747,
+        "token_count": 376
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 169374,
         "num_messages_24h": 2366,
         "rating_score": 0.901747,
         "token_count": 376

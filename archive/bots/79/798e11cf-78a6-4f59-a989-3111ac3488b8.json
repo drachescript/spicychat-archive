@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "798e11cf-78a6-4f59-a989-3111ac3488b8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "ru": "Theo (alpha) TW CNC",
         "tr": "Theo (alpha) TW CNC"
       },
-      "num_messages": 144343,
+      "num_messages": 144413,
       "num_messages_24h": 4064,
       "rating_score": 0.735772,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587362452,
+      "updatedAt": 1790588384945,
       "visibility": "public"
     }
   },
@@ -133,7 +133,7 @@
       "ru": "Theo (alpha) TW CNC",
       "tr": "Theo (alpha) TW CNC"
     },
-    "num_messages": 144343,
+    "num_messages": 144413,
     "num_messages_24h": 4064,
     "rating_score": 0.735772,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587362452,
+    "updatedAt": 1790588384945,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587362452,
+      "to": 1790588384945
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 144343,
+      "num_messages": 144413,
       "num_messages_24h": 4064,
       "rating_score": 0.735772,
       "token_count": 786
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 144343,
+        "num_messages_24h": 4064,
+        "rating_score": 0.735772,
+        "token_count": 786
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 144413,
         "num_messages_24h": 4064,
         "rating_score": 0.735772,
         "token_count": 786

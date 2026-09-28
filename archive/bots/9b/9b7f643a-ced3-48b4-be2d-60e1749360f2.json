@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "9b7f643a-ced3-48b4-be2d-60e1749360f2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Ivana",
-      "num_messages": 489,
+      "num_messages": 501,
       "num_messages_24h": 407,
       "rating_score": 0,
       "reportsType": {},
@@ -53,7 +53,7 @@
       "title": "Your 18yo Fat girlfriend, having troubles with her self-confidence about her look.\npossible NTR ♠️",
       "token_count": 657,
       "type": "STANDARD",
-      "updatedAt": 1790574873161,
+      "updatedAt": 1790587925961,
       "visibility": "public"
     }
   },
@@ -78,7 +78,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Ivana",
-    "num_messages": 489,
+    "num_messages": 501,
     "num_messages_24h": 407,
     "rating_score": 0,
     "reportsType": {},
@@ -94,10 +94,19 @@
     "title": "Your 18yo Fat girlfriend, having troubles with her self-confidence about her look.\npossible NTR ♠️",
     "token_count": 657,
     "type": "STANDARD",
-    "updatedAt": 1790574873161,
+    "updatedAt": 1790587925961,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574873161,
+      "to": 1790587925961
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -113,7 +122,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 489,
+      "num_messages": 501,
       "num_messages_24h": 407,
       "rating_score": 0,
       "token_count": 657
@@ -123,6 +132,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 489,
+        "num_messages_24h": 407,
+        "rating_score": 0,
+        "token_count": 657
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 501,
         "num_messages_24h": 407,
         "rating_score": 0,
         "token_count": 657

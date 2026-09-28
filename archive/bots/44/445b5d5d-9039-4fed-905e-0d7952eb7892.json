@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "445b5d5d-9039-4fed-905e-0d7952eb7892",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Джеймс",
-      "num_messages": 34,
+      "num_messages": 42,
       "num_messages_24h": 0,
       "rating_score": 0,
       "reportsType": {},
@@ -50,7 +50,7 @@
       "title": "млм.начальник.",
       "token_count": 1326,
       "type": "STANDARD",
-      "updatedAt": 1790554671425,
+      "updatedAt": 1790587926798,
       "visibility": "public"
     }
   },
@@ -75,7 +75,7 @@
     "language": "ru",
     "moderation_status": "reviewed",
     "name": "Джеймс",
-    "num_messages": 34,
+    "num_messages": 42,
     "num_messages_24h": 0,
     "rating_score": 0,
     "reportsType": {},
@@ -88,10 +88,19 @@
     "title": "млм.начальник.",
     "token_count": 1326,
     "type": "STANDARD",
-    "updatedAt": 1790554671425,
+    "updatedAt": 1790587926798,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790554671425,
+      "to": 1790587926798
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -107,7 +116,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 34,
+      "num_messages": 42,
       "num_messages_24h": 0,
       "rating_score": 0,
       "token_count": 1326
@@ -117,6 +126,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 34,
+        "num_messages_24h": 0,
+        "rating_score": 0,
+        "token_count": 1326
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 42,
         "num_messages_24h": 0,
         "rating_score": 0,
         "token_count": 1326

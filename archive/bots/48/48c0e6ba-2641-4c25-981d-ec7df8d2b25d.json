@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "48c0e6ba-2641-4c25-981d-ec7df8d2b25d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "The Maze Runner",
         "zh": "The Maze Runner"
       },
-      "num_messages": 268913,
+      "num_messages": 269011,
       "num_messages_24h": 2570,
       "rating_score": 0.733831,
       "tags": [
@@ -99,7 +99,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586915801,
+      "updatedAt": 1790588362978,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "tr": "The Maze Runner",
       "zh": "The Maze Runner"
     },
-    "num_messages": 268913,
+    "num_messages": 269011,
     "num_messages_24h": 2570,
     "rating_score": 0.733831,
     "tags": [
@@ -186,10 +186,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586915801,
+    "updatedAt": 1790588362978,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586915801,
+      "to": 1790588362978
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -199,13 +208,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2159,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2160,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 268913,
+      "num_messages": 269011,
       "num_messages_24h": 2570,
       "rating_score": 0.733831,
       "token_count": 1612
@@ -215,6 +224,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 268913,
+        "num_messages_24h": 2570,
+        "rating_score": 0.733831,
+        "token_count": 1612
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 269011,
         "num_messages_24h": 2570,
         "rating_score": 0.733831,
         "token_count": 1612

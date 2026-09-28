@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "738df016-e0bb-48e7-b769-fee35851ee68",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -54,7 +54,7 @@
         "tr": "Classroom Isekai",
         "zh": "教室异世界"
       },
-      "num_messages": 748739,
+      "num_messages": 748746,
       "num_messages_24h": 2338,
       "rating_score": 0.756211,
       "reportsType": {},
@@ -105,7 +105,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586603766,
+      "updatedAt": 1790588111049,
       "visibility": "public"
     }
   },
@@ -147,7 +147,7 @@
       "tr": "Classroom Isekai",
       "zh": "教室异世界"
     },
-    "num_messages": 748739,
+    "num_messages": 748746,
     "num_messages_24h": 2338,
     "rating_score": 0.756211,
     "reportsType": {},
@@ -198,10 +198,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586603766,
+    "updatedAt": 1790588111049,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586603766,
+      "to": 1790588111049
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -211,13 +220,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2420,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2421,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 748739,
+      "num_messages": 748746,
       "num_messages_24h": 2338,
       "rating_score": 0.756211,
       "token_count": 1076
@@ -227,6 +236,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 748739,
+        "num_messages_24h": 2338,
+        "rating_score": 0.756211,
+        "token_count": 1076
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 748746,
         "num_messages_24h": 2338,
         "rating_score": 0.756211,
         "token_count": 1076

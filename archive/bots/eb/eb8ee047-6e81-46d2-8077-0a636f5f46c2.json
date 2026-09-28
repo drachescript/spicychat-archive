@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "eb8ee047-6e81-46d2-8077-0a636f5f46c2",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -40,7 +40,7 @@
       "name_i18n": {
         "fr": "4 Big Guys"
       },
-      "num_messages": 2513049,
+      "num_messages": 2513062,
       "num_messages_24h": 379,
       "rating_score": 0.860864,
       "tags": [
@@ -75,7 +75,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790574925701,
+      "updatedAt": 1790588310169,
       "visibility": "public"
     }
   },
@@ -103,7 +103,7 @@
     "name_i18n": {
       "fr": "4 Big Guys"
     },
-    "num_messages": 2513049,
+    "num_messages": 2513062,
     "num_messages_24h": 379,
     "rating_score": 0.860864,
     "tags": [
@@ -138,10 +138,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790574925701,
+    "updatedAt": 1790588310169,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790574925701,
+      "to": 1790588310169
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -157,7 +166,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 2513049,
+      "num_messages": 2513062,
       "num_messages_24h": 379,
       "rating_score": 0.860864,
       "token_count": 400
@@ -167,6 +176,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 2513049,
+        "num_messages_24h": 379,
+        "rating_score": 0.860864,
+        "token_count": 400
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 2513062,
         "num_messages_24h": 379,
         "rating_score": 0.860864,
         "token_count": 400

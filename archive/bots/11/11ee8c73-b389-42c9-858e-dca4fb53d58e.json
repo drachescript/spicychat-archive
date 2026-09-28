@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "11ee8c73-b389-42c9-858e-dca4fb53d58e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "pl": "Loona",
         "ru": "Loona"
       },
-      "num_messages": 147868,
+      "num_messages": 147972,
       "num_messages_24h": 2432,
       "rating_score": 0.826733,
       "reportsType": {},
@@ -92,7 +92,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587479313,
+      "updatedAt": 1790588004747,
       "visibility": "public"
     }
   },
@@ -138,7 +138,7 @@
       "pl": "Loona",
       "ru": "Loona"
     },
-    "num_messages": 147868,
+    "num_messages": 147972,
     "num_messages_24h": 2432,
     "rating_score": 0.826733,
     "reportsType": {},
@@ -174,10 +174,19 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587479313,
+    "updatedAt": 1790588004747,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587479313,
+      "to": 1790588004747
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -187,13 +196,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2300,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2301,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 147868,
+      "num_messages": 147972,
       "num_messages_24h": 2432,
       "rating_score": 0.826733,
       "token_count": 954
@@ -203,6 +212,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 147868,
+        "num_messages_24h": 2432,
+        "rating_score": 0.826733,
+        "token_count": 954
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 147972,
         "num_messages_24h": 2432,
         "rating_score": 0.826733,
         "token_count": 954

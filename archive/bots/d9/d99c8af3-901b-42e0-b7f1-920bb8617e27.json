@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "d99c8af3-901b-42e0-b7f1-920bb8617e27",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -56,7 +56,7 @@
         "ru": "Seiko & Zion",
         "tr": "Seiko & Zion"
       },
-      "num_messages": 51413,
+      "num_messages": 51445,
       "num_messages_24h": 2603,
       "rating_score": 0.01,
       "reportsType": {},
@@ -103,7 +103,7 @@
         "it"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587476552,
+      "updatedAt": 1790588311219,
       "visibility": "public"
     }
   },
@@ -149,7 +149,7 @@
       "ru": "Seiko & Zion",
       "tr": "Seiko & Zion"
     },
-    "num_messages": 51413,
+    "num_messages": 51445,
     "num_messages_24h": 2603,
     "rating_score": 0.01,
     "reportsType": {},
@@ -196,10 +196,19 @@
       "it"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587476552,
+    "updatedAt": 1790588311219,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587476552,
+      "to": 1790588311219
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,13 +218,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2123,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2124,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 51413,
+      "num_messages": 51445,
       "num_messages_24h": 2603,
       "rating_score": 0.01,
       "token_count": 1594
@@ -225,6 +234,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 51413,
+        "num_messages_24h": 2603,
+        "rating_score": 0.01,
+        "token_count": 1594
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 51445,
         "num_messages_24h": 2603,
         "rating_score": 0.01,
         "token_count": 1594

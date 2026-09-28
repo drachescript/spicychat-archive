@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "916c289e-3f7d-43d3-bc47-63495900514d",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -43,7 +43,7 @@
         "pt": "O mundo de RE:ZERO",
         "ru": "The world of RE:ZERO"
       },
-      "num_messages": 33938,
+      "num_messages": 33941,
       "num_messages_24h": 2610,
       "rating_score": 0,
       "reportsType": {},
@@ -65,7 +65,7 @@
         "es"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790585524676,
+      "updatedAt": 1790588183397,
       "visibility": "public"
     }
   },
@@ -96,7 +96,7 @@
       "pt": "O mundo de RE:ZERO",
       "ru": "The world of RE:ZERO"
     },
-    "num_messages": 33938,
+    "num_messages": 33941,
     "num_messages_24h": 2610,
     "rating_score": 0,
     "reportsType": {},
@@ -118,10 +118,19 @@
       "es"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790585524676,
+    "updatedAt": 1790588183397,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790585524676,
+      "to": 1790588183397
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -131,13 +140,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2119,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2120,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 33938,
+      "num_messages": 33941,
       "num_messages_24h": 2610,
       "rating_score": 0,
       "token_count": 783
@@ -147,6 +156,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 33938,
+        "num_messages_24h": 2610,
+        "rating_score": 0,
+        "token_count": 783
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 33941,
         "num_messages_24h": 2610,
         "rating_score": 0,
         "token_count": 783

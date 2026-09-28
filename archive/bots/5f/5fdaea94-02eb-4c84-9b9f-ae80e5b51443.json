@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "5fdaea94-02eb-4c84-9b9f-ae80e5b51443",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -34,9 +34,13 @@
       "id": "5fdaea94-02eb-4c84-9b9f-ae80e5b51443",
       "is_nsfw": false,
       "language": "en",
-      "moderation_flags": [],
-      "moderation_keywords": [],
-      "moderation_status": "reviewed",
+      "moderation_flags": [
+        "rape_force"
+      ],
+      "moderation_keywords": [
+        "wasted"
+      ],
+      "moderation_status": "pending",
       "name": "Sir Crocodile",
       "num_messages": 335,
       "num_messages_24h": 293,
@@ -52,7 +56,7 @@
       "title": "- 💼  “  ᥴ᥆r⍴᥆rᥲ𝗍ᥱ ᥴr᥆ᥴ᥆ძіᥣᥱ . . ✦ ”",
       "token_count": 2166,
       "type": "STANDARD",
-      "updatedAt": 1790586136317,
+      "updatedAt": 1790588386701,
       "visibility": "public"
     }
   },
@@ -76,7 +80,7 @@
     "id": "5fdaea94-02eb-4c84-9b9f-ae80e5b51443",
     "is_nsfw": false,
     "language": "en",
-    "moderation_status": "reviewed",
+    "moderation_status": "pending",
     "name": "Sir Crocodile",
     "num_messages": 335,
     "num_messages_24h": 293,
@@ -92,10 +96,51 @@
     "title": "- 💼  “  ᥴ᥆r⍴᥆rᥲ𝗍ᥱ ᥴr᥆ᥴ᥆ძіᥣᥱ . . ✦ ”",
     "token_count": 2166,
     "type": "STANDARD",
-    "updatedAt": 1790586136317,
-    "visibility": "public"
+    "updatedAt": 1790588386701,
+    "visibility": "public",
+    "moderation_flags": [
+      "rape_force"
+    ],
+    "moderation_keywords": [
+      "wasted"
+    ]
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "moderation_flags",
+      "kind": "value",
+      "to": [
+        "rape_force"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "moderation_keywords",
+      "kind": "value",
+      "to": [
+        "wasted"
+      ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "moderation_status",
+      "kind": "value",
+      "from": "reviewed",
+      "to": "pending"
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586136317,
+      "to": 1790588386701
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -105,8 +150,8 @@
   ],
   "listings": {
     "latest": {
-      "rank": 1457,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 1458,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {

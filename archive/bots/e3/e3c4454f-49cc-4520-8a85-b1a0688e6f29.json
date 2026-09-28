@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "e3c4454f-49cc-4520-8a85-b1a0688e6f29",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -44,7 +44,7 @@
         "fr": "Crystalspire Academy",
         "ru": "Crystalspire Academy"
       },
-      "num_messages": 34001,
+      "num_messages": 34038,
       "num_messages_24h": 3485,
       "rating_score": 0,
       "reportsType": {},
@@ -72,7 +72,7 @@
         "fr"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587286079,
+      "updatedAt": 1790588170833,
       "visibility": "public"
     }
   },
@@ -104,7 +104,7 @@
       "fr": "Crystalspire Academy",
       "ru": "Crystalspire Academy"
     },
-    "num_messages": 34001,
+    "num_messages": 34038,
     "num_messages_24h": 3485,
     "rating_score": 0,
     "reportsType": {},
@@ -132,10 +132,19 @@
       "fr"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587286079,
+    "updatedAt": 1790588170833,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587286079,
+      "to": 1790588170833
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -151,7 +160,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 34001,
+      "num_messages": 34038,
       "num_messages_24h": 3485,
       "rating_score": 0,
       "token_count": 1130
@@ -161,6 +170,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 34001,
+        "num_messages_24h": 3485,
+        "rating_score": 0,
+        "token_count": 1130
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 34038,
         "num_messages_24h": 3485,
         "rating_score": 0,
         "token_count": 1130

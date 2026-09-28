@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "cde7c663-02f1-4731-b8d0-79700cbebc88",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -51,7 +51,7 @@
         "tr": "Carrie the Goonette",
         "zh": "Carrie the Goonette"
       },
-      "num_messages": 4900873,
+      "num_messages": 4900951,
       "num_messages_24h": 269,
       "rating_score": 0.853823,
       "reportsType": {},
@@ -101,7 +101,7 @@
         "ja"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790586325214,
+      "updatedAt": 1790588451097,
       "visibility": "public"
     }
   },
@@ -140,7 +140,7 @@
       "tr": "Carrie the Goonette",
       "zh": "Carrie the Goonette"
     },
-    "num_messages": 4900873,
+    "num_messages": 4900951,
     "num_messages_24h": 269,
     "rating_score": 0.853823,
     "reportsType": {},
@@ -190,10 +190,19 @@
       "ja"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790586325214,
+    "updatedAt": 1790588451097,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790586325214,
+      "to": 1790588451097
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -209,7 +218,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 4900873,
+      "num_messages": 4900951,
       "num_messages_24h": 269,
       "rating_score": 0.853823,
       "token_count": 1026
@@ -219,6 +228,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 4900873,
+        "num_messages_24h": 269,
+        "rating_score": 0.853823,
+        "token_count": 1026
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 4900951,
         "num_messages_24h": 269,
         "rating_score": 0.853823,
         "token_count": 1026

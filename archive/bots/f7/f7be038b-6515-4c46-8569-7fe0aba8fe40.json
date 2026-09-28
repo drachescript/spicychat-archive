@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f7be038b-6515-4c46-8569-7fe0aba8fe40",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:top-rated": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "ru": "Экипаж Астрального Экспресса",
         "zh": "Astral Express Crew"
       },
-      "num_messages": 184289,
+      "num_messages": 184318,
       "num_messages_24h": 634,
       "rating_score": 0.993243,
       "reportsType": {},
@@ -81,7 +81,7 @@
         "zh"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587198504,
+      "updatedAt": 1790587765610,
       "visibility": "public"
     }
   },
@@ -117,7 +117,7 @@
       "ru": "Экипаж Астрального Экспресса",
       "zh": "Astral Express Crew"
     },
-    "num_messages": 184289,
+    "num_messages": 184318,
     "num_messages_24h": 634,
     "rating_score": 0.993243,
     "reportsType": {},
@@ -150,10 +150,19 @@
       "zh"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587198504,
+    "updatedAt": 1790587765610,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:top-rated",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587198504,
+      "to": 1790587765610
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -169,7 +178,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 184289,
+      "num_messages": 184318,
       "num_messages_24h": 634,
       "rating_score": 0.993243,
       "token_count": 1410
@@ -179,6 +188,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:top-rated",
         "num_messages": 184289,
+        "num_messages_24h": 634,
+        "rating_score": 0.993243,
+        "token_count": 1410
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:top-rated",
+        "num_messages": 184318,
         "num_messages_24h": 634,
         "rating_score": 0.993243,
         "token_count": 1410

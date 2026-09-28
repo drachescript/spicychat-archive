@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6ca8b429-2ccb-46cf-86e0-c1c27f739bc7",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:popular": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -50,7 +50,7 @@
         "tr": "Mafya Baba - Haiden",
         "zh": "黑手党老爸 - 海登"
       },
-      "num_messages": 3548165,
+      "num_messages": 3548238,
       "num_messages_24h": 964,
       "rating_score": 0.824272,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587561173,
+      "updatedAt": 1790588312210,
       "visibility": "public"
     }
   },
@@ -132,7 +132,7 @@
       "tr": "Mafya Baba - Haiden",
       "zh": "黑手党老爸 - 海登"
     },
-    "num_messages": 3548165,
+    "num_messages": 3548238,
     "num_messages_24h": 964,
     "rating_score": 0.824272,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587561173,
+    "updatedAt": 1790588312210,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:popular",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587561173,
+      "to": 1790588312210
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -195,7 +204,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 3548165,
+      "num_messages": 3548238,
       "num_messages_24h": 964,
       "rating_score": 0.824272,
       "token_count": 617
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:popular",
         "num_messages": 3548165,
+        "num_messages_24h": 964,
+        "rating_score": 0.824272,
+        "token_count": 617
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:popular",
+        "num_messages": 3548238,
         "num_messages_24h": 964,
         "rating_score": 0.824272,
         "token_count": 617

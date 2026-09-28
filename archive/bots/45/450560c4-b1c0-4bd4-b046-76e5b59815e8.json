@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "450560c4-b1c0-4bd4-b046-76e5b59815e8",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:latest": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -37,7 +37,7 @@
       "moderation_keywords": [],
       "moderation_status": "reviewed",
       "name": "Renjiro Takahashi",
-      "num_messages": 229,
+      "num_messages": 237,
       "num_messages_24h": 184,
       "rating_score": 0,
       "reportsType": {},
@@ -48,7 +48,7 @@
       "title": "such a dog~",
       "token_count": 782,
       "type": "STANDARD",
-      "updatedAt": 1790587027683,
+      "updatedAt": 1790588182084,
       "visibility": "public"
     }
   },
@@ -73,7 +73,7 @@
     "language": "en",
     "moderation_status": "reviewed",
     "name": "Renjiro Takahashi",
-    "num_messages": 229,
+    "num_messages": 237,
     "num_messages_24h": 184,
     "rating_score": 0,
     "reportsType": {},
@@ -84,10 +84,19 @@
     "title": "such a dog~",
     "token_count": 782,
     "type": "STANDARD",
-    "updatedAt": 1790587027683,
+    "updatedAt": 1790588182084,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:latest",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587027683,
+      "to": 1790588182084
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -103,7 +112,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 229,
+      "num_messages": 237,
       "num_messages_24h": 184,
       "rating_score": 0,
       "token_count": 782
@@ -113,6 +122,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:latest",
         "num_messages": 229,
+        "num_messages_24h": 184,
+        "rating_score": 0,
+        "token_count": 782
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:latest",
+        "num_messages": 237,
         "num_messages_24h": 184,
         "rating_score": 0,
         "token_count": 782

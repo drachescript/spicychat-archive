@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "53ab8c67-a7ba-4c68-bbe0-3c6ff679e703",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -48,7 +48,7 @@
         "pt": "Workplace Sex Staff",
         "ru": "Workplace Sex Staff"
       },
-      "num_messages": 18196,
+      "num_messages": 18352,
       "num_messages_24h": 5470,
       "rating_score": 0,
       "reportsType": {},
@@ -84,7 +84,7 @@
         "pt"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587030201,
+      "updatedAt": 1790588359121,
       "visibility": "public"
     }
   },
@@ -120,7 +120,7 @@
       "pt": "Workplace Sex Staff",
       "ru": "Workplace Sex Staff"
     },
-    "num_messages": 18196,
+    "num_messages": 18352,
     "num_messages_24h": 5470,
     "rating_score": 0,
     "reportsType": {},
@@ -156,10 +156,19 @@
       "pt"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587030201,
+    "updatedAt": 1790588359121,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587030201,
+      "to": 1790588359121
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -175,7 +184,7 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 18196,
+      "num_messages": 18352,
       "num_messages_24h": 5470,
       "rating_score": 0,
       "token_count": 1198
@@ -185,6 +194,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 18196,
+        "num_messages_24h": 5470,
+        "rating_score": 0,
+        "token_count": 1198
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 18352,
         "num_messages_24h": 5470,
         "rating_score": 0,
         "token_count": 1198

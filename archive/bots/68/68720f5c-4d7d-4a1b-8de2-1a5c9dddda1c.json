@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "68720f5c-4d7d-4a1b-8de2-1a5c9dddda1c",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -53,7 +53,7 @@
         "ru": "Ririsa Hebikawa",
         "tr": "Ririsa Hebikawa"
       },
-      "num_messages": 201159,
+      "num_messages": 201216,
       "num_messages_24h": 2584,
       "rating_score": 0,
       "reportsType": {},
@@ -94,7 +94,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587300406,
+      "updatedAt": 1790588039972,
       "visibility": "public"
     }
   },
@@ -135,7 +135,7 @@
       "ru": "Ririsa Hebikawa",
       "tr": "Ririsa Hebikawa"
     },
-    "num_messages": 201159,
+    "num_messages": 201216,
     "num_messages_24h": 2584,
     "rating_score": 0,
     "reportsType": {},
@@ -176,10 +176,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587300406,
+    "updatedAt": 1790588039972,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587300406,
+      "to": 1790588039972
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -189,13 +198,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2143,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2144,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 201159,
+      "num_messages": 201216,
       "num_messages_24h": 2584,
       "rating_score": 0,
       "token_count": 1032
@@ -205,6 +214,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 201159,
+        "num_messages_24h": 2584,
+        "rating_score": 0,
+        "token_count": 1032
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 201216,
         "num_messages_24h": 2584,
         "rating_score": 0,
         "token_count": 1032

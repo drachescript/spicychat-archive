@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "6c62dc36-5e98-4eb3-bf03-514a4d7793c5",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     }
   },
   "current": {
@@ -45,7 +45,7 @@
         "pl": "H.S.O.S.6",
         "ru": "H.S.O.S.6"
       },
-      "num_messages": 167085,
+      "num_messages": 167140,
       "num_messages_24h": 2407,
       "reportsType": {},
       "tags": [
@@ -79,7 +79,7 @@
         "pl"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587680064,
+      "updatedAt": 1790587823126,
       "visibility": "public"
     }
   },
@@ -112,7 +112,7 @@
       "pl": "H.S.O.S.6",
       "ru": "H.S.O.S.6"
     },
-    "num_messages": 167085,
+    "num_messages": 167140,
     "num_messages_24h": 2407,
     "reportsType": {},
     "tags": [
@@ -146,10 +146,19 @@
       "pl"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587680064,
+    "updatedAt": 1790587823126,
     "visibility": "public"
   },
-  "fieldHistory": [],
+  "fieldHistory": [
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587680064,
+      "to": 1790587823126
+    }
+  ],
   "availabilityHistory": [
     {
       "status": "public",
@@ -159,13 +168,13 @@
   ],
   "listings": {
     "trending": {
-      "rank": 2327,
-      "observedAt": "2026-09-28T09:29:01Z"
+      "rank": 2328,
+      "observedAt": "2026-09-28T09:43:45Z"
     }
   },
   "metrics": {
     "latest": {
-      "num_messages": 167085,
+      "num_messages": 167140,
       "num_messages_24h": 2407,
       "token_count": 1110
     },
@@ -174,6 +183,13 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "typesense:trending",
         "num_messages": 167085,
+        "num_messages_24h": 2407,
+        "token_count": 1110
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 167140,
         "num_messages_24h": 2407,
         "token_count": 1110
       }

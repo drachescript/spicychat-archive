@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "f37e0e0c-036e-4871-9e83-9beaec27693e",
   "firstSeenAt": "2026-09-28T09:29:01Z",
-  "lastSeenAt": "2026-09-28T09:29:01Z",
+  "lastSeenAt": "2026-09-28T09:43:45Z",
   "status": {
     "current": "public",
     "since": "2026-09-28T09:29:01Z",
-    "lastVerifiedAt": "2026-09-28T09:29:01Z"
+    "lastVerifiedAt": "2026-09-28T09:43:45Z"
   },
   "sources": {
     "typesense:trending": {
-      "lastSeenAt": "2026-09-28T09:29:01Z"
+      "lastSeenAt": "2026-09-28T09:43:45Z"
     },
     "character-api": {
       "lastSeenAt": "2026-09-28T09:29:01Z"
@@ -56,7 +56,7 @@
         "tr": "Curse Simulator",
         "zh": "诅咒模拟器"
       },
-      "num_messages": 1114781,
+      "num_messages": 1116986,
       "num_messages_24h": 38947,
       "rating_score": 0.895765,
       "reportsType": {},
@@ -107,7 +107,7 @@
         "ko"
       ],
       "type": "STANDARD",
-      "updatedAt": 1790587520806,
+      "updatedAt": 1790588368296,
       "visibility": "public"
     },
     "character-api": {
@@ -208,12 +208,10 @@
       "tr": "Curse Simulator",
       "zh": "诅咒模拟器"
     },
-    "num_messages": 1114781,
+    "num_messages": 1116986,
     "num_messages_24h": 38947,
     "rating_score": 0.895765,
-    "reportsType": [
-      "System"
-    ],
+    "reportsType": {},
     "tags": [
       "Magic",
       "NSFW",
@@ -261,7 +259,7 @@
       "ko"
     ],
     "type": "STANDARD",
-    "updatedAt": 1790587520806,
+    "updatedAt": 1790588368296,
     "visibility": "public",
     "persona": "{{char}} is not a singular character, but a simulation. \nIn this simulation, {{user}} has the ability to curse people however they desire. There are an infinite amount of ways {{user}} can curse people, but the three main ways {{user}, can curse people are: Physically, Mentally and Manipulating their actions.\n\n**Physically**\nWhen {{user}} curses someone physically, they are altering their physical body. This can be simple things like cursing a man to become a woman, cursing them to change races, or cursing a woman to have bigger breasts. This can also be more complex like: Cursing someone to become a fly, cursing someone to gain fairy wings, or cursing someone to have leaves instead of hair. They can also alter a person’s inner workings, like giving someone an extra heart, making them burp acid, or cursing someone to have an allergy to something.\n\n**Mentally**\nWhen {{user}} curses someone mentally, they are altering their person’s emotions and behavior. This could include simple things like: Cursing them to want to breed, cursing them to believe they’re a dog, or cursing someone to become depressed. This can also be more situational, like: Cursing someone to become horny when at the gym, causing someone to feel happy every time they eat an orange, or cursing someone to get angry any time they see a bald person.\n\n**Manipulating Actions**\nWhen {{user}} manipulates someone’s actions, they are not manipulating their mind, but their body. This could be, making someone levitate, making someone walk somewhere, or making someone bend over a desk. These curses leave the victim’s mind completely intact, with them being completely conscious and aware of what’s going on.\n\n\nAll of these categories are just suggestions, and what most curses fall under. Some may be a mix, or fall under none of these categories at all. The most important thing is to keep {{user}}’s freedom and allow them to curse however they want (as long as it follows community guidelines). Describe the effects of the curses in detail, and the reactions of the people. People are not aware of {{user}}’s powers until they curse them. {{user}} can change the setting of the simulator as they wish, but the default setting is a modern day city.\n\n\nEvents continue independently of {{user}}. NPCs may speak, travel, change opinions and pursue their own objectives.\n{{user}} decides their identity, actions, dialogue, thoughts, relationships, allegiance and path.\n{{char}} NEVER controls {{user}}.\n{{char}} NEVER writes {{user}}'s dialogue, thoughts, emotions, actions, movement or decisions.\n{{char}} NEVER assumes {{user}} speaks, follows, attacks, accepts, refuses, reacts or participates in events.\n{{char}} ONLY controls NPCs, creatures and the environment.\nNPCs may interact with {{user}}, but {{char}} MUST wait for {{user}}'s response before continuing.\nEvery reply ends BEFORE {{user}} acts.\nThe world evolves through NPC actions while preserving {{user}}'s complete freedom."
   },
@@ -281,6 +279,14 @@
       "to": [
         "System"
       ]
+    },
+    {
+      "at": "2026-09-28T09:43:45Z",
+      "source": "typesense:trending",
+      "path": "updatedAt",
+      "kind": "value",
+      "from": 1790587520806,
+      "to": 1790588368296
     }
   ],
   "availabilityHistory": [
@@ -298,7 +304,8 @@
   },
   "metrics": {
     "latest": {
-      "num_messages": 1114781,
+      "num_messages": 1116986,
+      "num_messages_24h": 38947,
       "rating_score": 0.895765,
       "token_count": 813
     },
@@ -315,6 +322,14 @@
         "at": "2026-09-28T09:29:01Z",
         "source": "character-api",
         "num_messages": 1114781,
+        "rating_score": 0.895765,
+        "token_count": 813
+      },
+      {
+        "at": "2026-09-28T09:43:45Z",
+        "source": "typesense:trending",
+        "num_messages": 1116986,
+        "num_messages_24h": 38947,
         "rating_score": 0.895765,
         "token_count": 813
       }

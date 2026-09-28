@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Bot Status submissions · SpicyChat Archive</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="../../assets/submissions-admin.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="../../">SpicyChat Archive</a>
+    <nav class="navlinks">
+      <a href="../../">Browse</a>
+      <a href="../../deleted/">Deleted bots</a>
+      <a href="../../stats/">Stats</a>
+      <a class="active" href="./">Submission review</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap admin-page">
+  <section class="admin-hero">
+    <div>
+      <h1>Bot Status submissions</h1>
+      <p>Review anonymous QoL Bot Status saved-copy submissions before anything reaches the live archive import queue.</p>
+    </div>
+    <button id="refresh" class="secondary-button" type="button">Refresh</button>
+  </section>
+
+  <section class="admin-auth">
+    <label>
+      Worker endpoint
+      <input id="endpoint" value="https://spicychat-archive-import.dragongraf.workers.dev">
+    </label>
+    <label>
+      Existing archive import token
+      <input id="token" type="password" autocomplete="current-password" placeholder="SPICYCHAT_ARCHIVE_IMPORT_TOKEN">
+    </label>
+    <label class="remember"><input id="remember" type="checkbox"> Remember token on this browser</label>
+    <button id="connect" class="primary-button" type="button">Connect</button>
+    <span id="auth-status"></span>
+  </section>
+
+  <div class="tabs" role="tablist">
+    <button data-tab="pending" class="tab active" type="button">Pending <span id="pending-count"></span></button>
+    <button data-tab="approved" class="tab" type="button">Approved</button>
+    <button data-tab="rejected" class="tab" type="button">Rejected</button>
+  </div>
+
+  <section class="submission-layout">
+    <aside class="submission-list" id="submission-list">
+      <p class="admin-muted">Enter the existing archive import token and connect.</p>
+    </aside>
+
+    <section class="submission-detail" id="submission-detail">
+      <div class="admin-empty">Select a submission.</div>
+    </section>
+  </section>
+</main>
+
+<script type="module" src="../../assets/submissions-admin.js"></script>
+</body>
+</html>

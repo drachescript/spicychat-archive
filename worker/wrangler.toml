@@ -3,6 +3,9 @@ main = "src/index.js"
 compatibility_date = "2026-09-28"
 workers_dev = true
 
+[triggers]
+crons = ["17 5 * * *"]
+
 [[r2_buckets]]
 binding = "ARCHIVE_BUCKET"
 bucket_name = "spicychat-archiv"

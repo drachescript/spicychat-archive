@@ -1,18 +1,27 @@
-# Archive-side Bot Status Center import
+# Public Bot Status submission + admin approval patch
 
-Files in this patch:
+This patch keeps the existing trusted `/api/imports/bot-status` route unchanged
+and adds a separate public review-first submission path.
 
-- `.github/workflows/archive.yml` — processes queued exports before each R2 crawl.
-- `.github/workflows/deploy-import-worker.yml` — manual Cloudflare Worker deploy.
+Changed/new files:
+
+- `worker/src/index.js`
 - `worker/wrangler.toml`
-- `worker/src/index.js` — authenticated upload/staging endpoint.
-- `scripts/import_bot_status.py` — safe historical merge into R2.
-- `tests/test_bot_status_import.py`
-- `BOT-STATUS-IMPORT.md` — extension/upload contract and setup.
+- `scripts/review_bot_status_submissions.py`
+- `.github/workflows/archive.yml`
+- `.github/workflows/pages.yml`
+- `admin/submissions/index.html`
+- `assets/submissions-admin.css`
+- `assets/submissions-admin.js`
+- `tests/test_public_bot_status_submissions.py`
+- `PUBLIC-BOT-STATUS-SUBMISSIONS.md`
 
-Important safety behavior:
-- The upload token is never committed.
-- Only public character/profile fields are accepted.
-- Imported copies cannot mark bots public/deleted on their own.
-- Old copies can fill missing archive fields but cannot overwrite newer known values.
-- Imported bots are gradually verified/enriched by the normal archive crawler.
+After committing:
+
+1. Re-run `Deploy Bot Status import endpoint` once so the Worker gets the new
+   public/admin routes and daily rejected-payload cleanup cron.
+2. Let `Deploy archive website` publish `/admin/submissions/`.
+3. Public QoL builds can POST anonymous saved-copy exports to:
+   `https://spicychat-archive-import.dragongraf.workers.dev/api/submissions/bot-status`
+4. Do not put the archive import token in public QoL builds. The public route
+   does not need it.

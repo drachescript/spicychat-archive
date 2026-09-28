@@ -51,6 +51,10 @@ jobs:
         if: steps.r2guard.outputs.mode == 'r2' && steps.r2guard.outputs.replay_write_budget != '0'
         run: python scripts/r2_safe_runner.py replay_fallback.py --max-writes "${{ steps.r2guard.outputs.replay_write_budget }}" --summary-file "$RUNNER_TEMP/replay-summary.md"
 
+      - name: Import queued Bot Status Center exports
+        if: steps.r2guard.outputs.mode == 'r2'
+        run: python scripts/import_bot_status.py --inbox --summary-file "$RUNNER_TEMP/bot-status-import-summary.md"
+
       - name: Update archive in R2
         if: steps.r2guard.outputs.mode == 'r2'
         env:
@@ -75,6 +79,7 @@ jobs:
         if: always()
         run: |
           [ ! -f "$RUNNER_TEMP/replay-summary.md" ] || cat "$RUNNER_TEMP/replay-summary.md" >> "$GITHUB_STEP_SUMMARY"
+          [ ! -f "$RUNNER_TEMP/bot-status-import-summary.md" ] || cat "$RUNNER_TEMP/bot-status-import-summary.md" >> "$GITHUB_STEP_SUMMARY"
           [ ! -f "$RUNNER_TEMP/archive-summary.md" ] || cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit public stats/runtime changes

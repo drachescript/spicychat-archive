@@ -1,0 +1,36 @@
+name: Deploy Bot Status import endpoint
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      IMPORT_TOKEN: ${{ secrets.SPICYCHAT_ARCHIVE_IMPORT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check import token
+        shell: bash
+        run: |
+          if [ -z "${IMPORT_TOKEN:-}" ]; then
+            echo "Missing repository secret SPICYCHAT_ARCHIVE_IMPORT_TOKEN"
+            exit 1
+          fi
+
+      - name: Deploy upload worker
+        run: npx --yes wrangler@4 deploy --config worker/wrangler.toml
+
+      - name: Set private upload token
+        shell: bash
+        run: printf '%s' "$IMPORT_TOKEN" | npx --yes wrangler@4 secret put IMPORT_TOKEN --config worker/wrangler.toml

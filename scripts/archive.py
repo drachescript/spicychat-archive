@@ -36,8 +36,8 @@ BOTS_DIR = ARCHIVE_DIR / "bots"
 RANKINGS_DIR = ARCHIVE_DIR / "rankings"
 MEDIA_DIR = ARCHIVE_DIR / "media"
 STATE_PATH = ARCHIVE_DIR / "state.json"
-SITE_DIR = ROOT / "site"
-SITE_DATA_DIR = SITE_DIR / "data"
+SITE_DIR = ROOT
+SITE_DATA_DIR = ROOT / "data"
 SITE_CATALOG_DIR = SITE_DATA_DIR / "catalog"
 SITE_BOTS_DIR = SITE_DATA_DIR / "bots"
 
@@ -751,7 +751,7 @@ def compact_summary(record: dict[str, Any]) -> dict[str, Any]:
     archived_rel = avatar.get("path")
     site_media = None
     if archived_rel:
-        # site/media mirrors archive/media during site build.
+        # Root media/ mirrors archive/media for the public website.
         parts = Path(archived_rel).parts
         try:
             idx = parts.index("media")

@@ -44,13 +44,34 @@ jobs:
           fi
 
       - name: Commit genuine archive changes
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add archive site/data site/media || true
+
+          git add archive data media || true
           if git diff --cached --quiet; then
             echo "No archive changes to commit."
             exit 0
           fi
+
           git commit -m "Update SpicyChat archive"
-          git push
+
+          # A human commit (for example a CNAME/settings change) can land while
+          # the crawler is running. Rebase the generated archive commit onto the
+          # newest main branch and retry instead of losing the whole scan.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            if [ "$attempt" -eq 3 ]; then
+              echo "Push still failed after 3 attempts."
+              exit 1
+            fi
+
+            echo "main changed while the archive job was running; rebasing and retrying..."
+            git fetch origin main
+            git rebase origin/main
+          done

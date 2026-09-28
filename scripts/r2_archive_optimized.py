@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-"""Run the R2 archive with a compact bot fingerprint index.
+"""R2 archive runner with a compact, tolerant fingerprint index.
 
-Why this exists:
-- the R2 crawler used to GET a full per-bot JSON object for nearly every
-  Typesense listing/discovery hit;
-- once the archive grows, those serial reads are much slower and consume
-  unnecessary Class B operations;
-- a compact fingerprint index lets unchanged public bots be recognized in
-  memory before touching their full R2 record.
+v2 fixes the first fingerprint version's main weakness: it compared the entire
+non-volatile Typesense document including updatedAt. If updatedAt or another
+bookkeeping field moved for many bots, the crawler could fall back to thousands
+of serial R2 GETs.
 
-The first optimized run bootstraps fingerprints from existing archived records
-using bounded concurrent GETs. Later runs normally need one small fingerprint
-index read plus full bot reads only for new/changed/restored bots.
+This version:
+- fingerprints visible content separately from updatedAt;
+- treats updatedAt-only changes as an enrichment hint, not a reason to GET the
+  full archived bot record immediately;
+- batches any genuinely-needed R2 bot reads with 16 concurrent readers;
+- prints listing + ingest progress so Actions never appears frozen;
+- keeps the existing deletion, enrichment, image, ranking and archive logic.
 """
 from __future__ import annotations
 
 import hashlib
 import json
-import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Iterable
 
@@ -26,33 +26,47 @@ import archive_cloud as cloud
 from storage_r2 import R2ArchiveStore
 
 
-FINGERPRINT_SCHEMA = 1
-BOOTSTRAP_WORKERS = 16
+FINGERPRINT_SCHEMA = 2
+READ_WORKERS = 16
 BOOTSTRAP_MAX_READS = 25_000
+
+# These are useful change hints but should not make every listing hit download the
+# full archived JSON. If only one of these moves, queue normal enrichment instead.
+UPDATE_HINT_FIELDS = {
+    "updatedAt",
+    "updated_at",
+    "lastUpdatedAt",
+    "last_updated_at",
+}
 
 _original_configure_cloud = cloud.configure_cloud
 _active_fingerprints = None
 
 
 def _clean_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
-    """Canonical non-volatile Typesense metadata used for change detection."""
     cleaned = legacy.clean_for_archive(doc)
     return {
         key: value
         for key, value in cleaned.items()
         if key not in legacy.VOLATILE_FIELDS
+        and key not in UPDATE_HINT_FIELDS
     }
 
 
-def _fingerprint_doc(doc: dict[str, Any]) -> str:
-    canonical = _clean_typesense_doc(doc)
+def _updated_hint(doc: dict[str, Any]) -> Any:
+    for key in ("updatedAt", "updated_at", "lastUpdatedAt", "last_updated_at"):
+        if key in doc and legacy.meaningful(doc.get(key)):
+            return doc.get(key)
+    return None
+
+
+def _content_hash(doc: dict[str, Any]) -> str:
     raw = json.dumps(
-        canonical,
+        _clean_typesense_doc(doc),
         ensure_ascii=False,
         sort_keys=True,
         separators=(",", ":"),
     ).encode("utf-8")
-    # 128 bits is plenty for archive change detection and keeps the index small.
     return hashlib.blake2b(raw, digest_size=16).hexdigest()
 
 
@@ -65,7 +79,7 @@ def _record_typesense_doc(record: dict[str, Any]) -> dict[str, Any] | None:
     if isinstance(direct, dict):
         return direct
 
-    # Compatibility with older pre-collapse records.
+    # Compatibility with older per-listing snapshots.
     merged: dict[str, Any] = {}
     found = False
     for key, value in current.items():
@@ -75,17 +89,26 @@ def _record_typesense_doc(record: dict[str, Any]) -> dict[str, Any] | None:
     return merged if found else None
 
 
+def _entry_for_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "contentHash": _content_hash(doc),
+        "updatedAt": _updated_hint(doc),
+    }
+
+
 class FingerprintIndex:
     def __init__(self, store: R2ArchiveStore):
         self.store = store
         self.key = store.key(store.meta_prefix, "bot-fingerprints.json")
-        self.values: dict[str, str | None] = {}
+        self.values: dict[str, dict[str, Any]] = {}
         self.dirty = False
         self.stats = {
             "avoidedReads": 0,
             "fullReads": 0,
             "newBots": 0,
             "changedBots": 0,
+            "updatedOnly": 0,
+            "readErrors": 0,
             "bootstrapReads": 0,
             "bootstrapErrors": 0,
         }
@@ -96,41 +119,60 @@ class FingerprintIndex:
             and int(data.get("schemaVersion") or 0) == FINGERPRINT_SCHEMA
             and isinstance(data.get("fingerprints"), dict)
         ):
-            for raw_id, raw_value in data["fingerprints"].items():
+            for raw_id, raw_entry in data["fingerprints"].items():
+                if not isinstance(raw_entry, dict):
+                    continue
                 bot_id = str(raw_id).lower()
-                if isinstance(raw_value, str):
-                    self.values[bot_id] = raw_value
-                elif raw_value is None:
-                    # None means the archived record was inspected but did not yet
-                    # contain a Typesense snapshot. If that bot later appears in
-                    # Typesense, it will be loaded once and gain a real fingerprint.
-                    self.values[bot_id] = None
-
-    def get(self, bot_id: str) -> str | None:
-        return self.values.get(bot_id.lower())
+                self.values[bot_id] = {
+                    "contentHash": raw_entry.get("contentHash"),
+                    "updatedAt": raw_entry.get("updatedAt"),
+                }
 
     def contains(self, bot_id: str) -> bool:
         return bot_id.lower() in self.values
 
-    def set(self, bot_id: str, value: str | None) -> None:
+    def entry(self, bot_id: str) -> dict[str, Any] | None:
+        value = self.values.get(bot_id.lower())
+        return dict(value) if isinstance(value, dict) else None
+
+    def same_content(self, bot_id: str, content_hash: str) -> bool:
+        entry = self.values.get(bot_id.lower())
+        return bool(
+            isinstance(entry, dict)
+            and entry.get("contentHash")
+            and entry.get("contentHash") == content_hash
+        )
+
+    def set_entry(self, bot_id: str, entry: dict[str, Any]) -> None:
         bot_id = bot_id.lower()
-        if bot_id not in self.values or self.values[bot_id] != value:
-            self.values[bot_id] = value
+        normalized = {
+            "contentHash": entry.get("contentHash"),
+            "updatedAt": entry.get("updatedAt"),
+        }
+        if self.values.get(bot_id) != normalized:
+            self.values[bot_id] = normalized
             self.dirty = True
 
-    def matches(self, bot_id: str, value: str) -> bool:
+    def update_hint_only(self, bot_id: str, updated_at: Any) -> None:
         bot_id = bot_id.lower()
-        return bot_id in self.values and self.values[bot_id] == value
+        current = self.values.get(bot_id)
+        if not isinstance(current, dict):
+            return
+        if current.get("updatedAt") != updated_at:
+            current = dict(current)
+            current["updatedAt"] = updated_at
+            self.values[bot_id] = current
+            self.dirty = True
 
-    def _bootstrap_one(self, bot_id: str) -> tuple[str, str | None, str | None]:
+    def _bootstrap_one(self, bot_id: str):
         try:
-            # Read directly instead of store.load_bot(): bootstrap is concurrent
-            # and should not mutate the shared LRU record cache.
             record = self.store.get_json(self.store.bot_key(bot_id), None)
             if not isinstance(record, dict):
                 return bot_id, None, None
             doc = _record_typesense_doc(record)
-            return bot_id, (_fingerprint_doc(doc) if isinstance(doc, dict) else None), None
+            if not isinstance(doc, dict):
+                return bot_id, {"contentHash": None, "updatedAt": None}, None
+            return bot_id, _entry_for_doc(doc), None
         except Exception as exc:
             return bot_id, None, str(exc)
 
@@ -142,43 +184,41 @@ class FingerprintIndex:
         ]
         if not missing:
             print(
-                f"R2 fingerprint index ready: {len(self.values):,} archived IDs covered.",
+                f"R2 fingerprint v2 ready: {len(self.values):,} archived IDs covered.",
                 flush=True,
             )
             return
 
         batch = missing[:BOOTSTRAP_MAX_READS]
         print(
-            f"R2 fingerprint bootstrap: {len(batch):,} existing bot records "
-            f"({BOOTSTRAP_WORKERS} concurrent readers).",
+            f"R2 fingerprint v2 bootstrap: {len(batch):,} existing bot records "
+            f"({READ_WORKERS} concurrent readers).",
             flush=True,
         )
 
         completed = 0
-        with ThreadPoolExecutor(max_workers=BOOTSTRAP_WORKERS) as pool:
+        with ThreadPoolExecutor(max_workers=READ_WORKERS) as pool:
             futures = {
                 pool.submit(self._bootstrap_one, bot_id): bot_id
                 for bot_id in batch
             }
             for future in as_completed(futures):
-                bot_id, value, error = future.result()
+                bot_id, entry, error = future.result()
                 completed += 1
                 self.stats["bootstrapReads"] += 1
 
                 if error:
                     self.stats["bootstrapErrors"] += 1
-                    # Do not mark failed reads as covered; retry them next run.
-                else:
-                    self.set(bot_id, value)
+                elif entry is not None:
+                    self.set_entry(bot_id, entry)
 
                 if completed % 1000 == 0 or completed == len(batch):
                     print(
-                        f"  fingerprint bootstrap {completed:,}/{len(batch):,}",
+                        f"  fingerprint v2 bootstrap {completed:,}/{len(batch):,}",
                         flush=True,
                     )
 
-        # Persist immediately so a later crawler/API failure cannot throw away a
-        # successful one-time bootstrap.
+        # Save immediately so a later API/crawl problem cannot waste this work.
         self.save_if_dirty()
 
     def save_if_dirty(self) -> None:
@@ -195,24 +235,70 @@ class FingerprintIndex:
 
     def print_stats(self) -> None:
         print(
-            "R2 fingerprints: "
+            "R2 fingerprint v2: "
             f"{self.stats['avoidedReads']:,} full bot GETs avoided; "
             f"{self.stats['fullReads']:,} full bot GETs needed; "
+            f"{self.stats['updatedOnly']:,} updatedAt-only hints; "
             f"{self.stats['newBots']:,} new; "
             f"{self.stats['changedBots']:,} changed; "
+            f"{self.stats['readErrors']:,} read errors; "
             f"{len(self.values):,} IDs indexed.",
             flush=True,
         )
 
 
-def optimized_configure_cloud(
-    config: dict[str, Any],
+def _parallel_load_records(
     store: R2ArchiveStore,
-):
+    bot_ids: list[str],
+    *,
+    label: str,
+) -> tuple[dict[str, dict[str, Any]], set[str]]:
+    if not bot_ids:
+        return {}, set()
+
+    unique_ids = list(dict.fromkeys(bot_ids))
+    records: dict[str, dict[str, Any]] = {}
+    failed: set[str] = set()
+
+    def load_one(bot_id: str):
+        try:
+            record = store.get_json(store.bot_key(bot_id), None)
+            return bot_id, record, None
+        except Exception as exc:
+            return bot_id, None, str(exc)
+
+    print(
+        f"{label}: loading {len(unique_ids):,} changed/unknown archived records "
+        f"with {READ_WORKERS} concurrent R2 readers...",
+        flush=True,
+    )
+
+    completed = 0
+    with ThreadPoolExecutor(max_workers=READ_WORKERS) as pool:
+        futures = {
+            pool.submit(load_one, bot_id): bot_id
+            for bot_id in unique_ids
+        }
+        for future in as_completed(futures):
+            bot_id, record, error = future.result()
+            completed += 1
+            if error or not isinstance(record, dict):
+                failed.add(bot_id)
+            else:
+                records[bot_id] = record
+
+            if completed % 500 == 0 or completed == len(unique_ids):
+                print(
+                    f"  {label} R2 reads {completed:,}/{len(unique_ids):,}",
+                    flush=True,
+                )
+
+    return records, failed
+
+
+def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
     global _active_fingerprints
 
-    # Let archive_cloud install all of its normal R2-backed storage, deletion,
-    # enrichment, image, ranking and website hooks first.
     state, bloom = _original_configure_cloud(config, store)
 
     fingerprints = FingerprintIndex(store)
@@ -226,10 +312,9 @@ def optimized_configure_cloud(
         at: str,
         state: dict[str, Any],
     ) -> tuple[int, int, set[str]]:
-        new_count = 0
-        changed_count = 0
+        rows: list[dict[str, Any]] = []
         seen: set[str] = set()
-        observe_source = "typesense" if source.startswith("typesense:") else source
+        label = source.replace("typesense:", "")
 
         for doc in docs:
             bot_id = legacy.normalize_id(doc)
@@ -238,25 +323,80 @@ def optimized_configure_cloud(
             bot_id = bot_id.lower()
             seen.add(bot_id)
 
-            incoming_fp = _fingerprint_doc(doc)
+            entry = _entry_for_doc(doc)
             known = bot_id in store.known_ids
+            restore = bot_id in store.deleted_index
+            prior = fingerprints.entry(bot_id)
 
-            # A deleted bot that reappears must be loaded even when its metadata
-            # fingerprint is unchanged, so observe_bot() can restore public status.
-            needs_restore_check = bot_id in store.deleted_index
-
-            if (
-                known
-                and not needs_restore_check
-                and fingerprints.matches(bot_id, incoming_fp)
+            if known and not restore and fingerprints.same_content(
+                bot_id, entry["contentHash"]
             ):
                 fingerprints.stats["avoidedReads"] += 1
+
+                old_updated = prior.get("updatedAt") if prior else None
+                new_updated = entry.get("updatedAt")
+                if (
+                    legacy.meaningful(new_updated)
+                    and old_updated != new_updated
+                ):
+                    # updatedAt can be noisy. Use it as a signal for normal
+                    # character-API enrichment without downloading this bot JSON.
+                    cloud._priority_add(
+                        state, "priorityEnrichment", bot_id
+                    )
+                    fingerprints.stats["updatedOnly"] += 1
+                    fingerprints.update_hint_only(bot_id, new_updated)
                 continue
 
-            existing = None
-            if known:
-                fingerprints.stats["fullReads"] += 1
-                existing = legacy.load_bot(bot_id)
+            rows.append(
+                {
+                    "id": bot_id,
+                    "doc": doc,
+                    "entry": entry,
+                    "known": known,
+                }
+            )
+
+        known_to_load = [
+            row["id"] for row in rows if row["known"]
+        ]
+        new_count = sum(1 for row in rows if not row["known"])
+
+        print(
+            f"{label}: {len(seen) - len(rows):,} unchanged fingerprint matches, "
+            f"{len(known_to_load):,} existing records need inspection, "
+            f"{new_count:,} new.",
+            flush=True,
+        )
+
+        loaded, failed = _parallel_load_records(
+            store, known_to_load, label=label
+        )
+        fingerprints.stats["fullReads"] += len(known_to_load)
+        fingerprints.stats["readErrors"] += len(failed)
+
+        changed_count = 0
+        created_count = 0
+        processed = 0
+        observe_source = (
+            "typesense" if source.startswith("typesense:") else source
+        )
+
+        for row in rows:
+            bot_id = row["id"]
+            doc = row["doc"]
+            entry = row["entry"]
+            known = row["known"]
+
+            if known and bot_id in failed:
+                print(
+                    f"WARNING: {label}: skipped {bot_id}; archived R2 record "
+                    "could not be read.",
+                    flush=True,
+                )
+                continue
+
+            existing = loaded.get(bot_id) if known else None
 
             old_known = (existing or {}).get("lastKnown") or {}
             old_updated = old_known.get("updatedAt")
@@ -268,8 +408,6 @@ def optimized_configure_cloud(
             )
 
             observed_doc = doc
-            # Ranking metrics are archived in compact ranking snapshots, so an
-            # existing per-bot object is not rewritten just because counters moved.
             if existing is not None and source.startswith("typesense:"):
                 observed_doc = {
                     key: value
@@ -286,19 +424,24 @@ def optimized_configure_cloud(
             record.setdefault("sources", {})[source] = {"lastSeenAt": at}
 
             if existing is None:
-                new_count += 1
+                created_count += 1
                 fingerprints.stats["newBots"] += 1
             else:
                 if (
                     legacy.meaningful(doc.get("updatedAt"))
                     and doc.get("updatedAt") != old_updated
                 ):
-                    cloud._priority_add(state, "priorityEnrichment", bot_id)
+                    cloud._priority_add(
+                        state, "priorityEnrichment", bot_id
+                    )
                 if (
                     "definition_visible" in doc
-                    and doc.get("definition_visible") != old_definition_visible
+                    and doc.get("definition_visible")
+                    != old_definition_visible
                 ):
-                    cloud._priority_add(state, "priorityEnrichment", bot_id)
+                    cloud._priority_add(
+                        state, "priorityEnrichment", bot_id
+                    )
 
             avatar = legacy.normalize_avatar_url(
                 doc.get("avatar_url")
@@ -313,11 +456,17 @@ def optimized_configure_cloud(
                 if existing is not None:
                     fingerprints.stats["changedBots"] += 1
 
-            # Even if normalization meant the full record did not need a write,
-            # this exact Typesense document is now known for future comparisons.
-            fingerprints.set(bot_id, incoming_fp)
+            fingerprints.set_entry(bot_id, entry)
 
-        return new_count, changed_count, seen
+            processed += 1
+            if processed % 250 == 0 or processed == len(rows):
+                print(
+                    f"  {label} ingest {processed:,}/{len(rows):,} "
+                    f"(new {created_count:,}, changed {changed_count:,})",
+                    flush=True,
+                )
+
+        return created_count, changed_count, seen
 
     def fast_scan_listing(
         client,
@@ -328,14 +477,19 @@ def optimized_configure_cloud(
         state: dict[str, Any],
     ):
         page_size = min(
-            250,
-            int(config["crawler"].get("listing_page_size", 250)),
+            250, int(config["crawler"].get("listing_page_size", 250))
         )
-        max_hits = int(config["crawler"].get("listing_max_hits", 2500))
-
+        max_hits = int(
+            config["crawler"].get("listing_max_hits", 2500)
+        )
         docs: list[dict[str, Any]] = []
         found = None
         page = 1
+
+        print(
+            f"{name}: fetching up to {max_hits:,} ranking hits...",
+            flush=True,
+        )
 
         while len(docs) < max_hits:
             request = legacy.typesense_search(
@@ -362,6 +516,11 @@ def optimized_configure_cloud(
                 break
 
             docs.extend(hits)
+            print(
+                f"  {name} fetch: {len(docs):,}/{max_hits:,}",
+                flush=True,
+            )
+
             if len(hits) < request["per_page"]:
                 break
             page += 1
@@ -397,6 +556,8 @@ def optimized_configure_cloud(
             if row:
                 compact_metrics[bot_id] = row
 
+        fingerprints.save_if_dirty()
+
         return {
             "ok": True,
             "found": found,
@@ -428,12 +589,7 @@ def optimized_configure_cloud(
         bloom.clear()
         return queued
 
-    def fast_explore_more(
-        client,
-        config,
-        at: str,
-        state: dict[str, Any],
-    ):
+    def fast_explore_more(client, config, at: str, state: dict[str, Any]):
         exploration = state.setdefault("exploration", {})
         mode = exploration.get("mode") or "page"
         page_size = 250
@@ -452,6 +608,11 @@ def optimized_configure_cloud(
             .get("r2", {})
             .get("discovery_write_soft_limit")
             or 700000
+        )
+
+        print(
+            f"explore: up to {pages_budget} pages × {page_size} hits",
+            flush=True,
         )
 
         for page_index in range(pages_budget):
@@ -512,14 +673,18 @@ def optimized_configure_cloud(
                         continue
 
                 missing_queued += finish_exploration_pass(at)
-                exploration["pass"] = (
-                    int(exploration.get("pass") or 0) + 1
-                )
+                exploration["pass"] = int(exploration.get("pass") or 0) + 1
                 exploration["page"] = 1
                 exploration["mode"] = mode = "page"
                 exploration["cursorCreatedAt"] = None
                 exploration["lastCreatedAt"] = None
                 break
+
+            print(
+                f"explore {page_index + 1}/{pages_budget}: "
+                f"received {len(hits):,} hits",
+                flush=True,
+            )
 
             new, changed, seen_ids = fast_ingest_documents(
                 hits,
@@ -543,8 +708,7 @@ def optimized_configure_cloud(
             if mode == "cursor":
                 if (
                     last_created is None
-                    or last_created
-                    == exploration.get("cursorCreatedAt")
+                    or last_created == exploration.get("cursorCreatedAt")
                 ):
                     errors.append(
                         "cursor discovery could not advance createdAt"
@@ -558,26 +722,19 @@ def optimized_configure_cloud(
 
             print(
                 f"explore {page_index + 1}/{pages_budget}: "
-                f"{len(hits):,} hits, {new:,} new, "
-                f"{changed:,} changed; "
-                f"R2 bot GETs avoided "
-                f"{fingerprints.stats['avoidedReads']:,}",
+                f"{new:,} new, {changed:,} changed",
                 flush=True,
             )
 
             if len(hits) < page_size:
                 missing_queued += finish_exploration_pass(at)
-                exploration["pass"] = (
-                    int(exploration.get("pass") or 0) + 1
-                )
+                exploration["pass"] = int(exploration.get("pass") or 0) + 1
                 exploration["page"] = 1
                 exploration["mode"] = mode = "page"
                 exploration["cursorCreatedAt"] = None
                 exploration["lastCreatedAt"] = None
                 break
 
-        # Persist once after the discovery/listing phase instead of rewriting the
-        # fingerprint object for every bot.
         fingerprints.save_if_dirty()
         fingerprints.print_stats()
 
@@ -600,18 +757,15 @@ def optimized_configure_cloud(
 
 def main() -> int:
     cloud.configure_cloud = optimized_configure_cloud
-
     try:
         return cloud.run()
     finally:
-        # If the run fails after discovery, keep any successfully learned
-        # fingerprints so the next run does not repeat expensive reads.
         if _active_fingerprints is not None:
             try:
                 _active_fingerprints.save_if_dirty()
             except Exception as exc:
                 print(
-                    f"WARNING: could not persist R2 fingerprint index: {exc}",
+                    f"WARNING: could not persist R2 fingerprint v2 index: {exc}",
                     flush=True,
                 )
 

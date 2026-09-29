@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T02:11:24Z",
+  "generatedAt": "2026-09-29T03:36:21Z",
   "startedAt": "2026-09-28T00:00:00Z",
-  "totalBots": 50412,
-  "publicIndexBots": 1391043,
+  "totalBots": 74735,
+  "publicIndexBots": 1391022,
   "deletedBots": 0,
-  "latestAdded": 6739,
+  "latestAdded": 24323,
   "growth": {
-    "added24h": 39143,
-    "added7d": 39143,
-    "added30d": 39143,
-    "averagePerDay": 66162.4,
-    "observedHours": 14.2,
-    "observedGrowth": 39143
+    "added24h": 63466,
+    "added7d": 63466,
+    "added30d": 63466,
+    "averagePerDay": 97896.2,
+    "observedHours": 15.6,
+    "observedGrowth": 63466
   },
   "adaptiveDiscovery": {
-    "basePages": 25,
-    "maxPages": 50,
-    "growthPerSuccess": 1,
+    "basePages": 100,
+    "maxPages": 200,
+    "growthPerSuccess": 25,
     "timeLimitSeconds": 3600,
-    "nextPageBudget": 29
+    "nextPageBudget": 125
   },
   "runs": [
     {
@@ -239,6 +239,41 @@
         "writesThisMonth": 87312
       },
       "addedSincePrevious": 6739
+    },
+    {
+      "at": "2026-09-29T03:24:16Z",
+      "kind": "archive-run",
+      "totalBots": 74735,
+      "publicIndexBots": 1391022,
+      "deletedBots": 0,
+      "missingBots": 0,
+      "runDurationSeconds": 726,
+      "exploration": {
+        "hits": 25000,
+        "new": 24323,
+        "changed": 24711,
+        "pageBudget": 100,
+        "pagesCompleted": 100,
+        "nextPageBudget": 125,
+        "timeLimited": false,
+        "durationSeconds": 341
+      },
+      "enrichment": {
+        "attempted": 200,
+        "enriched": 200
+      },
+      "images": {
+        "attempted": 100,
+        "saved": 100
+      },
+      "deletedConfirmed": 0,
+      "storage": {
+        "usedBytes": 297492345,
+        "mediaBytes": 177543330,
+        "objects": 51986,
+        "writesThisMonth": 88668
+      },
+      "addedSincePrevious": 24323
     }
   ]
 }

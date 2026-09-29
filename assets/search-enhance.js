@@ -3,8 +3,9 @@
 
   const nativeFetch = window.fetch.bind(window);
   const snippets = new Map();
+  const SAFE_EVERYTHING = ['name', 'title', 'tags', 'creator_username', 'character_id', 'type'];
+  const RICH_FIELDS = ['greeting', 'description', 'scenario'];
   const FIELD_MAP = {
-    everything: 'name,title,tags,creator_username,character_id,type,description,greeting,scenario',
     name: 'name,title',
     creator: 'creator_username',
     tags: 'tags',
@@ -12,8 +13,8 @@
     description: 'description',
     scenario: 'scenario'
   };
-  const RICH_FIELDS = new Set(['greeting', 'description', 'scenario']);
-  let activeQuery = '';
+  const richSupport = new Map(RICH_FIELDS.map(field => [field, null]));
+  let capabilityProbe = null;
   let activeSearchIn = new URLSearchParams(location.search).get('search_in') || 'everything';
   let activeSafety = new URLSearchParams(location.search).get('safety') || 'all';
 
@@ -35,6 +36,12 @@
     } catch {
       return null;
     }
+  }
+
+  function queryByFor(selection) {
+    if (selection !== 'everything') return FIELD_MAP[selection] || SAFE_EVERYTHING.join(',');
+    const rich = RICH_FIELDS.filter(field => richSupport.get(field) === true);
+    return [...SAFE_EVERYTHING, ...rich].join(',');
   }
 
   function appendFilter(existing, clause) {
@@ -95,35 +102,87 @@
     }
   }
 
+  function updateCapabilityUi() {
+    const select = document.querySelector('#search-in');
+    if (select) {
+      for (const field of RICH_FIELDS) {
+        const option = select.querySelector(`option[value="${field}"]`);
+        if (!option) continue;
+        const support = richSupport.get(field);
+        option.textContent = `${field[0].toUpperCase()}${field.slice(1)}${support === false ? ' (not exposed)' : ''}`;
+        option.disabled = support === false;
+      }
+    }
+    const supported = RICH_FIELDS.filter(field => richSupport.get(field) === true);
+    const note = document.querySelector('#rich-search-note');
+    if (note && !note.classList.contains('error-note')) {
+      note.textContent = supported.length
+        ? `Rich search ready: ${supported.join(', ')}. Put a remembered phrase in quotes for a tighter match.`
+        : 'Checking which greeting/description/scenario fields SpicyChat exposes for text search…';
+    }
+  }
+
+  async function probeCapabilities(input, init, body) {
+    if (capabilityProbe) return capabilityProbe;
+    capabilityProbe = (async () => {
+      const base = body.searches?.[0];
+      if (!base) return;
+      const searches = RICH_FIELDS.map(field => ({
+        ...base,
+        q: 'the',
+        query_by: field,
+        page: 1,
+        per_page: 1,
+        include_fields: `character_id,${field}`
+      }));
+      try {
+        const response = await nativeFetch(input, { ...init, body: JSON.stringify({ searches }) });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        RICH_FIELDS.forEach((field, index) => {
+          const result = payload?.results?.[index];
+          richSupport.set(field, Boolean(result && !result.error));
+        });
+      } catch {
+        RICH_FIELDS.forEach(field => richSupport.set(field, false));
+      }
+      updateCapabilityUi();
+      if (activeSearchIn === 'everything') retriggerSearch();
+    })();
+    return capabilityProbe;
+  }
+
   window.fetch = async function archiveSearchFetch(input, init = {}) {
     if (!isTypesenseRequest(input, init)) return nativeFetch(input, init);
     const body = parseBody(init);
     if (!body) return nativeFetch(input, init);
 
+    if (!capabilityProbe) queueMicrotask(() => probeCapabilities(input, init, body));
+
     const cloned = JSON.parse(JSON.stringify(body));
     const search = cloned.searches[0];
     if (!search) return nativeFetch(input, init);
 
-    activeQuery = String(search.q || '');
-    const queryBy = FIELD_MAP[activeSearchIn] || FIELD_MAP.everything;
-    search.query_by = queryBy;
+    search.query_by = queryByFor(activeSearchIn);
+    const selectedRich = RICH_FIELDS.filter(field => richSupport.get(field) === true || field === activeSearchIn);
     search.include_fields = [
       'character_id','name','title','tags','creator_username','avatar_url',
       'avatar_is_nsfw','is_nsfw','num_messages','num_messages_24h','rating_score',
-      'createdAt','updatedAt','description','greeting','scenario'
+      'createdAt','updatedAt', ...selectedRich
     ].join(',');
 
     if (activeSafety === 'sfw') search.filter_by = appendFilter(search.filter_by, 'is_nsfw:=false');
     if (activeSafety === 'nsfw') search.filter_by = appendFilter(search.filter_by, 'is_nsfw:=true');
 
-    const nextInit = { ...init, body: JSON.stringify(cloned) };
-    const response = await nativeFetch(input, nextInit);
+    const response = await nativeFetch(input, { ...init, body: JSON.stringify(cloned) });
     if (!response.ok) return response;
 
     try {
       const payload = await response.clone().json();
       const error = payload?.results?.[0]?.error;
-      if (error && (RICH_FIELDS.has(activeSearchIn) || activeSearchIn === 'everything')) {
+      if (error && RICH_FIELDS.includes(activeSearchIn)) {
+        richSupport.set(activeSearchIn, false);
+        updateCapabilityUi();
         window.dispatchEvent(new CustomEvent('archive-search-capability-error', { detail: { field: activeSearchIn, error } }));
         return response;
       }
@@ -166,7 +225,7 @@
       <option value="greeting">Greeting</option>
       <option value="description">Description</option>
       <option value="scenario">Scenario</option>`;
-    searchIn.value = FIELD_MAP[activeSearchIn] ? activeSearchIn : 'everything';
+    searchIn.value = activeSearchIn in FIELD_MAP || activeSearchIn === 'everything' ? activeSearchIn : 'everything';
 
     const safety = document.createElement('select');
     safety.id = 'safety-filter';
@@ -195,15 +254,16 @@
     const note = document.createElement('div');
     note.id = 'rich-search-note';
     note.className = 'rich-search-note';
-    note.innerHTML = 'Search bot text directly. Put a remembered phrase in quotes for a tighter match.';
+    note.textContent = 'Checking which greeting/description/scenario fields SpicyChat exposes for text search…';
     toolbar.insertAdjacentElement('afterend', note);
+    updateCapabilityUi();
   }
 
   function clearCapabilityMessage() {
     const note = document.querySelector('#rich-search-note');
     if (!note) return;
     note.classList.remove('error-note');
-    note.textContent = 'Search bot text directly. Put a remembered phrase in quotes for a tighter match.';
+    updateCapabilityUi();
   }
 
   window.addEventListener('archive-search-capability-error', event => {
@@ -211,18 +271,22 @@
     if (!note) return;
     const field = event.detail?.field || 'selected field';
     note.classList.add('error-note');
-    note.textContent = `SpicyChat's public search index did not accept ${field} search on this request. The archive kept the error visible rather than silently searching a different field.`;
+    note.textContent = `SpicyChat's public search index does not expose ${field} as a searchable field. Nothing was silently substituted.`;
   });
 
   function renderSnippets() {
     for (const card of document.querySelectorAll('.card')) {
-      if (card.querySelector('.search-snippet')) continue;
       const href = card.querySelector('a.cardlink')?.href;
       if (!href) continue;
       let id = '';
       try { id = new URL(href).searchParams.get('id')?.toLowerCase() || ''; } catch {}
+      const existing = card.querySelector('.search-snippet');
       const snippet = snippets.get(id);
-      if (!snippet?.text) continue;
+      if (!snippet?.text) {
+        existing?.remove();
+        continue;
+      }
+      if (existing) continue;
       const body = card.querySelector('.body');
       if (!body) continue;
       const box = document.createElement('div');

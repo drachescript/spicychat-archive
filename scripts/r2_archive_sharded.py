@@ -254,6 +254,16 @@ def _flush_locator_indexes(store: R2ArchiveStore) -> int:
     if not touched:
         return 0
 
+    # Group locators once. The old code rescanned the entire locator map once per
+    # touched prefix; with 256 prefixes and hundreds of thousands of bots that
+    # became tens/hundreds of millions of Python-loop iterations at end-of-run.
+    by_prefix: dict[str, dict[str, str]] = {prefix: {} for prefix in touched}
+    touched_set = set(touched)
+    for bot_id, shard_key in store._shard_locator.items():  # type: ignore[attr-defined]
+        prefix = _prefix_for(bot_id)
+        if prefix in touched_set:
+            by_prefix[prefix][str(bot_id).lower()] = str(shard_key)
+
     written = 0
     for prefix in touched:
         # Merge the current durable public index before applying recovered/new
@@ -268,9 +278,7 @@ def _flush_locator_indexes(store: R2ArchiveStore) -> int:
                 if k and v
             })
 
-        for bot_id, shard_key in store._shard_locator.items():  # type: ignore[attr-defined]
-            if _prefix_for(bot_id) == prefix:
-                bots[str(bot_id).lower()] = str(shard_key)
+        bots.update(by_prefix.get(prefix, {}))
 
         store.put_json(
             key,

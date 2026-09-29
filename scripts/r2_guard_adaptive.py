@@ -4,7 +4,11 @@
 The existing guard deliberately caps its explore_pages output at
 crawler.explore_pages_per_run. Adaptive discovery needs a larger *ceiling*
 without weakening the quota checks, so this wrapper reuses the guard's decision
-and only raises the healthy ceiling up to crawler.explore_pages_max.
+and raises the healthy ceiling up to crawler.explore_pages_max.
+
+Discovery-only bots are stored in page shards, so the Class A estimate is based
+on a small number of writes per discovery page plus one possible locator-index
+write for each two-hex UUID prefix. It no longer assumes one R2 write per hit.
 """
 from __future__ import annotations
 
@@ -68,11 +72,14 @@ def main() -> int:
     config = read_json(ROOT / "config.json", {})
     crawler = config.get("crawler") or {}
     storage = config.get("storage") or {}
+    r2 = storage.get("r2") or {}
     guard = storage.get("quota_guard") or {}
     status = read_json(Path(args.status_file), {})
 
     base_pages = max(0, int(crawler.get("explore_pages_per_run") or 20))
     max_pages = max(base_pages, int(crawler.get("explore_pages_max") or base_pages))
+    writes_per_page = max(1, int(r2.get("discovery_shard_writes_per_page") or 3))
+    locator_reserve = max(0, int(r2.get("discovery_locator_index_reserve") or 256))
 
     if values.get("mode") == "r2":
         usage = status.get("usage") or {}
@@ -81,8 +88,9 @@ def main() -> int:
         reserve_a = int(guard.get("class_a_reserve_per_run") or 10000)
         replay = int(values.get("replay_write_budget") or 0)
 
-        writable_new_bots = max(0, pause_a - class_a - reserve_a - replay)
-        quota_pages = max(0, writable_new_bots // 250)
+        writable_ops = max(0, pause_a - class_a - reserve_a - replay)
+        page_ops = max(0, writable_ops - locator_reserve)
+        quota_pages = max(0, page_ops // writes_per_page)
         values["explore_pages"] = str(min(max_pages, quota_pages))
     elif values.get("mode") == "legacy":
         values["explore_pages"] = str(base_pages)
@@ -98,6 +106,7 @@ def main() -> int:
         "Adaptive discovery guard: "
         f"mode={values.get('mode')} "
         f"base={base_pages} max={max_pages} "
+        f"shardWrites/page={writes_per_page} locatorReserve={locator_reserve} "
         f"ceiling={values.get('explore_pages', '0')} pages"
     )
     return 0

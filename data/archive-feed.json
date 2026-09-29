@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-29T21:31:26Z",
+  "runId": "archive-run:2026-09-29T20:38:25Z",
+  "status": "success",
+  "archive": {
+    "totalBots": 892380,
+    "deletedBots": 0,
+    "publicIndexBots": 1390995,
+    "startedAt": "2026-09-28T00:00:00Z"
+  },
+  "run": {
+    "finishedAt": "2026-09-29T20:38:25Z",
+    "durationSeconds": 3275,
+    "addedBots": 186288,
+    "deletedConfirmed": 0,
+    "pagesRequested": 750,
+    "scheduledPages": 500,
+    "pagesBudget": 750,
+    "pagesCompleted": 750,
+    "hits": 187500,
+    "newFromDiscovery": 174414,
+    "discoveryDurationSeconds": 2829,
+    "nonDiscoveryDurationSeconds": 446,
+    "discoverySharePercent": 86.4,
+    "timeLimited": false,
+    "enrichmentAttempted": 200,
+    "enriched": 200,
+    "imagesAttempted": 100,
+    "imagesSaved": 90,
+    "changedIngestRecords": 174611
+  },
+  "growth": {
+    "added24h": 864537,
+    "added7d": 881111,
+    "added30d": 881111,
+    "averagePerDay": 644813.7,
+    "observedHours": 32.8,
+    "observedGrowth": 881111
+  },
+  "storage": {
+    "usedBytes": 1082647465,
+    "mediaBytes": 218579402,
+    "objects": 57256,
+    "writesThisMonth": 105762
+  }
+}

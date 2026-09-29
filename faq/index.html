@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Questions and answers about SpicyChat Archive, what it stores, and how the crawler works">
+  <title>FAQ · SpicyChat Archive</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/archive.css">
+  <link rel="stylesheet" href="../assets/faq.css">
+</head>
+<body data-page="faq">
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="../">SpicyChat Archive</a>
+    <nav class="navlinks"><a href="../">Browse</a><a href="../deleted/">Deleted bots</a><a href="../stats/">Stats</a><a class="active" href="../faq/">FAQ</a></nav>
+  </div>
+</header>
+<main class="wrap faq-page">
+  <section class="hero faq-hero">
+    <h1>FAQ</h1>
+    <p>The stuff I keep getting asked about the archive, what the numbers mean, and what the crawler actually saves.</p>
+  </section>
+
+  <section class="faq-grid" aria-label="Archive FAQ">
+    <details class="faq-card" open>
+      <summary>What is SpicyChat Archive?</summary>
+      <div class="faq-answer"><p>It's an independent public archive of SpicyChat characters. I repeatedly collect information that is publicly discoverable so older versions and bots that later disappear do not just vanish without any record.</p><p>It is not run by or affiliated with SpicyChat.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Why does Browse search more bots than the archive has saved?</summary>
+      <div class="faq-answer"><p>Browse uses SpicyChat's live public Typesense index so you can search what SpicyChat is reporting right now. The archive total is the number of bots I've actually captured and stored so far.</p><p>Those are two different numbers. The result header intentionally shows the archive count instead of presenting SpicyChat's live match count like it was the archive total.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Why is a bot missing from the archive?</summary>
+      <div class="faq-answer"><p>The crawler is still working through a very large public catalog, so it may simply not have reached that bot yet. A bot can also become private or unavailable before the archive first sees it.</p><p>The archive is designed to keep filling those gaps over time rather than pretending it already has everything.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>When does a bot count as deleted?</summary>
+      <div class="faq-answer"><p>Disappearing from a search result is not enough. Previously seen public bots are only marked deleted after the archive can repeatedly confirm that the public character endpoint returns 404.</p><p>That is deliberately conservative so a temporary search/index problem does not turn into a fake deletion.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Does every little SpicyChat update create a new archived version?</summary>
+      <div class="faq-answer"><p>No. The archive tries to keep meaningful bot changes, such as public name, description, greeting, scenario, creator, tags, visibility, avatar, definition visibility and similar character metadata.</p><p>Message counts, rankings, recommendation scores, SpicyChat's noisy <code>updatedAt</code> value and other backend/activity churn are not treated as proof that the creator edited the bot.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Are avatars saved permanently too?</summary>
+      <div class="faq-answer"><p>Public avatar URLs are preserved with the bot record. Permanent R2 image copies are done gradually and are prioritized for useful cases such as changed or confirmed-deleted bots, so an archived image is not guaranteed for every active bot yet.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>What does the × button on a bot card do?</summary>
+      <div class="faq-answer"><p>It only hides that bot for you in that browser. The bot is not removed from the archive and nothing is sent back to the crawler.</p><p>You can restore individual bots, or restore everything, from the <strong>Hidden bots</strong> section in the filters.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Do my filters and hidden bots survive a reload?</summary>
+      <div class="faq-answer"><p>Yes. Your include/exclude tags, match mode, filter-panel state and locally hidden bots are kept in your browser's local storage. Hard reloads do not reset them.</p><p>Clearing this site's browser storage will reset those local preferences.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Does the archive store private chats or account data?</summary>
+      <div class="faq-answer"><p>No. The archive is for public/discoverable character information. Do not send private chats, session data, passwords, auth tokens, private messages or other private account information as archive contributions.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>How often does the archive update?</summary>
+      <div class="faq-answer"><p>The normal crawler is scheduled regularly, with quota and storage guards that can reduce or pause work when needed. Larger manual discovery batches are tested separately instead of silently changing the normal schedule.</p><p>The Stats page shows the latest completed batches and the current archive totals.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Can I help with missing or older bot data?</summary>
+      <div class="faq-answer"><p>Yes. Public historical bot links/IDs, old public snapshots and Bot Status / Archive exports can be useful for filling gaps. The Archive channels in the SpicyChat QoL Discord are the easiest place to discuss a contribution.</p><p><a href="https://discord.gg/XTMdWvuVSU">Open the QoL Discord</a> · <a href="https://github.com/drachescript/spicychat-archive">Archive source on GitHub</a></p></div>
+    </details>
+  </section>
+
+  <p class="footer">SpicyChat Archive preserves public observations. It is an independent project and is not affiliated with SpicyChat.</p>
+</main>
+</body>
+</html>

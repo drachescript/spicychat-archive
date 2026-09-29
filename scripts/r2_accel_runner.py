@@ -15,7 +15,9 @@ from r2_runtime_accel import flush_all_stores, install_runtime_acceleration
 
 HERE = Path(__file__).resolve().parent
 TARGETS = {
-    "archive": HERE / "r2_archive_sharded.py",
+    # The batching wrapper keeps the existing sharded format, but lets a small
+    # number of consecutive discovery pages share one durability checkpoint.
+    "archive": HERE / "r2_archive_batched.py",
     "import": HERE / "import_bot_status.py",
 }
 

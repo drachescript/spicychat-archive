@@ -81,7 +81,9 @@ jobs:
         run: python scripts/r2_accel_runner.py import --inbox --summary-file "$RUNNER_TEMP/bot-status-import-summary.md"
 
       - name: Update archive in R2
+        id: archive
         if: steps.r2guard.outputs.mode == 'r2'
+        continue-on-error: true
         env:
           # The guard can always lower the requested target. Scheduled runs stay
           # at the configured 500 pages; manual runs may request 750 or 1000.
@@ -90,7 +92,10 @@ jobs:
         run: python scripts/r2_accel_runner.py archive --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Publish archive run feed
-        if: steps.r2guard.outputs.mode == 'r2'
+        if: always() && steps.r2guard.outputs.mode == 'r2' && steps.archive.outcome != 'skipped'
+        env:
+          ARCHIVE_RUN_STATUS: ${{ steps.archive.outcome }}
+          ARCHIVE_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: python scripts/publish_run_feed.py
 
       - name: Update pre-migration local archive
@@ -145,3 +150,9 @@ jobs:
             git fetch origin main
             git rebase origin/main
           done
+
+      - name: Fail workflow if archive crawler failed
+        if: always() && steps.archive.outcome == 'failure'
+        run: |
+          echo "Archive crawler failed; failure event was published before marking this workflow failed."
+          exit 1

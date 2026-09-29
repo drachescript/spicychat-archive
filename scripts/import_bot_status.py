@@ -59,6 +59,23 @@ PUBLIC_IMPORT_FIELDS = {
     "num_messages", "num_messages_24h", "rating_score", "rating_count",
 }
 
+QOL_NESTED_FIELD_ALIASES = {
+    "name": "name",
+    "title": "title",
+    "description": "description",
+    "greeting": "greeting",
+    "personality": "personality",
+    "scenario": "scenario",
+    "exampleDialogues": "example_dialogues",
+    "tags": "tags",
+    "visibility": "visibility",
+    "creator": "creator",
+    "image": "image",
+    "messageCount": "num_messages",
+    "rating": "rating_score",
+    "tokenCount": "token_count",
+}
+
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -140,6 +157,15 @@ def sanitize_snapshot(snapshot: dict[str, Any], bot_id: str) -> dict[str, Any]:
     for key in PUBLIC_IMPORT_FIELDS:
         if key in raw:
             clean[key] = deepcopy(raw[key])
+
+    # QoL Bot Status Center stores its public character copy under
+    # snapshot.fields. Translate that shape into the archive's canonical public
+    # fields so both private direct imports and admin-approved public imports
+    # dedupe/merge the same way.
+    nested_fields = raw.get("fields") if isinstance(raw.get("fields"), dict) else {}
+    for source_key, archive_key in QOL_NESTED_FIELD_ALIASES.items():
+        if archive_key not in clean and source_key in nested_fields:
+            clean[archive_key] = deepcopy(nested_fields[source_key])
 
     # One canonical ID makes downstream archive helpers deterministic.
     clean["character_id"] = bot_id.lower()

@@ -7,6 +7,7 @@ const MAX_PUBLIC_DECOMPRESSED_BYTES = 64 * 1024 * 1024;
 const MAX_PUBLIC_BOTS = 5000;
 const MAX_PUBLIC_BOT_BYTES = 2 * 1024 * 1024;
 const PUBLIC_SUBMISSIONS_PER_24H = 6;
+const PUBLIC_SUBMISSION_GROUP_MAX_CHUNKS = 12;
 const REJECTED_PAYLOAD_RETENTION_MS = 7 * 24 * 60 * 60 * 1000;
 
 const QUEUE_PREFIX = "_imports/bot-status/queued";
@@ -38,7 +39,7 @@ function corsHeaders() {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS, GET",
     "Access-Control-Allow-Headers":
-      "Authorization, Content-Type, Content-Encoding, X-Import-Filename, X-Exported-At, X-Install-Id",
+      "Authorization, Content-Type, Content-Encoding, X-Import-Filename, X-Exported-At, X-Install-Id, X-Submission-Group",
     "Access-Control-Max-Age": "86400",
   };
 }
@@ -145,12 +146,43 @@ function findIds(item, raw) {
     .filter(Boolean);
 }
 
+const QOL_NESTED_FIELD_ALIASES = Object.freeze({
+  name: "name",
+  title: "title",
+  description: "description",
+  greeting: "greeting",
+  personality: "personality",
+  scenario: "scenario",
+  exampleDialogues: "example_dialogues",
+  tags: "tags",
+  visibility: "visibility",
+  creator: "creator",
+  image: "image",
+  messageCount: "num_messages",
+  rating: "rating_score",
+  tokenCount: "token_count",
+});
+
 function cleanPublicSnapshot(item, botId) {
   const raw = unwrapSnapshot(item);
   const clean = {};
+
+  // Native/archive-shaped fields.
   for (const key of PUBLIC_IMPORT_FIELDS) {
     if (key in raw) clean[key] = raw[key];
   }
+
+  // QoL Bot Status Center keeps its public character copy under snapshot.fields.
+  // Translate that richer local shape into the archive's canonical public keys
+  // before the privacy whitelist is applied.
+  const nestedFields =
+    raw?.fields && typeof raw.fields === "object" && !Array.isArray(raw.fields)
+      ? raw.fields
+      : {};
+  for (const [sourceKey, archiveKey] of Object.entries(QOL_NESTED_FIELD_ALIASES)) {
+    if (!(archiveKey in clean) && sourceKey in nestedFields) clean[archiveKey] = nestedFields[sourceKey];
+  }
+
   clean.character_id = botId;
 
   for (const other of ["characterId", "id", "uuid"]) {
@@ -165,9 +197,11 @@ function extractObservedStatus(item, raw) {
     item?.currentStatus,
     item?.availability,
     item?.status,
+    item?.statusObservation?.status,
     raw?.observedStatus,
     raw?.currentStatus,
     raw?.status,
+    raw?.statusObservation?.status,
   ];
   for (const value of candidates) {
     const normalized = normalizeStatus(value);
@@ -299,7 +333,7 @@ async function requireAdmin(request, env) {
   return { ok: true };
 }
 
-async function enforcePublicRateLimit(env, installId, nowIso) {
+async function enforcePublicRateLimit(env, installId, nowIso, submissionGroupId = "") {
   const installHash = await sha256Hex(installId);
   const key = `${SUB_RATE_PREFIX}/${installHash}.json`;
   const row = (await readJsonObject(env.ARCHIVE_BUCKET, key, {})) || {};
@@ -308,6 +342,41 @@ async function enforcePublicRateLimit(env, installId, nowIso) {
     const t = Date.parse(value);
     return Number.isFinite(t) && t >= cutoff;
   });
+  const groups = (Array.isArray(row.groups) ? row.groups : [])
+    .filter((value) => {
+      const t = Date.parse(value?.at || "");
+      return value && typeof value === "object" && Number.isFinite(t) && t >= cutoff;
+    })
+    .map((value) => ({
+      id: String(value.id || "").slice(0, 128),
+      at: String(value.at || ""),
+      count: Math.max(1, Number(value.count) || 1),
+    }))
+    .filter((value) => value.id);
+
+  const groupId = String(submissionGroupId || "").trim().slice(0, 128);
+  const existingGroup = groupId ? groups.find((value) => value.id === groupId) : null;
+
+  // Multiple chunks created by one user-initiated QoL submission count as one
+  // anti-spam event, while still having a hard per-group chunk ceiling.
+  if (existingGroup) {
+    if (existingGroup.count >= PUBLIC_SUBMISSION_GROUP_MAX_CHUNKS) {
+      return {
+        ok: false,
+        installHash,
+        retryAfterSeconds: 24 * 60 * 60,
+      };
+    }
+    existingGroup.count += 1;
+    await putJson(env.ARCHIVE_BUCKET, key, {
+      schemaVersion: 2,
+      installHash,
+      timestamps: recent,
+      groups,
+      lastAt: nowIso,
+    });
+    return { ok: true, installHash, grouped: true };
+  }
 
   if (recent.length >= PUBLIC_SUBMISSIONS_PER_24H) {
     const oldest = Math.min(...recent.map((v) => Date.parse(v)));
@@ -319,13 +388,15 @@ async function enforcePublicRateLimit(env, installId, nowIso) {
   }
 
   recent.push(nowIso);
+  if (groupId) groups.push({ id: groupId, at: nowIso, count: 1 });
   await putJson(env.ARCHIVE_BUCKET, key, {
-    schemaVersion: 1,
+    schemaVersion: 2,
     installHash,
     timestamps: recent,
+    groups,
     lastAt: nowIso,
   });
-  return { ok: true, installHash };
+  return { ok: true, installHash, grouped: !!groupId };
 }
 
 async function listReviewRows(bucket, prefix, limit = 100) {
@@ -363,7 +434,8 @@ async function handlePublicSubmission(request, env) {
 
   const now = new Date();
   const nowIso = now.toISOString();
-  const rate = await enforcePublicRateLimit(env, installId, nowIso);
+  const submissionGroupId = String(request.headers.get("X-Submission-Group") || "").trim();
+  const rate = await enforcePublicRateLimit(env, installId, nowIso, submissionGroupId);
   if (!rate.ok) {
     return new Response(
       JSON.stringify({

@@ -25,6 +25,45 @@ class BotStatusImportTests(unittest.TestCase):
         self.assertNotIn("cookies", clean)
         self.assertNotIn("extensionSettings", clean)
 
+    def test_sanitizer_flattens_qol_bot_status_fields(self):
+        snapshot = {
+            "id": "abc",
+            "snapshotAt": 123,
+            "fields": {
+                "name": "QoL Bot",
+                "description": "Saved description",
+                "greeting": "Hello",
+                "personality": "Saved personality",
+                "scenario": "Saved scenario",
+                "exampleDialogues": "Example",
+                "creator": "creator_name",
+                "image": "https://cdn.nd-api.com/avatars/example.webp",
+                "messageCount": 12345,
+                "rating": 4.8,
+                "tokenCount": 987,
+            },
+            "statusObservation": {
+                "status": "unavailable",
+                "httpStatus": 404,
+            },
+            "messages": [{"role": "user", "content": "must never import"}],
+        }
+        clean = imp.sanitize_snapshot(snapshot, "abc")
+        self.assertEqual(clean["character_id"], "abc")
+        self.assertEqual(clean["name"], "QoL Bot")
+        self.assertEqual(clean["description"], "Saved description")
+        self.assertEqual(clean["greeting"], "Hello")
+        self.assertEqual(clean["personality"], "Saved personality")
+        self.assertEqual(clean["scenario"], "Saved scenario")
+        self.assertEqual(clean["example_dialogues"], "Example")
+        self.assertEqual(clean["creator"], "creator_name")
+        self.assertEqual(clean["image"], "https://cdn.nd-api.com/avatars/example.webp")
+        self.assertEqual(clean["num_messages"], 12345)
+        self.assertEqual(clean["rating_score"], 4.8)
+        self.assertEqual(clean["token_count"], 987)
+        self.assertNotIn("statusObservation", clean)
+        self.assertNotIn("messages", clean)
+
     def test_new_import_is_not_marked_public(self):
         snapshot = {"character_id": "abc", "name": "Saved Bot"}
         record, changed, duplicate = imp.merge_snapshot(

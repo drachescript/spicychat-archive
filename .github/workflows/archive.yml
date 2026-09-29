@@ -45,6 +45,10 @@ jobs:
       # prefetch up to eight consecutive pages per native multi_search request.
       SPICYCHAT_ARCHIVE_R2_WRITE_WORKERS: "8"
       SPICYCHAT_ARCHIVE_TYPESENSE_BATCH_SIZE: "8"
+      # Two consecutive discovery pages share one shard/journal checkpoint. This
+      # halves the expensive per-page R2 checkpoint count while keeping shards
+      # small enough for fast detail-page fallback reads.
+      SPICYCHAT_ARCHIVE_DISCOVERY_FLUSH_PAGES: "2"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -84,6 +88,10 @@ jobs:
           SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
         run: python scripts/r2_accel_runner.py archive --summary-file "$RUNNER_TEMP/archive-summary.md"
+
+      - name: Publish archive run feed
+        if: steps.r2guard.outputs.mode == 'r2'
+        run: python scripts/publish_run_feed.py
 
       - name: Update pre-migration local archive
         if: steps.r2guard.outputs.mode == 'legacy'

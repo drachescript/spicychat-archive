@@ -5,8 +5,10 @@ from __future__ import annotations
 import os
 import runpy
 import sys
+from copy import deepcopy
 from pathlib import Path
 
+import archive as legacy
 from r2_runtime_accel import flush_all_stores, install_runtime_acceleration
 
 
@@ -22,6 +24,41 @@ def _env_int(name: str, default: int) -> int:
         return int(os.environ.get(name, str(default)))
     except (TypeError, ValueError):
         return default
+
+
+def _install_manual_archive_target() -> None:
+    """Raise only this process's base discovery target for a manual test run."""
+    raw = os.environ.get("SPICYCHAT_ARCHIVE_MANUAL_PAGES", "").strip()
+    if not raw:
+        return
+    try:
+        requested = int(raw)
+    except ValueError:
+        return
+    if requested <= 0:
+        return
+
+    original_load_config = legacy.load_config
+
+    def load_config_with_manual_target():
+        config = deepcopy(original_load_config())
+        crawler = config.setdefault("crawler", {})
+        configured_max = max(
+            int(crawler.get("explore_pages_per_run") or 1),
+            int(crawler.get("explore_pages_max") or 1),
+        )
+        target = min(configured_max, requested)
+        crawler["explore_pages_per_run"] = target
+        # Manual tests are intentionally one-off. The checked-in config remains
+        # at its normal scheduled target, and no config file is rewritten here.
+        print(
+            f"Manual discovery target: {target} pages for this run "
+            f"(configured max {configured_max}).",
+            flush=True,
+        )
+        return config
+
+    legacy.load_config = load_config_with_manual_target
 
 
 def main() -> int:
@@ -40,6 +77,8 @@ def main() -> int:
         write_workers=_env_int("SPICYCHAT_ARCHIVE_R2_WRITE_WORKERS", 8),
         typesense_batch=_env_int("SPICYCHAT_ARCHIVE_TYPESENSE_BATCH_SIZE", 4),
     )
+    if target_name == "archive":
+        _install_manual_archive_target()
 
     old_argv = sys.argv[:]
     code = 0

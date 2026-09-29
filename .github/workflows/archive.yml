@@ -2,6 +2,16 @@ name: Update SpicyChat archive
 
 on:
   workflow_dispatch:
+    inputs:
+      discovery_pages:
+        description: "Discovery pages for this manual run"
+        required: true
+        default: "500"
+        type: choice
+        options:
+          - "500"
+          - "750"
+          - "1000"
   schedule:
     - cron: "37 */3 * * *"
   workflow_run:
@@ -28,6 +38,9 @@ jobs:
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
       CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      # Empty for scheduled/probe-triggered runs. Manual runs can explicitly ask
+      # for a larger discovery test without changing the normal 500-page target.
+      SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.discovery_pages || '' }}
       # Materialized bot writes remain parallel. Page-mode Typesense discovery can
       # prefetch up to eight consecutive pages per native multi_search request.
       SPICYCHAT_ARCHIVE_R2_WRITE_WORKERS: "8"
@@ -66,8 +79,8 @@ jobs:
       - name: Update archive in R2
         if: steps.r2guard.outputs.mode == 'r2'
         env:
-          # 500 pages is the requested target. This value is still a quota ceiling:
-          # the guard can lower it, and discovery independently stops at 60 minutes.
+          # The guard can always lower the requested target. Scheduled runs stay
+          # at the configured 500 pages; manual runs may request 750 or 1000.
           SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
         run: python scripts/r2_accel_runner.py archive --summary-file "$RUNNER_TEMP/archive-summary.md"

@@ -63,7 +63,10 @@ def main() -> int:
     STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     requested_raw = os.environ.get("SPICYCHAT_ARCHIVE_MANUAL_PAGES", "").strip()
     requested = int_or_none(requested_raw) if requested_raw else scheduled_pages
+    run_status = os.environ.get("ARCHIVE_RUN_STATUS", "success").strip().lower()
+    run_status = "success" if run_status == "success" else "failure"
     run_at = latest.get("at") or stats.get("generatedAt") or utc_now()
+    event_at = utc_now()
     github_run_id = os.environ.get("GITHUB_RUN_ID", "").strip()
     github_attempt = os.environ.get("GITHUB_RUN_ATTEMPT", "").strip()
     run_id = (
@@ -79,36 +82,58 @@ def main() -> int:
 
     payload = {
         "schemaVersion": 1,
-        "generatedAt": utc_now(),
+        "generatedAt": event_at,
         "runId": run_id,
-        "status": "success",
+        "status": run_status,
         "archive": {
             "totalBots": total,
             "deletedBots": int(stats.get("deletedBots") or manifest.get("deletedBots") or latest.get("deletedBots") or 0),
             "publicIndexBots": int(stats.get("publicIndexBots") or manifest.get("activeBots") or latest.get("publicIndexBots") or 0),
             "startedAt": stats.get("startedAt"),
         },
-        "run": {
-            "finishedAt": run_at,
-            "durationSeconds": total_duration,
-            "addedBots": added,
-            "deletedConfirmed": int(latest.get("deletedConfirmed") or 0),
-            "pagesRequested": requested,
-            "scheduledPages": scheduled_pages,
-            "pagesBudget": int(exploration.get("pageBudget") or 0),
-            "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
-            "hits": int(exploration.get("hits") or 0),
-            "newFromDiscovery": int(exploration.get("new") or 0),
-            "changedIngestRecords": int(exploration.get("changed") or 0),
-            "discoveryDurationSeconds": discovery_duration,
-            "nonDiscoveryDurationSeconds": non_discovery_duration,
-            "discoverySharePercent": discovery_share,
-            "timeLimited": bool(exploration.get("timeLimited")),
-            "enrichmentAttempted": int(enrichment.get("attempted") or 0),
-            "enriched": int(enrichment.get("enriched") or 0),
-            "imagesAttempted": int(images.get("attempted") or 0),
-            "imagesSaved": int(images.get("saved") or 0),
-        },
+        "run": (
+            {
+                "finishedAt": event_at,
+                "pagesRequested": requested,
+                "scheduledPages": scheduled_pages,
+                "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
+                "error": "Archive crawler step failed before a new successful run summary was published.",
+            }
+            if run_status == "failure"
+            else {
+                "finishedAt": run_at,
+                "durationSeconds": total_duration,
+                "addedBots": added,
+                "deletedConfirmed": int(latest.get("deletedConfirmed") or 0),
+                "pagesRequested": requested,
+                "scheduledPages": scheduled_pages,
+                "pagesBudget": int(exploration.get("pageBudget") or 0),
+                "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+                "hits": int(exploration.get("hits") or 0),
+                "newFromDiscovery": int(exploration.get("new") or 0),
+                "changedIngestRecords": int(exploration.get("changed") or 0),
+                "discoveryDurationSeconds": discovery_duration,
+                "nonDiscoveryDurationSeconds": non_discovery_duration,
+                "discoverySharePercent": discovery_share,
+                "timeLimited": bool(exploration.get("timeLimited")),
+                "enrichmentAttempted": int(enrichment.get("attempted") or 0),
+                "enriched": int(enrichment.get("enriched") or 0),
+                "imagesAttempted": int(images.get("attempted") or 0),
+                "imagesSaved": int(images.get("saved") or 0),
+                "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
+            }
+        ),
+        "lastSuccessfulRun": (
+            {
+                "finishedAt": run_at,
+                "durationSeconds": total_duration,
+                "addedBots": added,
+                "pagesBudget": int(exploration.get("pageBudget") or 0),
+                "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+            }
+            if run_status == "failure" and latest
+            else None
+        ),
         "growth": stats.get("growth") or {},
         "storage": {
             "usedBytes": int(storage.get("usedBytes") or 0),
@@ -125,9 +150,13 @@ def main() -> int:
         return 0
     OUT_PATH.write_text(text, encoding="utf-8")
     print(
-        f"Archive feed: {total:,} total; +{added:,}; "
-        f"{payload['run']['pagesCompleted']:,}/{payload['run']['pagesBudget']:,} pages; "
-        f"{payload['run']['durationSeconds']:,}s total."
+        f"Archive feed: status={run_status}; {total:,} total; "
+        + (
+            f"+{added:,}; {payload['run']['pagesCompleted']:,}/{payload['run']['pagesBudget']:,} pages; "
+            f"{payload['run']['durationSeconds']:,}s total."
+            if run_status == "success"
+            else "failure event published."
+        )
     )
     return 0
 

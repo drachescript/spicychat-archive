@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import archive as legacy
+from r2_cleanup_accel import install_cleanup_acceleration
 from r2_runtime_accel import flush_all_stores, install_runtime_acceleration
 
 
@@ -76,6 +77,9 @@ def main() -> int:
     install_runtime_acceleration(
         write_workers=_env_int("SPICYCHAT_ARCHIVE_R2_WRITE_WORKERS", 8),
         typesense_batch=_env_int("SPICYCHAT_ARCHIVE_TYPESENSE_BATCH_SIZE", 4),
+    )
+    install_cleanup_acceleration(
+        head_workers=_env_int("SPICYCHAT_ARCHIVE_R2_CLEANUP_WORKERS", 16),
     )
     if target_name == "archive":
         _install_manual_archive_target()

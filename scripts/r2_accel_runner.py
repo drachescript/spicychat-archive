@@ -12,7 +12,7 @@ from r2_runtime_accel import flush_all_stores, install_runtime_acceleration
 
 HERE = Path(__file__).resolve().parent
 TARGETS = {
-    "archive": HERE / "r2_archive_optimized.py",
+    "archive": HERE / "r2_archive_sharded.py",
     "import": HERE / "import_bot_status.py",
 }
 

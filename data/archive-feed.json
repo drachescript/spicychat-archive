@@ -43,6 +43,40 @@
     "observedHours": 39.8,
     "observedGrowth": 1380933
   },
+  "publicGrowth": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-09-30T03:52:22Z",
+    "sampleCount": 19,
+    "latestPublicIndexBots": 1391789,
+    "firstSampleAt": "2026-09-28T17:36:57Z",
+    "lastSampleAt": "2026-09-30T03:37:24Z",
+    "observedHours": 34.01,
+    "observedNet": 1750,
+    "averagePerDay": 760.1,
+    "periods": {
+      "24h": {
+        "hours": 24,
+        "net": 767,
+        "complete": true,
+        "spanHours": 24.22,
+        "baselineAt": "2026-09-29T03:24:16Z"
+      },
+      "7d": {
+        "hours": 168,
+        "net": 1750,
+        "complete": false,
+        "spanHours": 34.01,
+        "baselineAt": "2026-09-28T17:36:57Z"
+      },
+      "30d": {
+        "hours": 720,
+        "net": 1750,
+        "complete": false,
+        "spanHours": 34.01,
+        "baselineAt": "2026-09-28T17:36:57Z"
+      }
+    }
+  },
   "storage": {
     "usedBytes": 1466306204,
     "mediaBytes": 244870239,

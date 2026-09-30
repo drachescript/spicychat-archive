@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedAt": "2026-09-29T23:59:28Z",
   "runId": "github:36646256639:1",
-  "status": "success",
+  "status": "partial",
   "archive": {
     "totalBots": 934032,
     "deletedBots": 0,
@@ -25,13 +25,23 @@
     "nonDiscoveryDurationSeconds": 488,
     "discoverySharePercent": 60.7,
     "timeLimited": false,
+    "errors": [
+      "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)"
+    ],
+    "stopReason": "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)",
     "enrichmentAttempted": 200,
     "enriched": 200,
     "imagesAttempted": 100,
     "imagesSaved": 93,
     "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/36646256639"
   },
-  "lastSuccessfulRun": null,
+  "lastSuccessfulRun": {
+    "finishedAt": "2026-09-29T20:38:25Z",
+    "durationSeconds": 3275,
+    "addedBots": 186288,
+    "pagesBudget": 750,
+    "pagesCompleted": 750
+  },
   "growth": {
     "added24h": 900188,
     "added7d": 922763,

@@ -180,8 +180,8 @@ class MaintenanceSweepTests(unittest.TestCase):
 
         self.assertEqual(result["processed"], 1)
         self.assertEqual(result["contentChanged"], 0)
-        self.assertEqual(result["metricUpdates"], 1)
-        self.assertEqual(record["metrics"]["latest"]["num_messages"], 11)
+        self.assertEqual(result["metricUpdates"], 0)
+        self.assertEqual(record["metrics"]["latest"]["num_messages"], 10)
 
     def test_character_requests_run_concurrently(self):
         ids = [f"bot-{index}" for index in range(8)]

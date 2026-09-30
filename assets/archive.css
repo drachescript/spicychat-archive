@@ -6,17 +6,17 @@
 .search-snippet b{color:var(--accent2);font-weight:700;text-transform:capitalize}
 
 /* Keep browse cards closer to SpicyChat's own compact square-card layout. */
-.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-.card{border-radius:12px;content-visibility:auto;contain:layout paint style;contain-intrinsic-size:340px}
+.grid{grid-template-columns:repeat(auto-fill,minmax(148px,176px));gap:10px;justify-content:start;align-items:start}
+.card{border-radius:12px;content-visibility:auto;contain:layout paint style;contain-intrinsic-size:310px}
 .card:hover{transform:none;background:var(--panel2)}
 .art{aspect-ratio:1/1}
-.body{padding:9px 8px 10px}
-.body h3{font-size:14px;margin-bottom:2px}
-.creator{font-size:10px;margin-bottom:6px;color:#72a7ff}
-.title{font-size:11px;line-height:1.35;min-height:30px}
-.taglist{gap:3px;margin-top:7px;max-height:36px}
-.tag{font-size:8.5px;padding:2px 4px;border-radius:4px}
-.meta{font-size:9px;gap:3px;margin-top:8px}
+.body{padding:8px 8px 9px}
+.body h3{font-size:13px;margin-bottom:2px}
+.creator{font-size:10px;margin-bottom:5px;color:#72a7ff}
+.title{font-size:10.5px;line-height:1.35;min-height:28px}
+.taglist{gap:3px;margin-top:6px;max-height:34px}
+.tag{font-size:8px;padding:2px 4px;border-radius:4px}
+.meta{font-size:8.5px;gap:3px;margin-top:7px}
 .badge{left:7px;bottom:7px;padding:3px 6px;font-size:8px}
 
 /* Active/public status is implied on the normal browse page. Only deleted cards
@@ -57,7 +57,7 @@
 }
 @media(max-width:680px){
   .archive-search-toolbar{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;justify-content:stretch}
   .body{padding:8px 7px 9px}
 }
 @media(max-width:390px){.grid{grid-template-columns:1fr}}

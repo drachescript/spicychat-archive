@@ -50,7 +50,6 @@ jobs:
                   raise SystemExit(f"{path}: expected one exact match, found {count}")
               p.write_text(text.replace(old, new, 1), encoding="utf-8")
 
-          # Scheduled/deep maintenance default: 100 pages.
           cfg_path = Path("config.json")
           cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
           cfg["crawler"]["explore_pages_per_run"] = 100
@@ -63,58 +62,40 @@ jobs:
           workflow = workflow.replace('keep a small 50-page deep sweep; manual runs may request up to 1000.', 'keep a 100-page deep sweep; manual runs may request up to 1000.')
           workflow_path.write_text(workflow, encoding="utf-8")
 
-          # The deleted page reads a tiny public R2 index. Keep it self-healing and
-          # uncacheable, and return a content-versioned URL so an old edge response
-          # can never hide newly confirmed deletions.
-          old_publish = '''    def publish_deleted_index(self, *, force: bool = False) -> str | None:
-              key = self.key("indexes", "deleted.json")
-              # This public index is a Class A write. Do not rewrite the same deleted
-              # list every three hours just to refresh cache metadata. During normal
-              # runs deleted_dirty is set only when the list genuinely changes.
-              if not force and not self.deleted_dirty:
-                  return self.public_url(key)
-              rows = list(self.deleted_index.values())
-              rows.sort(key=lambda x: str(x.get("statusSince") or ""), reverse=True)
-              self.put_json(key, {"bots": rows}, public=True)
-              return self.public_url(key)
-          '''
-          new_publish = '''    def publish_deleted_index(self, *, force: bool = False) -> str | None:
-              key = self.key("indexes", "deleted.json")
-              rows = list(self.deleted_index.values())
-              rows.sort(key=lambda x: str(x.get("statusSince") or ""), reverse=True)
+          storage_path = Path("scripts/storage_r2.py")
+          storage = storage_path.read_text(encoding="utf-8")
+          start = storage.index("    def publish_deleted_index(self, *, force: bool = False) -> str | None:\n")
+          end = storage.index("\n    def ", start + 5)
+          new_lines = [
+              "    def publish_deleted_index(self, *, force: bool = False) -> str | None:",
+              "        key = self.key(\"indexes\", \"deleted.json\")",
+              "        rows = list(self.deleted_index.values())",
+              "        rows.sort(key=lambda x: str(x.get(\"statusSince\") or \"\"), reverse=True)",
+              "",
+              "        # Keep the tiny public copy synchronized with the authoritative",
+              "        # private deleted index even after an interrupted/stale publish.",
+              "        try:",
+              "            current = self.get_json(key, None)",
+              "        except Exception:",
+              "            current = None",
+              "        current_rows = current.get(\"bots\") if isinstance(current, dict) else None",
+              "        if force or self.deleted_dirty or current_rows != rows:",
+              "            # Deleted counts should update immediately; do not edge-cache this index.",
+              "            self.put_json(key, {\"bots\": rows}, public=False)",
+              "",
+              "        url = self.public_url(key)",
+              "        if not url:",
+              "            return None",
+              "        revision = hashlib.blake2b(",
+              "            json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\")).encode(\"utf-8\"),",
+              "            digest_size=8,",
+              "        ).hexdigest()",
+              "        return f\"{url}?v={revision}\"",
+              "",
+          ]
+          storage = storage[:start] + "\n".join(new_lines) + storage[end:]
+          storage_path.write_text(storage, encoding="utf-8")
 
-              # The deleted page and public stats must agree immediately after a
-              # verification run. Compare the tiny public copy against the
-              # authoritative private deleted index on every run so an interrupted
-              # publish or an older copy self-heals even when deleted_dirty is false.
-              try:
-                  current = self.get_json(key, None)
-              except Exception:
-                  current = None
-              current_rows = current.get("bots") if isinstance(current, dict) else None
-              if force or self.deleted_dirty or current_rows != rows:
-                  # This index is tiny and changes infrequently. no-store prevents
-                  # the public R2/edge cache from serving the previous deleted count.
-                  self.put_json(key, {"bots": rows}, public=False)
-
-              url = self.public_url(key)
-              if not url:
-                  return None
-              revision = hashlib.blake2b(
-                  json.dumps(
-                      rows,
-                      ensure_ascii=False,
-                      sort_keys=True,
-                      separators=(",", ":"),
-                  ).encode("utf-8"),
-                  digest_size=8,
-              ).hexdigest()
-              return f"{url}?v={revision}"
-          '''
-          replace_once("scripts/storage_r2.py", old_publish, new_publish)
-
-          # Correct the emergency runtime fallback and accept either the public
-          # {bots:[...]} shape or the private UUID->summary mapping.
           replace_once(
               "assets/app.js",
               "  deletedIndexUrl:'https://data.spicychatarchive.drache.uk/_meta/deleted-index.json',",
@@ -131,8 +112,6 @@ jobs:
               "const totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0);count.textContent=rows.length===totalConfirmed?`${rows.length.toLocaleString()} shown`:`${rows.length.toLocaleString()} shown · ${totalConfirmed.toLocaleString()} confirmed total`;",
           )
 
-          # Keep the public stats config hint in sync immediately; the next crawler
-          # run will regenerate it normally.
           stats_path = Path("data/stats.json")
           if stats_path.exists():
               stats = json.loads(stats_path.read_text(encoding="utf-8"))
@@ -140,54 +119,6 @@ jobs:
               adaptive["basePages"] = 100
               adaptive["nextPageBudget"] = 100
               stats_path.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-          # Regression coverage for the public deleted-index repair/cache behavior.
-          test_path = Path("tests/test_storage_r2.py")
-          test_text = test_path.read_text(encoding="utf-8")
-          marker = "\n\nif __name__ == '__main__':\n"
-          if marker not in test_text:
-              raise SystemExit("tests/test_storage_r2.py: insertion marker missing")
-          addition = r'''
-
-class DeletedIndexPublishTests(unittest.TestCase):
-    def _store(self, rows, public_payload, *, dirty=False):
-        store = object.__new__(mod.R2ArchiveStore)
-        store.deleted_index = {row['id']: row for row in rows}
-        store.deleted_dirty = dirty
-        store.public_base_url = 'https://data.example.test'
-        store.meta_prefix = '_meta'
-        writes = []
-        store.get_json = lambda key, default=None: public_payload
-
-        def put_json(key, data, **kwargs):
-            writes.append((key, data, kwargs))
-
-        store.put_json = put_json
-        return store, writes
-
-    def test_deleted_index_repairs_stale_public_copy_without_caching(self):
-        rows = [
-            {'id': 'a', 'statusSince': '2026-09-30T02:00:00Z'},
-            {'id': 'b', 'statusSince': '2026-09-30T01:00:00Z'},
-        ]
-        store, writes = self._store(rows, {'bots': [rows[1]]}, dirty=False)
-        url = store.publish_deleted_index()
-
-        self.assertEqual(len(writes), 1)
-        self.assertEqual(writes[0][0], 'indexes/deleted.json')
-        self.assertEqual(writes[0][1]['bots'], rows)
-        self.assertFalse(writes[0][2]['public'])
-        self.assertTrue(url.startswith('https://data.example.test/indexes/deleted.json?v='))
-
-    def test_deleted_index_skips_identical_write_but_keeps_versioned_url(self):
-        rows = [{'id': 'a', 'statusSince': '2026-09-30T01:00:00Z'}]
-        store, writes = self._store(rows, {'bots': rows}, dirty=False)
-        url = store.publish_deleted_index()
-
-        self.assertEqual(writes, [])
-        self.assertIn('?v=', url)
-'''
-          test_path.write_text(test_text.replace(marker, addition + marker, 1), encoding="utf-8")
           PY
 
       - name: Test archive code

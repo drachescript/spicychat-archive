@@ -1,59 +1,57 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T23:59:28Z",
-  "runId": "github:36646256639:1",
+  "generatedAt": "2026-09-30T01:47:20Z",
+  "runId": "github:36651512360:1",
   "status": "partial",
   "archive": {
-    "totalBots": 934032,
+    "totalBots": 1172779,
     "deletedBots": 0,
-    "publicIndexBots": 1391127,
+    "publicIndexBots": 1391227,
     "startedAt": "2026-09-28T00:00:00Z"
   },
   "run": {
-    "finishedAt": "2026-09-29T23:38:50Z",
-    "durationSeconds": 1241,
-    "addedBots": 41652,
+    "finishedAt": "2026-09-30T00:41:38Z",
+    "durationSeconds": 3946,
+    "addedBots": 238747,
     "deletedConfirmed": 0,
     "pagesRequested": 1000,
     "scheduledPages": 500,
     "pagesBudget": 1000,
-    "pagesCompleted": 168,
-    "hits": 42000,
-    "newFromDiscovery": 41648,
-    "changedIngestRecords": 41682,
-    "discoveryDurationSeconds": 753,
-    "nonDiscoveryDurationSeconds": 488,
-    "discoverySharePercent": 60.7,
-    "timeLimited": false,
-    "errors": [
-      "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)"
-    ],
-    "stopReason": "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)",
+    "pagesCompleted": 960,
+    "hits": 240000,
+    "newFromDiscovery": 238712,
+    "changedIngestRecords": 238868,
+    "discoveryDurationSeconds": 3600,
+    "nonDiscoveryDurationSeconds": 346,
+    "discoverySharePercent": 91.2,
+    "timeLimited": true,
+    "errors": [],
+    "stopReason": "Discovery time limit reached before the page budget completed.",
     "enrichmentAttempted": 200,
     "enriched": 200,
     "imagesAttempted": 100,
-    "imagesSaved": 93,
-    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/36646256639"
+    "imagesSaved": 92,
+    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/36651512360"
   },
   "lastSuccessfulRun": {
-    "finishedAt": "2026-09-29T20:38:25Z",
-    "durationSeconds": 3275,
-    "addedBots": 186288,
-    "pagesBudget": 750,
-    "pagesCompleted": 750
+    "finishedAt": "2026-09-29T23:38:50Z",
+    "durationSeconds": 1241,
+    "addedBots": 41652,
+    "pagesBudget": 1000,
+    "pagesCompleted": 168
   },
   "growth": {
-    "added24h": 900188,
-    "added7d": 922763,
-    "added30d": 922763,
-    "averagePerDay": 618578.5,
-    "observedHours": 35.8,
-    "observedGrowth": 922763
+    "added24h": 1129106,
+    "added7d": 1161510,
+    "added30d": 1161510,
+    "averagePerDay": 756507.2,
+    "observedHours": 36.8,
+    "observedGrowth": 1161510
   },
   "storage": {
-    "usedBytes": 1118786132,
-    "mediaBytes": 222240465,
-    "objects": 57635,
-    "writesThisMonth": 106710
+    "usedBytes": 1297161507,
+    "mediaBytes": 226200820,
+    "objects": 58411,
+    "writesThisMonth": 108963
   }
 }

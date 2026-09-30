@@ -16,9 +16,10 @@ from typesense_retry import install_typesense_retry
 
 HERE = Path(__file__).resolve().parent
 TARGETS = {
-    # The batching wrapper keeps the existing sharded format, but lets a small
-    # number of consecutive discovery pages share one durability checkpoint.
-    "archive": HERE / "r2_archive_batched.py",
+    # Maintenance mode keeps the existing sharded/batched deep sweep, while also
+    # checking newest bots first on every run so newly-created bots are captured
+    # without waiting for the rotating full-index sweep to wrap around.
+    "archive": HERE / "r2_archive_maintenance.py",
     "import": HERE / "import_bot_status.py",
 }
 
@@ -85,8 +86,8 @@ def main() -> int:
         head_workers=_env_int("SPICYCHAT_ARCHIVE_R2_CLEANUP_WORKERS", 16),
     )
     if target_name == "archive":
-        # Install this after the batching wrapper so retries repeat the exact same
-        # logical Typesense request, including its primary/fallback failover.
+        # Install this after the batching/maintenance wrapper so retries repeat
+        # the exact same logical Typesense request, including failover.
         install_typesense_retry()
         _install_manual_archive_target()
 

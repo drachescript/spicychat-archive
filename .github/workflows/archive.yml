@@ -124,31 +124,67 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -A -- archive data config.json
+          stage_publish_files() {
+            git add -A -- archive data config.json
+            for path in fallback media; do
+              if [ -e "$path" ] || git ls-files -- "$path" | grep -q .; then
+                git add -A -- "$path"
+              fi
+            done
+          }
 
-          for path in fallback media; do
-            if [ -e "$path" ] || git ls-files -- "$path" | grep -q .; then
-              git add -A -- "$path"
-            fi
-          done
+          # Snapshot only files this run actually changed. A long crawler run can
+          # overlap a human/code commit to main; rebasing generated JSON then can
+          # conflict even though the crawl itself succeeded.
+          stage_publish_files
           if git diff --cached --quiet; then
             echo "No Git-side archive changes to commit."
             exit 0
           fi
 
-          git commit -m "Update SpicyChat archive"
+          snapshot="$RUNNER_TEMP/archive-publish-snapshot"
+          changed="$RUNNER_TEMP/archive-publish-changed"
+          deleted="$RUNNER_TEMP/archive-publish-deleted"
+          rm -rf "$snapshot"
+          mkdir -p "$snapshot/files"
 
-          for attempt in 1 2 3; do
+          git diff --cached --name-only --diff-filter=ACMRTUXB -z > "$changed"
+          git diff --cached --name-only --diff-filter=D -z > "$deleted"
+
+          while IFS= read -r -d '' file; do
+            mkdir -p "$snapshot/files/$(dirname "$file")"
+            cp -a -- "$file" "$snapshot/files/$file"
+          done < "$changed"
+
+          # Publish the snapshot on top of the newest main instead of rebasing a
+          # stale generated-data commit. This preserves newer code/docs while the
+          # completed run remains authoritative for the runtime files it changed.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            cp -a "$snapshot/files/." .
+            while IFS= read -r -d '' file; do
+              rm -f -- "$file"
+            done < "$deleted"
+
+            stage_publish_files
+            if git diff --cached --quiet; then
+              echo "Newest main already contains this archive result."
+              exit 0
+            fi
+
+            git commit -m "Update SpicyChat archive"
             if git push origin HEAD:main; then
               exit 0
             fi
-            if [ "$attempt" -eq 3 ]; then
-              echo "Push still failed after 3 attempts."
+
+            if [ "$attempt" -eq 5 ]; then
+              echo "main kept changing; archive result publish failed after 5 race-safe attempts."
               exit 1
             fi
-            echo "main changed while the archive job was running; rebasing and retrying..."
-            git fetch origin main
-            git rebase origin/main
+            echo "main changed during publish; applying the same archive snapshot to the new tip and retrying..."
+            sleep $((attempt * 2))
           done
 
       - name: Fail workflow if archive crawler failed

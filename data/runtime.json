@@ -15,6 +15,7 @@
     "baseFilter": "application_ids:=spicychat && type:!=META && visibility:=public"
   },
   "sorts": {
+    "latest": "createdAt:desc",
     "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
     "top-rated": "rating_score:desc,num_messages:desc",
     "popular": "num_messages:desc"

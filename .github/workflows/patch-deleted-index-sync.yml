@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Patch archive code and defaults
+      - name: Patch archive code and default
         shell: bash
         run: |
           set -euo pipefail
@@ -54,13 +54,6 @@ jobs:
           cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
           cfg["crawler"]["explore_pages_per_run"] = 100
           cfg_path.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-          workflow_path = Path(".github/workflows/archive.yml")
-          workflow = workflow_path.read_text(encoding="utf-8")
-          workflow = workflow.replace('        default: "50"\n        type: choice', '        default: "100"\n        type: choice', 1)
-          workflow = workflow.replace('normal 50-page target.', 'normal 100-page target.')
-          workflow = workflow.replace('keep a small 50-page deep sweep; manual runs may request up to 1000.', 'keep a 100-page deep sweep; manual runs may request up to 1000.')
-          workflow_path.write_text(workflow, encoding="utf-8")
 
           storage_path = Path("scripts/storage_r2.py")
           storage = storage_path.read_text(encoding="utf-8")
@@ -173,13 +166,12 @@ jobs:
               feed_path.write_text(json.dumps(feed, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
 
-      - name: Commit patch and remove one-off workflow
+      - name: Commit patch
         shell: bash
         run: |
           set -euo pipefail
-          rm -f .github/workflows/patch-deleted-index-sync.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add -A -- config.json scripts/storage_r2.py assets/app.js data
           git commit -m "Fix deleted index sync and use 100-page maintenance"
           git push origin HEAD:main

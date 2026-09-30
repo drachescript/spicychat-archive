@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T04:48:43Z",
+  "generatedAt": "2026-09-30T05:26:29Z",
   "startedAt": "2026-09-28T00:00:00Z",
-  "totalBots": 1392335,
-  "publicIndexBots": 1391838,
+  "totalBots": 1392452,
+  "publicIndexBots": 1391942,
   "deletedBots": 0,
-  "latestAdded": 133,
+  "latestAdded": 117,
   "growth": {
-    "added24h": 1287034,
-    "added7d": 1381066,
-    "added30d": 1381066,
-    "averagePerDay": 816058.7,
-    "observedHours": 40.6,
-    "observedGrowth": 1381066
+    "added24h": 1287151,
+    "added7d": 1381183,
+    "added30d": 1381183,
+    "averagePerDay": 807032.0,
+    "observedHours": 41.1,
+    "observedGrowth": 1381183
   },
   "adaptiveDiscovery": {
     "basePages": 500,
@@ -738,38 +738,76 @@
         "writesThisMonth": 113737
       },
       "addedSincePrevious": 133
+    },
+    {
+      "at": "2026-09-30T04:55:11Z",
+      "kind": "archive-run",
+      "totalBots": 1392452,
+      "publicIndexBots": 1391942,
+      "deletedBots": 0,
+      "missingBots": 0,
+      "runDurationSeconds": 1883,
+      "exploration": {
+        "hits": 187500,
+        "new": 22,
+        "changed": 98,
+        "pageBudget": 750,
+        "pagesCompleted": 750,
+        "nextPageBudget": 1000,
+        "timeLimited": false,
+        "durationSeconds": 1612,
+        "errors": [],
+        "partial": false,
+        "naturalEnd": false
+      },
+      "enrichment": {
+        "attempted": 200,
+        "enriched": 200
+      },
+      "images": {
+        "attempted": 100,
+        "saved": 96
+      },
+      "deletedConfirmed": 0,
+      "storage": {
+        "usedBytes": 1478390155,
+        "mediaBytes": 254662623,
+        "objects": 61046,
+        "writesThisMonth": 114385
+      },
+      "addedSincePrevious": 117
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-09-30T04:48:43Z",
-    "sampleCount": 20,
-    "latestPublicIndexBots": 1391838,
+    "generatedAt": "2026-09-30T05:26:29Z",
+    "sampleCount": 21,
+    "latestPublicIndexBots": 1391942,
     "firstSampleAt": "2026-09-28T17:36:57Z",
-    "lastSampleAt": "2026-09-30T04:27:43Z",
-    "observedHours": 34.85,
-    "observedNet": 1799,
-    "averagePerDay": 827.7,
+    "lastSampleAt": "2026-09-30T04:55:11Z",
+    "observedHours": 35.3,
+    "observedNet": 1903,
+    "averagePerDay": 914.1,
     "periods": {
       "24h": {
         "hours": 24,
-        "net": 828,
+        "net": 932,
         "complete": true,
-        "spanHours": 24.01,
+        "spanHours": 24.47,
         "baselineAt": "2026-09-29T04:26:50Z"
       },
       "7d": {
         "hours": 168,
-        "net": 1799,
+        "net": 1903,
         "complete": false,
-        "spanHours": 34.85,
+        "spanHours": 35.3,
         "baselineAt": "2026-09-28T17:36:57Z"
       },
       "30d": {
         "hours": 720,
-        "net": 1799,
+        "net": 1903,
         "complete": false,
-        "spanHours": 34.85,
+        "spanHours": 35.3,
         "baselineAt": "2026-09-28T17:36:57Z"
       }
     }

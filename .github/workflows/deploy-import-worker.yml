@@ -2,6 +2,11 @@ name: Deploy Bot Status import endpoint
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "worker/**"
+      - ".github/workflows/deploy-import-worker.yml"
 
 permissions:
   contents: read

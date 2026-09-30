@@ -14,6 +14,7 @@ resume where the previous run stopped instead of starting over.
 from __future__ import annotations
 
 import time
+from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 from typing import Any
 
@@ -259,6 +260,11 @@ def _maintenance_character_refresh(
         minimum=60,
         maximum=5400,
     )
+    workers = _positive_int(
+        crawler.get("maintenance_verification_workers"),
+        8,
+        maximum=16,
+    )
 
     order = store.discovery_order
     total = len(order)
@@ -282,6 +288,7 @@ def _maintenance_character_refresh(
     processed = 0
     enriched = 0
     changed = 0
+    metric_updates = 0
     missing = 0
     restricted = 0
     restored = 0
@@ -292,10 +299,12 @@ def _maintenance_character_refresh(
     time_limited = False
     retry: list[str] = []
     started = time.monotonic()
+    next_progress = 250
 
     print(
         "maintenance verification: "
         f"up to {budget:,} character API checks; "
+        f"{workers} concurrent workers; "
         f"priority cap {min(priority_budget, budget):,}; "
         f"time limit {time_limit // 60}m; "
         f"cursor {cursor:,}/{total:,}; pass {pass_number:,}.",
@@ -305,10 +314,35 @@ def _maintenance_character_refresh(
     def out_of_time() -> bool:
         return (time.monotonic() - started) >= time_limit
 
-    def refresh_one(bot_id: str) -> None:
-        nonlocal processed, enriched, changed, missing, restricted, restored, transient
+    # requests.Session is not guaranteed to be thread-safe. The real crawler
+    # therefore gives each concurrent slot its own Client/session while keeping
+    # the same guest user id. Test/fake clients are shared deliberately.
+    worker_clients = [client]
+    if workers > 1 and isinstance(client, legacy.Client):
+        for _ in range(workers - 1):
+            clone = legacy.Client(run_config)
+            clone.guest_user_id = getattr(client, "guest_user_id", clone.guest_user_id)
+            worker_clients.append(clone)
 
-        response = client.character(bot_id)
+    def fetch_batch(executor: ThreadPoolExecutor, bot_ids: list[str]) -> list[tuple[str, legacy.HTTPResult]]:
+        futures = []
+        for index, bot_id in enumerate(bot_ids):
+            worker = worker_clients[index % len(worker_clients)]
+            futures.append((bot_id, executor.submit(worker.character, bot_id)))
+
+        results: list[tuple[str, legacy.HTTPResult]] = []
+        for bot_id, future in futures:
+            try:
+                response = future.result()
+            except Exception as exc:
+                response = legacy.HTTPResult(False, 0, error=str(exc))
+            results.append((bot_id, response))
+        return results
+
+    def process_response(bot_id: str, response: legacy.HTTPResult) -> None:
+        nonlocal processed, enriched, changed, metric_updates
+        nonlocal missing, restricted, restored, transient
+
         processed += 1
 
         if response.ok:
@@ -321,15 +355,33 @@ def _maintenance_character_refresh(
             payload.setdefault("character_id", bot_id)
             record = legacy.load_bot(bot_id)
             old_status = (record or {}).get("status", {}).get("current")
+            old_history_len = len((record or {}).get("fieldHistory") or [])
+            old_metrics = deepcopy(((record or {}).get("metrics") or {}).get("latest") or {})
+
             record, did_change = legacy.observe_bot(
                 record,
                 payload,
                 source="character-api",
                 at=at,
             )
+
+            new_history_len = len((record or {}).get("fieldHistory") or [])
+            new_metrics = deepcopy(((record or {}).get("metrics") or {}).get("latest") or {})
+            substantive_change = (
+                new_history_len > old_history_len
+                or old_status != (record or {}).get("status", {}).get("current")
+            )
+            metrics_changed = new_metrics != old_metrics
+
             if did_change:
                 legacy.save_bot(record)
-                changed += 1
+                # Message/rating counters change constantly and are still worth
+                # archiving, but they should not make the maintenance log claim
+                # the creator edited the bot.
+                if metrics_changed and not substantive_change:
+                    metric_updates += 1
+                else:
+                    changed += 1
 
             if bot_id in run_state.setdefault("missingChecks", {}):
                 run_state["missingChecks"].pop(bot_id, None)
@@ -356,61 +408,96 @@ def _maintenance_character_refresh(
         transient += 1
         retry.append(bot_id)
 
-    # Priority changes/new bots are refreshed first, but they cannot consume the
-    # whole run forever; the rolling corpus sweep always keeps most of the budget.
-    for bot_id in priority_selected:
-        if processed >= budget or out_of_time():
-            time_limited = True
-            break
-        refresh_one(bot_id)
-        priority_processed += 1
-        if processed % 250 == 0:
-            print(
-                f"  maintenance verification {processed:,}/{budget:,}: "
-                f"{enriched:,} ok, {changed:,} changed, {missing:,} 404",
-                flush=True,
-            )
+    def print_progress() -> None:
+        nonlocal next_progress
+        if processed < next_progress:
+            return
+        print(
+            f"  maintenance verification {processed:,}/{budget:,}: "
+            f"{enriched:,} ok, {changed:,} content changed, "
+            f"{metric_updates:,} metric-only, {missing:,} 404; "
+            f"cursor {cursor:,}/{total:,}",
+            flush=True,
+        )
+        while next_progress <= processed:
+            next_progress += 250
 
-    # Walk the stored ID order. Advancing the cursor over a bot already checked
-    # through the priority queue still counts as covering that corpus position.
-    traversed = 0
-    while (
-        total
-        and processed < budget
-        and traversed < total
-        and not out_of_time()
-    ):
-        bot_id = order[cursor]
-        cursor += 1
-        traversed += 1
-        sequential_covered += 1
-        checked_this_pass += 1
+    try:
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            # Priority changes/new bots are refreshed first, but they cannot
+            # consume the whole run forever; the rolling corpus sweep always
+            # keeps most of the budget.
+            priority_index = 0
+            while (
+                priority_index < len(priority_selected)
+                and processed < budget
+                and not out_of_time()
+            ):
+                room = min(
+                    workers,
+                    budget - processed,
+                    len(priority_selected) - priority_index,
+                )
+                batch = priority_selected[priority_index : priority_index + room]
+                for bot_id, response in fetch_batch(executor, batch):
+                    process_response(bot_id, response)
+                    priority_processed += 1
+                    print_progress()
+                priority_index += len(batch)
 
-        if cursor >= total:
-            cursor = 0
-            completed_passes += 1
-            pass_number = completed_passes + 1
-            sweep["lastCompletedAt"] = at
-            sweep["lastCompletedBots"] = total
-            started_at = at
-            checked_this_pass = 0
+            if priority_index < len(priority_selected) and processed < budget:
+                time_limited = True
 
-        if bot_id in selected_ids:
-            continue
-        selected_ids.add(bot_id)
-        refresh_one(bot_id)
-        sequential_processed += 1
+            # Walk the stored ID order. Advancing the cursor over a bot already
+            # checked through the priority queue still counts as covering that
+            # corpus position.
+            traversed = 0
+            while (
+                total
+                and processed < budget
+                and traversed < total
+                and not out_of_time()
+            ):
+                batch: list[str] = []
+                room = min(workers, budget - processed)
 
-        if processed % 250 == 0:
-            print(
-                f"  maintenance verification {processed:,}/{budget:,}: "
-                f"{enriched:,} ok, {changed:,} changed, {missing:,} 404; "
-                f"cursor {cursor:,}/{total:,}",
-                flush=True,
-            )
+                while len(batch) < room and traversed < total:
+                    bot_id = order[cursor]
+                    cursor += 1
+                    traversed += 1
+                    sequential_covered += 1
+                    checked_this_pass += 1
 
-    if out_of_time() and processed < budget:
-        time_limited = True
+                    if cursor >= total:
+                        cursor = 0
+                        completed_passes += 1
+                        pass_number = completed_passes + 1
+                        sweep["lastCompletedAt"] = at
+                        sweep["lastCompletedBots"] = total
+                        started_at = at
+                        checked_this_pass = 0
+
+                    if bot_id in selected_ids:
+                        continue
+                    selected_ids.add(bot_id)
+                    batch.append(bot_id)
+
+                if not batch:
+                    continue
+
+                for bot_id, response in fetch_batch(executor, batch):
+                    process_response(bot_id, response)
+                    sequential_processed += 1
+                    print_progress()
+
+            if out_of_time() and processed < budget:
+                time_limited = True
+    finally:
+        for worker in worker_clients[1:]:
+            try:
+                worker.session.close()
+            except Exception:
+                pass
 
     elapsed = int(time.monotonic() - started)
 
@@ -422,7 +509,7 @@ def _maintenance_character_refresh(
 
     sweep.update(
         {
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "cursor": cursor,
             "totalBots": total,
             "completedPasses": completed_passes,
@@ -433,6 +520,7 @@ def _maintenance_character_refresh(
             "lastRunProcessed": processed,
             "lastRunEnriched": enriched,
             "lastRunChanged": changed,
+            "lastRunMetricUpdates": metric_updates,
             "lastRunMissing": missing,
             "lastRunRestricted": restricted,
             "lastRunRestored": restored,
@@ -440,6 +528,7 @@ def _maintenance_character_refresh(
             "lastRunPriority": priority_processed,
             "lastRunSequential": sequential_processed,
             "lastRunCovered": sequential_covered,
+            "lastRunWorkers": workers,
             "lastRunDurationSeconds": elapsed,
             "lastRunTimeLimited": time_limited,
         }
@@ -447,8 +536,9 @@ def _maintenance_character_refresh(
 
     print(
         "maintenance verification: finished "
-        f"{processed:,}/{budget:,} checks in {elapsed/60:.1f}m; "
-        f"{enriched:,} available, {changed:,} changed, {missing:,} 404, "
+        f"{processed:,}/{budget:,} checks in {elapsed/60:.1f}m with {workers} workers; "
+        f"{enriched:,} available, {changed:,} content changed, "
+        f"{metric_updates:,} metric-only updates, {missing:,} 404, "
         f"{restricted:,} restricted, {restored:,} restored, "
         f"{transient:,} transient; cursor {cursor:,}/{total:,}; "
         f"completed passes {completed_passes:,}.",
@@ -459,6 +549,8 @@ def _maintenance_character_refresh(
         "processed": processed,
         "enriched": enriched,
         "changed": changed,
+        "contentChanged": changed,
+        "metricUpdates": metric_updates,
         "missing": missing,
         "restricted": restricted,
         "restored": restored,
@@ -466,6 +558,7 @@ def _maintenance_character_refresh(
         "priorityProcessed": priority_processed,
         "sequentialProcessed": sequential_processed,
         "sequentialCovered": sequential_covered,
+        "verificationWorkers": workers,
         "verificationCursor": cursor,
         "verificationTotal": total,
         "verificationPass": completed_passes + 1,

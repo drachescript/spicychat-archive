@@ -37,15 +37,16 @@ class PublishRunFeedTests(unittest.TestCase):
             "Typesense timed out after retries",
         )
 
-    def test_incomplete_budget_without_saved_error_is_still_partial(self):
+    def test_short_clean_pass_is_not_mislabelled_partial(self):
         exploration = {
             "pageBudget": 1000,
             "pagesCompleted": 168,
             "errors": [],
             "timeLimited": False,
+            "partial": False,
         }
-        self.assertEqual(mod.classify_run_status("success", exploration), "partial")
-        self.assertIn("page budget", mod.stop_reason(exploration).lower())
+        self.assertEqual(mod.classify_run_status("success", exploration), "success")
+        self.assertIsNone(mod.stop_reason(exploration))
 
     def test_time_limit_is_partial(self):
         exploration = {
@@ -70,9 +71,11 @@ class PublishRunFeedTests(unittest.TestCase):
             "pagesCompleted": 168,
             "timeLimited": False,
             "errors": ["read timeout after retries"],
+            "partial": True,
         }
         merged = mod.apply_current_outcome(latest, exploration, outcome)
         self.assertEqual(merged["errors"], ["read timeout after retries"])
+        self.assertTrue(merged["partial"])
 
     def test_stale_outcome_is_ignored(self):
         latest = {"at": "new-run"}
@@ -82,6 +85,7 @@ class PublishRunFeedTests(unittest.TestCase):
             "pageBudget": 1000,
             "pagesCompleted": 168,
             "errors": ["old timeout"],
+            "partial": True,
         }
         merged = mod.apply_current_outcome(latest, exploration, outcome)
         self.assertEqual(merged, exploration)

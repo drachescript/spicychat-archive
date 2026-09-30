@@ -88,11 +88,6 @@ def _write_exploration_outcome() -> None:
     page_budget = int(exploration.get("pageBudget") or 0)
     pages_completed = int(exploration.get("pagesCompleted") or 0)
     time_limited = bool(exploration.get("timeLimited"))
-    partial = bool(
-        time_limited
-        or errors
-        or (page_budget > 0 and pages_completed < page_budget)
-    )
 
     payload = {
         "at": state.get("lastRunAt"),
@@ -100,7 +95,9 @@ def _write_exploration_outcome() -> None:
         "pagesCompleted": pages_completed,
         "timeLimited": time_limited,
         "errors": errors,
-        "partial": partial,
+        # Fewer pages can also mean a legitimate end-of-pass. Only an explicit
+        # error or the discovery time limit makes the saved run partial.
+        "partial": bool(time_limited or errors),
     }
     optimized.legacy.write_json_if_changed(
         optimized.legacy.SITE_DATA_DIR / "last-exploration-status.json",

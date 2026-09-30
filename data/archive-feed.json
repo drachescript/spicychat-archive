@@ -25,6 +25,7 @@
     "nonDiscoveryDurationSeconds": 346,
     "discoverySharePercent": 91.2,
     "timeLimited": true,
+    "naturalEnd": false,
     "errors": [],
     "stopReason": "Discovery time limit reached before the page budget completed.",
     "enrichmentAttempted": 200,
@@ -34,11 +35,11 @@
     "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/36651512360"
   },
   "lastSuccessfulRun": {
-    "finishedAt": "2026-09-29T23:38:50Z",
-    "durationSeconds": 1241,
-    "addedBots": 41652,
-    "pagesBudget": 1000,
-    "pagesCompleted": 168
+    "finishedAt": "2026-09-29T20:38:25Z",
+    "durationSeconds": 3275,
+    "addedBots": 186288,
+    "pagesBudget": 750,
+    "pagesCompleted": 750
   },
   "growth": {
     "added24h": 1129106,

@@ -2,9 +2,9 @@
 """Run the sharded archive with batched discovery durability checkpoints.
 
 The shard architecture is unchanged: immutable shard data is still written before
-its locator journal, and UUID discovery journals are written after that.  The only
+its locator journal, and UUID discovery journals are written after that. The only
 change is that normal discovery-page checkpoints may collect a few consecutive
-pages before performing those three durable writes.  A crash can therefore replay
+pages before performing those three durable writes. A crash can therefore replay
 at most a small batch of already-fetched pages instead of paying R2 write latency
 on every single page.
 """
@@ -13,6 +13,7 @@ from __future__ import annotations
 import os
 import threading
 import weakref
+from typing import Any
 
 import r2_archive_optimized as optimized
 import r2_archive_sharded as sharded
@@ -69,16 +70,16 @@ def install_discovery_flush_batching(*, pages: int = _DEFAULT_FLUSH_PAGES) -> No
     )
 
 
-def _write_exploration_outcome() -> None:
-    """Persist the exact stop reason before the public stats layer trims details."""
+def _exploration_outcome() -> dict[str, Any] | None:
+    """Build the exact run outcome before compact stats can lose the stop reason."""
     state = optimized._active_state
     if not isinstance(state, dict):
-        return
+        return None
 
     summary = state.get("lastRunSummary") or {}
     exploration = summary.get("exploration") or {}
     if not isinstance(exploration, dict) or not exploration:
-        return
+        return None
 
     raw_errors = exploration.get("errors") or []
     if isinstance(raw_errors, str):
@@ -88,21 +89,86 @@ def _write_exploration_outcome() -> None:
     page_budget = int(exploration.get("pageBudget") or 0)
     pages_completed = int(exploration.get("pagesCompleted") or 0)
     time_limited = bool(exploration.get("timeLimited"))
+    partial = bool(time_limited or errors)
 
-    payload = {
+    # In the current explorer, an early clean break can only happen when the
+    # Typesense pass genuinely runs out of hits. Preserve that fact so future
+    # history scans can distinguish it from old ambiguous incomplete runs.
+    natural_end = bool(
+        page_budget > 0
+        and pages_completed < page_budget
+        and not partial
+    )
+
+    return {
         "at": state.get("lastRunAt"),
         "pageBudget": page_budget,
         "pagesCompleted": pages_completed,
         "timeLimited": time_limited,
         "errors": errors,
-        # Fewer pages can also mean a legitimate end-of-pass. Only an explicit
-        # error or the discovery time limit makes the saved run partial.
-        "partial": bool(time_limited or errors),
+        "partial": partial,
+        "naturalEnd": natural_end,
     }
+
+
+def _annotate_run_history(outcome: dict[str, Any]) -> None:
+    """Keep partial/natural-end markers in both R2 history and public stats."""
+    run_at = str(outcome.get("at") or "")
+    if not run_at:
+        return
+
+    markers = {
+        "errors": list(outcome.get("errors") or []),
+        "partial": bool(outcome.get("partial")),
+        "naturalEnd": bool(outcome.get("naturalEnd")),
+    }
+
+    store = optimized._active_store
+    if store is not None:
+        key = store.key(store.meta_prefix, "stats-history.json")
+        history = store.get_json(key, None)
+        if isinstance(history, dict):
+            changed = False
+            for row in reversed(history.get("runs") or []):
+                if str(row.get("at") or "") != run_at:
+                    continue
+                exploration = row.setdefault("exploration", {})
+                for name, value in markers.items():
+                    if exploration.get(name) != value:
+                        exploration[name] = value
+                        changed = True
+                break
+            if changed:
+                store.put_json(key, history)
+                store.flush_usage(force=True)
+
+    stats_path = optimized.legacy.SITE_DATA_DIR / "stats.json"
+    stats = optimized.legacy.read_json(stats_path, {})
+    if isinstance(stats, dict):
+        changed = False
+        for row in reversed(stats.get("runs") or []):
+            if str(row.get("at") or "") != run_at:
+                continue
+            exploration = row.setdefault("exploration", {})
+            for name, value in markers.items():
+                if exploration.get(name) != value:
+                    exploration[name] = value
+                    changed = True
+            break
+        if changed:
+            optimized.legacy.write_json_if_changed(stats_path, stats)
+
+
+def _write_exploration_outcome() -> None:
+    outcome = _exploration_outcome()
+    if not outcome:
+        return
+
     optimized.legacy.write_json_if_changed(
         optimized.legacy.SITE_DATA_DIR / "last-exploration-status.json",
-        payload,
+        outcome,
     )
+    _annotate_run_history(outcome)
 
 
 def main() -> int:
@@ -116,14 +182,14 @@ def main() -> int:
         rc = optimized.main()
         return rc
     finally:
-        # This is a tiny Git-side run marker. R2 still owns the archive data;
-        # the marker only lets the website/Discord feed distinguish a complete
-        # crawl from one that safely stopped after retries or a time limit.
+        # These are tiny status markers. R2 still owns the archive data; they
+        # only let the website/Discord feed distinguish full, natural-end and
+        # safely interrupted discovery runs.
         try:
             _write_exploration_outcome()
         except Exception as exc:
             print(
-                f"WARNING: could not write exploration outcome marker: {exc}",
+                f"WARNING: could not persist exploration outcome marker: {exc}",
                 flush=True,
             )
 

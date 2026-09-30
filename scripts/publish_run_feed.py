@@ -45,21 +45,15 @@ def exploration_errors(exploration: dict[str, Any]) -> list[str]:
     return [str(item).strip() for item in raw if str(item).strip()]
 
 
-def incomplete_page_budget(exploration: dict[str, Any]) -> bool:
-    budget = int(exploration.get("pageBudget") or 0)
-    completed = int(exploration.get("pagesCompleted") or 0)
-    return budget > 0 and completed < budget
-
-
 def classify_run_status(raw_status: str, exploration: dict[str, Any]) -> str:
     """Separate a saved partial crawl from a hard workflow failure."""
     workflow_status = str(raw_status or "success").strip().lower()
     if workflow_status != "success":
         return "failure"
     if (
-        bool(exploration.get("timeLimited"))
+        bool(exploration.get("partial"))
+        or bool(exploration.get("timeLimited"))
         or exploration_errors(exploration)
-        or incomplete_page_budget(exploration)
     ):
         return "partial"
     return "success"
@@ -71,8 +65,8 @@ def stop_reason(exploration: dict[str, Any]) -> str | None:
         return errors[0]
     if bool(exploration.get("timeLimited")):
         return "Discovery time limit reached before the page budget completed."
-    if incomplete_page_budget(exploration):
-        return "Discovery stopped before completing the requested page budget."
+    if bool(exploration.get("partial")):
+        return "Discovery stopped before the requested crawl completed."
     return None
 
 
@@ -91,7 +85,7 @@ def apply_current_outcome(
     if not latest_at or latest_at != outcome_at:
         return merged
 
-    for key in ("pageBudget", "pagesCompleted", "timeLimited", "errors"):
+    for key in ("pageBudget", "pagesCompleted", "timeLimited", "errors", "partial"):
         if key in outcome:
             merged[key] = outcome[key]
     return merged
@@ -122,7 +116,7 @@ def last_successful_run(
             isinstance(exploration, dict)
             and not exploration_errors(exploration)
             and not bool(exploration.get("timeLimited"))
-            and not incomplete_page_budget(exploration)
+            and not bool(exploration.get("partial"))
         ):
             return successful_run_summary(row)
     return None

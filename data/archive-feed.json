@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T03:52:24Z",
-  "runId": "github:36665183357:1",
+  "generatedAt": "2026-09-30T04:48:46Z",
+  "runId": "github:36668888633:1",
   "status": "success",
   "archive": {
-    "totalBots": 1392202,
+    "totalBots": 1392335,
     "deletedBots": 0,
-    "publicIndexBots": 1391789,
+    "publicIndexBots": 1391838,
     "startedAt": "2026-09-28T00:00:00Z"
   },
   "run": {
-    "finishedAt": "2026-09-30T03:37:24Z",
-    "durationSeconds": 904,
-    "addedBots": 2492,
+    "finishedAt": "2026-09-30T04:27:43Z",
+    "durationSeconds": 1266,
+    "addedBots": 133,
     "deletedConfirmed": 0,
     "pagesRequested": 500,
     "scheduledPages": 500,
     "pagesBudget": 500,
     "pagesCompleted": 500,
     "hits": 125000,
-    "newFromDiscovery": 213,
-    "changedIngestRecords": 566,
-    "discoveryDurationSeconds": 532,
-    "nonDiscoveryDurationSeconds": 372,
-    "discoverySharePercent": 58.8,
+    "newFromDiscovery": 45,
+    "changedIngestRecords": 136,
+    "discoveryDurationSeconds": 878,
+    "nonDiscoveryDurationSeconds": 388,
+    "discoverySharePercent": 69.4,
     "timeLimited": false,
     "naturalEnd": false,
     "errors": [],
@@ -31,56 +31,56 @@
     "enrichmentAttempted": 200,
     "enriched": 200,
     "imagesAttempted": 100,
-    "imagesSaved": 96,
-    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/36665183357"
+    "imagesSaved": 95,
+    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/36668888633"
   },
   "lastSuccessfulRun": null,
   "growth": {
-    "added24h": 1317467,
-    "added7d": 1380933,
-    "added30d": 1380933,
-    "averagePerDay": 833182.8,
-    "observedHours": 39.8,
-    "observedGrowth": 1380933
+    "added24h": 1287034,
+    "added7d": 1381066,
+    "added30d": 1381066,
+    "averagePerDay": 816058.7,
+    "observedHours": 40.6,
+    "observedGrowth": 1381066
+  },
+  "storage": {
+    "usedBytes": 1471787545,
+    "mediaBytes": 249255431,
+    "objects": 60553,
+    "writesThisMonth": 113737
   },
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-09-30T03:52:22Z",
-    "sampleCount": 19,
-    "latestPublicIndexBots": 1391789,
+    "generatedAt": "2026-09-30T04:48:43Z",
+    "sampleCount": 20,
+    "latestPublicIndexBots": 1391838,
     "firstSampleAt": "2026-09-28T17:36:57Z",
-    "lastSampleAt": "2026-09-30T03:37:24Z",
-    "observedHours": 34.01,
-    "observedNet": 1750,
-    "averagePerDay": 760.1,
+    "lastSampleAt": "2026-09-30T04:27:43Z",
+    "observedHours": 34.85,
+    "observedNet": 1799,
+    "averagePerDay": 827.7,
     "periods": {
       "24h": {
         "hours": 24,
-        "net": 767,
+        "net": 828,
         "complete": true,
-        "spanHours": 24.22,
-        "baselineAt": "2026-09-29T03:24:16Z"
+        "spanHours": 24.01,
+        "baselineAt": "2026-09-29T04:26:50Z"
       },
       "7d": {
         "hours": 168,
-        "net": 1750,
+        "net": 1799,
         "complete": false,
-        "spanHours": 34.01,
+        "spanHours": 34.85,
         "baselineAt": "2026-09-28T17:36:57Z"
       },
       "30d": {
         "hours": 720,
-        "net": 1750,
+        "net": 1799,
         "complete": false,
-        "spanHours": 34.01,
+        "spanHours": 34.85,
         "baselineAt": "2026-09-28T17:36:57Z"
       }
     }
-  },
-  "storage": {
-    "usedBytes": 1466306204,
-    "mediaBytes": 244870239,
-    "objects": 60032,
-    "writesThisMonth": 113026
   }
 }

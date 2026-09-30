@@ -98,6 +98,10 @@ jobs:
           ARCHIVE_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: python scripts/publish_run_feed.py
 
+      - name: Publish real public-index growth
+        if: always() && steps.r2guard.outputs.mode == 'r2' && steps.archive.outcome != 'skipped'
+        run: python scripts/public_growth.py
+
       - name: Update pre-migration local archive
         if: steps.r2guard.outputs.mode == 'legacy'
         run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"

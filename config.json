@@ -17,6 +17,9 @@
   "crawler": {
     "listing_page_size": 250,
     "listing_max_hits": 2500,
+    "latest_page_size": 250,
+    "latest_overlap_pages": 3,
+    "latest_max_pages": 20,
     "explore_pages_per_run": 500,
     "explore_pages_max": 1000,
     "explore_pages_growth_per_success": 0,
@@ -24,7 +27,7 @@
     "enrichment_budget": 200,
     "image_budget": 100,
     "image_archive_enabled": true,
-    "missing_verification_budget": 100,
+    "missing_verification_budget": 500,
     "deleted_confirmations_required": 2,
     "request_timeout_seconds": 20,
     "request_delay_ms": 80,
@@ -83,6 +86,7 @@
     }
   },
   "listings": {
+    "latest": "createdAt:desc",
     "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
     "top-rated": "rating_score:desc,num_messages:desc",
     "popular": "num_messages:desc"

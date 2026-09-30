@@ -14,6 +14,7 @@ DATA = ROOT / "data"
 STATS_PATH = DATA / "stats.json"
 MANIFEST_PATH = DATA / "manifest.json"
 CONFIG_PATH = ROOT / "config.json"
+RUN_OUTCOME_PATH = DATA / "last-exploration-status.json"
 OUT_PATH = DATA / "archive-feed.json"
 
 
@@ -44,12 +45,22 @@ def exploration_errors(exploration: dict[str, Any]) -> list[str]:
     return [str(item).strip() for item in raw if str(item).strip()]
 
 
+def incomplete_page_budget(exploration: dict[str, Any]) -> bool:
+    budget = int(exploration.get("pageBudget") or 0)
+    completed = int(exploration.get("pagesCompleted") or 0)
+    return budget > 0 and completed < budget
+
+
 def classify_run_status(raw_status: str, exploration: dict[str, Any]) -> str:
     """Separate a saved partial crawl from a hard workflow failure."""
     workflow_status = str(raw_status or "success").strip().lower()
     if workflow_status != "success":
         return "failure"
-    if bool(exploration.get("timeLimited")) or exploration_errors(exploration):
+    if (
+        bool(exploration.get("timeLimited"))
+        or exploration_errors(exploration)
+        or incomplete_page_budget(exploration)
+    ):
         return "partial"
     return "success"
 
@@ -60,7 +71,30 @@ def stop_reason(exploration: dict[str, Any]) -> str | None:
         return errors[0]
     if bool(exploration.get("timeLimited")):
         return "Discovery time limit reached before the page budget completed."
+    if incomplete_page_budget(exploration):
+        return "Discovery stopped before completing the requested page budget."
     return None
+
+
+def apply_current_outcome(
+    latest: dict[str, Any],
+    exploration: dict[str, Any],
+    outcome: Any,
+) -> dict[str, Any]:
+    """Restore exact exploration errors omitted from compact public stats."""
+    merged = dict(exploration)
+    if not isinstance(outcome, dict):
+        return merged
+
+    latest_at = str(latest.get("at") or "")
+    outcome_at = str(outcome.get("at") or "")
+    if not latest_at or latest_at != outcome_at:
+        return merged
+
+    for key in ("pageBudget", "pagesCompleted", "timeLimited", "errors"):
+        if key in outcome:
+            merged[key] = outcome[key]
+    return merged
 
 
 def successful_run_summary(row: dict[str, Any]) -> dict[str, Any]:
@@ -84,7 +118,12 @@ def last_successful_run(
     candidates = runs if current_status == "failure" else runs[:-1]
     for row in reversed(candidates):
         exploration = row.get("exploration") or {}
-        if not exploration_errors(exploration) and not bool(exploration.get("timeLimited")):
+        if (
+            isinstance(exploration, dict)
+            and not exploration_errors(exploration)
+            and not bool(exploration.get("timeLimited"))
+            and not incomplete_page_budget(exploration)
+        ):
             return successful_run_summary(row)
     return None
 
@@ -93,9 +132,14 @@ def main() -> int:
     stats = read_json(STATS_PATH, {})
     manifest = read_json(MANIFEST_PATH, {})
     config = read_json(CONFIG_PATH, {})
+    outcome = read_json(RUN_OUTCOME_PATH, {})
     runs = [row for row in (stats.get("runs") or []) if isinstance(row, dict)]
     latest = runs[-1] if runs else {}
-    exploration = latest.get("exploration") or {}
+    exploration = apply_current_outcome(
+        latest,
+        latest.get("exploration") or {},
+        outcome,
+    )
     enrichment = latest.get("enrichment") or {}
     images = latest.get("images") or {}
     storage = latest.get("storage") or manifest.get("storage") or {}

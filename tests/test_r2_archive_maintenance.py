@@ -72,6 +72,7 @@ def make_record(bot_id, *, greeting=None, num_messages=None):
     metrics = {"latest": {}, "history": []}
     if greeting is not None or num_messages is not None:
         character_api = {"character_id": bot_id}
+        last_known["character_id"] = bot_id
         if greeting is not None:
             character_api["greeting"] = greeting
             last_known["greeting"] = greeting

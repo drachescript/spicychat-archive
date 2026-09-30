@@ -75,7 +75,7 @@ def apply_current_outcome(
     exploration: dict[str, Any],
     outcome: Any,
 ) -> dict[str, Any]:
-    """Restore exact exploration errors omitted from compact public stats."""
+    """Restore exact exploration details omitted from older compact stats."""
     merged = dict(exploration)
     if not isinstance(outcome, dict):
         return merged
@@ -85,10 +85,38 @@ def apply_current_outcome(
     if not latest_at or latest_at != outcome_at:
         return merged
 
-    for key in ("pageBudget", "pagesCompleted", "timeLimited", "errors", "partial"):
+    for key in (
+        "pageBudget",
+        "pagesCompleted",
+        "timeLimited",
+        "errors",
+        "partial",
+        "naturalEnd",
+    ):
         if key in outcome:
             merged[key] = outcome[key]
     return merged
+
+
+def exploration_is_successful(exploration: Any) -> bool:
+    """Return True only when history proves the exploration ended cleanly."""
+    if not isinstance(exploration, dict) or not exploration:
+        return False
+    if (
+        exploration_errors(exploration)
+        or bool(exploration.get("timeLimited"))
+        or bool(exploration.get("partial"))
+    ):
+        return False
+
+    budget = int(exploration.get("pageBudget") or 0)
+    completed = int(exploration.get("pagesCompleted") or 0)
+    if budget > 0 and completed < budget:
+        # Older rows did not persist stop reasons. Do not call an ambiguous
+        # incomplete historical run successful unless it explicitly says the
+        # Typesense pass naturally ran out of hits.
+        return bool(exploration.get("naturalEnd"))
+    return budget > 0 and completed >= budget
 
 
 def successful_run_summary(row: dict[str, Any]) -> dict[str, Any]:
@@ -111,13 +139,9 @@ def last_successful_run(
 
     candidates = runs if current_status == "failure" else runs[:-1]
     for row in reversed(candidates):
-        exploration = row.get("exploration") or {}
-        if (
-            isinstance(exploration, dict)
-            and not exploration_errors(exploration)
-            and not bool(exploration.get("timeLimited"))
-            and not bool(exploration.get("partial"))
-        ):
+        if row.get("kind") != "archive-run":
+            continue
+        if exploration_is_successful(row.get("exploration")):
             return successful_run_summary(row)
     return None
 
@@ -200,6 +224,7 @@ def main() -> int:
             "nonDiscoveryDurationSeconds": non_discovery_duration,
             "discoverySharePercent": discovery_share,
             "timeLimited": bool(exploration.get("timeLimited")),
+            "naturalEnd": bool(exploration.get("naturalEnd")),
             "errors": errors,
             "stopReason": reason,
             "enrichmentAttempted": int(enrichment.get("attempted") or 0),

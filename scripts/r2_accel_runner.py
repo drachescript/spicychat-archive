@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import archive as legacy
+from character_api_guard import install_character_api_guard
 from r2_cleanup_accel import install_cleanup_acceleration
 from r2_runtime_accel import flush_all_stores, install_runtime_acceleration
 from typesense_retry import install_typesense_retry
@@ -86,6 +87,11 @@ def main() -> int:
         head_workers=_env_int("SPICYCHAT_ARCHIVE_R2_CLEANUP_WORKERS", 16),
     )
     if target_name == "archive":
+        # Normalize the character endpoint before maintenance starts. SpicyChat
+        # can return HTTP 200 with {} for a bot whose frontend is already 404;
+        # this feeds that signature into the same repeated-missing safeguards as
+        # an ordinary 404 and suppresses activity-only update noise.
+        install_character_api_guard()
         # Install this after the batching/maintenance wrapper so retries repeat
         # the exact same logical Typesense request, including failover.
         install_typesense_retry()

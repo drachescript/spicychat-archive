@@ -69,12 +69,66 @@ def install_discovery_flush_batching(*, pages: int = _DEFAULT_FLUSH_PAGES) -> No
     )
 
 
+def _write_exploration_outcome() -> None:
+    """Persist the exact stop reason before the public stats layer trims details."""
+    state = optimized._active_state
+    if not isinstance(state, dict):
+        return
+
+    summary = state.get("lastRunSummary") or {}
+    exploration = summary.get("exploration") or {}
+    if not isinstance(exploration, dict) or not exploration:
+        return
+
+    raw_errors = exploration.get("errors") or []
+    if isinstance(raw_errors, str):
+        raw_errors = [raw_errors]
+    errors = [str(item).strip() for item in raw_errors if str(item).strip()]
+
+    page_budget = int(exploration.get("pageBudget") or 0)
+    pages_completed = int(exploration.get("pagesCompleted") or 0)
+    time_limited = bool(exploration.get("timeLimited"))
+    partial = bool(
+        time_limited
+        or errors
+        or (page_budget > 0 and pages_completed < page_budget)
+    )
+
+    payload = {
+        "at": state.get("lastRunAt"),
+        "pageBudget": page_budget,
+        "pagesCompleted": pages_completed,
+        "timeLimited": time_limited,
+        "errors": errors,
+        "partial": partial,
+    }
+    optimized.legacy.write_json_if_changed(
+        optimized.legacy.SITE_DATA_DIR / "last-exploration-status.json",
+        payload,
+    )
+
+
 def main() -> int:
     sharded.install_discovery_shards()
     install_discovery_flush_batching(
         pages=_env_int("SPICYCHAT_ARCHIVE_DISCOVERY_FLUSH_PAGES", _DEFAULT_FLUSH_PAGES)
     )
-    return optimized.main()
+
+    rc = 1
+    try:
+        rc = optimized.main()
+        return rc
+    finally:
+        # This is a tiny Git-side run marker. R2 still owns the archive data;
+        # the marker only lets the website/Discord feed distinguish a complete
+        # crawl from one that safely stopped after retries or a time limit.
+        try:
+            _write_exploration_outcome()
+        except Exception as exc:
+            print(
+                f"WARNING: could not write exploration outcome marker: {exc}",
+                flush=True,
+            )
 
 
 if __name__ == "__main__":

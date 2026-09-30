@@ -2,6 +2,42 @@ const asset = (path) => new URL(`../${path}`, import.meta.url);
 const app = document.querySelector('#app');
 const page = document.body.dataset.page || 'browse';
 const DEFAULT_EXCLUDED = ['NTR','Cheating'];
+const PAGE_SIZE = 100;
+const TRANSLATION_ENDPOINT = 'https://spicychat-archive-import.dragongraf.workers.dev/api/translate';
+const TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+const SMALL_CAPS = Object.freeze({
+  'ᴀ':'a','ʙ':'b','ᴄ':'c','ᴅ':'d','ᴇ':'e','ꜰ':'f','ғ':'f','ɢ':'g','ʜ':'h','ɪ':'i','ᴊ':'j','ᴋ':'k','ʟ':'l','ᴍ':'m','ɴ':'n','ᴏ':'o','ᴘ':'p','ǫ':'q','ʀ':'r','ꜱ':'s','s':'s','ᴛ':'t','ᴜ':'u','ᴠ':'v','ᴡ':'w','x':'x','ʏ':'y','ᴢ':'z',
+  'ᴬ':'A','ᴮ':'B','ᴰ':'D','ᴱ':'E','ᴳ':'G','ᴴ':'H','ᴵ':'I','ᴶ':'J','ᴷ':'K','ᴸ':'L','ᴹ':'M','ᴺ':'N','ᴼ':'O','ᴾ':'P','ᴿ':'R','ᵀ':'T','ᵁ':'U','ⱽ':'V','ᵂ':'W'
+});
+const translationMemory = new Map();
+
+function normalizeDisplayText(value){
+  let text=String(value??'');
+  try{text=text.normalize('NFKC');}catch{}
+  text=[...text].map(ch=>SMALL_CAPS[ch]??ch).join('');
+  return text
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD]/g,'')
+    .replace(/[‘’‚‛`´]/g,"'")
+    .replace(/[“”„‟]/g,'"')
+    .replace(/[‐‑‒–—―]/g,'-')
+    .replace(/[⁄∕]/g,'/')
+    .replace(/…/g,'...')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function parsePage(value){
+  const n=Math.floor(Number(value)||1);return Math.max(1,n);
+}
+function likelyNeedsTranslation(value,bot={}){
+  const text=String(value||'').trim();if(text.length<2)return false;
+  const tags=(bot.tags||[]).map(tag=>String(tag).toLowerCase());
+  if(tags.includes('non-english'))return true;
+  return /[\u0370-\u03FF\u0400-\u052F\u0530-\u058F\u0590-\u05FF\u0600-\u06FF\u0750-\u077F\u0900-\u097F\u0E00-\u0E7F\u10A0-\u10FF\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/u.test(text)||/[À-ÖØ-öø-ÿĀ-ž]/u.test(text);
+}
+function languageDisplayName(code){
+  const clean=String(code||'').trim().toLowerCase();if(!clean)return 'another language';
+  try{return new Intl.DisplayNames(['en'],{type:'language'}).of(clean)||clean.toUpperCase();}catch{return clean.toUpperCase();}
+}
 
 const esc = (v='') => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = v => v == null || v === '' ? '—' : Number.isFinite(Number(v)) ? Number(v).toLocaleString() : String(v);
@@ -71,7 +107,7 @@ function readExcluded(){
   if(value==='none'||value==='')return [];
   return parseTags(value);
 }
-function setQuery(state){
+function setQuery(state,push=false){
   const u=new URL(location.href);
   const set=(k,v)=>{
     if(Array.isArray(v)){
@@ -81,9 +117,10 @@ function setQuery(state){
     else u.searchParams.delete(k);
   };
   set('q',state.q); set('include',state.include); set('creator',state.creator); set('sort',state.sort); set('match',state.match);
+  if(Number(state.page)>1)u.searchParams.set('p',String(Math.floor(Number(state.page))));else u.searchParams.delete('p');
   if(state.exclude.length)u.searchParams.set('exclude',state.exclude.join(','));
   else u.searchParams.set('exclude','none');
-  history.replaceState(null,'',u);
+  history[push?'pushState':'replaceState'](null,'',u);
 }
 function resolveAvatar(v){
   if(!v)return '';
@@ -99,23 +136,28 @@ function badge(status){
   const label=s==='public'?'Active':s==='deleted'?'Archived':s;
   return `<span class="badge ${esc(s)}">${esc(label)}</span>`;
 }
+
 function imgHtml(primary,fallback,{blur=false,alt=''}={}){
   const p=resolveAvatar(primary), f=resolveAvatar(fallback);
   if(!p&&!f)return '<div class="art-placeholder">No image</div>';
   const src=p||f;
   const fallbackAttr=f&&f!==src?` data-fallback="${esc(f)}"`:'';
-  return `<img src="${esc(src)}"${fallbackAttr} alt="${esc(alt)}" loading="lazy" class="${blur?'nsfw-blur':''}" onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback=''}else{this.remove()}">`;
+  const animated=/\.gif(?:$|[?#])/i.test(src);
+  return `<img src="${esc(src)}"${fallbackAttr} alt="${esc(normalizeDisplayText(alt))}" loading="lazy" class="${blur?'nsfw-blur':''}"${animated?' data-hover-animate="1"':''} onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback=''}else{this.remove()}">`;
 }
 function card(bot, blurNsfw){
   const tags=(bot.tags||[]).slice(0,5).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
   const first=bot.firstSeenAt?`<span>Seen ${shortDate(bot.firstSeenAt)}</span>`:(bot.createdAt?`<span>Made ${shortDate(bot.createdAt)}</span>`:'');
-  return `<article class="card"><a class="cardlink" href="${esc(detailHref(bot.id))}">
-    <div class="art">${imgHtml(bot.avatar,bot.avatarFallback,{blur:blurNsfw&&bot.isNsfw,alt:bot.name||''})}${badge(bot.status)}</div>
-    <div class="body"><h3>${esc(bot.name||'Unknown bot')}</h3><div class="creator">${bot.creator?`@${esc(bot.creator)}`:'Unknown creator'}</div>
-    <div class="title">${esc(bot.title||'')}</div><div class="taglist">${tags}</div>
+  const rawName=String(bot.name||'Unknown bot'),rawTitle=String(bot.title||'');
+  const displayName=normalizeDisplayText(rawName)||'Unknown bot',displayTitle=normalizeDisplayText(rawTitle);
+  return `<article class="card" data-bot-id="${esc(bot.id||'')}" data-original-name="${esc(rawName)}" data-original-title="${esc(rawTitle)}"><a class="cardlink" href="${esc(detailHref(bot.id))}">
+    <div class="art">${imgHtml(bot.avatar,bot.avatarFallback,{blur:blurNsfw&&bot.isNsfw,alt:displayName})}${badge(bot.status)}</div>
+    <div class="body"><h3 data-card-name${rawName!==displayName?` title="${esc(rawName)}"`:''}>${esc(displayName)}</h3><div class="creator">${bot.creator?`@${esc(bot.creator)}`:'Unknown creator'}</div>
+    <div class="title" data-card-title${rawTitle!==displayTitle?` title="${esc(rawTitle)}"`:''}>${esc(displayTitle)}</div><div class="translation-note" hidden></div><div class="taglist">${tags}</div>
     <div class="meta"><span>${fmt(bot.messages)} msgs</span><span>${bot.rating==null?'—':`★ ${esc(bot.rating)}`}</span>${first}<span>${bot.avatarArchived?'image archived':'CDN image'}</span></div></div>
   </a></article>`;
 }
+
 function growthBanner(stats){
   if(!stats)return '';
   const pace=Number(stats.growth?.averagePerDay||0);
@@ -265,64 +307,137 @@ function localFilterAndSort(bots,state){
   return rows;
 }
 
+function pagerPages(current,total){
+  if(total<=1)return [];
+  const keep=new Set([1,total,current-2,current-1,current,current+1,current+2]);
+  const pages=[...keep].filter(n=>n>=1&&n<=total).sort((a,b)=>a-b),out=[];
+  let previous=0;
+  for(const n of pages){if(previous&&n>previous+1)out.push('…');out.push(n);previous=n;}
+  return out;
+}
+function pagerMarkup(current,total){
+  if(total<=1)return '';
+  const parts=pagerPages(current,total).map(item=>item==='…'?'<span class="pager-gap">…</span>':`<button type="button" class="pager-page${item===current?' active':''}" data-page="${item}"${item===current?' aria-current="page"':''}>${item}</button>`).join('');
+  return `<nav class="pager" aria-label="Bot pages"><button type="button" class="pager-page pager-prev" data-page="${Math.max(1,current-1)}" ${current<=1?'disabled':''}>‹ Prev</button>${parts}<button type="button" class="pager-page pager-next" data-page="${Math.min(total,current+1)}" ${current>=total?'disabled':''}>Next ›</button></nav>`;
+}
+function renderPagers(current,total){
+  const html=pagerMarkup(current,total);document.querySelectorAll('[data-archive-pager]').forEach(el=>{el.innerHTML=html;});
+}
+function bindPagers(onPage){
+  document.querySelectorAll('[data-archive-pager]').forEach(host=>host.addEventListener('click',event=>{
+    const button=event.target.closest('button[data-page]');if(!button||button.disabled)return;
+    const target=parsePage(button.dataset.page);onPage(target);
+  }));
+}
+function setupHoverAnimatedImages(root){
+  root.querySelectorAll('img[data-hover-animate="1"]').forEach(img=>{
+    if(img.dataset.hoverBound==='1')return;img.dataset.hoverBound='1';
+    const freeze=()=>{
+      if(img.dataset.hoverReady==='1'||!img.naturalWidth||!img.naturalHeight)return;
+      const art=img.closest('.art');if(!art)return;
+      const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;canvas.className='hover-still';
+      if(img.classList.contains('nsfw-blur'))canvas.classList.add('nsfw-blur');
+      try{
+        const ctx=canvas.getContext('2d');const w=img.naturalWidth,h=img.naturalHeight,size=Math.min(w,h),sx=(w-size)/2,sy=(h-size)/2;
+        ctx.drawImage(img,sx,sy,size,size,0,0,256,256);
+      }catch{return;}
+      const animatedSrc=img.currentSrc||img.src;if(!animatedSrc)return;
+      img.dataset.animatedSrc=animatedSrc;img.dataset.hoverReady='1';img.classList.add('hover-animated-img');
+      art.insertBefore(canvas,img);let active=false;
+      const stop=()=>{active=false;canvas.style.opacity='1';img.style.opacity='0';if(img.src!==TRANSPARENT_GIF)img.src=TRANSPARENT_GIF;};
+      const start=()=>{if(active)return;active=true;img.style.opacity='0';canvas.style.opacity='1';
+        const reveal=()=>{if(!active)return;img.style.opacity='1';canvas.style.opacity='0';};
+        img.addEventListener('load',reveal,{once:true});img.src=animatedSrc;if(img.complete&&img.naturalWidth)reveal();
+      };
+      art.addEventListener('mouseenter',start);art.addEventListener('mouseleave',stop);
+      const cardEl=art.closest('.card');cardEl?.addEventListener('focusin',start);cardEl?.addEventListener('focusout',event=>{if(!cardEl.contains(event.relatedTarget))stop();});
+      stop();
+    };
+    if(img.complete&&img.naturalWidth)freeze();else img.addEventListener('load',freeze,{once:true});
+  });
+}
+function applyTranslation(article,kind,original,result){
+  if(!article||!result||result.error)return;
+  const source=String(result.sourceLanguage||'').toLowerCase();const translated=normalizeDisplayText(result.translated||'');
+  if(!translated||source.startsWith('en')||translated.toLowerCase()===normalizeDisplayText(original).toLowerCase())return;
+  const node=article.querySelector(kind==='name'?'[data-card-name]':'[data-card-title]');if(!node)return;
+  node.textContent=translated;node.title=String(original||'');
+  const note=article.querySelector('.translation-note');if(note){note.hidden=false;note.textContent=`Translated from ${languageDisplayName(source)}`;const prior=note.title?`${note.title}\n`:'';note.title=`${prior}Original ${kind}: ${original}`;}
+}
+async function translateVisibleCards(grid,bots){
+  const byId=new Map((bots||[]).map(bot=>[String(bot.id||''),bot])),items=[],targets=new Map();
+  grid.querySelectorAll('.card[data-bot-id]').forEach(article=>{
+    const bot=byId.get(article.dataset.botId);if(!bot)return;
+    for(const [kind,value] of [['name',bot.name],['title',bot.title]]){
+      const original=String(value||'').trim();if(!likelyNeedsTranslation(original,bot))continue;
+      const memoryKey=`${kind}\u0000${original}`;const cached=translationMemory.get(memoryKey);
+      if(cached){applyTranslation(article,kind,original,cached);continue;}
+      const id=`${bot.id}:${kind}`;items.push({id,text:original});targets.set(id,{article,kind,original,memoryKey});
+    }
+  });
+  if(!items.length)return;
+  try{
+    const response=await fetch(TRANSLATION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({target:'en',items})});
+    if(!response.ok)return;const payload=await response.json();
+    for(const result of payload.items||[]){const target=targets.get(String(result.id||''));if(!target)continue;translationMemory.set(target.memoryKey,result);applyTranslation(target.article,target.kind,target.original,result);}
+  }catch{}
+}
+function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void translateVisibleCards(grid,bots);}
+
+
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:1};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div></div></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
-      <div class="results-head"><h2>Public bots</h2><span id="result-count"></span></div><section class="grid" id="grid"></section>
-      <div class="load-more-wrap"><button type="button" class="load-more" id="load-more" hidden>Load more</button></div>
+      <div class="results-head"><h2>Public bots</h2><span id="result-count"></span></div><div data-archive-pager class="pager-wrap pager-top"></div><section class="grid" id="grid"></section><div data-archive-pager class="pager-wrap"></div>
       <footer class="footer">Active browsing queries SpicyChat's public Typesense index. Historical bot records and archived images are stored separately in the archive.</footer>
     </section></div>`;
-  const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count'),more=$('#load-more');
-  $('#sort').value=state.sort;
-  let rows=[],found=0,requestNo=0,timer;
+  const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
+  let requestNo=0,timer,found=0;
   const sync=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);};
-  async function run(reset=true){
-    sync();if(reset){state.page=1;rows=[];grid.innerHTML='<p class="loading">Loading public bots…</p>';}
-    const token=++requestNo;
+  async function run(){
+    sync();grid.innerHTML='<p class="loading">Loading public bots…</p>';const token=++requestNo;
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
-    const search={collection:runtime.typesense.collection,q:state.q||'*',query_by:runtime.typesense.queryBy,page:state.page,per_page:60,filter_by:buildTsFilter(runtime,state),sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt'};
+    const search={collection:runtime.typesense.collection,q:state.q||'*',query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:buildTsFilter(runtime,state),sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt'};
     try{
-      const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;
-      found=Number(result.found||0);const next=(result.hits||[]).map(h=>docToCard(h.document||{})).filter(b=>b.id);
-      rows=reset?next:[...rows,...next];
-      grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these filters.</div>';
-      count.textContent=`${found.toLocaleString()} matches · ${rows.length.toLocaleString()} loaded`;
-      more.hidden=rows.length>=found||!next.length;
-    }catch(e){if(token!==requestNo)return;grid.innerHTML=`<div class="error">Could not query the public bot index: ${esc(e.message||e)}</div>`;count.textContent='';more.hidden=true;}
+      const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;found=Number(result.found||0);const totalPages=Math.max(1,Math.ceil(found/PAGE_SIZE));
+      if(found&&state.page>totalPages){state.page=totalPages;setQuery(state);return run();}
+      const rows=(result.hits||[]).map(h=>docToCard(h.document||{})).filter(b=>b.id);grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these filters.</div>';
+      const start=found?((state.page-1)*PAGE_SIZE)+1:0,end=Math.min(found,state.page*PAGE_SIZE);count.textContent=found?`${start.toLocaleString()}–${end.toLocaleString()} of ${found.toLocaleString()} matches`:'0 matches';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,rows);
+    }catch(e){if(token!==requestNo)return;grid.innerHTML=`<div class="error">Could not query the public bot index: ${esc(e.message||e)}</div>`;count.textContent='';renderPagers(1,1);}
   }
-  const schedule=()=>{clearTimeout(timer);timer=setTimeout(()=>run(true),240);};
-  attachSidebar(state,()=>run(true));
-  $('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',()=>run(true));$('#blur-nsfw').addEventListener('change',()=>run(true));
+  const resetAndRun=()=>{state.page=1;run();};const schedule=()=>{clearTimeout(timer);state.page=1;timer=setTimeout(()=>run(),240);};
+  attachSidebar(state,resetAndRun);$('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',resetAndRun);$('#blur-nsfw').addEventListener('change',resetAndRun);
   $('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
-  more.addEventListener('click',()=>{state.page++;run(false);});
-  await run(true);
+  bindPagers(target=>{state.page=target;setQuery(state,true);void run();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});
+  window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));void run();});
+  await run();
 }
 
+
 async function browseDeleted(runtime,manifest,tags,stats){
-  if(runtime.r2ReadAllowed===false){
-    app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;
-  }
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0'};
-  let bots=[];
-  if(runtime.deletedIndexUrl){
-    try{
-      const payload=await fetchJson(runtime.deletedIndexUrl);
-      if(Array.isArray(payload?.bots))bots=payload.bots;
-      else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');
-    }catch{}
-  }
+  if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong></div>
-      <div class="results-head"><h2>Deleted / archived</h2><span id="result-count"></span></div><section class="grid" id="grid"></section>
+      <div class="results-head"><h2>Deleted / archived</h2><span id="result-count"></span></div><div data-archive-pager class="pager-wrap pager-top"></div><section class="grid" id="grid"></section><div data-archive-pager class="pager-wrap"></div>
       <footer class="footer">A bot is only moved here after repeated explicit public character API 404s. Disappearing from a listing alone is not deletion evidence.</footer>
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
-  const render=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);const rows=localFilterAndSort(bots,state);const totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0);count.textContent=rows.length===totalConfirmed?`${rows.length.toLocaleString()} shown`:`${rows.length.toLocaleString()} shown · ${totalConfirmed.toLocaleString()} confirmed total`;grid.innerHTML=rows.length?rows.slice(0,2000).map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';};
-  attachSidebar(state,render);$('#search').addEventListener('input',render);$('#creator').addEventListener('input',render);$('#sort').addEventListener('change',render);$('#blur-nsfw').addEventListener('change',render);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));render();
+  const render=()=>{
+    state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);
+    const rows=localFilterAndSort(bots,state),totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0),totalPages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>totalPages)state.page=totalPages;
+    const startIndex=(state.page-1)*PAGE_SIZE,visible=rows.slice(startIndex,startIndex+PAGE_SIZE),start=rows.length?startIndex+1:0,end=Math.min(rows.length,startIndex+PAGE_SIZE);
+    count.textContent=rows.length===totalConfirmed?`${start.toLocaleString()}–${end.toLocaleString()} of ${totalConfirmed.toLocaleString()} confirmed`:`${start.toLocaleString()}–${end.toLocaleString()} of ${rows.length.toLocaleString()} matching · ${totalConfirmed.toLocaleString()} confirmed total`;
+    grid.innerHTML=visible.length?visible.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,visible);
+  };
+  const resetAndRender=()=>{state.page=1;render();};attachSidebar(state,resetAndRender);$('#search').addEventListener('input',resetAndRender);$('#creator').addEventListener('input',resetAndRender);$('#sort').addEventListener('change',resetAndRender);$('#blur-nsfw').addEventListener('change',resetAndRender);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
+  bindPagers(target=>{state.page=target;setQuery(state,true);render();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));render();});render();
 }
+
 async function browse(){
   const [runtime,manifest,tags,stats]=await Promise.all([loadRuntime(),loadManifest(),loadTags(),loadStats()]);
   if(runtime.storageMode!=='r2')throw new Error('This website update expects the completed R2 migration.');
@@ -371,10 +486,10 @@ async function botPage(){
   const tags=(lk.tags||[]).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
   const history=(record.fieldHistory||[]).filter(h=>!['updatedAt','updated_at','lastUpdatedAt','last_updated_at'].includes(String(h.path||'').split('.').pop())).slice().reverse().slice(0,100).map(h=>`<div class="history-item"><b>${esc(h.path)}</b> · ${esc(h.kind||'value')}<br><span class="detail-sub">${date(h.at)} · ${esc(h.source||'')}</span></div>`).join('');
   app.innerHTML=`<article class="detail"><div class="detail-head"><div class="detail-art">${imgHtml(primary,fallback,{alt:bestField(record,'name')||''})}</div>
-    <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(bestField(record,'name')||bestField(record,'title')||'Unknown bot')}</h1>
+    <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(normalizeDisplayText(bestField(record,'name')||bestField(record,'title')||'Unknown bot'))}</h1>
     <div class="detail-sub">${bestField(record,'creator_username')?`@${esc(bestField(record,'creator_username'))}`:'Unknown creator'}</div>
     <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
-    <div class="pill-row">${tags}</div><p>${esc(bestField(record,'title')||'')}</p>
+    <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>
     <div class="detail-actions"><a class="primary-button" href="${esc(spicyHref(record.id))}" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="../">Back to archive</a></div></div></div>
     <section class="section"><h2>Last-known archived fields</h2><p class="detail-sub">A field stays here after SpicyChat stops exposing it. That does not mean it is still currently public.</p>${fieldHtml||'<p class="detail-sub">No rich definition fields have been recovered yet.</p>'}</section>
     <section class="section"><h2>Latest metrics</h2><div class="pre">${esc(JSON.stringify(record.metrics?.latest||{},null,2))}</div></section>

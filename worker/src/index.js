@@ -820,6 +820,77 @@ async function cleanupRejectedPayloads(env) {
   return deleted;
 }
 
+const TRANSLATION_MAX_ITEMS = 200;
+const TRANSLATION_MAX_TEXT_CHARS = 1200;
+const TRANSLATION_MAX_TOTAL_CHARS = 30000;
+const TRANSLATION_ALLOWED_ORIGINS = new Set([
+  "https://spicychatarchive.drache.uk",
+  "https://drachescript.github.io",
+]);
+
+async function mapWithConcurrency(items, limit, mapper) {
+  const output = new Array(items.length);
+  let cursor = 0;
+  async function worker() {
+    while (true) {
+      const index = cursor++;
+      if (index >= items.length) return;
+      try { output[index] = await mapper(items[index], index); }
+      catch (error) { output[index] = { id: items[index]?.id || "", error: String(error?.message || error || "translation_failed") }; }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, () => worker()));
+  return output;
+}
+
+async function translateTextCached(text, target = "en") {
+  const cacheKey = await sha256Hex(`${target}\u0000${text}`);
+  const cache = caches.default;
+  const request = new Request(`https://translation-cache.spicychatarchive.invalid/v1/${cacheKey}`);
+  const cached = await cache.match(request);
+  if (cached) return cached.json();
+
+  const url = new URL("https://translate.googleapis.com/translate_a/single");
+  url.searchParams.set("client", "gtx");
+  url.searchParams.set("sl", "auto");
+  url.searchParams.set("tl", target);
+  url.searchParams.set("dt", "t");
+  url.searchParams.set("q", text);
+  const response = await fetch(url.toString(), { headers: { "User-Agent": "SpicyChatArchive/1.0" } });
+  if (!response.ok) throw new Error(`translate_upstream_${response.status}`);
+  const payload = await response.json();
+  const translated = Array.isArray(payload?.[0]) ? payload[0].map(part => String(part?.[0] || "")).join("") : "";
+  const result = { translated: translated || text, sourceLanguage: String(payload?.[2] || "") };
+  await cache.put(request, new Response(JSON.stringify(result), {
+    headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=2592000" },
+  }));
+  return result;
+}
+
+async function handleTranslation(request) {
+  const origin = String(request.headers.get("Origin") || "");
+  if (!TRANSLATION_ALLOWED_ORIGINS.has(origin)) return json({ ok: false, error: "origin_not_allowed" }, 403);
+  let body;
+  try { body = await request.json(); }
+  catch { return json({ ok: false, error: "invalid_json" }, 400); }
+  const target = String(body?.target || "en").toLowerCase();
+  if (target !== "en") return json({ ok: false, error: "unsupported_target" }, 400);
+  const incoming = Array.isArray(body?.items) ? body.items.slice(0, TRANSLATION_MAX_ITEMS) : [];
+  if (!incoming.length) return json({ ok: true, items: [] });
+  const items = [];
+  let totalChars = 0;
+  for (const item of incoming) {
+    const id = String(item?.id || "").slice(0, 160);
+    const text = String(item?.text || "").trim().slice(0, TRANSLATION_MAX_TEXT_CHARS);
+    if (!id || !text) continue;
+    totalChars += text.length;
+    if (totalChars > TRANSLATION_MAX_TOTAL_CHARS) return json({ ok: false, error: "translation_batch_too_large" }, 413);
+    items.push({ id, text });
+  }
+  const translated = await mapWithConcurrency(items, 6, async item => ({ id: item.id, ...(await translateTextCached(item.text, target)) }));
+  return json({ ok: true, items: translated });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -835,7 +906,13 @@ export default {
         accepts: "SpicyChat QoL Bot Status Center export v1",
         publicSubmissionEndpoint: "/api/submissions/bot-status",
         adminSubmissionEndpoint: "/api/admin/submissions",
+        translationEndpoint: "/api/translate",
       });
+    }
+
+
+    if (request.method === "POST" && url.pathname === "/api/translate") {
+      return handleTranslation(request);
     }
 
     // -----------------------------------------------------------------------

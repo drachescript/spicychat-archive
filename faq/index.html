@@ -35,18 +35,43 @@
     </details>
 
     <details class="faq-card">
+      <summary>Why can the archive total be higher than SpicyChat's current public count?</summary>
+      <div class="faq-answer"><p>Because this is an archive, not a mirror of only what is public right this second. Once a public bot has been captured, its historical record stays in the archive even if the bot later disappears, becomes unavailable, or is eventually confirmed deleted.</p><p>SpicyChat's public count is a live snapshot. The archive total is cumulative, so after enough history it can be higher than the live public index without anything being wrong.</p></div>
+    </details>
+
+    <details class="faq-card">
       <summary>Why is a bot missing from the archive?</summary>
       <div class="faq-answer"><p>The crawler is still working through a very large public catalog, so it may simply not have reached that bot yet. A bot can also become private or unavailable before the archive first sees it.</p><p>The archive is designed to keep filling those gaps over time rather than pretending it already has everything.</p></div>
     </details>
 
     <details class="faq-card">
       <summary>When does a bot count as deleted?</summary>
-      <div class="faq-answer"><p>Disappearing from a search result is not enough. Previously seen public bots are only marked deleted after the archive can repeatedly confirm that the public character endpoint returns 404.</p><p>That is deliberately conservative so a temporary search/index problem does not turn into a fake deletion.</p></div>
+      <div class="faq-answer"><p>Disappearing from search is not enough. The archive only marks a previously seen public bot deleted after repeated explicit missing observations from SpicyChat's public character endpoint on separate checks.</p><p>That includes a real 404, and also the observed case where the endpoint returns HTTP 200 with an empty object while SpicyChat's frontend treats the bot as unavailable/404. One missing result only creates a suspect. A later check has to confirm it again.</p><p>Temporary request errors, 401/403 responses and other transient failures are not treated as deletion evidence.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Why can a crawler run add 0 bots and still be useful?</summary>
+      <div class="faq-answer"><p>Finding brand-new IDs is only one part of maintenance. A run can also refresh richer character data, detect real creator edits, separate traffic-only metric changes, advance the long-term verification cursor, re-check possible missing bots and restore a bot if it becomes public again.</p><p>So a +0 discovery run can still do a lot of useful archive work.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>What does a 50-page, 500-page or 1,000-page run actually mean?</summary>
+      <div class="faq-answer"><p>That number is the budget for the rotating deep Typesense sweep, not the number of bots saved. A deep page currently contains up to 250 public search hits, so 500 pages can inspect up to about 125,000 listing hits.</p><p>The newest-bot overlap scan, ranking snapshots and character-API verification are separate parts of the same maintenance run. That is why the total work in a run can be much larger than the page number makes it sound.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>How does the archive keep up with new bots while still checking old ones?</summary>
+      <div class="faq-answer"><p>Each maintenance run checks the newest public pages first and stops once it has crossed a small all-known overlap window, so new bots are picked up quickly without rescanning the entire front of the index every time.</p><p>It also advances a rotating deep sweep through the public index and a separate resumable character-API verification cursor through stored bots. That gives newer bots fast coverage while older records still get revisited over time.</p></div>
     </details>
 
     <details class="faq-card">
       <summary>Does every little SpicyChat update create a new archived version?</summary>
-      <div class="faq-answer"><p>No. The archive tries to keep meaningful bot changes, such as public name, description, greeting, scenario, creator, tags, visibility, avatar, definition visibility and similar character metadata.</p><p>Message counts, rankings, recommendation scores, SpicyChat's noisy <code>updatedAt</code> value and other backend/activity churn are not treated as proof that the creator edited the bot.</p></div>
+      <div class="faq-answer"><p>No. The archive tries to keep meaningful bot changes, such as public name, description, greeting, scenario, creator, tags, visibility, avatar, definition visibility and similar character metadata.</p><p>Message counts, rankings, recommendation scores, SpicyChat's noisy <code>updatedAt</code> value and other backend/activity churn are not treated as proof that the creator edited the bot. The crawler tracks those separately from actual content changes where useful.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>What's the difference between archive growth and SpicyChat public growth?</summary>
+      <div class="faq-answer"><p><strong>Archive growth</strong> means how many new records this project captured. During a backfill that number can be huge because the crawler is catching up on bots that already existed.</p><p><strong>SpicyChat public growth</strong> is the net movement in SpicyChat's reported live public index over time. The Stats page keeps those separate so a big archive catch-up run is not presented like SpicyChat suddenly created hundreds of thousands of bots that day.</p></div>
     </details>
 
     <details class="faq-card">
@@ -71,7 +96,7 @@
 
     <details class="faq-card">
       <summary>How often does the archive update?</summary>
-      <div class="faq-answer"><p>The normal crawler is scheduled regularly, with quota and storage guards that can reduce or pause work when needed. Larger manual discovery batches are tested separately instead of silently changing the normal schedule.</p><p>The Stats page shows the latest completed batches and the current archive totals.</p></div>
+      <div class="faq-answer"><p>The normal crawler is scheduled every three hours, with quota and storage guards that can reduce or pause work when needed. Larger manual discovery batches are tested separately instead of silently changing the normal schedule.</p><p>The Stats page shows the latest completed batches and the current archive totals.</p></div>
     </details>
 
     <details class="faq-card">

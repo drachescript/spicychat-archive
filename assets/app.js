@@ -38,7 +38,7 @@ async function loadTags(){try{return (await fetchJson(asset('data/tags.json'))).
 const R2_RUNTIME_FALLBACK={
   schemaVersion:1,storageMode:'r2',r2ReadAllowed:true,
   publicDataBaseUrl:'https://data.spicychatarchive.drache.uk',
-  deletedIndexUrl:'https://data.spicychatarchive.drache.uk/_meta/deleted-index.json',
+  deletedIndexUrl:'https://data.spicychatarchive.drache.uk/indexes/deleted.json',
   typesense:{
     url:'https://ts-lb.nd-api.com/multi_search',
     fallbackUrls:['https://etmzpxgvnid370fyp.a1.typesense.net/multi_search'],
@@ -305,7 +305,14 @@ async function browseDeleted(runtime,manifest,tags,stats){
     app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;
   }
   const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0'};
-  let bots=[];if(runtime.deletedIndexUrl){try{bots=(await fetchJson(runtime.deletedIndexUrl)).bots||[];}catch{}}
+  let bots=[];
+  if(runtime.deletedIndexUrl){
+    try{
+      const payload=await fetchJson(runtime.deletedIndexUrl);
+      if(Array.isArray(payload?.bots))bots=payload.bots;
+      else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');
+    }catch{}
+  }
   app.innerHTML=`<section class="hero"><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong></div>
@@ -313,7 +320,7 @@ async function browseDeleted(runtime,manifest,tags,stats){
       <footer class="footer">A bot is only moved here after repeated explicit public character API 404s. Disappearing from a listing alone is not deletion evidence.</footer>
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
-  const render=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);const rows=localFilterAndSort(bots,state);count.textContent=`${rows.length.toLocaleString()} shown`;grid.innerHTML=rows.length?rows.slice(0,2000).map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';};
+  const render=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);const rows=localFilterAndSort(bots,state);const totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0);count.textContent=rows.length===totalConfirmed?`${rows.length.toLocaleString()} shown`:`${rows.length.toLocaleString()} shown · ${totalConfirmed.toLocaleString()} confirmed total`;grid.innerHTML=rows.length?rows.slice(0,2000).map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';};
   attachSidebar(state,render);$('#search').addEventListener('input',render);$('#creator').addEventListener('input',render);$('#sort').addEventListener('change',render);$('#blur-nsfw').addEventListener('change',render);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));render();
 }
 async function browse(){

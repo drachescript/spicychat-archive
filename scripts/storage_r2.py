@@ -598,12 +598,25 @@ class R2ArchiveStore:
 
     def publish_deleted_index(self, *, force: bool = False) -> str | None:
         key = self.key("indexes", "deleted.json")
-        # This public index is a Class A write. Do not rewrite the same deleted
-        # list every three hours just to refresh cache metadata. During normal
-        # runs deleted_dirty is set only when the list genuinely changes.
-        if not force and not self.deleted_dirty:
-            return self.public_url(key)
         rows = list(self.deleted_index.values())
         rows.sort(key=lambda x: str(x.get("statusSince") or ""), reverse=True)
-        self.put_json(key, {"bots": rows}, public=True)
-        return self.public_url(key)
+
+        # Keep the tiny public copy synchronized with the authoritative
+        # private deleted index even after an interrupted/stale publish.
+        try:
+            current = self.get_json(key, None)
+        except Exception:
+            current = None
+        current_rows = current.get("bots") if isinstance(current, dict) else None
+        if force or self.deleted_dirty or current_rows != rows:
+            # Deleted counts should update immediately; do not edge-cache this index.
+            self.put_json(key, {"bots": rows}, public=False)
+
+        url = self.public_url(key)
+        if not url:
+            return None
+        revision = hashlib.blake2b(
+            json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8"),
+            digest_size=8,
+        ).hexdigest()
+        return f"{url}?v={revision}"

@@ -1,0 +1,253 @@
+name: Patch deleted index sync
+
+on:
+  push:
+    paths:
+      - ".github/workflows/patch-deleted-index-sync.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Patch archive code and defaults
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding="utf-8")
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"{path}: expected one exact match, found {count}")
+              p.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          # Scheduled/deep maintenance default: 100 pages.
+          cfg_path = Path("config.json")
+          cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+          cfg["crawler"]["explore_pages_per_run"] = 100
+          cfg_path.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+          workflow_path = Path(".github/workflows/archive.yml")
+          workflow = workflow_path.read_text(encoding="utf-8")
+          workflow = workflow.replace('        default: "50"\n        type: choice', '        default: "100"\n        type: choice', 1)
+          workflow = workflow.replace('normal 50-page target.', 'normal 100-page target.')
+          workflow = workflow.replace('keep a small 50-page deep sweep; manual runs may request up to 1000.', 'keep a 100-page deep sweep; manual runs may request up to 1000.')
+          workflow_path.write_text(workflow, encoding="utf-8")
+
+          # The deleted page reads a tiny public R2 index. Keep it self-healing and
+          # uncacheable, and return a content-versioned URL so an old edge response
+          # can never hide newly confirmed deletions.
+          old_publish = '''    def publish_deleted_index(self, *, force: bool = False) -> str | None:
+              key = self.key("indexes", "deleted.json")
+              # This public index is a Class A write. Do not rewrite the same deleted
+              # list every three hours just to refresh cache metadata. During normal
+              # runs deleted_dirty is set only when the list genuinely changes.
+              if not force and not self.deleted_dirty:
+                  return self.public_url(key)
+              rows = list(self.deleted_index.values())
+              rows.sort(key=lambda x: str(x.get("statusSince") or ""), reverse=True)
+              self.put_json(key, {"bots": rows}, public=True)
+              return self.public_url(key)
+          '''
+          new_publish = '''    def publish_deleted_index(self, *, force: bool = False) -> str | None:
+              key = self.key("indexes", "deleted.json")
+              rows = list(self.deleted_index.values())
+              rows.sort(key=lambda x: str(x.get("statusSince") or ""), reverse=True)
+
+              # The deleted page and public stats must agree immediately after a
+              # verification run. Compare the tiny public copy against the
+              # authoritative private deleted index on every run so an interrupted
+              # publish or an older copy self-heals even when deleted_dirty is false.
+              try:
+                  current = self.get_json(key, None)
+              except Exception:
+                  current = None
+              current_rows = current.get("bots") if isinstance(current, dict) else None
+              if force or self.deleted_dirty or current_rows != rows:
+                  # This index is tiny and changes infrequently. no-store prevents
+                  # the public R2/edge cache from serving the previous deleted count.
+                  self.put_json(key, {"bots": rows}, public=False)
+
+              url = self.public_url(key)
+              if not url:
+                  return None
+              revision = hashlib.blake2b(
+                  json.dumps(
+                      rows,
+                      ensure_ascii=False,
+                      sort_keys=True,
+                      separators=(",", ":"),
+                  ).encode("utf-8"),
+                  digest_size=8,
+              ).hexdigest()
+              return f"{url}?v={revision}"
+          '''
+          replace_once("scripts/storage_r2.py", old_publish, new_publish)
+
+          # Correct the emergency runtime fallback and accept either the public
+          # {bots:[...]} shape or the private UUID->summary mapping.
+          replace_once(
+              "assets/app.js",
+              "  deletedIndexUrl:'https://data.spicychatarchive.drache.uk/_meta/deleted-index.json',",
+              "  deletedIndexUrl:'https://data.spicychatarchive.drache.uk/indexes/deleted.json',",
+          )
+          replace_once(
+              "assets/app.js",
+              "  let bots=[];if(runtime.deletedIndexUrl){try{bots=(await fetchJson(runtime.deletedIndexUrl)).bots||[];}catch{}}",
+              "  let bots=[];\n  if(runtime.deletedIndexUrl){\n    try{\n      const payload=await fetchJson(runtime.deletedIndexUrl);\n      if(Array.isArray(payload?.bots))bots=payload.bots;\n      else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');\n    }catch{}\n  }",
+          )
+          replace_once(
+              "assets/app.js",
+              "count.textContent=`${rows.length.toLocaleString()} shown`;",
+              "const totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0);count.textContent=rows.length===totalConfirmed?`${rows.length.toLocaleString()} shown`:`${rows.length.toLocaleString()} shown · ${totalConfirmed.toLocaleString()} confirmed total`;",
+          )
+
+          # Keep the public stats config hint in sync immediately; the next crawler
+          # run will regenerate it normally.
+          stats_path = Path("data/stats.json")
+          if stats_path.exists():
+              stats = json.loads(stats_path.read_text(encoding="utf-8"))
+              adaptive = stats.setdefault("adaptiveDiscovery", {})
+              adaptive["basePages"] = 100
+              adaptive["nextPageBudget"] = 100
+              stats_path.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+          # Regression coverage for the public deleted-index repair/cache behavior.
+          test_path = Path("tests/test_storage_r2.py")
+          test_text = test_path.read_text(encoding="utf-8")
+          marker = "\n\nif __name__ == '__main__':\n"
+          if marker not in test_text:
+              raise SystemExit("tests/test_storage_r2.py: insertion marker missing")
+          addition = r'''
+
+class DeletedIndexPublishTests(unittest.TestCase):
+    def _store(self, rows, public_payload, *, dirty=False):
+        store = object.__new__(mod.R2ArchiveStore)
+        store.deleted_index = {row['id']: row for row in rows}
+        store.deleted_dirty = dirty
+        store.public_base_url = 'https://data.example.test'
+        store.meta_prefix = '_meta'
+        writes = []
+        store.get_json = lambda key, default=None: public_payload
+
+        def put_json(key, data, **kwargs):
+            writes.append((key, data, kwargs))
+
+        store.put_json = put_json
+        return store, writes
+
+    def test_deleted_index_repairs_stale_public_copy_without_caching(self):
+        rows = [
+            {'id': 'a', 'statusSince': '2026-09-30T02:00:00Z'},
+            {'id': 'b', 'statusSince': '2026-09-30T01:00:00Z'},
+        ]
+        store, writes = self._store(rows, {'bots': [rows[1]]}, dirty=False)
+        url = store.publish_deleted_index()
+
+        self.assertEqual(len(writes), 1)
+        self.assertEqual(writes[0][0], 'indexes/deleted.json')
+        self.assertEqual(writes[0][1]['bots'], rows)
+        self.assertFalse(writes[0][2]['public'])
+        self.assertTrue(url.startswith('https://data.example.test/indexes/deleted.json?v='))
+
+    def test_deleted_index_skips_identical_write_but_keeps_versioned_url(self):
+        rows = [{'id': 'a', 'statusSince': '2026-09-30T01:00:00Z'}]
+        store, writes = self._store(rows, {'bots': rows}, dirty=False)
+        url = store.publish_deleted_index()
+
+        self.assertEqual(writes, [])
+        self.assertIn('?v=', url)
+'''
+          test_path.write_text(test_text.replace(marker, addition + marker, 1), encoding="utf-8")
+          PY
+
+      - name: Test archive code
+        run: python -m unittest discover -s tests -v
+
+      - name: Repair current public deleted index
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          import archive
+          from storage_r2 import R2ArchiveStore
+
+          config = archive.load_config()
+          store = R2ArchiveStore(config)
+          store.load_deleted_index()
+          url = store.publish_deleted_index(force=True)
+          store.flush_usage(force=True)
+          count = len(store.deleted_index)
+          print(f"Re-published {count:,} deleted bots -> {url}")
+
+          runtime_path = Path('data/runtime.json')
+          runtime = json.loads(runtime_path.read_text(encoding='utf-8'))
+          runtime['deletedIndexUrl'] = url
+          runtime_path.write_text(json.dumps(runtime, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          manifest_path = Path('data/manifest.json')
+          if manifest_path.exists():
+              manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+              manifest['deletedBots'] = count
+              manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          stats_path = Path('data/stats.json')
+          if stats_path.exists():
+              stats = json.loads(stats_path.read_text(encoding='utf-8'))
+              stats['deletedBots'] = count
+              adaptive = stats.setdefault('adaptiveDiscovery', {})
+              adaptive['basePages'] = 100
+              adaptive['nextPageBudget'] = 100
+              stats_path.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          feed_path = Path('data/archive-feed.json')
+          if feed_path.exists():
+              feed = json.loads(feed_path.read_text(encoding='utf-8'))
+              feed.setdefault('archive', {})['deletedBots'] = count
+              feed_path.write_text(json.dumps(feed, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Commit patch and remove one-off workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/patch-deleted-index-sync.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Fix deleted index sync and use 100-page maintenance"
+          git push origin HEAD:main

@@ -353,6 +353,14 @@ def _maintenance_character_refresh(
                 return
 
             payload.setdefault("character_id", bot_id)
+            # The rolling verification pass exists to detect availability and
+            # authored-content changes. Message/rating counters are high-churn
+            # traffic metrics, not creator edits, so do not rewrite a bot record
+            # just because those counters moved.
+            for field in tuple(payload):
+                if field in legacy.VOLATILE_FIELDS:
+                    payload.pop(field, None)
+
             record = legacy.load_bot(bot_id)
             old_status = (record or {}).get("status", {}).get("current")
             old_history_len = len((record or {}).get("fieldHistory") or [])

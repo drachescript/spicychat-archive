@@ -12,6 +12,29 @@
     if (n < 0) return `−${Math.abs(n).toLocaleString()}`;
     return '0';
   };
+  const shortDate = value => {
+    const date = new Date(value || 0);
+    return Number.isNaN(date.getTime())
+      ? 'Unknown'
+      : date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  };
+  const fullDate = value => {
+    const date = new Date(value || 0);
+    return Number.isNaN(date.getTime())
+      ? 'Unknown'
+      : date.toLocaleString(undefined, {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit'
+        });
+  };
+  const archiveAdded = row => Number(row?.addedSincePrevious ?? row?.exploration?.new ?? 0) || 0;
+  const discovered = row => Number(row?.exploration?.new ?? 0) || 0;
+  const displayableArchiveRun = row =>
+    row?.kind === 'archive-run' && (archiveAdded(row) > 0 || discovered(row) > 0);
+  const displayArchiveRuns = stats => (stats?.runs || []).filter(displayableArchiveRun);
 
   async function fetchJson(path) {
     const response = await fetch(path, { cache: 'no-store' });
@@ -99,6 +122,47 @@
     };
   }
 
+  function findCard(title) {
+    return [...document.querySelectorAll('.table-card')]
+      .find(card => card.querySelector('h2')?.textContent.trim() === title);
+  }
+
+  function patchBatchHistory(stats) {
+    // Keep zero-yield maintenance checks in stats.json because they are useful
+    // public-index samples and crawler history. They just are not useful as
+    // visible "recent batch" entries on the site.
+    const recent = displayArchiveRuns(stats).slice(-10).reverse();
+
+    if (page === 'stats') {
+      const runTable = findCard('Recent archive runs')?.querySelector('tbody');
+      if (runTable) {
+        const html = recent.length
+          ? recent.map(row => `<tr><td>${fullDate(row.at)}</td><td>+${fmt(archiveAdded(row))}</td><td>${fmt(discovered(row))}</td><td>${fmt(row.exploration?.pagesCompleted)}/${fmt(row.exploration?.pageBudget)}</td><td>${row.runDurationSeconds ? `${Math.round(row.runDurationSeconds / 60)}m` : '—'}</td></tr>`).join('')
+          : '<tr><td colspan="5">No runs with newly archived bots yet.</td></tr>';
+        if (runTable.innerHTML !== html) runTable.innerHTML = html;
+      }
+
+      const updates = findCard('Latest number updates')?.querySelector('.recent-list');
+      if (updates) {
+        const html = recent.length
+          ? recent.map(row => `<div class="recent-run"><div><b>${fullDate(row.at)}</b><br><span>${fmt(row.exploration?.pagesCompleted)} discovery pages · ${fmt(row.exploration?.hits)} hits</span></div><div><b>+${fmt(archiveAdded(row))}</b><br><span>${fmt(discovered(row))} new this scan</span></div></div>`).join('')
+          : '<div class="filter-note">No runs with newly archived bots yet.</div>';
+        if (updates.innerHTML !== html) updates.innerHTML = html;
+      }
+    }
+
+    if (page === 'browse' || page === 'deleted') {
+      const updates = document.querySelector('.growth-updates');
+      if (updates) {
+        const recentThree = displayArchiveRuns(stats).slice(-3).reverse();
+        const html = recentThree.length
+          ? recentThree.map(row => `<span>${shortDate(row.at)} <b>+${fmt(archiveAdded(row))}</b></span>`).join('')
+          : '<span>Growth history starts when a batch archives new bots.</span>';
+        if (updates.innerHTML !== html) updates.innerHTML = html;
+      }
+    }
+  }
+
   function patchStats(stats, growth) {
     if (page !== 'stats' || !growth) return;
     const cards = [...document.querySelectorAll('.stats-grid .stat')];
@@ -161,6 +225,7 @@
   async function apply() {
     const { stats, publicGrowth } = await loadData();
     if (!stats || !publicGrowth) return;
+    patchBatchHistory(stats);
     patchStats(stats, publicGrowth);
     patchGrowthBanner(stats, publicGrowth);
   }

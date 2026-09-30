@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """Post-backfill archive maintenance mode.
 
-The original deep discovery cursor stays in place as a rotating verification sweep,
-but every run also scans the newest Typesense pages from page 1 and stops after a
-small, consecutive overlap window of already-known bots. That keeps new bots fresh
-without waiting for the deep sweep to wrap around.
+Every run:
+- scans newest Typesense pages first and stops after a small known-overlap window;
+- advances a small deep Typesense sweep for recovery/change/deletion coverage;
+- rotates through stored bot IDs with the public character API so richer fields
+  (greeting/personality/scenario/etc.) are refreshed when they change;
+- requires repeated 404 evidence before marking a bot deleted.
 
-Stable Typesense metadata changes also promote the bot into the richer character
-API enrichment queue. Deletion decisions remain conservative: only a completed deep
-Typesense sweep can queue missing bots, and repeated character-API 404s are still
-required before a bot is marked deleted.
+The rolling character-API sweep is checkpointed in R2 state, so scheduled runs
+resume where the previous run stopped instead of starting over.
 """
 from __future__ import annotations
 
+import time
 from copy import deepcopy
 from typing import Any
 
@@ -206,12 +207,281 @@ def _scan_latest_until_overlap(
     return info
 
 
+def _seed_missing_404(
+    run_state: dict[str, Any],
+    bot_id: str,
+    at: str,
+) -> None:
+    """Record the first explicit 404 without allowing same-run confirmation."""
+    checks = run_state.setdefault("missingChecks", {})
+    info = checks.setdefault(
+        bot_id,
+        {
+            "count": 0,
+            "lastAt": None,
+            "lastStatus": None,
+            "reason": "character-api-maintenance-404",
+            "queuedAt": at,
+        },
+    )
+    if int(info.get("count") or 0) <= 0:
+        info["count"] = 1
+        info["lastAt"] = at
+        info["lastStatus"] = 404
+        info.setdefault("reason", "character-api-maintenance-404")
+        info.setdefault("queuedAt", at)
+
+
+def _maintenance_character_refresh(
+    client,
+    run_config: dict[str, Any],
+    at: str,
+    run_state: dict[str, Any],
+    *,
+    store,
+) -> dict[str, Any]:
+    """Refresh richer character data across the stored corpus with a resumable cursor."""
+    crawler = run_config.get("crawler") or {}
+    budget = _positive_int(
+        crawler.get("maintenance_verification_budget")
+        or crawler.get("enrichment_budget"),
+        5000,
+        maximum=50000,
+    )
+    priority_budget = _positive_int(
+        crawler.get("maintenance_priority_budget"),
+        min(1000, budget),
+        maximum=budget,
+    )
+    time_limit = _positive_int(
+        crawler.get("maintenance_verification_time_limit_seconds"),
+        1800,
+        minimum=60,
+        maximum=5400,
+    )
+
+    order = store.discovery_order
+    total = len(order)
+    priority = list(dict.fromkeys(run_state.setdefault("priorityEnrichment", [])))
+    priority_selected = priority[: min(priority_budget, budget)]
+    remaining_priority = priority[len(priority_selected) :]
+    selected_ids = set(priority_selected)
+
+    sweep = run_state.setdefault("verificationSweep", {})
+    cursor = max(0, int(sweep.get("cursor", run_state.get("enrichmentCursor") or 0)))
+    if total:
+        cursor %= total
+    else:
+        cursor = 0
+
+    completed_passes = max(0, int(sweep.get("completedPasses") or 0))
+    pass_number = completed_passes + 1
+    started_at = sweep.get("startedAt") or at
+    checked_this_pass = max(0, int(sweep.get("checkedThisPass") or 0))
+
+    processed = 0
+    enriched = 0
+    changed = 0
+    missing = 0
+    restricted = 0
+    restored = 0
+    transient = 0
+    priority_processed = 0
+    sequential_processed = 0
+    sequential_covered = 0
+    time_limited = False
+    retry: list[str] = []
+    started = time.monotonic()
+
+    print(
+        "maintenance verification: "
+        f"up to {budget:,} character API checks; "
+        f"priority cap {min(priority_budget, budget):,}; "
+        f"time limit {time_limit // 60}m; "
+        f"cursor {cursor:,}/{total:,}; pass {pass_number:,}.",
+        flush=True,
+    )
+
+    def out_of_time() -> bool:
+        return (time.monotonic() - started) >= time_limit
+
+    def refresh_one(bot_id: str) -> None:
+        nonlocal processed, enriched, changed, missing, restricted, restored, transient
+
+        response = client.character(bot_id)
+        processed += 1
+
+        if response.ok:
+            payload = legacy.unwrap_character_payload(response.data)
+            if not payload:
+                transient += 1
+                retry.append(bot_id)
+                return
+
+            payload.setdefault("character_id", bot_id)
+            record = legacy.load_bot(bot_id)
+            old_status = (record or {}).get("status", {}).get("current")
+            record, did_change = legacy.observe_bot(
+                record,
+                payload,
+                source="character-api",
+                at=at,
+            )
+            if did_change:
+                legacy.save_bot(record)
+                changed += 1
+
+            if bot_id in run_state.setdefault("missingChecks", {}):
+                run_state["missingChecks"].pop(bot_id, None)
+                restored += 1
+            elif old_status == "deleted":
+                restored += 1
+
+            enriched += 1
+            return
+
+        if response.status == 404:
+            missing += 1
+            # Already-confirmed deleted bots stay in the rolling sweep so a
+            # future 200 can restore them, but repeated 404s do not create a new
+            # suspect queue for a bot that is already archived as deleted.
+            if bot_id not in store.deleted_index:
+                _seed_missing_404(run_state, bot_id, at)
+            return
+
+        if response.status in {401, 403}:
+            restricted += 1
+            return
+
+        transient += 1
+        retry.append(bot_id)
+
+    # Priority changes/new bots are refreshed first, but they cannot consume the
+    # whole run forever; the rolling corpus sweep always keeps most of the budget.
+    for bot_id in priority_selected:
+        if processed >= budget or out_of_time():
+            time_limited = True
+            break
+        refresh_one(bot_id)
+        priority_processed += 1
+        if processed % 250 == 0:
+            print(
+                f"  maintenance verification {processed:,}/{budget:,}: "
+                f"{enriched:,} ok, {changed:,} changed, {missing:,} 404",
+                flush=True,
+            )
+
+    # Walk the stored ID order. Advancing the cursor over a bot already checked
+    # through the priority queue still counts as covering that corpus position.
+    traversed = 0
+    while (
+        total
+        and processed < budget
+        and traversed < total
+        and not out_of_time()
+    ):
+        bot_id = order[cursor]
+        cursor += 1
+        traversed += 1
+        sequential_covered += 1
+        checked_this_pass += 1
+
+        if cursor >= total:
+            cursor = 0
+            completed_passes += 1
+            pass_number = completed_passes + 1
+            sweep["lastCompletedAt"] = at
+            sweep["lastCompletedBots"] = total
+            started_at = at
+            checked_this_pass = 0
+
+        if bot_id in selected_ids:
+            continue
+        selected_ids.add(bot_id)
+        refresh_one(bot_id)
+        sequential_processed += 1
+
+        if processed % 250 == 0:
+            print(
+                f"  maintenance verification {processed:,}/{budget:,}: "
+                f"{enriched:,} ok, {changed:,} changed, {missing:,} 404; "
+                f"cursor {cursor:,}/{total:,}",
+                flush=True,
+            )
+
+    if out_of_time() and processed < budget:
+        time_limited = True
+
+    elapsed = int(time.monotonic() - started)
+
+    run_state["enrichmentCursor"] = cursor
+    run_state["priorityEnrichment"] = []
+    unprocessed_priority = priority_selected[priority_processed:]
+    for bot_id in [*unprocessed_priority, *remaining_priority, *retry]:
+        optimized.cloud._priority_add(run_state, "priorityEnrichment", bot_id)
+
+    sweep.update(
+        {
+            "schemaVersion": 1,
+            "cursor": cursor,
+            "totalBots": total,
+            "completedPasses": completed_passes,
+            "pass": completed_passes + 1,
+            "startedAt": started_at,
+            "checkedThisPass": checked_this_pass,
+            "lastRunAt": at,
+            "lastRunProcessed": processed,
+            "lastRunEnriched": enriched,
+            "lastRunChanged": changed,
+            "lastRunMissing": missing,
+            "lastRunRestricted": restricted,
+            "lastRunRestored": restored,
+            "lastRunTransient": transient,
+            "lastRunPriority": priority_processed,
+            "lastRunSequential": sequential_processed,
+            "lastRunCovered": sequential_covered,
+            "lastRunDurationSeconds": elapsed,
+            "lastRunTimeLimited": time_limited,
+        }
+    )
+
+    print(
+        "maintenance verification: finished "
+        f"{processed:,}/{budget:,} checks in {elapsed/60:.1f}m; "
+        f"{enriched:,} available, {changed:,} changed, {missing:,} 404, "
+        f"{restricted:,} restricted, {restored:,} restored, "
+        f"{transient:,} transient; cursor {cursor:,}/{total:,}; "
+        f"completed passes {completed_passes:,}.",
+        flush=True,
+    )
+
+    return {
+        "processed": processed,
+        "enriched": enriched,
+        "changed": changed,
+        "missing": missing,
+        "restricted": restricted,
+        "restored": restored,
+        "transient": transient,
+        "priorityProcessed": priority_processed,
+        "sequentialProcessed": sequential_processed,
+        "sequentialCovered": sequential_covered,
+        "verificationCursor": cursor,
+        "verificationTotal": total,
+        "verificationPass": completed_passes + 1,
+        "verificationCompletedPasses": completed_passes,
+        "timeLimited": time_limited,
+        "durationSeconds": elapsed,
+    }
+
+
 def maintenance_configure_cloud(config: dict[str, Any], store):
     state, bloom = _original_configure_cloud(config, store)
 
     optimized_scan_listing = legacy.scan_listing
     optimized_explore_more = legacy.explore_more
     optimized_observe_bot = legacy.observe_bot
+    optimized_verify_missing = legacy.verify_missing
 
     def observe_with_change_refresh(
         record: dict[str, Any] | None,
@@ -275,9 +545,61 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
         result["sweepPass"] = int((run_state.get("exploration") or {}).get("pass") or 0)
         return result
 
+    def maintenance_enrich_queue(
+        client,
+        run_config: dict[str, Any],
+        at: str,
+        run_state: dict[str, Any],
+    ):
+        return _maintenance_character_refresh(
+            client,
+            run_config,
+            at,
+            run_state,
+            store=store,
+        )
+
+    def maintenance_verify_missing(
+        client,
+        run_config: dict[str, Any],
+        at: str,
+        run_state: dict[str, Any],
+        seen_public: set[str],
+    ):
+        # A first 404 discovered by the rolling character sweep is already one
+        # explicit observation. Do not immediately hit the same bot again a few
+        # minutes later and count that as an independent confirmation.
+        checks = run_state.setdefault("missingChecks", {})
+        deferred: dict[str, dict[str, Any]] = {}
+        for bot_id, info in list(checks.items()):
+            if (
+                int(info.get("lastStatus") or 0) == 404
+                and str(info.get("lastAt") or "") == at
+            ):
+                if bot_id in seen_public:
+                    checks.pop(bot_id, None)
+                else:
+                    deferred[bot_id] = checks.pop(bot_id)
+
+        try:
+            result = optimized_verify_missing(
+                client,
+                run_config,
+                at,
+                run_state,
+                seen_public,
+            )
+        finally:
+            for bot_id, info in deferred.items():
+                checks.setdefault(bot_id, info)
+        result["deferredSameRun404"] = len(deferred)
+        return result
+
     legacy.observe_bot = observe_with_change_refresh
     legacy.scan_listing = maintenance_scan_listing
     legacy.explore_more = maintenance_explore_more
+    legacy.enrich_queue = maintenance_enrich_queue
+    legacy.verify_missing = maintenance_verify_missing
 
     return state, bloom
 

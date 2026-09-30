@@ -35,6 +35,60 @@ def int_or_none(value: Any) -> int | None:
         return None
 
 
+def exploration_errors(exploration: dict[str, Any]) -> list[str]:
+    raw = exploration.get("errors") or []
+    if isinstance(raw, str):
+        raw = [raw]
+    if not isinstance(raw, list):
+        return []
+    return [str(item).strip() for item in raw if str(item).strip()]
+
+
+def classify_run_status(raw_status: str, exploration: dict[str, Any]) -> str:
+    """Separate a saved partial crawl from a hard workflow failure."""
+    workflow_status = str(raw_status or "success").strip().lower()
+    if workflow_status != "success":
+        return "failure"
+    if bool(exploration.get("timeLimited")) or exploration_errors(exploration):
+        return "partial"
+    return "success"
+
+
+def stop_reason(exploration: dict[str, Any]) -> str | None:
+    errors = exploration_errors(exploration)
+    if errors:
+        return errors[0]
+    if bool(exploration.get("timeLimited")):
+        return "Discovery time limit reached before the page budget completed."
+    return None
+
+
+def successful_run_summary(row: dict[str, Any]) -> dict[str, Any]:
+    exploration = row.get("exploration") or {}
+    return {
+        "finishedAt": row.get("at"),
+        "durationSeconds": int(row.get("runDurationSeconds") or 0),
+        "addedBots": int(row.get("addedSincePrevious") or 0),
+        "pagesBudget": int(exploration.get("pageBudget") or 0),
+        "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+    }
+
+
+def last_successful_run(
+    runs: list[dict[str, Any]],
+    current_status: str,
+) -> dict[str, Any] | None:
+    if current_status == "success" or not runs:
+        return None
+
+    candidates = runs if current_status == "failure" else runs[:-1]
+    for row in reversed(candidates):
+        exploration = row.get("exploration") or {}
+        if not exploration_errors(exploration) and not bool(exploration.get("timeLimited")):
+            return successful_run_summary(row)
+    return None
+
+
 def main() -> int:
     stats = read_json(STATS_PATH, {})
     manifest = read_json(MANIFEST_PATH, {})
@@ -61,10 +115,11 @@ def main() -> int:
     adaptive["timeLimitSeconds"] = int(crawler.get("explore_time_limit_seconds") or 3600)
     adaptive["nextPageBudget"] = scheduled_pages
     STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
     requested_raw = os.environ.get("SPICYCHAT_ARCHIVE_MANUAL_PAGES", "").strip()
     requested = int_or_none(requested_raw) if requested_raw else scheduled_pages
-    run_status = os.environ.get("ARCHIVE_RUN_STATUS", "success").strip().lower()
-    run_status = "success" if run_status == "success" else "failure"
+    raw_run_status = os.environ.get("ARCHIVE_RUN_STATUS", "success")
+    run_status = classify_run_status(raw_run_status, exploration)
     run_at = latest.get("at") or stats.get("generatedAt") or utc_now()
     event_at = utc_now()
     github_run_id = os.environ.get("GITHUB_RUN_ID", "").strip()
@@ -79,6 +134,42 @@ def main() -> int:
     discovery_duration = int(exploration.get("durationSeconds") or 0)
     non_discovery_duration = max(0, total_duration - discovery_duration)
     discovery_share = round((discovery_duration / total_duration) * 100, 1) if total_duration else 0.0
+    errors = exploration_errors(exploration)
+    reason = stop_reason(exploration)
+
+    if run_status == "failure":
+        run_payload = {
+            "finishedAt": event_at,
+            "pagesRequested": requested,
+            "scheduledPages": scheduled_pages,
+            "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
+            "error": "Archive crawler step failed before a new run summary was published.",
+        }
+    else:
+        run_payload = {
+            "finishedAt": run_at,
+            "durationSeconds": total_duration,
+            "addedBots": added,
+            "deletedConfirmed": int(latest.get("deletedConfirmed") or 0),
+            "pagesRequested": requested,
+            "scheduledPages": scheduled_pages,
+            "pagesBudget": int(exploration.get("pageBudget") or 0),
+            "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+            "hits": int(exploration.get("hits") or 0),
+            "newFromDiscovery": int(exploration.get("new") or 0),
+            "changedIngestRecords": int(exploration.get("changed") or 0),
+            "discoveryDurationSeconds": discovery_duration,
+            "nonDiscoveryDurationSeconds": non_discovery_duration,
+            "discoverySharePercent": discovery_share,
+            "timeLimited": bool(exploration.get("timeLimited")),
+            "errors": errors,
+            "stopReason": reason,
+            "enrichmentAttempted": int(enrichment.get("attempted") or 0),
+            "enriched": int(enrichment.get("enriched") or 0),
+            "imagesAttempted": int(images.get("attempted") or 0),
+            "imagesSaved": int(images.get("saved") or 0),
+            "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
+        }
 
     payload = {
         "schemaVersion": 1,
@@ -91,49 +182,8 @@ def main() -> int:
             "publicIndexBots": int(stats.get("publicIndexBots") or manifest.get("activeBots") or latest.get("publicIndexBots") or 0),
             "startedAt": stats.get("startedAt"),
         },
-        "run": (
-            {
-                "finishedAt": event_at,
-                "pagesRequested": requested,
-                "scheduledPages": scheduled_pages,
-                "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
-                "error": "Archive crawler step failed before a new successful run summary was published.",
-            }
-            if run_status == "failure"
-            else {
-                "finishedAt": run_at,
-                "durationSeconds": total_duration,
-                "addedBots": added,
-                "deletedConfirmed": int(latest.get("deletedConfirmed") or 0),
-                "pagesRequested": requested,
-                "scheduledPages": scheduled_pages,
-                "pagesBudget": int(exploration.get("pageBudget") or 0),
-                "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
-                "hits": int(exploration.get("hits") or 0),
-                "newFromDiscovery": int(exploration.get("new") or 0),
-                "changedIngestRecords": int(exploration.get("changed") or 0),
-                "discoveryDurationSeconds": discovery_duration,
-                "nonDiscoveryDurationSeconds": non_discovery_duration,
-                "discoverySharePercent": discovery_share,
-                "timeLimited": bool(exploration.get("timeLimited")),
-                "enrichmentAttempted": int(enrichment.get("attempted") or 0),
-                "enriched": int(enrichment.get("enriched") or 0),
-                "imagesAttempted": int(images.get("attempted") or 0),
-                "imagesSaved": int(images.get("saved") or 0),
-                "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
-            }
-        ),
-        "lastSuccessfulRun": (
-            {
-                "finishedAt": run_at,
-                "durationSeconds": total_duration,
-                "addedBots": added,
-                "pagesBudget": int(exploration.get("pageBudget") or 0),
-                "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
-            }
-            if run_status == "failure" and latest
-            else None
-        ),
+        "run": run_payload,
+        "lastSuccessfulRun": last_successful_run(runs, run_status),
         "growth": stats.get("growth") or {},
         "storage": {
             "usedBytes": int(storage.get("usedBytes") or 0),
@@ -149,15 +199,22 @@ def main() -> int:
         print("Archive feed unchanged.")
         return 0
     OUT_PATH.write_text(text, encoding="utf-8")
-    print(
-        f"Archive feed: status={run_status}; {total:,} total; "
-        + (
-            f"+{added:,}; {payload['run']['pagesCompleted']:,}/{payload['run']['pagesBudget']:,} pages; "
-            f"{payload['run']['durationSeconds']:,}s total."
-            if run_status == "success"
-            else "failure event published."
+
+    if run_status in {"success", "partial"}:
+        suffix = (
+            f" Partial stop: {reason}"
+            if run_status == "partial" and reason
+            else ""
         )
-    )
+        print(
+            f"Archive feed: status={run_status}; {total:,} total; "
+            f"+{added:,}; {run_payload['pagesCompleted']:,}/{run_payload['pagesBudget']:,} pages; "
+            f"{run_payload['durationSeconds']:,}s total.{suffix}"
+        )
+    else:
+        print(
+            f"Archive feed: status=failure; {total:,} total; failure event published."
+        )
     return 0
 
 

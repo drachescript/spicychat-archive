@@ -65,7 +65,8 @@ jobs:
           storage_path = Path("scripts/storage_r2.py")
           storage = storage_path.read_text(encoding="utf-8")
           start = storage.index("    def publish_deleted_index(self, *, force: bool = False) -> str | None:\n")
-          end = storage.index("\n    def ", start + 5)
+          next_def = storage.find("\n    def ", start + 5)
+          end = next_def if next_def >= 0 else len(storage)
           new_lines = [
               "    def publish_deleted_index(self, *, force: bool = False) -> str | None:",
               "        key = self.key(\"indexes\", \"deleted.json\")",

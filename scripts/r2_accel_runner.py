@@ -11,6 +11,7 @@ from pathlib import Path
 import archive as legacy
 from r2_cleanup_accel import install_cleanup_acceleration
 from r2_runtime_accel import flush_all_stores, install_runtime_acceleration
+from typesense_retry import install_typesense_retry
 
 
 HERE = Path(__file__).resolve().parent
@@ -84,6 +85,9 @@ def main() -> int:
         head_workers=_env_int("SPICYCHAT_ARCHIVE_R2_CLEANUP_WORKERS", 16),
     )
     if target_name == "archive":
+        # Install this after the batching wrapper so retries repeat the exact same
+        # logical Typesense request, including its primary/fallback failover.
+        install_typesense_retry()
         _install_manual_archive_target()
 
     old_argv = sys.argv[:]

@@ -74,6 +74,26 @@ _active_config = None
 _run_started_monotonic = 0.0
 
 
+def _typesense_page_has_more(
+    found: Any,
+    *,
+    page: int,
+    per_page: int,
+    received: int,
+) -> bool:
+    """Return True when Typesense reports rows beyond this page response."""
+    try:
+        total = int(found)
+        page = max(1, int(page))
+        per_page = max(1, int(per_page))
+        received = max(0, int(received))
+    except (TypeError, ValueError):
+        return False
+
+    consumed = (page - 1) * per_page + received
+    return total > consumed
+
+
 def _clean_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
     cleaned = legacy.clean_for_archive(doc)
     return {
@@ -688,19 +708,33 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             exploration["lastFound"] = found
 
             if not hits:
-                if (
+                page_no = int(request.get("page") or exploration.get("page") or 1)
+                capped = (
                     mode == "page"
-                    and found
-                    and (int(exploration.get("page") or 1) - 1)
-                    * page_size
-                    < found
-                ):
+                    and _typesense_page_has_more(
+                        found,
+                        page=page_no,
+                        per_page=int(request.get("per_page") or page_size),
+                        received=0,
+                    )
+                )
+                if capped:
                     exploration["blockedAtResultCap"] = True
                     cursor = exploration.get("lastCreatedAt")
-                    if cursor is not None:
-                        mode = exploration["mode"] = "cursor"
-                        exploration["cursorCreatedAt"] = cursor
-                        continue
+                    if cursor is None:
+                        errors.append(
+                            "Typesense page-mode result cap was reached, but no "
+                            "createdAt cursor is available to continue safely"
+                        )
+                        break
+                    mode = exploration["mode"] = "cursor"
+                    exploration["cursorCreatedAt"] = cursor
+                    print(
+                        f"explore: page {page_no} returned no hits while Typesense "
+                        "still reports more results; switching to createdAt cursor mode.",
+                        flush=True,
+                    )
+                    continue
 
                 missing_queued += finish_exploration_pass(at)
                 exploration["pass"] = int(exploration.get("pass") or 0) + 1
@@ -754,6 +788,36 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             )
 
             if len(hits) < page_size:
+                page_no = int(request.get("page") or 1)
+                capped = (
+                    mode == "page"
+                    and _typesense_page_has_more(
+                        found,
+                        page=page_no,
+                        per_page=int(request.get("per_page") or page_size),
+                        received=len(hits),
+                    )
+                )
+                if capped:
+                    exploration["blockedAtResultCap"] = True
+                    if last_created is None:
+                        errors.append(
+                            "Typesense returned a partial capped page without a "
+                            "createdAt value to continue safely"
+                        )
+                        break
+                    mode = exploration["mode"] = "cursor"
+                    exploration["cursorCreatedAt"] = last_created
+                    print(
+                        f"explore: page {page_no} returned a partial {len(hits):,}/"
+                        f"{int(request.get('per_page') or page_size):,} page while "
+                        f"Typesense reports {int(found or 0):,} total results; "
+                        "switching to createdAt cursor mode instead of treating it "
+                        "as the end of the catalog.",
+                        flush=True,
+                    )
+                    continue
+
                 missing_queued += finish_exploration_pass(at)
                 exploration["pass"] = int(exploration.get("pass") or 0) + 1
                 exploration["page"] = 1

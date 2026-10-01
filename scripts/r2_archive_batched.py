@@ -70,6 +70,83 @@ def install_discovery_flush_batching(*, pages: int = _DEFAULT_FLUSH_PAGES) -> No
     )
 
 
+def _stamp_run_finished() -> None:
+    """Replace the run-start marker with the real completion timestamp.
+
+    archive.py intentionally uses one observation timestamp while a crawl is in
+    progress. Historically that same value leaked into stats history as the run's
+    finishedAt, which made long manual crawls look as if they finished when they
+    actually started. Correct the current successful run after optimized.main()
+    has finished, before the public feed/growth steps read the compact stats.
+    """
+    state = optimized._active_state
+    if not isinstance(state, dict):
+        return
+
+    started_at = str(state.get("lastRunAt") or "")
+    if not started_at:
+        return
+
+    finished_at = optimized.legacy.utc_now()
+    state["lastRunAt"] = finished_at
+
+    stats_path = optimized.legacy.SITE_DATA_DIR / "stats.json"
+    stats = optimized.legacy.read_json(stats_path, {})
+    if isinstance(stats, dict):
+        changed = False
+        for row in reversed(stats.get("runs") or []):
+            if row.get("kind") != "archive-run":
+                continue
+            if str(row.get("at") or "") != started_at:
+                continue
+            row["at"] = finished_at
+            changed = True
+            break
+        if changed:
+            stats["generatedAt"] = finished_at
+            stats.get("runs", []).sort(key=lambda row: str(row.get("at") or ""))
+            optimized.legacy.write_json_if_changed(stats_path, stats)
+
+    store = optimized._active_store
+    if store is not None:
+        try:
+            key = store.key(store.meta_prefix, "stats-history.json")
+            history = store.get_json(key, None)
+            history_changed = False
+            if isinstance(history, dict):
+                for row in reversed(history.get("runs") or []):
+                    if row.get("kind") != "archive-run":
+                        continue
+                    if str(row.get("at") or "") != started_at:
+                        continue
+                    row["at"] = finished_at
+                    history_changed = True
+                    break
+                if history_changed:
+                    history.get("runs", []).sort(
+                        key=lambda row: str(row.get("at") or "")
+                    )
+                    store.put_json(key, history)
+
+            # cloud.run() saved state before optimized.main() recorded the compact
+            # stats row. Persist the corrected lastRunAt too so the next run does
+            # not reload the old start-time marker from R2.
+            store.save_state(state)
+            if history_changed:
+                store.flush_usage(force=True)
+        except Exception as exc:
+            print(
+                f"WARNING: could not persist corrected run-finish timestamp to R2: {exc}",
+                flush=True,
+            )
+
+    print(
+        f"Run timestamp: completion recorded at {finished_at} "
+        f"(crawl started at {started_at}).",
+        flush=True,
+    )
+
+
 def _exploration_outcome() -> dict[str, Any] | None:
     """Build the exact run outcome before compact stats can lose the stop reason."""
     state = optimized._active_state
@@ -180,6 +257,8 @@ def main() -> int:
     rc = 1
     try:
         rc = optimized.main()
+        if rc == 0:
+            _stamp_run_finished()
         return rc
     finally:
         # These are tiny status markers. R2 still owns the archive data; they

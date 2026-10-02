@@ -28,7 +28,7 @@
     ['R2 objects', 'files / objects in R2'],
     ['Class A this month', 'R2 writes this month'],
     ['Class B this month', 'R2 reads this month'],
-    ['enriched last scan', 'bots enriched last batch'],
+    ['enriched last scan', 'full bot details refreshed last batch'],
     ['images archived last scan', 'images saved last batch'],
   ]);
 

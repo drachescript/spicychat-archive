@@ -6,7 +6,7 @@ on:
       discovery_pages:
         description: "Deep Typesense sweep pages for this manual run"
         required: true
-        default: "100"
+        default: "500"
         type: choice
         options:
           - "50"
@@ -42,7 +42,7 @@ jobs:
       CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       # Empty for scheduled/probe-triggered runs. Manual runs can explicitly ask
-      # for a larger deep sweep without changing the normal 100-page target.
+      # for a larger deep sweep without changing the normal 500-page target.
       SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.discovery_pages || '' }}
       # Materialized bot writes remain parallel. Page-mode Typesense discovery can
       # prefetch up to eight consecutive pages per native multi_search request.
@@ -89,7 +89,7 @@ jobs:
         continue-on-error: true
         env:
           # The guard can always lower the requested target. Scheduled runs now
-          # keep a 100-page deep sweep; manual runs may request up to 1000.
+          # keep a 500-page deep sweep; manual runs may request up to 1000.
           SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
         run: python scripts/r2_accel_runner.py archive --summary-file "$RUNNER_TEMP/archive-summary.md"

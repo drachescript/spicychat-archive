@@ -71,6 +71,7 @@ async function fetchJson(url, options={}){
 async function loadManifest(){return fetchJson(asset('data/manifest.json'));}
 async function loadStats(){try{return await fetchJson(asset('data/stats.json'));}catch{return null;}}
 async function loadTags(){try{return (await fetchJson(asset('data/tags.json'))).tags||[];}catch{return [];}}
+async function loadArchiveHistory(){try{return await fetchJson(asset('data/archive-history.json'));}catch{return { milestones: [] };}}
 const R2_RUNTIME_FALLBACK={
   schemaVersion:1,storageMode:'r2',r2ReadAllowed:true,
   publicDataBaseUrl:'https://data.spicychatarchive.drache.uk',
@@ -117,6 +118,12 @@ function setQuery(state,push=false){
     else u.searchParams.delete(k);
   };
   set('q',state.q); set('include',state.include); set('creator',state.creator); set('sort',state.sort); set('match',state.match);
+  set('definition',state.definition==='any'?'':state.definition);
+  set('definitionSize',state.definitionSize==='any'?'':state.definitionSize);
+  set('lorebook',state.lorebook==='any'?'':state.lorebook);
+  set('language',state.language==='any'?'':state.language);
+  set('rating',state.contentRating==='any'?'':state.contentRating);
+  set('created',state.created==='any'?'':state.created);
   if(Number(state.page)>1)u.searchParams.set('p',String(Math.floor(Number(state.page))));else u.searchParams.delete('p');
   if(state.exclude.length)u.searchParams.set('exclude',state.exclude.join(','));
   else u.searchParams.set('exclude','none');
@@ -173,6 +180,7 @@ function tagSidebar(state,tags){
       <button type="button" class="tag-toggle include ${inc?'active':''}" data-action="include" aria-label="Include ${esc(tag)}">+</button>
       <button type="button" class="tag-toggle exclude ${exc?'active':''}" data-action="exclude" aria-label="Exclude ${esc(tag)}">−</button></div>`;
   }).join('');
+  const selected=(value,wanted)=>value===wanted?' selected':'';
   return `<aside class="filters" id="filters"><div class="filters-head"><h2>Filters</h2><button class="link-button" id="reset-filters" type="button">Reset</button></div>
     <div class="filter-scroll">
       <section class="filter-section"><h3>Narrow by tag</h3><input class="filter-search" id="tag-search" placeholder="Search ${tags.length} tags">
@@ -183,6 +191,15 @@ function tagSidebar(state,tags){
         <label><input type="radio" name="match" value="all" ${state.match==='all'?'checked':''}> Match all</label>
         <label><input type="radio" name="match" value="any" ${state.match==='any'?'checked':''}> Match any</label>
       </div></section>
+      <section class="filter-section archive-data-filters"><h3>More filters</h3>
+        <label>Personality / definition<select class="filter-select" data-meta-filter="definition"><option value="any"${selected(state.definition,'any')}>Any visibility</option><option value="exposed"${selected(state.definition,'exposed')}>Exposed</option><option value="hidden"${selected(state.definition,'hidden')}>Hidden</option></select></label>
+        <label>Definition size<select class="filter-select" data-meta-filter="definitionSize"><option value="any"${selected(state.definitionSize,'any')}>Any size</option><option value="low"${selected(state.definitionSize,'low')}>Low</option><option value="mid"${selected(state.definitionSize,'mid')}>Medium</option><option value="high"${selected(state.definitionSize,'high')}>High</option></select></label>
+        <label>Lorebook<select class="filter-select" data-meta-filter="lorebook"><option value="any"${selected(state.lorebook,'any')}>Any</option><option value="yes"${selected(state.lorebook,'yes')}>Has lorebook</option><option value="no"${selected(state.lorebook,'no')}>No lorebook</option></select></label>
+        <label>Language<select class="filter-select" data-meta-filter="language"><option value="any"${selected(state.language,'any')}>Any language</option><option value="en"${selected(state.language,'en')}>English</option><option value="non-en"${selected(state.language,'non-en')}>Non-English</option></select></label>
+        <label>Content<select class="filter-select" data-meta-filter="contentRating"><option value="any"${selected(state.contentRating,'any')}>SFW + NSFW</option><option value="sfw"${selected(state.contentRating,'sfw')}>SFW only</option><option value="nsfw"${selected(state.contentRating,'nsfw')}>NSFW only</option></select></label>
+        <label>Created<select class="filter-select" data-meta-filter="created"><option value="any"${selected(state.created,'any')}>Any time</option><option value="1d"${selected(state.created,'1d')}>Last 24 hours</option><option value="7d"${selected(state.created,'7d')}>Last 7 days</option><option value="30d"${selected(state.created,'30d')}>Last 30 days</option></select></label>
+        <div class="filter-note">These use bot metadata, not tags. On deleted bots, older records can show as unknown until their archived summary is refreshed.</div>
+      </section>
       <section class="filter-section"><h3>Images</h3><label class="checkline"><input id="blur-nsfw" type="checkbox" ${state.blurNsfw?'checked':''}> <span class="filter-note">Blur NSFW avatars</span></label></section>
       <section class="filter-section"><div class="filter-note default-note">NTR and Cheating are excluded by default. Use the − buttons above to remove either exclusion.</div></section>
     </div></aside>`;
@@ -231,13 +248,16 @@ function attachSidebar(state,onChange){
   });
   document.querySelector('#reset-filters')?.addEventListener('click',()=>{
     state.q='';state.creator='';state.include=[];state.exclude=[...DEFAULT_EXCLUDED];state.match='all';state.sort=page==='deleted'?'deleted-newest':'trending';
+    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';
     const s=document.querySelector('#search');if(s)s.value='';
     const c=document.querySelector('#creator');if(c)c.value='';
     const so=document.querySelector('#sort');if(so)so.value=state.sort;
     const all=document.querySelector('input[name=match][value=all]');if(all)all.checked=true;
+    document.querySelectorAll('[data-meta-filter]').forEach(select=>{select.value='any';});
     redraw();onChange();
   });
   document.querySelectorAll('input[name=match]').forEach(x=>x.addEventListener('change',()=>{state.match=document.querySelector('input[name=match]:checked')?.value||'all';onChange();}));
+  document.querySelectorAll('[data-meta-filter]').forEach(select=>select.addEventListener('change',()=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';onChange();}));
   redraw();
 }
 
@@ -254,6 +274,13 @@ function tsLiteral(value){return `\`${String(value).replace(/\\/g,'\\\\').replac
 function buildTsFilter(runtime,state){
   const parts=[runtime.typesense.baseFilter];
   if(state.creator)parts.push(`creator_username:=${tsLiteral(state.creator)}`);
+  if(state.definition==='exposed')parts.push('definition_visible:=true'); else if(state.definition==='hidden')parts.push('definition_visible:=false');
+  if(state.definitionSize&&state.definitionSize!=='any')parts.push(`definition_size_category:=${tsLiteral(state.definitionSize)}`);
+  if(state.lorebook==='yes')parts.push('has_lorebooks:=true'); else if(state.lorebook==='no')parts.push('has_lorebooks:=false');
+  if(state.language==='en')parts.push(`language:=${tsLiteral('en')}`); else if(state.language==='non-en')parts.push(`language:!=${tsLiteral('en')}`);
+  if(state.contentRating==='sfw')parts.push('is_nsfw:=false'); else if(state.contentRating==='nsfw')parts.push('is_nsfw:=true');
+  const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0;
+  if(createdDays)parts.push(`createdAt:>=${Date.now()-createdDays*86400000}`);
   if(state.include.length){
     if(state.match==='any')parts.push(`tags:=[${state.include.map(tsLiteral).join(',')}]`);
     else parts.push(...state.include.map(t=>`tags:=${tsLiteral(t)}`));
@@ -283,16 +310,27 @@ function docToCard(doc){
     isNsfw:!!(doc.is_nsfw||doc.avatar_is_nsfw),
     avatar:doc.avatar_url||doc.avatar||doc.image,
     messages:doc.num_messages,messages24h:doc.num_messages_24h,rating:doc.rating_score,
-    createdAt:doc.createdAt,updatedAt:doc.updatedAt,avatarArchived:false
+    createdAt:doc.createdAt,updatedAt:doc.updatedAt,avatarArchived:false,
+    definitionVisible:doc.definition_visible===true?true:doc.definition_visible===false?false:null,
+    definitionSize:String(doc.definition_size_category||'').toLowerCase(),
+    hasLorebooks:doc.has_lorebooks===true?true:doc.has_lorebooks===false?false:null,
+    language:String(doc.language||'').toLowerCase()
   };
 }
 function localFilterAndSort(bots,state){
   const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=state.exclude.map(x=>x.toLowerCase());
+  const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
   let rows=bots.filter(b=>{
     if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
     const tags=(b.tags||[]).map(x=>String(x).toLowerCase());
     if(inc.length){const ok=state.match==='any'?inc.some(t=>tags.includes(t)):inc.every(t=>tags.includes(t));if(!ok)return false;}
     if(exc.some(t=>tags.includes(t)))return false;
+    if(state.definition==='exposed'&&b.definitionVisible!==true)return false;if(state.definition==='hidden'&&b.definitionVisible!==false)return false;
+    if(state.definitionSize&&state.definitionSize!=='any'&&String(b.definitionSize||'').toLowerCase()!==state.definitionSize)return false;
+    if(state.lorebook==='yes'&&b.hasLorebooks!==true)return false;if(state.lorebook==='no'&&b.hasLorebooks!==false)return false;
+    if(state.language==='en'&&String(b.language||'').toLowerCase()!=='en')return false;if(state.language==='non-en'&&(!b.language||String(b.language).toLowerCase()==='en'))return false;
+    if(state.contentRating==='sfw'&&b.isNsfw)return false;if(state.contentRating==='nsfw'&&!b.isNsfw)return false;
+    if(createdCutoff&&Number(b.createdAt||0)<createdCutoff)return false;
     if(q&&!([b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
     return true;
   });
@@ -386,7 +424,7 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div></div></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
@@ -395,11 +433,11 @@ async function browseLive(runtime,manifest,tags,stats){
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
   let requestNo=0,timer,found=0;
-  const sync=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);};
+  const sync=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';});state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);};
   async function run(){
     sync();grid.innerHTML='<p class="loading">Loading public bots…</p>';const token=++requestNo;
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
-    const search={collection:runtime.typesense.collection,q:state.q||'*',query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:buildTsFilter(runtime,state),sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt'};
+    const search={collection:runtime.typesense.collection,q:state.q||'*',query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:buildTsFilter(runtime,state),sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
     try{
       const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;found=Number(result.found||0);const totalPages=Math.max(1,Math.ceil(found/PAGE_SIZE));
       if(found&&state.page>totalPages){state.page=totalPages;setQuery(state);return run();}
@@ -418,7 +456,7 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}
@@ -428,7 +466,7 @@ async function browseDeleted(runtime,manifest,tags,stats){
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
   const render=()=>{
-    state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);
+    state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';});state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);
     const rows=localFilterAndSort(bots,state),totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0),totalPages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>totalPages)state.page=totalPages;
     const startIndex=(state.page-1)*PAGE_SIZE,visible=rows.slice(startIndex,startIndex+PAGE_SIZE),start=rows.length?startIndex+1:0,end=Math.min(rows.length,startIndex+PAGE_SIZE);
     count.textContent=rows.length===totalConfirmed?`${start.toLocaleString()}–${end.toLocaleString()} of ${totalConfirmed.toLocaleString()} confirmed`:`${start.toLocaleString()}–${end.toLocaleString()} of ${rows.length.toLocaleString()} matching · ${totalConfirmed.toLocaleString()} confirmed total`;
@@ -522,39 +560,21 @@ function growthChart(runs){
     <path class="chart-line" d="${path}"/>${dots}</svg>`;
 }
 async function statsPage(){
-  const [stats,manifest,tags,runtime]=await Promise.all([loadStats(),loadManifest(),loadTags(),loadRuntime()]);
+  const [stats,manifest,tags,runtime,historyData]=await Promise.all([loadStats(),loadManifest(),loadTags(),loadRuntime(),loadArchiveHistory()]);
   if(!stats){app.innerHTML='<section class="hero"><h1>Archive stats</h1><p>The public stats file will be created by the next successful archive run after this update.</p></section>';return;}
-  const runs=(stats.runs||[]).filter(r=>r.kind==='archive-run');
-  const recent=runs.slice(-10).reverse();
-  const latest=runs.at(-1)||{};
-  const recentHtml=recent.map(r=>`<div class="recent-run"><div><b>${date(r.at)}</b><br><span>${fmt(r.exploration?.pagesCompleted)} discovery pages · ${fmt(r.exploration?.hits)} hits</span></div><div><b>+${fmt(r.addedSincePrevious??r.exploration?.new??0)}</b><br><span>${fmt(r.exploration?.new)} new this scan</span></div></div>`).join('');
+  const runs=(stats.runs||[]).filter(r=>r.kind==='archive-run'),recent=runs.filter(r=>Number(r.addedSincePrevious??r.exploration?.new??0)>0||Number(r.exploration?.new||0)>0).slice(-10).reverse(),latest=runs.at(-1)||{};
   const table=recent.map(r=>`<tr><td>${date(r.at)}</td><td>+${fmt(r.addedSincePrevious??0)}</td><td>${fmt(r.exploration?.new)}</td><td>${fmt(r.exploration?.pagesCompleted)}/${fmt(r.exploration?.pageBudget)}</td><td>${r.runDurationSeconds?`${Math.round(r.runDurationSeconds/60)}m`:'—'}</td></tr>`).join('');
-  const guard=runtime.r2QuotaGuard||{},usage=guard.usage||{},adaptive=stats.adaptiveDiscovery||{};
-  app.innerHTML=`<section class="hero"><h1>Archive stats</h1><p>Growth, discovery depth and storage statistics for the public archive. Full scan history lives in R2; this page reads a compact public history file.</p></section>
-    <section class="stats-grid">
-      <div class="stat"><b>${fmt(stats.totalBots)}</b><span>Bots captured by the archive</span></div>
-      <div class="stat"><b>~${fmt(Math.round(stats.growth?.averagePerDay||0))}/day</b><span>Observed archive growth pace</span></div>
-      <div class="stat"><b>${fmt(stats.publicIndexBots)}</b><span>Public bots reported by SpicyChat's index</span></div>
-      <div class="stat"><b>${ageText(stats.startedAt)}</b><span>Archive site age</span></div>
-      <div class="stat"><b>+${fmt(stats.growth?.added24h)}</b><span>Captured in the last ~24h window</span></div>
-      <div class="stat"><b>+${fmt(stats.growth?.added7d)}</b><span>Captured in the last ~7d window</span></div>
-      <div class="stat"><b>${fmt(stats.deletedBots)}</b><span>Confirmed deleted / archived</span></div>
-      <div class="stat"><b>${fmt(tags.length)}</b><span>Current supported SpicyChat tags</span></div>
-    </section>
-    <div class="stats-layout"><section class="chart-card"><h2>Archive growth</h2>${growthChart(stats.runs)}</section>
-      <section class="table-card"><h2>Discovery right now</h2><div class="recent-list">
-        <div class="recent-run"><div><b>${fmt(adaptive.nextPageBudget||latest.exploration?.nextPageBudget)} pages</b><br><span>next adaptive discovery budget</span></div><div><b>${fmt(adaptive.maxPages)}</b><br><span>configured cap</span></div></div>
-        <div class="recent-run"><div><b>${Math.round((adaptive.timeLimitSeconds||3600)/60)} min</b><br><span>discovery time ceiling</span></div><div><b>+${fmt(adaptive.growthPerSuccess)}</b><br><span>page after healthy run</span></div></div>
-        <div class="recent-run"><div><b>${fmt(latest.exploration?.new)}</b><br><span>new bots last scan</span></div><div><b>${fmt(latest.exploration?.pagesCompleted)}</b><br><span>pages completed</span></div></div>
-      </div></section></div>
-    <div class="stats-layout"><section class="table-card"><h2>Recent archive runs</h2><div style="overflow:auto"><table class="stats-table"><thead><tr><th>Run</th><th>Archive Δ</th><th>New discovered</th><th>Pages</th><th>Total runtime</th></tr></thead><tbody>${table||'<tr><td colspan="5">No run history yet.</td></tr>'}</tbody></table></div></section>
-      <section class="table-card"><h2>R2 / crawler</h2><div class="recent-list">
-        <div class="recent-run"><div><b>${fmtBytes(latest.storage?.usedBytes||manifest.storage?.usedBytes)}</b><br><span>archive storage</span></div><div><b>${fmt(latest.storage?.objects||usage.objectCount)}</b><br><span>R2 objects</span></div></div>
-        <div class="recent-run"><div><b>${fmt(usage.classA)}</b><br><span>Class A this month</span></div><div><b>${fmt(usage.classB)}</b><br><span>Class B this month</span></div></div>
-        <div class="recent-run"><div><b>${fmt(latest.enrichment?.enriched)}</b><br><span>enriched last scan</span></div><div><b>${fmt(latest.images?.saved)}</b><br><span>images archived last scan</span></div></div>
-      </div></section></div>
-    <section class="table-card"><h2>Latest number updates</h2><div class="recent-list">${recentHtml||'<div class="filter-note">No completed scan rows yet.</div>'}</div></section>
+  const guard=runtime.r2QuotaGuard||{},usage=guard.usage||{},adaptive=stats.adaptiveDiscovery||{},milestones=Array.isArray(historyData?.milestones)?historyData.milestones:[];
+  const historyRows=[...milestones.map(row=>({...row,_historyKind:'milestone'})),...(stats.runs||[]).map(row=>({...row,_historyKind:row.kind||'archive-run'}))].filter(row=>row?.at).sort((a,b)=>new Date(b.at)-new Date(a.at));
+  app.innerHTML=`<section class="hero"><h1>Archive stats</h1><p>How the archive is growing, what recent batches found, and the full project history from the early small archive through the current crawler.</p></section>
+    <section class="stats-grid"><div class="stat"><b>${fmt(stats.totalBots)}</b><span>Bots captured by the archive</span></div><div class="stat"><b>~${fmt(Math.round(stats.growth?.averagePerDay||0))}/day</b><span>Observed archive growth pace</span></div><div class="stat"><b>${fmt(stats.publicIndexBots)}</b><span>Public bots reported by SpicyChat's index</span></div><div class="stat"><b>${ageText(stats.startedAt)}</b><span>Archive site age</span></div><div class="stat"><b>+${fmt(stats.growth?.added24h)}</b><span>Captured in the last ~24h window</span></div><div class="stat"><b>+${fmt(stats.growth?.added7d)}</b><span>Captured in the last ~7d window</span></div><div class="stat"><b>${fmt(stats.deletedBots)}</b><span>Confirmed deleted / archived</span></div><div class="stat"><b>${fmt(tags.length)}</b><span>Current supported SpicyChat tags</span></div></section>
+    <div class="stats-layout"><section class="chart-card"><h2>Archive growth</h2>${growthChart(stats.runs)}</section><section class="table-card"><h2>Crawler right now</h2><div class="recent-list"><div class="recent-run"><div><b>${fmt(adaptive.nextPageBudget||latest.exploration?.nextPageBudget)} pages</b><br><span>next normal scan</span></div><div><b>${fmt(adaptive.maxPages)}</b><br><span>largest manual test allowed</span></div></div><div class="recent-run"><div><b>${Math.round((adaptive.timeLimitSeconds||3600)/60)} min</b><br><span>hard stop for discovery</span></div><div><b>+${fmt(adaptive.growthPerSuccess)}</b><br><span>automatic page increase</span></div></div><div class="recent-run"><div><b>${fmt(latest.exploration?.new)}</b><br><span>new bots in the last batch</span></div><div><b>${fmt(latest.exploration?.pagesCompleted)}</b><br><span>pages finished</span></div></div></div></section></div>
+    <div class="stats-layout"><section class="table-card"><h2>Recent batches</h2><p class="filter-note">The latest batches that actually added bots. Zero-add maintenance runs are kept in History below instead of duplicating this list.</p><div style="overflow:auto"><table class="stats-table"><thead><tr><th>Run</th><th>Saved</th><th>New bots</th><th>Deep-search pages</th><th>Took</th></tr></thead><tbody>${table||'<tr><td colspan="5">No batches with new bots yet.</td></tr>'}</tbody></table></div></section><section class="table-card"><h2>Storage + crawler</h2><div class="recent-list"><div class="recent-run"><div><b>${fmtBytes(latest.storage?.usedBytes||manifest.storage?.usedBytes)}</b><br><span>archive storage used</span></div><div><b>${fmt(latest.storage?.objects||usage.objectCount)}</b><br><span>files / objects in R2</span></div></div><div class="recent-run"><div><b>${fmt(usage.classA)}</b><br><span>R2 writes this month</span></div><div><b>${fmt(usage.classB)}</b><br><span>R2 reads this month</span></div></div><div class="recent-run"><div><b>${fmt(latest.enrichment?.enriched)}</b><br><span>full bot details refreshed last batch</span></div><div><b>${fmt(latest.images?.saved)}</b><br><span>images saved last batch</span></div></div></div></section></div>
+    <section class="table-card history-card"><div class="history-head"><div><h2>History</h2><p class="filter-note">Everything from the early project milestones through every recorded crawler/import run. Unlike Recent batches, +0 maintenance runs stay here too.</p></div><span class="manager-count" id="archive-history-count"></span></div><div class="history-list" id="archive-history-list"></div><div class="history-actions"><button class="load-more" id="archive-history-more" type="button">Load more</button></div></section>
     <footer class="footer">“Bots captured by the archive” is not the same thing as SpicyChat's total public index count. The archive grows as discovery continues through the catalog.</footer>`;
+  let historyVisible=15;const list=document.querySelector('#archive-history-list'),more=document.querySelector('#archive-history-more'),count=document.querySelector('#archive-history-count');
+  const markup=row=>{if(row._historyKind==='milestone')return `<article class="history-run"><div><span class="history-kind">Project milestone · ${esc(date(row.at))}</span><b>${esc(row.title||'Archive milestone')}</b><p>${esc(row.summary||'')}</p></div>${row.totalBots!=null?`<div class="history-numbers"><b>${fmt(row.totalBots)}</b><span>${esc(row.totalLabel||'bots')}</span></div>`:''}</article>`;if(row._historyKind==='migration-baseline')return `<article class="history-run"><div><span class="history-kind">Migration baseline · ${esc(date(row.at))}</span><b>Global archive baseline</b><p>${fmt(row.totalBots)} bot records were already preserved when the current crawler history began.</p></div><div class="history-numbers"><b>${fmt(row.totalBots)}</b><span>saved records</span></div></article>`;const added=Number(row.addedSincePrevious??row.exploration?.new??0)||0;return `<article class="history-run"><div><span class="history-kind">Archive batch · ${esc(date(row.at))}</span><b>${fmt(row.exploration?.pagesCompleted)} deep-search pages · ${fmt(row.exploration?.hits)} bot listings checked</b><p>${fmt(row.enrichment?.enriched)} full bot details refreshed · ${fmt(row.images?.saved)} images saved · ${fmt(row.deletedConfirmed)} bots confirmed gone${row.runDurationSeconds?` · took ${Math.round(row.runDurationSeconds/60)}m`:''}</p></div><div class="history-numbers"><b>+${fmt(added)}</b><span>${fmt(row.exploration?.new)} newly found</span></div></article>`;};
+  const render=()=>{const shown=historyRows.slice(0,historyVisible);if(list)list.innerHTML=shown.map(markup).join('')||'<div class="filter-note">No history rows yet.</div>';const remaining=Math.max(0,historyRows.length-shown.length);if(count)count.textContent=`${shown.length.toLocaleString()} / ${historyRows.length.toLocaleString()} entries`;if(more){more.hidden=!remaining;more.textContent=remaining?`Load ${Math.min(15,remaining)} more (${remaining} left)`:'Everything loaded';}};more?.addEventListener('click',()=>{historyVisible=Math.min(historyRows.length,historyVisible+15);render();});render();
 }
 
 (async()=>{

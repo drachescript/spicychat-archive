@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "milestones": [
+    {
+      "at": "2026-08-23T23:18:01Z",
+      "title": "The archive started small",
+      "summary": "The first formal archive import tracked 40 bots (36 public and 4 unlisted) and started keeping bot-history snapshots instead of only a current list.",
+      "totalBots": 40,
+      "totalLabel": "bots in the first formal import"
+    },
+    {
+      "at": "2026-08-24T00:04:42Z",
+      "title": "Early history was reconstructed",
+      "summary": "Five older snapshots were rebuilt — 18 → 23 → 31 → 37 → 40 bots — with first-seen dates and milestone history.",
+      "totalBots": 5,
+      "totalLabel": "reconstructed snapshots"
+    },
+    {
+      "at": "2026-09-05T21:06:15Z",
+      "title": "Deleted-bot preservation became a real archive feature",
+      "summary": "A dedicated archived-bot view began preserving the last known version of bots that disappeared instead of dropping them from the collection.",
+      "totalBots": 67,
+      "totalLabel": "bots around that early milestone"
+    }
+  ]
+}

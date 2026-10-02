@@ -90,8 +90,33 @@
     </details>
 
     <details class="faq-card">
+      <summary>What exactly gets archived?</summary>
+      <div class="faq-answer"><p>The archive keeps public character metadata the crawler can actually observe: bot ID, name/title, creator, tags, public greeting/description, visible definition/personality fields when SpicyChat exposes them, visibility/definition metadata, timestamps, public stats, avatar URLs, availability history and meaningful changes. Ranking/activity counters can be stored separately from creator-content changes.</p><p>It does not unlock hidden definitions or invent fields that SpicyChat did not expose.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Can I still view a bot after it is deleted?</summary>
+      <div class="faq-answer"><p>If the archive captured it before it disappeared, yes: the deleted-bot page keeps the last public data the archive actually saw. A permanent avatar copy is only available when that image had already been archived; otherwise the old CDN image can eventually stop working.</p><p>The archive does not recreate private information or chats that were never part of the public bot record.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>I'm a creator. Can I ask for an archived bot to be removed?</summary>
+      <div class="faq-answer"><p>Yes. Send the bot ID or SpicyChat bot URL through the Archive channels in the QoL Discord, or open a GitHub issue for the archive. Include enough public information to identify the bot; do not post login/session data or other private account information.</p><p>Removal requests are reviewed manually so a same-name bot or unrelated creator's bot is not removed by mistake.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>How do I report wrong archive data?</summary>
+      <div class="faq-answer"><p>Send the bot ID/URL and what looks wrong in the Archive channels in the QoL Discord or in a GitHub issue. IDs matter more than names because different bots can have exactly the same name.</p><p>If the problem is a false deleted/unavailable flag, say whether the live profile still opens so the archived status can be rechecked against the character API.</p></div>
+    </details>
+
+    <details class="faq-card">
       <summary>Does the archive store private chats or account data?</summary>
-      <div class="faq-answer"><p>No. The archive is for public/discoverable character information. Do not send private chats, session data, passwords, auth tokens, private messages or other private account information as archive contributions.</p></div>
+      <div class="faq-answer"><p>No. The public archive is for public/discoverable character information. It does not need your SpicyChat password, cookies, auth/session tokens, private messages, private chats, persona data, Favorites/Later membership or local QoL settings.</p><p>Optional QoL Bot Status contributions are limited to saved bot snapshots intended for archive review; private account/session data should never be submitted.</p></div>
+    </details>
+
+    <details class="faq-card">
+      <summary>Where is archive data stored?</summary>
+      <div class="faq-answer"><p>The large bot records and archived media live in the project's Cloudflare R2 storage, while the public website keeps compact runtime/stat files in GitHub. The crawler has quota/storage guards so it can slow or pause expensive work before hitting configured limits.</p><p>The site only publishes archive data meant to be public. Local QoL recovery copies stay local unless you explicitly export or submit them.</p></div>
     </details>
 
     <details class="faq-card">

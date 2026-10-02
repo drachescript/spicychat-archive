@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, Iterable
@@ -55,7 +56,45 @@ def _cloud_summary(record: dict[str, Any]) -> dict[str, Any]:
         "rating": metrics.get("rating_score"),
         "createdAt": lk.get("createdAt"),
         "updatedAt": lk.get("updatedAt"),
+        "summarySchemaVersion": 2,
+        "definitionVisible": lk.get("definition_visible") if isinstance(lk.get("definition_visible"), bool) else None,
+        "definitionSize": str(lk.get("definition_size_category") or "").lower(),
+        "hasLorebooks": lk.get("has_lorebooks") if isinstance(lk.get("has_lorebooks"), bool) else None,
+        "language": str(lk.get("language") or "").lower(),
     }
+
+
+def _refresh_deleted_summary_metadata(store: R2ArchiveStore) -> int:
+    """One-time refresh for older deleted summaries after public filter metadata expands."""
+    pending = [
+        bot_id for bot_id, summary in store.deleted_index.items()
+        if int((summary or {}).get("summarySchemaVersion") or 0) < 2
+    ]
+    if not pending:
+        return 0
+
+    print(f"deleted summary metadata: refreshing {len(pending):,} older archived rows...", flush=True)
+    updated = 0
+
+    def load_one(bot_id: str):
+        try:
+            return bot_id, store.get_json(store.bot_key(bot_id), None)
+        except Exception:
+            return bot_id, None
+
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        futures = [pool.submit(load_one, bot_id) for bot_id in pending]
+        for future in as_completed(futures):
+            bot_id, record = future.result()
+            if not isinstance(record, dict):
+                continue
+            if (record.get("status") or {}).get("current") != "deleted":
+                continue
+            store.set_deleted_summary(bot_id, _cloud_summary(record))
+            updated += 1
+
+    print(f"deleted summary metadata: refreshed {updated:,}/{len(pending):,}.", flush=True)
+    return updated
 
 
 def _collapse_current_sources(record: dict[str, Any]) -> dict[str, Any]:
@@ -554,6 +593,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         prior = original_read_json(legacy.SITE_DATA_DIR / "manifest.json", {})
         public_counts = [int(v.get("found") or 0) for v in (listings or {}).values() if v.get("ok") and v.get("found") is not None]
         active = max(public_counts) if public_counts else int((state.get("exploration") or {}).get("lastFound") or prior.get("activeBots") or 0)
+        _refresh_deleted_summary_metadata(store)
         deleted_url = store.publish_deleted_index()
         usage = store.storage_usage()
         guard_status = original_read_json(ROOT / "data" / "r2-usage.json", {})

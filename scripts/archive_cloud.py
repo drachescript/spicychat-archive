@@ -130,6 +130,25 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
     store.load_discovery_order()
     store.load_deleted_index()
 
+    # Site-index rebuilds publish a bounded repair queue for known coverage gaps
+    # and unusually stale public records. Seed it once per queue generation into
+    # the normal enrichment priority list; the existing budget/retry logic then
+    # repairs it gradually without a separate high-volume scan.
+    try:
+        repair = store.get_json(store.key("indexes", "repair-queue.json"), {}) or {}
+    except Exception:
+        repair = {}
+    repair_version = str(repair.get("generatedAt") or "")
+    if repair_version and state.get("repairQueueVersion") != repair_version:
+        priority = state.setdefault("priorityEnrichment", [])
+        seen_priority = set(priority)
+        for row in (repair.get("bots") or [])[:10000]:
+            bot_id = str((row or {}).get("id") or "").lower()
+            if bot_id and bot_id not in seen_priority:
+                priority.append(bot_id)
+                seen_priority.add(bot_id)
+        state["repairQueueVersion"] = repair_version
+
     bloom_bytes = int((config.get("storage") or {}).get("r2", {}).get("bloom_bytes") or 8 * 1024 * 1024)
     bloom_hashes = int((config.get("storage") or {}).get("r2", {}).get("bloom_hashes") or 7)
     bloom = store.load_bloom(size_bytes=bloom_bytes, hashes=bloom_hashes)

@@ -2,25 +2,37 @@
   "schemaVersion": 1,
   "milestones": [
     {
-      "at": "2026-08-23T23:18:01Z",
-      "title": "The archive started small",
-      "summary": "The first formal archive import tracked 40 bots (36 public and 4 unlisted) and started keeping bot-history snapshots instead of only a current list.",
-      "totalBots": 40,
-      "totalLabel": "bots in the first formal import"
+      "at": "2026-09-28T00:00:00Z",
+      "title": "The global archive goes live",
+      "summary": "The public SpicyChat Archive starts as a global bot-history project with scheduled scans, multiple public listings, deep catalog discovery, deleted-bot preservation, tag filtering and image archiving.",
+      "totalBots": null
     },
     {
-      "at": "2026-08-24T00:04:42Z",
-      "title": "Early history was reconstructed",
-      "summary": "Five older snapshots were rebuilt — 18 → 23 → 31 → 37 → 40 bots — with first-seen dates and milestone history.",
-      "totalBots": 5,
-      "totalLabel": "reconstructed snapshots"
+      "at": "2026-09-28T09:51:00Z",
+      "title": "The first broad discovery proves the scale",
+      "summary": "The first crawl finds roughly 9,000 bots, then another roughly 2,000. SpicyChat's Typesense index is already reporting about 1.39 million public results, so discovery is expanded from 8 to 20 deep-search pages per run.",
+      "totalBots": 11000,
+      "totalLabel": "roughly discovered by the first two scans"
     },
     {
-      "at": "2026-09-05T21:06:15Z",
-      "title": "Deleted-bot preservation became a real archive feature",
-      "summary": "A dedicated archived-bot view began preserving the last known version of bots that disappeared instead of dropping them from the collection.",
-      "totalBots": 67,
-      "totalLabel": "bots around that early milestone"
+      "at": "2026-09-28T11:46:39Z",
+      "title": "The archive moves to Cloudflare R2",
+      "summary": "The first R2 migration uploads 11,269 bot records plus the existing ranking history, moving the growing per-bot archive out of Git while keeping the public website lightweight.",
+      "totalBots": 11269,
+      "totalLabel": "bot records migrated"
+    },
+    {
+      "at": "2026-09-28T17:01:32Z",
+      "title": "Post-migration crawling is working",
+      "summary": "A successful R2-backed crawl reaches about 12,400 archived records, adds 937 new bots, refreshes 199 of 200 full-detail checks and saves 100 of 100 queued images.",
+      "totalBots": 12400,
+      "totalLabel": "archived records"
+    },
+    {
+      "at": "2026-09-29T03:23:56Z",
+      "title": "Discovery is rebuilt to scale",
+      "summary": "Sharded discovery lands with a 100-page baseline, larger healthy-run ramps, parallel page prefetch, locator indexes and journaled R2 state so the crawler can work toward the million-plus catalog without turning Git into the database.",
+      "totalBots": null
     }
   ]
 }

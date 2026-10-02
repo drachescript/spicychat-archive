@@ -44,7 +44,7 @@ class SiteIndexTests(unittest.TestCase):
             "availabilityHistory": [
                 {"status": "public", "from": "2026-09-01T00:00:00Z"},
                 {"status": "deleted", "from": "2026-09-15T00:00:00Z"},
-                {"status": "public", "from": "2026-09-16T00:00:00Z"},
+                {"status": "public", "from": "2026-09-16T00:00:00Z", "source": "character-api"},
             ],
         }
 
@@ -58,6 +58,40 @@ class SiteIndexTests(unittest.TestCase):
         self.assertIsNotNone(row)
         self.assertEqual(row["restoreCount"], 1)
         self.assertEqual(row["restoredAt"], "2026-09-16T00:00:00Z")
+
+    def test_unverified_restoration_candidate_is_not_restored(self):
+        record = self.sample()
+        record["availabilityHistory"][-1]["source"] = "typesense"
+        self.assertEqual(len(site.restoration_candidates(record)), 1)
+        self.assertEqual(site.restored_events(record), [])
+        self.assertIsNone(site.restored_row(record))
+        activity = site.activity_rows(record)
+        self.assertTrue(any(row["type"] == "restore-candidate" for row in activity))
+        self.assertFalse(any(row["type"] == "restored" for row in activity))
+
+    def test_activity_rows_include_new_deleted_and_verified_restored(self):
+        rows = site.activity_rows(self.sample())
+        self.assertEqual([row["type"] for row in rows], ["new", "deleted", "restored"])
+
+    def test_current_deleted_restore_candidate_is_unverified_activity(self):
+        record = self.sample()
+        record["availabilityHistory"] = record["availabilityHistory"][:2]
+        record["status"] = {
+            "current": "deleted",
+            "restoreCandidate": {
+                "at": "2026-10-02T00:00:00Z",
+                "source": "typesense",
+            },
+        }
+        self.assertEqual(site.restored_events(record), [])
+        self.assertEqual(len(site.restoration_candidates(record)), 1)
+        rows = site.activity_rows(record)
+        self.assertEqual(rows[-1]["type"], "restore-candidate")
+        self.assertEqual(rows[-1]["source"], "typesense")
+
+    def test_month_key(self):
+        self.assertEqual(site.month_key("2026-10-02T00:00:00Z"), "2026-10")
+        self.assertEqual(site.month_key(None), "unknown")
 
     def test_creator_bucket_is_stable(self):
         self.assertEqual(site.creator_bucket("CreatorName"), site.creator_bucket("creatorname"))

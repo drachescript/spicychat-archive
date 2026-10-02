@@ -1,0 +1,46 @@
+name: Rebuild archive derived indexes
+
+on:
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: "Parallel R2 readers for index rebuilds"
+        required: true
+        default: "24"
+        type: choice
+        options: ["8", "16", "24", "32"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-index-rebuild
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Rebuild rich-field index from archived bot records
+        run: python scripts/rich_field_index.py --rebuild
+      - name: Rebuild history, creator, activity, search and health indexes
+        run: python scripts/site_indexes.py --rebuild --workers "${{ inputs.workers }}"
+      - name: Summary
+        run: |
+          echo "### Derived archive indexes rebuilt" >> "$GITHUB_STEP_SUMMARY"
+          echo "No SpicyChat crawl was performed; the indexes were reconstructed from the archived R2 bot records." >> "$GITHUB_STEP_SUMMARY"

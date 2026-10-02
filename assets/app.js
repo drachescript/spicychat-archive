@@ -714,7 +714,8 @@ function flattenArchiveObject(value,prefix='',out={}){
 function versionSnapshot(record,target){
   const flat=flattenArchiveObject(structuredClone(record.lastKnown||{}));
   if(target==='current')return flat;
-  const targetTime=new Date(target).getTime();
+  const targetTime=new Date(target).getTime(),firstTime=new Date(record.firstSeenAt||0).getTime();
+  if(Number.isFinite(firstTime)&&firstTime>0&&Number.isFinite(targetTime)&&targetTime<firstTime)return {};
   const rows=meaningfulHistoryRows(record).slice().sort((a,b)=>new Date(b.at)-new Date(a.at));
   for(const row of rows){
     const at=new Date(row.at).getTime();
@@ -774,10 +775,12 @@ async function botPage(){
   const id=qs('id');if(!id){app.innerHTML='<div class="error">No bot ID supplied.</div>';return;}
   const runtime=await loadRuntime();let record;
   try{record=await loadBotRecord(id,runtime);}catch(e){app.innerHTML=`<div class="error">${e?.code==='R2_READ_BUDGET_PAUSED'?'Archived bot details are temporarily paused by the R2 quota safety guard.':'This bot has not been captured by the archive yet.'}</div>`;return;}
-  const lk=record.lastKnown||{},status=record.status?.current||'unknown';
+  const lk=record.lastKnown||{},status=record.status?.current||'unknown',requestedAt=qs('at')||'';
+  const requestedSnapshot=requestedAt?versionSnapshot(record,requestedAt):null;
+  const snapshotValue=keys=>{if(!requestedSnapshot)return bestFieldAny(record,keys);for(const key of keys){if(meaningfulFieldValue(requestedSnapshot[key]))return requestedSnapshot[key];}return null;};
   const cdn=resolveAvatar(lk.avatar_url||lk.avatar||lk.image),archived=archivedAvatar(record,runtime);
   const primary=status==='deleted'?(archived||cdn):(cdn||archived),fallback=status==='deleted'?cdn:archived;
-  const currentTitle=normalizeDisplayText(bestField(record,'title')||bestField(record,'description')||'');
+  const currentTitle=normalizeDisplayText(requestedAt?(snapshotValue(['title','description'])||''):(bestField(record,'title')||bestField(record,'description')||''));
   const fieldSpecs=[
     {label:'Title',keys:['description'],skip:value=>normalizeDisplayText(value)===currentTitle},
     {label:'Greeting',keys:['greeting','greetings']},
@@ -788,26 +791,44 @@ async function botPage(){
     {label:'Post History Instructions',keys:['post_history_instructions']},
     {label:'Lorebooks',keys:['lorebooks']}
   ];
-  const fieldHtml=fieldSpecs.map(spec=>{const v=bestFieldAny(record,spec.keys);if(!meaningfulFieldValue(v)||spec.skip?.(v))return'';return `<div class="field-block"><h3>${esc(spec.label)} · last known</h3><div class="pre">${esc(Array.isArray(v)?v.map(item=>typeof item==='object'?JSON.stringify(item,null,2):String(item)).join('\n\n'):typeof v==='object'?JSON.stringify(v,null,2):v)}</div></div>`}).join('');
+  const fieldHtml=fieldSpecs.map(spec=>{const v=requestedAt?snapshotValue(spec.keys):bestFieldAny(record,spec.keys);if(!meaningfulFieldValue(v)||spec.skip?.(v))return'';return `<div class="field-block"><h3>${esc(spec.label)} · last known</h3><div class="pre">${esc(Array.isArray(v)?v.map(item=>typeof item==='object'?JSON.stringify(item,null,2):String(item)).join('\n\n'):typeof v==='object'?JSON.stringify(v,null,2):v)}</div></div>`}).join('');
   const botName=normalizeDisplayText(bestField(record,'name')||bestField(record,'title')||'Unknown bot'),creator=bestField(record,'creator_username')||bestField(record,'creator')||'';
   document.title=`${botName} · SpicyChat Archive`;
   const tags=(lk.tags||[]).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
-  const historyRows=meaningfulHistoryRows(record).slice().reverse().slice(0,150);
+  const allHistoryRows=meaningfulHistoryRows(record).slice().reverse();
+  const historyRows=allHistoryRows.slice(0,150);
   const history=historyRows.map(h=>`<details class="history-item history-detail"><summary><b>${esc(archiveFieldLabel(h.path))}</b> · ${esc(h.kind||'value')}<br><span class="detail-sub">${date(h.at)} · ${esc(sourceDisplayName(h.source||''))}</span></summary><div class="history-diff"><div><span>Before</span><div class="pre">${esc(compareValueText(h.from))}</div></div><div><span>After</span><div class="pre">${esc(compareValueText(h.to))}</div></div></div></details>`).join('');
-  const points=['current',...new Set(historyRows.map(x=>x.at).filter(Boolean))];
+  const points=['current',...new Set([requestedAt,...historyRows.map(x=>x.at)].filter(Boolean))];
   const options=points.map((point,index)=>`<option value="${esc(point)}">${point==='current'?'Current last-known':date(point)}${index===1?' · previous':''}</option>`).join('');
   const sources=renderSourcePills(record);
+  const sourceCount=[...new Set([...Object.keys(record.current||{}),...Object.keys(record.sources||{})])].length;
+  const availabilityCount=Array.isArray(record.availabilityHistory)?record.availabilityHistory.length:0;
+  const richCaptured=fieldSpecs.filter(spec=>meaningfulFieldValue(requestedAt?snapshotValue(spec.keys):bestFieldAny(record,spec.keys))).map(spec=>spec.label);
+  const imageHistory=allHistoryRows.filter(row=>['avatar','avatar_url','image'].includes(String(row.path||'').split('.').pop()));
+  const beforeFirst=requestedAt&&new Date(requestedAt).getTime()<new Date(record.firstSeenAt||0).getTime();
+  const snapshotLabel=requestedAt?'<div class="history-banner">'+(beforeFirst?'This bot had <b>not yet been observed by the archive</b> on '+esc(date(requestedAt))+'.':'Viewing reconstructed archived fields as of <b>'+esc(date(requestedAt))+'</b>. Fields first captured later are rolled back when the archive recorded that transition.')+'</div>':'';
+  const timelineEvents=[
+    record.firstSeenAt?{at:record.firstSeenAt,label:'First captured',detail:'Archive first observed this bot'}:null,
+    ...(record.availabilityHistory||[]).filter(Boolean).map(row=>({at:row.from||row.at,label:String(row.status||'Availability change'),detail:sourceDisplayName(row.source||'')})),
+    ...allHistoryRows.map(row=>({at:row.at,label:archiveFieldLabel(row.path)+' changed',detail:sourceDisplayName(row.source||'')})),
+    record.lastSeenAt?{at:record.lastSeenAt,label:'Last observed',detail:'Latest archived observation'}:null
+  ].filter(x=>x&&x.at).sort((a,b)=>new Date(a.at)-new Date(b.at));
+  const timelineHtml=timelineEvents.slice(-160).map(x=>'<div class="history-item"><b>'+esc(x.label)+'</b><br><span class="detail-sub">'+esc(date(x.at))+(x.detail?' · '+esc(x.detail):'')+'</span></div>').join('');
   app.innerHTML=`<article class="detail"><div class="detail-head"><div class="detail-art">${imgHtml(primary,fallback,{alt:bestField(record,'name')||''})}</div>
     <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(botName)}</h1>
     <div class="detail-sub">${creator?`<a class="creator-profile-link" href="${esc(creatorHref(creator))}">@${esc(creator)}</a>`:'Unknown creator'}</div>
     <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
     ${sources?`<div class="pill-row source-row"><span class="detail-sub">Observed through</span>${sources}</div>`:''}
     <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>
-    <div class="detail-actions"><a class="primary-button" href="${esc(spicyHref(record.id))}" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a></div></div></div>
+    <div class="detail-actions"><a class="primary-button" href="${esc(spicyHref(record.id))}" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a><button class="secondary-button" type="button" id="export-bot-history">Export history JSON</button></div></div></div>
+    ${snapshotLabel}
+    <section class="section"><h2>Archive completeness</h2><p class="detail-sub">Concrete coverage facts only; the archive does not invent a completeness percentage for time it never observed.</p><div class="stats-grid"><div class="stat"><b>${esc(date(record.firstSeenAt))}</b><span>First captured</span></div><div class="stat"><b>${esc(date(record.lastSeenAt))}</b><span>Last observed</span></div><div class="stat"><b>${fmt(allHistoryRows.length)}</b><span>Meaningful field changes recorded</span></div><div class="stat"><b>${fmt(availabilityCount)}</b><span>Availability observations</span></div><div class="stat"><b>${fmt(sourceCount)}</b><span>Archive sources represented</span></div><div class="stat"><b>${fmt(richCaptured.length)}</b><span>Rich field groups recovered</span></div></div><p class="detail-sub">${richCaptured.length?'Recovered fields: '+esc(richCaptured.join(', '))+'.':'No rich definition fields recovered yet.'}</p></section>
+    <section class="section"><h2>Archive timeline</h2><p class="detail-sub">First/last observations, availability changes and meaningful creator-content edits in chronological order. The newest 160 events are shown.</p>${timelineHtml||'<p class="detail-sub">No timeline events recorded yet.</p>'}</section>
     <section class="section"><h2>Last-known archived fields</h2><p class="detail-sub">A field stays here after SpicyChat stops exposing it. That does not mean it is still currently public.</p>${fieldHtml||'<p class="detail-sub">No rich definition fields have been recovered yet.</p>'}</section>
     <section class="section"><h2>Version history & compare</h2><p class="detail-sub">Versions are reconstructed from the archive's recorded before/after field changes. Untouched fields use the last-known archive value.</p>
-      ${points.length>1?`<div class="version-controls"><label>Older<select id="version-older">${options}</select></label><label>Newer<select id="version-newer">${options}</select></label></div><div id="version-compare"></div>`:'<p class="detail-sub">No meaningful creator-content edits have been recorded yet.</p>'}
+      ${points.length>1?`<div class="version-controls"><label>Older<select id="version-older">${options}</select></label><label>Newer<select id="version-newer">${options}</select></label><a class="secondary-button" id="snapshot-link" href="#">Permalink newer point</a></div><div id="version-compare"></div>`:'<p class="detail-sub">No meaningful creator-content edits have been recorded yet.</p>'}
     </section>
+    <section class="section"><h2>Image history</h2>${imageHistory.length?imageHistory.slice(0,50).map(h=>`<details class="history-item"><summary><b>Image changed</b> · ${date(h.at)}</summary><div class="history-diff"><div><span>Before</span><div class="pre">${esc(compareValueText(h.from))}</div></div><div><span>After</span><div class="pre">${esc(compareValueText(h.to))}</div></div></div></details>`).join(''):'<p class="detail-sub">No archived image URL changes have been recorded yet.</p>'}</section>
     <section class="section"><h2>Latest metrics</h2><div class="pre">${esc(JSON.stringify(record.metrics?.latest||{},null,2))}</div></section>
     <section class="section"><h2>Availability history</h2><div class="pre">${esc(JSON.stringify(record.availabilityHistory||[],null,2))}</div></section>
     <section class="section"><h2>Field history</h2>${history||'<p class="detail-sub">No meaningful field changes recorded yet.</p>'}</section>
@@ -815,10 +836,15 @@ async function botPage(){
   </article>`;
   const older=document.querySelector('#version-older'),newer=document.querySelector('#version-newer'),compare=document.querySelector('#version-compare');
   if(older&&newer&&compare){
-    older.value=points[1]||'current';newer.value='current';
-    const renderCompare=()=>{const rows=versionCompareRows(record,older.value,newer.value);compare.innerHTML=rows.length?`<div class="version-table">${rows.map(row=>`<article class="version-row"><h3>${esc(archiveFieldLabel(row.path))}</h3><div class="version-values"><div><span>Older</span><div class="pre">${esc(compareValueText(row.from))}</div></div><div><span>Newer</span><div class="pre">${esc(compareValueText(row.to))}</div></div></div></article>`).join('')}</div>`:'<div class="empty compact-empty">Those two points have no tracked content differences.</div>';};
+    older.value=points.find(x=>x!=='current'&&x!==requestedAt)||points[1]||'current';newer.value=requestedAt||'current';
+    const snapshotLink=document.querySelector('#snapshot-link');
+    const renderCompare=()=>{const rows=versionCompareRows(record,older.value,newer.value);if(snapshotLink){const u=new URL(location.href);if(newer.value==='current')u.searchParams.delete('at');else u.searchParams.set('at',newer.value);snapshotLink.href=u.href;}compare.innerHTML=rows.length?`<div class="version-table">${rows.map(row=>`<article class="version-row"><h3>${esc(archiveFieldLabel(row.path))}</h3><div class="version-values"><div><span>Older</span><div class="pre">${esc(compareValueText(row.from))}</div></div><div><span>Newer</span><div class="pre">${esc(compareValueText(row.to))}</div></div></div></article>`).join('')}</div>`:'<div class="empty compact-empty">Those two points have no tracked content differences.</div>';};
     older.addEventListener('change',renderCompare);newer.addEventListener('change',renderCompare);renderCompare();
   }
+  document.querySelector('#export-bot-history')?.addEventListener('click',()=>{
+    const payload={schemaVersion:1,exportedAt:new Date().toISOString(),id:record.id,firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,status:record.status,sources:record.sources||{},availabilityHistory:record.availabilityHistory||[],fieldHistory:record.fieldHistory||[],lastKnown:record.lastKnown||{},avatarArchive:record.avatarArchive||{}};
+    const blob=new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='spicychat-archive-'+record.id+'-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  });
 }
 
 function ageText(start){

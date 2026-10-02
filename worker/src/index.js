@@ -1,4 +1,5 @@
 const MAX_UPLOAD_BYTES = 64 * 1024 * 1024;
+const ARCHIVE_FIELD_BATCH_MAX = 250;
 
 // Public submissions are parsed/sanitized inside the Worker, so keep their
 // compressed/raw limits lower than the trusted private direct-import route.
@@ -53,6 +54,90 @@ function json(data, status = 200) {
       ...corsHeaders(),
     },
   });
+}
+
+function archiveMeaningful(value) {
+  if (value == null) return false;
+  if (typeof value === "string") return value.trim() !== "";
+  if (Array.isArray(value)) return value.some(archiveMeaningful);
+  if (typeof value === "object") return Object.values(value).some(archiveMeaningful);
+  return true;
+}
+
+function archiveBestField(record, keys) {
+  const lastKnown = record?.lastKnown && typeof record.lastKnown === "object" ? record.lastKnown : {};
+  for (const key of keys) if (archiveMeaningful(lastKnown[key])) return lastKnown[key];
+  const current = record?.current && typeof record.current === "object" ? record.current : {};
+  for (const source of Object.values(current)) {
+    if (!source || typeof source !== "object" || Array.isArray(source)) continue;
+    for (const key of keys) if (archiveMeaningful(source[key])) return source[key];
+  }
+  return null;
+}
+
+function archiveFieldFlags(record) {
+  return {
+    personality: archiveMeaningful(archiveBestField(record, ["persona", "personality", "definition", "character_definition", "characterDefinition"])),
+    scenario: archiveMeaningful(archiveBestField(record, ["scenario"])),
+    dialogue: archiveMeaningful(archiveBestField(record, ["dialogue", "example_dialogue", "example_dialogues"])),
+  };
+}
+
+function validArchiveBotId(value) {
+  const id = String(value || "").trim().toLowerCase();
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id) ? id : "";
+}
+
+async function readArchiveBotRecord(bucket, botId) {
+  const compact = botId.replaceAll("-", "");
+  const key = `bots/${compact.slice(0, 2)}/${botId}.json`;
+  const object = await bucket.get(key);
+  if (!object) return null;
+  try {
+    let bytes = new Uint8Array(await object.arrayBuffer());
+    if (bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b) {
+      const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+      bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+    }
+    return JSON.parse(new TextDecoder().decode(bytes));
+  } catch {
+    return null;
+  }
+}
+
+async function cachedArchiveFieldFlags(env, botId) {
+  const cache = caches.default;
+  const cacheRequest = new Request(`https://archive-field-cache.spicychatarchive.invalid/v1/${botId}`);
+  const cached = await cache.match(cacheRequest);
+  if (cached) {
+    try { return await cached.json(); } catch {}
+  }
+  const record = await readArchiveBotRecord(env.ARCHIVE_BUCKET, botId);
+  const flags = record ? archiveFieldFlags(record) : { personality: false, scenario: false, dialogue: false };
+  await cache.put(cacheRequest, new Response(JSON.stringify(flags), {
+    headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600" },
+  }));
+  return flags;
+}
+
+async function handleArchiveFieldPresence(request, env) {
+  let body;
+  try { body = await request.json(); }
+  catch { return json({ ok: false, error: "invalid_json" }, 400); }
+
+  const rawIds = Array.isArray(body?.ids) ? body.ids : [];
+  const ids = [...new Set(rawIds.map(validArchiveBotId).filter(Boolean))].slice(0, ARCHIVE_FIELD_BATCH_MAX);
+  if (!ids.length) return json({ ok: true, fields: {} });
+
+  const rows = await mapWithConcurrency(ids.map(id => ({ id })), 12, async item => ({
+    id: item.id,
+    fields: await cachedArchiveFieldFlags(env, item.id),
+  }));
+  const fields = {};
+  for (const row of rows) {
+    if (row?.id && row?.fields) fields[row.id] = row.fields;
+  }
+  return json({ ok: true, fields });
 }
 
 async function sameToken(left, right) {
@@ -907,12 +992,17 @@ export default {
         publicSubmissionEndpoint: "/api/submissions/bot-status",
         adminSubmissionEndpoint: "/api/admin/submissions",
         translationEndpoint: "/api/translate",
+        archiveFieldPresenceEndpoint: "/api/archive-field-presence",
       });
     }
 
 
     if (request.method === "POST" && url.pathname === "/api/translate") {
       return handleTranslation(request);
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/archive-field-presence") {
+      return handleArchiveFieldPresence(request, env);
     }
 
     // -----------------------------------------------------------------------

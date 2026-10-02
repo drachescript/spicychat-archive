@@ -4,6 +4,7 @@ const page = document.body.dataset.page || 'browse';
 const DEFAULT_EXCLUDED = ['NTR','Cheating'];
 const PAGE_SIZE = 100;
 const TRANSLATION_ENDPOINT = 'https://spicychat-archive-import.dragongraf.workers.dev/api/translate';
+const ARCHIVE_FIELD_PRESENCE_ENDPOINT = 'https://spicychat-archive-import.dragongraf.workers.dev/api/archive-field-presence';
 const TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 const SMALL_CAPS = Object.freeze({
   'ᴀ':'a','ʙ':'b','ᴄ':'c','ᴅ':'d','ᴇ':'e','ꜰ':'f','ғ':'f','ɢ':'g','ʜ':'h','ɪ':'i','ᴊ':'j','ᴋ':'k','ʟ':'l','ᴍ':'m','ɴ':'n','ᴏ':'o','ᴘ':'p','ǫ':'q','ʀ':'r','ꜱ':'s','s':'s','ᴛ':'t','ᴜ':'u','ᴠ':'v','ᴡ':'w','x':'x','ʏ':'y','ᴢ':'z',
@@ -124,6 +125,7 @@ function setQuery(state,push=false){
   set('language',state.language==='any'?'':state.language);
   set('rating',state.contentRating==='any'?'':state.contentRating);
   set('created',state.created==='any'?'':state.created);
+  set('savedField',state.savedField==='any'?'':state.savedField);
   if(Number(state.page)>1)u.searchParams.set('p',String(Math.floor(Number(state.page))));else u.searchParams.delete('p');
   if(state.exclude.length)u.searchParams.set('exclude',state.exclude.join(','));
   else u.searchParams.set('exclude','none');
@@ -248,16 +250,18 @@ function attachSidebar(state,onChange){
   });
   document.querySelector('#reset-filters')?.addEventListener('click',()=>{
     state.q='';state.creator='';state.include=[];state.exclude=[...DEFAULT_EXCLUDED];state.match='all';state.sort=page==='deleted'?'deleted-newest':'trending';
-    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';
+    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';state.savedField='any';
     const s=document.querySelector('#search');if(s)s.value='';
     const c=document.querySelector('#creator');if(c)c.value='';
     const so=document.querySelector('#sort');if(so)so.value=state.sort;
     const all=document.querySelector('input[name=match][value=all]');if(all)all.checked=true;
     document.querySelectorAll('[data-meta-filter]').forEach(select=>{select.value='any';});
+    const sf=document.querySelector('#saved-field');if(sf)sf.value='any';
+    const safety=document.querySelector('#safety-filter');if(safety)safety.value='all';
     redraw();onChange();
   });
   document.querySelectorAll('input[name=match]').forEach(x=>x.addEventListener('change',()=>{state.match=document.querySelector('input[name=match]:checked')?.value||'all';onChange();}));
-  document.querySelectorAll('[data-meta-filter]').forEach(select=>select.addEventListener('change',()=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';onChange();}));
+  document.querySelectorAll('[data-meta-filter]').forEach(select=>select.addEventListener('change',()=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';if(key==='contentRating'){const safety=document.querySelector('#safety-filter');if(safety)safety.value=state[key]==='any'?'all':state[key];}onChange();}));
   redraw();
 }
 
@@ -265,10 +269,23 @@ function toolbar(state,deletedOnly){
   const sorts=deletedOnly
     ? `<option value="deleted-newest">Recently deleted</option><option value="popular">Most messages</option><option value="top-rated">Top rated</option><option value="name">Name</option>`
     : `<option value="trending">Trending</option><option value="popular">Popular</option><option value="top-rated">Top rated</option>`;
+  const selected=(value,wanted)=>value===wanted?' selected':'';
   return `<button type="button" class="secondary-button mobile-filter-toggle" id="mobile-filter-toggle">Filters</button>
-    <div class="toolbar"><input id="search" value="${esc(state.q)}" placeholder="Search bots">
+    <div class="toolbar archive-search-toolbar"><input id="search" value="${esc(state.q)}" placeholder="Search bots">
       <input id="creator" value="${esc(state.creator)}" placeholder="Creator username">
-      <select id="sort">${sorts}</select></div>`;
+      <select id="sort">${sorts}</select>
+      <select id="saved-field" aria-label="Archived field saved">
+        <option value="any"${selected(state.savedField,'any')}>Everything</option>
+        <option value="personality"${selected(state.savedField,'personality')}>Personality</option>
+        <option value="scenario"${selected(state.savedField,'scenario')}>Scenario</option>
+        <option value="dialogue"${selected(state.savedField,'dialogue')}>Example Dialogue</option>
+      </select>
+      <select id="safety-filter" aria-label="SFW or NSFW">
+        <option value="all"${selected(state.contentRating,'any')}>SFW + NSFW</option>
+        <option value="sfw"${selected(state.contentRating,'sfw')}>SFW only</option>
+        <option value="nsfw"${selected(state.contentRating,'nsfw')}>NSFW only</option>
+      </select></div>
+      <div class="rich-search-note">The extra-field selector filters by what the Archive actually saved for each bot; it is not limited by SpicyChat's public Typesense field list.</div>`;
 }
 function tsLiteral(value){return `\`${String(value).replace(/\\/g,'\\\\').replace(/`/g,'\\`')}\``;}
 function buildTsFilter(runtime,state){
@@ -288,6 +305,26 @@ function buildTsFilter(runtime,state){
   for(const tag of state.exclude)parts.push(`tags:!=${tsLiteral(tag)}`);
   return parts.filter(Boolean).join(' && ');
 }
+const archiveFieldPresenceCache=new Map();
+async function archiveFieldPresence(ids){
+  const wanted=[...new Set((ids||[]).map(id=>String(id||'').toLowerCase()).filter(Boolean))];
+  const missing=wanted.filter(id=>!archiveFieldPresenceCache.has(id));
+  for(let i=0;i<missing.length;i+=250){
+    const batch=missing.slice(i,i+250);
+    const response=await fetch(ARCHIVE_FIELD_PRESENCE_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ids:batch})
+    });
+    if(!response.ok)throw new Error(`Archive field check ${response.status}`);
+    const payload=await response.json();
+    for(const id of batch){
+      archiveFieldPresenceCache.set(id,payload?.fields?.[id]||{personality:false,scenario:false,dialogue:false});
+    }
+  }
+  return new Map(wanted.map(id=>[id,archiveFieldPresenceCache.get(id)||{personality:false,scenario:false,dialogue:false}]));
+}
+
 async function typesenseSearch(runtime,search){
   const urls=[runtime.typesense.url,...(runtime.typesense.fallbackUrls||[])];
   let last;
@@ -317,6 +354,10 @@ function docToCard(doc){
     language:String(doc.language||'').toLowerCase()
   };
 }
+function botHasSavedField(bot,field){
+  if(!field||field==='any')return true;
+  return !!bot?.savedFields?.[field];
+}
 function localFilterAndSort(bots,state){
   const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=state.exclude.map(x=>x.toLowerCase());
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
@@ -331,6 +372,7 @@ function localFilterAndSort(bots,state){
     if(state.language==='en'&&String(b.language||'').toLowerCase()!=='en')return false;if(state.language==='non-en'&&(!b.language||String(b.language).toLowerCase()==='en'))return false;
     if(state.contentRating==='sfw'&&b.isNsfw)return false;if(state.contentRating==='nsfw'&&!b.isNsfw)return false;
     if(createdCutoff&&Number(b.createdAt||0)<createdCutoff)return false;
+    if(!botHasSavedField(b,state.savedField))return false;
     if(q&&!([b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
     return true;
   });
@@ -360,6 +402,10 @@ function pagerMarkup(current,total){
 }
 function renderPagers(current,total){
   const html=pagerMarkup(current,total);document.querySelectorAll('[data-archive-pager]').forEach(el=>{el.innerHTML=html;});
+}
+function renderSavedFieldPagers(current,hasNext){
+  const html=`<nav class="pager" aria-label="Bot pages"><button type="button" class="pager-page pager-prev" data-page="${Math.max(1,current-1)}" ${current<=1?'disabled':''}>‹ Prev</button><button type="button" class="pager-page active" data-page="${current}" aria-current="page">${current}</button><button type="button" class="pager-page pager-next" data-page="${current+1}" ${hasNext?'':'disabled'}>Next ›</button></nav>`;
+  document.querySelectorAll('[data-archive-pager]').forEach(el=>{el.innerHTML=html;});
 }
 function bindPagers(onPage){
   document.querySelectorAll('[data-archive-pager]').forEach(host=>host.addEventListener('click',event=>{
@@ -424,7 +470,7 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div></div></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
@@ -433,20 +479,61 @@ async function browseLive(runtime,manifest,tags,stats){
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
   let requestNo=0,timer,found=0;
-  const sync=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';});state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);};
+  const fieldScanCache=new Map();
+  const sync=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.savedField=$('#saved-field')?.value||'any';state.contentRating=($('#safety-filter')?.value||state.contentRating||'any');if(state.contentRating==='all')state.contentRating='any';state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key&&key!=='contentRating')state[key]=select.value||'any';});const sidebarSafety=document.querySelector('[data-meta-filter="contentRating"]');if(sidebarSafety)sidebarSafety.value=state.contentRating;state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);};
   async function run(){
     sync();grid.innerHTML='<p class="loading">Loading public bots…</p>';const token=++requestNo;
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
     const search={collection:runtime.typesense.collection,q:state.q||'*',query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:buildTsFilter(runtime,state),sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
     try{
-      const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;found=Number(result.found||0);const totalPages=Math.max(1,Math.ceil(found/PAGE_SIZE));
-      if(found&&state.page>totalPages){state.page=totalPages;setQuery(state);return run();}
-      const rows=(result.hits||[]).map(h=>docToCard(h.document||{})).filter(b=>b.id);grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these filters.</div>';
-      const start=found?((state.page-1)*PAGE_SIZE)+1:0,end=Math.min(found,state.page*PAGE_SIZE);count.textContent=found?`${start.toLocaleString()}–${end.toLocaleString()} of ${found.toLocaleString()} matches`:'0 matches';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,rows);
+      if(state.savedField==='any'){
+        const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;found=Number(result.found||0);const totalPages=Math.max(1,Math.ceil(found/PAGE_SIZE));
+        if(found&&state.page>totalPages){state.page=totalPages;setQuery(state);return run();}
+        const rows=(result.hits||[]).map(h=>docToCard(h.document||{})).filter(b=>b.id);grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these filters.</div>';
+        const start=found?((state.page-1)*PAGE_SIZE)+1:0,end=Math.min(found,state.page*PAGE_SIZE);count.textContent=found?`${start.toLocaleString()}–${end.toLocaleString()} of ${found.toLocaleString()} matches`:'0 matches';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,rows);
+      }else{
+        const cacheKey=JSON.stringify({q:search.q,filter:search.filter_by,sort:search.sort_by,field:state.savedField});
+        let scan=fieldScanCache.get(cacheKey);
+        if(!scan){scan={matched:[],nextTypesensePage:1,exhausted:false,underlyingFound:0};fieldScanCache.set(cacheKey,scan);}
+        const need=state.page*PAGE_SIZE+1;
+        let scansThisRun=0;
+        while(scan.matched.length<need&&!scan.exhausted&&scansThisRun<40){
+          const probe={...search,page:scan.nextTypesensePage,per_page:250};
+          const result=await typesenseSearch(runtime,probe);if(token!==requestNo)return;
+          const hits=result.hits||[];scan.underlyingFound=Number(result.found||scan.underlyingFound||0);
+          if(!hits.length){scan.exhausted=true;break;}
+          const docs=hits.map(h=>h.document||{});
+          const ids=docs.map(doc=>String(doc.character_id||doc.id||'').toLowerCase()).filter(Boolean);
+          const presence=await archiveFieldPresence(ids);if(token!==requestNo)return;
+          for(const doc of docs){
+            const id=String(doc.character_id||doc.id||'').toLowerCase();
+            if(id&&presence.get(id)?.[state.savedField])scan.matched.push(doc);
+          }
+          scan.nextTypesensePage+=1;
+          scansThisRun+=1;
+          if(hits.length<250||scan.nextTypesensePage>Math.ceil(scan.underlyingFound/250))scan.exhausted=true;
+        }
+        const startIndex=(state.page-1)*PAGE_SIZE;
+        const pageDocs=scan.matched.slice(startIndex,startIndex+PAGE_SIZE);
+        const rows=pageDocs.map(docToCard).filter(b=>b.id);
+        const hasNext=scan.matched.length>state.page*PAGE_SIZE;
+        const exactTotal=scan.exhausted?scan.matched.length:null;
+        const label=state.savedField==='personality'?'Personality':state.savedField==='scenario'?'Scenario':'Example Dialogue';
+        grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots with that archived field match these filters.</div>';
+        const start=rows.length?startIndex+1:0,end=startIndex+rows.length;
+        const checked=Math.min(scan.underlyingFound,(scan.nextTypesensePage-1)*250);
+        count.textContent=exactTotal!=null
+          ? `${start.toLocaleString()}–${end.toLocaleString()} of ${exactTotal.toLocaleString()} with saved ${label}`
+          : (scan.matched.length<need
+              ? `${start.toLocaleString()}–${end.toLocaleString()} with saved ${label} · checked ${checked.toLocaleString()} matching public bots; narrow search/tags to scan deeper`
+              : `${start.toLocaleString()}–${end.toLocaleString()} with saved ${label}`);
+        renderSavedFieldPagers(state.page,hasNext);
+        enhanceRenderedCards(grid,rows);
+      }
     }catch(e){if(token!==requestNo)return;grid.innerHTML=`<div class="error">Could not query the public bot index: ${esc(e.message||e)}</div>`;count.textContent='';renderPagers(1,1);}
   }
   const resetAndRun=()=>{state.page=1;run();};const schedule=()=>{clearTimeout(timer);state.page=1;timer=setTimeout(()=>run(),240);};
-  attachSidebar(state,resetAndRun);$('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',resetAndRun);$('#blur-nsfw').addEventListener('change',resetAndRun);
+  attachSidebar(state,resetAndRun);$('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',resetAndRun);$('#saved-field').addEventListener('change',resetAndRun);$('#safety-filter').addEventListener('change',resetAndRun);$('#blur-nsfw').addEventListener('change',resetAndRun);
   $('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
   bindPagers(target=>{state.page=target;setQuery(state,true);void run();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});
   window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));void run();});
@@ -456,7 +543,7 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}
@@ -465,15 +552,25 @@ async function browseDeleted(runtime,manifest,tags,stats){
       <footer class="footer">A bot is only moved here after repeated explicit public character API 404s. Disappearing from a listing alone is not deletion evidence.</footer>
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
-  const render=()=>{
-    state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';});state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);
+  let deletedRenderToken=0;
+  async function ensureDeletedSavedFields(){
+    if(state.savedField==='any')return;
+    const missing=bots.filter(bot=>!bot.savedFields).map(bot=>String(bot.id||'').toLowerCase()).filter(Boolean);
+    if(!missing.length)return;
+    const presence=await archiveFieldPresence(missing);
+    for(const bot of bots){const id=String(bot.id||'').toLowerCase();bot.savedFields=presence.get(id)||archiveFieldPresenceCache.get(id)||{personality:false,scenario:false,dialogue:false};}
+  }
+  const render=async()=>{
+    const token=++deletedRenderToken;
+    state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.savedField=$('#saved-field')?.value||'any';state.contentRating=($('#safety-filter')?.value||state.contentRating||'any');if(state.contentRating==='all')state.contentRating='any';state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key&&key!=='contentRating')state[key]=select.value||'any';});const sidebarSafety=document.querySelector('[data-meta-filter="contentRating"]');if(sidebarSafety)sidebarSafety.value=state.contentRating;state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);
+    if(state.savedField!=='any'){grid.innerHTML='<p class="loading">Checking archived fields…</p>';await ensureDeletedSavedFields();if(token!==deletedRenderToken)return;}
     const rows=localFilterAndSort(bots,state),totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0),totalPages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>totalPages)state.page=totalPages;
     const startIndex=(state.page-1)*PAGE_SIZE,visible=rows.slice(startIndex,startIndex+PAGE_SIZE),start=rows.length?startIndex+1:0,end=Math.min(rows.length,startIndex+PAGE_SIZE);
     count.textContent=rows.length===totalConfirmed?`${start.toLocaleString()}–${end.toLocaleString()} of ${totalConfirmed.toLocaleString()} confirmed`:`${start.toLocaleString()}–${end.toLocaleString()} of ${rows.length.toLocaleString()} matching · ${totalConfirmed.toLocaleString()} confirmed total`;
     grid.innerHTML=visible.length?visible.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,visible);
   };
-  const resetAndRender=()=>{state.page=1;render();};attachSidebar(state,resetAndRender);$('#search').addEventListener('input',resetAndRender);$('#creator').addEventListener('input',resetAndRender);$('#sort').addEventListener('change',resetAndRender);$('#blur-nsfw').addEventListener('change',resetAndRender);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
-  bindPagers(target=>{state.page=target;setQuery(state,true);render();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));render();});render();
+  const resetAndRender=()=>{state.page=1;void render();};attachSidebar(state,resetAndRender);$('#search').addEventListener('input',resetAndRender);$('#creator').addEventListener('input',resetAndRender);$('#sort').addEventListener('change',resetAndRender);$('#saved-field').addEventListener('change',resetAndRender);$('#safety-filter').addEventListener('change',resetAndRender);$('#blur-nsfw').addEventListener('change',resetAndRender);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
+  bindPagers(target=>{state.page=target;setQuery(state,true);void render();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));void render();});void render();
 }
 
 async function browse(){

@@ -7,6 +7,7 @@ on:
     paths:
       - "worker/**"
       - "scripts/rich_field_index.py"
+      - "scripts/site_indexes.py"
       - "scripts/archive_cloud.py"
       - "scripts/import_bot_status.py"
       - ".github/workflows/deploy-import-worker.yml"
@@ -50,8 +51,9 @@ jobs:
         shell: bash
         run: printf '%s' "$IMPORT_TOKEN" | npx --yes wrangler@4 secret put IMPORT_TOKEN --config worker/wrangler.toml
 
-      - name: Build archive rich-field index if needed
+      - name: Build archive indexes if needed
         shell: bash
         run: |
           python -m pip install --quiet boto3
           python scripts/rich_field_index.py --rebuild-if-missing
+          python scripts/site_indexes.py --rebuild-if-missing

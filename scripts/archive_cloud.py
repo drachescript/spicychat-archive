@@ -19,6 +19,7 @@ from typing import Any, Iterable
 import archive as legacy
 from storage_r2 import R2ArchiveStore, StorageQuotaExceeded
 from rich_field_index import SCHEMA_VERSION as RICH_FIELDS_VERSION, field_flags, flush_index as flush_rich_field_index, note_record as note_rich_field_record
+from site_indexes import flush_indexes as flush_site_indexes, note_record as note_site_record
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -163,6 +164,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         record = _collapse_current_sources(record)
         result = store.save_bot(record)
         note_rich_field_record(store, record)
+        note_site_record(store, record)
         status = (record.get("status") or {}).get("current")
         if status == "deleted":
             store.set_deleted_summary(record["id"], _cloud_summary(record))
@@ -710,6 +712,7 @@ def run() -> int:
     store.save_deleted_index()
     store.save_bloom(bloom)
     flush_rich_field_index(store)
+    flush_site_indexes(store)
     store.flush_usage(force=True)
     usage = store.storage_usage()
     print(

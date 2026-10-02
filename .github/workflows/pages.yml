@@ -12,6 +12,7 @@ on:
       - "creator/**"
       - "changes/**"
       - "activity/**"
+      - "search/**"
       - "explorer/**"
       - "restored/**"
       - "health/**"
@@ -51,7 +52,7 @@ jobs:
           OUT="$RUNNER_TEMP/pages-site"
           rm -rf "$OUT"
           mkdir -p "$OUT"
-          cp -a index.html favicon.svg assets bot deleted creator changes activity explorer restored health stats faq admin data CNAME .nojekyll "$OUT/"
+          cp -a index.html favicon.svg assets bot deleted creator changes activity search explorer restored health stats faq admin data CNAME .nojekyll "$OUT/"
 
           # In R2 mode, bot detail JSON and media live in R2. Old generated Git
           # copies can still exist in checkout until the cleanup commit lands, so

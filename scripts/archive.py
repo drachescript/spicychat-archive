@@ -244,9 +244,18 @@ def observe_bot(record: dict[str, Any] | None, incoming: dict[str, Any], *, sour
     record["lastSeenAt"] = at
     record.setdefault("sources", {})[source] = {"lastSeenAt": at}
 
-    # Active observation restores a missing/deleted record without erasing its history.
+    # A deleted bot is not considered restored just because it reappears in a
+    # listing/index.  Those surfaces have produced transient contradictions in
+    # the past.  Keep a candidate marker and require a direct Character API 200
+    # before changing a confirmed deleted record back to public.
     old_status = record.get("status", {}).get("current")
-    if old_status != "public":
+    if old_status == "deleted" and source != "character-api":
+        status = record.setdefault("status", {})
+        candidate = {"at": at, "source": source}
+        if status.get("restoreCandidate") != candidate:
+            status["restoreCandidate"] = candidate
+            changed = True
+    elif old_status != "public":
         record.setdefault("availabilityHistory", []).append({"status": "public", "from": at, "source": source})
         record["status"] = {"current": "public", "since": at, "lastVerifiedAt": at}
         changed = True
@@ -709,20 +718,25 @@ def verify_missing(client: Client, config: dict[str, Any], at: str, state: dict[
     for bot_id in list(checks)[:100]:
         info = checks[bot_id]
         if bot_id in seen_public:
-            checks.pop(bot_id, None)
-            restored += 1
-            continue
+            record = load_bot(bot_id)
+            if not record or (record.get("status") or {}).get("current") != "deleted":
+                checks.pop(bot_id, None)
+                continue
+            # A listing hit is only a restoration candidate.  Confirm it with
+            # the Character API below before clearing a confirmed deletion.
         response = client.character(bot_id)
         verified += 1
         if response.ok:
             payload = unwrap_character_payload(response.data)
+            record = load_bot(bot_id)
+            was_deleted = bool(record and (record.get("status") or {}).get("current") == "deleted")
             if payload:
                 payload.setdefault("character_id", bot_id)
-                record = load_bot(bot_id)
                 record, _ = observe_bot(record, payload, source="character-api", at=at)
                 save_bot(record)
             checks.pop(bot_id, None)
-            restored += 1
+            if was_deleted and record and (record.get("status") or {}).get("current") == "public":
+                restored += 1
             continue
         if response.status == 404:
             info["count"] = int(info.get("count") or 0) + 1

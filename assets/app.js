@@ -69,6 +69,11 @@ async function fetchJson(url, options={}){
   if(!r.ok)throw new Error(`${r.status} ${r.statusText}`);
   return r.json();
 }
+async function fetchCachedJson(url){
+  const r=await fetch(url,{cache:'default'});
+  if(!r.ok)throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
+}
 async function loadManifest(){return fetchJson(asset('data/manifest.json'));}
 async function loadStats(){try{return await fetchJson(asset('data/stats.json'));}catch{return null;}}
 async function loadTags(){try{return (await fetchJson(asset('data/tags.json'))).tags||[];}catch{return [];}}
@@ -329,7 +334,7 @@ async function loadArchiveRichFieldIndex(runtime){
   archiveRichFieldIndexPromise=(async()=>{
     const base=String(runtime.publicDataBaseUrl||'').replace(/\/$/,'');
     if(!base)throw new Error('Archive rich-field index is unavailable.');
-    const payload=await fetchJson(`${base}/indexes/rich-fields.json`);
+    const payload=await fetchCachedJson(`${base}/indexes/rich-fields.json`);
     if(!payload||payload.complete!==true||!payload.bots||typeof payload.bots!=='object'){
       throw new Error('Archive rich-field index is still rebuilding.');
     }
@@ -348,7 +353,7 @@ async function loadArchiveTimesIndex(runtime){
   archiveTimesIndexPromise=(async()=>{
     const base=String(runtime.publicDataBaseUrl||'').replace(/\/$/,'');
     if(!base)throw new Error('Archive time index is unavailable.');
-    const payload=await fetchJson(`${base}/indexes/archive-times.json`);
+    const payload=await fetchCachedJson(`${base}/indexes/archive-times.json`);
     if(!payload||payload.complete!==true||!payload.bots||typeof payload.bots!=='object'){
       throw new Error('Archive time index is still rebuilding.');
     }
@@ -543,7 +548,7 @@ async function browseLive(runtime,manifest,tags,stats){
   async function run(){
     sync();grid.innerHTML='<p class="loading">Loading public bots…</p>';const token=++requestNo;
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
-    const exactId=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
+    const exactId=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
     const baseFilter=buildTsFilter(runtime,state);
     const search={collection:runtime.typesense.collection,q:exactId?'*':(state.q||'*'),query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:exactId?`${baseFilter} && character_id:=${tsLiteral(exactId)}`:baseFilter,sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
     const archivePredicate=state.savedField!=='any'||state.firstSeen!=='any'||state.lastSeen!=='any';

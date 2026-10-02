@@ -137,6 +137,56 @@ async function explorerPage(){
   document.querySelector('#explorer-at').addEventListener('change',render);document.querySelector('#explorer-q').addEventListener('change',render);document.querySelector('#explorer-q').addEventListener('keydown',e=>{if(e.key==='Enter')render();});render();
 }
 
+function fnv32(text){let h=2166136261>>>0;for(const b of new TextEncoder().encode(String(text))){h^=b;h=Math.imul(h,16777619)>>>0;}return h>>>0;}
+function searchTokens(text){return [...new Set((String(text||'').toLowerCase().match(/[a-z0-9][a-z0-9_'’-]{2,}/g)||[]).map(x=>x.replaceAll('’',"'")))];}
+function bloomHas(encoded,token,bytes=32,hashes=4){if(!encoded)return false;let raw;try{raw=atob(encoded);}catch{return false;}if(raw.length<bytes)return false;for(let seed=0;seed<hashes;seed++){const bit=fnv32(seed+':'+token)%(bytes*8);if(!(raw.charCodeAt(bit>>3)&(1<<(bit&7))))return false;}return true;}
+function archiveBotUrl(runtime,id){const compact=String(id||'').replaceAll('-','').toLowerCase(),prefix=compact.slice(0,2)||'__';return base(runtime)+'/bots/'+prefix+'/'+encodeURIComponent(String(id||'').toLowerCase())+'.json';}
+const SEARCH_GROUPS={
+  any:['name','title','description','greeting','greetings','persona','personality','definition','character_definition','characterDefinition','scenario','dialogue','example_dialogue','example_dialogues'],
+  greeting:['greeting','greetings'],
+  personality:['persona','personality','definition','character_definition','characterDefinition'],
+  scenario:['scenario'],
+  dialogue:['dialogue','example_dialogue','example_dialogues'],
+  title:['name','title','description']
+};
+function recordSearchText(record,field){
+  const keys=new Set(SEARCH_GROUPS[field]||SEARCH_GROUPS.any),pieces=[],lk=record.lastKnown||{};
+  for(const key of keys)if(lk[key]!=null)pieces.push(typeof lk[key]==='string'?lk[key]:JSON.stringify(lk[key]));
+  for(const row of record.fieldHistory||[]){const leaf=String(row?.path||'').split('.').pop();if(!keys.has(leaf))continue;for(const v of [row.from,row.to])if(v!=null)pieces.push(typeof v==='string'?v:JSON.stringify(v));}
+  return pieces.join('\n').toLowerCase();
+}
+async function advancedSearchPage(){
+  const runtime=await loadRuntime(),manifest=await loadIndex(runtime,'text-search.json');
+  const state={q:qs('q')||'',field:qs('field')||'any',exact:qs('exact')==='1'};
+  app.innerHTML='<section class="hero"><h1>Archived content search</h1><p>Search saved Greeting, Personality, Scenario, Example Dialogue, title text, and historical before/after values. A compact Bloom index narrows candidates first; matching bot records are then checked directly so Bloom false positives are not shown as results.</p></section><div class="changes-toolbar"><input id="archive-text-q" placeholder="Search archived text"><select id="archive-text-field"><option value="any">All archived text</option><option value="greeting">Greeting</option><option value="personality">Personality</option><option value="scenario">Scenario</option><option value="dialogue">Example Dialogue</option><option value="title">Name / title</option></select><label class="checkline"><input id="archive-text-exact" type="checkbox"> Exact phrase</label><button id="archive-text-run" class="primary-button" type="button">Search</button></div><p class="filter-note" id="archive-text-status">The search index covers '+fmt(manifest.botCount)+' detailed bot records.</p><section class="grid" id="archive-text-results"></section>';
+  document.querySelector('#archive-text-q').value=state.q;document.querySelector('#archive-text-field').value=state.field;document.querySelector('#archive-text-exact').checked=state.exact;
+  let shardRows=null;
+  async function loadRows(){
+    if(shardRows)return shardRows;
+    const shards=Array.isArray(manifest.shards)?manifest.shards:[];
+    const payloads=await Promise.all(shards.map(s=>fetchJson(base(runtime)+'/indexes/text-search/'+s+'.json').catch(()=>({bots:{}}))));
+    shardRows=payloads.flatMap(p=>Object.entries(p.bots||{}).map(([id,m])=>({id,meta:m||[]})));
+    return shardRows;
+  }
+  async function run(){
+    state.q=document.querySelector('#archive-text-q').value.trim();state.field=document.querySelector('#archive-text-field').value;state.exact=document.querySelector('#archive-text-exact').checked;
+    setParams({q:state.q,field:state.field,exact:state.exact?'1':''});
+    const out=document.querySelector('#archive-text-results'),status=document.querySelector('#archive-text-status'),tokens=searchTokens(state.q);
+    if(!state.q||!tokens.length){out.innerHTML='';status.textContent='Enter at least one searchable word (3+ characters).';return;}
+    status.textContent='Loading compact search shards…';const rows=await loadRows(),bytes=Number(manifest.bloomBytes||32),hashes=Number(manifest.hashes||4);
+    let candidates=rows.filter(r=>tokens.every(t=>bloomHas(r.meta[4],t,bytes,hashes)));
+    candidates.sort((a,b)=>new Date(b.meta[5]||0)-new Date(a.meta[5]||0));
+    if(candidates.length>1200&&tokens.length<2){out.innerHTML='<div class="empty">That single term matches too many archived bots. Add another word to narrow it down.</div>';status.textContent=fmt(candidates.length)+' Bloom candidates; refine the query before detailed verification.';return;}
+    const verify=candidates.slice(0,250);status.textContent='Verifying '+fmt(verify.length)+' of '+fmt(candidates.length)+' Bloom candidates against archived bot records…';
+    const records=await Promise.all(verify.map(async r=>{try{return await fetchJson(archiveBotUrl(runtime,r.id));}catch{return null;}}));
+    const needle=state.q.toLowerCase(),matched=[];
+    for(const record of records){if(!record)continue;const text=recordSearchText(record,state.field),ok=state.exact?text.includes(needle):tokens.every(t=>text.includes(t));if(!ok)continue;const lk=record.lastKnown||{},metrics=record.metrics?.latest||{},avatar=record.avatarArchive||{};matched.push({id:record.id,name:lk.name||lk.title||'Unknown bot',title:lk.title||'',creator:lk.creator_username||lk.creator||'',tags:Array.isArray(lk.tags)?lk.tags:[],status:record.status?.current||'unknown',firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,isNsfw:!!(lk.is_nsfw||lk.avatar_is_nsfw),avatar:avatar.publicUrl||lk.avatar_url||lk.avatar||lk.image,avatarFallback:lk.avatar_url||lk.avatar||lk.image,messages:metrics.num_messages,rating:metrics.rating_score});}
+    out.innerHTML=matched.length?matched.map(x=>card(x,localStorage.getItem('sca-blur-nsfw')!=='0')).join(''):'<div class="empty">No verified archived records matched this query.</div>';
+    status.textContent=fmt(matched.length)+' verified matches shown · '+fmt(candidates.length)+' Bloom candidates'+(candidates.length>verify.length?' · first '+fmt(verify.length)+' newest candidates verified; refine to search deeper':'')+'.';
+  }
+  document.querySelector('#archive-text-run').addEventListener('click',run);document.querySelector('#archive-text-q').addEventListener('keydown',e=>{if(e.key==='Enter')run();});if(state.q)run();
+}
+
 async function healthPage(){
   const runtime=await loadRuntime();
   const [h,manifest,stats,outcome]=await Promise.all([
@@ -158,4 +208,4 @@ async function healthPage(){
     '<footer class="footer">A discovered bot ID is not automatically a full bot record. Creator pages, archived rich-field filters and version history use the detailed/materialized records the archive has actually fetched.</footer>';
 }
 
-(async()=>{try{if(page==='creator')await creatorPage();else if(page==='changes')await changesPage();else if(page==='activity')await activityPage();else if(page==='explorer')await explorerPage();else if(page==='restored')await restoredPage();else if(page==='health')await healthPage();}catch(e){console.error(e);app.innerHTML='<div class="error">Could not load this archive page: '+esc(e.message||e)+'</div>';}})();
+(async()=>{try{if(page==='creator')await creatorPage();else if(page==='changes')await changesPage();else if(page==='activity')await activityPage();else if(page==='explorer')await explorerPage();else if(page==='search')await advancedSearchPage();else if(page==='restored')await restoredPage();else if(page==='health')await healthPage();}catch(e){console.error(e);app.innerHTML='<div class="error">Could not load this archive page: '+esc(e.message||e)+'</div>';}})();

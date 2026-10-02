@@ -528,22 +528,28 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         for bot_id in list(checks)[:budget]:
             info = checks[bot_id]
             if bot_id in seen_public:
-                checks.pop(bot_id, None)
-                store.clear_deleted_summary(bot_id)
-                restored += 1
-                continue
+                record = load_bot(bot_id)
+                if not record or (record.get("status") or {}).get("current") != "deleted":
+                    checks.pop(bot_id, None)
+                    if record and (record.get("status") or {}).get("current") == "public":
+                        store.clear_deleted_summary(bot_id)
+                    continue
+                # A Typesense/listing hit is only a restoration candidate.
+                # Keep the deleted state until the Character API confirms 200.
             response = client.character(bot_id)
             verified += 1
             if response.ok:
                 payload = legacy.unwrap_character_payload(response.data)
+                record = load_bot(bot_id)
+                was_deleted = bool(record and (record.get("status") or {}).get("current") == "deleted")
                 if payload:
                     payload.setdefault("character_id", bot_id)
-                    record = load_bot(bot_id)
                     record, _ = legacy.observe_bot(record, payload, source="character-api", at=at)
                     save_bot(record)
                 checks.pop(bot_id, None)
-                store.clear_deleted_summary(bot_id)
-                restored += 1
+                if was_deleted and record and (record.get("status") or {}).get("current") == "public":
+                    store.clear_deleted_summary(bot_id)
+                    restored += 1
                 continue
             if response.status == 404:
                 info["count"] = int(info.get("count") or 0) + 1

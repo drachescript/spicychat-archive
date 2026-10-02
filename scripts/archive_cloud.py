@@ -18,6 +18,7 @@ from typing import Any, Iterable
 
 import archive as legacy
 from storage_r2 import R2ArchiveStore, StorageQuotaExceeded
+from rich_field_index import SCHEMA_VERSION as RICH_FIELDS_VERSION, field_flags, flush_index as flush_rich_field_index, note_record as note_rich_field_record
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,6 +58,8 @@ def _cloud_summary(record: dict[str, Any]) -> dict[str, Any]:
         "createdAt": lk.get("createdAt"),
         "updatedAt": lk.get("updatedAt"),
         "summarySchemaVersion": 2,
+        "savedFields": field_flags(record),
+        "richFieldsVersion": RICH_FIELDS_VERSION,
         "definitionVisible": lk.get("definition_visible") if isinstance(lk.get("definition_visible"), bool) else None,
         "definitionSize": str(lk.get("definition_size_category") or "").lower(),
         "hasLorebooks": lk.get("has_lorebooks") if isinstance(lk.get("has_lorebooks"), bool) else None,
@@ -68,7 +71,10 @@ def _refresh_deleted_summary_metadata(store: R2ArchiveStore) -> int:
     """One-time refresh for older deleted summaries after public filter metadata expands."""
     pending = [
         bot_id for bot_id, summary in store.deleted_index.items()
-        if int((summary or {}).get("summarySchemaVersion") or 0) < 2
+        if (
+            int((summary or {}).get("summarySchemaVersion") or 0) < 2
+            or int((summary or {}).get("richFieldsVersion") or 0) < RICH_FIELDS_VERSION
+        )
     ]
     if not pending:
         return 0
@@ -156,6 +162,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
     def save_bot(record: dict[str, Any]) -> bool:
         record = _collapse_current_sources(record)
         result = store.save_bot(record)
+        note_rich_field_record(store, record)
         status = (record.get("status") or {}).get("current")
         if status == "deleted":
             store.set_deleted_summary(record["id"], _cloud_summary(record))
@@ -702,6 +709,7 @@ def run() -> int:
     store.save_discovery_order()
     store.save_deleted_index()
     store.save_bloom(bloom)
+    flush_rich_field_index(store)
     store.flush_usage(force=True)
     usage = store.storage_usage()
     print(

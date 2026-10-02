@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - "worker/**"
+      - "scripts/rich_field_index.py"
+      - "scripts/archive_cloud.py"
+      - "scripts/import_bot_status.py"
       - ".github/workflows/deploy-import-worker.yml"
 
 permissions:
@@ -18,12 +21,18 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
       IMPORT_TOKEN: ${{ secrets.SPICYCHAT_ARCHIVE_IMPORT_TOKEN }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
       - name: Check import token
         shell: bash
@@ -39,3 +48,9 @@ jobs:
       - name: Set private upload token
         shell: bash
         run: printf '%s' "$IMPORT_TOKEN" | npx --yes wrangler@4 secret put IMPORT_TOKEN --config worker/wrangler.toml
+
+      - name: Build archive rich-field index if needed
+        shell: bash
+        run: |
+          python -m pip install --quiet boto3
+          python scripts/rich_field_index.py --rebuild-if-missing

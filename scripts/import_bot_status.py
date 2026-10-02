@@ -29,6 +29,7 @@ from typing import Any, Iterable
 
 import archive as legacy
 from storage_r2 import R2ArchiveStore
+from rich_field_index import flush_index as flush_rich_field_index, note_record as note_rich_field_record
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -456,6 +457,7 @@ def process_payload(
             else:
                 stats["updatedRecords"] += 1
             store.save_bot(record)
+            note_rich_field_record(store, record)
 
         # Verify imported bots through the normal public character API over future
         # scheduled runs. That API, not the import, decides current availability.
@@ -659,6 +661,7 @@ def main() -> int:
     store.save_discovery_order()
     store.save_deleted_index()
     store.save_state(state)
+    flush_rich_field_index(store)
     store.flush_usage(force=True)
 
     write_summary(args.summary_file, totals)

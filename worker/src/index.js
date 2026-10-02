@@ -88,9 +88,7 @@ function validArchiveBotId(value) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id) ? id : "";
 }
 
-async function readArchiveBotRecord(bucket, botId) {
-  const compact = botId.replaceAll("-", "");
-  const key = `bots/${compact.slice(0, 2)}/${botId}.json`;
+async function readArchiveJson(bucket, key) {
   const object = await bucket.get(key);
   if (!object) return null;
   try {
@@ -105,19 +103,30 @@ async function readArchiveBotRecord(bucket, botId) {
   }
 }
 
-async function cachedArchiveFieldFlags(env, botId) {
+function archiveFieldFlagsFromMask(mask) {
+  const value = Number(mask || 0);
+  return {
+    personality: !!(value & 1),
+    scenario: !!(value & 2),
+    dialogue: !!(value & 4),
+  };
+}
+
+async function cachedArchiveRichFieldIndex(env) {
   const cache = caches.default;
-  const cacheRequest = new Request(`https://archive-field-cache.spicychatarchive.invalid/v1/${botId}`);
-  const cached = await cache.match(cacheRequest);
+  const request = new Request("https://archive-field-cache.spicychatarchive.invalid/rich-fields-v1");
+  const cached = await cache.match(request);
   if (cached) {
     try { return await cached.json(); } catch {}
   }
-  const record = await readArchiveBotRecord(env.ARCHIVE_BUCKET, botId);
-  const flags = record ? archiveFieldFlags(record) : { personality: false, scenario: false, dialogue: false };
-  await cache.put(cacheRequest, new Response(JSON.stringify(flags), {
-    headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600" },
+  const payload = await readArchiveJson(env.ARCHIVE_BUCKET, "indexes/rich-fields.json");
+  const index = payload && payload.complete === true && payload.bots && typeof payload.bots === "object"
+    ? payload
+    : { schemaVersion: 1, complete: false, bots: {} };
+  await cache.put(request, new Response(JSON.stringify(index), {
+    headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=300" },
   }));
-  return flags;
+  return index;
 }
 
 async function handleArchiveFieldPresence(request, env) {
@@ -129,14 +138,11 @@ async function handleArchiveFieldPresence(request, env) {
   const ids = [...new Set(rawIds.map(validArchiveBotId).filter(Boolean))].slice(0, ARCHIVE_FIELD_BATCH_MAX);
   if (!ids.length) return json({ ok: true, fields: {} });
 
-  const rows = await mapWithConcurrency(ids.map(id => ({ id })), 12, async item => ({
-    id: item.id,
-    fields: await cachedArchiveFieldFlags(env, item.id),
-  }));
+  const index = await cachedArchiveRichFieldIndex(env);
+  if (index.complete !== true) return json({ ok: false, error: "rich_field_index_rebuilding" }, 503);
+
   const fields = {};
-  for (const row of rows) {
-    if (row?.id && row?.fields) fields[row.id] = row.fields;
-  }
+  for (const id of ids) fields[id] = archiveFieldFlagsFromMask(index.bots?.[id]);
   return json({ ok: true, fields });
 }
 

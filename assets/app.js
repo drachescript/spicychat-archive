@@ -4,7 +4,6 @@ const page = document.body.dataset.page || 'browse';
 const DEFAULT_EXCLUDED = ['NTR','Cheating'];
 const PAGE_SIZE = 100;
 const TRANSLATION_ENDPOINT = 'https://spicychat-archive-import.dragongraf.workers.dev/api/translate';
-const ARCHIVE_FIELD_PRESENCE_ENDPOINT = 'https://spicychat-archive-import.dragongraf.workers.dev/api/archive-field-presence';
 const TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 const SMALL_CAPS = Object.freeze({
   'ᴀ':'a','ʙ':'b','ᴄ':'c','ᴅ':'d','ᴇ':'e','ꜰ':'f','ғ':'f','ɢ':'g','ʜ':'h','ɪ':'i','ᴊ':'j','ᴋ':'k','ʟ':'l','ᴍ':'m','ɴ':'n','ᴏ':'o','ᴘ':'p','ǫ':'q','ʀ':'r','ꜱ':'s','s':'s','ᴛ':'t','ᴜ':'u','ᴠ':'v','ᴡ':'w','x':'x','ʏ':'y','ᴢ':'z',
@@ -305,39 +304,48 @@ function buildTsFilter(runtime,state){
   for(const tag of state.exclude)parts.push(`tags:!=${tsLiteral(tag)}`);
   return parts.filter(Boolean).join(' && ');
 }
-const archiveFieldPresenceCache=new Map();
-async function archiveFieldPresence(ids){
-  const wanted=[...new Set((ids||[]).map(id=>String(id||'').toLowerCase()).filter(Boolean))];
-  const missing=wanted.filter(id=>!archiveFieldPresenceCache.has(id));
-  for(let i=0;i<missing.length;i+=250){
-    const batch=missing.slice(i,i+250);
-    const response=await fetch(ARCHIVE_FIELD_PRESENCE_ENDPOINT,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ids:batch})
-    });
-    if(!response.ok)throw new Error(`Archive field check ${response.status}`);
-    const payload=await response.json();
-    for(const id of batch){
-      archiveFieldPresenceCache.set(id,payload?.fields?.[id]||{personality:false,scenario:false,dialogue:false});
+let archiveRichFieldIndexPromise=null;
+function flagsFromRichFieldMask(mask){
+  const value=Number(mask||0);
+  return {personality:!!(value&1),scenario:!!(value&2),dialogue:!!(value&4)};
+}
+async function loadArchiveRichFieldIndex(runtime){
+  if(archiveRichFieldIndexPromise)return archiveRichFieldIndexPromise;
+  archiveRichFieldIndexPromise=(async()=>{
+    const base=String(runtime.publicDataBaseUrl||'').replace(/\/$/,'');
+    if(!base)throw new Error('Archive rich-field index is unavailable.');
+    const payload=await fetchJson(`${base}/indexes/rich-fields.json`);
+    if(!payload||payload.complete!==true||!payload.bots||typeof payload.bots!=='object'){
+      throw new Error('Archive rich-field index is still rebuilding.');
     }
-  }
-  return new Map(wanted.map(id=>[id,archiveFieldPresenceCache.get(id)||{personality:false,scenario:false,dialogue:false}]));
+    return payload;
+  })().catch(error=>{archiveRichFieldIndexPromise=null;throw error;});
+  return archiveRichFieldIndexPromise;
+}
+async function archiveFieldPresence(runtime,ids){
+  const wanted=[...new Set((ids||[]).map(id=>String(id||'').toLowerCase()).filter(Boolean))];
+  const index=await loadArchiveRichFieldIndex(runtime);
+  return new Map(wanted.map(id=>[id,flagsFromRichFieldMask(index.bots?.[id])]));
 }
 
-async function typesenseSearch(runtime,search){
+async function typesenseMultiSearch(runtime,searches){
   const urls=[runtime.typesense.url,...(runtime.typesense.fallbackUrls||[])];
   let last;
   for(const url of urls){
     try{
-      const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','X-TYPESENSE-API-KEY':runtime.typesense.apiKey},body:JSON.stringify({searches:[search]})});
+      const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','X-TYPESENSE-API-KEY':runtime.typesense.apiKey},body:JSON.stringify({searches})});
       if(!r.ok){last=new Error(`Typesense ${r.status}`);continue;}
-      const data=await r.json(), result=(data.results||[])[0]||{};
-      if(result.error){last=new Error(result.error);continue;}
-      return result;
+      const data=await r.json(),results=Array.isArray(data.results)?data.results:[];
+      if(!results.length){last=new Error('Typesense returned no search results');continue;}
+      return results;
     }catch(e){last=e;}
   }
   throw last||new Error('Typesense request failed');
+}
+async function typesenseSearch(runtime,search){
+  const result=(await typesenseMultiSearch(runtime,[search]))[0]||{};
+  if(result.error)throw new Error(result.error);
+  return result;
 }
 function docToCard(doc){
   return {
@@ -389,22 +397,21 @@ function localFilterAndSort(bots,state){
 
 function pagerPages(current,total){
   if(total<=1)return [];
-  const keep=new Set([1,total,current-2,current-1,current,current+1,current+2]);
-  const pages=[...keep].filter(n=>n>=1&&n<=total).sort((a,b)=>a-b),out=[];
-  let previous=0;
-  for(const n of pages){if(previous&&n>previous+1)out.push('…');out.push(n);previous=n;}
-  return out;
+  const end=current<=1?Math.min(total,10):Math.min(total,current+6);
+  const start=current<=1?1:Math.max(1,current-5);
+  return Array.from({length:Math.max(0,end-start+1)},(_,i)=>start+i);
 }
 function pagerMarkup(current,total){
   if(total<=1)return '';
-  const parts=pagerPages(current,total).map(item=>item==='…'?'<span class="pager-gap">…</span>':`<button type="button" class="pager-page${item===current?' active':''}" data-page="${item}"${item===current?' aria-current="page"':''}>${item}</button>`).join('');
+  const parts=pagerPages(current,total).map(item=>`<button type="button" class="pager-page${item===current?' active':''}" data-page="${item}"${item===current?' aria-current="page"':''}>${item}</button>`).join('');
   return `<nav class="pager" aria-label="Bot pages"><button type="button" class="pager-page pager-prev" data-page="${Math.max(1,current-1)}" ${current<=1?'disabled':''}>‹ Prev</button>${parts}<button type="button" class="pager-page pager-next" data-page="${Math.min(total,current+1)}" ${current>=total?'disabled':''}>Next ›</button></nav>`;
 }
 function renderPagers(current,total){
   const html=pagerMarkup(current,total);document.querySelectorAll('[data-archive-pager]').forEach(el=>{el.innerHTML=html;});
 }
-function renderSavedFieldPagers(current,hasNext){
-  const html=`<nav class="pager" aria-label="Bot pages"><button type="button" class="pager-page pager-prev" data-page="${Math.max(1,current-1)}" ${current<=1?'disabled':''}>‹ Prev</button><button type="button" class="pager-page active" data-page="${current}" aria-current="page">${current}</button><button type="button" class="pager-page pager-next" data-page="${current+1}" ${hasNext?'':'disabled'}>Next ›</button></nav>`;
+function renderSavedFieldPagers(current,hasNext,exactTotalPages=null){
+  const total=exactTotalPages!=null?Math.max(1,exactTotalPages):(hasNext?(current<=1?10:current+6):current);
+  const html=pagerMarkup(current,total);
   document.querySelectorAll('[data-archive-pager]').forEach(el=>{el.innerHTML=html;});
 }
 function bindPagers(onPage){
@@ -496,28 +503,34 @@ async function browseLive(runtime,manifest,tags,stats){
         let scan=fieldScanCache.get(cacheKey);
         if(!scan){scan={matched:[],nextTypesensePage:1,exhausted:false,underlyingFound:0};fieldScanCache.set(cacheKey,scan);}
         const need=state.page*PAGE_SIZE+1;
-        let scansThisRun=0;
-        while(scan.matched.length<need&&!scan.exhausted&&scansThisRun<40){
-          const probe={...search,page:scan.nextTypesensePage,per_page:250};
-          const result=await typesenseSearch(runtime,probe);if(token!==requestNo)return;
-          const hits=result.hits||[];scan.underlyingFound=Number(result.found||scan.underlyingFound||0);
-          if(!hits.length){scan.exhausted=true;break;}
-          const docs=hits.map(h=>h.document||{});
-          const ids=docs.map(doc=>String(doc.character_id||doc.id||'').toLowerCase()).filter(Boolean);
-          const presence=await archiveFieldPresence(ids);if(token!==requestNo)return;
-          for(const doc of docs){
-            const id=String(doc.character_id||doc.id||'').toLowerCase();
-            if(id&&presence.get(id)?.[state.savedField])scan.matched.push(doc);
+        const richIndex=await loadArchiveRichFieldIndex(runtime);if(token!==requestNo)return;
+        let batchesThisRun=0;
+        while(scan.matched.length<need&&!scan.exhausted&&batchesThisRun<5){
+          const probes=Array.from({length:8},(_,offset)=>({...search,page:scan.nextTypesensePage+offset,per_page:250}));
+          const results=await typesenseMultiSearch(runtime,probes);if(token!==requestNo)return;
+          for(const result of results){
+            if(result?.error)throw new Error(result.error);
+            const hits=result?.hits||[];
+            scan.underlyingFound=Number(result?.found||scan.underlyingFound||0);
+            if(!hits.length){scan.exhausted=true;break;}
+            for(const hit of hits){
+              const doc=hit?.document||{};
+              const id=String(doc.character_id||doc.id||'').toLowerCase();
+              const flags=flagsFromRichFieldMask(richIndex.bots?.[id]);
+              if(id&&flags[state.savedField])scan.matched.push(doc);
+            }
+            scan.nextTypesensePage+=1;
+            if(hits.length<250||scan.nextTypesensePage>Math.ceil(scan.underlyingFound/250)){scan.exhausted=true;break;}
           }
-          scan.nextTypesensePage+=1;
-          scansThisRun+=1;
-          if(hits.length<250||scan.nextTypesensePage>Math.ceil(scan.underlyingFound/250))scan.exhausted=true;
+          batchesThisRun+=1;
         }
         const startIndex=(state.page-1)*PAGE_SIZE;
         const pageDocs=scan.matched.slice(startIndex,startIndex+PAGE_SIZE);
         const rows=pageDocs.map(docToCard).filter(b=>b.id);
-        const hasNext=scan.matched.length>state.page*PAGE_SIZE;
+        const hasNext=scan.matched.length>state.page*PAGE_SIZE||!scan.exhausted;
         const exactTotal=scan.exhausted?scan.matched.length:null;
+        const exactPages=exactTotal!=null?Math.max(1,Math.ceil(exactTotal/PAGE_SIZE)):null;
+        if(exactPages!=null&&state.page>exactPages){state.page=exactPages;setQuery(state);return run();}
         const label=state.savedField==='personality'?'Personality':state.savedField==='scenario'?'Scenario':'Example Dialogue';
         grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots with that archived field match these filters.</div>';
         const start=rows.length?startIndex+1:0,end=startIndex+rows.length;
@@ -527,7 +540,7 @@ async function browseLive(runtime,manifest,tags,stats){
           : (scan.matched.length<need
               ? `${start.toLocaleString()}–${end.toLocaleString()} with saved ${label} · checked ${checked.toLocaleString()} matching public bots; narrow search/tags to scan deeper`
               : `${start.toLocaleString()}–${end.toLocaleString()} with saved ${label}`);
-        renderSavedFieldPagers(state.page,hasNext);
+        renderSavedFieldPagers(state.page,hasNext,exactPages);
         enhanceRenderedCards(grid,rows);
       }
     }catch(e){if(token!==requestNo)return;grid.innerHTML=`<div class="error">Could not query the public bot index: ${esc(e.message||e)}</div>`;count.textContent='';renderPagers(1,1);}
@@ -557,8 +570,11 @@ async function browseDeleted(runtime,manifest,tags,stats){
     if(state.savedField==='any')return;
     const missing=bots.filter(bot=>!bot.savedFields).map(bot=>String(bot.id||'').toLowerCase()).filter(Boolean);
     if(!missing.length)return;
-    const presence=await archiveFieldPresence(missing);
-    for(const bot of bots){const id=String(bot.id||'').toLowerCase();bot.savedFields=presence.get(id)||archiveFieldPresenceCache.get(id)||{personality:false,scenario:false,dialogue:false};}
+    const presence=await archiveFieldPresence(runtime,missing);
+    for(const bot of bots){
+      const id=String(bot.id||'').toLowerCase();
+      if(!bot.savedFields)bot.savedFields=presence.get(id)||{personality:false,scenario:false,dialogue:false};
+    }
   }
   const render=async()=>{
     const token=++deletedRenderToken;

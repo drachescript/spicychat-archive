@@ -140,6 +140,10 @@ def restoration_candidates(record: dict[str, Any]) -> list[dict[str, Any]]:
         elif status == "public" and saw_unavailable:
             restored.append(row)
             saw_unavailable = False
+    current_status = record.get("status") or {}
+    candidate = current_status.get("restoreCandidate") if isinstance(current_status, dict) else None
+    if str(current_status.get("current") or "").lower() == "deleted" and isinstance(candidate, dict) and candidate.get("at"):
+        restored.append({"status": "public", "from": candidate.get("at"), "source": candidate.get("source") or "listing-candidate", "candidateOnly": True})
     return restored
 
 
@@ -305,6 +309,12 @@ def activity_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
                 "source": source,
             })
             saw_unavailable = False
+    current_status = record.get("status") or {}
+    candidate = current_status.get("restoreCandidate") if isinstance(current_status, dict) else None
+    if str(current_status.get("current") or "").lower() == "deleted" and isinstance(candidate, dict) and candidate.get("at"):
+        sig = (str(candidate.get("at")), str(candidate.get("source") or "listing-candidate"))
+        if not any(x.get("type") == "restore-candidate" and (str(x.get("at")), str(x.get("source"))) == sig for x in rows):
+            rows.append({**base, "at": candidate.get("at"), "type": "restore-candidate", "source": candidate.get("source") or "listing-candidate"})
     return rows
 
 

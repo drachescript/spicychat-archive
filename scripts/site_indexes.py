@@ -95,6 +95,11 @@ def creator_key(value: Any) -> str:
     return str(value or "").strip().lower()
 
 
+def creator_id(record: dict[str, Any]) -> str:
+    lk = last_known(record)
+    return str(lk.get("creator_id") or lk.get("creatorId") or lk.get("user_id") or "").strip()
+
+
 def creator_bucket(value: Any) -> str:
     # FNV-1a, low byte. Easy to reproduce in browser JS.
     h = 2166136261
@@ -307,6 +312,7 @@ def change_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
     bot_id = str(record.get("id") or "").lower()
     name = bot_name(record)
     creator = creator_name(record)
+    creator_identity = creator_id(record)
     rows: list[dict[str, Any]] = []
     for event in record.get("fieldHistory") or []:
         if not isinstance(event, dict):
@@ -319,6 +325,7 @@ def change_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
             "id": bot_id,
             "name": name,
             "creator": creator,
+            "creatorId": creator_identity,
             "at": event.get("at"),
             "path": path,
             "kind": event.get("kind") or "value",

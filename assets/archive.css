@@ -109,3 +109,16 @@
 .health-issue{display:grid;gap:3px}.health-issue b{font-size:20px}.health-issue span{color:var(--muted);font-size:11px}.health-ok{color:var(--text)}
 @media(max-width:1180px){.creator-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}.changes-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.creator-toolbar,.changes-toolbar{grid-template-columns:1fr}.change-row{grid-template-columns:1fr}.change-values{grid-template-columns:1fr}.change-values b{text-align:center;padding:0}}
+
+/* Bot detail source badges and version comparison. */
+.creator-profile-link{color:#72a7ff;text-decoration:none}.creator-profile-link:hover{text-decoration:underline}
+.source-row{align-items:center}.source-pill{font-size:9px}
+.version-controls{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:10px;margin:12px 0}
+.version-controls label{display:grid;gap:5px;color:var(--muted);font-size:10px}
+.version-controls select{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:9px}
+.version-table{display:grid;gap:9px}.version-row{border:1px solid var(--line);border-radius:9px;background:var(--panel2);padding:10px}.version-row h3{margin:0 0 8px;font-size:12px}
+.version-values,.history-diff{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.version-values>div>span,.history-diff>div>span{display:block;color:var(--muted);font-size:9px;margin-bottom:4px}
+.version-values .pre,.history-diff .pre{max-height:260px;overflow:auto}
+.history-detail summary{cursor:pointer}.history-detail[open] summary{margin-bottom:9px}
+.compact-empty{padding:12px}
+@media(max-width:680px){.version-controls,.version-values,.history-diff{grid-template-columns:1fr}}

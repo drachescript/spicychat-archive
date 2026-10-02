@@ -689,6 +689,62 @@ function archiveFieldLabel(path){
   if(leaf==='post_history_instructions')return 'Post History Instructions';
   return String(path||'').replaceAll('_',' ');
 }
+const HISTORY_VOLATILE=new Set(['updatedAt','updated_at','lastUpdatedAt','last_updated_at','num_messages','num_messages_24h','rating_score','rating_count','token_count','rank','ranking']);
+function meaningfulHistoryRows(record){
+  return (record.fieldHistory||[]).filter(row=>{
+    const leaf=String(row?.path||'').split('.').pop();
+    return row?.path&&!HISTORY_VOLATILE.has(leaf);
+  });
+}
+function flattenArchiveObject(value,prefix='',out={}){
+  if(value&&typeof value==='object'&&!Array.isArray(value)){
+    for(const [key,item] of Object.entries(value)){
+      const path=prefix?prefix+'.'+key:key;
+      if(item&&typeof item==='object'&&!Array.isArray(item))flattenArchiveObject(item,path,out);
+      else out[path]=item;
+    }
+  }else if(prefix)out[prefix]=value;
+  return out;
+}
+function versionSnapshot(record,target){
+  const flat=flattenArchiveObject(structuredClone(record.lastKnown||{}));
+  if(target==='current')return flat;
+  const targetTime=new Date(target).getTime();
+  const rows=meaningfulHistoryRows(record).slice().sort((a,b)=>new Date(b.at)-new Date(a.at));
+  for(const row of rows){
+    const at=new Date(row.at).getTime();
+    if(!Number.isFinite(at)||at<=targetTime)continue;
+    if(Object.prototype.hasOwnProperty.call(row,'from'))flat[row.path]=structuredClone(row.from);
+    else delete flat[row.path];
+  }
+  return flat;
+}
+function compareValueText(value){
+  if(value==null)return '—';
+  if(typeof value==='string')return value;
+  try{return JSON.stringify(value,null,2);}catch{return String(value);}
+}
+function versionCompareRows(record,older,newer){
+  const a=versionSnapshot(record,older),b=versionSnapshot(record,newer),paths=[...new Set([...Object.keys(a),...Object.keys(b)])];
+  return paths.filter(path=>{
+    const leaf=path.split('.').pop();if(HISTORY_VOLATILE.has(leaf))return false;
+    try{return JSON.stringify(a[path])!==JSON.stringify(b[path]);}catch{return String(a[path])!==String(b[path]);}
+  }).sort((x,y)=>archiveFieldLabel(x).localeCompare(archiveFieldLabel(y))).map(path=>({path,from:a[path],to:b[path]}));
+}
+function sourceDisplayName(source){
+  const s=String(source||'');
+  if(s==='character-api')return 'Character API';
+  if(s==='qol-bot-status-import')return 'QoL Bot Status';
+  if(s.startsWith('typesense'))return 'Typesense';
+  if(s==='public-submission')return 'Public contribution';
+  return s.replaceAll('-',' ').replaceAll('_',' ')||'Unknown source';
+}
+function renderSourcePills(record){
+  const keys=[...new Set([...Object.keys(record.current||{}),...Object.keys(record.sources||{})])];
+  const seen=new Set(),rows=[];
+  for(const key of keys){const label=sourceDisplayName(key);if(seen.has(label))continue;seen.add(label);rows.push('<span class="pill source-pill" title="'+esc(key)+'">'+esc(label)+'</span>');}
+  return rows.join('');
+}
 async function loadBotRecord(id,runtime){
   if(runtime.storageMode==='r2'&&runtime.r2ReadAllowed===false){const e=new Error('R2_READ_BUDGET_PAUSED');e.code='R2_READ_BUDGET_PAUSED';throw e;}
   if(runtime.storageMode==='r2'&&runtime.publicDataBaseUrl){
@@ -714,8 +770,8 @@ async function botPage(){
   const runtime=await loadRuntime();let record;
   try{record=await loadBotRecord(id,runtime);}catch(e){app.innerHTML=`<div class="error">${e?.code==='R2_READ_BUDGET_PAUSED'?'Archived bot details are temporarily paused by the R2 quota safety guard.':'This bot has not been captured by the archive yet.'}</div>`;return;}
   const lk=record.lastKnown||{},status=record.status?.current||'unknown';
-  const cdn=resolveAvatar(lk.avatar_url||lk.avatar||lk.image), archived=archivedAvatar(record,runtime);
-  const primary=status==='deleted'?(archived||cdn):(cdn||archived), fallback=status==='deleted'?cdn:archived;
+  const cdn=resolveAvatar(lk.avatar_url||lk.avatar||lk.image),archived=archivedAvatar(record,runtime);
+  const primary=status==='deleted'?(archived||cdn):(cdn||archived),fallback=status==='deleted'?cdn:archived;
   const currentTitle=normalizeDisplayText(bestField(record,'title')||bestField(record,'description')||'');
   const fieldSpecs=[
     {label:'Title',keys:['description'],skip:value=>normalizeDisplayText(value)===currentTitle},
@@ -728,22 +784,36 @@ async function botPage(){
     {label:'Lorebooks',keys:['lorebooks']}
   ];
   const fieldHtml=fieldSpecs.map(spec=>{const v=bestFieldAny(record,spec.keys);if(!meaningfulFieldValue(v)||spec.skip?.(v))return'';return `<div class="field-block"><h3>${esc(spec.label)} · last known</h3><div class="pre">${esc(Array.isArray(v)?v.map(item=>typeof item==='object'?JSON.stringify(item,null,2):String(item)).join('\n\n'):typeof v==='object'?JSON.stringify(v,null,2):v)}</div></div>`}).join('');
-  const botName=normalizeDisplayText(bestField(record,'name')||bestField(record,'title')||'Unknown bot');
+  const botName=normalizeDisplayText(bestField(record,'name')||bestField(record,'title')||'Unknown bot'),creator=bestField(record,'creator_username')||bestField(record,'creator')||'';
   document.title=`${botName} · SpicyChat Archive`;
   const tags=(lk.tags||[]).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
-  const history=(record.fieldHistory||[]).filter(h=>!['updatedAt','updated_at','lastUpdatedAt','last_updated_at'].includes(String(h.path||'').split('.').pop())).slice().reverse().slice(0,100).map(h=>`<div class="history-item"><b>${esc(archiveFieldLabel(h.path))}</b> · ${esc(h.kind||'value')}<br><span class="detail-sub">${date(h.at)} · ${esc(h.source||'')}</span></div>`).join('');
+  const historyRows=meaningfulHistoryRows(record).slice().reverse().slice(0,150);
+  const history=historyRows.map(h=>`<details class="history-item history-detail"><summary><b>${esc(archiveFieldLabel(h.path))}</b> · ${esc(h.kind||'value')}<br><span class="detail-sub">${date(h.at)} · ${esc(sourceDisplayName(h.source||''))}</span></summary><div class="history-diff"><div><span>Before</span><div class="pre">${esc(compareValueText(h.from))}</div></div><div><span>After</span><div class="pre">${esc(compareValueText(h.to))}</div></div></div></details>`).join('');
+  const points=['current',...new Set(historyRows.map(x=>x.at).filter(Boolean))];
+  const options=points.map((point,index)=>`<option value="${esc(point)}">${point==='current'?'Current last-known':date(point)}${index===1?' · previous':''}</option>`).join('');
+  const sources=renderSourcePills(record);
   app.innerHTML=`<article class="detail"><div class="detail-head"><div class="detail-art">${imgHtml(primary,fallback,{alt:bestField(record,'name')||''})}</div>
     <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(botName)}</h1>
-    <div class="detail-sub">${bestField(record,'creator_username')?`@${esc(bestField(record,'creator_username'))}`:'Unknown creator'}</div>
+    <div class="detail-sub">${creator?`<a class="creator-profile-link" href="${esc(creatorHref(creator))}">@${esc(creator)}</a>`:'Unknown creator'}</div>
     <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
+    ${sources?`<div class="pill-row source-row"><span class="detail-sub">Observed through</span>${sources}</div>`:''}
     <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>
-    <div class="detail-actions"><a class="primary-button" href="${esc(spicyHref(record.id))}" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="../">Back to archive</a></div></div></div>
+    <div class="detail-actions"><a class="primary-button" href="${esc(spicyHref(record.id))}" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a></div></div></div>
     <section class="section"><h2>Last-known archived fields</h2><p class="detail-sub">A field stays here after SpicyChat stops exposing it. That does not mean it is still currently public.</p>${fieldHtml||'<p class="detail-sub">No rich definition fields have been recovered yet.</p>'}</section>
+    <section class="section"><h2>Version history & compare</h2><p class="detail-sub">Versions are reconstructed from the archive's recorded before/after field changes. Untouched fields use the last-known archive value.</p>
+      ${points.length>1?`<div class="version-controls"><label>Older<select id="version-older">${options}</select></label><label>Newer<select id="version-newer">${options}</select></label></div><div id="version-compare"></div>`:'<p class="detail-sub">No meaningful creator-content edits have been recorded yet.</p>'}
+    </section>
     <section class="section"><h2>Latest metrics</h2><div class="pre">${esc(JSON.stringify(record.metrics?.latest||{},null,2))}</div></section>
     <section class="section"><h2>Availability history</h2><div class="pre">${esc(JSON.stringify(record.availabilityHistory||[],null,2))}</div></section>
     <section class="section"><h2>Field history</h2>${history||'<p class="detail-sub">No meaningful field changes recorded yet.</p>'}</section>
     <section class="section"><h2>Raw latest observations</h2><div class="pre">${esc(JSON.stringify(record.current||{},null,2))}</div></section>
   </article>`;
+  const older=document.querySelector('#version-older'),newer=document.querySelector('#version-newer'),compare=document.querySelector('#version-compare');
+  if(older&&newer&&compare){
+    older.value=points[1]||'current';newer.value='current';
+    const renderCompare=()=>{const rows=versionCompareRows(record,older.value,newer.value);compare.innerHTML=rows.length?`<div class="version-table">${rows.map(row=>`<article class="version-row"><h3>${esc(archiveFieldLabel(row.path))}</h3><div class="version-values"><div><span>Older</span><div class="pre">${esc(compareValueText(row.from))}</div></div><div><span>Newer</span><div class="pre">${esc(compareValueText(row.to))}</div></div></div></article>`).join('')}</div>`:'<div class="empty compact-empty">Those two points have no tracked content differences.</div>';};
+    older.addEventListener('change',renderCompare);newer.addEventListener('change',renderCompare);renderCompare();
+  }
 }
 
 function ageText(start){
@@ -775,7 +845,7 @@ async function statsPage(){
   const table=recent.map(r=>`<tr><td>${date(r.at)}</td><td>+${fmt(r.addedSincePrevious??0)}</td><td>${fmt(r.exploration?.new)}</td><td>${fmt(r.exploration?.pagesCompleted)}/${fmt(r.exploration?.pageBudget)}</td><td>${r.runDurationSeconds?`${Math.round(r.runDurationSeconds/60)}m`:'—'}</td></tr>`).join('');
   const guard=runtime.r2QuotaGuard||{},usage=guard.usage||{},adaptive=stats.adaptiveDiscovery||{},milestones=Array.isArray(historyData?.milestones)?historyData.milestones:[];
   const historyRows=[...milestones.map(row=>({...row,_historyKind:'milestone'})),...(stats.runs||[]).map(row=>({...row,_historyKind:row.kind||'archive-run'}))].filter(row=>row?.at).sort((a,b)=>new Date(b.at)-new Date(a.at));
-  app.innerHTML=`<section class="hero"><h1>Archive stats</h1><p>How the archive is growing, what recent batches found, and the full project history from the early small archive through the current crawler.</p></section>
+  app.innerHTML=`<section class="hero"><h1>Archive stats</h1><p>How the archive is growing, what recent batches found, and the full project history from the early small archive through the current crawler.</p><div class="detail-actions"><a class="secondary-button" href="../health/">Archive health</a><a class="secondary-button" href="../changes/">Recently changed</a><a class="secondary-button" href="../restored/">Restored bots</a></div></section>
     <section class="stats-grid"><div class="stat"><b>${fmt(stats.totalBots)}</b><span>Bots captured by the archive</span></div><div class="stat"><b>~${fmt(Math.round(stats.growth?.averagePerDay||0))}/day</b><span>Observed archive growth pace</span></div><div class="stat"><b>${fmt(stats.publicIndexBots)}</b><span>Public bots reported by SpicyChat's index</span></div><div class="stat"><b>${ageText(stats.startedAt)}</b><span>Archive site age</span></div><div class="stat"><b>+${fmt(stats.growth?.added24h)}</b><span>Captured in the last ~24h window</span></div><div class="stat"><b>+${fmt(stats.growth?.added7d)}</b><span>Captured in the last ~7d window</span></div><div class="stat"><b>${fmt(stats.deletedBots)}</b><span>Confirmed deleted / archived</span></div><div class="stat"><b>${fmt(tags.length)}</b><span>Current supported SpicyChat tags</span></div></section>
     <div class="stats-layout"><section class="chart-card"><h2>Archive growth</h2>${growthChart(stats.runs)}</section><section class="table-card"><h2>Crawler right now</h2><div class="recent-list"><div class="recent-run"><div><b>${fmt(adaptive.nextPageBudget||latest.exploration?.nextPageBudget)} pages</b><br><span>next normal scan</span></div><div><b>${fmt(adaptive.maxPages)}</b><br><span>largest manual test allowed</span></div></div><div class="recent-run"><div><b>${Math.round((adaptive.timeLimitSeconds||3600)/60)} min</b><br><span>hard stop for discovery</span></div><div><b>+${fmt(adaptive.growthPerSuccess)}</b><br><span>automatic page increase</span></div></div><div class="recent-run"><div><b>${fmt(latest.exploration?.new)}</b><br><span>new bots in the last batch</span></div><div><b>${fmt(latest.exploration?.pagesCompleted)}</b><br><span>pages finished</span></div></div></div></section></div>
     <div class="stats-layout"><section class="table-card"><h2>Recent batches</h2><p class="filter-note">The latest batches that actually added bots. Zero-add maintenance runs are kept in History below instead of duplicating this list.</p><div style="overflow:auto"><table class="stats-table"><thead><tr><th>Run</th><th>Saved</th><th>New bots</th><th>Deep-search pages</th><th>Took</th></tr></thead><tbody>${table||'<tr><td colspan="5">No batches with new bots yet.</td></tr>'}</tbody></table></div></section><section class="table-card"><h2>Storage + crawler</h2><div class="recent-list"><div class="recent-run"><div><b>${fmtBytes(latest.storage?.usedBytes||manifest.storage?.usedBytes)}</b><br><span>archive storage used</span></div><div><b>${fmt(latest.storage?.objects||usage.objectCount)}</b><br><span>files / objects in R2</span></div></div><div class="recent-run"><div><b>${fmt(usage.classA)}</b><br><span>R2 writes this month</span></div><div><b>${fmt(usage.classB)}</b><br><span>R2 reads this month</span></div></div><div class="recent-run"><div><b>${fmt(latest.enrichment?.enriched)}</b><br><span>full bot details refreshed last batch</span></div><div><b>${fmt(latest.images?.saved)}</b><br><span>images saved last batch</span></div></div></div></section></div>

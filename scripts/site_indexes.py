@@ -242,10 +242,18 @@ def _load_state(store: R2ArchiveStore) -> dict[str, Any]:
     times_payload = store.get_json(_index_key(store, "archive-times.json"), {}) or {}
     changes_payload = store.get_json(_index_key(store, "changes.json"), {}) or {}
     restored_payload = store.get_json(_index_key(store, "restored.json"), {}) or {}
+    times_ok = (
+        int(times_payload.get("schemaVersion") or 0) == SCHEMA_VERSION
+        and times_payload.get("complete") is True
+        and isinstance(times_payload.get("bots"), dict)
+    )
+    changes_ok = int(changes_payload.get("schemaVersion") or 0) == SCHEMA_VERSION and isinstance(changes_payload.get("changes"), list)
+    restored_ok = int(restored_payload.get("schemaVersion") or 0) == SCHEMA_VERSION and isinstance(restored_payload.get("bots"), list)
     state = {
-        "times": dict(times_payload.get("bots") or {}) if int(times_payload.get("schemaVersion") or 0) == SCHEMA_VERSION else {},
-        "changes": list(changes_payload.get("changes") or []) if int(changes_payload.get("schemaVersion") or 0) == SCHEMA_VERSION else [],
-        "restored": {str(x.get("id") or "").lower(): x for x in (restored_payload.get("bots") or []) if isinstance(x, dict) and x.get("id")} if int(restored_payload.get("schemaVersion") or 0) == SCHEMA_VERSION else {},
+        "baseComplete": bool(times_ok and changes_ok and restored_ok),
+        "times": dict(times_payload.get("bots") or {}) if times_ok else {},
+        "changes": list(changes_payload.get("changes") or []) if changes_ok else [],
+        "restored": {str(x.get("id") or "").lower(): x for x in (restored_payload.get("bots") or []) if isinstance(x, dict) and x.get("id")} if restored_ok else {},
         "creatorShards": {},
         "dirtyCreators": set(),
         "dirtyTimes": False,
@@ -260,7 +268,10 @@ def _load_creator_shard(store: R2ArchiveStore, state: dict[str, Any], bucket: st
     shards = state["creatorShards"]
     if bucket not in shards:
         payload = store.get_json(_creator_key(store, bucket), {}) or {}
-        creators = payload.get("creators") if int(payload.get("schemaVersion") or 0) == SCHEMA_VERSION else {}
+        schema_ok = int(payload.get("schemaVersion") or 0) == SCHEMA_VERSION
+        creators = payload.get("creators") if schema_ok else {}
+        if state.get("baseComplete") and payload and not schema_ok:
+            state["baseComplete"] = False
         shards[bucket] = deepcopy(creators) if isinstance(creators, dict) else {}
     return shards[bucket]
 
@@ -338,6 +349,13 @@ def note_record(store: R2ArchiveStore, record: dict[str, Any]) -> None:
 
 def flush_indexes(store: R2ArchiveStore, *, force: bool = False) -> None:
     state = _load_state(store)
+    if not state.get("baseComplete"):
+        # Never turn a schema migration/missing base index into a deceptively
+        # "complete" partial index just because a normal crawler run touched a
+        # few records. The deployment backfill owns creating the first complete
+        # index for a schema version.
+        print("Site indexes: incremental publish skipped; full index rebuild required.", flush=True)
+        return
     now = utc_now()
     if force or state["dirtyTimes"]:
         store.put_json(_index_key(store, "archive-times.json"), {
@@ -507,6 +525,7 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
     store.put_json(_index_key(store, "health.json"), health, public=True)
 
     state = {
+        "baseComplete": True,
         "times": times,
         "changes": changes,
         "restored": {x["id"]: x for x in restored_rows},

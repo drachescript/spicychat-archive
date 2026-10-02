@@ -19,7 +19,7 @@ from storage_r2 import R2ArchiveStore
 from rich_field_index import field_flags, field_mask
 
 ROOT = Path(__file__).resolve().parents[1]
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 CHANGES_LIMIT = 10000
 RESTORED_LIMIT = 10000
 
@@ -139,17 +139,41 @@ def latest_content_change(record: dict[str, Any]) -> str:
     return best
 
 
-def creator_bot_meta(record: dict[str, Any]) -> list[Any]:
+def creator_bot_meta(record: dict[str, Any]) -> dict[str, Any]:
     status = str((record.get("status") or {}).get("current") or "unknown").lower()
-    status_code = 1 if status == "public" else 2 if status == "deleted" else 0
     restored = restored_events(record)
-    return [
-        status_code,
-        epoch_ms(record.get("firstSeenAt")),
-        epoch_ms(record.get("lastSeenAt")),
-        len(restored),
-        epoch_ms(latest_content_change(record)),
-    ]
+    lk = last_known(record)
+    avatar = record.get("avatarArchive") or {}
+    metrics = (record.get("metrics") or {}).get("latest") or {}
+    source_avatar = lk.get("avatar_url") or lk.get("avatar") or lk.get("image")
+    lorebooks = lk.get("lorebooks")
+    has_lorebooks = lk.get("has_lorebooks")
+    if not isinstance(has_lorebooks, bool):
+        has_lorebooks = meaningful(lorebooks)
+    definition_visible = lk.get("definition_visible")
+    if not isinstance(definition_visible, bool):
+        definition_visible = None
+    return {
+        "status": status,
+        "firstSeenAt": record.get("firstSeenAt"),
+        "lastSeenAt": record.get("lastSeenAt"),
+        "restoreCount": len(restored),
+        "lastChangeAt": latest_content_change(record) or None,
+        "name": bot_name(record),
+        "title": bot_title(record),
+        "tags": lk.get("tags") if isinstance(lk.get("tags"), list) else [],
+        "isNsfw": is_nsfw(record),
+        "avatar": avatar.get("publicUrl") or source_avatar,
+        "avatarFallback": source_avatar,
+        "avatarArchived": bool(avatar.get("publicUrl")),
+        "messages": metrics.get("num_messages"),
+        "rating": metrics.get("rating_score"),
+        "savedMask": int(field_mask(record) or 0),
+        "definitionVisible": definition_visible,
+        "definitionSize": str(lk.get("definition_size_category") or "").lower(),
+        "hasLorebooks": has_lorebooks,
+        "language": str(lk.get("language") or "").lower(),
+    }
 
 
 def change_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
@@ -241,7 +265,7 @@ def _load_creator_shard(store: R2ArchiveStore, state: dict[str, Any], bucket: st
     return shards[bucket]
 
 
-def _update_creator_record(store: R2ArchiveStore, state: dict[str, Any], *, creator: str, bot_id: str, meta: list[Any] | None) -> None:
+def _update_creator_record(store: R2ArchiveStore, state: dict[str, Any], *, creator: str, bot_id: str, meta: dict[str, Any] | None) -> None:
     key = creator_key(creator)
     if not key:
         return

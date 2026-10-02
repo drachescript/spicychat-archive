@@ -63,12 +63,15 @@ class SiteIndexTests(unittest.TestCase):
         self.assertEqual(site.creator_bucket("CreatorName"), site.creator_bucket("creatorname"))
         self.assertEqual(len(site.creator_bucket("creatorname")), 2)
 
-    def test_creator_meta_has_archive_times(self):
+    def test_creator_meta_has_archive_times_and_card_data(self):
         meta = site.creator_bot_meta(self.sample())
-        self.assertEqual(meta[0], 1)
-        self.assertGreater(meta[1], 0)
-        self.assertGreater(meta[2], meta[1])
-        self.assertEqual(meta[3], 1)
+        self.assertEqual(meta["status"], "public")
+        self.assertTrue(meta["firstSeenAt"])
+        self.assertTrue(meta["lastSeenAt"])
+        self.assertEqual(meta["restoreCount"], 1)
+        self.assertEqual(meta["name"], "Test Bot")
+        self.assertEqual(meta["title"], "A title")
+        self.assertEqual(meta["savedMask"], 1)
 
 
 if __name__ == "__main__":

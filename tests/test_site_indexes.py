@@ -73,6 +73,22 @@ class SiteIndexTests(unittest.TestCase):
         rows = site.activity_rows(self.sample())
         self.assertEqual([row["type"] for row in rows], ["new", "deleted", "restored"])
 
+    def test_current_deleted_restore_candidate_is_unverified_activity(self):
+        record = self.sample()
+        record["availabilityHistory"] = record["availabilityHistory"][:2]
+        record["status"] = {
+            "current": "deleted",
+            "restoreCandidate": {
+                "at": "2026-10-02T00:00:00Z",
+                "source": "typesense",
+            },
+        }
+        self.assertEqual(site.restored_events(record), [])
+        self.assertEqual(len(site.restoration_candidates(record)), 1)
+        rows = site.activity_rows(record)
+        self.assertEqual(rows[-1]["type"], "restore-candidate")
+        self.assertEqual(rows[-1]["source"], "typesense")
+
     def test_month_key(self):
         self.assertEqual(site.month_key("2026-10-02T00:00:00Z"), "2026-10")
         self.assertEqual(site.month_key(None), "unknown")

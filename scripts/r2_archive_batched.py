@@ -168,14 +168,22 @@ def _exploration_outcome() -> dict[str, Any] | None:
     time_limited = bool(exploration.get("timeLimited"))
     partial = bool(time_limited or errors)
 
-    # In the current explorer, an early clean break can only happen when the
-    # Typesense pass genuinely runs out of hits. Preserve that fact so future
-    # history scans can distinguish it from old ambiguous incomplete runs.
-    natural_end = bool(
-        page_budget > 0
-        and pages_completed < page_budget
-        and not partial
-    )
+    # New explorer summaries explicitly distinguish a genuine end-of-pass from
+    # a numbered-page result cap that successfully switched to createdAt cursor
+    # mode. Keep the old inference only for legacy summaries that predate those
+    # markers.
+    if "naturalEnd" in exploration:
+        natural_end = bool(exploration.get("naturalEnd"))
+    else:
+        natural_end = bool(
+            page_budget > 0
+            and pages_completed < page_budget
+            and not partial
+            and not bool(exploration.get("switchedToCursor"))
+        )
+
+    result_cap_reached = bool(exploration.get("resultCapReached"))
+    switched_to_cursor = bool(exploration.get("switchedToCursor"))
 
     return {
         "at": state.get("lastRunAt"),
@@ -185,6 +193,8 @@ def _exploration_outcome() -> dict[str, Any] | None:
         "errors": errors,
         "partial": partial,
         "naturalEnd": natural_end,
+        "resultCapReached": result_cap_reached,
+        "switchedToCursor": switched_to_cursor,
     }
 
 
@@ -198,6 +208,8 @@ def _annotate_run_history(outcome: dict[str, Any]) -> None:
         "errors": list(outcome.get("errors") or []),
         "partial": bool(outcome.get("partial")),
         "naturalEnd": bool(outcome.get("naturalEnd")),
+        "resultCapReached": bool(outcome.get("resultCapReached")),
+        "switchedToCursor": bool(outcome.get("switchedToCursor")),
     }
 
     store = optimized._active_store

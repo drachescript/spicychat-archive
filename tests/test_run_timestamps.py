@@ -38,6 +38,32 @@ class FakeStore:
 
 
 class RunTimestampTests(unittest.TestCase):
+    def test_cursor_cap_switch_is_not_mislabeled_as_natural_end(self):
+        state = {
+            "lastRunAt": "2026-10-02T01:40:00Z",
+            "lastRunSummary": {
+                "exploration": {
+                    "pageBudget": 100,
+                    "pagesCompleted": 99,
+                    "timeLimited": False,
+                    "errors": [],
+                    "mode": "cursor",
+                    "naturalEnd": False,
+                    "resultCapReached": True,
+                    "switchedToCursor": True,
+                }
+            },
+        }
+
+        with patch.object(batched.optimized, "_active_state", state):
+            outcome = batched._exploration_outcome()
+
+        self.assertIsNotNone(outcome)
+        self.assertFalse(outcome["partial"])
+        self.assertFalse(outcome["naturalEnd"])
+        self.assertTrue(outcome["resultCapReached"])
+        self.assertTrue(outcome["switchedToCursor"])
+
     def test_successful_run_is_restamped_at_completion_everywhere(self):
         started = "2026-10-01T20:58:36Z"
         finished = "2026-10-01T21:57:10Z"

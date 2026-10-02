@@ -638,6 +638,9 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         missing_queued = 0
         completed_pages = 0
         time_limited = False
+        natural_end = False
+        result_cap_reached = False
+        switched_to_cursor = False
         discovery_started = time.monotonic()
 
         discovery_write_soft_limit = int(
@@ -720,6 +723,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 )
                 if capped:
                     exploration["blockedAtResultCap"] = True
+                    result_cap_reached = True
                     cursor = exploration.get("lastCreatedAt")
                     if cursor is None:
                         errors.append(
@@ -727,6 +731,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                             "createdAt cursor is available to continue safely"
                         )
                         break
+                    switched_to_cursor = True
                     mode = exploration["mode"] = "cursor"
                     exploration["cursorCreatedAt"] = cursor
                     print(
@@ -736,6 +741,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     )
                     continue
 
+                natural_end = True
                 missing_queued += finish_exploration_pass(at)
                 exploration["pass"] = int(exploration.get("pass") or 0) + 1
                 exploration["page"] = 1
@@ -800,12 +806,14 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 )
                 if capped:
                     exploration["blockedAtResultCap"] = True
+                    result_cap_reached = True
                     if last_created is None:
                         errors.append(
                             "Typesense returned a partial capped page without a "
                             "createdAt value to continue safely"
                         )
                         break
+                    switched_to_cursor = True
                     mode = exploration["mode"] = "cursor"
                     exploration["cursorCreatedAt"] = last_created
                     print(
@@ -818,6 +826,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     )
                     continue
 
+                natural_end = True
                 missing_queued += finish_exploration_pass(at)
                 exploration["pass"] = int(exploration.get("pass") or 0) + 1
                 exploration["page"] = 1
@@ -868,6 +877,9 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             "pagesCompleted": completed_pages,
             "nextPageBudget": next_pages,
             "timeLimited": time_limited,
+            "naturalEnd": natural_end,
+            "resultCapReached": result_cap_reached,
+            "switchedToCursor": switched_to_cursor,
             "durationSeconds": elapsed_seconds,
             "r2BotReadsAvoided": fingerprints.stats["avoidedReads"],
             "r2BotReadsNeeded": fingerprints.stats["fullReads"],

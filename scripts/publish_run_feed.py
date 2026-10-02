@@ -92,6 +92,8 @@ def apply_current_outcome(
         "errors",
         "partial",
         "naturalEnd",
+        "resultCapReached",
+        "switchedToCursor",
     ):
         if key in outcome:
             merged[key] = outcome[key]
@@ -115,7 +117,10 @@ def exploration_is_successful(exploration: Any) -> bool:
         # Older rows did not persist stop reasons. Do not call an ambiguous
         # incomplete historical run successful unless it explicitly says the
         # Typesense pass naturally ran out of hits.
-        return bool(exploration.get("naturalEnd"))
+        return bool(
+            exploration.get("naturalEnd")
+            or exploration.get("switchedToCursor")
+        )
     return budget > 0 and completed >= budget
 
 
@@ -225,6 +230,8 @@ def main() -> int:
             "discoverySharePercent": discovery_share,
             "timeLimited": bool(exploration.get("timeLimited")),
             "naturalEnd": bool(exploration.get("naturalEnd")),
+            "resultCapReached": bool(exploration.get("resultCapReached")),
+            "switchedToCursor": bool(exploration.get("switchedToCursor")),
             "errors": errors,
             "stopReason": reason,
             "enrichmentAttempted": int(enrichment.get("attempted") or 0),

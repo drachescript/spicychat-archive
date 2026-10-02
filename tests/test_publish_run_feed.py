@@ -52,6 +52,21 @@ class PublishRunFeedTests(unittest.TestCase):
         self.assertIsNone(mod.stop_reason(exploration))
         self.assertTrue(mod.exploration_is_successful(exploration))
 
+    def test_clean_result_cap_switch_is_successful_without_natural_end(self):
+        exploration = {
+            "pageBudget": 100,
+            "pagesCompleted": 99,
+            "errors": [],
+            "timeLimited": False,
+            "partial": False,
+            "naturalEnd": False,
+            "resultCapReached": True,
+            "switchedToCursor": True,
+        }
+        self.assertEqual(mod.classify_run_status("success", exploration), "success")
+        self.assertIsNone(mod.stop_reason(exploration))
+        self.assertTrue(mod.exploration_is_successful(exploration))
+
     def test_legacy_incomplete_run_is_not_assumed_successful(self):
         exploration = {
             "pageBudget": 1000,
@@ -87,11 +102,15 @@ class PublishRunFeedTests(unittest.TestCase):
             "errors": ["read timeout after retries"],
             "partial": True,
             "naturalEnd": False,
+            "resultCapReached": True,
+            "switchedToCursor": True,
         }
         merged = mod.apply_current_outcome(latest, exploration, outcome)
         self.assertEqual(merged["errors"], ["read timeout after retries"])
         self.assertTrue(merged["partial"])
         self.assertFalse(merged["naturalEnd"])
+        self.assertTrue(merged["resultCapReached"])
+        self.assertTrue(merged["switchedToCursor"])
 
     def test_stale_outcome_is_ignored(self):
         latest = {"at": "new-run"}

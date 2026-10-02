@@ -61,6 +61,7 @@ const qs = k => new URLSearchParams(location.search).get(k);
 const hasQs = k => new URLSearchParams(location.search).has(k);
 const parseTags = value => String(value||'').split(',').map(x=>x.trim()).filter(Boolean);
 const detailHref = id => new URL(`../bot/?id=${encodeURIComponent(id)}`, import.meta.url).href;
+const creatorHref = creator => new URL(`../creator/?name=${encodeURIComponent(creator)}`, import.meta.url).href;
 const spicyHref = id => `https://spicychat.ai/chatbot/${encodeURIComponent(id)}`;
 
 async function fetchJson(url, options={}){
@@ -124,6 +125,8 @@ function setQuery(state,push=false){
   set('language',state.language==='any'?'':state.language);
   set('rating',state.contentRating==='any'?'':state.contentRating);
   set('created',state.created==='any'?'':state.created);
+  set('firstSeen',state.firstSeen==='any'?'':state.firstSeen);
+  set('lastSeen',state.lastSeen==='any'?'':state.lastSeen);
   set('savedField',state.savedField==='any'?'':state.savedField);
   if(Number(state.page)>1)u.searchParams.set('p',String(Math.floor(Number(state.page))));else u.searchParams.delete('p');
   if(state.exclude.length)u.searchParams.set('exclude',state.exclude.join(','));
@@ -160,11 +163,21 @@ function card(bot, blurNsfw){
   const displayName=normalizeDisplayText(rawName)||'Unknown bot',displayTitle=normalizeDisplayText(rawTitle);
   return `<article class="card" data-bot-id="${esc(bot.id||'')}" data-original-name="${esc(rawName)}" data-original-title="${esc(rawTitle)}"><a class="cardlink" href="${esc(detailHref(bot.id))}">
     <div class="art">${imgHtml(bot.avatar,bot.avatarFallback,{blur:blurNsfw&&bot.isNsfw,alt:displayName})}${badge(bot.status)}</div>
-    <div class="body"><h3 data-card-name${rawName!==displayName?` title="${esc(rawName)}"`:''}>${esc(displayName)}</h3><div class="creator">${bot.creator?`@${esc(bot.creator)}`:'Unknown creator'}</div>
+    <div class="body"><h3 data-card-name${rawName!==displayName?` title="${esc(rawName)}"`:''}>${esc(displayName)}</h3><div class="creator${bot.creator?' creator-link':''}"${bot.creator?` data-creator-link="${esc(bot.creator)}" title="Open creator archive"`:''}>${bot.creator?`@${esc(bot.creator)}`:'Unknown creator'}</div>
     <div class="title" data-card-title${rawTitle!==displayTitle?` title="${esc(rawTitle)}"`:''}>${esc(displayTitle)}</div><div class="translation-note" hidden></div><div class="taglist">${tags}</div>
     <div class="meta"><span>${fmt(bot.messages)} msgs</span><span>${bot.rating==null?'—':`★ ${esc(bot.rating)}`}</span>${first}<span>${bot.avatarArchived?'image archived':'CDN image'}</span></div></div>
   </a></article>`;
 }
+
+document.addEventListener('click',event=>{
+  const target=event.target.closest?.('[data-creator-link]');
+  if(!target)return;
+  const creator=target.getAttribute('data-creator-link');
+  if(!creator)return;
+  event.preventDefault();
+  event.stopPropagation();
+  location.href=creatorHref(creator);
+});
 
 function growthBanner(stats){
   if(!stats)return '';
@@ -199,7 +212,9 @@ function tagSidebar(state,tags){
         <label>Language<select class="filter-select" data-meta-filter="language"><option value="any"${selected(state.language,'any')}>Any language</option><option value="en"${selected(state.language,'en')}>English</option><option value="non-en"${selected(state.language,'non-en')}>Non-English</option></select></label>
         <label>Content<select class="filter-select" data-meta-filter="contentRating"><option value="any"${selected(state.contentRating,'any')}>SFW + NSFW</option><option value="sfw"${selected(state.contentRating,'sfw')}>SFW only</option><option value="nsfw"${selected(state.contentRating,'nsfw')}>NSFW only</option></select></label>
         <label>Created<select class="filter-select" data-meta-filter="created"><option value="any"${selected(state.created,'any')}>Any time</option><option value="1d"${selected(state.created,'1d')}>Last 24 hours</option><option value="7d"${selected(state.created,'7d')}>Last 7 days</option><option value="30d"${selected(state.created,'30d')}>Last 30 days</option></select></label>
-        <div class="filter-note">These use bot metadata, not tags. On deleted bots, older records can show as unknown until their archived summary is refreshed.</div>
+        <label>First captured<select class="filter-select" data-meta-filter="firstSeen"><option value="any"${selected(state.firstSeen,'any')}>Any time</option><option value="1d"${selected(state.firstSeen,'1d')}>Last 24 hours</option><option value="7d"${selected(state.firstSeen,'7d')}>Last 7 days</option><option value="30d"${selected(state.firstSeen,'30d')}>Last 30 days</option><option value="90d"${selected(state.firstSeen,'90d')}>Last 90 days</option><option value="1y"${selected(state.firstSeen,'1y')}>Last year</option></select></label>
+        <label>Last seen<select class="filter-select" data-meta-filter="lastSeen"><option value="any"${selected(state.lastSeen,'any')}>Any time</option><option value="1d"${selected(state.lastSeen,'1d')}>Last 24 hours</option><option value="7d"${selected(state.lastSeen,'7d')}>Last 7 days</option><option value="30d"${selected(state.lastSeen,'30d')}>Last 30 days</option><option value="90d"${selected(state.lastSeen,'90d')}>Last 90 days</option><option value="1y"${selected(state.lastSeen,'1y')}>Last year</option></select></label>
+        <div class="filter-note">Created is SpicyChat metadata. First captured / Last seen come from this archive's own observation history.</div>
       </section>
       <section class="filter-section"><h3>Images</h3><label class="checkline"><input id="blur-nsfw" type="checkbox" ${state.blurNsfw?'checked':''}> <span class="filter-note">Blur NSFW avatars</span></label></section>
       <section class="filter-section"><div class="filter-note default-note">NTR and Cheating are excluded by default. Use the − buttons above to remove either exclusion.</div></section>
@@ -249,7 +264,7 @@ function attachSidebar(state,onChange){
   });
   document.querySelector('#reset-filters')?.addEventListener('click',()=>{
     state.q='';state.creator='';state.include=[];state.exclude=[...DEFAULT_EXCLUDED];state.match='all';state.sort=page==='deleted'?'deleted-newest':'trending';
-    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';state.savedField='any';
+    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';state.firstSeen='any';state.lastSeen='any';state.savedField='any';
     const s=document.querySelector('#search');if(s)s.value='';
     const c=document.querySelector('#creator');if(c)c.value='';
     const so=document.querySelector('#sort');if(so)so.value=state.sort;
@@ -327,6 +342,40 @@ async function archiveFieldPresence(runtime,ids){
   const index=await loadArchiveRichFieldIndex(runtime);
   return new Map(wanted.map(id=>[id,flagsFromRichFieldMask(index.bots?.[id])]));
 }
+let archiveTimesIndexPromise=null;
+async function loadArchiveTimesIndex(runtime){
+  if(archiveTimesIndexPromise)return archiveTimesIndexPromise;
+  archiveTimesIndexPromise=(async()=>{
+    const base=String(runtime.publicDataBaseUrl||'').replace(/\/$/,'');
+    if(!base)throw new Error('Archive time index is unavailable.');
+    const payload=await fetchJson(`${base}/indexes/archive-times.json`);
+    if(!payload||payload.complete!==true||!payload.bots||typeof payload.bots!=='object'){
+      throw new Error('Archive time index is still rebuilding.');
+    }
+    return payload;
+  })().catch(error=>{archiveTimesIndexPromise=null;throw error;});
+  return archiveTimesIndexPromise;
+}
+function archiveTimeCutoff(value){
+  const days=value==='1d'?1:value==='7d'?7:value==='30d'?30:value==='90d'?90:value==='1y'?365:0;
+  return days?Date.now()-days*86400000:0;
+}
+function matchesArchiveMeta(id,state,richIndex,timesIndex){
+  if(state.savedField&&state.savedField!=='any'){
+    const flags=flagsFromRichFieldMask(richIndex?.bots?.[id]);
+    if(!flags[state.savedField])return false;
+  }
+  const row=timesIndex?.bots?.[id];
+  if(state.firstSeen&&state.firstSeen!=='any'){
+    const cutoff=archiveTimeCutoff(state.firstSeen);
+    if(!Array.isArray(row)||Number(row[0]||0)<cutoff)return false;
+  }
+  if(state.lastSeen&&state.lastSeen!=='any'){
+    const cutoff=archiveTimeCutoff(state.lastSeen);
+    if(!Array.isArray(row)||Number(row[1]||0)<cutoff)return false;
+  }
+  return true;
+}
 
 async function typesenseMultiSearch(runtime,searches){
   const urls=[runtime.typesense.url,...(runtime.typesense.fallbackUrls||[])];
@@ -369,6 +418,7 @@ function botHasSavedField(bot,field){
 function localFilterAndSort(bots,state){
   const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=state.exclude.map(x=>x.toLowerCase());
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
+  const firstSeenCutoff=archiveTimeCutoff(state.firstSeen),lastSeenCutoff=archiveTimeCutoff(state.lastSeen);
   let rows=bots.filter(b=>{
     if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
     const tags=(b.tags||[]).map(x=>String(x).toLowerCase());
@@ -380,8 +430,10 @@ function localFilterAndSort(bots,state){
     if(state.language==='en'&&String(b.language||'').toLowerCase()!=='en')return false;if(state.language==='non-en'&&(!b.language||String(b.language).toLowerCase()==='en'))return false;
     if(state.contentRating==='sfw'&&b.isNsfw)return false;if(state.contentRating==='nsfw'&&!b.isNsfw)return false;
     if(createdCutoff&&Number(b.createdAt||0)<createdCutoff)return false;
+    if(firstSeenCutoff&&new Date(b.firstSeenAt||0).getTime()<firstSeenCutoff)return false;
+    if(lastSeenCutoff&&new Date(b.lastSeenAt||0).getTime()<lastSeenCutoff)return false;
     if(!botHasSavedField(b,state.savedField))return false;
-    if(q&&!([b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
+    if(q&&!([b.id,b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
     return true;
   });
   rows.sort((a,b)=>{
@@ -477,7 +529,7 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div></div></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
@@ -491,19 +543,25 @@ async function browseLive(runtime,manifest,tags,stats){
   async function run(){
     sync();grid.innerHTML='<p class="loading">Loading public bots…</p>';const token=++requestNo;
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
-    const search={collection:runtime.typesense.collection,q:state.q||'*',query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:buildTsFilter(runtime,state),sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
+    const exactId=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
+    const baseFilter=buildTsFilter(runtime,state);
+    const search={collection:runtime.typesense.collection,q:exactId?'*':(state.q||'*'),query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:exactId?`${baseFilter} && character_id:=${tsLiteral(exactId)}`:baseFilter,sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
+    const archivePredicate=state.savedField!=='any'||state.firstSeen!=='any'||state.lastSeen!=='any';
     try{
-      if(state.savedField==='any'){
+      if(!archivePredicate){
         const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;found=Number(result.found||0);const totalPages=Math.max(1,Math.ceil(found/PAGE_SIZE));
         if(found&&state.page>totalPages){state.page=totalPages;setQuery(state);return run();}
         const rows=(result.hits||[]).map(h=>docToCard(h.document||{})).filter(b=>b.id);grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these filters.</div>';
         const start=found?((state.page-1)*PAGE_SIZE)+1:0,end=Math.min(found,state.page*PAGE_SIZE);count.textContent=found?`${start.toLocaleString()}–${end.toLocaleString()} of ${found.toLocaleString()} matches`:'0 matches';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,rows);
       }else{
-        const cacheKey=JSON.stringify({q:search.q,filter:search.filter_by,sort:search.sort_by,field:state.savedField});
+        const cacheKey=JSON.stringify({q:search.q,filter:search.filter_by,sort:search.sort_by,field:state.savedField,firstSeen:state.firstSeen,lastSeen:state.lastSeen});
         let scan=fieldScanCache.get(cacheKey);
         if(!scan){scan={matched:[],nextTypesensePage:1,exhausted:false,underlyingFound:0};fieldScanCache.set(cacheKey,scan);}
         const need=state.page*PAGE_SIZE+1;
-        const richIndex=await loadArchiveRichFieldIndex(runtime);if(token!==requestNo)return;
+        const [richIndex,timesIndex]=await Promise.all([
+          state.savedField!=='any'?loadArchiveRichFieldIndex(runtime):Promise.resolve(null),
+          (state.firstSeen!=='any'||state.lastSeen!=='any')?loadArchiveTimesIndex(runtime):Promise.resolve(null)
+        ]);if(token!==requestNo)return;
         let batchesThisRun=0;
         while(scan.matched.length<need&&!scan.exhausted&&batchesThisRun<5){
           const probes=Array.from({length:8},(_,offset)=>({...search,page:scan.nextTypesensePage+offset,per_page:250}));
@@ -516,8 +574,7 @@ async function browseLive(runtime,manifest,tags,stats){
             for(const hit of hits){
               const doc=hit?.document||{};
               const id=String(doc.character_id||doc.id||'').toLowerCase();
-              const flags=flagsFromRichFieldMask(richIndex.bots?.[id]);
-              if(id&&flags[state.savedField])scan.matched.push(doc);
+              if(id&&matchesArchiveMeta(id,state,richIndex,timesIndex))scan.matched.push(doc);
             }
             scan.nextTypesensePage+=1;
             if(hits.length<250||scan.nextTypesensePage>Math.ceil(scan.underlyingFound/250)){scan.exhausted=true;break;}
@@ -531,8 +588,12 @@ async function browseLive(runtime,manifest,tags,stats){
         const exactTotal=scan.exhausted?scan.matched.length:null;
         const exactPages=exactTotal!=null?Math.max(1,Math.ceil(exactTotal/PAGE_SIZE)):null;
         if(exactPages!=null&&state.page>exactPages){state.page=exactPages;setQuery(state);return run();}
-        const label=state.savedField==='personality'?'Personality':state.savedField==='scenario'?'Scenario':'Example Dialogue';
-        grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots with that archived field match these filters.</div>';
+        const labels=[];
+        if(state.savedField!=='any')labels.push(state.savedField==='personality'?'Personality':state.savedField==='scenario'?'Scenario':'Example Dialogue');
+        if(state.firstSeen!=='any')labels.push('first captured '+state.firstSeen);
+        if(state.lastSeen!=='any')labels.push('last seen '+state.lastSeen);
+        const label=labels.join(' + ')||'archive filters';
+        grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these archive filters.</div>';
         const start=rows.length?startIndex+1:0,end=startIndex+rows.length;
         const checked=Math.min(scan.underlyingFound,(scan.nextTypesensePage-1)*250);
         count.textContent=exactTotal!=null
@@ -556,7 +617,7 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}

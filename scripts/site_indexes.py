@@ -11,7 +11,7 @@ import argparse
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -509,7 +509,7 @@ def flush_indexes(store: R2ArchiveStore, *, force: bool = False) -> None:
 
 
 def index_is_complete(store: R2ArchiveStore) -> bool:
-    for name in ("archive-times.json", "changes.json", "changes-history.json", "activity.json", "restored.json", "health.json"):
+    for name in ("archive-times.json", "changes.json", "changes-history.json", "activity.json", "restored.json", "repair-queue.json", "health.json"):
         payload = store.get_json(_index_key(store, name), None)
         if not isinstance(payload, dict) or int(payload.get("schemaVersion") or 0) != SCHEMA_VERSION:
             return False
@@ -544,6 +544,8 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
         "availabilityHistoryProblems": 0,
         "restoreCandidates": 0,
         "verifiedRestorations": 0,
+        "stalePublicBots": 0,
+        "repairQueueBots": 0,
     }
 
     def load_one(key: str):
@@ -623,6 +625,41 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
             health["richFieldMismatches"] += 1
 
     now = utc_now()
+    stale_cutoff = datetime.now(timezone.utc) - timedelta(days=30)
+    repair_rows: list[dict[str, Any]] = []
+    for bot_id, record in records_by_id.items():
+        status = str((record.get("status") or {}).get("current") or "").lower()
+        reasons: list[str] = []
+        last_seen = str(record.get("lastSeenAt") or "")
+        try:
+            seen_dt = datetime.fromisoformat(last_seen.replace("Z", "+00:00"))
+        except Exception:
+            seen_dt = None
+        if status == "public" and seen_dt and seen_dt < stale_cutoff:
+            reasons.append("stale-public")
+            health["stalePublicBots"] += 1
+        if not creator_name(record):
+            reasons.append("missing-creator")
+        if bot_name(record) == "Unknown bot":
+            reasons.append("missing-name")
+        lk = last_known(record)
+        if lk.get("definition_visible") is True and not int(field_mask(record) or 0):
+            reasons.append("visible-definition-not-captured")
+        if reasons:
+            repair_rows.append({
+                "id": bot_id,
+                "reasons": reasons,
+                "lastSeenAt": record.get("lastSeenAt"),
+                "status": status,
+            })
+    repair_rows.sort(key=lambda x: (
+        0 if "visible-definition-not-captured" in x["reasons"] else 1,
+        0 if "missing-name" in x["reasons"] or "missing-creator" in x["reasons"] else 1,
+        str(x.get("lastSeenAt") or ""),
+    ))
+    repair_rows = repair_rows[:10000]
+    health["repairQueueBots"] = len(repair_rows)
+
     store.put_json(_index_key(store, "archive-times.json"), {
         "schemaVersion": SCHEMA_VERSION, "generatedAt": now, "complete": True, "bots": times,
     }, public=True)
@@ -650,6 +687,12 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
     }, public=True)
     store.put_json(_index_key(store, "restored.json"), {
         "schemaVersion": SCHEMA_VERSION, "generatedAt": now, "bots": restored_rows,
+    }, public=True)
+    store.put_json(_index_key(store, "repair-queue.json"), {
+        "schemaVersion": SCHEMA_VERSION,
+        "generatedAt": now,
+        "staleAfterDays": 30,
+        "bots": repair_rows,
     }, public=True)
     for bucket, creators in creator_shards.items():
         store.put_json(_creator_key(store, bucket), {

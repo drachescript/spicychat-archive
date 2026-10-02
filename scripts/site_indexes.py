@@ -8,7 +8,9 @@ without making browsers fetch thousands of individual bot objects.
 from __future__ import annotations
 
 import argparse
+import base64
 import json
+import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from copy import deepcopy
 from datetime import datetime, timezone, timedelta
@@ -23,6 +25,15 @@ SCHEMA_VERSION = 3
 CHANGES_LIMIT = 10000
 ACTIVITY_LIMIT = 100000
 RESTORED_LIMIT = 10000
+TEXT_SEARCH_SHARDS = 64
+TEXT_BLOOM_BYTES = 32
+TEXT_BLOOM_HASHES = 4
+
+SEARCH_FIELD_LEAVES = {
+    "name", "title", "description", "greeting", "greetings", "persona", "personality",
+    "definition", "character_definition", "characterDefinition", "scenario", "dialogue",
+    "example_dialogue", "example_dialogues",
+}
 
 VOLATILE_LEAVES = {
     "updatedAt", "updated_at", "lastUpdatedAt", "last_updated_at",
@@ -186,6 +197,74 @@ def creator_bot_meta(record: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _fnv1a32(text: str) -> int:
+    h = 2166136261
+    for byte in text.encode("utf-8"):
+        h ^= byte
+        h = (h * 16777619) & 0xFFFFFFFF
+    return h
+
+
+def text_search_bucket(bot_id: str) -> str:
+    return f"{_fnv1a32(str(bot_id or '').lower()) & (TEXT_SEARCH_SHARDS - 1):02x}"
+
+
+def _search_value_text(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, (dict, list)):
+        try:
+            return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+        except Exception:
+            return str(value)
+    return str(value)
+
+
+def searchable_tokens(record: dict[str, Any]) -> set[str]:
+    pieces: list[str] = []
+    lk = last_known(record)
+    for key in SEARCH_FIELD_LEAVES:
+        if key in lk and meaningful(lk.get(key)):
+            pieces.append(_search_value_text(lk.get(key)))
+    for event in record.get("fieldHistory") or []:
+        if not isinstance(event, dict):
+            continue
+        leaf = str(event.get("path") or "").split(".")[-1]
+        if leaf not in SEARCH_FIELD_LEAVES:
+            continue
+        if meaningful(event.get("from")):
+            pieces.append(_search_value_text(event.get("from")))
+        if meaningful(event.get("to")):
+            pieces.append(_search_value_text(event.get("to")))
+    tokens: set[str] = set()
+    for piece in pieces:
+        for token in re.findall(r"[a-z0-9][a-z0-9_'’-]{2,}", piece.lower()):
+            tokens.add(token.replace("’", "'"))
+            if len(tokens) >= 2048:
+                return tokens
+    return tokens
+
+
+def text_bloom(record: dict[str, Any]) -> str:
+    bits = bytearray(TEXT_BLOOM_BYTES)
+    for token in searchable_tokens(record):
+        for seed in range(TEXT_BLOOM_HASHES):
+            bit = _fnv1a32(f"{seed}:{token}") % (TEXT_BLOOM_BYTES * 8)
+            bits[bit >> 3] |= 1 << (bit & 7)
+    return base64.b64encode(bytes(bits)).decode("ascii")
+
+
+def text_search_meta(record: dict[str, Any]) -> list[Any]:
+    return [
+        bot_name(record),
+        creator_name(record),
+        bool(is_nsfw(record)),
+        int(field_mask(record) or 0),
+        text_bloom(record),
+        record.get("lastSeenAt"),
+    ]
+
+
 def month_key(value: Any) -> str:
     text = str(value or "")
     return text[:7] if len(text) >= 7 and text[4:5] == "-" else "unknown"
@@ -283,6 +362,10 @@ def _creator_key(store: R2ArchiveStore, bucket: str) -> str:
     return store.key("indexes", "creators", f"{bucket}.json")
 
 
+def _text_key(store: R2ArchiveStore, bucket: str) -> str:
+    return store.key("indexes", "text-search", f"{bucket}.json")
+
+
 def _load_state(store: R2ArchiveStore) -> dict[str, Any]:
     state = getattr(store, "_site_indexes_state", None)
     if isinstance(state, dict):
@@ -307,7 +390,9 @@ def _load_state(store: R2ArchiveStore) -> dict[str, Any]:
         "activity": list(activity_payload.get("events") or []) if activity_ok else [],
         "historyPending": {},
         "creatorShards": {},
+        "textShards": {},
         "dirtyCreators": set(),
+        "dirtyText": set(),
         "dirtyTimes": False,
         "dirtyChanges": False,
         "dirtyRestored": False,
@@ -327,6 +412,30 @@ def _load_creator_shard(store: R2ArchiveStore, state: dict[str, Any], bucket: st
             state["baseComplete"] = False
         shards[bucket] = deepcopy(creators) if isinstance(creators, dict) else {}
     return shards[bucket]
+
+
+def _load_text_shard(store: R2ArchiveStore, state: dict[str, Any], bucket: str) -> dict[str, Any]:
+    shards = state["textShards"]
+    if bucket not in shards:
+        payload = store.get_json(_text_key(store, bucket), {}) or {}
+        schema_ok = int(payload.get("schemaVersion") or 0) == SCHEMA_VERSION
+        bots = payload.get("bots") if schema_ok else {}
+        if state.get("baseComplete") and payload and not schema_ok:
+            state["baseComplete"] = False
+        shards[bucket] = deepcopy(bots) if isinstance(bots, dict) else {}
+    return shards[bucket]
+
+
+def _update_text_record(store: R2ArchiveStore, state: dict[str, Any], record: dict[str, Any]) -> None:
+    bot_id = str(record.get("id") or "").lower()
+    if not bot_id:
+        return
+    bucket = text_search_bucket(bot_id)
+    shard = _load_text_shard(store, state, bucket)
+    meta = text_search_meta(record)
+    if shard.get(bot_id) != meta:
+        shard[bot_id] = meta
+        state["dirtyText"].add(bucket)
 
 
 def _update_creator_record(store: R2ArchiveStore, state: dict[str, Any], *, creator: str, bot_id: str, meta: dict[str, Any] | None) -> None:
@@ -371,6 +480,7 @@ def note_record(store: R2ArchiveStore, record: dict[str, Any]) -> None:
         _update_creator_record(store, state, creator=old_creator, bot_id=bot_id, meta=None)
     if key:
         _update_creator_record(store, state, creator=creator, bot_id=bot_id, meta=creator_bot_meta(record))
+    _update_text_record(store, state, record)
 
     existing_keys = {
         (str(x.get("id") or ""), str(x.get("at") or ""), str(x.get("path") or ""), str(x.get("kind") or ""), str(x.get("source") or ""))
@@ -506,10 +616,28 @@ def flush_indexes(store: R2ArchiveStore, *, force: bool = False) -> None:
             "creators": creators,
         }, public=True)
     state["dirtyCreators"].clear()
+    for bucket in sorted(state["dirtyText"]):
+        bots = state["textShards"].get(bucket) or {}
+        store.put_json(_text_key(store, bucket), {
+            "schemaVersion": SCHEMA_VERSION,
+            "generatedAt": now,
+            "bots": bots,
+        }, public=True)
+    if state["dirtyText"]:
+        manifest = store.get_json(_index_key(store, "text-search.json"), {}) or {}
+        store.put_json(_index_key(store, "text-search.json"), {
+            "schemaVersion": SCHEMA_VERSION,
+            "generatedAt": now,
+            "shards": [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)],
+            "botCount": int(manifest.get("botCount") or len(state["times"])),
+            "bloomBytes": TEXT_BLOOM_BYTES,
+            "hashes": TEXT_BLOOM_HASHES,
+        }, public=True)
+    state["dirtyText"].clear()
 
 
 def index_is_complete(store: R2ArchiveStore) -> bool:
-    for name in ("archive-times.json", "changes.json", "changes-history.json", "activity.json", "restored.json", "repair-queue.json", "health.json"):
+    for name in ("archive-times.json", "changes.json", "changes-history.json", "activity.json", "restored.json", "repair-queue.json", "text-search.json", "health.json"):
         payload = store.get_json(_index_key(store, name), None)
         if not isinstance(payload, dict) or int(payload.get("schemaVersion") or 0) != SCHEMA_VERSION:
             return False
@@ -527,6 +655,7 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
     activity: list[dict[str, Any]] = []
     restored: dict[str, dict[str, Any]] = {}
     creator_shards: dict[str, dict[str, Any]] = {}
+    text_shards: dict[str, dict[str, Any]] = {}
     records_by_id: dict[str, dict[str, Any]] = {}
 
     health = {
@@ -594,6 +723,8 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
                 creators = creator_shards.setdefault(bucket, {})
                 entry = creators.setdefault(ckey, {"display": creator, "bots": {}})
                 entry["bots"][bot_id] = creator_bot_meta(record)
+            tb = text_search_bucket(bot_id)
+            text_shards.setdefault(tb, {})[bot_id] = text_search_meta(record)
 
             if processed % 5000 == 0:
                 print(f"  site-index scan {processed:,}/{len(keys):,}", flush=True)
@@ -694,6 +825,20 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
         "staleAfterDays": 30,
         "bots": repair_rows,
     }, public=True)
+    for bucket in [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)]:
+        store.put_json(_text_key(store, bucket), {
+            "schemaVersion": SCHEMA_VERSION,
+            "generatedAt": now,
+            "bots": text_shards.get(bucket, {}),
+        }, public=True)
+    store.put_json(_index_key(store, "text-search.json"), {
+        "schemaVersion": SCHEMA_VERSION,
+        "generatedAt": now,
+        "shards": [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)],
+        "botCount": sum(len(x) for x in text_shards.values()),
+        "bloomBytes": TEXT_BLOOM_BYTES,
+        "hashes": TEXT_BLOOM_HASHES,
+    }, public=True)
     for bucket, creators in creator_shards.items():
         store.put_json(_creator_key(store, bucket), {
             "schemaVersion": SCHEMA_VERSION, "generatedAt": now, "creators": creators,
@@ -707,6 +852,7 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
     health["unverifiedRestoreCandidates"] = max(0, health["restoreCandidates"] - health["verifiedRestorations"])
     health["archiveTimesIndexed"] = len(times)
     health["richFieldIndexBots"] = len(rich_bots)
+    health["textSearchBots"] = sum(len(x) for x in text_shards.values())
     health["generatedAt"] = now
     health["status"] = "healthy" if not any(
         health[key] for key in (
@@ -724,7 +870,9 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
         "historyPending": {},
         "restored": {x["id"]: x for x in restored_rows},
         "creatorShards": creator_shards,
+        "textShards": text_shards,
         "dirtyCreators": set(),
+        "dirtyText": set(),
         "dirtyTimes": False,
         "dirtyChanges": False,
         "dirtyRestored": False,

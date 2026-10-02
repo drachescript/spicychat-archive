@@ -45,14 +45,25 @@ class ArchiveMergeTests(unittest.TestCase):
         self.assertEqual(merged['rating_score'], 0)
         self.assertFalse(merged['is_nsfw'])
 
-    def test_public_observation_restores_deleted_record(self):
+    def test_listing_observation_only_marks_restore_candidate(self):
         first = {'character_id': 'abc-def-789', 'name': 'Bot'}
         record, _ = mod.observe_bot(None, first, source='typesense:latest', at='2026-09-28T00:00:00Z')
         record['status'] = {'current': 'deleted', 'since': '2026-09-29T00:00:00Z'}
         record, changed = mod.observe_bot(record, first, source='typesense:latest', at='2026-09-30T00:00:00Z')
         self.assertTrue(changed)
+        self.assertEqual(record['status']['current'], 'deleted')
+        self.assertEqual(record['status']['restoreCandidate']['source'], 'typesense:latest')
+        self.assertNotEqual(record['availabilityHistory'][-1].get('status'), 'public')
+
+    def test_character_api_observation_restores_deleted_record(self):
+        first = {'character_id': 'abc-def-790', 'name': 'Bot'}
+        record, _ = mod.observe_bot(None, first, source='typesense:latest', at='2026-09-28T00:00:00Z')
+        record['status'] = {'current': 'deleted', 'since': '2026-09-29T00:00:00Z'}
+        record, changed = mod.observe_bot(record, first, source='character-api', at='2026-09-30T00:00:00Z')
+        self.assertTrue(changed)
         self.assertEqual(record['status']['current'], 'public')
         self.assertEqual(record['availabilityHistory'][-1]['status'], 'public')
+        self.assertEqual(record['availabilityHistory'][-1]['source'], 'character-api')
 
     def test_avatar_normalization(self):
         self.assertEqual(

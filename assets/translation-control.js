@@ -42,7 +42,7 @@
         <input id="translate-bots" type="checkbox" ${enabled() ? 'checked' : ''}>
         <span class="filter-note">Translate bots to English</span>
       </label>
-      <div class="filter-note">Translates non-English bot names/descriptions and shows the detected source language. The original text stays available on hover.</div>`;
+      <div class="filter-note">Translates non-English bot names/titles and shows the detected source language. The original text stays available on hover.</div>`;
 
     const sections = [...filters.querySelectorAll(':scope > .filter-section')];
     const images = sections.find(node => node.querySelector('h3')?.textContent.trim() === 'Images');

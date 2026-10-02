@@ -2,16 +2,20 @@
   'use strict';
 
   const nativeFetch = window.fetch.bind(window);
+  const page = document.body?.dataset?.page || 'browse';
+  const deletedPage = page === 'deleted';
   const snippets = new Map();
   const SAFE_EVERYTHING = ['name', 'title', 'tags', 'creator_username', 'character_id', 'type'];
-  const RICH_FIELDS = ['greeting', 'description', 'scenario'];
+  const RICH_FIELDS = ['persona', 'scenario', 'dialogue'];
+  const FIELD_LABELS = {
+    persona: 'Personality',
+    scenario: 'Scenario',
+    dialogue: 'Example Dialogue'
+  };
   const FIELD_MAP = {
-    name: 'name,title',
-    creator: 'creator_username',
-    tags: 'tags',
-    greeting: 'greeting',
-    description: 'description',
-    scenario: 'scenario'
+    persona: 'persona',
+    scenario: 'scenario',
+    dialogue: 'dialogue'
   };
   const richSupport = new Map(RICH_FIELDS.map(field => [field, null]));
   let capabilityProbe = null;
@@ -82,7 +86,7 @@
         let field = requested;
         let value = '';
         if (requested === 'everything') {
-          for (const candidate of ['greeting', 'description', 'scenario', 'title', 'name']) {
+          for (const candidate of ['persona', 'scenario', 'dialogue', 'title', 'name']) {
             const candidateValue = doc[candidate];
             if (candidateValue && String(candidateValue).toLowerCase().includes(cleanQuery(q).toLowerCase())) {
               field = candidate;
@@ -93,9 +97,6 @@
         } else {
           value = doc[requested];
         }
-        if (!value && requested === 'name') value = doc.name || doc.title;
-        if (!value && requested === 'creator') value = doc.creator_username;
-        if (!value && requested === 'tags') value = Array.isArray(doc.tags) ? doc.tags.join(', ') : doc.tags;
         if (!value) continue;
         snippets.set(id, { field, text: makeSnippet(value, q) });
       }
@@ -109,20 +110,30 @@
         const option = select.querySelector(`option[value="${field}"]`);
         if (!option) continue;
         const support = richSupport.get(field);
-        option.textContent = `${field[0].toUpperCase()}${field.slice(1)}${support === false ? ' (not exposed)' : ''}`;
+        const suffix = support === false ? (deletedPage ? ' (not indexed here)' : ' (not exposed)') : '';
+        option.textContent = `${FIELD_LABELS[field] || field}${suffix}`;
         option.disabled = support === false;
       }
     }
     const supported = RICH_FIELDS.filter(field => richSupport.get(field) === true);
     const note = document.querySelector('#rich-search-note');
     if (note && !note.classList.contains('error-note')) {
-      note.textContent = supported.length
-        ? `Rich search ready: ${supported.join(', ')}. Put a remembered phrase in quotes for a tighter match.`
-        : 'Checking which greeting/description/scenario fields SpicyChat exposes for text search…';
+      if (deletedPage) {
+        note.textContent = 'The deleted list always searches its saved base fields. Personality, Scenario and Example Dialogue live in individual bot records and are not indexed across the full deleted list yet.';
+      } else {
+        note.textContent = supported.length
+          ? `Extra-field search ready: ${supported.map(field => FIELD_LABELS[field] || field).join(', ')}. Everything still searches the normal bot fields too.`
+          : 'Checking whether SpicyChat exposes Personality, Scenario or Example Dialogue to public text search…';
+      }
     }
   }
 
   async function probeCapabilities(input, init, body) {
+    if (deletedPage) {
+      RICH_FIELDS.forEach(field => richSupport.set(field, false));
+      updateCapabilityUi();
+      return;
+    }
     if (capabilityProbe) return capabilityProbe;
     capabilityProbe = (async () => {
       const base = body.searches?.[0];
@@ -219,12 +230,9 @@
     searchIn.setAttribute('aria-label', 'Search in');
     searchIn.innerHTML = `
       <option value="everything">Everything</option>
-      <option value="name">Name / title</option>
-      <option value="creator">Creator</option>
-      <option value="tags">Tags</option>
-      <option value="greeting">Greeting</option>
-      <option value="description">Description</option>
-      <option value="scenario">Scenario</option>`;
+      <option value="persona">Personality</option>
+      <option value="scenario">Scenario</option>
+      <option value="dialogue">Example Dialogue</option>`;
     searchIn.value = activeSearchIn in FIELD_MAP || activeSearchIn === 'everything' ? activeSearchIn : 'everything';
 
     const safety = document.createElement('select');
@@ -254,7 +262,9 @@
     const note = document.createElement('div');
     note.id = 'rich-search-note';
     note.className = 'rich-search-note';
-    note.textContent = 'Checking which greeting/description/scenario fields SpicyChat exposes for text search…';
+    note.textContent = deletedPage
+      ? 'Checking archived extra-field search support…'
+      : 'Checking whether SpicyChat exposes Personality, Scenario or Example Dialogue to public text search…';
     toolbar.insertAdjacentElement('afterend', note);
     updateCapabilityUi();
   }
@@ -270,8 +280,9 @@
     const note = document.querySelector('#rich-search-note');
     if (!note) return;
     const field = event.detail?.field || 'selected field';
+    const label = FIELD_LABELS[field] || field;
     note.classList.add('error-note');
-    note.textContent = `SpicyChat's public search index does not expose ${field} as a searchable field. Nothing was silently substituted.`;
+    note.textContent = `SpicyChat's public search index does not expose ${label} as a searchable field. Nothing was silently substituted.`;
   });
 
   function renderSnippets() {
@@ -292,13 +303,15 @@
       const box = document.createElement('div');
       box.className = 'search-snippet';
       const label = document.createElement('b');
-      label.textContent = `${snippet.field}: `;
+      label.textContent = `${FIELD_LABELS[snippet.field] || (snippet.field === 'title' ? 'Title' : snippet.field === 'name' ? 'Name' : snippet.field)}: `;
       const text = document.createElement('span');
       text.textContent = snippet.text;
       box.append(label, text);
       body.insertBefore(box, body.querySelector('.taglist'));
     }
   }
+
+  if (deletedPage) RICH_FIELDS.forEach(field => richSupport.set(field, false));
 
   const observer = new MutationObserver(() => {
     injectControls();

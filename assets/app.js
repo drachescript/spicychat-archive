@@ -482,15 +482,38 @@ async function browse(){
   return page==='deleted'?browseDeleted(runtime,manifest,tags,stats):browseLive(runtime,manifest,tags,stats);
 }
 
+function meaningfulFieldValue(value){
+  if(value==null)return false;
+  if(typeof value==='string')return value.trim()!=='';
+  if(Array.isArray(value))return value.some(meaningfulFieldValue);
+  if(typeof value==='object')return Object.values(value).some(meaningfulFieldValue);
+  return true;
+}
 function bestField(record,key){
   const lk=record.lastKnown||{};
-  if(lk[key]!==undefined&&lk[key]!==null&&String(lk[key]).trim?.()!=='')return lk[key];
+  if(meaningfulFieldValue(lk[key]))return lk[key];
   const current=record.current||{};
   for(const source of ['character-api','typesense','typesense:trending','typesense:popular','typesense:top-rated','typesense:explore']){
-    const v=current[source]?.[key];if(v!==undefined&&v!==null)return v;
+    const v=current[source]?.[key];if(meaningfulFieldValue(v))return v;
   }
-  for(const value of Object.values(current)){if(value&&typeof value==='object'&&value[key]!==undefined&&value[key]!==null)return value[key];}
+  for(const value of Object.values(current)){if(value&&typeof value==='object'&&meaningfulFieldValue(value[key]))return value[key];}
   return null;
+}
+function bestFieldAny(record,keys){
+  for(const key of keys){const value=bestField(record,key);if(meaningfulFieldValue(value))return value;}
+  return null;
+}
+function archiveFieldLabel(path){
+  const leaf=String(path||'').split('.').pop();
+  if(leaf==='description'||leaf==='title')return 'Title';
+  if(['persona','personality','definition','character_definition','characterDefinition'].includes(leaf))return 'Personality';
+  if(leaf==='scenario')return 'Scenario';
+  if(['dialogue','example_dialogue','example_dialogues'].includes(leaf))return 'Example Dialogue';
+  if(leaf==='greeting'||leaf==='greetings')return 'Greeting';
+  if(leaf==='lorebooks')return 'Lorebooks';
+  if(leaf==='system_prompt')return 'System Prompt';
+  if(leaf==='post_history_instructions')return 'Post History Instructions';
+  return String(path||'').replaceAll('_',' ');
 }
 async function loadBotRecord(id,runtime){
   if(runtime.storageMode==='r2'&&runtime.r2ReadAllowed===false){const e=new Error('R2_READ_BUDGET_PAUSED');e.code='R2_READ_BUDGET_PAUSED';throw e;}
@@ -519,12 +542,24 @@ async function botPage(){
   const lk=record.lastKnown||{},status=record.status?.current||'unknown';
   const cdn=resolveAvatar(lk.avatar_url||lk.avatar||lk.image), archived=archivedAvatar(record,runtime);
   const primary=status==='deleted'?(archived||cdn):(cdn||archived), fallback=status==='deleted'?cdn:archived;
-  const fields=['description','greeting','greetings','personality','definition','persona','character_definition','characterDefinition','scenario','example_dialogue','example_dialogues','system_prompt','post_history_instructions','lorebooks'];
-  const fieldHtml=fields.map(k=>{const v=bestField(record,k);if(v==null||v==='')return'';return `<div class="field-block"><h3>${esc(k.replaceAll('_',' '))} · last known</h3><div class="pre">${esc(Array.isArray(v)?v.join('\n\n'):typeof v==='object'?JSON.stringify(v,null,2):v)}</div></div>`}).join('');
+  const currentTitle=normalizeDisplayText(bestField(record,'title')||bestField(record,'description')||'');
+  const fieldSpecs=[
+    {label:'Title',keys:['description'],skip:value=>normalizeDisplayText(value)===currentTitle},
+    {label:'Greeting',keys:['greeting','greetings']},
+    {label:'Personality',keys:['persona','personality','definition','character_definition','characterDefinition']},
+    {label:'Scenario',keys:['scenario']},
+    {label:'Example Dialogue',keys:['dialogue','example_dialogue','example_dialogues']},
+    {label:'System Prompt',keys:['system_prompt']},
+    {label:'Post History Instructions',keys:['post_history_instructions']},
+    {label:'Lorebooks',keys:['lorebooks']}
+  ];
+  const fieldHtml=fieldSpecs.map(spec=>{const v=bestFieldAny(record,spec.keys);if(!meaningfulFieldValue(v)||spec.skip?.(v))return'';return `<div class="field-block"><h3>${esc(spec.label)} · last known</h3><div class="pre">${esc(Array.isArray(v)?v.map(item=>typeof item==='object'?JSON.stringify(item,null,2):String(item)).join('\n\n'):typeof v==='object'?JSON.stringify(v,null,2):v)}</div></div>`}).join('');
+  const botName=normalizeDisplayText(bestField(record,'name')||bestField(record,'title')||'Unknown bot');
+  document.title=`${botName} · SpicyChat Archive`;
   const tags=(lk.tags||[]).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
-  const history=(record.fieldHistory||[]).filter(h=>!['updatedAt','updated_at','lastUpdatedAt','last_updated_at'].includes(String(h.path||'').split('.').pop())).slice().reverse().slice(0,100).map(h=>`<div class="history-item"><b>${esc(h.path)}</b> · ${esc(h.kind||'value')}<br><span class="detail-sub">${date(h.at)} · ${esc(h.source||'')}</span></div>`).join('');
+  const history=(record.fieldHistory||[]).filter(h=>!['updatedAt','updated_at','lastUpdatedAt','last_updated_at'].includes(String(h.path||'').split('.').pop())).slice().reverse().slice(0,100).map(h=>`<div class="history-item"><b>${esc(archiveFieldLabel(h.path))}</b> · ${esc(h.kind||'value')}<br><span class="detail-sub">${date(h.at)} · ${esc(h.source||'')}</span></div>`).join('');
   app.innerHTML=`<article class="detail"><div class="detail-head"><div class="detail-art">${imgHtml(primary,fallback,{alt:bestField(record,'name')||''})}</div>
-    <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(normalizeDisplayText(bestField(record,'name')||bestField(record,'title')||'Unknown bot'))}</h1>
+    <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(botName)}</h1>
     <div class="detail-sub">${bestField(record,'creator_username')?`@${esc(bestField(record,'creator_username'))}`:'Unknown creator'}</div>
     <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
     <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>

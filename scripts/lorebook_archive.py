@@ -8,8 +8,12 @@ their discovery/history cannot corrupt or inflate the character crawler state.
 Discovery source:
 - Typesense collection: lorebooks_public
 
-Detail source:
-- GET https://prod.nd-api.com/lorebooks/<id>?sortBy=priority&lastSortPriority=0&view=live
+Public entry/detail source:
+- Typesense collection: lorebook_entries_public (separate scoped public key)
+
+The authenticated /lorebooks/<id> endpoint is deliberately not used by this
+crawler. Public archive runs must remain anonymous and rely only on data that
+SpicyChat itself exposes through its public search collections.
 
 Only public data is archived. A Lorebook disappearing from a *complete*
 Typesense pass is recorded as "not-public"; that is intentionally not called a
@@ -24,7 +28,6 @@ import time
 from copy import deepcopy
 from datetime import datetime, timezone
 from typing import Any
-from urllib.parse import quote
 
 import archive
 from storage_r2 import R2ArchiveStore
@@ -288,20 +291,22 @@ def summary_from_record(
     }
 
 
-def configure_lorebook_typesense(client: archive.Client, config: dict[str, Any]) -> tuple[str, str]:
-    """Load the current public Lorebook collection/key from SpicyChat config.
-
-    SpicyChat exposes separate scoped Typesense keys for characters, Lorebooks,
-    and Lorebook entries. The character archive's public key cannot query the
-    Lorebook collection, so resolve the Lorebook-specific key at run time.
-    """
+def configure_lorebook_typesense(
+    client: archive.Client,
+    config: dict[str, Any],
+) -> tuple[str, str, str, str]:
+    """Load the current public Lorebook and Lorebook-entry Typesense scopes."""
     lore = config.setdefault("lorebooks", {})
     app_url = str(
         lore.get("application_config_url")
         or "https://prod.nd-api.com/v2/applications/spicychat"
     )
     key = ""
+    entry_key = ""
     collection = str(lore.get("typesense_collection") or "lorebooks_public")
+    entry_collection = str(
+        lore.get("typesense_entries_collection") or "lorebook_entries_public"
+    )
     try:
         client._sleep()
         response = client.session.get(
@@ -319,23 +324,44 @@ def configure_lorebook_typesense(client: archive.Client, config: dict[str, Any])
             ts = payload.get("typesenseConfig") if isinstance(payload, dict) else {}
             if isinstance(ts, dict):
                 key = str(ts.get("apiKeyLorebook") or "").strip()
+                entry_key = str(ts.get("apiKeyLorebookEntries") or "").strip()
                 collection = str(ts.get("collectionNameLorebook") or collection).strip()
+                entry_collection = str(
+                    ts.get("collectionNameLorebookEntries") or entry_collection
+                ).strip()
     except Exception as exc:
         print(f"Lorebooks: application config lookup failed: {exc}", flush=True)
 
-    # Optional checked-in override/fallback for local tests or emergency use.
+    # Optional checked-in overrides/fallbacks for local tests or emergency use.
     if not key:
         key = str(lore.get("typesense_key") or "").strip()
+    if not entry_key:
+        entry_key = str(lore.get("typesense_entries_key") or "").strip()
     if not key:
         raise RuntimeError(
             "SpicyChat application config did not provide apiKeyLorebook; "
             "refusing to query Lorebooks with the character search key."
         )
+    if not entry_key:
+        raise RuntimeError(
+            "SpicyChat application config did not provide apiKeyLorebookEntries; "
+            "refusing to use the authenticated Lorebook detail endpoint."
+        )
 
     client.typesense_key = key
     lore["typesense_collection"] = collection or "lorebooks_public"
-    return client.typesense_key, lore["typesense_collection"]
-
+    lore["typesense_entries_collection"] = (
+        entry_collection or "lorebook_entries_public"
+    )
+    # Keep the runtime-only scoped key in memory. It is never written to archive
+    # state or the checked-in config.
+    lore["typesense_entries_key"] = entry_key
+    return (
+        client.typesense_key,
+        lore["typesense_collection"],
+        entry_key,
+        lore["typesense_entries_collection"],
+    )
 
 def lorebook_search(config: dict[str, Any], *, page: int, per_page: int, cursor_created_at: Any = None) -> dict[str, Any]:
     lore = config.get("lorebooks") or {}
@@ -357,39 +383,162 @@ def lorebook_search(config: dict[str, Any], *, page: int, per_page: int, cursor_
     return request
 
 
-def fetch_detail(client: archive.Client, config: dict[str, Any], lorebook_id: str) -> archive.HTTPResult:
-    lore = config.get("lorebooks") or {}
-    base_url = str(lore.get("api_base_url") or "https://prod.nd-api.com/lorebooks").rstrip("/")
-    url = (
-        f"{base_url}/{quote(lorebook_id)}"
-        "?sortBy=priority&lastSortPriority=0&view=live"
-    )
+def _multi_search_with_key(
+    client: archive.Client,
+    searches: list[dict[str, Any]],
+    key: str,
+) -> archive.HTTPResult:
+    """Use a scoped Typesense key for one request and always restore the prior key."""
+    previous = client.typesense_key
     try:
-        client._sleep()
-        response = client.session.get(
-            url,
-            headers={
-                "X-App-Id": "spicychat",
-                "X-Guest-UserId": client.guest_user_id,
-                "X-Country": str((config.get("character_api") or {}).get("country") or "US"),
-            },
-            timeout=client.timeout,
-        )
-        data = None
-        try:
-            data = response.json()
-        except Exception:
-            pass
-        return archive.HTTPResult(
-            response.ok,
-            response.status_code,
-            data=data,
-            error=None if response.ok else response.text[:300],
-            url=url,
-        )
-    except Exception as exc:
-        return archive.HTTPResult(False, 0, error=str(exc), url=url)
+        client.typesense_key = key
+        return client.multi_search(searches)
+    finally:
+        client.typesense_key = previous
 
+
+def lorebook_entry_search(
+    config: dict[str, Any],
+    *,
+    lorebook_id: str,
+    page: int,
+    per_page: int,
+    filter_field: str = "lorebook_id",
+    query_by: str | None = None,
+) -> dict[str, Any]:
+    lore = config.get("lorebooks") or {}
+    return {
+        "collection": (
+            lore.get("typesense_entries_collection")
+            or "lorebook_entries_public"
+        ),
+        "q": "*",
+        # The entry editor's public search surface searches names/keywords.
+        # q='*' means this is only used to satisfy the collection search schema.
+        "query_by": query_by or lore.get("entry_query_by") or "name,keywords",
+        "page": page,
+        "per_page": per_page,
+        "filter_by": f"{filter_field}:={lorebook_id}",
+    }
+
+
+def _stable_entry_sort(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def key(entry: dict[str, Any]) -> tuple[float, str, str]:
+        raw_priority = entry.get("sortPriority")
+        if raw_priority is None:
+            raw_priority = entry.get("priority")
+        try:
+            priority = float(raw_priority)
+        except (TypeError, ValueError):
+            priority = 0.0
+        return (
+            -priority,
+            str(entry.get("createdAt") or ""),
+            str(entry.get("id") or entry.get("entry_id") or ""),
+        )
+
+    return sorted(entries, key=key)
+
+
+def fetch_public_detail(
+    client: archive.Client,
+    config: dict[str, Any],
+    listing: dict[str, Any],
+) -> archive.HTTPResult:
+    """Build Lorebook detail from the public Lorebook-entry Typesense collection."""
+    lorebook_id = normalize_lorebook_id(listing)
+    if not lorebook_id:
+        return archive.HTTPResult(False, 0, error="Lorebook listing has no id")
+
+    lore = config.get("lorebooks") or {}
+    entry_key = str(lore.get("typesense_entries_key") or "").strip()
+    if not entry_key:
+        return archive.HTTPResult(
+            False,
+            0,
+            error="Missing public Lorebook-entry Typesense key",
+        )
+
+    page_size = max(1, min(250, int(lore.get("entry_page_size") or 250)))
+    max_pages = max(1, min(100, int(lore.get("entry_max_pages") or 20)))
+    filter_fields = lore.get("entry_filter_fields") or ("lorebook_id", "lorebookId")
+    query_fields = []
+    for candidate in (
+        str(lore.get("entry_query_by") or "name,keywords"),
+        "name",
+    ):
+        if candidate and candidate not in query_fields:
+            query_fields.append(candidate)
+
+    last_failure: archive.HTTPResult | None = None
+    empty_success: archive.HTTPResult | None = None
+
+    # lorebook_id is the expected public schema. Keep one compatibility
+    # fallback for camelCase so a frontend schema rename does not force us back
+    # onto the authenticated detail endpoint.
+    for filter_field in filter_fields:
+        for query_by in query_fields:
+            entries: list[dict[str, Any]] = []
+            page = 1
+            final_response: archive.HTTPResult | None = None
+            failed = False
+
+            while page <= max_pages:
+                request = lorebook_entry_search(
+                    config,
+                    lorebook_id=lorebook_id,
+                    page=page,
+                    per_page=page_size,
+                    filter_field=str(filter_field),
+                    query_by=query_by,
+                )
+                response = _multi_search_with_key(client, [request], entry_key)
+                final_response = response
+                if not response.ok:
+                    last_failure = response
+                    failed = True
+                    break
+
+                result = (response.data.get("results") or [{}])[0]
+                docs, found = archive.extract_hits(result)
+                entries.extend(docs)
+
+                if len(docs) < page_size:
+                    break
+                if found is not None and len(entries) >= found:
+                    break
+                page += 1
+
+            if failed or final_response is None:
+                continue
+
+            detail = deepcopy(listing)
+            detail["entries"] = _stable_entry_sort(entries)
+            # Preserve the public listing count when present; otherwise make the
+            # archived detail self-describing.
+            if "num_entries" not in detail:
+                detail["num_entries"] = len(entries)
+
+            result = archive.HTTPResult(
+                True,
+                final_response.status,
+                data=detail,
+                url=final_response.url,
+            )
+            if entries:
+                return result
+            if empty_success is None:
+                empty_success = result
+
+    if empty_success is not None:
+        return empty_success
+    if last_failure is not None:
+        return last_failure
+    return archive.HTTPResult(
+        False,
+        0,
+        error="Public Lorebook-entry Typesense query produced no usable result",
+    )
 
 def _typesense_has_more(found: int | None, *, page: int, per_page: int, received: int) -> bool:
     if not found:
@@ -415,13 +564,15 @@ def run() -> int:
 
     client = archive.Client(config)
     try:
-        _key, lorebook_collection = configure_lorebook_typesense(client, config)
+        _key, lorebook_collection, _entry_key, entry_collection = (
+            configure_lorebook_typesense(client, config)
+        )
     except RuntimeError as exc:
         print(f"ERROR: {exc}", flush=True)
         return 2
     print(
         f"Lorebooks: using current SpicyChat Typesense collection "
-        f"{lorebook_collection}.",
+        f"{lorebook_collection}; entries {entry_collection}.",
         flush=True,
     )
     at = utc_now()
@@ -506,14 +657,14 @@ def run() -> int:
             detail = None
             detail_pending = False
             if needs_detail:
-                detail_response = fetch_detail(client, config, lorebook_id)
+                detail_response = fetch_public_detail(client, config, doc)
                 if detail_response.ok:
                     detail = unwrap_lorebook_payload(detail_response.data)
                 if detail is None:
                     detail_pending = True
                     detail_errors += 1
                     print(
-                        f"Lorebook detail {lorebook_id}: HTTP {detail_response.status} "
+                        f"Lorebook public entries {lorebook_id}: HTTP {detail_response.status} "
                         f"{detail_response.error or 'empty/invalid detail payload'}".rstrip(),
                         flush=True,
                     )

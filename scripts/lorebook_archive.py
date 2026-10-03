@@ -288,12 +288,61 @@ def summary_from_record(
     }
 
 
+def configure_lorebook_typesense(client: archive.Client, config: dict[str, Any]) -> tuple[str, str]:
+    """Load the current public Lorebook collection/key from SpicyChat config.
+
+    SpicyChat exposes separate scoped Typesense keys for characters, Lorebooks,
+    and Lorebook entries. The character archive's public key cannot query the
+    Lorebook collection, so resolve the Lorebook-specific key at run time.
+    """
+    lore = config.setdefault("lorebooks", {})
+    app_url = str(
+        lore.get("application_config_url")
+        or "https://prod.nd-api.com/v2/applications/spicychat"
+    )
+    key = ""
+    collection = str(lore.get("typesense_collection") or "lorebooks_public")
+    try:
+        client._sleep()
+        response = client.session.get(
+            app_url,
+            headers={
+                "Accept": "application/json",
+                "X-App-Id": "spicychat",
+                "X-Guest-UserId": client.guest_user_id,
+                "X-Country": str((config.get("character_api") or {}).get("country") or "US"),
+            },
+            timeout=client.timeout,
+        )
+        if response.ok:
+            payload = response.json() if response.content else {}
+            ts = payload.get("typesenseConfig") if isinstance(payload, dict) else {}
+            if isinstance(ts, dict):
+                key = str(ts.get("apiKeyLorebook") or "").strip()
+                collection = str(ts.get("collectionNameLorebook") or collection).strip()
+    except Exception as exc:
+        print(f"Lorebooks: application config lookup failed: {exc}", flush=True)
+
+    # Optional checked-in override/fallback for local tests or emergency use.
+    if not key:
+        key = str(lore.get("typesense_key") or "").strip()
+    if not key:
+        raise RuntimeError(
+            "SpicyChat application config did not provide apiKeyLorebook; "
+            "refusing to query Lorebooks with the character search key."
+        )
+
+    client.typesense_key = key
+    lore["typesense_collection"] = collection or "lorebooks_public"
+    return client.typesense_key, lore["typesense_collection"]
+
+
 def lorebook_search(config: dict[str, Any], *, page: int, per_page: int, cursor_created_at: Any = None) -> dict[str, Any]:
     lore = config.get("lorebooks") or {}
     request: dict[str, Any] = {
         "collection": lore.get("typesense_collection") or "lorebooks_public",
         "q": "*",
-        "query_by": lore.get("query_by") or "name,description,tags,creator_username",
+        "query_by": lore.get("query_by") or "name,tags,lorebook_id",
         "page": page,
         "per_page": per_page,
         "sort_by": lore.get("sort_by") or "createdAt:desc",
@@ -365,6 +414,16 @@ def run() -> int:
         return 2
 
     client = archive.Client(config)
+    try:
+        _key, lorebook_collection = configure_lorebook_typesense(client, config)
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", flush=True)
+        return 2
+    print(
+        f"Lorebooks: using current SpicyChat Typesense collection "
+        f"{lorebook_collection}.",
+        flush=True,
+    )
     at = utc_now()
     state = store.get_json(
         state_key(store),

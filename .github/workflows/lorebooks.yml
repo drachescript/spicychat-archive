@@ -43,5 +43,27 @@ jobs:
         if: steps.r2guard.outputs.mode == 'r2'
         run: python scripts/lorebook_archive.py
 
+      - name: Verify public Lorebook index
+        if: steps.r2guard.outputs.mode == 'r2'
+        run: |
+          python - <<'PY'
+          import json
+          import time
+          from pathlib import Path
+
+          import requests
+
+          config = json.loads(Path("config.json").read_text(encoding="utf-8"))
+          base = str(config["storage"]["r2"]["public_base_url"]).rstrip("/")
+          url = f"{base}/indexes/lorebooks.json?verify={int(time.time())}"
+          response = requests.get(url, timeout=30)
+          response.raise_for_status()
+          payload = response.json()
+          total = int(payload.get("totalArchived") or 0)
+          if total < 1:
+              raise SystemExit("Public Lorebook index loaded but contained no archived Lorebooks.")
+          print(f"Public Lorebook index verified: {total:,} archived Lorebooks.")
+          PY
+
       - name: Test Lorebook archive code
         run: python -m unittest tests.test_lorebook_archive -v

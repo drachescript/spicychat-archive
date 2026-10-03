@@ -5,7 +5,8 @@ const qs=k=>new URLSearchParams(location.search).get(k)||'';
 const fmt=n=>Number(n||0).toLocaleString();
 const date=v=>{if(!v)return'Unknown';const d=new Date(v);return Number.isNaN(d.getTime())?'Unknown':d.toLocaleString([], {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});};
 const shortDate=v=>{if(!v)return'Unknown';const d=new Date(v);return Number.isNaN(d.getTime())?'Unknown':d.toLocaleDateString([], {year:'numeric',month:'short',day:'numeric'});};
-const fetchJson=async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json();};
+const fetchJson=async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok){const e=new Error('HTTP '+r.status);e.status=r.status;throw e;}return r.json();};
+const fetchJsonRetryStale404=async url=>{try{return await fetchJson(url);}catch(e){if(e?.status!==404)throw e;const u=new URL(url,location.href);u.searchParams.set('_fresh',Date.now().toString(36));return fetchJson(u.toString());}};
 const runtimePath=page==='lorebooks'?'../data/runtime.json':'../data/runtime.json';
 async function runtime(){return fetchJson(runtimePath);}
 const base=r=>String(r.publicDataBaseUrl||'').replace(/\/$/,'');
@@ -52,7 +53,7 @@ function card(x){
 }
 async function browse(){
   const rt=await runtime();
-  const payload=await fetchJson(base(rt)+'/indexes/lorebooks.json');
+  const payload=await fetchJsonRetryStale404(base(rt)+'/indexes/lorebooks.json');
   const all=Array.isArray(payload.lorebooks)?payload.lorebooks:[];
   const state={
     q:qs('q'),creator:qs('creator'),tag:qs('tag')||'any',rating:qs('rating')||'any',
@@ -107,7 +108,7 @@ async function detail(){
   const id=qs('id').trim().toLowerCase();if(!id){app.innerHTML='<div class="error">No Lorebook ID supplied.</div>';return;}
   const rt=await runtime(),compact=id.replaceAll('-',''),prefix=compact.slice(0,2)||'__';
   let record;
-  try{record=await fetchJson(base(rt)+'/lorebooks/'+prefix+'/'+encodeURIComponent(id)+'.json');}catch{app.innerHTML='<div class="error">This Lorebook does not have an archived record yet.</div>';return;}
+  try{record=await fetchJsonRetryStale404(base(rt)+'/lorebooks/'+prefix+'/'+encodeURIComponent(id)+'.json');}catch{app.innerHTML='<div class="error">This Lorebook does not have an archived record yet.</div>';return;}
   const detail=record.detail||record.listing||{},entries=Array.isArray(detail.entries)?detail.entries:[],tags=normalizeTags(detail.tags||record.listing?.tags);
   document.title=(detail.name||'Lorebook')+' · SpicyChat Archive';
   const img=imageUrl(detail.avatar_url||record.listing?.avatar_url);

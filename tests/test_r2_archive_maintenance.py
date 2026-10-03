@@ -100,6 +100,29 @@ def make_record(bot_id, *, greeting=None, num_messages=None):
 
 
 class MaintenanceSweepTests(unittest.TestCase):
+    def test_manual_discovery_profile_skips_character_refresh_without_advancing_cursor(self):
+        store = FakeStore(["bot-a", "bot-b", "bot-c"])
+        state = {
+            "priorityEnrichment": ["bot-a"],
+            "verificationSweep": {"cursor": 2, "completedPasses": 3},
+        }
+        config = {"crawler": {"maintenance_verification_enabled": False}}
+
+        result = maintenance._maintenance_character_refresh(
+            FakeClient(),
+            config,
+            "2026-10-03T00:00:00Z",
+            state,
+            store=store,
+        )
+
+        self.assertTrue(result["skipped"])
+        self.assertEqual(result["processed"], 0)
+        self.assertEqual(result["verificationCursor"], 2)
+        self.assertEqual(result["verificationCompletedPasses"], 3)
+        self.assertEqual(state["priorityEnrichment"], ["bot-a"])
+        self.assertTrue(state["verificationSweep"]["lastRunSkipped"])
+
     def test_first_404_is_recorded_once(self):
         state = {}
         maintenance._seed_missing_404(state, "bot-a", "2026-09-30T00:00:00Z")

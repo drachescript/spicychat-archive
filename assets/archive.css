@@ -104,11 +104,31 @@
 .change-values{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:start}
 .change-values span{display:block;min-width:0;white-space:pre-wrap;word-break:break-word;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:7px 8px;font-size:10px;line-height:1.4;max-height:120px;overflow:auto}
 .change-values b{padding-top:7px;color:var(--muted)}
+.change-row-polished{display:block;padding:0;overflow:hidden}
+.change-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:13px 14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--panel2),var(--panel))}
+.change-card-title{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;min-width:0}
+.change-card-title>a:first-child{font-size:12px}
+.change-card-meta{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:9px;white-space:nowrap}
+.change-field-badge{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid var(--line2);border-radius:999px;background:var(--panel3);color:var(--text);font-weight:700;letter-spacing:.02em}
+.change-field-badge[data-field="greeting"],.change-field-badge[data-field="personality"],.change-field-badge[data-field="scenario"],.change-field-badge[data-field="example-dialogue"]{border-color:rgba(114,167,255,.45);background:rgba(114,167,255,.09)}
+.change-field-badge[data-field="image"]{border-color:rgba(194,126,255,.45);background:rgba(194,126,255,.09)}
+.change-field-badge[data-field="tags"]{border-color:rgba(111,211,154,.45);background:rgba(111,211,154,.08)}
+.change-values-polished{grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);gap:0;padding:12px 14px 14px;align-items:stretch}
+.change-value-box{min-width:0;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+.change-value-label{display:block;margin-bottom:6px;color:var(--muted);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.change-text{white-space:pre-wrap;word-break:break-word;font-size:10px;line-height:1.48;max-height:138px;overflow:auto}
+.change-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px;font-weight:700}
+.change-tags{display:flex;flex-wrap:wrap;gap:5px;align-content:flex-start;max-height:138px;overflow:auto}
+.change-tag{display:inline-flex;padding:4px 7px;border-radius:999px;border:1px solid var(--line);background:var(--panel3);font-size:9px;line-height:1.1}
+.change-empty{color:var(--muted);font-size:10px}
+.change-image-value{display:grid;grid-template-columns:72px minmax(0,1fr);gap:9px;align-items:center}
+.change-image-value img{width:72px;height:72px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.change-image-value span{min-width:0;color:var(--muted);font-size:8px;line-height:1.35;word-break:break-all;max-height:72px;overflow:auto}
 .health-issues{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;margin:12px 0}
 .health-issue,.health-ok{border:1px solid var(--line);background:var(--panel2);border-radius:9px;padding:11px}
 .health-issue{display:grid;gap:3px}.health-issue b{font-size:20px}.health-issue span{color:var(--muted);font-size:11px}.health-ok{color:var(--text)}
 @media(max-width:1180px){.creator-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}.changes-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.creator-toolbar,.changes-toolbar{grid-template-columns:1fr}.change-row{grid-template-columns:1fr}.change-values{grid-template-columns:1fr}.change-values b{text-align:center;padding:0}}
+@media(max-width:680px){.creator-toolbar,.changes-toolbar{grid-template-columns:1fr}.change-row{grid-template-columns:1fr}.change-values{grid-template-columns:1fr}.change-values b{text-align:center;padding:0}.change-card-head{display:grid}.change-card-meta{justify-content:flex-start}.change-values-polished{grid-template-columns:1fr;gap:7px}.change-arrow{min-height:18px;transform:rotate(90deg)}.change-image-value{grid-template-columns:62px minmax(0,1fr)}.change-image-value img{width:62px;height:62px}}
 
 /* Bot detail source badges and version comparison. */
 .creator-profile-link{color:#72a7ff;text-decoration:none}.creator-profile-link:hover{text-decoration:underline}

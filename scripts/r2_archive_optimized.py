@@ -658,7 +658,12 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             flush=True,
         )
 
-        for page_index in range(pages_budget):
+        # Count successfully ingested pages, not loop iterations. Switching
+        # from numbered pagination to the createdAt cursor can consume a request
+        # that returns zero hits; that transition must not steal one page from a
+        # requested 500/750/1000-page manual sweep.
+        while completed_pages < pages_budget:
+            page_index = completed_pages
             elapsed = time.monotonic() - discovery_started
             if elapsed >= time_limit:
                 time_limited = True

@@ -11,6 +11,53 @@ import lorebook_archive as lorebooks
 
 
 class LorebookArchiveTests(unittest.TestCase):
+    def test_configure_lorebook_typesense_uses_scoped_public_key(self):
+        class Response:
+            ok = True
+            content = b"{}"
+
+            def json(self):
+                return {
+                    "typesenseConfig": {
+                        "collectionNameLorebook": "lorebooks_public",
+                        "apiKeyLorebook": "lorebook-key",
+                    }
+                }
+
+        class Session:
+            def get(self, *args, **kwargs):
+                return Response()
+
+        class Client:
+            typesense_key = "character-key"
+            guest_user_id = "guest"
+            timeout = 20
+            session = Session()
+
+            def _sleep(self):
+                return None
+
+        config = {
+            "lorebooks": {},
+            "character_api": {"country": "US"},
+        }
+        client = Client()
+        key, collection = lorebooks.configure_lorebook_typesense(client, config)
+
+        self.assertEqual(key, "lorebook-key")
+        self.assertEqual(collection, "lorebooks_public")
+        self.assertEqual(client.typesense_key, "lorebook-key")
+        self.assertEqual(config["lorebooks"]["typesense_collection"], "lorebooks_public")
+
+    def test_lorebook_search_uses_observed_public_fields(self):
+        request = lorebooks.lorebook_search(
+            {"lorebooks": {}},
+            page=1,
+            per_page=250,
+        )
+        self.assertEqual(request["collection"], "lorebooks_public")
+        self.assertEqual(request["query_by"], "name,tags,lorebook_id")
+
     def test_normalize_lorebook_id_accepts_known_shapes(self):
         self.assertEqual(lorebooks.normalize_lorebook_id({"id": "ABC-123"}), "abc-123")
         self.assertEqual(lorebooks.normalize_lorebook_id({"lorebookId": "ABC-456"}), "abc-456")

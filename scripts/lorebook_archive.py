@@ -213,7 +213,10 @@ def build_or_update_record(
 
     changed = existing is None or old_snapshot != new_snapshot or old_status != "public"
     if changed:
-        record.setdefault("history", []).extend(diff_snapshot(old_snapshot, new_snapshot, at))
+        # The first capture is the baseline, not a synthetic "changed from
+        # nothing" event. Subsequent snapshots produce readable field history.
+        if existing is not None:
+            record.setdefault("history", []).extend(diff_snapshot(old_snapshot, new_snapshot, at))
         record.setdefault("versions", []).append(
             {
                 "at": at,

@@ -149,7 +149,7 @@
 .lorebook-hero-stats{display:grid;grid-template-columns:repeat(2,minmax(105px,1fr));gap:8px;min-width:230px}
 .lorebook-hero-stats>div{display:grid;gap:2px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 12px}
 .lorebook-hero-stats b{font-size:20px}.lorebook-hero-stats span{color:var(--muted);font-size:9px}
-.lorebook-toolbar{display:grid;grid-template-columns:minmax(230px,1.5fr) minmax(160px,.8fr) repeat(4,minmax(125px,.65fr));gap:9px;margin:0 0 14px}
+.lorebook-toolbar{display:grid;grid-template-columns:minmax(230px,1.5fr) minmax(160px,.8fr) repeat(3,minmax(125px,.65fr));gap:9px;margin:0 0 14px}
 .lorebook-toolbar input,.lorebook-toolbar select{width:100%;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:10px 11px;font:inherit}
 .lorebook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
 .lorebook-card{display:grid;grid-template-columns:116px minmax(0,1fr);min-height:154px;border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden}

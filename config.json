@@ -94,5 +94,15 @@
     "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
     "top-rated": "rating_score:desc,num_messages:desc",
     "popular": "num_messages:desc"
+  },
+  "lorebooks": {
+    "enabled": true,
+    "typesense_collection": "lorebooks_public",
+    "query_by": "name,description,tags,creator_username",
+    "sort_by": "createdAt:desc",
+    "filter_by": "",
+    "api_base_url": "https://prod.nd-api.com/lorebooks",
+    "page_size": 250,
+    "max_pages_per_run": 100
   }
 }

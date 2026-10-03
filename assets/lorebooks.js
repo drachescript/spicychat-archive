@@ -42,11 +42,7 @@ function bindPager(render){
 function card(x){
   const img=imageUrl(x.avatar);
   const tags=normalizeTags(x.tags);
-  const statusBadge=x.status==='deleted'
-    ?'<span class="lorebook-status is-deleted">Deleted</span>'
-    :x.status==='not-public'
-      ?'<span class="lorebook-status is-archived">No longer public</span>'
-      :'';
+  const statusBadge=x.status==='deleted'?'<span class="lorebook-status is-deleted">Deleted</span>':'';
   return '<article class="lorebook-card '+(x.status==='public'?'':'lorebook-card-muted')+'">'+
     '<a class="lorebook-cover" href="'+esc(detailHref(x.id))+'">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy">':'<div class="lorebook-cover-empty">LB</div>')+(x.isNsfw?'<span class="lorebook-nsfw">NSFW</span>':'')+'</a>'+
     '<div class="lorebook-card-body"><div class="lorebook-card-top"><a class="lorebook-name" href="'+esc(detailHref(x.id))+'">'+esc(x.name||x.id)+'</a>'+statusBadge+'</div>'+
@@ -86,7 +82,7 @@ async function browse(){
     document.querySelector('#lb-count').textContent=rows.length?(start+1)+'–'+Math.min(rows.length,start+per)+' of '+fmt(rows.length):'0 matches';
     document.querySelector('#lb-grid').innerHTML=visible.length?visible.map(card).join(''):'<div class="empty">'+(deletedView?'No deleted/no-longer-public Lorebooks have been archived yet.':'No Lorebooks match these filters.')+'</div>';
     const p=pager(state.page,pages);document.querySelector('#lb-pager-top').innerHTML=p;document.querySelector('#lb-pager-bottom').innerHTML=p;
-    setParams({q:state.q,creator:state.creator,tag:state.tag,rating:state.rating,sort:state.sort,p:state.page});
+    setParams({q:state.q,creator:state.creator,tag:state.tag,rating:state.rating,status:null,sort:state.sort,p:state.page});
   }
   for(const id of['lb-q','lb-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;render();});
   for(const id of['lb-tag','lb-rating','lb-sort'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;render();});
@@ -111,11 +107,7 @@ async function detail(){
   document.title=(detail.name||'Lorebook')+' · SpicyChat Archive';
   const img=imageUrl(detail.avatar_url||record.listing?.avatar_url);
   const currentStatus=record.status?.current||'unknown';
-  const statusBadge=currentStatus==='deleted'
-    ?'<span class="lorebook-status is-deleted">Deleted</span>'
-    :currentStatus==='not-public'
-      ?'<span class="lorebook-status is-archived">No longer public</span>'
-      :'';
+  const statusBadge=currentStatus==='deleted'?'<span class="lorebook-status is-deleted">Deleted</span>':'';
   const versions=Array.isArray(record.versions)?record.versions:[],history=Array.isArray(record.history)?record.history:[],statusHistory=Array.isArray(record.statusHistory)?record.statusHistory:[];
   app.innerHTML='<section class="lorebook-detail-hero">'+
     (img?'<img class="lorebook-detail-cover" src="'+esc(img)+'" alt="">':'<div class="lorebook-detail-cover lorebook-cover-empty">LB</div>')+

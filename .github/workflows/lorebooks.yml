@@ -1,0 +1,46 @@
+name: Update SpicyChat Lorebook archive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */3 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  lorebooks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check R2 free-tier guard
+        id: r2guard
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
+
+      - name: Update Lorebook archive in R2
+        if: steps.r2guard.outputs.mode == 'r2'
+        run: python scripts/lorebook_archive.py
+
+      - name: Test Lorebook archive code
+        run: python -m unittest tests.test_lorebook_archive -v

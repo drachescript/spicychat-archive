@@ -3,7 +3,10 @@ name: Update SpicyChat Lorebook archive
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */3 * * *"
+    # Roughly every 5 hours. The shared spicychat-archive-writer concurrency
+    # group queues this behind any active bot archive/R2 writer, so the two
+    # archive crawlers never run at the same time.
+    - cron: "17 */5 * * *"
 
 permissions:
   contents: read

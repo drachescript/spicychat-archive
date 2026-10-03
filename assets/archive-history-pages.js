@@ -42,9 +42,10 @@ function card(bot,blur=true){
   const tags=(bot.tags||[]).slice(0,5).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
   const first=bot.firstSeenAt?'<span>Seen '+shortDate(bot.firstSeenAt)+'</span>':'';
   const restored=bot.restoredAt?'<span>Restored '+shortDate(bot.restoredAt)+'</span>':'';
+  const activity=bot.activityLabel?'<div class="activity-card-note"><b>'+esc(bot.activityLabel)+'</b>'+(bot.activityNote?'<span>'+esc(bot.activityNote)+'</span>':'')+'</div>':'';
   const avatar=resolveAvatar(bot.avatar||bot.avatarFallback);
   const art=avatar?'<img src="'+esc(avatar)+'" alt="'+esc(bot.name||'')+'" loading="lazy" class="'+(blur&&bot.isNsfw?'nsfw-blur':'')+'">':'<div class="art-placeholder">No image</div>';
-  return '<article class="card"><a class="cardlink" href="'+esc(detailHref(bot.id))+'"><div class="art">'+art+badge(bot.status)+'</div><div class="body"><h3>'+esc(bot.name||'Unknown bot')+'</h3><div class="creator creator-link" data-creator="'+esc(bot.creator||'')+'">'+(bot.creator?'@'+esc(bot.creator):'Unknown creator')+'</div><div class="title">'+esc(bot.title||'')+'</div><div class="taglist">'+tags+'</div><div class="meta"><span>'+fmt(bot.messages)+' msgs</span><span>'+(bot.rating==null?'—':'★ '+esc(bot.rating))+'</span>'+first+restored+'</div></div></a></article>';
+  return '<article class="card"><a class="cardlink" href="'+esc(detailHref(bot.id))+'"><div class="art">'+art+badge(bot.status)+'</div><div class="body"><h3>'+esc(bot.name||'Unknown bot')+'</h3><div class="creator creator-link" data-creator="'+esc(bot.creator||'')+'">'+(bot.creator?'@'+esc(bot.creator):'Unknown creator')+'</div><div class="title">'+esc(bot.title||'')+'</div><div class="taglist">'+tags+'</div><div class="meta"><span>'+fmt(bot.messages)+' msgs</span><span>'+(bot.rating==null?'—':'★ '+esc(bot.rating))+'</span>'+first+restored+'</div>'+activity+'</div></a></article>';
 }
 document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('[data-creator]');const c=t&&t.getAttribute('data-creator');if(!c)return;e.preventDefault();e.stopPropagation();location.href=creatorHref(c);});
 function pagerPages(current,total){if(total<=1)return[];const end=current<=1?Math.min(total,10):Math.min(total,current+6),start=current<=1?1:Math.max(1,current-5);return Array.from({length:Math.max(0,end-start+1)},(_,i)=>start+i);}
@@ -139,10 +140,40 @@ async function activityPage(){
   app.innerHTML='<section class="hero"><h1>Archive activity</h1><p>Newly captured bots, confirmed deletions, direct-API verified restorations, and suspicious listing-only restoration candidates.</p></section><div class="changes-toolbar"><input id="activity-search" placeholder="Bot, creator or ID"><input id="activity-creator" placeholder="Creator username"><select id="activity-type"><option value="any">All activity</option><option value="new">Newly captured</option><option value="deleted">Deleted</option><option value="restored">Verified restored</option><option value="restore-candidate">Unverified restore candidate</option></select><select id="activity-days"><option value="1">Last 24 hours</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="all">All indexed activity</option></select></div><div class="results-head"><h2>Activity</h2><span id="activity-count"></span></div><div id="activity-pager-top" class="pager-wrap pager-top"></div><section id="activity-list" class="changes-list"></section><div id="activity-pager-bottom" class="pager-wrap"></div>';
   for(const [id,val] of [['activity-search',state.q],['activity-creator',state.creator],['activity-type',state.type],['activity-days',state.days]])document.querySelector('#'+id).value=val;
   const typeLabel=t=>t==='new'?'Newly captured':t==='deleted'?'Confirmed deleted':t==='restored'?'Verified restored':'Unverified restore candidate';
-  function render(next){if(next)state.page=next;state.q=document.querySelector('#activity-search').value.trim();state.creator=document.querySelector('#activity-creator').value.trim();state.type=document.querySelector('#activity-type').value;state.days=document.querySelector('#activity-days').value;const q=state.q.toLowerCase(),creator=state.creator.toLowerCase(),cut=state.days==='all'?0:Date.now()-Number(state.days)*86400000;const rows=events.filter(x=>(state.type==='any'||x.type===state.type)&&(!creator||String(x.creator||'').toLowerCase()===creator)&&(!cut||new Date(x.at||0).getTime()>=cut)&&(!q||[x.id,x.name,x.title,x.creator].join(' ').toLowerCase().includes(q)));const pages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>pages)state.page=pages;const start=(state.page-1)*PAGE_SIZE,visible=rows.slice(start,start+PAGE_SIZE);document.querySelector('#activity-count').textContent=rows.length?(start+1)+'–'+Math.min(rows.length,start+PAGE_SIZE)+' of '+rows.length.toLocaleString():'0 matches';document.querySelector('#activity-list').innerHTML=visible.length?visible.map(x=>'<article class="change-row"><div class="change-main"><a href="'+esc(detailHref(x.id))+'"><b>'+esc(x.name||x.id)+'</b></a>'+(x.creator?'<a class="creator-link" href="'+esc(creatorHref(x.creator))+'">@'+esc(x.creator)+'</a>':'')+'<span class="history-kind">'+esc(typeLabel(x.type))+' · '+date(x.at)+' · '+esc(x.source||'')+'</span></div>'+(x.type==='restore-candidate'?'<div class="filter-note">Not counted as restored until the Character API confirms it.</div>':'')+'</article>').join(''):'<div class="empty">No archive activity matches these filters.</div>';const pager=pagerMarkup(state.page,pages);document.querySelector('#activity-pager-top').innerHTML=pager;document.querySelector('#activity-pager-bottom').innerHTML=pager;setParams({q:state.q,creator:state.creator,type:state.type,days:state.days,p:state.page});}
-  for(const id of['activity-search','activity-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;render();});for(const id of['activity-type','activity-days'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;render();});bindPager(p=>render(p));render();
+  const toBot=(record,event)=>{
+    const lk=record&&record.lastKnown||{};
+    return {id:event.id,name:lk.name||event.name||event.id,title:lk.title||lk.description||event.title||'',creator:lk.creator_username||lk.creator||event.creator||'',tags:Array.isArray(lk.tags)?lk.tags:[],status:'public',firstSeenAt:record?.firstSeenAt,isNsfw:!!(lk.is_nsfw??lk.isNsfw),avatar:lk.avatar_url||lk.avatar,avatarFallback:lk.avatarFallback,messages:lk.num_messages??lk.messages??event.messages??0,rating:lk.rating_score??lk.rating??event.rating,activityLabel:'Restore candidate · '+date(event.at),activityNote:'Not counted as restored until the Character API confirms it.'};
+  };
+  const candidateRecordCache=new Map();
+  async function loadCandidateRecord(id){
+    if(candidateRecordCache.has(id))return candidateRecordCache.get(id);
+    const promise=fetchJson(archiveBotUrl(runtime,id)).catch(()=>null);
+    candidateRecordCache.set(id,promise);
+    return promise;
+  }
+  let renderSerial=0;
+  async function render(next){
+    const serial=++renderSerial;if(next)state.page=next;
+    state.q=document.querySelector('#activity-search').value.trim();state.creator=document.querySelector('#activity-creator').value.trim();state.type=document.querySelector('#activity-type').value;state.days=document.querySelector('#activity-days').value;
+    const q=state.q.toLowerCase(),creator=state.creator.toLowerCase(),cut=state.days==='all'?0:Date.now()-Number(state.days)*86400000;
+    const rows=events.filter(x=>(state.type==='any'||x.type===state.type)&&(!creator||String(x.creator||'').toLowerCase()===creator)&&(!cut||new Date(x.at||0).getTime()>=cut)&&(!q||[x.id,x.name,x.title,x.creator].join(' ').toLowerCase().includes(q)));
+    const pages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>pages)state.page=pages;const start=(state.page-1)*PAGE_SIZE,visible=rows.slice(start,start+PAGE_SIZE),candidateCards=state.type==='restore-candidate';
+    document.querySelector('#activity-count').textContent=rows.length?(start+1)+'–'+Math.min(rows.length,start+PAGE_SIZE)+' of '+rows.length.toLocaleString():'0 matches';
+    const list=document.querySelector('#activity-list');list.className=candidateCards?'grid':'changes-list';
+    if(candidateCards&&visible.length){
+      list.innerHTML='<div class="loading">Loading archived bot cards…</div>';
+      const records=await Promise.all(visible.map(x=>loadCandidateRecord(x.id)));
+      if(serial!==renderSerial)return;
+      list.innerHTML=visible.map((x,i)=>card(toBot(records[i],x),localStorage.getItem('sca-blur-nsfw')!=='0')).join('');
+    }else{
+      list.innerHTML=visible.length?visible.map(x=>'<article class="change-row"><div class="change-main"><a href="'+esc(detailHref(x.id))+'"><b>'+esc(x.name||x.id)+'</b></a>'+(x.creator?'<a class="creator-link" href="'+esc(creatorHref(x.creator))+'">@'+esc(x.creator)+'</a>':'')+'<span class="history-kind">'+esc(typeLabel(x.type))+' · '+date(x.at)+'</span></div></article>').join(''):'<div class="empty">No archive activity matches these filters.</div>';
+    }
+    const pager=pagerMarkup(state.page,pages);document.querySelector('#activity-pager-top').innerHTML=pager;document.querySelector('#activity-pager-bottom').innerHTML=pager;setParams({q:state.q,creator:state.creator,type:state.type,days:state.days,p:state.page});
+  }
+  for(const id of['activity-search','activity-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;void render();});
+  for(const id of['activity-type','activity-days'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;void render();});
+  bindPager(p=>void render(p));void render();
 }
-
 async function explorerPage(){
   const runtime=await loadRuntime(),times=await loadIndex(runtime,'archive-times.json'),activity=await loadIndex(runtime,'activity.json');
   const today=new Date().toISOString().slice(0,10),at=qs('at')||today;

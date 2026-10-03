@@ -42,10 +42,14 @@ function bindPager(render){
 function card(x){
   const img=imageUrl(x.avatar);
   const tags=normalizeTags(x.tags);
-  const status=x.status==='public'?'Public now':'No longer public';
+  const statusBadge=x.status==='deleted'
+    ?'<span class="lorebook-status is-deleted">Deleted</span>'
+    :x.status==='not-public'
+      ?'<span class="lorebook-status is-archived">No longer public</span>'
+      :'';
   return '<article class="lorebook-card '+(x.status==='public'?'':'lorebook-card-muted')+'">'+
     '<a class="lorebook-cover" href="'+esc(detailHref(x.id))+'">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy">':'<div class="lorebook-cover-empty">LB</div>')+(x.isNsfw?'<span class="lorebook-nsfw">NSFW</span>':'')+'</a>'+
-    '<div class="lorebook-card-body"><div class="lorebook-card-top"><a class="lorebook-name" href="'+esc(detailHref(x.id))+'">'+esc(x.name||x.id)+'</a><span class="lorebook-status '+(x.status==='public'?'is-public':'is-archived')+'">'+esc(status)+'</span></div>'+
+    '<div class="lorebook-card-body"><div class="lorebook-card-top"><a class="lorebook-name" href="'+esc(detailHref(x.id))+'">'+esc(x.name||x.id)+'</a>'+statusBadge+'</div>'+
     (x.creator?'<a class="creator-link" href="'+esc(creatorHref(x.creator))+'">@'+esc(x.creator)+'</a>':'')+
     '<p class="lorebook-description">'+esc(x.description||'No description archived.')+'</p>'+
     '<div class="lorebook-tags">'+tags.slice(0,8).map(t=>'<span>'+esc(t)+'</span>').join('')+'</div>'+
@@ -55,43 +59,37 @@ async function browse(){
   const rt=await runtime();
   const payload=await fetchJsonRetryStale404(base(rt)+'/indexes/lorebooks.json');
   const all=Array.isArray(payload.lorebooks)?payload.lorebooks:[];
-  const state={
-    q:qs('q'),creator:qs('creator'),tag:qs('tag')||'any',rating:qs('rating')||'any',
-    status:qs('status')||'public',sort:qs('sort')||'updated',page:Math.max(1,Number(qs('p'))||1)
-  };
+  const deletedView=page==='deleted-lorebooks';
+  const state={q:qs('q'),creator:qs('creator'),tag:qs('tag')||'any',rating:qs('rating')||'any',sort:qs('sort')||'updated',page:Math.max(1,Number(qs('p'))||1)};
   const tags=[...new Set(all.flatMap(x=>normalizeTags(x.tags)))].sort((a,b)=>a.localeCompare(b));
-  app.innerHTML='<section class="hero lorebook-hero"><div><h1>Lorebooks</h1><p>Public SpicyChat Lorebooks discovered from the live public index, with archived detail, entries, versions and public-status history.</p></div><div class="lorebook-hero-stats"><div><b>'+fmt(payload.publicNow)+'</b><span>Public now</span></div><div><b>'+fmt(payload.totalArchived)+'</b><span>Archived</span></div></div></section>'+
-    '<div class="lorebook-toolbar"><input id="lb-q" placeholder="Lorebook, description, creator or ID"><input id="lb-creator" placeholder="Creator username"><select id="lb-tag"><option value="any">All tags</option>'+tags.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('')+'</select><select id="lb-rating"><option value="any">SFW + NSFW</option><option value="sfw">SFW only</option><option value="nsfw">NSFW only</option></select><select id="lb-status"><option value="public">Public now</option><option value="all">All archived</option><option value="not-public">No longer public</option></select><select id="lb-sort"><option value="updated">Recently updated</option><option value="created">Newest created</option><option value="entries">Most entries</option><option value="name">Name</option></select></div>'+
-    '<div class="results-head"><h2>Discovered Lorebooks</h2><span id="lb-count"></span></div><div id="lb-pager-top" class="pager-wrap pager-top"></div><section id="lb-grid" class="lorebook-grid"></section><div id="lb-pager-bottom" class="pager-wrap"></div>';
-  for(const [id,val] of [['lb-q',state.q],['lb-creator',state.creator],['lb-tag',state.tag],['lb-rating',state.rating],['lb-status',state.status],['lb-sort',state.sort]])document.querySelector('#'+id).value=val;
+  const unavailableCount=all.filter(x=>x.status!=='public').length;
+  app.innerHTML=deletedView
+    ?'<section class="hero lorebook-hero"><div><h1>Deleted Lorebooks</h1><p>Lorebooks that disappeared from the live public index stay archived here. When the public data only proves disappearance, the archive keeps the more precise “No longer public” label instead of pretending a deletion was confirmed.</p></div><div class="lorebook-hero-stats"><div><b>'+fmt(unavailableCount)+'</b><span>No longer public</span></div><div><b>'+fmt(payload.totalArchived)+'</b><span>Total archived</span></div></div></section>'
+    :'<section class="hero lorebook-hero"><div><h1>Lorebooks</h1><p>Public SpicyChat Lorebooks discovered from the live public index, with archived detail, entries, versions and public-status history.</p></div><div class="lorebook-hero-stats"><div><b>'+fmt(payload.publicNow)+'</b><span>Public</span></div><div><b>'+fmt(payload.totalArchived)+'</b><span>Archived</span></div></div></section>';
+  app.innerHTML+='<div class="lorebook-toolbar"><input id="lb-q" placeholder="Lorebook, description, creator or ID"><input id="lb-creator" placeholder="Creator username"><select id="lb-tag"><option value="any">All tags</option>'+tags.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('')+'</select><select id="lb-rating"><option value="any">SFW + NSFW</option><option value="sfw">SFW only</option><option value="nsfw">NSFW only</option></select><select id="lb-sort"><option value="updated">Recently updated</option><option value="created">Newest created</option><option value="entries">Most entries</option><option value="name">Name</option></select></div>'+
+    '<div class="results-head"><h2>'+(deletedView?'Archived unavailable Lorebooks':'Discovered Lorebooks')+'</h2><span id="lb-count"></span></div><div id="lb-pager-top" class="pager-wrap pager-top"></div><section id="lb-grid" class="lorebook-grid"></section><div id="lb-pager-bottom" class="pager-wrap"></div>';
+  for(const [id,val] of [['lb-q',state.q],['lb-creator',state.creator],['lb-tag',state.tag],['lb-rating',state.rating],['lb-sort',state.sort]])document.querySelector('#'+id).value=val;
   function render(next){
     if(next)state.page=next;
-    state.q=document.querySelector('#lb-q').value.trim();
-    state.creator=document.querySelector('#lb-creator').value.trim();
-    state.tag=document.querySelector('#lb-tag').value;
-    state.rating=document.querySelector('#lb-rating').value;
-    state.status=document.querySelector('#lb-status').value;
-    state.sort=document.querySelector('#lb-sort').value;
+    state.q=document.querySelector('#lb-q').value.trim();state.creator=document.querySelector('#lb-creator').value.trim();state.tag=document.querySelector('#lb-tag').value;state.rating=document.querySelector('#lb-rating').value;state.sort=document.querySelector('#lb-sort').value;
     const q=state.q.toLowerCase(),creator=state.creator.toLowerCase();
     let rows=all.filter(x=>{
-      if(state.status!=='all'&&x.status!==state.status)return false;
-      if(state.rating==='sfw'&&x.isNsfw)return false;
-      if(state.rating==='nsfw'&&!x.isNsfw)return false;
+      if(deletedView?x.status==='public':x.status!=='public')return false;
+      if(state.rating==='sfw'&&x.isNsfw)return false;if(state.rating==='nsfw'&&!x.isNsfw)return false;
       if(creator&&String(x.creator||'').toLowerCase()!==creator)return false;
       if(state.tag!=='any'&&!normalizeTags(x.tags).some(t=>t.toLowerCase()===state.tag.toLowerCase()))return false;
       if(q&&![x.id,x.name,x.description,x.creator,...normalizeTags(x.tags)].join(' ').toLowerCase().includes(q))return false;
       return true;
     });
     rows.sort((a,b)=>state.sort==='name'?String(a.name||'').localeCompare(String(b.name||'')):state.sort==='entries'?Number(b.numEntries||0)-Number(a.numEntries||0):state.sort==='created'?new Date(b.createdAt||0)-new Date(a.createdAt||0):new Date(b.updatedAt||b.lastChangeAt||b.lastSeenAt||0)-new Date(a.updatedAt||a.lastChangeAt||a.lastSeenAt||0));
-    const per=48,pages=Math.max(1,Math.ceil(rows.length/per));if(state.page>pages)state.page=pages;
-    const start=(state.page-1)*per,visible=rows.slice(start,start+per);
+    const per=48,pages=Math.max(1,Math.ceil(rows.length/per));if(state.page>pages)state.page=pages;const start=(state.page-1)*per,visible=rows.slice(start,start+per);
     document.querySelector('#lb-count').textContent=rows.length?(start+1)+'–'+Math.min(rows.length,start+per)+' of '+fmt(rows.length):'0 matches';
-    document.querySelector('#lb-grid').innerHTML=visible.length?visible.map(card).join(''):'<div class="empty">No Lorebooks match these filters.</div>';
+    document.querySelector('#lb-grid').innerHTML=visible.length?visible.map(card).join(''):'<div class="empty">'+(deletedView?'No deleted/no-longer-public Lorebooks have been archived yet.':'No Lorebooks match these filters.')+'</div>';
     const p=pager(state.page,pages);document.querySelector('#lb-pager-top').innerHTML=p;document.querySelector('#lb-pager-bottom').innerHTML=p;
-    setParams({q:state.q,creator:state.creator,tag:state.tag,rating:state.rating,status:state.status,sort:state.sort,p:state.page});
+    setParams({q:state.q,creator:state.creator,tag:state.tag,rating:state.rating,sort:state.sort,p:state.page});
   }
   for(const id of['lb-q','lb-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;render();});
-  for(const id of['lb-tag','lb-rating','lb-status','lb-sort'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;render();});
+  for(const id of['lb-tag','lb-rating','lb-sort'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;render();});
   bindPager(render);render();
 }
 function renderValue(v){
@@ -112,11 +110,16 @@ async function detail(){
   const detail=record.detail||record.listing||{},entries=Array.isArray(detail.entries)?detail.entries:[],tags=normalizeTags(detail.tags||record.listing?.tags);
   document.title=(detail.name||'Lorebook')+' · SpicyChat Archive';
   const img=imageUrl(detail.avatar_url||record.listing?.avatar_url);
-  const status=record.status?.current==='public'?'Public now':'No longer public';
+  const currentStatus=record.status?.current||'unknown';
+  const statusBadge=currentStatus==='deleted'
+    ?'<span class="lorebook-status is-deleted">Deleted</span>'
+    :currentStatus==='not-public'
+      ?'<span class="lorebook-status is-archived">No longer public</span>'
+      :'';
   const versions=Array.isArray(record.versions)?record.versions:[],history=Array.isArray(record.history)?record.history:[],statusHistory=Array.isArray(record.statusHistory)?record.statusHistory:[];
   app.innerHTML='<section class="lorebook-detail-hero">'+
     (img?'<img class="lorebook-detail-cover" src="'+esc(img)+'" alt="">':'<div class="lorebook-detail-cover lorebook-cover-empty">LB</div>')+
-    '<div><div class="lorebook-detail-title"><h1>'+esc(detail.name||id)+'</h1><span class="lorebook-status '+(record.status?.current==='public'?'is-public':'is-archived')+'">'+esc(status)+'</span></div>'+
+    '<div><div class="lorebook-detail-title"><h1>'+esc(detail.name||id)+'</h1>'+statusBadge+'</div>'+
     (detail.creator_username?'<a class="creator-link" href="'+esc(creatorHref(detail.creator_username))+'">@'+esc(detail.creator_username)+'</a>':'')+
     '<p>'+esc(detail.description||'No description archived.')+'</p><div class="lorebook-tags">'+tags.map(t=>'<span>'+esc(t)+'</span>').join('')+'</div>'+
     '<div class="detail-actions"><a class="secondary-button" href="https://spicychat.ai/lorebook/'+encodeURIComponent(id)+'" target="_blank" rel="noopener">Open on SpicyChat</a><a class="secondary-button" href="../lorebooks/?creator='+encodeURIComponent(detail.creator_username||'')+'">More from creator</a></div></div></section>'+

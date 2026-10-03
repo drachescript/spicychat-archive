@@ -500,6 +500,20 @@ def fetch_public_detail(
                     break
 
                 result = (response.data.get("results") or [{}])[0]
+                if result.get("error"):
+                    try:
+                        result_status = int(result.get("code") or response.status or 400)
+                    except (TypeError, ValueError):
+                        result_status = 400
+                    last_failure = archive.HTTPResult(
+                        False,
+                        result_status,
+                        error=str(result.get("error")),
+                        url=response.url,
+                    )
+                    failed = True
+                    break
+
                 docs, found = archive.extract_hits(result)
                 entries.extend(docs)
 

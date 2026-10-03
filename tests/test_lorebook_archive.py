@@ -135,6 +135,73 @@ class LorebookArchiveTests(unittest.TestCase):
         self.assertEqual(client.typesense_key, "lorebook-key")
         self.assertEqual(result.data["entries"][0]["content"], "Public lore")
 
+    def test_fetch_public_detail_retries_typesense_result_error(self):
+        class Client:
+            typesense_key = "lorebook-key"
+
+            def __init__(self):
+                self.requests = []
+
+            def multi_search(self, searches):
+                self.requests.append((self.typesense_key, searches[0]))
+                if searches[0]["query_by"] == "name,keywords":
+                    return lorebooks.archive.HTTPResult(
+                        True,
+                        200,
+                        data={
+                            "results": [
+                                {
+                                    "code": 400,
+                                    "error": "Could not find a field named keywords",
+                                }
+                            ]
+                        },
+                        url="https://ts-lb.nd-api.com/multi_search",
+                    )
+                return lorebooks.archive.HTTPResult(
+                    True,
+                    200,
+                    data={
+                        "results": [
+                            {
+                                "found": 1,
+                                "hits": [
+                                    {
+                                        "document": {
+                                            "id": "entry-1",
+                                            "lorebook_id": "book-1",
+                                            "name": "Dragon",
+                                            "content": "Public lore",
+                                        }
+                                    }
+                                ],
+                            }
+                        ]
+                    },
+                    url="https://ts-lb.nd-api.com/multi_search",
+                )
+
+        client = Client()
+        result = lorebooks.fetch_public_detail(
+            client,
+            {
+                "lorebooks": {
+                    "typesense_entries_key": "entry-key",
+                    "typesense_entries_collection": "lorebook_entries_public",
+                }
+            },
+            {"id": "book-1", "name": "Book One"},
+        )
+        self.assertTrue(result.ok)
+        self.assertEqual(
+            [request["query_by"] for _key, request in client.requests],
+            ["name,keywords", "name"],
+        )
+        self.assertTrue(all(key == "entry-key" for key, _request in client.requests))
+        self.assertEqual(client.typesense_key, "lorebook-key")
+        self.assertEqual(result.data["entries"][0]["content"], "Public lore")
+
+
     def test_normalize_lorebook_id_accepts_known_shapes(self):
         self.assertEqual(lorebooks.normalize_lorebook_id({"id": "ABC-123"}), "abc-123")
         self.assertEqual(lorebooks.normalize_lorebook_id({"lorebookId": "ABC-456"}), "abc-456")

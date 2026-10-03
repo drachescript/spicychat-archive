@@ -183,3 +183,7 @@
 .lorebook-history-list{display:grid;gap:8px}.lorebook-history-list .history-detail{border:1px solid var(--line);background:var(--panel2);border-radius:9px;padding:9px 10px}.lorebook-history-list summary{display:flex;justify-content:space-between;gap:10px;align-items:center}.lorebook-history-list summary span{color:var(--muted);font-size:8px}
 @media(max-width:1100px){.lorebook-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}.lorebook-grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}}
 @media(max-width:680px){.lorebook-hero{display:grid}.lorebook-hero-stats{min-width:0}.lorebook-toolbar{grid-template-columns:1fr}.lorebook-grid{grid-template-columns:1fr}.lorebook-card{grid-template-columns:92px minmax(0,1fr)}.lorebook-cover{min-height:140px}.lorebook-detail-hero{grid-template-columns:1fr}.lorebook-detail-cover{width:150px;height:150px}.lorebook-detail-title{display:grid}.lorebook-card-foot{display:grid}}
+
+.activity-card-note{display:grid;gap:3px;margin-top:7px;padding-top:7px;border-top:1px solid var(--line);font-size:9px}
+.activity-card-note b{font-size:9px}.activity-card-note span{color:var(--muted);line-height:1.35}
+.lorebook-status.is-deleted{border-color:rgba(255,111,111,.45);background:rgba(255,111,111,.09)}

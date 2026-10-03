@@ -256,23 +256,27 @@ def summary_from_record(
 ) -> dict[str, Any]:
     listing = record.get("listing") if isinstance(record.get("listing"), dict) else {}
     detail = record.get("detail") if isinstance(record.get("detail"), dict) else {}
-    src = detail or listing
     lorebook_id = normalize_lorebook_id(record) or ""
+    # Typesense is the freshest public-listing source. Prefer it for catalog
+    # metadata so a transient detail refresh failure cannot leave stale names,
+    # descriptions, tags, or cover information on the public browser.
+    tags = listing.get("tags") if isinstance(listing.get("tags"), list) else detail.get("tags")
+    entries = detail.get("entries") if isinstance(detail.get("entries"), list) else []
     return {
         "id": lorebook_id,
-        "name": src.get("name") or listing.get("name") or lorebook_id,
-        "description": src.get("description") or listing.get("description") or "",
-        "creator": src.get("creator_username") or listing.get("creator_username") or "",
-        "creatorId": src.get("creator_user_id") or listing.get("creator_user_id"),
-        "tags": deepcopy(src.get("tags") if isinstance(src.get("tags"), list) else listing.get("tags") or []),
-        "avatar": src.get("avatar_url") or listing.get("avatar_url"),
-        "avatarIsNsfw": bool(src.get("avatar_is_nsfw") or listing.get("avatar_is_nsfw")),
-        "isNsfw": bool(src.get("is_nsfw") or listing.get("is_nsfw")),
-        "numEntries": int(src.get("num_entries") or listing.get("num_entries") or len(src.get("entries") or []) if isinstance(src, dict) else 0),
-        "numAttachedCharacters": int(src.get("numAttachedCharacters") or listing.get("numAttachedCharacters") or 0),
-        "version": src.get("version") or listing.get("version"),
-        "createdAt": src.get("createdAt") or listing.get("createdAt"),
-        "updatedAt": src.get("updatedAt") or listing.get("updatedAt"),
+        "name": listing.get("name") or detail.get("name") or lorebook_id,
+        "description": listing.get("description") or detail.get("description") or "",
+        "creator": listing.get("creator_username") or detail.get("creator_username") or "",
+        "creatorId": listing.get("creator_user_id") or detail.get("creator_user_id"),
+        "tags": deepcopy(tags if isinstance(tags, list) else []),
+        "avatar": listing.get("avatar_url") or detail.get("avatar_url"),
+        "avatarIsNsfw": bool(listing.get("avatar_is_nsfw") if "avatar_is_nsfw" in listing else detail.get("avatar_is_nsfw")),
+        "isNsfw": bool(listing.get("is_nsfw") if "is_nsfw" in listing else detail.get("is_nsfw")),
+        "numEntries": int(listing.get("num_entries") or detail.get("num_entries") or len(entries) or 0),
+        "numAttachedCharacters": int(listing.get("numAttachedCharacters") or detail.get("numAttachedCharacters") or 0),
+        "version": listing.get("version") or detail.get("version"),
+        "createdAt": listing.get("createdAt") or detail.get("createdAt"),
+        "updatedAt": listing.get("updatedAt") or detail.get("updatedAt"),
         "firstSeenAt": first_seen or record.get("firstSeenAt"),
         "lastSeenAt": last_seen or record.get("lastObservedAt"),
         "lastChangeAt": record.get("lastChangeAt"),
@@ -434,36 +438,48 @@ def run() -> int:
                 not old_meta
                 or old_meta.get("listingFingerprint") != listing_fp
                 or old_meta.get("status") != "public"
+                or bool(old_meta.get("detailPending"))
             )
 
             detail = None
+            detail_pending = False
             if needs_detail:
                 detail_response = fetch_detail(client, config, lorebook_id)
                 if detail_response.ok:
                     detail = unwrap_lorebook_payload(detail_response.data)
-                else:
+                if detail is None:
+                    detail_pending = True
                     detail_errors += 1
                     print(
                         f"Lorebook detail {lorebook_id}: HTTP {detail_response.status} "
-                        f"{detail_response.error or ''}".rstrip(),
+                        f"{detail_response.error or 'empty/invalid detail payload'}".rstrip(),
                         flush=True,
                     )
 
                 existing = store.get_json(lorebook_key(store, lorebook_id), None)
                 if not isinstance(existing, dict):
                     existing = None
-                record, changed = build_or_update_record(
-                    existing,
-                    listing=doc,
-                    detail=detail,
-                    at=at,
-                )
+
+                if detail is None and existing is not None:
+                    # Do not manufacture content-removal history from a transient
+                    # detail failure. Keep the previous rich payload, update only
+                    # the fresh public listing, and retry detail next run.
+                    record = deepcopy(existing)
+                    record["listing"] = deepcopy(doc)
+                    record["lastObservedAt"] = at
+                    changed = False
+                else:
+                    record, changed = build_or_update_record(
+                        existing,
+                        listing=doc,
+                        detail=detail,
+                        at=at,
+                    )
+
                 if existing is None:
                     new_count += 1
                 if changed:
                     changed_count += 1
-                # A listing change remains useful even when the detail endpoint
-                # transiently fails; existing richer detail is retained.
                 store.put_json(
                     lorebook_key(store, lorebook_id),
                     record,
@@ -485,6 +501,7 @@ def run() -> int:
                 "firstSeenAt": old_meta.get("firstSeenAt") or at,
                 "lastSeenAt": at,
                 "listingFingerprint": listing_fp,
+                "detailPending": detail_pending,
                 "status": "public",
                 "summary": summary,
             }

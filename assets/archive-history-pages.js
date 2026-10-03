@@ -144,6 +144,13 @@ async function activityPage(){
     const lk=record&&record.lastKnown||{};
     return {id:event.id,name:lk.name||event.name||event.id,title:lk.title||lk.description||event.title||'',creator:lk.creator_username||lk.creator||event.creator||'',tags:Array.isArray(lk.tags)?lk.tags:[],status:'public',firstSeenAt:record?.firstSeenAt,isNsfw:!!(lk.is_nsfw??lk.isNsfw),avatar:lk.avatar_url||lk.avatar,avatarFallback:lk.avatarFallback,messages:lk.num_messages??lk.messages??event.messages??0,rating:lk.rating_score??lk.rating??event.rating,activityLabel:'Restore candidate · '+date(event.at),activityNote:'Not counted as restored until the Character API confirms it.'};
   };
+  const candidateRecordCache=new Map();
+  async function loadCandidateRecord(id){
+    if(candidateRecordCache.has(id))return candidateRecordCache.get(id);
+    const promise=fetchJson(archiveBotUrl(runtime,id)).catch(()=>null);
+    candidateRecordCache.set(id,promise);
+    return promise;
+  }
   let renderSerial=0;
   async function render(next){
     const serial=++renderSerial;if(next)state.page=next;
@@ -155,7 +162,7 @@ async function activityPage(){
     const list=document.querySelector('#activity-list');list.className=candidateCards?'grid':'changes-list';
     if(candidateCards&&visible.length){
       list.innerHTML='<div class="loading">Loading archived bot cards…</div>';
-      const records=await Promise.all(visible.map(async x=>{try{return await fetchJson(archiveBotUrl(runtime,x.id));}catch{return null;}}));
+      const records=await Promise.all(visible.map(x=>loadCandidateRecord(x.id)));
       if(serial!==renderSerial)return;
       list.innerHTML=visible.map((x,i)=>card(toBot(records[i],x),localStorage.getItem('sca-blur-nsfw')!=='0')).join('');
     }else{

@@ -15,6 +15,11 @@ on:
           - "500"
           - "750"
           - "1000"
+      full_maintenance:
+        description: "Also run the 5,000-bot Character API sweep and image maintenance"
+        required: true
+        default: false
+        type: boolean
   schedule:
     - cron: "37 */3 * * *"
   workflow_run:
@@ -44,6 +49,10 @@ jobs:
       # Empty for scheduled/probe-triggered runs. Manual runs can explicitly ask
       # for a larger deep sweep without changing the normal 500-page target.
       SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.discovery_pages || '' }}
+      # Manual deep sweeps default to discovery-only so a 500-1,000 page run does
+      # not immediately repeat the scheduled 5,000-bot verification + image pass.
+      # The checkbox above provides an explicit escape hatch when that is wanted.
+      SPICYCHAT_ARCHIVE_MANUAL_FULL_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.full_maintenance && 'true' || 'false' }}
       # Materialized bot writes remain parallel. Page-mode Typesense discovery can
       # prefetch up to eight consecutive pages per native multi_search request.
       SPICYCHAT_ARCHIVE_R2_WRITE_WORKERS: "8"

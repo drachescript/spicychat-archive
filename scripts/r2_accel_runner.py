@@ -32,8 +32,43 @@ def _env_int(name: str, default: int) -> int:
         return default
 
 
+def _manual_full_maintenance_requested() -> bool:
+    return os.environ.get(
+        "SPICYCHAT_ARCHIVE_MANUAL_FULL_MAINTENANCE", ""
+    ).strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _apply_manual_archive_profile(
+    config: dict,
+    requested: int,
+    *,
+    full_maintenance: bool = False,
+) -> tuple[dict, int, int]:
+    """Build the in-memory config used by workflow_dispatch archive runs."""
+    config = deepcopy(config)
+    crawler = config.setdefault("crawler", {})
+    configured_max = max(
+        int(crawler.get("explore_pages_per_run") or 1),
+        int(crawler.get("explore_pages_max") or 1),
+    )
+    target = min(configured_max, max(1, int(requested)))
+    crawler["explore_pages_per_run"] = target
+    crawler["manual_discovery_run"] = True
+
+    # Manual workflow_dispatch runs are primarily used to advance the deep
+    # Typesense sweep. Scheduled runs already perform the 5,000-bot rolling
+    # Character API verification and image maintenance every three hours, so
+    # repeating those jobs after a 500-1,000 page manual sweep wastes ~30m.
+    # Keep a manual escape hatch for the rare run that intentionally wants both.
+    if not full_maintenance:
+        crawler["maintenance_verification_enabled"] = False
+        crawler["image_archive_enabled"] = False
+
+    return config, target, configured_max
+
+
 def _install_manual_archive_target() -> None:
-    """Raise only this process's base discovery target for a manual test run."""
+    """Apply a discovery-focused profile to this manual workflow process."""
     raw = os.environ.get("SPICYCHAT_ARCHIVE_MANUAL_PAGES", "").strip()
     if not raw:
         return
@@ -45,21 +80,24 @@ def _install_manual_archive_target() -> None:
         return
 
     original_load_config = legacy.load_config
+    full_maintenance = _manual_full_maintenance_requested()
 
     def load_config_with_manual_target():
-        config = deepcopy(original_load_config())
-        crawler = config.setdefault("crawler", {})
-        configured_max = max(
-            int(crawler.get("explore_pages_per_run") or 1),
-            int(crawler.get("explore_pages_max") or 1),
+        config, target, configured_max = _apply_manual_archive_profile(
+            original_load_config(),
+            requested,
+            full_maintenance=full_maintenance,
         )
-        target = min(configured_max, requested)
-        crawler["explore_pages_per_run"] = target
-        # Manual tests are intentionally one-off. The checked-in config remains
+        # Manual runs are intentionally one-off. The checked-in config remains
         # at its normal scheduled target, and no config file is rewritten here.
+        suffix = (
+            "full maintenance enabled"
+            if full_maintenance
+            else "discovery-only: rolling verification + images skipped"
+        )
         print(
             f"Manual discovery target: {target} pages for this run "
-            f"(configured max {configured_max}).",
+            f"(configured max {configured_max}; {suffix}).",
             flush=True,
         )
         return config

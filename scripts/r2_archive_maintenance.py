@@ -243,6 +243,64 @@ def _maintenance_character_refresh(
 ) -> dict[str, Any]:
     """Refresh richer character data across the stored corpus with a resumable cursor."""
     crawler = run_config.get("crawler") or {}
+    if crawler.get("maintenance_verification_enabled") is False:
+        sweep = run_state.setdefault("verificationSweep", {})
+        order = store.discovery_order
+        total = len(order)
+        cursor = max(0, int(sweep.get("cursor", run_state.get("enrichmentCursor") or 0)))
+        if total:
+            cursor %= total
+        else:
+            cursor = 0
+        print(
+            "maintenance verification: skipped for discovery-focused manual run; "
+            "scheduled runs will continue the rolling Character API sweep.",
+            flush=True,
+        )
+        sweep.update(
+            {
+                "lastRunAt": at,
+                "lastRunProcessed": 0,
+                "lastRunEnriched": 0,
+                "lastRunContentChanged": 0,
+                "lastRunMetricUpdates": 0,
+                "lastRunMissing": 0,
+                "lastRunRestricted": 0,
+                "lastRunRestored": 0,
+                "lastRunTransient": 0,
+                "lastRunPriority": 0,
+                "lastRunSequential": 0,
+                "lastRunCovered": 0,
+                "lastRunWorkers": 0,
+                "lastRunDurationSeconds": 0,
+                "lastRunTimeLimited": False,
+                "lastRunSkipped": True,
+            }
+        )
+        return {
+            "processed": 0,
+            "enriched": 0,
+            "changed": 0,
+            "contentChanged": 0,
+            "metricUpdates": 0,
+            "missing": 0,
+            "restricted": 0,
+            "restored": 0,
+            "transient": 0,
+            "priorityProcessed": 0,
+            "sequentialProcessed": 0,
+            "sequentialCovered": 0,
+            "verificationWorkers": 0,
+            "verificationCursor": cursor,
+            "verificationTotal": total,
+            "verificationPass": int(sweep.get("completedPasses") or 0) + 1,
+            "verificationCompletedPasses": int(sweep.get("completedPasses") or 0),
+            "timeLimited": False,
+            "durationSeconds": 0,
+            "skipped": True,
+            "skipReason": "manual-discovery-only",
+        }
+
     budget = _positive_int(
         crawler.get("maintenance_verification_budget")
         or crawler.get("enrichment_budget"),

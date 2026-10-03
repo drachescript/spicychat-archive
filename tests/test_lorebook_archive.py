@@ -108,7 +108,7 @@ class LorebookArchiveTests(unittest.TestCase):
         self.assertEqual(restored["status"]["current"], "public")
         self.assertEqual(restored["statusHistory"][-1]["status"], "public")
 
-    def test_summary_uses_detail_fields(self):
+    def test_summary_prefers_fresh_listing_metadata(self):
         listing = {
             "id": "book-1",
             "name": "Listing name",
@@ -130,7 +130,7 @@ class LorebookArchiveTests(unittest.TestCase):
             at="2026-10-03T00:00:00Z",
         )
         summary = lorebooks.summary_from_record(record)
-        self.assertEqual(summary["name"], "Detail name")
+        self.assertEqual(summary["name"], "Listing name")
         self.assertEqual(summary["creator"], "alice")
         self.assertEqual(summary["numEntries"], 1)
         self.assertTrue(summary["isNsfw"])

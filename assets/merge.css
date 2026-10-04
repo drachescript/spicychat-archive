@@ -1,0 +1,39 @@
+.merge-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);gap:18px}
+.merge-source-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;margin-top:12px}
+.merge-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.merge-source-card{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:12px;display:grid;gap:10px}
+.merge-source-card.is-primary{box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 55%,transparent);border-color:var(--accent)}
+.merge-source-head{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start}
+.merge-source-art{width:72px;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:grid;place-items:center;color:var(--muted);font-weight:800}
+.merge-source-art img{width:100%;height:100%;object-fit:cover}
+.merge-source-meta h3{margin:0 0 3px;font-size:15px}.merge-source-meta p{margin:3px 0;font-size:11px;color:var(--muted)}
+.merge-source-actions{display:flex;gap:7px;flex-wrap:wrap}
+.merge-source-actions button{font-size:10px;padding:6px 9px}
+.merge-source-version{display:grid;gap:5px;font-size:10px;color:var(--muted)}
+.merge-source-version select{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px}
+.merge-evidence-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.merge-evidence-mini span{border:1px solid var(--line);border-radius:8px;padding:5px 6px;font-size:9px;color:var(--muted);text-align:center}
+.merge-evidence-mini span.has{color:var(--text);border-color:rgba(98,210,145,.3)}
+.merge-mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}
+.merge-mode{border:1px solid var(--line);background:var(--bg);border-radius:13px;padding:12px;cursor:pointer}
+.merge-mode.is-active{border-color:var(--accent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent)}
+.merge-mode b{font-size:13px}.merge-mode p{font-size:11px;margin:5px 0 0;color:var(--muted)}
+.merge-strategy-table{display:grid;gap:7px;margin-top:12px}
+.merge-strategy-row{display:grid;grid-template-columns:minmax(130px,.55fr) minmax(0,1fr);gap:10px;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:11px;padding:9px}
+.merge-strategy-row label{font-size:12px;font-weight:700}
+.merge-strategy-row select{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px}
+.merge-source-key{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.merge-source-key span{font-size:9px;border:1px solid var(--line);border-radius:999px;padding:3px 7px}
+.merge-source-badge{border:1px solid var(--line);border-radius:999px;padding:3px 7px;font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.merge-source-badge.source{border-color:rgba(91,177,255,.38);color:#9dceff;background:rgba(91,177,255,.08)}
+.merge-source-badge.merged{border-color:rgba(220,173,74,.42);color:#e6c278;background:rgba(220,173,74,.08)}
+.merge-source-badge.modified{border-color:rgba(207,112,230,.42);color:#df9af0;background:rgba(207,112,230,.08)}
+.merge-source-badge.missing{opacity:.65}
+.merge-editor{display:grid;gap:12px}
+.merge-status{min-height:20px;margin-top:8px;font-size:12px;color:var(--muted)}.merge-status.is-error{color:#ff9696}.merge-status.is-good{color:#8fd8a7}
+.merge-ai-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:9px;margin-top:10px}
+.merge-ai-grid label{display:grid;gap:5px;font-size:11px;color:var(--muted)}
+.merge-prompt-preview{max-height:340px;overflow:auto;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
+.merge-hidden{display:none!important}
+@media(max-width:850px){.merge-hero,.merge-source-grid,.merge-mode-grid{grid-template-columns:1fr}.merge-ai-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.merge-source-toolbar,.merge-strategy-row{grid-template-columns:1fr}.merge-evidence-mini{grid-template-columns:repeat(2,minmax(0,1fr))}}

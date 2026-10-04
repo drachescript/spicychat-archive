@@ -1,4 +1,55 @@
 const app=document.querySelector('#app');
+const TRANSLATION_ENDPOINT='https://spicychat-archive-import.dragongraf.workers.dev/api/translate';
+const TRANSLATION_PREF='sca-translate-bots-v1';
+const translationMemory=new Map();
+function translationEnabled(){try{return localStorage.getItem(TRANSLATION_PREF)!=='0';}catch{return true;}}
+function setTranslationEnabled(value){try{localStorage.setItem(TRANSLATION_PREF,value?'1':'0');}catch{}}
+function normalizeLanguageCode(value){
+  const clean=String(value||'').trim().toLowerCase().replaceAll('_','-');
+  if(!clean)return'';
+  const aliases={english:'en',eng:'en',spanish:'es','español':'es',french:'fr','français':'fr',german:'de',deutsch:'de',italian:'it',portuguese:'pt','português':'pt',japanese:'ja',korean:'ko',chinese:'zh',russian:'ru',polish:'pl',dutch:'nl',turkish:'tr',arabic:'ar',thai:'th',vietnamese:'vi',indonesian:'id'};
+  return aliases[clean]||clean.split('-')[0];
+}
+function languageDisplayName(code){const clean=normalizeLanguageCode(code);if(!clean)return'another language';try{return new Intl.DisplayNames(['en'],{type:'language'}).of(clean)||clean.toUpperCase();}catch{return clean.toUpperCase();}}
+function likelyNonEnglishText(value){
+  const text=String(value||'').trim();if(text.length<2)return false;
+  return /[\u0370-\u03FF\u0400-\u052F\u0530-\u058F\u0590-\u05FF\u0600-\u06FF\u0750-\u077F\u0900-\u097F\u0E00-\u0E7F\u10A0-\u10FF\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/u.test(text)||/[À-ÖØ-öø-ÿĀ-ž]/u.test(text);
+}
+function lorebookLanguageHint(x){
+  const tags=normalizeTags(x.tags).map(t=>t.toLowerCase());
+  const explicit=normalizeLanguageCode(x.language||x.languageCode);
+  if(explicit)return explicit==='en'?'en':'non-en';
+  if(tags.includes('non-english'))return'non-en';
+  if(tags.includes('english'))return'en';
+  return likelyNonEnglishText([x.name,x.description].join(' '))?'non-en':'en';
+}
+function applyLorebookTranslation(article,kind,original,result){
+  if(!article||!result||result.error)return;
+  const source=normalizeLanguageCode(result.sourceLanguage),translated=String(result.translated||'').trim();
+  if(!translated||source==='en'||translated.toLowerCase()===String(original||'').trim().toLowerCase())return;
+  const node=article.querySelector(kind==='name'?'[data-lb-name]':'[data-lb-description]');if(!node)return;
+  node.textContent=translated;node.title=String(original||'');
+  const note=article.querySelector('.translation-note');if(note){note.hidden=false;note.textContent='Translated from '+languageDisplayName(source);note.title=(note.title?note.title+'\n':'')+'Original '+kind+': '+original;}
+}
+async function translateLorebookCards(grid,rows){
+  if(!translationEnabled()||!grid)return;
+  const byId=new Map((rows||[]).map(x=>[String(x.id||''),x])),items=[],targets=new Map();
+  grid.querySelectorAll('.lorebook-card[data-lorebook-id]').forEach(article=>{
+    const x=byId.get(article.dataset.lorebookId);if(!x)return;
+    for(const [kind,value] of [['name',x.name],['description',x.description]]){
+      const original=String(value||'').trim();if(!original||!likelyNonEnglishText(original))continue;
+      const key=kind+'\u0000'+original,cached=translationMemory.get(key);
+      if(cached){applyLorebookTranslation(article,kind,original,cached);continue;}
+      const id=String(x.id)+':'+kind;items.push({id,text:original});targets.set(id,{article,kind,original,key});
+    }
+  });
+  if(!items.length)return;
+  try{
+    const response=await fetch(TRANSLATION_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({target:'en',items})});
+    if(!response.ok)return;const payload=await response.json();
+    for(const result of payload.items||[]){const t=targets.get(String(result.id||''));if(!t)continue;translationMemory.set(t.key,result);applyLorebookTranslation(t.article,t.kind,t.original,result);}
+  }catch{}
+}
 const page=document.body.dataset.page||'lorebooks';
 const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const qs=k=>new URLSearchParams(location.search).get(k)||'';
@@ -43,11 +94,11 @@ function card(x){
   const img=imageUrl(x.avatar);
   const tags=normalizeTags(x.tags);
   const statusBadge=x.status==='deleted'?'<span class="lorebook-status is-deleted">Deleted</span>':'';
-  return '<article class="lorebook-card '+(x.status==='public'?'':'lorebook-card-muted')+'">'+
+  return '<article class="lorebook-card '+(x.status==='public'?'':'lorebook-card-muted')+'" data-lorebook-id="'+esc(x.id||'')+'">'+
     '<a class="lorebook-cover" href="'+esc(detailHref(x.id))+'">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy">':'<div class="lorebook-cover-empty">LB</div>')+(x.isNsfw?'<span class="lorebook-nsfw">NSFW</span>':'')+'</a>'+
-    '<div class="lorebook-card-body"><div class="lorebook-card-top"><a class="lorebook-name" href="'+esc(detailHref(x.id))+'">'+esc(x.name||x.id)+'</a>'+statusBadge+'</div>'+
+    '<div class="lorebook-card-body"><div class="lorebook-card-top"><a class="lorebook-name" data-lb-name href="'+esc(detailHref(x.id))+'">'+esc(x.name||x.id)+'</a>'+statusBadge+'</div>'+
     (x.creator?'<a class="creator-link" href="'+esc(creatorHref(x.creator))+'">@'+esc(x.creator)+'</a>':'')+
-    '<p class="lorebook-description">'+esc(x.description||'No description archived.')+'</p>'+
+    '<p class="lorebook-description" data-lb-description>'+esc(x.description||'No description archived.')+'</p><div class="translation-note" hidden></div>'+
     '<div class="lorebook-tags">'+tags.slice(0,8).map(t=>'<span>'+esc(t)+'</span>').join('')+'</div>'+
     '<div class="lorebook-card-foot"><span>'+fmt(x.numEntries)+' entr'+(Number(x.numEntries)===1?'y':'ies')+'</span><span>Updated '+shortDate(x.updatedAt||x.lastChangeAt||x.lastSeenAt)+'</span></div></div></article>';
 }
@@ -56,22 +107,23 @@ async function browse(){
   const payload=await fetchJsonRetryStale404(base(rt)+'/indexes/lorebooks.json');
   const all=Array.isArray(payload.lorebooks)?payload.lorebooks:[];
   const deletedView=page==='deleted-lorebooks';
-  const state={q:qs('q'),creator:qs('creator'),tag:qs('tag')||'any',rating:qs('rating')||'any',sort:qs('sort')||'updated',page:Math.max(1,Number(qs('p'))||1)};
+  const state={q:qs('q'),creator:qs('creator'),tag:qs('tag')||'any',rating:qs('rating')||'any',language:qs('language')||'any',sort:qs('sort')||'updated',translate:translationEnabled(),page:Math.max(1,Number(qs('p'))||1)};
   const tags=[...new Set(all.flatMap(x=>normalizeTags(x.tags)))].sort((a,b)=>a.localeCompare(b));
   const unavailableCount=all.filter(x=>x.status!=='public').length;
   app.innerHTML=deletedView
     ?'<section class="hero lorebook-hero"><div><h1>Deleted Lorebooks</h1><p>Lorebooks that disappeared from the live public index stay archived here. When the public data only proves disappearance, the archive keeps the more precise “No longer public” label instead of pretending a deletion was confirmed.</p></div><div class="lorebook-hero-stats"><div><b>'+fmt(unavailableCount)+'</b><span>No longer public</span></div><div><b>'+fmt(payload.totalArchived)+'</b><span>Total archived</span></div></div></section>'
     :'<section class="hero lorebook-hero"><div><h1>Lorebooks</h1><p>Public SpicyChat Lorebooks discovered from the live public index, with archived detail, entries, versions and public-status history.</p></div><div class="lorebook-hero-stats"><div><b>'+fmt(payload.publicNow)+'</b><span>Public</span></div><div><b>'+fmt(payload.totalArchived)+'</b><span>Archived</span></div></div></section>';
-  app.innerHTML+='<div class="lorebook-toolbar"><input id="lb-q" placeholder="Lorebook, description, creator or ID"><input id="lb-creator" placeholder="Creator username"><select id="lb-tag"><option value="any">All tags</option>'+tags.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('')+'</select><select id="lb-rating"><option value="any">SFW + NSFW</option><option value="sfw">SFW only</option><option value="nsfw">NSFW only</option></select><select id="lb-sort"><option value="updated">Recently updated</option><option value="created">Newest created</option><option value="entries">Most entries</option><option value="name">Name</option></select></div>'+
+  app.innerHTML+='<div class="lorebook-toolbar"><input id="lb-q" placeholder="Lorebook, description, creator or ID"><input id="lb-creator" placeholder="Creator username"><select id="lb-tag"><option value="any">All tags</option>'+tags.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('')+'</select><select id="lb-rating"><option value="any">SFW + NSFW</option><option value="sfw">SFW only</option><option value="nsfw">NSFW only</option></select><select id="lb-language"><option value="any">Any language</option><option value="en">English</option><option value="non-en">Non-English</option></select><select id="lb-sort"><option value="updated">Recently updated</option><option value="created">Newest created</option><option value="entries">Most entries</option><option value="name">Name</option></select><label class="lorebook-translate-toggle"><input id="lb-translate" type="checkbox" '+(state.translate?'checked':'')+'> Translate to English</label></div>'+
     '<div class="results-head"><h2>'+(deletedView?'Archived unavailable Lorebooks':'Discovered Lorebooks')+'</h2><span id="lb-count"></span></div><div id="lb-pager-top" class="pager-wrap pager-top"></div><section id="lb-grid" class="lorebook-grid"></section><div id="lb-pager-bottom" class="pager-wrap"></div>';
-  for(const [id,val] of [['lb-q',state.q],['lb-creator',state.creator],['lb-tag',state.tag],['lb-rating',state.rating],['lb-sort',state.sort]])document.querySelector('#'+id).value=val;
+  for(const [id,val] of [['lb-q',state.q],['lb-creator',state.creator],['lb-tag',state.tag],['lb-rating',state.rating],['lb-language',state.language],['lb-sort',state.sort]])document.querySelector('#'+id).value=val;
   function render(next){
     if(next)state.page=next;
-    state.q=document.querySelector('#lb-q').value.trim();state.creator=document.querySelector('#lb-creator').value.trim();state.tag=document.querySelector('#lb-tag').value;state.rating=document.querySelector('#lb-rating').value;state.sort=document.querySelector('#lb-sort').value;
+    state.q=document.querySelector('#lb-q').value.trim();state.creator=document.querySelector('#lb-creator').value.trim();state.tag=document.querySelector('#lb-tag').value;state.rating=document.querySelector('#lb-rating').value;state.language=document.querySelector('#lb-language').value;state.sort=document.querySelector('#lb-sort').value;state.translate=document.querySelector('#lb-translate').checked;
     const q=state.q.toLowerCase(),creator=state.creator.toLowerCase();
     let rows=all.filter(x=>{
       if(deletedView?x.status==='public':x.status!=='public')return false;
       if(state.rating==='sfw'&&x.isNsfw)return false;if(state.rating==='nsfw'&&!x.isNsfw)return false;
+      const language=lorebookLanguageHint(x);if(state.language==='en'&&language!=='en')return false;if(state.language==='non-en'&&language!=='non-en')return false;
       if(creator&&String(x.creator||'').toLowerCase()!==creator)return false;
       if(state.tag!=='any'&&!normalizeTags(x.tags).some(t=>t.toLowerCase()===state.tag.toLowerCase()))return false;
       if(q&&![x.id,x.name,x.description,x.creator,...normalizeTags(x.tags)].join(' ').toLowerCase().includes(q))return false;
@@ -80,12 +132,13 @@ async function browse(){
     rows.sort((a,b)=>state.sort==='name'?String(a.name||'').localeCompare(String(b.name||'')):state.sort==='entries'?Number(b.numEntries||0)-Number(a.numEntries||0):state.sort==='created'?new Date(b.createdAt||0)-new Date(a.createdAt||0):new Date(b.updatedAt||b.lastChangeAt||b.lastSeenAt||0)-new Date(a.updatedAt||a.lastChangeAt||a.lastSeenAt||0));
     const per=48,pages=Math.max(1,Math.ceil(rows.length/per));if(state.page>pages)state.page=pages;const start=(state.page-1)*per,visible=rows.slice(start,start+per);
     document.querySelector('#lb-count').textContent=rows.length?(start+1)+'–'+Math.min(rows.length,start+per)+' of '+fmt(rows.length):'0 matches';
-    document.querySelector('#lb-grid').innerHTML=visible.length?visible.map(card).join(''):'<div class="empty">'+(deletedView?'No deleted/no-longer-public Lorebooks have been archived yet.':'No Lorebooks match these filters.')+'</div>';
+    const grid=document.querySelector('#lb-grid');grid.innerHTML=visible.length?visible.map(card).join(''):'<div class="empty">'+(deletedView?'No deleted/no-longer-public Lorebooks have been archived yet.':'No Lorebooks match these filters.')+'</div>';if(state.translate)void translateLorebookCards(grid,visible);
     const p=pager(state.page,pages);document.querySelector('#lb-pager-top').innerHTML=p;document.querySelector('#lb-pager-bottom').innerHTML=p;
-    setParams({q:state.q,creator:state.creator,tag:state.tag,rating:state.rating,status:null,sort:state.sort,p:state.page});
+    setParams({q:state.q,creator:state.creator,tag:state.tag,rating:state.rating,language:state.language,status:null,sort:state.sort,p:state.page});
   }
   for(const id of['lb-q','lb-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;render();});
-  for(const id of['lb-tag','lb-rating','lb-sort'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;render();});
+  for(const id of['lb-tag','lb-rating','lb-language','lb-sort'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;render();});
+  document.querySelector('#lb-translate').addEventListener('change',e=>{setTranslationEnabled(e.currentTarget.checked);state.page=1;render();});
   bindPager(render);render();
 }
 function renderValue(v){

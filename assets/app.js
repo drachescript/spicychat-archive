@@ -34,8 +34,16 @@ function likelyNeedsTranslation(value,bot={}){
   if(tags.includes('non-english'))return true;
   return /[\u0370-\u03FF\u0400-\u052F\u0530-\u058F\u0590-\u05FF\u0600-\u06FF\u0750-\u077F\u0900-\u097F\u0E00-\u0E7F\u10A0-\u10FF\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/u.test(text)||/[À-ÖØ-öø-ÿĀ-ž]/u.test(text);
 }
+function normalizeLanguageCode(value){
+  const clean=String(value||'').trim().toLowerCase().replaceAll('_','-');
+  if(!clean)return '';
+  const aliases={english:'en',eng:'en',spanish:'es',español:'es',french:'fr',français:'fr',german:'de',deutsch:'de',italian:'it',portuguese:'pt',português:'pt',japanese:'ja',korean:'ko',chinese:'zh',russian:'ru',polish:'pl',dutch:'nl',turkish:'tr',arabic:'ar',thai:'th',vietnamese:'vi',indonesian:'id'};
+  if(aliases[clean])return aliases[clean];
+  return clean.split('-')[0];
+}
+function isEnglishLanguage(value){return normalizeLanguageCode(value)==='en';}
 function languageDisplayName(code){
-  const clean=String(code||'').trim().toLowerCase();if(!clean)return 'another language';
+  const clean=normalizeLanguageCode(code);if(!clean)return 'another language';
   try{return new Intl.DisplayNames(['en'],{type:'language'}).of(clean)||clean.toUpperCase();}catch{return clean.toUpperCase();}
 }
 
@@ -321,7 +329,7 @@ function buildTsFilter(runtime,state){
     if(state.match==='any')parts.push(`tags:=[${state.include.map(tsLiteral).join(',')}]`);
     else parts.push(...state.include.map(t=>`tags:=${tsLiteral(t)}`));
   }
-  for(const tag of state.exclude)parts.push(`tags:!=${tsLiteral(tag)}`);
+  for(const tag of (state.showBlocked?[]:state.exclude))parts.push(`tags:!=${tsLiteral(tag)}`);
   return parts.filter(Boolean).join(' && ');
 }
 let archiveRichFieldIndexPromise=null;
@@ -413,7 +421,7 @@ function docToCard(doc){
     definitionVisible:doc.definition_visible===true?true:doc.definition_visible===false?false:null,
     definitionSize:String(doc.definition_size_category||'').toLowerCase(),
     hasLorebooks:doc.has_lorebooks===true?true:doc.has_lorebooks===false?false:null,
-    language:String(doc.language||'').toLowerCase()
+    language:normalizeLanguageCode(doc.language)
   };
 }
 function botHasSavedField(bot,field){
@@ -421,7 +429,7 @@ function botHasSavedField(bot,field){
   return !!bot?.savedFields?.[field];
 }
 function localFilterAndSort(bots,state){
-  const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=state.exclude.map(x=>x.toLowerCase());
+  const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=(state.showBlocked?[]:state.exclude).map(x=>x.toLowerCase());
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
   const firstSeenCutoff=archiveTimeCutoff(state.firstSeen),lastSeenCutoff=archiveTimeCutoff(state.lastSeen);
   let rows=bots.filter(b=>{
@@ -432,7 +440,7 @@ function localFilterAndSort(bots,state){
     if(state.definition==='exposed'&&b.definitionVisible!==true)return false;if(state.definition==='hidden'&&b.definitionVisible!==false)return false;
     if(state.definitionSize&&state.definitionSize!=='any'&&String(b.definitionSize||'').toLowerCase()!==state.definitionSize)return false;
     if(state.lorebook==='yes'&&b.hasLorebooks!==true)return false;if(state.lorebook==='no'&&b.hasLorebooks!==false)return false;
-    if(state.language==='en'&&String(b.language||'').toLowerCase()!=='en')return false;if(state.language==='non-en'&&(!b.language||String(b.language).toLowerCase()==='en'))return false;
+    if(state.language==='en'&&!isEnglishLanguage(b.language))return false;if(state.language==='non-en'&&(!b.language||isEnglishLanguage(b.language)))return false;
     if(state.contentRating==='sfw'&&b.isNsfw)return false;if(state.contentRating==='nsfw'&&!b.isNsfw)return false;
     if(createdCutoff&&Number(b.createdAt||0)<createdCutoff)return false;
     if(firstSeenCutoff&&new Date(b.firstSeenAt||0).getTime()<firstSeenCutoff)return false;
@@ -506,8 +514,8 @@ function setupHoverAnimatedImages(root){
 }
 function applyTranslation(article,kind,original,result){
   if(!article||!result||result.error)return;
-  const source=String(result.sourceLanguage||'').toLowerCase();const translated=normalizeDisplayText(result.translated||'');
-  if(!translated||source.startsWith('en')||translated.toLowerCase()===normalizeDisplayText(original).toLowerCase())return;
+  const source=normalizeLanguageCode(result.sourceLanguage);const translated=normalizeDisplayText(result.translated||'');
+  if(!translated||source==='en'||translated.toLowerCase()===normalizeDisplayText(original).toLowerCase())return;
   const node=article.querySelector(kind==='name'?'[data-card-name]':'[data-card-title]');if(!node)return;
   node.textContent=translated;node.title=String(original||'');
   const note=article.querySelector('.translation-note');if(note){note.hidden=false;note.textContent=`Translated from ${languageDisplayName(source)}`;const prior=note.title?`${note.title}\n`:'';note.title=`${prior}Original ${kind}: ${original}`;}
@@ -534,8 +542,9 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
-  app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div></div></section>
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  let blockedOverride=false;
+  app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
       <div class="results-head"><h2>Public bots</h2><span id="result-count"></span></div><div data-archive-pager class="pager-wrap pager-top"></div><section class="grid" id="grid"></section><div data-archive-pager class="pager-wrap"></div>
@@ -612,7 +621,15 @@ async function browseLive(runtime,manifest,tags,stats){
     }catch(e){if(token!==requestNo)return;grid.innerHTML=`<div class="error">Could not query the public bot index: ${esc(e.message||e)}</div>`;count.textContent='';renderPagers(1,1);}
   }
   const resetAndRun=()=>{state.page=1;run();};const schedule=()=>{clearTimeout(timer);state.page=1;timer=setTimeout(()=>run(),240);};
-  attachSidebar(state,resetAndRun);$('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',resetAndRun);$('#saved-field').addEventListener('change',resetAndRun);$('#safety-filter').addEventListener('change',resetAndRun);$('#blur-nsfw').addEventListener('change',resetAndRun);
+  attachSidebar(state,resetAndRun);
+  $('#blocked-override')?.addEventListener('click',()=>{
+    blockedOverride=!blockedOverride;state.showBlocked=blockedOverride;
+    const button=$('#blocked-override'),note=$('#blocked-override-note');
+    button.textContent=blockedOverride?'Hide blocked bots again':'Show blocked bots temporarily';
+    note.hidden=!blockedOverride;
+    state.page=1;void run();
+  });
+  $('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',resetAndRun);$('#saved-field').addEventListener('change',resetAndRun);$('#safety-filter').addEventListener('change',resetAndRun);$('#blur-nsfw').addEventListener('change',resetAndRun);
   $('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
   bindPagers(target=>{state.page=target;setQuery(state,true);void run();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});
   window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));void run();});
@@ -622,9 +639,10 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  let blockedOverride=false;
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
-  app.innerHTML=`<section class="hero"><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></section>
+  app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong></div>
       <div class="results-head"><h2>Deleted / archived</h2><span id="result-count"></span></div><div data-archive-pager class="pager-wrap pager-top"></div><section class="grid" id="grid"></section><div data-archive-pager class="pager-wrap"></div>
@@ -651,7 +669,15 @@ async function browseDeleted(runtime,manifest,tags,stats){
     count.textContent=rows.length===totalConfirmed?`${start.toLocaleString()}–${end.toLocaleString()} of ${totalConfirmed.toLocaleString()} confirmed`:`${start.toLocaleString()}–${end.toLocaleString()} of ${rows.length.toLocaleString()} matching · ${totalConfirmed.toLocaleString()} confirmed total`;
     grid.innerHTML=visible.length?visible.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,visible);
   };
-  const resetAndRender=()=>{state.page=1;void render();};attachSidebar(state,resetAndRender);$('#search').addEventListener('input',resetAndRender);$('#creator').addEventListener('input',resetAndRender);$('#sort').addEventListener('change',resetAndRender);$('#saved-field').addEventListener('change',resetAndRender);$('#safety-filter').addEventListener('change',resetAndRender);$('#blur-nsfw').addEventListener('change',resetAndRender);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
+  const resetAndRender=()=>{state.page=1;void render();};attachSidebar(state,resetAndRender);
+  $('#blocked-override')?.addEventListener('click',()=>{
+    blockedOverride=!blockedOverride;state.showBlocked=blockedOverride;
+    const button=$('#blocked-override'),note=$('#blocked-override-note');
+    button.textContent=blockedOverride?'Hide blocked bots again':'Show blocked bots temporarily';
+    note.hidden=!blockedOverride;
+    state.page=1;void render();
+  });
+  $('#search').addEventListener('input',resetAndRender);$('#creator').addEventListener('input',resetAndRender);$('#sort').addEventListener('change',resetAndRender);$('#saved-field').addEventListener('change',resetAndRender);$('#safety-filter').addEventListener('change',resetAndRender);$('#blur-nsfw').addEventListener('change',resetAndRender);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));
   bindPagers(target=>{state.page=target;setQuery(state,true);void render();document.querySelector('.results')?.scrollIntoView({behavior:'smooth',block:'start'});});window.addEventListener('popstate',()=>{state.page=parsePage(qs('p'));void render();});void render();
 }
 

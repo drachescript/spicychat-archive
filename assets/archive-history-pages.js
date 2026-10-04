@@ -134,8 +134,23 @@ async function restoredPage(){
   for(const id of['restored-search','restored-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;render();});document.querySelector('#restored-rating').addEventListener('change',()=>{state.page=1;render();});bindPager(p=>render(p));render();
 }
 
+function dedupeActivityEvents(input){
+  const rows=[...(input||[])].filter(Boolean).sort((a,b)=>new Date(b.at||0)-new Date(a.at||0));
+  const latestCandidate=new Map(),latestLifecycle=new Map();
+  for(const row of rows){
+    const id=String(row.id||'').toLowerCase();if(!id)continue;
+    if(row.type==='restore-candidate'){if(!latestCandidate.has(id))latestCandidate.set(id,row);continue;}
+    if(['deleted','restored'].includes(row.type)&&!latestLifecycle.has(id))latestLifecycle.set(id,row);
+  }
+  const keepCandidate=new Set();
+  for(const [id,row] of latestCandidate){
+    const lifecycle=latestLifecycle.get(id);
+    if(!lifecycle||new Date(row.at||0)>new Date(lifecycle.at||0))keepCandidate.add(row);
+  }
+  return rows.filter(row=>row.type!=='restore-candidate'||keepCandidate.has(row));
+}
 async function activityPage(){
-  const runtime=await loadRuntime(),payload=await loadIndex(runtime,'activity.json'),events=Array.isArray(payload.events)?payload.events:[];
+  const runtime=await loadRuntime(),payload=await loadIndex(runtime,'activity.json'),events=dedupeActivityEvents(Array.isArray(payload.events)?payload.events:[]);
   const state={q:qs('q')||'',creator:qs('creator')||'',type:qs('type')||'any',days:qs('days')||'7',page:Math.max(1,Number(qs('p'))||1)};
   app.innerHTML='<section class="hero"><h1>Archive activity</h1><p>Newly captured bots, confirmed deletions, direct-API verified restorations, and suspicious listing-only restoration candidates.</p></section><div class="changes-toolbar"><input id="activity-search" placeholder="Bot, creator or ID"><input id="activity-creator" placeholder="Creator username"><select id="activity-type"><option value="any">All activity</option><option value="new">Newly captured</option><option value="deleted">Deleted</option><option value="restored">Verified restored</option><option value="restore-candidate">Unverified restore candidate</option></select><select id="activity-days"><option value="1">Last 24 hours</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="all">All indexed activity</option></select></div><div class="results-head"><h2>Activity</h2><span id="activity-count"></span></div><div id="activity-pager-top" class="pager-wrap pager-top"></div><section id="activity-list" class="changes-list"></section><div id="activity-pager-bottom" class="pager-wrap"></div>';
   for(const [id,val] of [['activity-search',state.q],['activity-creator',state.creator],['activity-type',state.type],['activity-days',state.days]])document.querySelector('#'+id).value=val;
@@ -175,17 +190,98 @@ async function activityPage(){
   bindPager(p=>void render(p));void render();
 }
 async function explorerPage(){
-  const runtime=await loadRuntime(),times=await loadIndex(runtime,'archive-times.json'),activity=await loadIndex(runtime,'activity.json');
-  const today=new Date().toISOString().slice(0,10),at=qs('at')||today;
-  const state={at,q:qs('q')||''};
-  app.innerHTML='<section class="hero"><h1>Archive Explorer</h1><p>View what the archive actually knew by a point in time. “Not yet observed” is kept separate from “deleted” so missing historical coverage is not mistaken for a bot never existing.</p></section><div class="changes-toolbar"><input id="explorer-at" type="date"><input id="explorer-q" placeholder="Optional bot UUID"></div><section class="stats-grid" id="explorer-stats"></section><section class="table-card"><h2>Activity up to this date</h2><div id="explorer-events"></div></section><section class="table-card" id="explorer-bot" hidden></section>';
-  document.querySelector('#explorer-at').value=state.at;document.querySelector('#explorer-q').value=state.q;
-  async function render(){
-    state.at=document.querySelector('#explorer-at').value||today;state.q=document.querySelector('#explorer-q').value.trim();const end=new Date(state.at+'T23:59:59.999Z').getTime();const rows=Object.entries(times.bots||{});let observed=0,seenThrough=0,notYet=0;for(const [,m] of rows){const first=Array.isArray(m)?Number(m[0]||0):0,last=Array.isArray(m)?Number(m[1]||0):0;if(first&&first<=end){observed++;if(last>=end)seenThrough++;}else notYet++;}document.querySelector('#explorer-stats').innerHTML='<div class="stat"><b>'+fmt(observed)+'</b><span>Bot IDs captured by then</span></div><div class="stat"><b>'+fmt(seenThrough)+'</b><span>Observation spans reaching that date</span></div><div class="stat"><b>'+fmt(notYet)+'</b><span>Not yet observed by archive</span></div><div class="stat"><b>'+shortDate(state.at)+'</b><span>Explorer date</span></div>';const events=(activity.events||[]).filter(x=>new Date(x.at||0).getTime()<=end).slice(0,50);document.querySelector('#explorer-events').innerHTML=events.length?events.map(x=>'<article class="change-row"><div><a href="'+esc(detailHref(x.id))+'"><b>'+esc(x.name||x.id)+'</b></a><span class="history-kind">'+esc(x.type)+' · '+date(x.at)+'</span></div></article>').join(''):'<p class="filter-note">No indexed activity yet by this date.</p>';
-    const box=document.querySelector('#explorer-bot');if(!state.q){box.hidden=true;}else{box.hidden=false;try{const compact=state.q.replaceAll('-','').toLowerCase(),prefix=compact.slice(0,2)||'__',record=await fetchJson(base(runtime)+'/bots/'+prefix+'/'+encodeURIComponent(state.q.toLowerCase())+'.json');const first=new Date(record.firstSeenAt||0).getTime(),hist=(record.availabilityHistory||[]).filter(x=>new Date(x.from||x.at||0).getTime()<=end);const status=hist.length?String(hist.at(-1).status||'unknown'):(first>end?'not-yet-observed':'unknown');box.innerHTML='<h2>'+esc((record.lastKnown||{}).name||record.id)+'</h2><p class="detail-sub">Status known to the archive by '+esc(state.at)+': <b>'+esc(status)+'</b></p><div class="detail-actions"><a class="secondary-button" href="'+esc(detailHref(record.id)+'&at='+encodeURIComponent(state.at))+'">Open bot at this date</a></div>';}catch(e){box.innerHTML='<h2>Bot lookup</h2><p class="filter-note">That UUID does not have a detailed archived record.</p>';}}
-    setParams({at:state.at===today?'':state.at,q:state.q});
+  const runtime=await loadRuntime(),times=await loadIndex(runtime,'archive-times.json'),activityPayload=await loadIndex(runtime,'activity.json');
+  const activity=dedupeActivityEvents(Array.isArray(activityPayload.events)?activityPayload.events:[]);
+  const today=new Date().toISOString().slice(0,10);
+  const state={at:qs('at')||today,q:qs('q')||'',creator:qs('creator')||'',status:qs('status')||'any',rating:qs('rating')||'any',page:Math.max(1,Number(qs('p'))||1)};
+  app.innerHTML='<section class="hero explorer-hero"><div><h1>Archive Explorer</h1><p>Browse the archive as of a chosen date. Statuses only claim what the archive could support at that point in time; missing historical coverage stays separate from deletion.</p></div></section>'+
+    '<div class="explorer-toolbar"><label>Date<input id="explorer-at" type="date"></label><input id="explorer-q" placeholder="Bot name, creator or UUID"><input id="explorer-creator" placeholder="Creator username"><select id="explorer-status"><option value="any">Any status at this date</option><option value="public">Public at this date</option><option value="deleted">Deleted at this date</option><option value="not-yet-observed">Not yet observed</option><option value="coverage-unknown">Coverage unknown</option></select><select id="explorer-rating"><option value="any">SFW + NSFW</option><option value="sfw">SFW only</option><option value="nsfw">NSFW only</option></select></div>'+
+    '<section class="stats-grid" id="explorer-stats"></section>'+
+    '<div class="results-head"><div><h2>Bots around this date</h2><p class="filter-note">Cards come from the deduplicated archive activity index. Exact UUID searches can also reconstruct a bot that is outside this activity window.</p></div><span id="explorer-count"></span></div>'+
+    '<div id="explorer-pager-top" class="pager-wrap pager-top"></div><section class="grid" id="explorer-grid"></section><div id="explorer-pager-bottom" class="pager-wrap"></div>';
+
+  for(const [id,val] of [['explorer-at',state.at],['explorer-q',state.q],['explorer-creator',state.creator],['explorer-status',state.status],['explorer-rating',state.rating]])document.querySelector('#'+id).value=val;
+
+  const recordCache=new Map();
+  async function recordFor(id){
+    const key=String(id||'').toLowerCase();if(recordCache.has(key))return recordCache.get(key);
+    const p=fetchJson(archiveBotUrl(runtime,key)).catch(()=>null);recordCache.set(key,p);return p;
   }
-  document.querySelector('#explorer-at').addEventListener('change',render);document.querySelector('#explorer-q').addEventListener('change',render);document.querySelector('#explorer-q').addEventListener('keydown',e=>{if(e.key==='Enter')render();});render();
+  function statusFromEvents(rows,end){
+    let latest=null;
+    for(const row of rows){
+      const t=new Date(row.at||0).getTime();if(!Number.isFinite(t)||t>end)continue;
+      if(!latest||t>latest.t)latest={row,t};
+    }
+    if(!latest)return'coverage-unknown';
+    if(latest.row.type==='deleted'||latest.row.type==='restore-candidate')return'deleted';
+    if(latest.row.type==='new'||latest.row.type==='restored')return'public';
+    return'coverage-unknown';
+  }
+  function statusLabel(status){
+    return status==='public'?'Public at this date':status==='deleted'?'Deleted at this date':status==='not-yet-observed'?'Not yet observed':'Coverage unknown';
+  }
+  function eventBot(row,status){
+    return{id:row.id,name:row.name||row.id,title:row.title||'',creator:row.creator||'',tags:[],status:status==='public'?'public':status==='deleted'?'deleted':'unknown',isNsfw:!!row.isNsfw,activityLabel:statusLabel(status),activityNote:status==='coverage-unknown'?'The archive had captured this ID, but does not have enough availability evidence to claim public or deleted for this date.':''};
+  }
+  function enrich(baseBot,record,status){
+    if(!record)return baseBot;
+    const lk=record.lastKnown||{},avatar=record.avatarArchive||{},metrics=record.metrics?.latest||{};
+    return {...baseBot,name:lk.name||baseBot.name,title:lk.title||lk.description||baseBot.title,creator:lk.creator_username||lk.creator||baseBot.creator,tags:Array.isArray(lk.tags)?lk.tags:[],isNsfw:!!(lk.is_nsfw??lk.avatar_is_nsfw??baseBot.isNsfw),avatar:avatar.publicUrl||lk.avatar_url||lk.avatar||lk.image,avatarFallback:lk.avatar_url||lk.avatar||lk.image,messages:metrics.num_messages,rating:metrics.rating_score,firstSeenAt:record.firstSeenAt,status:status==='public'?'public':status==='deleted'?'deleted':'unknown'};
+  }
+  let serial=0;
+  async function render(next){
+    const mine=++serial;if(next)state.page=next;
+    state.at=document.querySelector('#explorer-at').value||today;state.q=document.querySelector('#explorer-q').value.trim();state.creator=document.querySelector('#explorer-creator').value.trim();state.status=document.querySelector('#explorer-status').value;state.rating=document.querySelector('#explorer-rating').value;
+    const end=new Date(state.at+'T23:59:59.999Z').getTime(),timeRows=Object.entries(times.bots||{});
+    let captured=0,later=0;
+    for(const [,m] of timeRows){const first=Array.isArray(m)?Number(m[0]||0):0;if(first&&first<=end)captured++;else later++;}
+    const byId=new Map();
+    for(const row of activity){
+      const t=new Date(row.at||0).getTime();if(!Number.isFinite(t)||t>end)continue;
+      const id=String(row.id||'').toLowerCase();if(!id)continue;
+      let entry=byId.get(id);if(!entry){entry={latest:row,events:[]};byId.set(id,entry);}
+      entry.events.push(row);
+      if(new Date(row.at||0)>new Date(entry.latest.at||0))entry.latest=row;
+    }
+    const exact=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
+    if(exact&&!byId.has(exact)){
+      const m=times.bots?.[exact];const first=Array.isArray(m)?Number(m[0]||0):0;
+      byId.set(exact,{latest:{id:exact,name:exact,creator:'',title:'',isNsfw:false,at:first?new Date(first).toISOString():state.at},events:[],forcedStatus:first&&first>end?'not-yet-observed':'coverage-unknown'});
+    }
+    const q=state.q.toLowerCase(),creator=state.creator.toLowerCase();
+    let rows=[...byId.values()].map(entry=>{
+      const status=entry.forcedStatus||statusFromEvents(entry.events,end);
+      return{...entry.latest,_statusAtDate:status};
+    }).filter(row=>{
+      if(state.status!=='any'&&row._statusAtDate!==state.status)return false;
+      if(state.rating==='sfw'&&row.isNsfw)return false;if(state.rating==='nsfw'&&!row.isNsfw)return false;
+      if(creator&&String(row.creator||'').toLowerCase()!==creator)return false;
+      if(q&&!exact&&![row.id,row.name,row.title,row.creator].join(' ').toLowerCase().includes(q))return false;
+      if(exact&&String(row.id||'').toLowerCase()!==exact)return false;
+      return true;
+    });
+    rows.sort((a,b)=>new Date(b.at||0)-new Date(a.at||0));
+    const knownPublic=[...byId.values()].filter(x=>(x.forcedStatus||statusFromEvents(x.events,end))==='public').length;
+    const knownDeleted=[...byId.values()].filter(x=>(x.forcedStatus||statusFromEvents(x.events,end))==='deleted').length;
+    document.querySelector('#explorer-stats').innerHTML='<div class="stat"><b>'+fmt(captured)+'</b><span>Bot IDs captured by this date</span></div><div class="stat"><b>'+fmt(later)+'</b><span>Captured after this date / not yet observed</span></div><div class="stat"><b>'+fmt(knownPublic)+'</b><span>Public status supported in indexed activity</span></div><div class="stat"><b>'+fmt(knownDeleted)+'</b><span>Deleted status supported in indexed activity</span></div>';
+
+    const pages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>pages)state.page=pages;
+    const start=(state.page-1)*PAGE_SIZE,visible=rows.slice(start,start+PAGE_SIZE);
+    document.querySelector('#explorer-count').textContent=rows.length?(start+1)+'–'+Math.min(rows.length,start+PAGE_SIZE)+' of '+fmt(rows.length):'0 matches';
+    const grid=document.querySelector('#explorer-grid');
+    if(!visible.length)grid.innerHTML='<div class="empty">No archived bots match these filters at this date.</div>';
+    else{
+      grid.innerHTML='<div class="loading">Loading archived bot cards…</div>';
+      const records=await Promise.all(visible.map(x=>recordFor(x.id)));if(mine!==serial)return;
+      grid.innerHTML=visible.map((row,i)=>card(enrich(eventBot(row,row._statusAtDate),records[i],row._statusAtDate),localStorage.getItem('sca-blur-nsfw')!=='0')).join('');
+    }
+    const p=pagerMarkup(state.page,pages);document.querySelector('#explorer-pager-top').innerHTML=p;document.querySelector('#explorer-pager-bottom').innerHTML=p;
+    setParams({at:state.at===today?'':state.at,q:state.q,creator:state.creator,status:state.status,rating:state.rating,p:state.page});
+  }
+  for(const id of['explorer-q','explorer-creator'])document.querySelector('#'+id).addEventListener('input',()=>{state.page=1;void render();});
+  for(const id of['explorer-at','explorer-status','explorer-rating'])document.querySelector('#'+id).addEventListener('change',()=>{state.page=1;void render();});
+  bindPager(p=>void render(p));void render();
 }
 
 function fnv32(text){let h=2166136261>>>0;for(const b of new TextEncoder().encode(String(text))){h^=b;h=Math.imul(h,16777619)>>>0;}return h>>>0;}

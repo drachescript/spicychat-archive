@@ -329,7 +329,7 @@ function buildTsFilter(runtime,state){
     if(state.match==='any')parts.push(`tags:=[${state.include.map(tsLiteral).join(',')}]`);
     else parts.push(...state.include.map(t=>`tags:=${tsLiteral(t)}`));
   }
-  for(const tag of state.exclude)parts.push(`tags:!=${tsLiteral(tag)}`);
+  for(const tag of (state.showBlocked?[]:state.exclude))parts.push(`tags:!=${tsLiteral(tag)}`);
   return parts.filter(Boolean).join(' && ');
 }
 let archiveRichFieldIndexPromise=null;
@@ -429,7 +429,7 @@ function botHasSavedField(bot,field){
   return !!bot?.savedFields?.[field];
 }
 function localFilterAndSort(bots,state){
-  const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=state.exclude.map(x=>x.toLowerCase());
+  const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=(state.showBlocked?[]:state.exclude).map(x=>x.toLowerCase());
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
   const firstSeenCutoff=archiveTimeCutoff(state.firstSeen),lastSeenCutoff=archiveTimeCutoff(state.lastSeen);
   let rows=bots.filter(b=>{
@@ -542,8 +542,8 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
-  let blockedOverride=false,blockedSavedExclude=null;
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  let blockedOverride=false;
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>SpicyChat Archive</h1><p>A public historical catalog of discoverable SpicyChat characters. Discovery currently has priority while the archive expands through the catalog.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
@@ -623,10 +623,10 @@ async function browseLive(runtime,manifest,tags,stats){
   const resetAndRun=()=>{state.page=1;run();};const schedule=()=>{clearTimeout(timer);state.page=1;timer=setTimeout(()=>run(),240);};
   attachSidebar(state,resetAndRun);
   $('#blocked-override')?.addEventListener('click',()=>{
-    blockedOverride=!blockedOverride;
+    blockedOverride=!blockedOverride;state.showBlocked=blockedOverride;
     const button=$('#blocked-override'),note=$('#blocked-override-note');
-    if(blockedOverride){blockedSavedExclude=[...state.exclude];state.exclude=[];button.textContent='Hide blocked bots again';note.hidden=false;}
-    else{state.exclude=blockedSavedExclude?[...blockedSavedExclude]:[...DEFAULT_EXCLUDED];blockedSavedExclude=null;button.textContent='Show blocked bots temporarily';note.hidden=true;}
+    button.textContent=blockedOverride?'Hide blocked bots again':'Show blocked bots temporarily';
+    note.hidden=!blockedOverride;
     state.page=1;void run();
   });
   $('#search').addEventListener('input',schedule);$('#creator').addEventListener('input',schedule);$('#sort').addEventListener('change',resetAndRun);$('#saved-field').addEventListener('change',resetAndRun);$('#safety-filter').addEventListener('change',resetAndRun);$('#blur-nsfw').addEventListener('change',resetAndRun);
@@ -639,8 +639,8 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',page:parsePage(qs('p'))};
-  let blockedOverride=false,blockedSavedExclude=null;
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  let blockedOverride=false;
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,true)}
@@ -671,10 +671,10 @@ async function browseDeleted(runtime,manifest,tags,stats){
   };
   const resetAndRender=()=>{state.page=1;void render();};attachSidebar(state,resetAndRender);
   $('#blocked-override')?.addEventListener('click',()=>{
-    blockedOverride=!blockedOverride;
+    blockedOverride=!blockedOverride;state.showBlocked=blockedOverride;
     const button=$('#blocked-override'),note=$('#blocked-override-note');
-    if(blockedOverride){blockedSavedExclude=[...state.exclude];state.exclude=[];button.textContent='Hide blocked bots again';note.hidden=false;}
-    else{state.exclude=blockedSavedExclude?[...blockedSavedExclude]:[...DEFAULT_EXCLUDED];blockedSavedExclude=null;button.textContent='Show blocked bots temporarily';note.hidden=true;}
+    button.textContent=blockedOverride?'Hide blocked bots again':'Show blocked bots temporarily';
+    note.hidden=!blockedOverride;
     state.page=1;void render();
   });
   $('#search').addEventListener('input',resetAndRender);$('#creator').addEventListener('input',resetAndRender);$('#sort').addEventListener('change',resetAndRender);$('#saved-field').addEventListener('change',resetAndRender);$('#safety-filter').addEventListener('change',resetAndRender);$('#blur-nsfw').addEventListener('change',resetAndRender);$('#mobile-filter-toggle').addEventListener('click',()=>$('#filters').classList.toggle('open'));

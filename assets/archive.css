@@ -149,8 +149,10 @@
 .lorebook-hero-stats{display:grid;grid-template-columns:repeat(2,minmax(105px,1fr));gap:8px;min-width:230px}
 .lorebook-hero-stats>div{display:grid;gap:2px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 12px}
 .lorebook-hero-stats b{font-size:20px}.lorebook-hero-stats span{color:var(--muted);font-size:9px}
-.lorebook-toolbar{display:grid;grid-template-columns:minmax(230px,1.5fr) minmax(160px,.8fr) repeat(3,minmax(125px,.65fr));gap:9px;margin:0 0 14px}
+.lorebook-toolbar{display:grid;grid-template-columns:minmax(230px,1.45fr) minmax(155px,.8fr) minmax(125px,.65fr) repeat(3,minmax(120px,.6fr)) minmax(155px,.75fr);gap:9px;margin:0 0 14px}
 .lorebook-toolbar input,.lorebook-toolbar select{width:100%;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:10px 11px;font:inherit}
+.lorebook-translate-toggle{display:flex;align-items:center;justify-content:center;gap:7px;min-height:39px;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--muted);font-size:10px;white-space:nowrap}
+.lorebook-translate-toggle input{width:auto;margin:0}
 .lorebook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
 .lorebook-card{display:grid;grid-template-columns:116px minmax(0,1fr);min-height:154px;border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden}
 .lorebook-card-muted{opacity:.78}
@@ -187,3 +189,13 @@
 .activity-card-note{display:grid;gap:3px;margin-top:7px;padding-top:7px;border-top:1px solid var(--line);font-size:9px}
 .activity-card-note b{font-size:9px}.activity-card-note span{color:var(--muted);line-height:1.35}
 .lorebook-status.is-deleted{border-color:rgba(255,111,111,.45);background:rgba(255,111,111,.09)}
+
+.blocked-override-button{flex:0 0 auto;align-self:center}
+.blocked-override-note{margin:10px 0 0;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--muted);font-size:10px}
+.explorer-toolbar{display:grid;grid-template-columns:minmax(155px,.65fr) minmax(240px,1.3fr) minmax(180px,.8fr) minmax(190px,.85fr) minmax(130px,.55fr);gap:9px;margin:0 0 14px}
+.explorer-toolbar label{display:grid;gap:4px;color:var(--muted);font-size:9px}
+.explorer-toolbar input,.explorer-toolbar select{width:100%;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:9px;color:var(--text);padding:10px 11px;font:inherit}
+.explorer-toolbar label input{margin-top:0}
+.explorer-hero{margin-bottom:15px}
+@media(max-width:1100px){.explorer-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.explorer-toolbar{grid-template-columns:1fr}.blocked-override-button{width:100%}}

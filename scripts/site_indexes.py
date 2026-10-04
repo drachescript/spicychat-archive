@@ -147,6 +147,24 @@ def restoration_candidates(record: dict[str, Any]) -> list[dict[str, Any]]:
     return restored
 
 
+def current_restore_candidate(record: dict[str, Any]) -> dict[str, Any] | None:
+    """Return the one currently unresolved listing-only restoration candidate."""
+    current_status = record.get("status") or {}
+    if not isinstance(current_status, dict):
+        return None
+    if str(current_status.get("current") or "").lower() != "deleted":
+        return None
+    candidate = current_status.get("restoreCandidate")
+    if not isinstance(candidate, dict) or not candidate.get("at"):
+        return None
+    return {
+        "status": "public",
+        "from": candidate.get("at"),
+        "source": candidate.get("source") or "listing-candidate",
+        "candidateOnly": True,
+    }
+
+
 def restored_events(record: dict[str, Any]) -> list[dict[str, Any]]:
     """Only direct Character API confirmation counts as a verified restoration."""
     return [
@@ -302,19 +320,26 @@ def activity_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
             rows.append({**base, "at": at, "type": "deleted", "source": source})
             saw_unavailable = True
         elif status == "public" and saw_unavailable:
-            rows.append({
-                **base,
-                "at": at,
-                "type": "restored" if source.lower() == "character-api" else "restore-candidate",
-                "source": source,
-            })
-            saw_unavailable = False
-    current_status = record.get("status") or {}
-    candidate = current_status.get("restoreCandidate") if isinstance(current_status, dict) else None
-    if str(current_status.get("current") or "").lower() == "deleted" and isinstance(candidate, dict) and candidate.get("at"):
-        sig = (str(candidate.get("at")), str(candidate.get("source") or "listing-candidate"))
-        if not any(x.get("type") == "restore-candidate" and (str(x.get("at")), str(x.get("source"))) == sig for x in rows):
-            rows.append({**base, "at": candidate.get("at"), "type": "restore-candidate", "source": candidate.get("source") or "listing-candidate"})
+            # Listing/index observations are only candidates. They do not resolve
+            # the unavailable state and should not create a new Activity row on
+            # every crawl. A real restoration is recorded only after the direct
+            # Character API confirms the bot again.
+            if source.lower() == "character-api":
+                rows.append({
+                    **base,
+                    "at": at,
+                    "type": "restored",
+                    "source": source,
+                })
+                saw_unavailable = False
+    candidate = current_restore_candidate(record)
+    if candidate:
+        rows.append({
+            **base,
+            "at": candidate.get("from"),
+            "type": "restore-candidate",
+            "source": candidate.get("source") or "listing-candidate",
+        })
     return rows
 
 
@@ -517,18 +542,33 @@ def note_record(store: R2ArchiveStore, record: dict[str, Any]) -> None:
         del state["changes"][CHANGES_LIMIT:]
         state["dirtyChanges"] = True
 
+    # Restore candidates are a current unresolved state, not an append-only
+    # historical event. Remove older candidates for this bot before re-adding
+    # the single current candidate returned by activity_rows().
+    activity_changed = False
+    kept_activity = [
+        x for x in state["activity"]
+        if not (
+            isinstance(x, dict)
+            and str(x.get("id") or "").lower() == bot_id
+            and str(x.get("type") or "") == "restore-candidate"
+        )
+    ]
+    if len(kept_activity) != len(state["activity"]):
+        state["activity"] = kept_activity
+        activity_changed = True
+
     existing_activity = {
         (str(x.get("id") or ""), str(x.get("at") or ""), str(x.get("type") or ""), str(x.get("source") or ""))
         for x in state["activity"] if isinstance(x, dict)
     }
-    activity_added = False
     for row in activity_rows(record):
         sig = (row["id"], str(row.get("at") or ""), str(row.get("type") or ""), str(row.get("source") or ""))
         if sig not in existing_activity:
             state["activity"].append(row)
             existing_activity.add(sig)
-            activity_added = True
-    if activity_added:
+            activity_changed = True
+    if activity_changed:
         state["activity"].sort(key=lambda x: str(x.get("at") or ""), reverse=True)
         del state["activity"][ACTIVITY_LIMIT:]
         state["dirtyActivity"] = True
@@ -730,7 +770,7 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
             times[bot_id] = [epoch_ms(record.get("firstSeenAt")), epoch_ms(record.get("lastSeenAt")), ckey]
             changes.extend(change_rows(record))
             activity.extend(activity_rows(record))
-            health["restoreCandidates"] += len(restoration_candidates(record))
+            health["restoreCandidates"] += 1 if current_restore_candidate(record) else 0
             health["verifiedRestorations"] += len(restored_events(record))
             rr = restored_row(record)
             if rr:
@@ -866,7 +906,7 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
     health["changesPreserved"] = len(all_changes)
     health["activityEvents"] = len(activity)
     health["restoredBots"] = len(restored_rows)
-    health["unverifiedRestoreCandidates"] = max(0, health["restoreCandidates"] - health["verifiedRestorations"])
+    health["unverifiedRestoreCandidates"] = health["restoreCandidates"]
     health["archiveTimesIndexed"] = len(times)
     health["richFieldIndexBots"] = len(rich_bots)
     health["textSearchBots"] = sum(len(x) for x in text_shards.values())

@@ -59,15 +59,16 @@ class SiteIndexTests(unittest.TestCase):
         self.assertEqual(row["restoreCount"], 1)
         self.assertEqual(row["restoredAt"], "2026-09-16T00:00:00Z")
 
-    def test_unverified_restoration_candidate_is_not_restored(self):
+    def test_listing_only_restoration_history_does_not_spam_activity(self):
         record = self.sample()
         record["availabilityHistory"][-1]["source"] = "typesense"
         self.assertEqual(len(site.restoration_candidates(record)), 1)
         self.assertEqual(site.restored_events(record), [])
         self.assertIsNone(site.restored_row(record))
         activity = site.activity_rows(record)
-        self.assertTrue(any(row["type"] == "restore-candidate" for row in activity))
+        self.assertFalse(any(row["type"] == "restore-candidate" for row in activity))
         self.assertFalse(any(row["type"] == "restored" for row in activity))
+        self.assertEqual([row["type"] for row in activity], ["new", "deleted"])
 
     def test_activity_rows_include_new_deleted_and_verified_restored(self):
         rows = site.activity_rows(self.sample())
@@ -88,6 +89,18 @@ class SiteIndexTests(unittest.TestCase):
         rows = site.activity_rows(record)
         self.assertEqual(rows[-1]["type"], "restore-candidate")
         self.assertEqual(rows[-1]["source"], "typesense")
+        self.assertEqual(site.current_restore_candidate(record)["from"], "2026-10-02T00:00:00Z")
+
+    def test_verified_restore_then_deleted_again_keeps_meaningful_transitions(self):
+        record = self.sample()
+        record["availabilityHistory"].append(
+            {"status": "deleted", "from": "2026-10-03T00:00:00Z", "source": "character-api"}
+        )
+        rows = site.activity_rows(record)
+        self.assertEqual(
+            [row["type"] for row in rows],
+            ["new", "deleted", "restored", "deleted"],
+        )
 
     def test_month_key(self):
         self.assertEqual(site.month_key("2026-10-02T00:00:00Z"), "2026-10")

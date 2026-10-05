@@ -2,7 +2,7 @@ name: Deploy archive website
 
 on:
   push:
-    branches: [main, archive-v2-wip]
+    branches: [main]
     paths:
       - "index.html"
       - "favicon.svg"

@@ -2,7 +2,7 @@ name: Deploy archive website
 
 on:
   push:
-    branches: [main]
+    branches: [main, archive-v2-wip]
     paths:
       - "index.html"
       - "favicon.svg"
@@ -42,6 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Always build the live root from current main. WIP pushes should only
+          # replace /wip, never deploy a stale/diverged copy of the production site.
+          ref: main
+          fetch-depth: 1
 
       - uses: actions/configure-pages@v5
 
@@ -53,6 +58,21 @@ jobs:
           rm -rf "$OUT"
           mkdir -p "$OUT"
           cp -a index.html favicon.svg assets bot deleted creator changes activity search explorer restored health stats faq admin data CNAME .nojekyll "$OUT/"
+
+          # Archive v2 is developed independently on archive-v2-wip, but is
+          # published alongside the production site at /wip. This lets the live
+          # root stay untouched until the redesign is explicitly approved.
+          if git ls-remote --exit-code --heads origin archive-v2-wip >/dev/null 2>&1; then
+            git fetch origin archive-v2-wip --depth=1
+            if git cat-file -e FETCH_HEAD:wip 2>/dev/null; then
+              git archive --format=tar FETCH_HEAD wip | tar -x -C "$OUT"
+              echo "Included archive-v2-wip preview at /wip."
+            else
+              echo "archive-v2-wip exists but has no /wip directory yet."
+            fi
+          else
+            echo "archive-v2-wip branch does not exist yet; deploying production site only."
+          fi
 
           # In R2 mode, bot detail JSON and media live in R2. Old generated Git
           # copies can still exist in checkout until the cleanup commit lands, so

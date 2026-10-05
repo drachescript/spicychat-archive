@@ -43,13 +43,16 @@
       <aside class="hero-panel" aria-label="Archive snapshot">
         <div class="panel-label">Archive snapshot</div>
         <div class="snapshot-grid">
-          <div><b id="stat-bots-total">—</b><span>bot records tracked</span></div>
-          <div><b id="stat-bots-public">—</b><span>currently public bots</span></div>
-          <div><b id="stat-bots-deleted">—</b><span>confirmed deleted bots</span></div>
+          <div><b id="stat-bots-total">—</b><span>bot records archived</span></div>
+          <div><b id="stat-bots-public">—</b><span>SpicyChat reports public</span></div>
+          <div><b id="stat-bots-deleted">—</b><span>confirmed gone / archived</span></div>
+          <div><b id="stat-bots-unreconciled">—</b><span id="stat-bots-unreconciled-label">not yet reconciled</span></div>
           <div><b id="stat-lorebooks-total">—</b><span>Lorebooks archived</span></div>
           <div><b id="stat-lorebooks-public">—</b><span>public Lorebooks</span></div>
           <div><b id="stat-lorebooks-gone">—</b><span>no longer public</span></div>
+          <div><b id="stat-lorebooks-unreconciled">—</b><span>not yet reconciled</span></div>
         </div>
+        <div class="snapshot-reconcile" id="snapshot-reconcile">Checking archive count reconciliation…</div>
         <div class="snapshot-foot">
           <span id="snapshot-status">Loading current archive totals…</span>
           <span class="status-dot" aria-hidden="true"></span>

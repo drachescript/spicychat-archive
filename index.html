@@ -3,26 +3,153 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Public historical archive of SpicyChat characters">
+  <meta name="description" content="Independent historical archive of publicly discoverable SpicyChat characters and Lorebooks">
   <title>SpicyChat Archive</title>
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="stylesheet" href="./assets/style.css">
-  <link rel="stylesheet" href="./assets/archive.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="./assets/home.css">
 </head>
-<body data-page="browse">
-<header class="topbar">
-  <div class="wrap nav">
-    <a class="brand" href="./">SpicyChat Archive</a>
-    <nav class="navlinks"><a class="active" href="./">Browse</a><a href="./lorebooks/">Lorebooks</a><a href="./deleted-lorebooks/">Deleted Lorebooks</a><a href="./deleted/">Deleted bots</a><a href="./recovery/">Recovery Lab</a><a href="./merge/">Merge Lab</a><a href="./changes/">Changes</a><a href="./restored/">Restored</a><a href="./stats/">Stats</a><a href="./faq/">FAQ</a></nav>
-  </div>
-</header>
-<main class="wrap">
-  <div id="app"><p class="loading">Loading archive…</p></div>
-</main>
-<script src="./assets/prefs-bootstrap.js"></script>
-<script src="./assets/translation-control.js"></script>
-<script type="module" src="./assets/app.js"></script>
-<script defer src="./assets/ui-polish.js"></script>
-<script defer src="./assets/stats-live.js"></script>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./" aria-label="SpicyChat Archive home">
+        <span class="brand-mark">SA</span>
+        <span><b>SpicyChat Archive</b><small>Independent historical archive</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="active" href="./">Home</a>
+        <a href="/deleted/">Deleted bots</a>
+        <a href="/deleted-lorebooks/">Deleted Lorebooks</a>
+        <a href="/recovery/">Recovery Lab</a>
+        <a href="/merge/">Merge Lab</a>
+        <a href="/stats/">Stats</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <span class="eyebrow">Independent historical archive</span>
+        <h1>SpicyChat Archive</h1>
+        <p class="hero-lede">A community-run archive for publicly discoverable SpicyChat characters and Lorebooks. Its main purpose is keeping a useful record of content after it disappears, while also tracking what is still public and how the catalog changes over time.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/deleted/">Browse deleted bots</a>
+          <a class="button" href="/deleted-lorebooks/">Browse deleted Lorebooks</a>
+          <a class="button ghost" href="/recovery/">Open Recovery Lab</a>
+        </div>
+        <p class="independent-note">Not affiliated with or operated by SpicyChat.</p>
+      </div>
+      <aside class="hero-panel" aria-label="Archive snapshot">
+        <div class="panel-label">Archive snapshot</div>
+        <div class="snapshot-grid">
+          <div><b id="stat-bots-total">—</b><span>bot records tracked</span></div>
+          <div><b id="stat-bots-public">—</b><span>currently public bots</span></div>
+          <div><b id="stat-bots-deleted">—</b><span>confirmed deleted bots</span></div>
+          <div><b id="stat-lorebooks-total">—</b><span>Lorebooks archived</span></div>
+          <div><b id="stat-lorebooks-public">—</b><span>public Lorebooks</span></div>
+          <div><b id="stat-lorebooks-gone">—</b><span>no longer public</span></div>
+        </div>
+        <div class="snapshot-foot">
+          <span id="snapshot-status">Loading current archive totals…</span>
+          <span class="status-dot" aria-hidden="true"></span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="shell section-block">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Main archive</span>
+          <h2>What the archive is mainly here for</h2>
+        </div>
+        <p>Deleted and no-longer-public content comes first. The other tools help recover, connect, and understand what the archive has preserved.</p>
+      </div>
+
+      <div class="feature-grid">
+        <a class="feature-card feature-wide" href="/deleted/">
+          <span class="feature-kicker">Main archive</span>
+          <h3>Deleted bots</h3>
+          <p>Browse characters that were directly confirmed unavailable while keeping their last archived public data, images, history, and whatever else could be preserved.</p>
+          <span class="feature-link">Browse deleted bots →</span>
+        </a>
+
+        <a class="feature-card feature-wide" href="/deleted-lorebooks/">
+          <span class="feature-kicker">Main archive</span>
+          <h3>Deleted Lorebooks</h3>
+          <p>Browse Lorebooks that disappeared from the public index and keep access to the public information the archive captured before they were gone.</p>
+          <span class="feature-link">Browse deleted Lorebooks →</span>
+        </a>
+
+        <a class="feature-card" href="/recovery/">
+          <span class="feature-kicker">Recovery</span>
+          <h3>Recovery Lab</h3>
+          <p>Inspect recoverable historical data for bots that are no longer public.</p>
+          <span class="feature-link">Open Recovery Lab →</span>
+        </a>
+
+        <a class="feature-card" href="/merge/">
+          <span class="feature-kicker">Archive tools</span>
+          <h3>Merge Lab</h3>
+          <p>Work with suspected duplicate or merged character records and keep their history connected.</p>
+          <span class="feature-link">Open Merge Lab →</span>
+        </a>
+
+        <a class="feature-card" href="/stats/">
+          <span class="feature-kicker">Archive info</span>
+          <h3>Stats</h3>
+          <p>See archive totals, growth, historical activity, and other public-facing numbers.</p>
+          <span class="feature-link">View stats →</span>
+        </a>
+
+        <a class="feature-card" href="/faq/">
+          <span class="feature-kicker">About</span>
+          <h3>FAQ</h3>
+          <p>What gets archived, what does not, where the data comes from, and how the project works.</p>
+          <span class="feature-link">Read the FAQ →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="shell section-block">
+      <div class="section-heading compact">
+        <div>
+          <span class="eyebrow">More archive pages</span>
+          <h2>Browse, track & dig deeper</h2>
+        </div>
+      </div>
+
+      <div class="utility-grid">
+        <a class="utility-card" href="/bots/"><b>Public bots</b><span>Browse the currently public SpicyChat character catalog and its archived metadata.</span></a>
+        <a class="utility-card" href="/lorebooks/"><b>Public Lorebooks</b><span>Browse Lorebooks that are currently public, including entries, creators, status history, and translation tools.</span></a>
+        <a class="utility-card" href="/activity/"><b>Activity</b><span>See newly captured, deleted, restored, and other meaningful archive events.</span></a>
+        <a class="utility-card" href="/changes/"><b>Recently Changed</b><span>Follow meaningful changes to archived public character data.</span></a>
+        <a class="utility-card" href="/explorer/"><b>Archive Explorer</b><span>Pick a date and browse what the archive knew at that point in time.</span></a>
+        <a class="utility-card" href="/restored/"><b>Restored</b><span>Find bots that disappeared and were later directly verified as public again.</span></a>
+        <a class="utility-card" href="/health/"><b>Archive Health</b><span>Coverage, crawler state, scan health, data-source status, and technical diagnostics.</span></a>
+        <a class="utility-card" href="/search/"><b>Archive Search</b><span>Search across richer archived fields when the normal catalog search is not enough.</span></a>
+      </div>
+    </section>
+
+    <section class="shell purpose">
+      <div>
+        <span class="eyebrow">What this site is for</span>
+        <h2>Keep a useful history of public SpicyChat content, especially when it disappears.</h2>
+      </div>
+      <div class="purpose-copy">
+        <p>The archive records publicly discoverable SpicyChat data over time. When something disappears, changes, or later returns, the site keeps that history instead of replacing the old state.</p>
+        <p>Archive v2 is also being designed to separate normal browsing from technical crawler information: public-facing pages should be simple to understand, while scan coverage and archive-health details stay available for people who want them.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div><b>SpicyChat Archive</b><span>Community-run historical archive</span></div>
+      <div class="footer-links"><a href="/faq/">FAQ</a><a href="https://github.com/drachescript/spicychat-archive">GitHub</a></div>
+    </div>
+  </footer>
+
+  <script src="./assets/home.js"></script>
 </body>
 </html>

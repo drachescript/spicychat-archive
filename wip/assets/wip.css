@@ -59,10 +59,10 @@ button,input,select{font:inherit}
 
 .hero-panel{border:1px solid var(--line);border-radius:20px;background:linear-gradient(155deg,rgba(24,28,35,.98),rgba(15,17,22,.98));box-shadow:var(--shadow);overflow:hidden}
 .panel-label{padding:14px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
-.snapshot-grid{display:grid;grid-template-columns:1fr 1fr}
-.snapshot-grid div{padding:18px 16px;border-bottom:1px solid var(--line)}
-.snapshot-grid div:nth-child(odd){border-right:1px solid var(--line)}
-.snapshot-grid div:nth-last-child(-n+2){border-bottom:0}
+.snapshot-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr));grid-auto-flow:column}
+.snapshot-grid div{padding:18px 16px;border-bottom:1px solid var(--line);min-height:84px;display:flex;flex-direction:column;justify-content:center}
+.snapshot-grid div:nth-child(-n+3){border-right:1px solid var(--line)}
+.snapshot-grid div:nth-child(3),.snapshot-grid div:nth-child(6){border-bottom:0}
 .snapshot-grid b{display:block;font-size:23px;letter-spacing:-.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .snapshot-grid span{display:block;color:var(--muted);font-size:9.5px;line-height:1.35;margin-top:4px}
 .snapshot-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:11px 15px;color:var(--muted-2);font-size:9px}
@@ -122,10 +122,8 @@ button,input,select{font:inherit}
   .main-nav a{padding:7px 8px;font-size:11px}
   .hero{padding:40px 0}
   .hero h1{font-size:clamp(44px,16vw,68px)}
-  .snapshot-grid{grid-template-columns:1fr}
-  .snapshot-grid div:nth-child(odd){border-right:0}
-  .snapshot-grid div:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
-  .snapshot-grid div:last-child{border-bottom:0}
+  .snapshot-grid div{padding:15px 13px;min-height:78px}
+  .snapshot-grid b{font-size:20px}
   .feature-grid,.utility-grid{grid-template-columns:1fr}
   .feature-wide{grid-column:auto}
   .purpose{padding:22px;gap:24px}

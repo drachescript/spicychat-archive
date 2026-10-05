@@ -40,6 +40,11 @@
     </details>
 
     <details class="faq-card">
+      <summary>Why don't archived + public + deleted bot counts always line up immediately?</summary>
+      <div class="faq-answer"><p>The three numbers come from different evidence: the archive total is cumulative, the public number is SpicyChat's current public index count, and deleted only includes bots that passed the archive's deletion-confirmation rules.</p><p>The homepage now shows the remaining difference as <strong>not yet reconciled</strong> instead of hiding it. That bucket covers archived records that are not represented by the current public-index count but also have not been confirmed gone yet. It is separate from the smaller API verification queue.</p></div>
+    </details>
+
+    <details class="faq-card">
       <summary>Why is a bot missing from the archive?</summary>
       <div class="faq-answer"><p>The crawler is still working through a very large public catalog, so it may simply not have reached that bot yet. A bot can also become private or unavailable before the archive first sees it.</p><p>The archive is designed to keep filling those gaps over time rather than pretending it already has everything.</p></div>
     </details>

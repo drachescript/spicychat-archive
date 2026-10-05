@@ -23,17 +23,46 @@
         json('/data/runtime.json')
       ]);
 
-      set('stat-bots-total', manifest.totalBots);
-      set('stat-bots-public', manifest.activeBots);
-      set('stat-bots-deleted', manifest.deletedBots);
+      const trackedBots = Number(manifest.totalBots) || 0;
+      const publicBots = Number(manifest.publicIndexBots ?? manifest.activeBots) || 0;
+      const deletedBots = Number(manifest.deletedBots) || 0;
+      const published = manifest.reconciliation || {};
+      const rawBotGap = Number.isFinite(Number(published.countGap))
+        ? Number(published.countGap)
+        : trackedBots - publicBots - deletedBots;
+      const botGap = Math.abs(rawBotGap);
+
+      set('stat-bots-total', trackedBots);
+      set('stat-bots-public', publicBots);
+      set('stat-bots-deleted', deletedBots);
+      set('stat-bots-unreconciled', botGap);
+
+      const gapLabel = document.getElementById('stat-bots-unreconciled-label');
+      if (gapLabel) {
+        gapLabel.textContent = rawBotGap >= 0
+          ? 'not yet reconciled'
+          : 'public bots not yet tracked';
+      }
+
+      const reconcile = document.getElementById('snapshot-reconcile');
+      if (reconcile) {
+        reconcile.innerHTML = rawBotGap >= 0
+          ? '<strong>Bots:</strong> ' + fmt(publicBots) + ' public + ' + fmt(deletedBots) + ' gone + ' + fmt(botGap) + ' not yet reconciled = ' + fmt(trackedBots) + ' archived.'
+          : '<strong>Bots:</strong> SpicyChat currently reports ' + fmt(botGap) + ' more public bots than this archive has accounted for after confirmed gone records.';
+      }
 
       const base = String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');
       if (base) {
         try {
           const lorebooks = await json(base + '/indexes/lorebooks.json');
-          set('stat-lorebooks-total', lorebooks.totalArchived);
-          set('stat-lorebooks-public', lorebooks.publicNow);
-          set('stat-lorebooks-gone', lorebooks.notPublic);
+          const lorebookTotal = Number(lorebooks.totalArchived) || 0;
+          const lorebookPublic = Number(lorebooks.publicNow) || 0;
+          const lorebookGone = Number(lorebooks.notPublic) || 0;
+          const lorebookGap = Math.max(0, lorebookTotal - lorebookPublic - lorebookGone);
+          set('stat-lorebooks-total', lorebookTotal);
+          set('stat-lorebooks-public', lorebookPublic);
+          set('stat-lorebooks-gone', lorebookGone);
+          set('stat-lorebooks-unreconciled', lorebookGap);
         } catch {
           // Keep bot totals usable even if the separate Lorebook index is unavailable.
         }

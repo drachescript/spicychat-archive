@@ -837,14 +837,32 @@ def build_site_data(at: str, listings: dict[str, Any] | None = None) -> dict[str
         shutil.copytree(source_media, site_media, copy_function=os.link if hasattr(os, "link") else shutil.copy2, dirs_exist_ok=True)
 
     ranking_latest = read_json(RANKINGS_DIR / "latest.json", {})
+    public_bots = counts.get("public", 0)
+    deleted_bots = counts.get("deleted", 0)
+    restricted_bots = counts.get("restricted", 0)
+    missing_bots = counts.get("missing", 0)
+    unknown_bots = counts.get("unknown", 0)
+    count_gap = total - public_bots - deleted_bots - restricted_bots - missing_bots - unknown_bots
     manifest = {
         "schemaVersion": 1,
         "generatedAt": at,
         "totalBots": total,
-        "activeBots": counts.get("public", 0),
-        "deletedBots": counts.get("deleted", 0),
-        "restrictedBots": counts.get("restricted", 0),
-        "missingBots": counts.get("missing", 0),
+        "activeBots": public_bots,
+        "publicIndexBots": public_bots,
+        "deletedBots": deleted_bots,
+        "restrictedBots": restricted_bots,
+        "missingBots": missing_bots,
+        "reconciliation": {
+            "trackedBots": total,
+            "publicIndexBots": public_bots,
+            "confirmedGoneBots": deleted_bots,
+            "countGap": count_gap,
+            "unreconciledBots": max(0, count_gap),
+            "publicCountBeyondTracked": max(0, -count_gap),
+            "pendingVerificationBots": missing_bots,
+            "unknownStatusBots": unknown_bots,
+            "basis": "local-archive-status-counts",
+        },
         "shards": shard_names,
         "tagCount": len(tags),
         "topTags": sorted(({"tag": k, "count": v} for k, v in tags.items()), key=lambda x: (-x["count"], x["tag"].casefold()))[:1000],

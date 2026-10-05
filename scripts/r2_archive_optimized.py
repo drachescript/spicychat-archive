@@ -1046,9 +1046,11 @@ def _record_successful_run_stats() -> None:
         "at": state.get("lastRunAt") or legacy.utc_now(),
         "kind": "archive-run",
         "totalBots": len(store.discovery_order),
-        "publicIndexBots": int(manifest.get("activeBots") or 0),
+        "publicIndexBots": int(manifest.get("publicIndexBots") or manifest.get("activeBots") or 0),
         "deletedBots": len(store.deleted_index),
         "missingBots": len(state.get("missingChecks") or {}),
+        "reconciliationGap": int(((manifest.get("reconciliation") or {}).get("countGap")) or 0),
+        "unreconciledBots": int(((manifest.get("reconciliation") or {}).get("unreconciledBots")) or 0),
         "runDurationSeconds": max(0, int(time.monotonic() - _run_started_monotonic)),
         "exploration": {
             "hits": int(exploration.get("hits") or 0),

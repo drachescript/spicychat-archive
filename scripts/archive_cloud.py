@@ -631,14 +631,36 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         deleted_url = store.publish_deleted_index()
         usage = store.storage_usage()
         guard_status = original_read_json(ROOT / "data" / "r2-usage.json", {})
+        total_bots = len(store.discovery_order)
+        deleted_bots = len(store.deleted_index)
+        pending_verification = len(state.get("missingChecks") or {})
+        count_gap = total_bots - active - deleted_bots
         manifest = {
             "schemaVersion": 3,
             "generatedAt": at,
-            "totalBots": len(store.discovery_order),
+            "totalBots": total_bots,
+            # activeBots is kept for compatibility. In R2 mode it is the current
+            # SpicyChat public Typesense count, not "all archive records whose
+            # last-known status is public".
             "activeBots": active,
-            "deletedBots": len(store.deleted_index),
+            "publicIndexBots": active,
+            "deletedBots": deleted_bots,
             "restrictedBots": 0,
-            "missingBots": len(state.get("missingChecks") or {}),
+            "missingBots": pending_verification,
+            "reconciliation": {
+                "trackedBots": total_bots,
+                "publicIndexBots": active,
+                "confirmedGoneBots": deleted_bots,
+                # This is intentionally a count-level reconciliation bucket.
+                # It covers archived records not represented by the current
+                # public-index count and not yet confirmed gone. It is not the
+                # same thing as the API verification queue.
+                "countGap": count_gap,
+                "unreconciledBots": max(0, count_gap),
+                "publicCountBeyondTracked": max(0, -count_gap),
+                "pendingVerificationBots": pending_verification,
+                "basis": "tracked-minus-public-index-minus-confirmed-gone",
+            },
             "tagCount": prior.get("tagCount") or 0,
             "topTags": prior.get("topTags") or [],
             "listings": {k: v.get("ids", []) for k, v in (listings or {}).items() if v.get("ok")},

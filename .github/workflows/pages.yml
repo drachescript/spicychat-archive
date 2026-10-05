@@ -8,6 +8,7 @@ on:
       - "favicon.svg"
       - "assets/**"
       - "bot/**"
+      - "bots/**"
       - "deleted/**"
       - "creator/**"
       - "changes/**"
@@ -58,7 +59,7 @@ jobs:
           OUT="$RUNNER_TEMP/pages-site"
           rm -rf "$OUT"
           mkdir -p "$OUT"
-          cp -a index.html favicon.svg assets bot deleted creator changes activity search explorer restored health stats faq admin data CNAME .nojekyll "$OUT/"
+          cp -a index.html favicon.svg assets bot bots deleted creator changes activity search explorer restored health stats faq admin data CNAME .nojekyll "$OUT/"
 
           # Archive v2 is developed independently on archive-v2-wip, but is
           # published alongside the production site at /wip. This lets the live

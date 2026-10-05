@@ -1,0 +1,23 @@
+name: Refresh Archive v2 preview
+
+on:
+  push:
+    branches: [archive-v2-wip]
+    paths:
+      - "wip/**"
+      - ".github/workflows/wip-preview.yml"
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request main Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run pages.yml --repo "${{ github.repository }}" --ref main
+          echo "Requested a main-branch Pages deployment with the latest /wip preview."

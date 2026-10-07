@@ -53,6 +53,42 @@ class SiteIndexTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["path"], "title")
 
+    def test_token_count_metric_history_is_indexed_as_a_change(self):
+        record = self.sample()
+        record["metrics"] = {
+            "latest": {"token_count": 1400},
+            "history": [
+                {"at": "2026-10-01T01:00:00Z", "source": "typesense", "token_count": 1200},
+                {"at": "2026-10-02T01:00:00Z", "source": "typesense", "token_count": 1400},
+            ],
+        }
+        rows = site.change_rows(record)
+        token_rows = [row for row in rows if row["path"] == "token_count"]
+        self.assertEqual(len(token_rows), 1)
+        self.assertEqual(token_rows[0]["from"], "1200")
+        self.assertEqual(token_rows[0]["to"], "1400")
+        self.assertEqual(site.latest_content_change(record), "2026-10-02T01:00:00Z")
+
+    def test_token_count_field_and_metric_history_are_deduplicated(self):
+        record = self.sample()
+        record["fieldHistory"].append({
+            "at": "2026-10-02T01:00:00Z",
+            "source": "typesense",
+            "path": "token_count",
+            "kind": "value",
+            "from": 1200,
+            "to": 1400,
+        })
+        record["metrics"] = {
+            "latest": {"token_count": 1400},
+            "history": [
+                {"at": "2026-10-01T01:00:00Z", "source": "typesense", "token_count": 1200},
+                {"at": "2026-10-02T01:00:00Z", "source": "typesense", "token_count": 1400},
+            ],
+        }
+        rows = site.change_rows(record)
+        self.assertEqual(len([row for row in rows if row["path"] == "token_count"]), 1)
+
     def test_restored_detection(self):
         row = site.restored_row(self.sample())
         self.assertIsNotNone(row)

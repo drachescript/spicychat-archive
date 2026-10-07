@@ -718,14 +718,28 @@ function archiveFieldLabel(path){
   if(leaf==='lorebooks')return 'Lorebooks';
   if(leaf==='system_prompt')return 'System Prompt';
   if(leaf==='post_history_instructions')return 'Post History Instructions';
+  if(leaf==='token_count')return 'Token Count';
   return String(path||'').replaceAll('_',' ');
 }
-const HISTORY_VOLATILE=new Set(['updatedAt','updated_at','lastUpdatedAt','last_updated_at','num_messages','num_messages_24h','rating_score','rating_count','token_count','rank','ranking']);
+const HISTORY_VOLATILE=new Set(['updatedAt','updated_at','lastUpdatedAt','last_updated_at','num_messages','num_messages_24h','rating_score','rating_count','rank','ranking']);
+function tokenCountMetricRows(record){
+  const rows=Array.isArray(record.metrics?.history)?record.metrics.history:[],out=[];let previous,havePrevious=false;
+  for(const row of rows){
+    if(row?.token_count==null||row.token_count==='')continue;
+    const value=row.token_count;
+    if(havePrevious&&value!==previous)out.push({at:row.at,source:row.source||'',path:'token_count',kind:'metric-change',from:previous,to:value});
+    previous=value;havePrevious=true;
+  }
+  return out;
+}
 function meaningfulHistoryRows(record){
-  return (record.fieldHistory||[]).filter(row=>{
+  const rows=(record.fieldHistory||[]).filter(row=>{
     const leaf=String(row?.path||'').split('.').pop();
     return row?.path&&!HISTORY_VOLATILE.has(leaf);
   });
+  const seen=new Set(rows.filter(row=>String(row?.path||'').split('.').pop()==='token_count').map(row=>[row.at,row.from,row.to].join('|')));
+  for(const row of tokenCountMetricRows(record)){const sig=[row.at,row.from,row.to].join('|');if(!seen.has(sig)){rows.push(row);seen.add(sig);}}
+  return rows.sort((a,b)=>new Date(a.at||0)-new Date(b.at||0));
 }
 function flattenArchiveObject(value,prefix='',out={}){
   if(value&&typeof value==='object'&&!Array.isArray(value)){
@@ -855,7 +869,7 @@ async function botPage(){
       ${points.length>1?`<div class="version-controls"><label>Older<select id="version-older">${options}</select></label><label>Newer<select id="version-newer">${options}</select></label><a class="secondary-button" id="snapshot-link" href="#">Permalink newer point</a></div><div id="version-compare"></div>`:'<p class="detail-sub">No meaningful creator-content edits have been recorded yet.</p>'}
     </section>
     <section class="section"><h2>Image history</h2>${imageHistory.length?imageHistory.slice(0,50).map(h=>`<details class="history-item"><summary><b>Image changed</b> · ${date(h.at)}</summary><div class="history-diff"><div><span>Before</span><div class="pre">${esc(compareValueText(h.from))}</div></div><div><span>After</span><div class="pre">${esc(compareValueText(h.to))}</div></div></div></details>`).join(''):'<p class="detail-sub">No archived image URL changes have been recorded yet.</p>'}</section>
-    <section class="section"><h2>Latest metrics</h2><div class="pre">${esc(JSON.stringify(record.metrics?.latest||{},null,2))}</div></section>
+    <section class="section"><h2>Latest metrics</h2><div class="pre">${esc(JSON.stringify(record.metrics?.latest||{},null,2))}</div><p class="detail-sub">Token count changes are preserved as archive history because they can indicate a definition edit even when the definition text itself is not public.</p></section>
     <section class="section"><h2>Availability history</h2><div class="pre">${esc(JSON.stringify(record.availabilityHistory||[],null,2))}</div></section>
     <section class="section"><h2>Field history</h2>${history||'<p class="detail-sub">No meaningful field changes recorded yet.</p>'}</section>
     <section class="section"><h2>Raw latest observations</h2><div class="pre">${esc(JSON.stringify(record.current||{},null,2))}</div></section>
@@ -868,7 +882,7 @@ async function botPage(){
     older.addEventListener('change',renderCompare);newer.addEventListener('change',renderCompare);renderCompare();
   }
   document.querySelector('#export-bot-history')?.addEventListener('click',()=>{
-    const payload={schemaVersion:1,exportedAt:new Date().toISOString(),id:record.id,firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,status:record.status,sources:record.sources||{},availabilityHistory:record.availabilityHistory||[],fieldHistory:record.fieldHistory||[],lastKnown:record.lastKnown||{},avatarArchive:record.avatarArchive||{}};
+    const payload={schemaVersion:1,exportedAt:new Date().toISOString(),id:record.id,firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,status:record.status,sources:record.sources||{},availabilityHistory:record.availabilityHistory||[],fieldHistory:record.fieldHistory||[],metrics:record.metrics||{},lastKnown:record.lastKnown||{},avatarArchive:record.avatarArchive||{}};
     const blob=new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='spicychat-archive-'+record.id+'-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   });
 }

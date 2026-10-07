@@ -70,6 +70,29 @@ class ArchiveMergeTests(unittest.TestCase):
         self.assertEqual(record['availabilityHistory'][-1]['status'], 'public')
         self.assertEqual(record['availabilityHistory'][-1]['source'], 'character-api')
 
+    def test_token_count_change_is_preserved(self):
+        first = {
+            'character_id': 'abc-def-token',
+            'name': 'Token Bot',
+            'token_count': 1200,
+        }
+        record, _ = mod.observe_bot(None, first, source='typesense', at='2026-10-01T00:00:00Z')
+        second = {
+            'character_id': 'abc-def-token',
+            'name': 'Token Bot',
+            'token_count': 1450,
+        }
+        record, changed = mod.observe_bot(record, second, source='typesense', at='2026-10-02T00:00:00Z')
+        self.assertTrue(changed)
+        self.assertEqual(record['metrics']['latest']['token_count'], 1450)
+        self.assertTrue(any(
+            e.get('path') == 'token_count' and e.get('from') == 1200 and e.get('to') == 1450
+            for e in record['fieldHistory']
+        ))
+        self.assertTrue(any(
+            e.get('token_count') == 1450 for e in record['metrics']['history']
+        ))
+
     def test_avatar_normalization(self):
         self.assertEqual(
             mod.normalize_avatar_url('avatars/foo.webp'),

@@ -38,7 +38,7 @@ SEARCH_FIELD_LEAVES = {
 VOLATILE_LEAVES = {
     "updatedAt", "updated_at", "lastUpdatedAt", "last_updated_at",
     "num_messages", "num_messages_24h", "rating_score", "rating_count",
-    "token_count", "rank", "ranking",
+    "rank", "ranking",
 }
 
 
@@ -173,6 +173,37 @@ def restored_events(record: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
+def token_count_metric_changes(record: dict[str, Any]) -> list[dict[str, Any]]:
+    """Recover token-count transitions from compact metric history.
+
+    token_count is special: unlike message/rating/rank counters it can signal a
+    definition edit even when the actual definition text is hidden. Newer
+    records also store it in fieldHistory; metrics.history is kept as a fallback
+    for older records and any observation path that only captured compact
+    metrics.
+    """
+    history = ((record.get("metrics") or {}).get("history") or [])
+    observed: list[dict[str, Any]] = []
+    previous: Any = None
+    have_previous = False
+    for row in history:
+        if not isinstance(row, dict) or not meaningful(row.get("token_count")):
+            continue
+        value = row.get("token_count")
+        if have_previous and value != previous:
+            observed.append({
+                "at": row.get("at"),
+                "source": row.get("source") or "",
+                "path": "token_count",
+                "kind": "metric-change",
+                "from": previous,
+                "to": value,
+            })
+        previous = value
+        have_previous = True
+    return observed
+
+
 def latest_content_change(record: dict[str, Any]) -> str:
     best = ""
     for row in record.get("fieldHistory") or []:
@@ -181,6 +212,10 @@ def latest_content_change(record: dict[str, Any]) -> str:
         leaf = str(row.get("path") or "").split(".")[-1]
         if leaf in VOLATILE_LEAVES:
             continue
+        at = str(row.get("at") or "")
+        if at > best:
+            best = at
+    for row in token_count_metric_changes(record):
         at = str(row.get("at") or "")
         if at > best:
             best = at
@@ -349,14 +384,14 @@ def change_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
     creator = creator_name(record)
     creator_identity = creator_id(record)
     rows: list[dict[str, Any]] = []
-    for event in record.get("fieldHistory") or []:
-        if not isinstance(event, dict):
-            continue
+    token_sigs: set[tuple[str, str, str]] = set()
+
+    def append_row(event: dict[str, Any]) -> None:
         path = str(event.get("path") or "")
         leaf = path.split(".")[-1]
         if not path or leaf in VOLATILE_LEAVES:
-            continue
-        rows.append({
+            return
+        row = {
             "id": bot_id,
             "name": name,
             "creator": creator,
@@ -367,7 +402,24 @@ def change_rows(record: dict[str, Any]) -> list[dict[str, Any]]:
             "source": event.get("source") or "",
             "from": clean_text(event.get("from")),
             "to": clean_text(event.get("to")),
-        })
+        }
+        if leaf == "token_count":
+            sig = (str(row.get("at") or ""), row["from"], row["to"])
+            if sig in token_sigs:
+                return
+            token_sigs.add(sig)
+        rows.append(row)
+
+    for event in record.get("fieldHistory") or []:
+        if isinstance(event, dict):
+            append_row(event)
+
+    # Older/compact observations may only have token_count in metrics.history.
+    # Fold those transitions into the same public change stream without
+    # duplicating events already present in fieldHistory.
+    for event in token_count_metric_changes(record):
+        append_row(event)
+
     return rows
 
 

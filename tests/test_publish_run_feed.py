@@ -165,6 +165,24 @@ class PublishRunFeedTests(unittest.TestCase):
         self.assertEqual(result["finishedAt"], "750-run")
         self.assertEqual(result["pagesCompleted"], 750)
 
+
+    def test_listing_and_deep_discovery_counts_can_reconcile_batch_total(self):
+        listings = {
+            "latest": {"new": 1334},
+            "trending": {"new": 0},
+            "top-rated": {"new": 0},
+        }
+        listing_new = sum(
+            int((info or {}).get("new") or 0)
+            for info in listings.values()
+            if isinstance(info, dict)
+        )
+        added = 1334
+        deep_new = 0
+        other = max(0, added - listing_new - deep_new)
+        self.assertEqual(listing_new, 1334)
+        self.assertEqual(other, 0)
+
     def test_hard_workflow_failure_stays_failure(self):
         exploration = {
             "errors": ["warning from previous summary"],

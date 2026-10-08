@@ -163,6 +163,7 @@ def main() -> int:
         latest.get("exploration") or {},
         outcome,
     )
+    listings = latest.get("listings") or {}
     enrichment = latest.get("enrichment") or {}
     images = latest.get("images") or {}
     storage = latest.get("storage") or manifest.get("storage") or {}
@@ -223,6 +224,14 @@ def main() -> int:
             "pagesBudget": int(exploration.get("pageBudget") or 0),
             "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
             "hits": int(exploration.get("hits") or 0),
+            # Keep the two discovery surfaces separate. "addedBots" is the
+            # authoritative total delta for the batch; newest-first listing
+            # discovery and the deep exploration sweep can each contribute.
+            "newFromListings": sum(
+                int((info or {}).get("new") or 0)
+                for info in listings.values()
+                if isinstance(info, dict)
+            ),
             "newFromDiscovery": int(exploration.get("new") or 0),
             "changedIngestRecords": int(exploration.get("changed") or 0),
             "discoveryDurationSeconds": discovery_duration,
@@ -240,6 +249,12 @@ def main() -> int:
             "imagesSaved": int(images.get("saved") or 0),
             "workflowRunUrl": os.environ.get("ARCHIVE_RUN_URL", "").strip() or None,
         }
+        run_payload["newOther"] = max(
+            0,
+            int(run_payload["addedBots"])
+            - int(run_payload["newFromListings"])
+            - int(run_payload["newFromDiscovery"]),
+        )
 
     payload = {
         "schemaVersion": 1,

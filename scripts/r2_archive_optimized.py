@@ -1037,6 +1037,7 @@ def _record_successful_run_stats() -> None:
             })
 
     summary = state.get("lastRunSummary") or {}
+    listings = summary.get("listings") or {}
     exploration = summary.get("exploration") or {}
     enrichment = summary.get("enrichment") or {}
     images = summary.get("images") or {}
@@ -1052,6 +1053,16 @@ def _record_successful_run_stats() -> None:
         "reconciliationGap": int(((manifest.get("reconciliation") or {}).get("countGap")) or 0),
         "unreconciledBots": int(((manifest.get("reconciliation") or {}).get("unreconciledBots")) or 0),
         "runDurationSeconds": max(0, int(time.monotonic() - _run_started_monotonic)),
+        "listings": {
+            str(name): {
+                "found": int((info or {}).get("found") or 0),
+                "count": int((info or {}).get("count") or 0),
+                "new": int((info or {}).get("new") or 0),
+                "changed": int((info or {}).get("changed") or 0),
+            }
+            for name, info in listings.items()
+            if isinstance(info, dict)
+        },
         "exploration": {
             "hits": int(exploration.get("hits") or 0),
             "new": int(exploration.get("new") or 0),

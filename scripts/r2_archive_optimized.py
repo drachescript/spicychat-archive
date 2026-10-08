@@ -1041,6 +1041,12 @@ def _record_successful_run_stats() -> None:
     enrichment = summary.get("enrichment") or {}
     images = summary.get("images") or {}
     missing = summary.get("missingVerification") or {}
+    listings = summary.get("listings") or {}
+    new_from_listings = sum(
+        max(0, int((row or {}).get("new") or 0))
+        for row in listings.values()
+        if isinstance(row, dict)
+    )
     usage = store.storage_usage()
     event = {
         "at": state.get("lastRunAt") or legacy.utc_now(),
@@ -1071,6 +1077,7 @@ def _record_successful_run_stats() -> None:
             "saved": int(images.get("saved") or 0),
         },
         "deletedConfirmed": int(missing.get("deleted") or 0),
+        "newFromListings": new_from_listings,
         "storage": {
             "usedBytes": int(usage.get("totalBytes") or 0),
             "mediaBytes": int(usage.get("mediaBytes") or 0),

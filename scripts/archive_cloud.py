@@ -555,6 +555,8 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     continue
                 # A Typesense/listing hit is only a restoration candidate.
                 # Keep the deleted state until the Character API confirms 200.
+            if not legacy.missing_check_due(info, at):
+                continue
             response = client.character(bot_id)
             verified += 1
             if response.ok:

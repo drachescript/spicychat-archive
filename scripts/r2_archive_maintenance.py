@@ -451,8 +451,9 @@ def _maintenance_character_refresh(
 
             if bot_id in run_state.setdefault("missingChecks", {}):
                 run_state["missingChecks"].pop(bot_id, None)
-                restored += 1
-            elif old_status == "deleted":
+            # Clearing a suspect/missing check is not a restoration. Count only
+            # records that were actually confirmed deleted before this 200.
+            if old_status == "deleted":
                 restored += 1
 
             enriched += 1

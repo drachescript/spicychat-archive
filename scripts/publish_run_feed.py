@@ -223,6 +223,7 @@ def main() -> int:
             "pagesBudget": int(exploration.get("pageBudget") or 0),
             "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
             "hits": int(exploration.get("hits") or 0),
+            "newFromListings": int(latest.get("newFromListings") or 0),
             "newFromDiscovery": int(exploration.get("new") or 0),
             "changedIngestRecords": int(exploration.get("changed") or 0),
             "discoveryDurationSeconds": discovery_duration,

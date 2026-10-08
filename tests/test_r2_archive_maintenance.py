@@ -206,6 +206,43 @@ class MaintenanceSweepTests(unittest.TestCase):
         self.assertEqual(result["metricUpdates"], 0)
         self.assertEqual(record["metrics"]["latest"]["num_messages"], 10)
 
+
+    def test_public_missing_candidate_is_not_counted_as_restored(self):
+        store = FakeStore(["bot-a"])
+        state = {
+            "priorityEnrichment": [],
+            "missingChecks": {
+                "bot-a": {
+                    "count": 1,
+                    "lastAt": "2026-09-30T00:00:00Z",
+                    "lastStatus": 404,
+                }
+            },
+        }
+        config = {
+            "crawler": {
+                "maintenance_verification_budget": 1,
+                "maintenance_priority_budget": 1,
+                "maintenance_verification_workers": 1,
+                "maintenance_verification_time_limit_seconds": 60,
+            }
+        }
+        record = make_record("bot-a", greeting="old")
+
+        with patch.object(archive, "load_bot", return_value=record), patch.object(
+            archive, "save_bot", return_value=True
+        ):
+            result = maintenance._maintenance_character_refresh(
+                FakeClient(),
+                config,
+                "2026-09-30T06:00:00Z",
+                state,
+                store=store,
+            )
+
+        self.assertNotIn("bot-a", state["missingChecks"])
+        self.assertEqual(result["restored"], 0)
+
     def test_character_requests_run_concurrently(self):
         ids = [f"bot-{index}" for index in range(8)]
         store = FakeStore(ids)

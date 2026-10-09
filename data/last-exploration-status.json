@@ -1,10 +1,12 @@
 {
-  "at": "2026-10-09T19:45:28Z",
+  "at": "2026-10-09T21:09:26Z",
   "pageBudget": 500,
-  "pagesCompleted": 500,
+  "pagesCompleted": 320,
   "timeLimited": false,
-  "errors": [],
-  "partial": false,
+  "errors": [
+    "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)"
+  ],
+  "partial": true,
   "naturalEnd": false,
   "resultCapReached": false,
   "switchedToCursor": false

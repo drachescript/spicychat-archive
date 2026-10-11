@@ -21,7 +21,10 @@ import argparse
 import gzip
 import hashlib
 import json
+import os
 import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
@@ -420,6 +423,61 @@ def list_inbox(store: R2ArchiveStore, max_bundles: int) -> list[str]:
     return sorted(keys)
 
 
+def _preload_existing_records(
+    store: R2ArchiveStore,
+    entries: list[tuple[str, str, dict[str, Any]]],
+) -> dict[str, dict[str, Any] | None]:
+    """Read distinct pre-existing bot records concurrently before merging.
+
+    Only R2 GETs run in parallel. The importer still merges and saves entries
+    sequentially, preserving multiple snapshots for the same bot in one export.
+    Cached records are read on the main thread so OrderedDict cache mutations
+    do not race with worker threads.
+    """
+    known_ids = list(dict.fromkeys(
+        bot_id for bot_id, _, _ in entries if bot_id in store.known_ids
+    ))
+    if not known_ids:
+        return {}
+
+    cached_records = getattr(store, "_records", {})
+    loaded: dict[str, dict[str, Any] | None] = {}
+    uncached: list[str] = []
+    for bot_id in known_ids:
+        if bot_id in cached_records:
+            loaded[bot_id] = store.load_bot(bot_id)
+        else:
+            uncached.append(bot_id)
+
+    if not uncached:
+        return loaded
+
+    try:
+        requested_workers = int(os.environ.get("SPICYCHAT_ARCHIVE_R2_READ_WORKERS", "8"))
+    except ValueError:
+        requested_workers = 8
+    workers = min(len(uncached), max(1, min(16, requested_workers)))
+    started = time.monotonic()
+
+    def read_record(bot_id: str) -> dict[str, Any] | None:
+        # Use the R2 fetch directly: store.load_bot mutates its shared LRU.
+        data = store.get_json(store.bot_key(bot_id), None)
+        return data if isinstance(data, dict) else None
+
+    with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="qol-r2-read") as pool:
+        # map() retains input order; worker threads never update store state.
+        for bot_id, record in zip(uncached, pool.map(read_record, uncached)):
+            loaded[bot_id] = record
+
+    print(
+        f"  import preload: {len(uncached):,} R2 reads with {workers} workers "
+        f"in {time.monotonic() - started:.1f}s; "
+        f"{len(known_ids) - len(uncached):,} cache hits.",
+        flush=True,
+    )
+    return loaded
+
+
 def process_payload(
     store: R2ArchiveStore,
     state: dict[str, Any],
@@ -437,11 +495,14 @@ def process_payload(
         "queuedForImages": 0,
     }
 
-    for bot_id, saved_at, snapshot in extract_entries(payload, fallback_at=received_at):
+    entries = list(extract_entries(payload, fallback_at=received_at))
+    preloaded = _preload_existing_records(store, entries)
+
+    for bot_id, saved_at, snapshot in entries:
         stats["entries"] += 1
 
         known = bot_id in store.known_ids
-        existing = store.load_bot(bot_id) if known else None
+        existing = preloaded.get(bot_id) if known else None
         record, changed, duplicate = merge_snapshot(
             existing,
             bot_id=bot_id,
@@ -458,6 +519,9 @@ def process_payload(
             else:
                 stats["updatedRecords"] += 1
             store.save_bot(record)
+            # Subsequent snapshots for the same bot must merge against the
+            # just-updated version, not the original preloaded R2 record.
+            preloaded[bot_id] = record
             note_rich_field_record(store, record)
             note_site_record(store, record)
 

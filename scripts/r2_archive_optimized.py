@@ -74,6 +74,19 @@ _active_config = None
 _run_started_monotonic = 0.0
 
 
+def _discovery_page_budget(
+    base_pages: int,
+    adaptive_pages: int,
+    guard_cap: int,
+    max_pages: int,
+    *,
+    manual_discovery: bool = False,
+) -> int:
+    """Keep manual one-off requests independent of saved adaptive sweep progress."""
+    target = base_pages if manual_discovery else adaptive_pages
+    return max(0, min(target, guard_cap, max_pages))
+
+
 def _typesense_page_has_more(
     found: Any,
     *,
@@ -622,6 +635,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             int(exploration.get("adaptivePages") or base_pages),
         )
         adaptive_pages = min(adaptive_pages, max_pages)
+        manual_discovery = bool(crawler.get("manual_discovery_run"))
 
         # The quota guard provides a ceiling. It is deliberately separate from
         # the base/adaptive value so a healthy month can grow above 20 pages.
@@ -629,7 +643,13 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             guard_cap = int(os.environ.get("SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP", str(max_pages)))
         except ValueError:
             guard_cap = max_pages
-        pages_budget = max(0, min(adaptive_pages, guard_cap, max_pages))
+        pages_budget = _discovery_page_budget(
+            base_pages,
+            adaptive_pages,
+            guard_cap,
+            max_pages,
+            manual_discovery=manual_discovery,
+        )
 
         total_new = 0
         total_changed = 0
@@ -844,9 +864,13 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
         # Grow only after a healthy run that actually completed its allowed page
         # budget. If time/quota/API limits stopped us, hold steady.
-        next_pages = adaptive_pages
+        next_pages = (
+            int(exploration.get("adaptivePages") or adaptive_pages)
+            if manual_discovery else adaptive_pages
+        )
         if (
-            pages_budget > 0
+            not manual_discovery
+            and pages_budget > 0
             and completed_pages >= pages_budget
             and not errors
             and not time_limited
@@ -854,7 +878,8 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         ):
             next_pages = min(max_pages, adaptive_pages + growth)
 
-        exploration["adaptivePages"] = next_pages
+        if not manual_discovery:
+            exploration["adaptivePages"] = next_pages
         exploration["lastPageBudget"] = pages_budget
         exploration["lastPagesCompleted"] = completed_pages
         exploration["lastDiscoverySeconds"] = elapsed_seconds

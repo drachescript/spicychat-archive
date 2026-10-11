@@ -1,5 +1,7 @@
 import sys
 import unittest
+from copy import deepcopy
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,6 +137,86 @@ class BotStatusImportTests(unittest.TestCase):
         self.assertEqual(saved_at, "2026-09-20T12:00:00Z")
         self.assertEqual(snapshot["character_id"], "abc")
         self.assertEqual(snapshot["personality"], "P")
+
+    def test_preload_uses_one_r2_read_per_unique_uncached_bot(self):
+        class FakeStore:
+            known_ids = {"a", "b"}
+            _records = {"a": {"id": "a", "status": {"current": "deleted"}}}
+
+            def __init__(self):
+                self.get_calls = []
+
+            def load_bot(self, bot_id):
+                return deepcopy(self._records[bot_id])
+
+            def bot_key(self, bot_id):
+                return f"bots/{bot_id}.json"
+
+            def get_json(self, key, default):
+                self.get_calls.append(key)
+                return {"id": key.split("/")[-1][:-5]}
+
+        store = FakeStore()
+        rows = [
+            ("a", "2026-10-01", {}),
+            ("b", "2026-10-01", {}),
+            ("b", "2026-10-02", {}),
+            ("missing", "2026-10-01", {}),
+        ]
+        loaded = imp._preload_existing_records(store, rows)
+        self.assertEqual(store.get_calls, ["bots/b.json"])
+        self.assertEqual(loaded["a"]["status"]["current"], "deleted")
+        self.assertEqual(loaded["b"]["id"], "b")
+        self.assertNotIn("missing", loaded)
+
+    def test_multiple_snapshots_for_one_bot_merge_in_original_order(self):
+        earlier = {"character_id": "abc", "name": "First"}
+        current, _, _ = imp.merge_snapshot(
+            None, bot_id="abc", saved_at="2026-10-01T00:00:00Z", snapshot=earlier
+        )
+        current["status"]["current"] = "deleted"
+
+        class FakeStore:
+            known_ids = {"abc"}
+            _records = {}
+
+            def __init__(self, record):
+                self.record = deepcopy(record)
+                self.reads = 0
+                self.writes = 0
+
+            def bot_key(self, bot_id):
+                return f"bots/{bot_id}.json"
+
+            def get_json(self, key, default):
+                self.reads += 1
+                return deepcopy(self.record)
+
+            def save_bot(self, record):
+                self.record = deepcopy(record)
+                self.writes += 1
+
+        store = FakeStore(current)
+        payload = {"savedCopies": [
+            {"botId": "abc", "savedAt": "2026-10-02T00:00:00Z", "snapshot": {"name": "Second"}},
+            {"botId": "abc", "savedAt": "2026-10-03T00:00:00Z", "snapshot": {"name": "Third"}},
+        ]}
+        state = {}
+        with patch.object(imp, "note_rich_field_record"), patch.object(imp, "note_site_record"):
+            result = imp.process_payload(
+                store, state, payload, received_at="2026-10-04T00:00:00Z"
+            )
+        self.assertEqual(store.reads, 1)
+        self.assertEqual(store.writes, 2)
+        self.assertEqual(result["updatedRecords"], 2)
+        self.assertEqual(result["duplicates"], 0)
+        self.assertEqual(store.record["status"]["current"], "deleted")
+        self.assertEqual(
+            len(store.record["imports"]["qolBotStatus"]["snapshots"]), 3
+        )
+        self.assertEqual(
+            store.record["current"][imp.SOURCE]["name"], "Third"
+        )
 
 
 if __name__ == "__main__":

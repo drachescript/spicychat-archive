@@ -723,13 +723,28 @@ def main() -> int:
             _merge_stats(totals, result.get("stats") or {})
 
     # Persist queues/new IDs before the normal archive crawler starts.
+    # Record timings so future slow imports identify whether R2 state or
+    # public indexes are the expensive finalization stage.
+    checkpoint_started = time.monotonic()
     store.flush_discovery_journal()
     store.save_discovery_order()
     store.save_deleted_index()
     store.save_state(state)
+    checkpoint_seconds = time.monotonic() - checkpoint_started
+
+    index_started = time.monotonic()
     flush_rich_field_index(store)
     flush_site_indexes(store)
+    index_seconds = time.monotonic() - index_started
+
+    usage_started = time.monotonic()
     store.flush_usage(force=True)
+    usage_seconds = time.monotonic() - usage_started
+    print(
+        f"  import finalization: state {checkpoint_seconds:.1f}s, "
+        f"indexes {index_seconds:.1f}s, usage {usage_seconds:.1f}s.",
+        flush=True,
+    )
 
     write_summary(args.summary_file, totals)
     return 0 if totals["failedBundles"] == 0 else 0

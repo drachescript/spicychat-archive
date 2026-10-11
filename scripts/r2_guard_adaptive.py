@@ -2,7 +2,7 @@
 """Run the normal R2 quota guard, then expose a safe discovery ceiling.
 
 Scheduled runs keep using crawler.explore_pages_per_run. A manual workflow can
-request a larger one-off target through SPICYCHAT_ARCHIVE_MANUAL_PAGES, up to
+request a specific one-off target through SPICYCHAT_ARCHIVE_MANUAL_PAGES, up to
 crawler.explore_pages_max. The R2 Class A budget can always lower either target.
 
 Discovery-only bots are stored in page shards, so the Class A estimate is based
@@ -56,7 +56,7 @@ def _manual_pages(base_pages: int, max_pages: int) -> int | None:
         return None
     if requested <= 0:
         return None
-    return min(max_pages, max(base_pages, requested))
+    return min(max_pages, requested)
 
 
 def main() -> int:

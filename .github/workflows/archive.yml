@@ -1,10 +1,11 @@
 name: Update SpicyChat archive
+run-name: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only' && 'Import queued QoL / Bot Status copies' || 'Update SpicyChat archive' }}
 
 on:
   workflow_dispatch:
     inputs:
       run_mode:
-        description: "Manual task: import queued QoL/Bot Status copies only, or run discovery"
+        description: "Import queued QoL/Bot Status copies without scanning, or run discovery"
         required: true
         default: "discovery"
         type: choice
@@ -12,7 +13,7 @@ on:
           - "discovery"
           - "import-only"
       discovery_pages:
-        description: "Deep Typesense sweep pages for this manual run"
+        description: "Discovery mode only — ignored for import-only runs"
         required: true
         default: "500"
         type: choice
@@ -24,7 +25,7 @@ on:
           - "750"
           - "1000"
       full_maintenance:
-        description: "Also run the 5,000-bot Character API sweep and image maintenance"
+        description: "Discovery mode only: also run status verification and image maintenance"
         required: true
         default: false
         type: boolean

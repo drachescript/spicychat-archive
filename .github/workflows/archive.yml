@@ -3,6 +3,14 @@ name: Update SpicyChat archive
 on:
   workflow_dispatch:
     inputs:
+      run_mode:
+        description: "Manual task: import queued QoL/Bot Status copies only, or run discovery"
+        required: true
+        default: "discovery"
+        type: choice
+        options:
+          - "discovery"
+          - "import-only"
       discovery_pages:
         description: "Deep Typesense sweep pages for this manual run"
         required: true
@@ -48,7 +56,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       # Empty for scheduled/probe-triggered runs. Manual runs can explicitly ask
       # for a larger deep sweep without changing the normal 500-page target.
-      SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.discovery_pages || '' }}
+      SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode != 'import-only' && github.event.inputs.discovery_pages || '' }}
       # Manual deep sweeps default to discovery-only so a 500-1,000 page run does
       # not immediately repeat the scheduled 5,000-bot verification + image pass.
       # The checkbox above provides an explicit escape hatch when that is wanted.
@@ -94,7 +102,7 @@ jobs:
 
       - name: Update archive in R2
         id: archive
-        if: steps.r2guard.outputs.mode == 'r2'
+        if: steps.r2guard.outputs.mode == 'r2' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         continue-on-error: true
         env:
           # The guard can always lower the requested target. Scheduled runs now
@@ -115,12 +123,23 @@ jobs:
         run: python scripts/public_growth.py
 
       - name: Update pre-migration local archive
-        if: steps.r2guard.outputs.mode == 'legacy'
+        if: steps.r2guard.outputs.mode == 'legacy' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Update compact Git fallback journal
-        if: steps.r2guard.outputs.mode == 'github'
+        if: steps.r2guard.outputs.mode == 'github' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         run: python scripts/archive_fallback.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+
+      - name: Explain import-only result
+        if: github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only'
+        run: |
+          echo "## Import-only run" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.r2guard.outputs.mode }}" = "r2" ]; then
+            echo "Queued Bot Status copies were processed above. No Typesense scan or Character API maintenance was started." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No R2 import was processed (storage mode: ${{ steps.r2guard.outputs.mode }})." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
 
       - name: Test archive code
         run: python -m unittest discover -s tests -v

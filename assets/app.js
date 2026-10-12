@@ -141,6 +141,7 @@ function setQuery(state,push=false){
   set('firstSeen',state.firstSeen==='any'?'':state.firstSeen);
   set('lastSeen',state.lastSeen==='any'?'':state.lastSeen);
   set('savedField',state.savedField==='any'?'':state.savedField);
+  set('roleHint',state.roleHint==='any'?'':state.roleHint);
   if(Number(state.page)>1)u.searchParams.set('p',String(Math.floor(Number(state.page))));else u.searchParams.delete('p');
   if(state.exclude.length)u.searchParams.set('exclude',state.exclude.join(','));
   else u.searchParams.set('exclude','none');
@@ -169,15 +170,68 @@ function imgHtml(primary,fallback,{blur=false,alt=''}={}){
   const animated=/\.gif(?:$|[?#])/i.test(src);
   return `<img src="${esc(src)}"${fallbackAttr} alt="${esc(normalizeDisplayText(alt))}" loading="lazy" class="${blur?'nsfw-blur':''}"${animated?' data-hover-animate="1"':''} onerror="if(this.dataset.fallback&&this.src!==this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback=''}else{this.remove()}">`;
 }
+function inferTitleRoles(title) {
+  // Title wording only; no assumptions based on the platform's original tags.
+  const text = String(title || '').normalize('NFKC').toLowerCase()
+    .replace(/\{\{\s*user\s*\}\}/g, 'user')
+    .replace(/[!|×:;—–\-_/]+/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+  const found = { bot: new Set(), user: new Set() };
+  const add = (side, word) => {
+    const role = /^sub(?:missive)?$/.test(word) ? 'submissive'
+      : /^(?:dom|domme|dominant)$/.test(word) ? 'dominant' : null;
+    if (role) found[side].add(role);
+  };
+  for (const match of text.matchAll(/\b(dom(?:inant)?|domme|sub(?:missive)?)\s+(bots?|characters?|ais?|users?|players?|you)\b/g)) {
+    add(/^(?:users?|players?|you)$/.test(match[2]) ? 'user' : 'bot', match[1]);
+  }
+  for (const match of text.matchAll(/\b(bots?|characters?|ais?|users?|players?|you)\s+(?:is|are|as)\s+(?:(?:the|a|an)\s+)?(dom(?:inant)?|domme|sub(?:missive)?)\b/g)) {
+    add(/^(?:users?|players?|you)$/.test(match[1]) ? 'user' : 'bot', match[2]);
+  }
+  for (const match of text.matchAll(/\b(?:you(?:'re| are)|user is|player is)\s+(?:(?:the|a|an)\s+)?(dom(?:inant)?|domme|sub(?:missive)?)\b/g)) {
+    add('user', match[1]);
+  }
+  for (const match of text.matchAll(/\b(?:for|with)\s+(?:(?:a|the)\s+)?(dom(?:inant)?|domme|sub(?:missive)?)\s+users?\b/g)) {
+    add('user', match[1]);
+  }
+  for (const match of text.matchAll(/\byour\s+(?:(?:very|super)\s+)?(dom(?:inant)?|domme|sub(?:missive)?)\s+(?:girlfriend|boyfriend|wife|husband|partner|lover|roommate|boss|teacher|friend|crush|neighbor|neighbour|master|mistress|owner|alpha|wolf|werewolf|vampire|dragon|maid|assistant|bully|roomie|queen|king|demon|angel|goddess|god)\b/g)) {
+    add('bot', match[1]);
+  }
+  const choice = side => found[side].size === 1 ? [...found[side]][0] : null;
+  return { bot: choice('bot'), user: choice('user') };
+}
+function titleMatchesRole(title, selection) {
+  if (!selection || selection === 'any') return true;
+  const roles = inferTitleRoles(title);
+  if (selection === 'unspecified') return !roles.bot && !roles.user;
+  const [side, role] = selection.split('-');
+  return roles[side] === role;
+}
+const ROLE_HINT_LABELS = Object.freeze({
+  "bot-dominant": "Bot dominant",
+  "bot-submissive": "Bot submissive",
+  "user-dominant": "User dominant",
+  "user-submissive": "User submissive",
+  "unspecified": "Not specified in title"
+});
+function titleRoleHintMarkup(title) {
+  const roles = inferTitleRoles(title);
+  return (['bot', 'user'].filter(side => roles[side]).map(side => {
+    const label = ROLE_HINT_LABELS[side+'-'+roles[side]];
+    return `<span class="title-role-hint" title="Inferred from the bot title, not a SpicyChat tag">${esc(label)}</span>`;
+  }).join(''));
+}
+
 function card(bot, blurNsfw){
   const tags=(bot.tags||[]).slice(0,5).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+  const roleHints=titleRoleHintMarkup(bot.title);
   const first=bot.firstSeenAt?`<span>Seen ${shortDate(bot.firstSeenAt)}</span>`:(bot.createdAt?`<span>Made ${shortDate(bot.createdAt)}</span>`:'');
   const rawName=String(bot.name||'Unknown bot'),rawTitle=String(bot.title||'');
   const displayName=normalizeDisplayText(rawName)||'Unknown bot',displayTitle=normalizeDisplayText(rawTitle);
   return `<article class="card" data-bot-id="${esc(bot.id||'')}" data-original-name="${esc(rawName)}" data-original-title="${esc(rawTitle)}"><a class="cardlink" href="${esc(detailHref(bot.id))}">
     <div class="art">${imgHtml(bot.avatar,bot.avatarFallback,{blur:blurNsfw&&bot.isNsfw,alt:displayName})}${badge(bot.status)}</div>
     <div class="body"><h3 data-card-name${rawName!==displayName?` title="${esc(rawName)}"`:''}>${esc(displayName)}</h3><div class="creator${bot.creator?' creator-link':''}"${bot.creator?` data-creator-link="${esc(bot.creator)}" title="Open creator archive"`:''}>${bot.creator?`@${esc(bot.creator)}`:'Unknown creator'}</div>
-    <div class="title" data-card-title${rawTitle!==displayTitle?` title="${esc(rawTitle)}"`:''}>${esc(displayTitle)}</div><div class="translation-note" hidden></div><div class="taglist">${tags}</div>
+    <div class="title" data-card-title${rawTitle!==displayTitle?` title="${esc(rawTitle)}"`:''}>${esc(displayTitle)}</div><div class="translation-note" hidden></div>${roleHints?`<div class="title-role-hints" aria-label="Role clues from title">${roleHints}</div>`:''}<div class="taglist">${tags}</div>
     <div class="meta"><span>${fmt(bot.messages)} msgs</span><span>${bot.rating==null?'—':`★ ${esc(bot.rating)}`}</span>${first}<span>${bot.avatarArchived?'image archived':'CDN image'}</span></div></div>
   </a></article>`;
 }
@@ -210,6 +264,17 @@ function tagSidebar(state,tags){
   const selected=(value,wanted)=>value===wanted?' selected':'';
   return `<aside class="filters" id="filters"><div class="filters-head"><h2>Filters</h2><button class="link-button" id="reset-filters" type="button">Reset</button></div>
     <div class="filter-scroll">
+      <section class="filter-section"><h3>Role clue from title</h3>
+        <select class="filter-select" data-meta-filter="roleHint" aria-label="Role clue from bot title">
+          <option value="any"${selected(state.roleHint,'any')}>Any role</option>
+          <option value="bot-dominant"${selected(state.roleHint,'bot-dominant')}>Bot dominant</option>
+          <option value="bot-submissive"${selected(state.roleHint,'bot-submissive')}>Bot submissive</option>
+          <option value="user-dominant"${selected(state.roleHint,'user-dominant')}>User dominant</option>
+          <option value="user-submissive"${selected(state.roleHint,'user-submissive')}>User submissive</option>
+          <option value="unspecified"${selected(state.roleHint,'unspecified')}>Not specified</option>
+        </select>
+        <p class="filter-note" style="margin:7px 0 0">Experimental: only uses clear wording in the bot's <b>title</b>, not the Dominant/Submissive tags. Unclear titles remain unclassified.</p>
+      </section>
       <section class="filter-section"><h3>Narrow by tag</h3><input class="filter-search" id="tag-search" placeholder="Search ${tags.length} tags">
         <div class="selected-filters" id="selected-filters"></div>
         <div class="tag-filter-list" id="tag-filter-list">${rows}</div>
@@ -277,7 +342,7 @@ function attachSidebar(state,onChange){
   });
   document.querySelector('#reset-filters')?.addEventListener('click',()=>{
     state.q='';state.creator='';state.include=[];state.exclude=[...DEFAULT_EXCLUDED];state.match='all';state.sort=page==='deleted'?'deleted-newest':'trending';
-    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';state.firstSeen='any';state.lastSeen='any';state.savedField='any';
+    state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';state.firstSeen='any';state.lastSeen='any';state.savedField='any';state.roleHint='any';
     const s=document.querySelector('#search');if(s)s.value='';
     const c=document.querySelector('#creator');if(c)c.value='';
     const so=document.querySelector('#sort');if(so)so.value=state.sort;
@@ -446,6 +511,7 @@ function localFilterAndSort(bots,state){
     if(firstSeenCutoff&&new Date(b.firstSeenAt||0).getTime()<firstSeenCutoff)return false;
     if(lastSeenCutoff&&new Date(b.lastSeenAt||0).getTime()<lastSeenCutoff)return false;
     if(!botHasSavedField(b,state.savedField))return false;
+    if(state.roleHint&&state.roleHint!=='any'&&!titleMatchesRole(b.title,state.roleHint))return false;
     if(q&&!([b.id,b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
     return true;
   });
@@ -542,7 +608,7 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',roleHint:qs('roleHint')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
   let blockedOverride=false;
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>Public bots</h1><p>Browse SpicyChat characters that are currently publicly discoverable, together with the archive data captured for them.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
@@ -560,7 +626,7 @@ async function browseLive(runtime,manifest,tags,stats){
     const exactId=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
     const baseFilter=buildTsFilter(runtime,state);
     const search={collection:runtime.typesense.collection,q:exactId?'*':(state.q||'*'),query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:exactId?`${baseFilter} && character_id:=${tsLiteral(exactId)}`:baseFilter,sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
-    const archivePredicate=state.savedField!=='any'||state.firstSeen!=='any'||state.lastSeen!=='any';
+    const archivePredicate=state.savedField!=='any'||state.firstSeen!=='any'||state.lastSeen!=='any'||state.roleHint!=='any';
     try{
       if(!archivePredicate){
         const result=await typesenseSearch(runtime,search);if(token!==requestNo)return;found=Number(result.found||0);const totalPages=Math.max(1,Math.ceil(found/PAGE_SIZE));
@@ -568,7 +634,7 @@ async function browseLive(runtime,manifest,tags,stats){
         const rows=(result.hits||[]).map(h=>docToCard(h.document||{})).filter(b=>b.id);grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these filters.</div>';
         const start=found?((state.page-1)*PAGE_SIZE)+1:0,end=Math.min(found,state.page*PAGE_SIZE);count.textContent=found?`${start.toLocaleString()}–${end.toLocaleString()} of ${found.toLocaleString()} matches`:'0 matches';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,rows);
       }else{
-        const cacheKey=JSON.stringify({q:search.q,filter:search.filter_by,sort:search.sort_by,field:state.savedField,firstSeen:state.firstSeen,lastSeen:state.lastSeen});
+        const cacheKey=JSON.stringify({q:search.q,filter:search.filter_by,sort:search.sort_by,field:state.savedField,firstSeen:state.firstSeen,lastSeen:state.lastSeen,roleHint:state.roleHint});
         let scan=fieldScanCache.get(cacheKey);
         if(!scan){scan={matched:[],nextTypesensePage:1,exhausted:false,underlyingFound:0};fieldScanCache.set(cacheKey,scan);}
         const need=state.page*PAGE_SIZE+1;
@@ -588,7 +654,7 @@ async function browseLive(runtime,manifest,tags,stats){
             for(const hit of hits){
               const doc=hit?.document||{};
               const id=String(doc.character_id||doc.id||'').toLowerCase();
-              if(id&&matchesArchiveMeta(id,state,richIndex,timesIndex))scan.matched.push(doc);
+              if(id&&matchesArchiveMeta(id,state,richIndex,timesIndex)&&titleMatchesRole(doc.title,state.roleHint))scan.matched.push(doc);
             }
             scan.nextTypesensePage+=1;
             if(hits.length<250||scan.nextTypesensePage>Math.ceil(scan.underlyingFound/250)){scan.exhausted=true;break;}
@@ -606,8 +672,9 @@ async function browseLive(runtime,manifest,tags,stats){
         if(state.savedField!=='any')labels.push(state.savedField==='personality'?'Personality':state.savedField==='scenario'?'Scenario':'Example Dialogue');
         if(state.firstSeen!=='any')labels.push('first captured '+state.firstSeen);
         if(state.lastSeen!=='any')labels.push('last seen '+state.lastSeen);
+        if(state.roleHint!=='any')labels.push('title role: '+(ROLE_HINT_LABELS[state.roleHint]||state.roleHint));
         const label=labels.join(' + ')||'archive filters';
-        grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No public bots match these archive filters.</div>';
+        grid.innerHTML=rows.length?rows.map(b=>card(b,state.blurNsfw)).join(''):(scan.exhausted?'<div class="empty">No public bots match these filters.</div>':'<div class="empty">No matching bot titles in the pages checked yet. Narrow search/tags, or use Next to scan further.</div>');
         const start=rows.length?startIndex+1:0,end=startIndex+rows.length;
         const checked=Math.min(scan.underlyingFound,(scan.nextTypesensePage-1)*250);
         count.textContent=exactTotal!=null
@@ -639,7 +706,7 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',roleHint:qs('roleHint')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
   let blockedOverride=false;
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>

@@ -1,88 +1,96 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-12T12:15:59Z",
-  "runId": "github:38241531894:1",
-  "status": "success",
+  "generatedAt": "2026-10-12T21:57:56Z",
+  "runId": "github:38310241465:1",
+  "status": "partial",
   "archive": {
-    "totalBots": 1411731,
-    "deletedBots": 5965,
-    "publicIndexBots": 1404418,
+    "totalBots": 1412649,
+    "deletedBots": 5969,
+    "publicIndexBots": 1405070,
     "startedAt": "2026-09-28T00:00:00Z"
   },
   "run": {
-    "finishedAt": "2026-10-12T12:15:54Z",
-    "durationSeconds": 3425,
-    "addedBots": 79,
-    "deletedConfirmed": 83,
+    "finishedAt": "2026-10-12T21:57:53Z",
+    "durationSeconds": 2081,
+    "addedBots": 918,
+    "deletedConfirmed": 7,
     "pagesRequested": 500,
     "scheduledPages": 500,
     "pagesBudget": 500,
-    "pagesCompleted": 500,
-    "hits": 125000,
-    "newFromListings": 62,
-    "newFromDiscovery": 12,
-    "changedIngestRecords": 140,
-    "discoveryDurationSeconds": 1431,
-    "nonDiscoveryDurationSeconds": 1994,
-    "discoverySharePercent": 41.8,
+    "pagesCompleted": 0,
+    "hits": 0,
+    "newFromListings": 920,
+    "newFromDiscovery": 0,
+    "changedIngestRecords": 0,
+    "discoveryDurationSeconds": 218,
+    "nonDiscoveryDurationSeconds": 1863,
+    "discoverySharePercent": 10.5,
     "timeLimited": false,
     "naturalEnd": false,
     "resultCapReached": false,
     "switchedToCursor": false,
-    "errors": [],
-    "stopReason": null,
+    "errors": [
+      "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)"
+    ],
+    "stopReason": "HTTPSConnectionPool(host='etmzpxgvnid370fyp.a1.typesense.net', port=443): Read timed out. (read timeout=20)",
     "enrichmentAttempted": 5000,
-    "enriched": 4964,
+    "enriched": 4819,
     "imagesAttempted": 100,
-    "imagesSaved": 96,
-    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/38241531894",
-    "newOther": 5
+    "imagesSaved": 100,
+    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/38310241465",
+    "newOther": 0
   },
-  "lastSuccessfulRun": null,
+  "lastSuccessfulRun": {
+    "finishedAt": "2026-10-12T12:15:54Z",
+    "durationSeconds": 3425,
+    "addedBots": 79,
+    "pagesBudget": 500,
+    "pagesCompleted": 500
+  },
   "growth": {
-    "added24h": 1561,
-    "added7d": 11430,
-    "added30d": 1400462,
-    "averagePerDay": 1661.6,
-    "observedHours": 335.5,
-    "observedGrowth": 1400462
+    "added24h": 1676,
+    "added7d": 12234,
+    "added30d": 1401380,
+    "averagePerDay": 1683.5,
+    "observedHours": 345.5,
+    "observedGrowth": 1401380
   },
   "storage": {
-    "usedBytes": 2765454393,
-    "mediaBytes": 776257189,
-    "objects": 296372,
-    "writesThisMonth": 321169
+    "usedBytes": 2789568441,
+    "mediaBytes": 784566222,
+    "objects": 300689,
+    "writesThisMonth": 327150
   },
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-12T12:15:54Z",
-    "sampleCount": 96,
-    "latestPublicIndexBots": 1404418,
+    "generatedAt": "2026-10-12T21:57:53Z",
+    "sampleCount": 97,
+    "latestPublicIndexBots": 1405070,
     "firstSampleAt": "2026-09-28T17:36:57Z",
-    "lastSampleAt": "2026-10-12T12:15:54Z",
-    "observedHours": 330.65,
-    "observedNet": 14379,
-    "averagePerDay": 978.2,
+    "lastSampleAt": "2026-10-12T21:57:53Z",
+    "observedHours": 340.35,
+    "observedNet": 15031,
+    "averagePerDay": 1038.0,
     "periods": {
       "24h": {
         "hours": 24,
-        "net": 1180,
+        "net": 1089,
         "complete": true,
-        "spanHours": 28.95,
-        "baselineAt": "2026-10-11T07:19:04Z"
+        "spanHours": 25.18,
+        "baselineAt": "2026-10-11T20:46:57Z"
       },
       "7d": {
         "hours": 168,
-        "net": 7853,
+        "net": 8530,
         "complete": true,
-        "spanHours": 173.39,
-        "baselineAt": "2026-10-05T06:52:46Z"
+        "spanHours": 174.1,
+        "baselineAt": "2026-10-05T15:52:06Z"
       },
       "30d": {
         "hours": 720,
-        "net": 14379,
+        "net": 15031,
         "complete": false,
-        "spanHours": 330.65,
+        "spanHours": 340.35,
         "baselineAt": "2026-09-28T17:36:57Z"
       }
     }

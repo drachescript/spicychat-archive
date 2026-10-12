@@ -32,6 +32,38 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check assets/app.js
+
+      - name: Title role regression checks
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import vm from 'node:vm';
+          const source = fs.readFileSync('assets/app.js', 'utf8');
+          const start = source.indexOf('function inferTitleRoles(');
+          const end = source.indexOf('function card(', start);
+          assert.ok(start >= 0 && end > start, 'role classification helpers must exist');
+          const {inferTitleRoles, titleMatchesRole} = vm.runInNewContext(source.slice(start,end)+'\n({inferTitleRoles,titleMatchesRole})');
+          const cases = [
+            ['Dom User x Sub Bot', ['user-dominant', 'bot-submissive']],
+            ['Dominant {{user}} and Submissive Bot', ['user-dominant', 'bot-submissive']],
+            ['Your Dominant Girlfriend', ['bot-dominant']],
+            ['Your Submissive Wolf', ['bot-submissive']],
+            ['User is the Dom', ['user-dominant']],
+            ['You are a Sub', ['user-submissive']],
+            ['For submissive users', ['user-submissive']],
+            ['Dom!User / Sub!Bot', ['user-dominant', 'bot-submissive']],
+            ['Your Dominant Princess', ['unspecified']],
+            ['An alpha fighting a dragon', ['unspecified']],
+            ['Bot and User', ['unspecified']],
+            ['Dom bot and sub bot', ['unspecified']],
+          ];
+          for (const [title, expected] of cases) {
+            for (const value of expected) assert.ok(titleMatchesRole(title, value), title + ': ' + value);
+          }
+          assert.deepEqual(JSON.parse(JSON.stringify(inferTitleRoles('Dom User x Sub Bot'))), {bot: 'submissive', user: 'dominant'});
+          console.log('12 title-role regression cases passed');
+          NODE
           node --check assets/archive-history-pages.js
           node --check assets/lorebooks.js
           node --check assets/recovery.js

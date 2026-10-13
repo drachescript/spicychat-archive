@@ -667,7 +667,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             (config.get("storage") or {})
             .get("r2", {})
             .get("discovery_write_soft_limit")
-            or 700000
+            or 950000
         )
 
         print(

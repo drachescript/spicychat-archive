@@ -66,15 +66,15 @@
       "warning_bytes": 8000000000,
       "media_limit_bytes": 2000000000,
       "usage_checkpoint_writes": 250,
-      "discovery_write_soft_limit": 700000
+      "discovery_write_soft_limit": 950000
     },
     "quota_guard": {
       "enabled": true,
       "fail_closed": true,
       "storage_pause_bytes": 8000000000,
       "storage_resume_bytes": 7500000000,
-      "class_a_pause": 700000,
-      "class_a_resume": 500000,
+      "class_a_pause": 950000,
+      "class_a_resume": 900000,
       "class_b_pause": 6000000,
       "class_b_resume": 4000000,
       "class_b_read_disable": 6000000,

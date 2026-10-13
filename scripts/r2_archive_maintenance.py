@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Post-backfill archive maintenance mode.
 
-Every run:
-- scans newest Typesense pages first and stops after a small known-overlap window;
-- advances a small deep Typesense sweep for recovery/change/deletion coverage;
-- rotates through stored bot IDs with the public character API so richer fields
+Automatic runs:
+- scan newest Typesense pages first and stop after a small known-overlap window;
+- skip the deep Typesense sweep (available through manual discovery);
+- rotate through stored bot IDs with the public character API so richer fields
   (greeting/personality/scenario/etc.) are refreshed when they change;
 - requires repeated 404 evidence before marking a bot deleted.
 
@@ -700,6 +700,28 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
         at: str,
         run_state: dict[str, Any],
     ):
+        if (run_config.get("crawler") or {}).get("scheduled_latest_only"):
+            # Do not touch saved deep-discovery cursor, bloom pass, page counter
+            # or checkpoints. A later manual run resumes exactly where it left off.
+            print(
+                "explore: skipped for scheduled latest-only maintenance; "
+                "manual discovery preserves the saved deep-sweep cursor.",
+                flush=True,
+            )
+            return {
+                "hits": 0,
+                "new": 0,
+                "changed": 0,
+                "mode": str((run_state.get("exploration") or {}).get("mode") or "page"),
+                "pageBudget": 0,
+                "pagesCompleted": 0,
+                "durationSeconds": 0,
+                "timeLimited": False,
+                "errors": [],
+                "skipped": True,
+                "purpose": "scheduled-latest-and-maintenance",
+                "sweepPass": int((run_state.get("exploration") or {}).get("pass") or 0),
+            }
         result = optimized_explore_more(client, run_config, at, run_state)
         result["purpose"] = "deep-refresh-and-deletion-sweep"
         result["sweepPass"] = int((run_state.get("exploration") or {}).get("pass") or 0)

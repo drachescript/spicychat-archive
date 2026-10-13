@@ -219,8 +219,8 @@ def main() -> int:
 
     pause_storage = int(guard.get("storage_pause_bytes") or 8_500_000_000)
     resume_storage = int(guard.get("storage_resume_bytes") or 8_250_000_000)
-    pause_a = int(guard.get("class_a_pause") or 750_000)
-    resume_a = int(guard.get("class_a_resume") or 500_000)
+    pause_a = int(guard.get("class_a_pause") or 950_000)
+    resume_a = int(guard.get("class_a_resume") or 900_000)
     pause_b = int(guard.get("class_b_pause") or 7_500_000)
     resume_b = int(guard.get("class_b_resume") or 5_000_000)
     read_disable_b = int(guard.get("class_b_read_disable") or 9_000_000)

@@ -104,7 +104,7 @@ def main() -> int:
     if values.get("mode") == "r2":
         usage = status.get("usage") or {}
         class_a = int(usage.get("classA") or 0)
-        pause_a = int(guard.get("class_a_pause") or 700000)
+        pause_a = int(guard.get("class_a_pause") or 950000)
         reserve_a = int(guard.get("class_a_reserve_per_run") or 10000)
         replay = int(values.get("replay_write_budget") or 0)
 

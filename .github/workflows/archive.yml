@@ -62,10 +62,11 @@ jobs:
       # not immediately repeat the scheduled 5,000-bot verification + image pass.
       # The checkbox above provides an explicit escape hatch when that is wanted.
       SPICYCHAT_ARCHIVE_MANUAL_FULL_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.full_maintenance && 'true' || 'false' }}
-      # Materialized bot writes remain parallel. Page-mode Typesense discovery can
-      # prefetch up to eight consecutive pages per native multi_search request.
+      # Materialized bot writes remain parallel. Typesense discovery starts
+      # with smaller four-page requests and automatically shrinks further on
+      # transient errors (4 -> 2 -> 1); never skip the requested page.
       SPICYCHAT_ARCHIVE_R2_WRITE_WORKERS: "8"
-      SPICYCHAT_ARCHIVE_TYPESENSE_BATCH_SIZE: "8"
+      SPICYCHAT_ARCHIVE_TYPESENSE_BATCH_SIZE: "4"
       # Two consecutive discovery pages share one shard/journal checkpoint. This
       # halves the expensive per-page R2 checkpoint count while keeping shards
       # small enough for fast detail-page fallback reads.

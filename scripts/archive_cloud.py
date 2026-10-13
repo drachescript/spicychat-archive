@@ -325,7 +325,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         missing_queued = 0
 
         discovery_write_soft_limit = int(
-            (config.get("storage") or {}).get("r2", {}).get("discovery_write_soft_limit") or 700000
+            (config.get("storage") or {}).get("r2", {}).get("discovery_write_soft_limit") or 950000
         )
 
         for _ in range(pages_budget):

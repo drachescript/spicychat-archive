@@ -30,7 +30,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: "37 */3 * * *"
+    - cron: "37 */6 * * *"
   workflow_run:
     workflows: ["Probe SpicyChat public APIs"]
     types: [completed]
@@ -55,13 +55,17 @@ jobs:
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
       CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      # Empty for scheduled/probe-triggered runs. Manual runs can explicitly ask
-      # for a larger deep sweep without changing the normal 500-page target.
+      # Scheduled/probe-triggered runs use latest-first + rolling maintenance.
+      # Manual discovery keeps its explicit 50–1000 page deep-sweep control.
       SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode != 'import-only' && github.event.inputs.discovery_pages || '' }}
       # Manual deep sweeps default to discovery-only so a 500-1,000 page run does
       # not immediately repeat the scheduled 5,000-bot verification + image pass.
       # The checkbox above provides an explicit escape hatch when that is wanted.
       SPICYCHAT_ARCHIVE_MANUAL_FULL_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.full_maintenance && 'true' || 'false' }}
+      # Automatic runs avoid repeating 500 deep Typesense pages every 6 hours.
+      # They still scan newest pages through the known-overlap stop and perform
+      # the existing Character API verification, missing checks, and images.
+      SPICYCHAT_ARCHIVE_SCHEDULED_LATEST_ONLY: ${{ github.event_name != 'workflow_dispatch' && 'true' || 'false' }}
       # Materialized bot writes remain parallel. Typesense discovery starts
       # with smaller four-page requests and automatically shrinks further on
       # transient errors (4 -> 2 -> 1); never skip the requested page.
@@ -107,8 +111,8 @@ jobs:
         if: steps.r2guard.outputs.mode == 'r2' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         continue-on-error: true
         env:
-          # The guard can always lower the requested target. Scheduled runs now
-          # keep a 500-page deep sweep; manual runs may request up to 1000.
+          # Manual deep sweeps obey the quota guard. Automatic runs skip deep
+          # exploration entirely but still honor quota-guard fallback mode.
           SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP: ${{ steps.r2guard.outputs.explore_pages }}
           SPICYCHAT_ARCHIVE_DISABLE_IMAGES: ${{ steps.r2guard.outputs.disable_images }}
         run: python scripts/r2_accel_runner.py archive --summary-file "$RUNNER_TEMP/archive-summary.md"

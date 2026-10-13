@@ -292,14 +292,32 @@ def _batched_multi_search(self: legacy.Client, searches: list[dict[str, Any]]):
             url=cached.get("url"),
         )
 
+    # Each request is logically one page; prefetching extra pages is optional.
+    # Typesense may struggle with an eight-page deep-offset multi_search.
+    # On a transient failure shrink only this client's prefetch batch. The
+    # existing retry wrapper will then retry the SAME logical page with fewer
+    # underlying searches, instead of repeating a heavy batch unchanged.
+    effective_batch = max(
+        1, min(_TYPESENSE_BATCH, int(getattr(self, "_runtime_accel_typesense_batch", _TYPESENSE_BATCH)))
+    )
     batched: list[dict[str, Any]] = []
-    for offset in range(_TYPESENSE_BATCH):
+    for offset in range(effective_batch):
         row = dict(request)
         row["page"] = page + offset
         batched.append(row)
 
     response = _ORIGINAL_MULTI_SEARCH(self, batched)
-    if not response.ok or not isinstance(response.data, dict):
+    if not response.ok:
+        if effective_batch > 1 and int(response.status or 0) in {0, 429, 500, 502, 503, 504}:
+            reduced = max(1, effective_batch // 2)
+            setattr(self, "_runtime_accel_typesense_batch", reduced)
+            print(
+                f"Typesense prefetch: {effective_batch} pages failed; "
+                f"reducing to {reduced} page(s) for this run.",
+                flush=True,
+            )
+        return response
+    if not isinstance(response.data, dict):
         return response
 
     results = response.data.get("results") or []

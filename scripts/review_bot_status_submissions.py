@@ -107,7 +107,10 @@ def _list_pending_meta(store: R2ArchiveStore, limit: int) -> list[tuple[str, dic
         kwargs: dict[str, Any] = {
             "Bucket": store.bucket,
             "Prefix": META_PREFIX,
-            "MaxKeys": min(1000, max(1, limit - len(rows))),
+            # Even a one-item preflight should page through metadata efficiently.
+            # A one-key ListObjects request per already-reviewed submission
+            # would waste Class A operations while looking for the first pending.
+            "MaxKeys": 1000,
         }
         if token:
             kwargs["ContinuationToken"] = token

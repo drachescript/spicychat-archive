@@ -14,6 +14,35 @@ import archive
 import r2_archive_maintenance as maintenance
 
 
+class ScheduledLatestOnlyExplorationTests(unittest.TestCase):
+    def test_automatic_run_skips_deep_crawl_without_advancing_cursor(self):
+        checkpoint = {
+            "mode": "cursor",
+            "cursorCreatedAt": 12345,
+            "page": 119,
+            "pass": 7,
+            "adaptivePages": 1000,
+        }
+        state = {"exploration": checkpoint.copy()}
+        config = {
+            "crawler": {"scheduled_latest_only": True},
+            "listings": {"latest": "createdAt:desc"},
+        }
+        # A deep crawler call would be an error in this profile.
+        with patch.object(maintenance, "_original_configure_cloud", return_value=(state, object())):
+            with patch.object(maintenance.legacy, "explore_more", side_effect=AssertionError("deep crawler invoked")), \
+                 patch.object(maintenance.legacy, "scan_listing"), \
+                 patch.object(maintenance.legacy, "observe_bot"), \
+                 patch.object(maintenance.legacy, "enrich_queue"), \
+                 patch.object(maintenance.legacy, "verify_missing"):
+                maintenance.maintenance_configure_cloud(config, FakeStore([]))
+                result = maintenance.legacy.explore_more(None, config, "2026-10-13T00:00:00Z", state)
+        self.assertTrue(result["skipped"])
+        self.assertEqual(result["pagesCompleted"], 0)
+        self.assertEqual(result["pageBudget"], 0)
+        self.assertEqual(state["exploration"], checkpoint)
+
+
 class FakeStore:
     def __init__(self, ids):
         self.discovery_order = list(ids)

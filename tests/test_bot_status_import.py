@@ -11,6 +11,25 @@ import import_bot_status as imp
 
 
 class BotStatusImportTests(unittest.TestCase):
+    def test_empty_inbox_returns_before_loading_or_flushing_archive_indexes(self):
+        from unittest.mock import MagicMock
+        store = MagicMock()
+        store.is_migrated.return_value = True
+        with patch.object(imp, "R2ArchiveStore") as store_class, \
+             patch.object(imp.legacy, "load_config", return_value={"storage": {"mode": "r2"}}), \
+             patch.object(imp, "list_inbox", return_value=[]) as list_pending, \
+             patch.object(imp, "write_summary") as summary, \
+             patch.object(sys, "argv", ["import_bot_status.py", "--inbox"]):
+            store_class.credentials_present.return_value = True
+            store_class.return_value = store
+            self.assertEqual(imp.main(), 0)
+            list_pending.assert_called_once_with(store, imp.MAX_BUNDLES_PER_RUN)
+            store.load_state.assert_not_called()
+            store.load_discovery_order.assert_not_called()
+            store.save_state.assert_not_called()
+            store.save_discovery_order.assert_not_called()
+            summary.assert_called_once()
+
     def test_sanitizer_drops_chat_and_extension_private_fields(self):
         snapshot = {
             "id": "abc",

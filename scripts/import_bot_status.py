@@ -657,6 +657,16 @@ def main() -> int:
         print("ERROR: R2 migration marker is missing.")
         return 2
 
+    # An empty inbox must not load the million-ID archive indexes or flush
+    # unchanged state. The queue is checked before expensive R2 operations.
+    queued_keys = None
+    if args.inbox:
+        queued_keys = list_inbox(store, max(1, int(args.max_bundles)))
+        if not queued_keys:
+            print("Bot Status import queue: empty; no archive state or indexes loaded.")
+            write_summary(args.summary_file, {"bundles": 0})
+            return 0
+
     state = store.load_state()
     store.load_discovery_order()
     store.load_deleted_index()
@@ -684,10 +694,7 @@ def main() -> int:
             totals["failedBundles"] += 1
         _merge_stats(totals, result.get("stats") or {})
     else:
-        keys = list_inbox(store, max(1, int(args.max_bundles)))
-        if not keys:
-            print("Bot Status import queue: empty.")
-        for key in keys:
+        for key in queued_keys:
             print(f"Importing queued Bot Status export: {key}", flush=True)
             try:
                 raw = _read_queue_object(store, key)

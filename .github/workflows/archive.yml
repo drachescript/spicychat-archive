@@ -94,16 +94,28 @@ jobs:
         id: r2guard
         run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
 
+      - name: Check QoL import queues (import-only)
+        id: importcheck
+        if: github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only' && steps.r2guard.outputs.mode == 'r2'
+        run: python scripts/check_import_queues.py --github-output "$GITHUB_OUTPUT"
+
       - name: Replay pending Git fallback into R2
-        if: steps.r2guard.outputs.mode == 'r2' && steps.r2guard.outputs.replay_write_budget != '0'
+        if: >-
+          ${{ steps.r2guard.outputs.mode == 'r2' &&
+              steps.r2guard.outputs.replay_write_budget != '0' &&
+              (inputs.run_mode != 'import-only' || steps.importcheck.outputs.has_work == 'true') }}
         run: python scripts/r2_safe_runner.py replay_fallback.py --max-writes "${{ steps.r2guard.outputs.replay_write_budget }}" --summary-file "$RUNNER_TEMP/replay-summary.md"
 
       - name: Analyze pending public Bot Status submissions
-        if: steps.r2guard.outputs.mode == 'r2'
+        if: >-
+          ${{ steps.r2guard.outputs.mode == 'r2' &&
+              (inputs.run_mode != 'import-only' || steps.importcheck.outputs.public_pending == 'true') }}
         run: python scripts/review_bot_status_submissions.py --summary-file "$RUNNER_TEMP/public-submission-summary.md"
 
       - name: Import queued Bot Status Center exports
-        if: steps.r2guard.outputs.mode == 'r2'
+        if: >-
+          ${{ steps.r2guard.outputs.mode == 'r2' &&
+              (inputs.run_mode != 'import-only' || steps.importcheck.outputs.private_pending == 'true') }}
         run: python scripts/r2_accel_runner.py import --inbox --summary-file "$RUNNER_TEMP/bot-status-import-summary.md"
 
       - name: Update archive in R2
@@ -140,14 +152,17 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only'
         run: |
           echo "## Import-only run" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${{ steps.r2guard.outputs.mode }}" = "r2" ]; then
-            echo "Queued Bot Status copies were processed above. No Typesense scan or Character API maintenance was started." >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.importcheck.outputs.has_work }}" = "false" ]; then
+            echo "Nothing queued: no private QoL exports and no public submissions awaiting analysis. Import-only finished early; no archive state or indexes were updated." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.r2guard.outputs.mode }}" = "r2" ]; then
+            echo "Queued QoL/Bot Status work was processed above. No Typesense scan or Character API maintenance was started." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "No R2 import was processed (storage mode: ${{ steps.r2guard.outputs.mode }})." >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
 
       - name: Test archive code
+        if: inputs.run_mode != 'import-only' || steps.importcheck.outputs.has_work == 'true'
         run: python -m unittest discover -s tests -v
 
       - name: Add run summary
@@ -159,6 +174,7 @@ jobs:
           [ ! -f "$RUNNER_TEMP/archive-summary.md" ] || cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit public stats/runtime changes
+        if: inputs.run_mode != 'import-only' || steps.importcheck.outputs.has_work == 'true'
         shell: bash
         run: |
           set -euo pipefail

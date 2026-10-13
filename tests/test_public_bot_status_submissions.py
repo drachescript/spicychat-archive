@@ -9,6 +9,28 @@ import review_bot_status_submissions as review
 
 
 class PublicSubmissionReviewTests(unittest.TestCase):
+    def test_pending_check_lists_full_page_not_one_key_at_a_time(self):
+        from unittest.mock import MagicMock, patch
+        store = MagicMock()
+        store.bucket = "archive-test"
+        store.s3.list_objects_v2.return_value = {
+            "Contents": [
+                {"Key": review.META_PREFIX + "old.json"},
+                {"Key": review.META_PREFIX + "new.json"},
+            ],
+            "IsTruncated": False,
+        }
+        metas = [
+            {"submissionId": "old", "analysisReady": True},
+            {"submissionId": "new", "analysisReady": False},
+        ]
+        with patch.object(review, "_get_json", side_effect=metas):
+            pending = review._list_pending_meta(store, 1)
+        self.assertEqual(len(pending), 1)
+        self.assertEqual(pending[0][0], "new")
+        self.assertEqual(store.s3.list_objects_v2.call_count, 1)
+        self.assertEqual(store.s3.list_objects_v2.call_args.kwargs["MaxKeys"], 1000)
+
     def test_new_record_is_safe_but_unverified(self):
         row = review.classify_record(
             bot_id="abc",

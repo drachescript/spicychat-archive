@@ -17,9 +17,8 @@ from typesense_retry import install_typesense_retry
 
 HERE = Path(__file__).resolve().parent
 TARGETS = {
-    # Maintenance mode keeps the existing sharded/batched deep sweep, while also
-    # checking newest bots first on every run so newly-created bots are captured
-    # without waiting for the rotating full-index sweep to wrap around.
+    # The same maintenance runner handles automatic newest-first runs and
+    # explicitly requested manual deep sweeps without rewriting config.json.
     "archive": HERE / "r2_archive_maintenance.py",
     "import": HERE / "import_bot_status.py",
 }
@@ -57,7 +56,7 @@ def _apply_manual_archive_profile(
 
     # Manual workflow_dispatch runs are primarily used to advance the deep
     # Typesense sweep. Scheduled runs already perform the 5,000-bot rolling
-    # Character API verification and image maintenance every three hours, so
+    # Character API verification and image maintenance every six hours, so
     # repeating those jobs after a 500-1,000 page manual sweep wastes ~30m.
     # Keep a manual escape hatch for the rare run that intentionally wants both.
     if not full_maintenance:
@@ -65,6 +64,37 @@ def _apply_manual_archive_profile(
         crawler["image_archive_enabled"] = False
 
     return config, target, configured_max
+
+
+def _apply_scheduled_archive_profile(config: dict) -> dict:
+    """Newest-first + existing maintenance; preserve all manual deep-sweep settings."""
+    config = deepcopy(config)
+    crawler = config.setdefault("crawler", {})
+    crawler["scheduled_latest_only"] = True
+    # The newest listing has an independent known-overlap stop. Leave the
+    # ranking lists untouched in R2; manual deep-discovery runs still refresh
+    # them. We merge the prior ranking snapshot before publishing.
+    listings = config.get("listings") or {}
+    if "latest" not in listings:
+        raise ValueError("Automatic archive profile needs a 'latest' listing")
+    config["listings"] = {"latest": listings["latest"]}
+    return config
+
+
+def _install_scheduled_archive_profile() -> None:
+    original_load_config = legacy.load_config
+
+    def load_scheduled_profile():
+        config = _apply_scheduled_archive_profile(original_load_config())
+        print(
+            "Scheduled archive: newest bots until 3 known-overlap pages, "
+            "then rolling Character API verification and missing checks; "
+            "deep Typesense sweep skipped (manual discovery remains available).",
+            flush=True,
+        )
+        return config
+
+    legacy.load_config = load_scheduled_profile
 
 
 def _install_manual_archive_target() -> None:
@@ -133,7 +163,12 @@ def main() -> int:
         # Install this after the batching/maintenance wrapper so retries repeat
         # the exact same logical Typesense request, including failover.
         install_typesense_retry()
-        _install_manual_archive_target()
+        if os.environ.get("SPICYCHAT_ARCHIVE_SCHEDULED_LATEST_ONLY", "").strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            _install_scheduled_archive_profile()
+        else:
+            _install_manual_archive_target()
 
     old_argv = sys.argv[:]
     code = 0

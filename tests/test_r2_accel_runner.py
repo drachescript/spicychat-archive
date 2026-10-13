@@ -66,6 +66,35 @@ class ManualArchiveProfileTests(unittest.TestCase):
         self.assertEqual(config["crawler"]["explore_pages_per_run"], 1000)
 
 
+class ScheduledArchiveProfileTests(unittest.TestCase):
+    def test_latest_only_keeps_verification_and_images(self):
+        original = {
+            "crawler": {
+                "explore_pages_per_run": 500,
+                "explore_pages_max": 1000,
+                "maintenance_verification_budget": 5000,
+                "image_archive_enabled": True,
+            },
+            "listings": {
+                "latest": "createdAt:desc",
+                "trending": "num_messages_24h:desc",
+                "popular": "num_messages:desc",
+            },
+        }
+        scheduled = runner._apply_scheduled_archive_profile(original)
+        self.assertTrue(scheduled["crawler"]["scheduled_latest_only"])
+        self.assertEqual(scheduled["listings"], {"latest": "createdAt:desc"})
+        self.assertEqual(scheduled["crawler"]["maintenance_verification_budget"], 5000)
+        self.assertTrue(scheduled["crawler"]["image_archive_enabled"])
+        self.assertEqual(scheduled["crawler"]["explore_pages_per_run"], 500)
+        self.assertEqual(original["listings"].keys(), {"latest", "trending", "popular"})
+        self.assertNotIn("scheduled_latest_only", original["crawler"])
+
+    def test_requires_latest_listing_to_avoid_silent_data_loss(self):
+        with self.assertRaisesRegex(ValueError, "latest"):
+            runner._apply_scheduled_archive_profile({"crawler": {}, "listings": {"popular": "rating_score:desc"}})
+
+
 class ManualGuardPageTests(unittest.TestCase):
     def test_manual_guard_respects_small_and_large_targets(self):
         for selected in (50, 100, 250, 500, 750, 1000):

@@ -607,6 +607,16 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             "metrics": {name: info.get("metrics", {}) for name, info in listings.items() if info.get("ok")},
         }
         prior = store.load_latest_ranking()
+        if (config.get("crawler") or {}).get("scheduled_latest_only"):
+            # Automatic maintenance only fetches the newest listing. Preserve
+            # trending/popular/top-rated rankings from the last full scan instead
+            # of replacing those collections with empty or missing lists.
+            old_listings = prior.get("listings") or {}
+            old_metrics = prior.get("metrics") or {}
+            if isinstance(old_listings, dict):
+                compact["listings"] = {**old_listings, **compact["listings"]}
+            if isinstance(old_metrics, dict):
+                compact["metrics"] = {**old_metrics, **compact["metrics"]}
         if prior.get("listings") == compact["listings"] and prior.get("metrics") == compact["metrics"]:
             return False
         safe = at.replace(":", "").replace("-", "")

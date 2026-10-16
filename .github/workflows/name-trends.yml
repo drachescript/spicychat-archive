@@ -1,0 +1,42 @@
+name: Build Archive name and title stats
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily snapshot. Reads existing compact index shards (not bot records).
+    - cron: "17 4 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  name-trends:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check R2 free-tier guard
+        id: guard
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file "$RUNNER_TEMP/name-trends-usage.json"
+      - name: Publish updated name statistics
+        if: steps.guard.outputs.mode == 'r2'
+        run: python scripts/publish_name_trends.py
+      - name: Explain quota pause
+        if: steps.guard.outputs.mode != 'r2'
+        run: echo "Name statistics were left unchanged because the R2 quota guard is paused." >> "$GITHUB_STEP_SUMMARY"

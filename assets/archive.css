@@ -201,3 +201,33 @@
 .explorer-hero{margin-bottom:15px}
 @media(max-width:1100px){.explorer-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.explorer-toolbar{grid-template-columns:1fr}.blocked-override-button{width:100%}}
+
+
+/* Names & trends: a compact standalone statistics page. */
+.name-coverage{color:var(--muted);font-size:12px;line-height:1.55;margin:0 0 14px}
+.name-coverage b{color:var(--text)}
+.name-stats-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.name-stats-grid .table-card{margin-top:0;margin-bottom:16px}
+.name-check-form{display:flex;align-items:stretch;gap:9px;flex-wrap:wrap;margin:13px 0}
+.name-check-form input{flex:1;min-width:180px;border-radius:10px;border:1px solid var(--line2);background:var(--panel2);color:var(--text);padding:10px 12px}
+.name-check-result{min-height:30px;margin:8px 0 24px;font-size:13px;line-height:1.5;color:var(--muted)}
+.name-check-result b{color:var(--text)}
+.name-check-result a{color:var(--accent2)}
+.name-stats-grid h3{font-size:14px;margin:20px 0 7px}
+.name-idea-list{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 10px}
+.name-idea-list button{border:1px solid var(--line2);background:var(--panel2);border-radius:20px;padding:6px 10px;color:var(--accent2);cursor:pointer}
+.name-idea-list button:hover{background:var(--panel3)}
+.name-rank-list{max-height:650px;overflow-y:auto;padding-right:6px}
+.name-rank-item{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:12px}
+.name-rank-item:first-child{border-top:0}
+.name-rank-item a{color:var(--text);text-decoration:none;overflow-wrap:anywhere}
+.name-rank-item a:hover{color:var(--accent2)}
+.name-rank-item span:nth-child(2){overflow-wrap:anywhere}
+.name-rank-item b{font-variant-numeric:tabular-nums}
+.name-rank-position{color:var(--muted)}
+.name-theme-list{display:grid;gap:15px}
+.name-theme-head{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:6px}
+.name-theme-head b{font-variant-numeric:tabular-nums}
+.name-bar{height:7px;border-radius:30px;background:var(--panel3);overflow:hidden}
+.name-bar>div{height:100%;border-radius:30px;background:var(--accent)}
+@media(max-width:850px){.name-stats-grid{grid-template-columns:1fr}}

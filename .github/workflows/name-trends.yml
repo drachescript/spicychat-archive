@@ -2,6 +2,11 @@ name: Build Archive name and title stats
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/publish_name_trends.py"
+      - ".github/workflows/name-trends.yml"
   schedule:
     # Daily snapshot. Reads existing compact index shards (not bot records).
     - cron: "17 4 * * *"

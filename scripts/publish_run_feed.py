@@ -232,6 +232,16 @@ def main() -> int:
                 for info in listings.values()
                 if isinstance(info, dict)
             ),
+            "newestListingsChecked": (
+                int((listings.get("latest") or {}).get("count") or 0)
+                if isinstance(listings.get("latest"), dict)
+                else None
+            ),
+            "newFromNewest": (
+                int((listings.get("latest") or {}).get("new") or 0)
+                if isinstance(listings.get("latest"), dict)
+                else None
+            ),
             "newFromDiscovery": int(exploration.get("new") or 0),
             "changedIngestRecords": int(exploration.get("changed") or 0),
             "discoveryDurationSeconds": discovery_duration,

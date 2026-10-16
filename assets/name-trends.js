@@ -161,6 +161,11 @@
       }
     });
     document.getElementById('generate-names').addEventListener('click', showIdeas);
+    const requestedName = new URLSearchParams(location.search).get('name');
+    if (requestedName && requestedName.trim()) {
+      document.getElementById('name-query').value = requestedName.slice(0, 100);
+      form.requestSubmit();
+    }
   }
   main().catch(error => { container.textContent = 'Could not load name stats: ' + error.message; });
 })();

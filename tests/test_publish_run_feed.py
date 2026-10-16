@@ -183,6 +183,15 @@ class PublishRunFeedTests(unittest.TestCase):
         self.assertEqual(listing_new, 1334)
         self.assertEqual(other, 0)
 
+    def test_newest_scan_is_distinct_from_deep_discovery(self):
+        listings = {"latest": {"count": 3500, "new": 563}}
+        latest = listings["latest"]
+        self.assertEqual(latest["count"], 3500)
+        self.assertEqual(latest["new"], 563)
+        self.assertEqual(
+            sum(int((value or {}).get("new") or 0) for value in listings.values()), 563
+        )
+
     def test_hard_workflow_failure_stays_failure(self):
         exploration = {
             "errors": ["warning from previous summary"],

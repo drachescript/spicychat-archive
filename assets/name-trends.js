@@ -134,7 +134,7 @@
       themeRows(stats.titleSituations) + '</section></div>' +
       '<section class="table-card"><h2>Common tags on creator-indexed bots</h2><p class="filter-note">These reflect stored SpicyChat tags. Unlike the title-pattern groups, they are creator-selected labels.</p>' +
       statsTable(stats.topTagsFromCreatorIndex, 'No tag data available.', { limit: 30 }) + '</section>' +
-      '<p class="filter-note name-coverage">Name counts only include the Archive\\'s currently indexed bot records, and names may be missing or old. The title/trend section covers the subset with creator metadata; non-English titles may not match the English theme patterns. All statistics update with the published daily snapshot.</p>';
+      '<p class="filter-note name-coverage">Name counts only include the Archive’s currently indexed bot records, and names may be missing or old. The title/trend section covers the subset with creator metadata; non-English titles may not match the English theme patterns. All statistics update with the published daily snapshot.</p>';
 
     const form = document.getElementById('check-name');
     form.addEventListener('submit', async event => {

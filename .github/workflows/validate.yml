@@ -32,6 +32,8 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check assets/app.js
+          node --check assets/stats-live.js
+          node --check assets/home.js
           node --check assets/name-trends.js
 
       - name: Title role regression checks

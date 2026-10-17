@@ -231,3 +231,17 @@
 .name-bar{height:7px;border-radius:30px;background:var(--panel3);overflow:hidden}
 .name-bar>div{height:100%;border-radius:30px;background:var(--accent)}
 @media(max-width:850px){.name-stats-grid{grid-template-columns:1fr}}
+
+/* Shared inner-page header: same layout, content, and visual hierarchy as Home.
+   Scoped classes prevent archive cards/buttons from inheriting header styles. */
+.archive-unified-header{position:sticky;top:0;z-index:50;background:rgba(8,9,12,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(43,49,59,.8)}
+.archive-unified-header .archive-head-inner{width:min(1240px,calc(100% - 36px));margin:0 auto;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:26px}
+.archive-unified-header .archive-head-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f6f7f9;min-width:max-content}
+.archive-unified-header .archive-head-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;border:1px solid #5a392d;background:linear-gradient(145deg,#2b1711,#17191f);color:#ff9b73;font-size:12px;font-weight:900;letter-spacing:.04em}
+.archive-unified-header .archive-head-title{display:grid;gap:1px}
+.archive-unified-header .archive-head-title b{font-size:14px;letter-spacing:-.01em}
+.archive-unified-header .archive-head-title small{font-size:9px;color:#9ca6b4;font-weight:650;text-transform:uppercase;letter-spacing:.08em}
+.archive-unified-header .archive-head-links{display:flex;align-items:center;justify-content:flex-end;gap:4px;flex-wrap:wrap}
+.archive-unified-header .archive-head-links a{text-decoration:none;color:#9ca6b4;font-size:12px;font-weight:650;padding:8px 10px;border-radius:8px}
+.archive-unified-header .archive-head-links a:hover,.archive-unified-header .archive-head-links a.active{color:#f6f7f9;background:#171b22}
+@media(max-width:900px){.archive-unified-header .archive-head-inner{align-items:flex-start;padding:12px 0;flex-direction:column;gap:10px}.archive-unified-header .archive-head-links{justify-content:flex-start;gap:2px}.archive-unified-header .archive-head-links a{padding:7px 8px}}

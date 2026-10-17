@@ -31,7 +31,11 @@
         });
   };
   const archiveAdded = row => Number(row?.addedSincePrevious ?? row?.exploration?.new ?? 0) || 0;
-  const discovered = row => Number(row?.exploration?.new ?? 0) || 0;
+  const discovered = row => Number(row?.listings?.latest?.new ?? 0) || 0;
+  const scanned = row => row?.listings?.latest?.count == null ? '—' : fmt(row.listings.latest.count);
+  const deep = row => Number(row?.exploration?.pageBudget || 0)
+    ? `${fmt(row.exploration?.pagesCompleted)}/${fmt(row.exploration?.pageBudget)}`
+    : 'Skipped';
   const displayableArchiveRun = row =>
     row?.kind === 'archive-run' && (archiveAdded(row) > 0 || discovered(row) > 0);
   const displayArchiveRuns = stats => (stats?.runs || []).filter(displayableArchiveRun);
@@ -133,7 +137,7 @@
       const card = findCard('Recent batches') || findCard('Recent archive runs');
       const runTable = card?.querySelector('tbody');
       if (runTable) {
-        const html = recent.length ? recent.map(row => `<tr><td>${fullDate(row.at)}</td><td>+${fmt(archiveAdded(row))}</td><td>${fmt(discovered(row))}</td><td>${fmt(row.exploration?.pagesCompleted)}/${fmt(row.exploration?.pageBudget)}</td><td>${row.runDurationSeconds ? `${Math.round(row.runDurationSeconds / 60)}m` : '—'}</td></tr>`).join('') : '<tr><td colspan="5">No batches with new bots yet.</td></tr>';
+        const html = recent.length ? recent.map(row => `<tr><td>${fullDate(row.at)}</td><td>+${fmt(archiveAdded(row))}</td><td>+${fmt(discovered(row))}</td><td>${scanned(row)}</td><td>${deep(row)}</td><td>${row.runDurationSeconds ? `${Math.round(row.runDurationSeconds / 60)}m` : '—'}</td></tr>`).join('') : '<tr><td colspan="6">No batches with new bots yet.</td></tr>';
         if (runTable.innerHTML !== html) runTable.innerHTML = html;
       }
     }
@@ -169,13 +173,8 @@
       ? 'Net change in SpicyChat’s reported public bot count over the last seven days.'
       : `I only have ${Number(growth.observedHours || 0).toFixed(1)} hours of public-index history so far, so I’m showing the full tracked window instead of pretending it is seven days.`;
 
-    // A manual 750/1000-page test should never make the page claim that is the
-    // normal scheduled target. The checked-in base target is authoritative.
-    const normalScan = [...document.querySelectorAll('.recent-run span')]
-      .find(el => el.textContent.trim() === 'next normal scan');
-    const normalValue = normalScan?.parentElement?.querySelector('b');
-    const basePages = Number(stats?.adaptiveDiscovery?.basePages || 0);
-    if (normalValue && basePages) setText(normalValue, `${fmt(basePages)} pages`);
+    // Scheduled maintenance does not use the old 500-page deep sweep. The
+    // Stats page renders newest-first coverage directly from each run record.
   }
 
   function patchGrowthBanner(stats, growth) {

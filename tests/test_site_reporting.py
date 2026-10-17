@@ -39,7 +39,7 @@ class SiteReportingTests(unittest.TestCase):
     def test_stats_show_both_newest_and_deep_discovery(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
         live = (ROOT / "assets" / "stats-live.js").read_text(encoding="utf-8")
-        self.assertIn("r?.listings?.latest?.count", app)
+        self.assertIn("run?.listings?.latest?.count", app)
         self.assertIn("row?.listings?.latest?.count", live)
         self.assertIn("Newest listings scanned", app)
         self.assertIn("New from newest", app)

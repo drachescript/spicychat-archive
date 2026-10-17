@@ -27,28 +27,24 @@
       const publicBots = Number(manifest.publicIndexBots ?? manifest.activeBots) || 0;
       const deletedBots = Number(manifest.deletedBots) || 0;
       const published = manifest.reconciliation || {};
-      const rawBotGap = Number.isFinite(Number(published.countGap))
-        ? Number(published.countGap)
-        : trackedBots - publicBots - deletedBots;
-      const botGap = Math.abs(rawBotGap);
+      // The previously displayed 2k+ "unreconciled" value was an arithmetic
+      // gap between a sitewide *live* public count and distinct archived bot
+      // IDs. It is NOT a list of specific unverified IDs or deletion candidates.
+      // Use the actual queued per-ID missing checks instead.
+      const pendingChecks = Math.max(0, Number(published.pendingVerificationBots ?? manifest.missingBots) || 0);
 
       set('stat-bots-total', trackedBots);
       set('stat-bots-public', publicBots);
       set('stat-bots-deleted', deletedBots);
-      set('stat-bots-unreconciled', botGap);
-
-      const gapLabel = document.getElementById('stat-bots-unreconciled-label');
-      if (gapLabel) {
-        gapLabel.textContent = rawBotGap >= 0
-          ? 'not yet reconciled'
-          : 'public bots not yet tracked';
-      }
+      set('stat-bots-verification-pending', pendingChecks);
 
       const reconcile = document.getElementById('snapshot-reconcile');
       if (reconcile) {
-        reconcile.innerHTML = rawBotGap >= 0
-          ? '<strong>Bots:</strong> ' + fmt(publicBots) + ' public + ' + fmt(deletedBots) + ' gone + ' + fmt(botGap) + ' not yet reconciled = ' + fmt(trackedBots) + ' archived.'
-          : '<strong>Bots:</strong> SpicyChat currently reports ' + fmt(botGap) + ' more public bots than this archive has accounted for after confirmed gone records.';
+        reconcile.textContent =
+          'The public count is reported by SpicyChat, while the Archive total ' +
+          'counts every preserved bot ID, including unavailable history. ' +
+          fmt(pendingChecks) + ' specific bot IDs are awaiting missing-status verification. ' +
+          'These totals are different populations and should not be added together.';
       }
 
       const base = String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');

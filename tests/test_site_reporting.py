@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INNER = [
     "bots", "deleted", "lorebooks", "deleted-lorebooks", "stats",
-    "name-trends", "faq", "recovery", "merge", "changes", "restored",
+    "name-trends", "tag-stats", "faq", "recovery", "merge", "changes", "restored",
     "activity", "explorer", "health", "search", "creator", "bot", "lorebook",
 ]
 EXPECTED_PATHS = [

@@ -8,4 +8,8 @@ It provides a searchable catalog with sorting, creator and status filters, inclu
 
 Live site: https://spicychatarchive.drache.uk/
 
+Tag statistics: https://spicychatarchive.drache.uk/tag-stats/
+
+The Tag Stats page counts last-known bot tag fields in the Archive's creator indexes, including previously archived/deleted bots. It provides exact label lookup, rare/popular tags, co-occurring tag pairs, creator breakdowns, and two-tag comparison. The daily stats workflow publishes a new snapshot of current Archive tag counts; trends start on the first successful publication (no fabricated past tag histories). These counts do not represent official tag availability, words in bot scenarios, current live sitewide usage, or audience preferences.
+
 SpicyChat Archive is an independent archival project and is not affiliated with SpicyChat.

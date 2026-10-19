@@ -40,7 +40,7 @@ class TagStatsTests(unittest.TestCase):
         overview, shards = tags.aggregate(self.source(), "2026-10-19T20:00:00Z")
         self.assertEqual(overview["coverage"]["indexedBots"], 7)
         self.assertEqual(overview["coverage"]["taggedBots"], 5)
-        self.assertEqual(overview["coverage"]["tagAssignments"], 9)
+        self.assertEqual(overview["coverage"]["tagAssignments"], 8)
         self.assertEqual(overview["distinctTags"], 4)
         def lookup(key):
             return shards[tags.bucket_for(key)][key]

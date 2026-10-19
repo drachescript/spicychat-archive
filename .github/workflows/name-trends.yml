@@ -1,4 +1,4 @@
-name: Build Archive name and title stats
+name: Build Archive name, title and tag stats
 
 on:
   workflow_dispatch:
@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "scripts/publish_name_trends.py"
+      - "scripts/publish_tag_stats.py"
       - ".github/workflows/name-trends.yml"
   schedule:
     # Daily snapshot. Reads existing compact index shards (not bot records).
@@ -42,6 +43,9 @@ jobs:
       - name: Publish updated name statistics
         if: steps.guard.outputs.mode == 'r2'
         run: python scripts/publish_name_trends.py
+      - name: Publish updated tag statistics and daily trend snapshot
+        if: steps.guard.outputs.mode == 'r2'
+        run: python scripts/publish_tag_stats.py
       - name: Explain quota pause
         if: steps.guard.outputs.mode != 'r2'
-        run: echo "Name statistics were left unchanged because the R2 quota guard is paused." >> "$GITHUB_STEP_SUMMARY"
+        run: echo "Name and tag statistics were left unchanged because the R2 quota guard is paused." >> "$GITHUB_STEP_SUMMARY"

@@ -35,6 +35,7 @@ jobs:
           node --check assets/stats-live.js
           node --check assets/home.js
           node --check assets/name-trends.js
+          node --check assets/tag-stats.js
 
       - name: Title role regression checks
         run: |

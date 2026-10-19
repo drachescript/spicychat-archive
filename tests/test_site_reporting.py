@@ -11,7 +11,7 @@ INNER = [
 ]
 EXPECTED_PATHS = [
     "../", "../deleted/", "../deleted-lorebooks/", "../recovery/",
-    "../merge/", "../stats/", "../name-trends/", "../faq/",
+    "../merge/", "../stats/", "../name-trends/", "../tag-stats/", "../faq/",
 ]
 
 

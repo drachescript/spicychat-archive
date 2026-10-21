@@ -222,6 +222,29 @@ def latest_content_change(record: dict[str, Any]) -> str:
     return best
 
 
+def previous_bot_tags(record: dict[str, Any]) -> list[str]:
+    """Former tag labels recorded in the bot's original field history."""
+    last = last_known(record)
+    now = last.get("tags") if isinstance(last.get("tags"), list) else []
+    current = {x.strip().casefold() for x in now if isinstance(x, str) and x.strip()}
+    previous: dict[str, str] = {}
+
+    def collect(value: Any) -> None:
+        if isinstance(value, list):
+            for tag in value:
+                if isinstance(tag, str) and tag.strip():
+                    text = " ".join(tag.split())
+                    if text.casefold() not in current:
+                        previous.setdefault(text.casefold(), text)
+
+    collect(record.get("everTags"))
+    for row in record.get("fieldHistory") or []:
+        if isinstance(row, dict) and str(row.get("path") or "").split(".")[-1] == "tags":
+            collect(row.get("from"))
+            collect(row.get("to"))
+    return list(previous.values())
+
+
 def creator_bot_meta(record: dict[str, Any]) -> dict[str, Any]:
     status = str((record.get("status") or {}).get("current") or "unknown").lower()
     restored = restored_events(record)
@@ -245,6 +268,7 @@ def creator_bot_meta(record: dict[str, Any]) -> dict[str, Any]:
         "name": bot_name(record),
         "title": bot_title(record),
         "tags": lk.get("tags") if isinstance(lk.get("tags"), list) else [],
+        "historicalTags": previous_bot_tags(record),
         "isNsfw": is_nsfw(record),
         "avatar": avatar.get("publicUrl") or source_avatar,
         "avatarFallback": source_avatar,

@@ -93,7 +93,25 @@ async function loadTags(){
     archivedOnlyTagLabels=new Map((data.archivedOnlyTags||[])
       .filter(row=>row&&typeof row.tag==='string')
       .map(row=>[row.tag.toLowerCase(),row.tag]));
-    return data.tags||[];
+    const base='https://data.spicychatarchive.drache.uk/indexes/';
+    const [tagCounts,history]=await Promise.all([
+      fetchJson(base+'tag-stats.json').catch(()=>({})),
+      fetchJson(base+'historical-tags.json').catch(()=>({}))
+    ]);
+    // Current observed tags and former tags can outlive (or postdate) the
+    // static snapshot of the creator-picker taxonomy.
+    const known=new Set();
+    const combined=[];
+    for(const label of [...(data.tags||[]),...(tagCounts.allTagLabels||[]),...(history.formerTagLabels||[])]){
+      if(typeof label!=='string'||!label.trim())continue;
+      const key=historyTagKey(label);
+      if(known.has(key))continue;
+      known.add(key);combined.push(label);
+      if(!(data.tags||[]).some(x=>historyTagKey(x)===key)){
+        archivedOnlyTagLabels.set(key,label);
+      }
+    }
+    return combined;
   }catch{return [];}
 }
 async function loadArchiveHistory(){try{return await fetchJson(asset('data/archive-history.json'));}catch{return { milestones: [] };}}
@@ -321,8 +339,10 @@ async function renderHistoricalPublicMatches(runtime,state,el){
     const members=await historicalTagMembers(runtime,state);
     const q=state.q.toLowerCase(),creator=state.creator.toLowerCase();
     const rows=[...members.values()].filter(item=>{
-      if(state.match!=='any'&&item.tags.size<state.include.length)return false;
       const b=item.bot;
+      const matching=new Set([...item.tags,...(b.tags||[]).map(historyTagKey)]);
+      if(state.match!=='any'&&!state.include.every(t=>matching.has(historyTagKey(t))))return false;
+      if(!state.showBlocked&&(b.tags||[]).some(t=>state.exclude.some(x=>historyTagKey(x)===historyTagKey(t))))return false;
       if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
       if(q&&!([b.id,b.name,b.title,b.creator].join(' ').toLowerCase().includes(q)))return false;
       return true;

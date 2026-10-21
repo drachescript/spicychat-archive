@@ -285,3 +285,17 @@
 
 /* Retired creator tags remain filterable as historical Archive labels. */
 .archive-only-tag{color:var(--muted);font-size:10px;font-weight:500}
+
+/* Historical tag search results keep former assignments distinct from live results. */
+.historical-tag-switch{display:flex;gap:8px;align-items:center;margin:12px 0 7px;font-size:12px;font-weight:650}
+.historical-tag-switch input{width:16px;height:16px;accent-color:var(--accent)}
+.historical-tag-panel{padding:14px;border:1px solid var(--line2);border-radius:12px;margin:8px 0 18px;background:var(--panel)}
+.historical-tag-panel[hidden]{display:none}
+.historical-tag-panel h3{font-size:15px;margin:0 0 7px}
+.historic-bot-results{max-height:600px;overflow:auto;margin:12px 0}
+.historic-bot-hit{padding:10px 3px;display:flex;flex-direction:column;gap:4px;border-bottom:1px solid var(--line);font-size:12px}
+.historic-bot-hit a{color:var(--accent2);text-decoration:none}
+.historic-bot-hit a:hover{text-decoration:underline}
+.historic-bot-hit>span{color:var(--text)}
+.historic-bot-hit>small{color:var(--muted);line-height:1.45}
+.historic-bot-hit:last-child{border-bottom:0}

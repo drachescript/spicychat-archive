@@ -71,6 +71,7 @@ def collect(
     changes: list[dict[str, Any]], creator_shards: Any, now: str
 ) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:
     membership, skipped = from_changes(changes)
+    needed_ids = {bot_id for rows in membership.values() for bot_id in rows}
     by_id: dict[str, dict[str, Any]] = {}
     # Only records that have evidence of a former tag need compact card metadata.
     # Read the creator-index shards once and never hold the full index in memory.
@@ -89,7 +90,8 @@ def collect(
                 for label in previously:
                     key = norm_tag(label)
                     membership[key].setdefault(id_key, {"id": id_key})
-                if previously or any(id_key in rows for rows in membership.values()):
+                    needed_ids.add(id_key)
+                if id_key in needed_ids:
                     by_id[id_key] = {
                         "id": id_key,
                         "name": str(meta.get("name") or ""),

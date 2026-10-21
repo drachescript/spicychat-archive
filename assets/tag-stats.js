@@ -93,11 +93,78 @@
       '<div class="tag-stats-trend-axis"><span>' + esc(first.date) + '</span><span>' +
       esc(last.date) + '</span></div>';
   }
+  const previousShardCache = new Map();
+  let previousRequest = 0;
+  async function getFormerTagBots(text) {
+    const key = normalize(text);
+    if(!key)return [];
+    const shard = hash(key);
+    if(!previousShardCache.has(shard)) {
+      previousShardCache.set(shard, fetchJson('historical-tags/' + shard + '.json')
+        .then(result => {
+          if(result.schemaVersion !== 1 || !result.tags)throw Error('Historic tag lookup index is not ready');
+          return result.tags;
+        }).catch(error => { previousShardCache.delete(shard); throw error; }));
+    }
+    return (await previousShardCache.get(shard))[key]?.bots || [];
+  }
+  async function showFormerBots(tag) {
+    const root = document.getElementById('former-tag-results');
+    if(!root)return;
+    const request = ++previousRequest;
+    root.textContent = 'Looking up former tag assignments…';
+    try {
+      const bots = await getFormerTagBots(tag);
+      if(request !== previousRequest)return;
+      if(!bots.length) {
+        root.innerHTML = '<p class="filter-note">No removed tag assignments for <b>' + esc(tag) +
+          '</b> have been recovered yet. Last-known tag matches are listed separately above.</p>';
+        return;
+      }
+      root.innerHTML =
+        '<p class="filter-note">' + fmt(bots.length) +
+        ' bot IDs were recorded with this tag previously and do not currently have it in their last-known tag fields. Data is limited to changes observed by the Archive.</p>' +
+        '<div class="tag-stats-compare-form"><input id="former-tag-search" type="search" placeholder="Filter by bot name or creator" aria-label="Filter previously tagged bots">' +
+        '<select id="former-tag-status" aria-label="Formerly tagged bot status"><option value="all">All statuses</option><option value="public">Public</option><option value="deleted">Deleted</option><option value="unknown">Unknown</option></select></div>' +
+        '<p id="former-tag-count" class="filter-note"></p><div id="former-tag-list" class="historic-bot-results"></div>' +
+        '<button id="former-tag-more" type="button" class="secondary-button">Show more</button>';
+      const list = root.querySelector('#former-tag-list');
+      const search = root.querySelector('#former-tag-search');
+      const status = root.querySelector('#former-tag-status');
+      const more = root.querySelector('#former-tag-more');
+      const count = root.querySelector('#former-tag-count');
+      let visible = 80;
+      const render = () => {
+        const q = normalize(search.value);
+        const type = status.value;
+        const filtered = bots.filter(row =>
+          (type === 'all' || String(row.status || 'unknown').toLowerCase() === type) &&
+          (!q || [row.id,row.name,row.creator,row.title].join(' ').toLowerCase().includes(q)));
+        count.textContent = fmt(filtered.length) + ' historical bot matches';
+        list.innerHTML = filtered.slice(0,visible).map(row =>
+          '<div class="historic-bot-hit"><a href="../bot/?id=' + encodeURIComponent(row.id) + '"><b>' +
+          esc(row.name || row.id) + '</b></a><span>' + esc(row.title || 'Archived character') +
+          '</span><small>' + esc(row.creator ? '@' + row.creator + ' · ' + (row.status || 'unknown') : (row.status || 'unknown')) +
+          '</small></div>'
+        ).join('');
+        more.hidden = filtered.length <= visible;
+      };
+      search.addEventListener('input',()=>{visible=80;render();});
+      status.addEventListener('change',()=>{visible=80;render();});
+      more.addEventListener('click',()=>{visible+=80;render();});
+      render();
+    } catch(error) {
+      if(request !== previousRequest)return;
+      root.textContent = 'Former-tag lookup is not ready: ' + error.message;
+    }
+  }
+
   async function showTag(raw) {
     const name = String(raw || '').trim();
     const outcome = document.getElementById('tag-lookup-outcome');
     if (!name) { outcome.textContent = 'Enter a tag to check.'; return; }
     outcome.textContent = 'Checking…';
+    void showFormerBots(name);
     try {
       const item = await getTag(name);
       const key = normalize(name);
@@ -177,7 +244,9 @@
       '<p class="filter-note">Exact tag label; capitalization and extra spaces are ignored. A term with zero matches may still appear in titles or descriptions.</p>' +
       '<form id="tag-lookup-form" class="name-check-form"><input id="tag-lookup-input" maxlength="100" required list="all-archive-tags" placeholder="Enter a tag" aria-label="Search archived tag usage">' +
       '<button type="submit" class="primary-button">Check tag</button></form>' +
-      '<div id="tag-lookup-outcome" class="tag-stat-details">Pick a tag to see its usage, creators and common combinations.</div></section>' +
+      '<div id="tag-lookup-outcome" class="tag-stat-details">Pick a tag to see its usage, creators and common combinations.</div>' +
+      '<h3>Previously tagged bots</h3><p class="filter-note">See bots that used this tag earlier, even if their creators removed it. Includes deleted bots when the Archive has recorded the assignment.</p>' +
+      '<div id="former-tag-results" aria-live="polite">Search a tag above to browse its archived historical matches.</div></section>' +
       '<section class="table-card"><h2>Compare tags</h2><p class="filter-note">Compare exactly two tags across the same indexed Archive snapshot.</p>' +
       '<form id="tag-compare-form" class="tag-stats-compare-form"><input id="tag-compare-a" list="all-archive-tags" maxlength="100" required placeholder="First tag">' +
       '<input id="tag-compare-b" list="all-archive-tags" maxlength="100" required placeholder="Second tag">' +

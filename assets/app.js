@@ -84,7 +84,18 @@ async function fetchCachedJson(url){
 }
 async function loadManifest(){return fetchJson(asset('data/manifest.json'));}
 async function loadStats(){try{return await fetchJson(asset('data/stats.json'));}catch{return null;}}
-async function loadTags(){try{return (await fetchJson(asset('data/tags.json'))).tags||[];}catch{return [];}}
+let archivedOnlyTagLabels=new Map();
+async function loadTags(){
+  try{
+    const data=await fetchJson(asset('data/tags.json'));
+    // The Archive tag catalog is historical, not synchronized destructively
+    // with SpicyChat's current creator picker (which may retire old labels).
+    archivedOnlyTagLabels=new Map((data.archivedOnlyTags||[])
+      .filter(row=>row&&typeof row.tag==='string')
+      .map(row=>[row.tag.toLowerCase(),row.tag]));
+    return data.tags||[];
+  }catch{return [];}
+}
 async function loadArchiveHistory(){try{return await fetchJson(asset('data/archive-history.json'));}catch{return { milestones: [] };}}
 const R2_RUNTIME_FALLBACK={
   schemaVersion:1,storageMode:'r2',r2ReadAllowed:true,
@@ -257,7 +268,9 @@ function tagSidebar(state,tags){
   const rows=tags.map(tag=>{
     const inc=state.include.some(x=>x.toLowerCase()===tag.toLowerCase());
     const exc=state.exclude.some(x=>x.toLowerCase()===tag.toLowerCase());
-    return `<div class="tag-filter-row" data-tag="${esc(tag)}"><span class="tag-filter-name" title="${esc(tag)}">${esc(tag)}</span>
+    const historical=archivedOnlyTagLabels.has(tag.toLowerCase());
+    const caption=historical?' (historical)':'';
+    return `<div class="tag-filter-row" data-tag="${esc(tag)}"><span class="tag-filter-name" title="${esc(tag)}${caption}">${esc(tag)}${historical?'<small class="archive-only-tag"> · historical</small>':''}</span>
       <button type="button" class="tag-toggle include ${inc?'active':''}" data-action="include" aria-label="Include ${esc(tag)}">+</button>
       <button type="button" class="tag-toggle exclude ${exc?'active':''}" data-action="exclude" aria-label="Exclude ${esc(tag)}">−</button></div>`;
   }).join('');

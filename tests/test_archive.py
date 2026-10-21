@@ -69,6 +69,47 @@ class ArchiveMergeTests(unittest.TestCase):
             for event in record['fieldHistory']
         ))
 
+    def test_ever_observed_tags_survive_multiple_removals_and_case_changes(self):
+        first = {'character_id': 'retired-abc', 'name': 'Archive Bot',
+                 'tags': ['Step-Family', 'Fantasy']}
+        record, _ = mod.observe_bot(
+            None, first, source='character-api', at='2026-10-18T00:00:00Z'
+        )
+        self.assertEqual(set(record['everTags']), {'Step-Family', 'Fantasy'})
+        updated = {'character_id': 'retired-abc', 'name': 'Archive Bot',
+                   'tags': ['Fantasy', 'Vampire']}
+        record, _ = mod.observe_bot(
+            record, updated, source='character-api', at='2026-10-19T00:00:00Z'
+        )
+        self.assertEqual(set(record['everTags']), {'Step-Family', 'Fantasy', 'Vampire'})
+        later = {'character_id': 'retired-abc', 'name': 'Archive Bot',
+                 'tags': ['VAMPIRE']}
+        record, changed = mod.observe_bot(
+            record, later, source='character-api', at='2026-10-20T00:00:00Z'
+        )
+        self.assertTrue(changed)
+        self.assertEqual({t.lower() for t in record['everTags']},
+                         {'step-family', 'fantasy', 'vampire'})
+        self.assertEqual(record['lastKnown']['tags'], ['VAMPIRE'])
+
+    def test_ever_observed_tags_backfills_old_field_history_when_touched(self):
+        first = {'character_id': 'old-abc', 'name': 'Archive Bot',
+                 'tags': ['Step-Family', 'Fantasy']}
+        record, _ = mod.observe_bot(
+            None, first, source='typesense', at='2026-10-18T00:00:00Z'
+        )
+        record['everTags'] = []  # Old saved format without the accumulator.
+        record, _ = mod.observe_bot(
+            record,
+            {'character_id': 'old-abc', 'name': 'Archive Bot', 'tags': ['Fantasy']},
+            source='typesense', at='2026-10-19T00:00:00Z'
+        )
+        self.assertIn('Step-Family', record['everTags'])
+        self.assertTrue(any(
+            event['path'] == 'tags' and 'Step-Family' in (event.get('from') or [])
+            for event in record['fieldHistory']
+        ))
+
     def test_zero_and_false_are_meaningful(self):
         merged = mod.merge_last_known({'rating_score': 5, 'is_nsfw': True}, {'rating_score': 0, 'is_nsfw': False})
         self.assertEqual(merged['rating_score'], 0)

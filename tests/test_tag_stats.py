@@ -56,6 +56,21 @@ class TagStatsTests(unittest.TestCase):
         self.assertEqual(overview["topPairs"][0]["count"], 2)
         self.assertEqual(overview["rareTags"][0]["count"], 1)
 
+    def test_retired_step_family_tag_still_counts_in_archive(self):
+        # Official current picker may have 90 tags; archived records are not
+        # filtered against that current taxonomy.
+        overview, shards = tags.aggregate([
+            {"old_creator": {"display": "Old Creator", "bots": {
+                "old-bot": {"tags": ["Step-Family", "Romantic"]},
+                "new-bot": {"tags": ["Romantic"]},
+            }}},
+        ], "2026-10-21T00:00:00Z")
+        entry = shards[tags.bucket_for("step-family")]["step-family"]
+        self.assertEqual(entry["count"], 1)
+        self.assertEqual(entry["tag"], "Step-Family")
+        self.assertEqual(entry["withTags"]["romantic"], 1)
+        self.assertIn("Step-Family", overview["allTagLabels"])
+
     def test_fresh_history_does_not_invent_older_snapshots(self):
         stats = {"generatedAt": "2026-10-19T20:00:00Z", "coverage": {"indexedBots": 7}}
         current = tags.updated_history(None, stats, {"romance": 4})

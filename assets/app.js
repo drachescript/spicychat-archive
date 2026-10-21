@@ -102,12 +102,16 @@ async function loadTags(){
     // static snapshot of the creator-picker taxonomy.
     const known=new Set();
     const combined=[];
+    const previouslySeen=new Set((history.formerTagLabels||[]).map(historyTagKey));
     for(const label of [...(data.tags||[]),...(tagCounts.allTagLabels||[]),...(history.formerTagLabels||[])]){
       if(typeof label!=='string'||!label.trim())continue;
       const key=historyTagKey(label);
       if(known.has(key))continue;
       known.add(key);combined.push(label);
-      if(!(data.tags||[]).some(x=>historyTagKey(x)===key)){
+      // A new Archive-observed tag is not necessarily retired. Only tags
+      // explicitly retired or appearing in former-assignment history get the
+      // historical label (and retain their original searchable tag value).
+      if(previouslySeen.has(key)&&!(data.tags||[]).some(x=>historyTagKey(x)===key)){
         archivedOnlyTagLabels.set(key,label);
       }
     }

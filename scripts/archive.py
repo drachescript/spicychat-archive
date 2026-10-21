@@ -168,6 +168,36 @@ def merge_last_known(base: dict[str, Any], incoming: dict[str, Any]) -> dict[str
     return out
 
 
+def ever_observed_tags(record: dict[str, Any]) -> list[str]:
+    """Tag names observed on this bot, including tags removed in later edits.
+
+    Reconstruct from older full field-history events on first touch. The
+    permanent union prevents a later creator-picker change from erasing it.
+    """
+    tags: dict[str, str] = {}
+
+    def collect(values: Any) -> None:
+        if not isinstance(values, list):
+            return
+        for item in values:
+            if isinstance(item, str) and item.strip():
+                text = " ".join(item.split())
+                tags.setdefault(text.casefold(), text)
+
+    collect(record.get("everTags"))
+    known = record.get("lastKnown") or {}
+    if isinstance(known, dict):
+        collect(known.get("tags"))
+    for doc in (record.get("current") or {}).values():
+        if isinstance(doc, dict):
+            collect(doc.get("tags"))
+    for event in record.get("fieldHistory") or []:
+        if isinstance(event, dict) and str(event.get("path") or "").split(".")[-1] == "tags":
+            collect(event.get("from"))
+            collect(event.get("to"))
+    return list(tags.values())
+
+
 def append_change(record: dict[str, Any], *, at: str, source: str, path: str, old: Any, new: Any, kind: str = "value") -> None:
     history = record.setdefault("fieldHistory", [])
     event = {"at": at, "source": source, "path": path, "kind": kind}
@@ -241,6 +271,10 @@ def observe_bot(record: dict[str, Any] | None, incoming: dict[str, Any], *, sour
 
     record.setdefault("current", {})[source] = incoming
     record["lastKnown"] = merge_last_known(record.get("lastKnown") or {}, incoming)
+    ever_tags = ever_observed_tags(record)
+    if ever_tags != record.get("everTags", []):
+        record["everTags"] = ever_tags
+        changed = True
     record["lastSeenAt"] = at
     record.setdefault("sources", {})[source] = {"lastSeenAt": at}
 

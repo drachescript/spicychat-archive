@@ -40,6 +40,35 @@ class ArchiveMergeTests(unittest.TestCase):
         self.assertEqual(record['lastKnown']['personality'], 'Original definition')
         self.assertTrue(any(e['path'] == 'personality' and e['kind'] == 'hidden-or-missing' for e in record['fieldHistory']))
 
+    def test_retired_step_family_tag_is_preserved_in_field_history(self):
+        # A current creator-picker taxonomy change must not rewrite a previous
+        # archival observation. lastKnown may track newer tags, but the earlier
+        # tag assignment remains recoverable in fieldHistory.
+        first = {
+            'character_id': 'abc-historical-tag',
+            'name': 'Historic Bot',
+            'tags': ['Step-Family', 'Fantasy'],
+        }
+        record, _ = mod.observe_bot(
+            None, first, source='character-api', at='2026-10-20T00:00:00Z'
+        )
+        second = {
+            'character_id': 'abc-historical-tag',
+            'name': 'Historic Bot',
+            'tags': ['Fantasy'],
+        }
+        record, changed = mod.observe_bot(
+            record, second, source='character-api', at='2026-10-21T00:00:00Z'
+        )
+        self.assertTrue(changed)
+        self.assertEqual(record['lastKnown']['tags'], ['Fantasy'])
+        self.assertTrue(any(
+            event.get('path') == 'tags'
+            and 'Step-Family' in (event.get('from') or [])
+            and event.get('to') == ['Fantasy']
+            for event in record['fieldHistory']
+        ))
+
     def test_zero_and_false_are_meaningful(self):
         merged = mod.merge_last_known({'rating_score': 5, 'is_nsfw': True}, {'rating_score': 0, 'is_nsfw': False})
         self.assertEqual(merged['rating_score'], 0)

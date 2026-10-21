@@ -99,6 +99,8 @@ def collect(
                         "creator": str(row.get("display") or creator_key or ""),
                         "status": str(meta.get("status") or "unknown"),
                         "lastSeenAt": meta.get("lastSeenAt") or None,
+                        "avatar": str(meta.get("avatar") or ""),
+                        "tags": [str(x) for x in (meta.get("tags") or []) if isinstance(x, str)],
                         "_current": {norm_tag(t) for t in (meta.get("tags") or []) if isinstance(t, str)},
                     }
 

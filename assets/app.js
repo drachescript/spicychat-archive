@@ -153,6 +153,7 @@ function setQuery(state,push=false){
   set('lastSeen',state.lastSeen==='any'?'':state.lastSeen);
   set('savedField',state.savedField==='any'?'':state.savedField);
   set('roleHint',state.roleHint==='any'?'':state.roleHint);
+  set('past',state.includeHistorical?'1':'');
   if(Number(state.page)>1)u.searchParams.set('p',String(Math.floor(Number(state.page))));else u.searchParams.delete('p');
   if(state.exclude.length)u.searchParams.set('exclude',state.exclude.join(','));
   else u.searchParams.set('exclude','none');
@@ -264,6 +265,78 @@ function growthBanner(stats){
   const updates=recent.map(r=>`<span>${shortDate(r.at)} <b>+${fmt(r.addedSincePrevious??r.exploration?.new??0)}</b></span>`).join('');
   return `<section class="growth-banner"><div class="growth-main"><b>Adding ~${fmt(Math.round(pace))} bots/day</b><span> observed archive growth</span></div><div class="growth-updates">${updates||'<span>Growth history starts with the next archive scans.</span>'}</div></section>`;
 }
+// Archived tag history is intentionally independent of SpicyChat's live tag list.
+// It includes former assignments captured by the Archive, including deleted bots.
+const historicalTagShardCache=new Map();
+function historyTagKey(text){return String(text||'').normalize('NFKC').replace(/\s+/gu,' ').trim().toLowerCase();}
+function historyTagBucket(key){
+  let h=2166136261;
+  for(const byte of new TextEncoder().encode(key)){h^=byte;h=Math.imul(h,16777619)>>>0;}
+  return (h&15).toString(16).padStart(2,'0');
+}
+async function previousTagRows(runtime,tag){
+  const key=historyTagKey(tag);
+  if(!key)return [];
+  const shard=historyTagBucket(key);
+  if(!historicalTagShardCache.has(shard)){
+    const base=String(runtime.publicDataBaseUrl||'').replace(/\/$/,'');
+    const pending=fetchJson(base+'/indexes/historical-tags/'+shard+'.json').then(data=>{
+      if(data?.schemaVersion!==1||!data.tags)throw Error('Former-tag index is not ready yet');
+      return data.tags;
+    }).catch(e=>{historicalTagShardCache.delete(shard);throw e;});
+    historicalTagShardCache.set(shard,pending);
+  }
+  return (await historicalTagShardCache.get(shard))[key]?.bots||[];
+}
+async function historicalTagMembers(runtime,state){
+  if(!state.includeHistorical||!state.include.length)return new Map();
+  const results=await Promise.all(state.include.map(tag=>previousTagRows(runtime,tag)));
+  const ids=new Map();
+  results.forEach((rows,i)=>rows.forEach(row=>{
+    const id=String(row.id||'').toLowerCase();
+    if(!id)return;
+    const item=ids.get(id)||{bot:row,tags:new Set()};
+    item.tags.add(historyTagKey(state.include[i]));
+    if(row.title&&!item.bot.title)item.bot=row;
+    ids.set(id,item);
+  }));
+  return ids;
+}
+function historicResultHtml(rows,count=80){
+  return rows.slice(0,count).map(item=>{
+    const b=item.bot;
+    const link='../bot/?id='+encodeURIComponent(b.id);
+    const title=String(b.title||'').trim();
+    return '<div class="historic-bot-hit"><a href="'+esc(link)+'"><b>'+esc(b.name||b.id)+'</b></a>'+
+      '<span>'+esc(title||'Archived bot')+'</span>'+
+      '<small>'+esc(b.creator?'@'+b.creator+' · '+(b.status||'unknown'):(b.status||'unknown'))+
+      ' · formerly: '+esc([...item.tags].join(', '))+'</small></div>';
+  }).join('');
+}
+async function renderHistoricalPublicMatches(runtime,state,el){
+  if(!el)return;
+  if(!state.includeHistorical||!state.include.length){el.hidden=true;el.innerHTML='';return;}
+  el.hidden=false;el.innerHTML='<p class="loading">Checking historical tag assignments…</p>';
+  try{
+    const members=await historicalTagMembers(runtime,state);
+    const q=state.q.toLowerCase(),creator=state.creator.toLowerCase();
+    const rows=[...members.values()].filter(item=>{
+      if(state.match!=='any'&&item.tags.size<state.include.length)return false;
+      const b=item.bot;
+      if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
+      if(q&&!([b.id,b.name,b.title,b.creator].join(' ').toLowerCase().includes(q)))return false;
+      return true;
+    }).sort((a,b)=>String(a.bot.name||'').localeCompare(String(b.bot.name||'')));
+    el.innerHTML='<h3>Formerly tagged bots · '+fmt(rows.length)+' Archive matches</h3>'+
+      '<p class="filter-note">Past tag assignments captured by the Archive, including bots no longer using these tags. These are <b>additional historical matches</b>, not part of the live Typesense result count. Other live-only filters do not apply here.</p>'+
+      (rows.length?'<div class="historic-bot-results">'+historicResultHtml(rows)+'</div>'+
+        (rows.length>80?'<a class="secondary-button" href="../tag-stats/?tag='+encodeURIComponent(state.include[0])+'">Explore more historical matches →</a>':''):
+        '<p class="filter-note">No previous assignments found in recorded tag history.</p>');
+  }catch(error){
+    el.innerHTML='<p class="error">Historical tag matches are unavailable: '+esc(error.message)+'. Current-tag search still works.</p>';
+  }
+}
+
 function tagSidebar(state,tags){
   const rows=tags.map(tag=>{
     const inc=state.include.some(x=>x.toLowerCase()===tag.toLowerCase());
@@ -291,6 +364,8 @@ function tagSidebar(state,tags){
       <section class="filter-section"><h3>Narrow by tag</h3><input class="filter-search" id="tag-search" placeholder="Search ${tags.length} tags">
         <div class="selected-filters" id="selected-filters"></div>
         <div class="tag-filter-list" id="tag-filter-list">${rows}</div>
+        <label class="checkline historical-tag-switch"><input id="include-historic-tags" type="checkbox" ${state.includeHistorical?'checked':''}> <span>Include former tag assignments</span></label>
+        <p class="filter-note">Find bots even after creators remove or change their tags. Previously-tagged bots appear in a separate Archive section on Public Bots; deleted-bot filtering includes them directly.</p>
       </section>
       <section class="filter-section"><h3>Included tags</h3><div class="radio-stack">
         <label><input type="radio" name="match" value="all" ${state.match==='all'?'checked':''}> Match all</label>
@@ -339,6 +414,10 @@ function attachSidebar(state,onChange){
       else{
         const oi=other.findIndex(x=>x.toLowerCase()===tag.toLowerCase()); if(oi>=0)other.splice(oi,1);
         mine.push(tag);
+        if(action==='include'&&archivedOnlyTagLabels.has(tag.toLowerCase())){
+          state.includeHistorical=true;
+          const historic=document.querySelector('#include-historic-tags');if(historic)historic.checked=true;
+        }
       }
       redraw();onChange();return;
     }
@@ -354,7 +433,8 @@ function attachSidebar(state,onChange){
     document.querySelectorAll('.tag-filter-row').forEach(row=>row.hidden=q&&!row.dataset.tag.toLowerCase().includes(q));
   });
   document.querySelector('#reset-filters')?.addEventListener('click',()=>{
-    state.q='';state.creator='';state.include=[];state.exclude=[...DEFAULT_EXCLUDED];state.match='all';state.sort=page==='deleted'?'deleted-newest':'trending';
+    state.q='';state.creator='';state.include=[];state.exclude=[...DEFAULT_EXCLUDED];state.match='all';state.includeHistorical=false;
+    const historic=document.querySelector('#include-historic-tags');if(historic)historic.checked=false;state.sort=page==='deleted'?'deleted-newest':'trending';
     state.definition='any';state.definitionSize='any';state.lorebook='any';state.language='any';state.contentRating='any';state.created='any';state.firstSeen='any';state.lastSeen='any';state.savedField='any';state.roleHint='any';
     const s=document.querySelector('#search');if(s)s.value='';
     const c=document.querySelector('#creator');if(c)c.value='';
@@ -365,6 +445,7 @@ function attachSidebar(state,onChange){
     const safety=document.querySelector('#safety-filter');if(safety)safety.value='all';
     redraw();onChange();
   });
+  document.querySelector('#include-historic-tags')?.addEventListener('change',e=>{state.includeHistorical=e.target.checked;onChange();});
   document.querySelectorAll('input[name=match]').forEach(x=>x.addEventListener('change',()=>{state.match=document.querySelector('input[name=match]:checked')?.value||'all';onChange();}));
   document.querySelectorAll('[data-meta-filter]').forEach(select=>select.addEventListener('change',()=>{const key=select.dataset.metaFilter;if(key)state[key]=select.value||'any';if(key==='contentRating'){const safety=document.querySelector('#safety-filter');if(safety)safety.value=state[key]==='any'?'all':state[key];}onChange();}));
   redraw();
@@ -506,13 +587,16 @@ function botHasSavedField(bot,field){
   if(!field||field==='any')return true;
   return !!bot?.savedFields?.[field];
 }
-function localFilterAndSort(bots,state){
+function localFilterAndSort(bots,state,formerTagMembers=new Map()){
   const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=(state.showBlocked?[]:state.exclude).map(x=>x.toLowerCase());
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
   const firstSeenCutoff=archiveTimeCutoff(state.firstSeen),lastSeenCutoff=archiveTimeCutoff(state.lastSeen);
   let rows=bots.filter(b=>{
     if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
     const tags=(b.tags||[]).map(x=>String(x).toLowerCase());
+    const historic=formerTagMembers.get(String(b.id||'').toLowerCase());
+    if(historic&&state.includeHistorical)tags.push(...historic.tags);
+    if(state.includeHistorical&&Array.isArray(b.historicalTags))tags.push(...b.historicalTags.map(x=>String(x).toLowerCase()));
     if(inc.length){const ok=state.match==='any'?inc.some(t=>tags.includes(t)):inc.every(t=>tags.includes(t));if(!ok)return false;}
     if(exc.some(t=>tags.includes(t)))return false;
     if(state.definition==='exposed'&&b.definitionVisible!==true)return false;if(state.definition==='hidden'&&b.definitionVisible!==false)return false;
@@ -621,12 +705,12 @@ function enhanceRenderedCards(grid,bots){setupHoverAnimatedImages(grid);void tra
 
 
 async function browseLive(runtime,manifest,tags,stats){
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',roleHint:qs('roleHint')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'trending',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',roleHint:qs('roleHint')||'any',includeHistorical:qs('past')==='1',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
   let blockedOverride=false;
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>Public bots</h1><p>Browse SpicyChat characters that are currently publicly discoverable, together with the archive data captured for them.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
     ${growthBanner(stats)}<div class="layout">${tagSidebar(state,tags)}<section class="results">${toolbar(state,false)}
       <div class="scanline">Archive scan: <strong>${date(manifest.lastScan)}</strong> · ${fmt(stats?.totalBots||manifest.totalBots)} bots captured so far.</div>
-      <div class="results-head"><h2>Public bots</h2><span id="result-count"></span></div><div data-archive-pager class="pager-wrap pager-top"></div><section class="grid" id="grid"></section><div data-archive-pager class="pager-wrap"></div>
+      <div class="results-head"><h2>Public bots</h2><span id="result-count"></span></div><section id="historical-tag-public-results" class="historical-tag-panel" hidden></section><div data-archive-pager class="pager-wrap pager-top"></div><section class="grid" id="grid"></section><div data-archive-pager class="pager-wrap"></div>
       <footer class="footer">Active browsing queries SpicyChat's public Typesense index. Historical bot records and archived images are stored separately in the archive.</footer>
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
@@ -638,6 +722,10 @@ async function browseLive(runtime,manifest,tags,stats){
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
     const exactId=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
     const baseFilter=buildTsFilter(runtime,state);
+    const oldResults=$('#historical-tag-public-results');
+    // Historical matches are rendered separately; never mix them into a
+    // Typesense total or pretend they satisfy live-only filters.
+    void renderHistoricalPublicMatches(runtime,state,oldResults);
     const search={collection:runtime.typesense.collection,q:exactId?'*':(state.q||'*'),query_by:runtime.typesense.queryBy,page:state.page,per_page:PAGE_SIZE,filter_by:exactId?`${baseFilter} && character_id:=${tsLiteral(exactId)}`:baseFilter,sort_by:sortBy,include_fields:'character_id,name,title,tags,creator_username,avatar_url,avatar_is_nsfw,is_nsfw,num_messages,num_messages_24h,rating_score,createdAt,updatedAt,definition_visible,definition_size_category,has_lorebooks,language'};
     const archivePredicate=state.savedField!=='any'||state.firstSeen!=='any'||state.lastSeen!=='any'||state.roleHint!=='any';
     try{
@@ -719,7 +807,7 @@ async function browseLive(runtime,manifest,tags,stats){
 
 async function browseDeleted(runtime,manifest,tags,stats){
   if(runtime.r2ReadAllowed===false){app.innerHTML='<section class="hero"><h1>Deleted bots</h1></section><div class="error">Archived details are temporarily paused by the R2 quota safety guard.</div>';return;}
-  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',roleHint:qs('roleHint')||'any',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
+  const state={q:qs('q')||'',include:parseTags(qs('include')),exclude:readExcluded(),creator:qs('creator')||'',sort:qs('sort')||'deleted-newest',match:qs('match')||'all',definition:qs('definition')||'any',definitionSize:qs('definitionSize')||'any',lorebook:qs('lorebook')||'any',language:qs('language')||'any',contentRating:qs('rating')||'any',created:qs('created')||'any',firstSeen:qs('firstSeen')||'any',lastSeen:qs('lastSeen')||'any',savedField:qs('savedField')||'any',roleHint:qs('roleHint')||'any',includeHistorical:qs('past')==='1',blurNsfw:localStorage.getItem('sca-blur-nsfw')!=='0',showBlocked:false,page:parsePage(qs('p'))};
   let blockedOverride=false;
   let bots=[];if(runtime.deletedIndexUrl){try{const payload=await fetchJson(runtime.deletedIndexUrl);if(Array.isArray(payload?.bots))bots=payload.bots;else if(payload&&typeof payload==='object')bots=Object.values(payload).filter(row=>row&&typeof row==='object');}catch{}}
   app.innerHTML=`<section class="hero"><div class="hero-row"><div><h1>Deleted bots</h1><p>Characters confirmed unavailable by repeated public character API 404s. Last-known public data remains preserved.</p></div><button type="button" class="secondary-button blocked-override-button" id="blocked-override">Show blocked bots temporarily</button></div><p class="blocked-override-note" id="blocked-override-note" hidden>Blocked/default-excluded bot tags are temporarily visible. Turn this back off to restore your exclusions.</p></section>
@@ -744,7 +832,13 @@ async function browseDeleted(runtime,manifest,tags,stats){
     const token=++deletedRenderToken;
     state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.savedField=$('#saved-field')?.value||'any';state.contentRating=($('#safety-filter')?.value||state.contentRating||'any');if(state.contentRating==='all')state.contentRating='any';state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key&&key!=='contentRating')state[key]=select.value||'any';});const sidebarSafety=document.querySelector('[data-meta-filter="contentRating"]');if(sidebarSafety)sidebarSafety.value=state.contentRating;state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);
     if(state.savedField!=='any'){grid.innerHTML='<p class="loading">Checking archived fields…</p>';await ensureDeletedSavedFields();if(token!==deletedRenderToken)return;}
-    const rows=localFilterAndSort(bots,state),totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0),totalPages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>totalPages)state.page=totalPages;
+    let former=new Map();
+    if(state.includeHistorical&&state.include.length){
+      try{former=await historicalTagMembers(runtime,state);}
+      catch(error){if(token!==deletedRenderToken)return;grid.innerHTML='<p class="error">Could not load historic tag assignments: '+esc(error.message)+'</p>';count.textContent='';return;}
+      if(token!==deletedRenderToken)return;
+    }
+    const rows=localFilterAndSort(bots,state,former),totalConfirmed=Math.max(bots.length,Number(stats?.deletedBots)||0),totalPages=Math.max(1,Math.ceil(rows.length/PAGE_SIZE));if(state.page>totalPages)state.page=totalPages;
     const startIndex=(state.page-1)*PAGE_SIZE,visible=rows.slice(startIndex,startIndex+PAGE_SIZE),start=rows.length?startIndex+1:0,end=Math.min(rows.length,startIndex+PAGE_SIZE);
     count.textContent=rows.length===totalConfirmed?`${start.toLocaleString()}–${end.toLocaleString()} of ${totalConfirmed.toLocaleString()} confirmed`:`${start.toLocaleString()}–${end.toLocaleString()} of ${rows.length.toLocaleString()} matching · ${totalConfirmed.toLocaleString()} confirmed total`;
     grid.innerHTML=visible.length?visible.map(b=>card(b,state.blurNsfw)).join(''):'<div class="empty">No deleted bots match these filters.</div>';renderPagers(state.page,totalPages);enhanceRenderedCards(grid,visible);

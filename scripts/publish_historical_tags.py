@@ -126,6 +126,7 @@ def collect(
         "schemaVersion": SCHEMA_VERSION,
         "generatedAt": now,
         "distinctFormerTags": sum(len(s) for s in shards.values()),
+        "formerTagLabels": sorted(key for group in shards.values() for key in group),
         "formerTagMemberships": total,
         "unparsedHistoricTagValues": skipped,
         "shards": TAG_SHARDS,

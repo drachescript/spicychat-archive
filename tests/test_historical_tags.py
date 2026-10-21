@@ -90,6 +90,19 @@ class HistoricalTagsTests(unittest.TestCase):
         self.assertIn("step-family", overview["formerTagLabels"])
         self.assertEqual(overview["formerTagMemberships"], 3)
 
+    def test_creator_index_surfaces_precise_former_tags(self):
+        from site_indexes import previous_bot_tags
+        record = {
+            "lastKnown": {"tags": ["Fantasy"]},
+            "everTags": ["Step-Family", "Fantasy", "Watersport"],
+            "fieldHistory": [
+                {"path": "tags", "from": ["Step-Family", "Fantasy"], "to": ["Fantasy"]},
+            ],
+        }
+        self.assertEqual(
+            set(previous_bot_tags(record)), {"Step-Family", "Watersport"}
+        )
+
     def test_history_index_refuses_missing_or_corrupt_month(self):
         store = MagicMock()
         store.key.side_effect = lambda *parts: "/".join(parts)

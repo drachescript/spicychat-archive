@@ -282,3 +282,6 @@
 .tag-stats-trend-column>div{background:var(--accent);border-radius:4px 4px 0 0;width:100%;min-height:2px}
 .tag-stats-trend-axis{display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}
 @media(max-width:650px){.tag-stats-compare-form{flex-direction:column}.tag-stats-compare-form input{width:100%;flex:auto}.tag-stats-pair-row .tag-stat-compare-pair{margin-left:0}}
+
+/* Retired creator tags remain filterable as historical Archive labels. */
+.archive-only-tag{color:var(--muted);font-size:10px;font-weight:500}

@@ -46,6 +46,13 @@ def _cloud_summary(record: dict[str, Any]) -> dict[str, Any]:
         "title": lk.get("title") or "",
         "creator": lk.get("creator_username") or lk.get("creator") or "",
         "tags": lk.get("tags") if isinstance(lk.get("tags"), list) else [],
+        "historicalTags": [
+            tag for tag in (record.get("everTags") or [])
+            if isinstance(tag, str) and tag.casefold() not in {
+                current.casefold() for current in (lk.get("tags") or [])
+                if isinstance(current, str)
+            }
+        ],
         "status": status.get("current") or "unknown",
         "statusSince": status.get("since"),
         "firstSeenAt": record.get("firstSeenAt"),

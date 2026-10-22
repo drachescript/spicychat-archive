@@ -1,0 +1,47 @@
+name: Audit materialized Archive bot IDs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/audit_discovery_ids.py"
+      - ".github/workflows/audit-bot-ids.yml"
+  schedule:
+    # Weekly, separate from the 6-hour crawler and daily stats publication.
+    - cron: "29 5 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Check R2 usage guard
+        id: guard
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file "$RUNNER_TEMP/id-audit-usage.json"
+      - name: Inspect Archive ID membership and missing bot objects
+        if: steps.guard.outputs.mode == 'r2'
+        run: python scripts/audit_discovery_ids.py --max-head-checks 10000
+      - name: Explain quota pause
+        if: steps.guard.outputs.mode != 'r2'
+        run: echo "Per-ID Archive audit skipped safely because the R2 quota guard is paused." >> "$GITHUB_STEP_SUMMARY"

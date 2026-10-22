@@ -17,7 +17,7 @@ export function recoveryReadiness(evidence, fields) {
 }
 
 export function evidenceWarnings(evidence, conversation) {
-  const sources = ['name','title','description','greeting','personality','scenario']
+  const sources = ['name','title','greeting','personality','scenario']
     .map(key => String(evidence?.[key] ?? '')).join(' ');
   const warnings = [];
   if (/\b(?:high school|secondary school|middle school|underage|minor|child)\b/i.test(sources) ||

@@ -143,20 +143,21 @@ function renderImportPreview(){
 function renderSuggestions(){
  const missing=['personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
  const sensitive=sensitiveRecoveryContext(state.archiveEvidence);
- const off=sensitive.blocked?' disabled title="Automatic expansion disabled for ambiguous/sensitive archived content"':'';
  return '<article class="recovery-card" id="recovery-suggestions"><h2>Fill missing fields</h2>'+
  '<p>Try a <b>Quick Draft</b> directly on this page, or optional <b>on-device browser AI</b> where supported. Quick Draft uses simple offline rules, not a language model. The original Archive fields never change until you accept a draft. External AI and copyable prompts are still available.</p>'+
  (sensitive.blocked?'<p class="recovery-caution">'+esc(sensitive.reason)+' You can still inspect and manually edit existing archived fields.</p>':'')+
- '<p class="recovery-privacy" id="recovery-browser-ai-status">Checking whether this browser supports optional on-device AI…</p>'+
+ '<p class="recovery-privacy" id="recovery-browser-ai-status"'+(sensitive.blocked?' data-auto-draft-disabled="1"':'')+'>'+(sensitive.blocked?'Automatic draft options are unavailable for this archived context. Copy prompt and manual editing remain available.':'Checking whether this browser supports optional on-device AI…')+'</p>'+
  (missing.length?'<div class="recovery-suggestion-grid">'+missing.map(key=>{
   const idea=suggestionForField(key,state.archiveEvidence,state.conversation);
   const draft=state.drafts?.[key];
   return '<div class="recovery-suggestion" data-suggestion-field="'+esc(key)+'"><h3>'+esc(idea.label)+'</h3><p>'+esc(idea.instruction)+'</p>'+
   (idea.clues.length?'<details><summary>Archived evidence</summary><ul>'+idea.clues.map(x=>'<li>'+esc(x.slice(0,350))+'</li>').join('')+'</ul></details>':'<p class="recovery-caution">Very little archived evidence is available.</p>')+
-  '<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'"'+off+'>Quick Draft (offline)</button>'+
-  '<button class="secondary-button" type="button" data-suggest-browser="'+esc(key)+'"'+off+'>Browser AI</button>'+
-  '<button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button>'+
-  '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'"'+off+'>External AI</button></div>'+
+  (sensitive.blocked
+    ?'<p class="recovery-caution">Automatic writing is unavailable for this field because of the archived context. You can still edit it manually.</p><div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button></div>'
+    :'<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'">Quick Draft (offline)</button>'+
+     '<button class="secondary-button" type="button" data-suggest-browser="'+esc(key)+'">Browser AI</button>'+
+     '<button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button>'+
+     '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">External AI</button></div>')+
   (draft?'<div class="recovery-draft-preview"><b>Proposed '+esc(idea.label)+' · '+esc(draft.method==='browser-ai'?'Browser AI':'Offline guided draft')+'</b>'+
    '<p class="recovery-privacy">'+esc(draft.reason||'Suggested reconstruction, not the creator’s original wording.')+'</p>'+
    '<textarea class="recovery-textarea" data-draft-edit="'+esc(key)+'">'+esc(draft.text)+'</textarea>'+

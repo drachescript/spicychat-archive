@@ -370,9 +370,106 @@ function bindEditorOnly(){
 
 function editorFieldObject(){const out={};for(const def of FIELD_DEFS){let value=state.editor[def.key]??'';if(def.key==='tags')value=String(value).split(',').map(x=>x.trim()).filter(Boolean);out[def.key]=value;}if(state.provenance.image==='archived'&&state.record?.avatarArchive?.publicUrl)out.image=imageUrl(state.record,state.archiveEvidence);return out;}
 function conversationSummaryForExport(){const c=state.conversation;if(!c)return null;return {sourceName:c.sourceName,messageCount:c.messages.length,counts:c.counts,detectedGreeting:c.detectedGreeting};}
-function exportRecoveryPackage(){const payload={schemaVersion:1,kind:'spicychat-archive-recovery-package',createdAt:new Date().toISOString(),botId:state.botId,archiveBase:state.version,mode:state.mode,fields:editorFieldObject(),provenance:{...state.provenance},confidence:state.confidence,conversationSummary:conversationSummaryForExport(),privacy:'Conversation message text is intentionally not included in this package.'};downloadBlob('spicychat-recovery-'+state.botId+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
-function exportFields(){const payload={botId:state.botId,fields:editorFieldObject(),provenance:{...state.provenance},confidence:state.confidence};downloadBlob('spicychat-recovery-'+state.botId+'-fields.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
-function exportCharacterCard(){const f=editorFieldObject();const payload={spec:'chara_card_v2',spec_version:'2.0',data:{name:f.name||'',description:f.description||'',personality:f.personality||'',scenario:f.scenario||'',first_mes:f.greeting||'',mes_example:f.example_dialogue||'',tags:Array.isArray(f.tags)?f.tags:[],creator_notes:'Recovered with SpicyChat Archive Recovery Lab. Check provenance metadata before treating reconstructed text as original.',extensions:{spicychat_archive_recovery:{bot_id:state.botId,archive_base:state.version,provenance:{...state.provenance},image_url:f.image||''}}}};downloadBlob('character-'+(f.name||state.botId).replace(/[^a-z0-9._-]+/gi,'_')+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
+function legacyMetadata(){
+ const description=textValue(bestField(state.record,['description'])).trim();
+ return description?{description,source:'archived legacy bot metadata, not a current SpicyChat creator field'}:{};
+}
+function cardPayload(){
+ return cardV2Payload({...editorFieldObject(),description:legacyMetadata().description||''},{
+  botId:state.botId,archiveBase:state.version,provenance:state.provenance,confidence:state.confidence
+ });
+}
+function safeFilename(value){
+ return (String(value||state.botId).replace(/[^a-z0-9._-]+/gi,'_').slice(0,70)||state.botId);
+}
+function exportRecoveryPackage(){
+ const payload={
+  schemaVersion:2,kind:'spicychat-archive-recovery-package',createdAt:new Date().toISOString(),
+  botId:state.botId,archiveBase:state.version,mode:state.mode,fields:editorFieldObject(),
+  legacyMetadata:legacyMetadata(),provenance:{...state.provenance},confidence:state.confidence,
+  conversationSummary:conversationSummaryForExport(),
+  privacy:'Conversation message text is intentionally not included in this package.'
+ };
+ downloadBlob('spicychat-recovery-'+state.botId+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');
+}
+function exportFields(){
+ const payload={botId:state.botId,fields:editorFieldObject(),legacyMetadata:legacyMetadata(),
+  provenance:{...state.provenance},confidence:state.confidence};
+ downloadBlob('spicychat-recovery-'+state.botId+'-fields.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');
+}
+function exportCharacterCard(){
+ const f=editorFieldObject();
+ downloadBlob('character-'+safeFilename(f.name)+'.json',JSON.stringify(cardPayload(),null,2)+'\n','application/json;charset=utf-8');
+}
+function previewExport(){
+ const parent=document.querySelector('#recovery-editor')?.closest('.recovery-card');
+ if(!parent)return;
+ let box=parent.querySelector('#recovery-export-preview');
+ if(!box){box=document.createElement('details');box.id='recovery-export-preview';box.className='recovery-import-preview';parent.appendChild(box);}
+ box.innerHTML='<summary>Character Card V2 export preview</summary>'+
+  '<p>Title and provenance are preserved in the Archive extension. The required Character Card V2 Description key is empty unless the original bot data genuinely contained legacy metadata. Character-card JSON links to the image; use PNG to embed it.</p>'+
+  '<pre class="recovery-prompt-preview">'+esc(JSON.stringify(cardPayload(),null,2).slice(0,24000))+'</pre>';
+ box.open=true;
+}
+async function pictureBlob(url=imageUrl(state.record,state.archiveEvidence)){
+ if(!url)throw Error('This bot has no saved picture.');
+ const response=await fetch(url,{mode:'cors',credentials:'omit'});
+ if(!response.ok)throw Error('Image HTTP '+response.status);
+ const blob=await response.blob();
+ if(!blob.type.startsWith('image/'))throw Error('The saved URL did not return an image.');
+ if(blob.size>25*1024*1024)throw Error('This image exceeds the 25 MB browser download limit.');
+ return blob;
+}
+function triggerBlobDownload(name,blob){
+ const anchor=document.createElement('a'),href=URL.createObjectURL(blob);
+ anchor.href=href;anchor.download=name;document.body.appendChild(anchor);anchor.click();anchor.remove();
+ setTimeout(()=>URL.revokeObjectURL(href),2000);
+}
+async function downloadArchivedPicture(){
+ try{
+  const blob=await pictureBlob();
+  const ext=({'image/png':'png','image/jpeg':'jpg','image/gif':'gif','image/webp':'webp','image/avif':'avif'})[blob.type]||'image';
+  triggerBlobDownload('archived-'+safeFilename(state.editor.name)+'.'+ext,blob);
+  setStatus('Archived picture download started.','good');
+ }catch(e){
+  setStatus('Direct picture download unavailable: '+e.message+'. Use View image and save it through your browser.','error');
+ }
+}
+async function imageAsPng(blob){
+ const signature=new Uint8Array(await blob.slice(0,8).arrayBuffer());
+ if(signature.length===8&&[137,80,78,71,13,10,26,10].every((v,i)=>signature[i]===v))
+  return new Uint8Array(await blob.arrayBuffer());
+ const image=await createImageBitmap(blob);
+ try{
+  const canvas=document.createElement('canvas');
+  canvas.width=image.width;canvas.height=image.height;
+  if(!canvas.width||!canvas.height||canvas.width*canvas.height>20000000)
+   throw Error('Image dimensions exceed the safe browser PNG conversion limit.');
+  canvas.getContext('2d').drawImage(image,0,0);
+  const result=await new Promise((resolve,reject)=>canvas.toBlob(
+   b=>b?resolve(b):reject(Error('PNG conversion failed.')),'image/png'));
+  return new Uint8Array(await result.arrayBuffer());
+ }finally{image.close();}
+}
+function base64Card(payload){
+ const data=new TextEncoder().encode(JSON.stringify(payload));
+ let binary='';
+ for(let i=0;i<data.length;i+=8192)binary+=String.fromCharCode(...data.subarray(i,i+8192));
+ return btoa(binary);
+}
+async function exportCharacterCardPng(){
+ const url=String(state.editor.image||imageUrl(state.record,state.archiveEvidence)).trim();
+ if(!url){setStatus('Select an image before exporting a PNG character card.','error');return;}
+ try{
+  const blob=await pictureBlob(url),png=await imageAsPng(blob);
+  const binary=packCardPng(png,base64Card(cardPayload()));
+  triggerBlobDownload('character-'+safeFilename(state.editor.name)+'.png',new Blob([binary],{type:'image/png'}));
+  setStatus('Image-bearing Character Card V2 PNG download started.','good');
+ }catch(e){
+  setStatus('PNG export failed: '+e.message+'. If the image host blocks CORS, export the character-card JSON and save the picture separately.','error');
+ }
+}
+
 async function copyFields(){const f=editorFieldObject();const lines=[];for(const def of FIELD_DEFS){lines.push(def.label+' ['+provenanceLabel(state.provenance[def.key])+']\n'+(Array.isArray(f[def.key])?f[def.key].join(', '):f[def.key]||''));}await copyText(lines.join('\n\n'),'Recovered fields copied.');}
 
 renderLanding();

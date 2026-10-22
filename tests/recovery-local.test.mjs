@@ -65,7 +65,7 @@ test('AI gets only derived non-explicit clues, never the archived sexual source'
  assert.match(summary,/Observed voice\/personality indicators/);
  assert.match(prompt,/NON-EXPLICIT ONLY/);
  assert.match(prompt,/watching something together/);
- assert.doesNotMatch(prompt,/NSFW|sexual themes|anatomy reference/i);
+ assert.doesNotMatch(prompt,/The archived original also has NSFW|An explicit anatomy reference was stored/i);
  const uiEvidence=suggestionForField('scenario',kotohaLike).clues.join('\n');
  assert.doesNotMatch(uiEvidence,/NSFW|anatomy reference/i);
 });

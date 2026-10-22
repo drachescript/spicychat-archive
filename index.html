@@ -45,14 +45,16 @@
       <aside class="hero-panel" aria-label="Archive snapshot">
         <div class="panel-label">Archive snapshot</div>
         <div class="snapshot-grid">
-          <div><b id="stat-bots-total">—</b><span>bot records archived</span></div>
+          <div><b id="stat-bots-total">—</b><span>unique bot IDs observed</span></div>
+          <div><b id="stat-bots-indexed">—</b><span>materialized records indexed</span></div>
           <div><b id="stat-bots-public">—</b><span>SpicyChat reports public</span></div>
           <div><b id="stat-bots-deleted">—</b><span>confirmed gone / archived</span></div>
-          <div><b id="stat-bots-verification-pending">—</b><span>bot IDs pending missing-status checks</span></div>
+          <div><b id="stat-bots-verification-pending">—</b><span>bot IDs queued for status checks</span></div>
+          <div><b id="stat-bots-count-gap">—</b><span>arithmetic difference, not identified bots</span></div>
           <div><b id="stat-lorebooks-total">—</b><span>Lorebooks archived</span></div>
           <div><b id="stat-lorebooks-public">—</b><span>public Lorebooks</span></div>
           <div><b id="stat-lorebooks-gone">—</b><span>no longer public</span></div>
-          <div><b id="stat-lorebooks-unreconciled">—</b><span>not yet reconciled</span></div>
+          <div><b id="stat-lorebooks-unreconciled">—</b><span>Lorebook count difference</span></div>
         </div>
         <div class="snapshot-reconcile" id="snapshot-reconcile">Loading archived and live public counts…</div>
         <div class="snapshot-foot">

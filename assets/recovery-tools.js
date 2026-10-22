@@ -1,4 +1,5 @@
 // Dependency-free Recovery Lab helpers; no network or browser state.
+import {sensitiveRecoveryContext,safeRecoveryEvidencePrompt} from './recovery-local.js';
 export const NARRATIVE_FIELDS = ['greeting','personality','scenario','example_dialogue'];
 
 export function recoveryReadiness(evidence, fields) {
@@ -54,10 +55,13 @@ export function suggestionForField(key, evidence, conversation) {
   const persona = String(evidence?.personality || '').trim();
   const sample = (conversation?.messages || []).filter(m=>m.role === 'character' && !m.ooc)
     .slice(0,3).map(m => m.text.slice(0,550)).join('\n');
+  const sensitive=sensitiveRecoveryContext(evidence);
   return {
     label: ({personality:'Personality',scenario:'Scenario',example_dialogue:'Example Dialogue'})[key] || key,
     instruction: instructions[key] || 'Suggest this missing field based only on supporting evidence.',
-    clues: [
+    clues: sensitive.restricted
+      ? safeRecoveryEvidencePrompt(evidence,conversation).split('\n')
+      : [
       title ? 'Archived title: '+title.slice(0,260) : '',
       greeting ? 'Archived greeting excerpt: '+greeting.slice(0,580) : '',
       persona && key !== 'personality' ? 'Archived personality excerpt: '+persona.slice(0,300) : '',
@@ -68,9 +72,13 @@ export function suggestionForField(key, evidence, conversation) {
 
 export function fieldSuggestionPrompt(key, evidence, conversation) {
   const idea = suggestionForField(key, evidence, conversation);
+  const restricted=sensitiveRecoveryContext(evidence).restricted;
   return [
     'Create ONE proposed SpicyChat '+idea.label+' field for a recovered character.',
     'This is a RECONSTRUCTION SUGGESTION, not original archived wording.',
+    restricted
+      ?'NON-EXPLICIT ONLY: This archived record contains school-age ambiguity or family relationships alongside sexual themes. Write only everyday, non-romantic character interactions. Do not mention sexual anatomy, erotic content, romance, dating, intimacy, or invent an age. The evidence below is a safe summary, NOT raw original text.'
+      :'Preserve the original character voice and established relationships without inventing facts.',
     idea.instruction,
     'Do not invent age, identity, consent, or backstory details unsupported by the evidence.',
     'If evidence is insufficient, say so instead of inventing certainty.',

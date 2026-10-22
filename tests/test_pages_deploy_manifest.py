@@ -10,7 +10,6 @@ ROUTES = (
     "bot", "bots", "deleted", "deleted-lorebooks", "lorebook", "lorebooks",
     "recovery", "merge", "name-trends", "tag-stats", "creator", "changes",
     "activity", "search", "explorer", "restored", "health", "stats", "faq",
-    "admin",
 )
 
 

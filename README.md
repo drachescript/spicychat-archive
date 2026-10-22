@@ -1,3 +1,11 @@
+## Archive bot counts and audit evidence
+
+The Archive reports three **different** populations: its cumulative observed/discovery-order bot IDs, the individual materialized bot records represented by the Archive's R2 text-search index, and SpicyChat's **current** public Typesense count. Subtracting the live public count and confirmed-gone Archive count from cumulative observed IDs gives an arithmetic difference **not an identifiable missing-bot list**. The explicit `missingChecks` queue covers only candidates found by sufficiently complete discovery passes, not every bot that could have vanished. Old last-seen dates also do **not** prove deletion.
+
+- `scripts/publish_bot_status_audit.py` reads compact saved creator indexes daily to report materialized-index count, distinct indexed bot IDs, last-observed statuses, and stale observations. It does not label last-known public as verified-current.
+- `scripts/audit_discovery_ids.py` runs weekly (and can run manually) to compare observed IDs to materialized text-index IDs, then does at most 10,000 read-only R2 object-existence checks for discovery-only IDs. Its report at `indexes/discovery-id-audit.json` contains exact IDs with no stored Archive bot file. A missing Archive file is **not** confirmation of a deleted SpicyChat bot.
+- Neither audit deletes records or changes live/deleted status. Cleanup must first classify specific IDs and have recoverable evidence. The homepage and Stats label these distinctions instead of pretending the remaining difference consists of verified missing IDs.
+
 # SpicyChat Archive
 
 SpicyChat Archive is a public historical browser for publicly discoverable SpicyChat characters.

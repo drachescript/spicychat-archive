@@ -283,7 +283,7 @@ async function runAiReconstruction(targetField=null){
  }catch(e){if(status){status.textContent=e?.message||'Enter a valid HTTP(S) endpoint URL.';status.className='recovery-status is-error';}return;}
  if(!document.querySelector('#recovery-ai-consent')?.checked){
   if(status){status.textContent='Review the evidence preview and check the consent box before sending a request.';status.className='recovery-status is-error';}
-  document.querySelector('.recovery-ai')?.open=true;return;
+  const panel=document.querySelector('.recovery-ai');if(panel)panel.open=true;return;
  }
  if(targetField&&meaningful(state.archiveEvidence[targetField])){
   setStatus('This field has an archived original; use Make It Mine to edit it intentionally.','error');return;

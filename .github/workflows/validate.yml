@@ -72,5 +72,7 @@ jobs:
           node --check assets/lorebooks.js
           node --check assets/recovery.js
           node --check assets/recovery-tools.js
-          node --test --experimental-default-type=module tests/recovery-lab.test.mjs
+          node --check assets/recovery-local.js
+          node --check assets/recovery-assistant.js
+          node --test --experimental-default-type=module tests/recovery-lab.test.mjs tests/recovery-local.test.mjs
           node --check assets/merge.js

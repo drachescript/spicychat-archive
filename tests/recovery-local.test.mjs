@@ -123,8 +123,8 @@ test('browser assistant remains local, explicit opt-in and validates suggestions
  const code=readFileSync(new URL('../assets/recovery-assistant.js',import.meta.url),'utf8');
  assert.match(code,/window\.LanguageModel/);
  assert.match(code,/model\.create\(\)/);
- assert.match(code,/validateSafeDraft\(key,draft,state\.archiveEvidence\)/);
- assert.match(code,/validateSafeDraft\(key,text,state\.archiveEvidence\)/);
+ assert.match(code,/validateSafeDraft\(field,draft,state\.archiveEvidence\)/);
+ assert.match(code,/validateSafeDraft\(field,text,state\.archiveEvidence\)/);
  assert.doesNotMatch(code,/fetch\(/);
 });
 test('changing conversation selection invalidates unaccepted drafts',()=>{

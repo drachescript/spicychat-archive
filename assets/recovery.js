@@ -1,5 +1,5 @@
 import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
-import {sensitiveRecoveryContext} from './recovery-local.js';
+import {sensitiveRecoveryContext,validateSafeDraft} from './recovery-local.js';
 import {wireLocalRecovery,reportBrowserModelStatus} from './recovery-assistant.js';
 const app=document.querySelector('#app');
 const params=new URLSearchParams(location.search);
@@ -144,21 +144,19 @@ function renderSuggestions(){
  const missing=['personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
  const sensitive=sensitiveRecoveryContext(state.archiveEvidence);
  return '<article class="recovery-card" id="recovery-suggestions"><h2>Fill missing fields</h2>'+
- '<p>Try a <b>Quick Draft</b> directly on this page, or optional <b>on-device browser AI</b> where supported. Quick Draft uses simple offline rules, not a language model. The original Archive fields never change until you accept a draft. External AI and copyable prompts are still available.</p>'+
- (sensitive.blocked?'<p class="recovery-caution">'+esc(sensitive.reason)+' You can still inspect and manually edit existing archived fields.</p>':'')+
- '<p class="recovery-privacy" id="recovery-browser-ai-status"'+(sensitive.blocked?' data-auto-draft-disabled="1"':'')+'>'+(sensitive.blocked?'Automatic draft options are unavailable for this archived context. Copy prompt and manual editing remain available.':'Checking whether this browser supports optional on-device AI…')+'</p>'+
+ '<p>Build on the bot’s archived greeting, personality, and selected conversation messages. Quick Draft creates an offline evidence-guided scaffold; Browser AI can propose more natural writing if your browser supports it. Nothing replaces an archived original without your approval.</p>'+
+ (sensitive.restricted?'<p class="recovery-caution">'+esc(sensitive.reason)+'</p>':'')+
+ '<p class="recovery-privacy" id="recovery-browser-ai-status">Checking whether this browser supports optional on-device AI…</p>'+
  (missing.length?'<div class="recovery-suggestion-grid">'+missing.map(key=>{
-  const idea=suggestionForField(key,state.archiveEvidence,state.conversation);
+  const idea=suggestionForField(key,state.archiveEvidence,{messages:selectedConversationMessages()});
   const draft=state.drafts?.[key];
   return '<div class="recovery-suggestion" data-suggestion-field="'+esc(key)+'"><h3>'+esc(idea.label)+'</h3><p>'+esc(idea.instruction)+'</p>'+
   (idea.clues.length?'<details><summary>Archived evidence</summary><ul>'+idea.clues.map(x=>'<li>'+esc(x.slice(0,350))+'</li>').join('')+'</ul></details>':'<p class="recovery-caution">Very little archived evidence is available.</p>')+
-  (sensitive.blocked
-    ?'<p class="recovery-caution">Automatic writing is unavailable for this field because of the archived context. You can still edit it manually.</p><div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button></div>'
-    :'<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'">Quick Draft (offline)</button>'+
+  '<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'">Quick Draft (offline)</button>'+
      '<button class="secondary-button" type="button" data-suggest-browser="'+esc(key)+'">Browser AI</button>'+
      '<button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button>'+
-     '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">External AI</button></div>')+
-  (draft?'<div class="recovery-draft-preview"><b>Proposed '+esc(idea.label)+' · '+esc(draft.method==='browser-ai'?'Browser AI':'Offline guided draft')+'</b>'+
+     '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">External AI</button></div>'+
+  (draft?'<div class="recovery-draft-preview"><b>Proposed '+esc(idea.label)+' · '+esc(draft.method==='browser-ai'?'Browser AI':draft.method==='external-ai'?'External AI':'Offline guided draft')+'</b>'+
    '<p class="recovery-privacy">'+esc(draft.reason||'Suggested reconstruction, not the creator’s original wording.')+'</p>'+
    '<textarea class="recovery-textarea" data-draft-edit="'+esc(key)+'">'+esc(draft.text)+'</textarea>'+
    '<div class="recovery-action-row"><button type="button" class="primary-button" data-draft-apply="'+esc(key)+'">Use this draft</button>'+
@@ -342,10 +340,10 @@ function parseAiPayload(data){
 async function runAiReconstruction(targetField=null){
  const status=document.querySelector('#recovery-ai-status');
  const risk=sensitiveRecoveryContext(state.archiveEvidence);
- if(risk.blocked){
-  if(status){status.textContent=risk.reason;status.className='recovery-status is-error';}
-  setStatus('Automatic reconstruction disabled for this archived record: '+risk.reason,'error');
-  return;
+ if(risk.restricted&&!targetField){
+  const note='For this bot, use a missing-field AI button above. Focused suggestions use non-explicit archived clues; full AI reconstruction includes raw material.';
+  if(status){status.textContent=note;status.className='recovery-status is-error';}
+  setStatus(note,'error');return;
  }
  const endpoint=String(document.querySelector('#recovery-ai-endpoint')?.value||'').trim();
  const model=String(document.querySelector('#recovery-ai-model')?.value||'').trim();
@@ -370,10 +368,10 @@ async function runAiReconstruction(targetField=null){
   setStatus('This field has an archived original; use Make It Mine to edit it intentionally.','error');return;
  }
  const prompt=targetField?
-  fieldSuggestionPrompt(targetField,state.archiveEvidence,state.conversation)+
+  fieldSuggestionPrompt(targetField,state.archiveEvidence,{messages:selectedConversationMessages()})+
   '\nReturn ONLY valid JSON: {"fields":{"'+targetField+'":"suggested field text"},"confidence":{"'+targetField+'":{"level":"low|medium|high","reason":"why"}},"notes":["reconstruction only"]}':
   buildAndShowPrompt();
- const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? Your private conversation excerpts and archived fields may be included. The Archive itself does not receive them.';
+ const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? '+(risk.restricted&&targetField?'Only safe archived observation summaries are included.':'Private conversation excerpts and archived fields may be included.')+' The Archive itself does not receive them.';
  if(!window.confirm(consent))return;
  recoveryStorageSet('sca-recovery-ai-endpoint',endpoint);
  recoveryStorageSet('sca-recovery-ai-model',model);
@@ -387,8 +385,20 @@ async function runAiReconstruction(targetField=null){
   const response=await fetch(endpoint,{method:'POST',headers,body:JSON.stringify(body)});
   if(!response.ok)throw Error('HTTP '+response.status+' '+(await response.text()).slice(0,250));
   const payload=parseAiPayload(await response.json());
-  applyAiResult(payload,targetField);
-  if(status){status.textContent=targetField?'Suggestion applied as reconstructed '+(FIELD_BY_KEY[targetField]?.label||targetField)+'. Review it before exporting.':'Reconstruction applied. Review inferred fields before exporting.';status.className='recovery-status is-good';}
+  if(targetField){
+   const fieldData=payload?.fields?.[targetField]??payload?.[targetField]??'';
+   const value=normalizeGeneratedValue(FIELD_BY_KEY[targetField],fieldData);
+   const review=validateSafeDraft(targetField,value,state.archiveEvidence);
+   if(!review.ok)throw Error(review.reason);
+   state.drafts[targetField]={text:value,method:'external-ai',reason:'Suggested from selected archived evidence by external AI, not original creator text.'};
+   const suggestions=document.querySelector('#recovery-suggestions');
+   if(suggestions)suggestions.outerHTML=renderSuggestions();
+   void reportBrowserModelStatus();
+   if(status){status.textContent='Draft ready under '+(FIELD_BY_KEY[targetField]?.label||targetField)+'. Review it and choose Use this draft.';status.className='recovery-status is-good';}
+  }else{
+   applyAiResult(payload);
+   if(status){status.textContent='Reconstruction applied. Review inferred fields before exporting.';status.className='recovery-status is-good';}
+  }
  }catch(e){
   if(status){status.textContent='AI request failed: '+(e?.message||e)+'. You can copy a suggestion prompt instead if CORS blocks this endpoint.';status.className='recovery-status is-error';}
  }

@@ -40,12 +40,15 @@ test('essential field/export actions initialize before optional helpers',()=>{
   ])assert.match(app,new RegExp(name));
 });
 
-test('sensitive bot UI clearly explains automatic writing is unavailable without dead buttons',()=>{
-  const render=app.slice(app.indexOf('function renderSuggestions(){'),app.indexOf('function updatePrivacyPreview(){'));
-  assert.doesNotMatch(render,/disabled title="Automatic expansion/);
-  assert.match(render,/sensitive\.blocked\s*\?/);
-  assert.match(render,/Automatic writing is unavailable for this field/);
-  assert.match(render,/Copy prompt/);
-  assert.match(render,/data-auto-draft-disabled/);
-  assert.match(assistant,/if\(el\.dataset\.autoDraftDisabled==='1'\)return/);
+test('sensitive bot UI allows safe drafts and explains the limited scope',()=>{
+ const render=app.slice(app.indexOf('function renderSuggestions(){'),app.indexOf('function updatePrivacyPreview(){'));
+ assert.doesNotMatch(render,/disabled title="Automatic expansion/);
+ assert.match(render,/sensitive\.restricted\s*\?/);
+ assert.match(render,/esc\(sensitive\.reason\)/);
+ assert.match(render,/data-suggest-quick/);
+ assert.match(render,/data-suggest-browser/);
+ assert.match(render,/data-suggest-copy/);
+ assert.match(render,/data-suggest-ai/);
+ assert.doesNotMatch(render,/data-auto-draft-disabled/);
+ assert.match(assistant,/validateSafeDraft\(key,draft,state\.archiveEvidence\)/);
 });

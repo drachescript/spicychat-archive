@@ -1,5 +1,5 @@
 // Dependency-free Recovery Lab helpers; no network or browser state.
-export const NARRATIVE_FIELDS = ['description','greeting','personality','scenario','example_dialogue'];
+export const NARRATIVE_FIELDS = ['greeting','personality','scenario','example_dialogue'];
 
 export function recoveryReadiness(evidence, fields) {
   const has = key => {
@@ -45,7 +45,6 @@ export function conversationPreview(messages, botName, limit = 6) {
 
 export function suggestionForField(key, evidence, conversation) {
   const instructions = {
-    description: 'Suggest a concise factual character summary using only the observed archived title, greeting, and other available fields. Do not claim it is an original description.',
     personality: 'Suggest a distinctive personality, voice, mannerisms, motivations and boundaries supported by the character’s actual archived actions/dialogue. Distinguish observable traits from speculation.',
     scenario: 'Suggest a scenario grounded in the opening setting and relationships already established. Avoid introducing unsupported lore, backstory or ages.',
     example_dialogue: 'Suggest a few short example exchanges matching the archived greeting’s voice. These are invented examples, never historical dialogue.'
@@ -56,7 +55,7 @@ export function suggestionForField(key, evidence, conversation) {
   const sample = (conversation?.messages || []).filter(m=>m.role === 'character' && !m.ooc)
     .slice(0,3).map(m => m.text.slice(0,550)).join('\n');
   return {
-    label: ({description:'Description',personality:'Personality',scenario:'Scenario',example_dialogue:'Example Dialogue'})[key] || key,
+    label: ({personality:'Personality',scenario:'Scenario',example_dialogue:'Example Dialogue'})[key] || key,
     instruction: instructions[key] || 'Suggest this missing field based only on supporting evidence.',
     clues: [
       title ? 'Archived title: '+title.slice(0,260) : '',

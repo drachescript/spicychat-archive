@@ -4,6 +4,8 @@ import {buildOfflineDraft, sensitiveRecoveryContext} from './recovery-local.js';
 
 export async function reportBrowserModelStatus(){
  const el=document.querySelector('#recovery-browser-ai-status');if(!el)return;
+ // The bot-specific safety message takes precedence over browser support.
+ if(el.dataset.autoDraftDisabled==='1')return;
  const model=window.LanguageModel;
  if(!model||typeof model.create!=='function'){
   el.textContent='This browser does not support on-device AI. Quick Draft works offline without downloads or an API key.';

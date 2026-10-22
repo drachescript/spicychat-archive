@@ -22,6 +22,12 @@ function meaningful(value){if(value==null)return false;if(typeof value==='string
 function textValue(value){if(value==null)return '';if(Array.isArray(value))return value.map(textValue).filter(Boolean).join(', ');if(typeof value==='object')return JSON.stringify(value);return String(value);}
 function fmt(value){const n=Number(value||0);return Number.isFinite(n)?n.toLocaleString():'0';}
 function refreshTabTitle(){const name=String(state.editor?.name||state.archiveEvidence?.name||'').trim();document.title=(name?name+' Recovery':'Recovery Lab')+' · SpicyChat Archive';}
+function recoveryStorageGet(key){
+  try{return window.localStorage?.getItem(key)||'';}catch{return '';}
+}
+function recoveryStorageSet(key,value){
+  try{window.localStorage?.setItem(key,value);return true;}catch{return false;}
+}
 function markPromptDirty(){state.prompt='';const preview=document.querySelector('#recovery-prompt-wrap');if(preview)preview.classList.add('recovery-hidden');}
 function shortDate(value){const d=new Date(value);return Number.isFinite(d.getTime())?d.toLocaleString(undefined,{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'Unknown';}
 function normalizeId(value){const m=String(value||'').toLowerCase().match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);return m?m[0]:'';}
@@ -137,20 +143,21 @@ function renderImportPreview(){
 function renderSuggestions(){
  const missing=['personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
  const sensitive=sensitiveRecoveryContext(state.archiveEvidence);
- const off=sensitive.blocked?' disabled title="Automatic expansion disabled for ambiguous/sensitive archived content"':'';
  return '<article class="recovery-card" id="recovery-suggestions"><h2>Fill missing fields</h2>'+
  '<p>Try a <b>Quick Draft</b> directly on this page, or optional <b>on-device browser AI</b> where supported. Quick Draft uses simple offline rules, not a language model. The original Archive fields never change until you accept a draft. External AI and copyable prompts are still available.</p>'+
  (sensitive.blocked?'<p class="recovery-caution">'+esc(sensitive.reason)+' You can still inspect and manually edit existing archived fields.</p>':'')+
- '<p class="recovery-privacy" id="recovery-browser-ai-status">Checking whether this browser supports optional on-device AI…</p>'+
+ '<p class="recovery-privacy" id="recovery-browser-ai-status"'+(sensitive.blocked?' data-auto-draft-disabled="1"':'')+'>'+(sensitive.blocked?'Automatic draft options are unavailable for this archived context. Copy prompt and manual editing remain available.':'Checking whether this browser supports optional on-device AI…')+'</p>'+
  (missing.length?'<div class="recovery-suggestion-grid">'+missing.map(key=>{
   const idea=suggestionForField(key,state.archiveEvidence,state.conversation);
   const draft=state.drafts?.[key];
   return '<div class="recovery-suggestion" data-suggestion-field="'+esc(key)+'"><h3>'+esc(idea.label)+'</h3><p>'+esc(idea.instruction)+'</p>'+
   (idea.clues.length?'<details><summary>Archived evidence</summary><ul>'+idea.clues.map(x=>'<li>'+esc(x.slice(0,350))+'</li>').join('')+'</ul></details>':'<p class="recovery-caution">Very little archived evidence is available.</p>')+
-  '<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'"'+off+'>Quick Draft (offline)</button>'+
-  '<button class="secondary-button" type="button" data-suggest-browser="'+esc(key)+'"'+off+'>Browser AI</button>'+
-  '<button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button>'+
-  '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'"'+off+'>External AI</button></div>'+
+  (sensitive.blocked
+    ?'<p class="recovery-caution">Automatic writing is unavailable for this field because of the archived context. You can still edit it manually.</p><div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button></div>'
+    :'<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'">Quick Draft (offline)</button>'+
+     '<button class="secondary-button" type="button" data-suggest-browser="'+esc(key)+'">Browser AI</button>'+
+     '<button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button>'+
+     '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">External AI</button></div>')+
   (draft?'<div class="recovery-draft-preview"><b>Proposed '+esc(idea.label)+' · '+esc(draft.method==='browser-ai'?'Browser AI':'Offline guided draft')+'</b>'+
    '<p class="recovery-privacy">'+esc(draft.reason||'Suggested reconstruction, not the creator’s original wording.')+'</p>'+
    '<textarea class="recovery-textarea" data-draft-edit="'+esc(key)+'">'+esc(draft.text)+'</textarea>'+
@@ -198,6 +205,9 @@ function applyLocalDraft(key,text,source,edited){
 function renderWorkspace(){
   const host=document.querySelector('#recovery-workspace');if(!host||!state.record)return;
   host.innerHTML=renderEvidence()+renderReadiness()+renderConversationCard()+renderSuggestions()+renderRecoveryControls()+renderEditor();
+  // Essential editor/export controls must remain usable even if an optional
+  // AI integration or a blocked browser setting fails during initialization.
+  bindEditorOnly();
   bindWorkspace();
 }
 function bindWorkspace(){
@@ -205,13 +215,22 @@ function bindWorkspace(){
   const file=document.querySelector('#recovery-file'),drop=document.querySelector('#recovery-drop');
   file?.addEventListener('change',()=>{if(file.files?.[0])void consumeConversationFile(file.files[0]);});
   drop?.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('is-drag');});drop?.addEventListener('dragleave',()=>drop.classList.remove('is-drag'));drop?.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('is-drag');const f=e.dataTransfer?.files?.[0];if(f)void consumeConversationFile(f);});
-  document.querySelector('#recovery-use-paste')?.addEventListener('click',()=>{const text=document.querySelector('#recovery-paste')?.value||'';if(text.trim())consumeConversationText(text,'pasted conversation');});
-  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{state.conversation=null;invalidateRecoveryDrafts();markPromptDirty();refreshImportSummary();});
+  document.querySelector('#recovery-use-paste')?.addEventListener('click',()=>{
+    const text=document.querySelector('#recovery-paste')?.value||'';
+    if(text.trim())consumeConversationText(text,'pasted conversation');
+    else setStatus('Paste some conversation text first, or choose a file.','error');
+  });
+  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{
+    state.conversation=null;invalidateRecoveryDrafts();markPromptDirty();refreshImportSummary();
+    setStatus('Conversation evidence cleared.','good');
+  });
   for(const el of document.querySelectorAll('input[name="recovery-mode"]'))el.addEventListener('change',e=>{state.mode=e.target.value;markPromptDirty();for(const card of document.querySelectorAll('.recovery-mode'))card.classList.toggle('is-active',card.querySelector('input')?.checked);});
   document.querySelector('#recovery-build-prompt')?.addEventListener('click',()=>buildAndShowPrompt());
   document.querySelector('#recovery-copy-prompt')?.addEventListener('click',async()=>{await copyText(buildAndShowPrompt(),'Prompt copied.');});
   document.querySelector('#recovery-download-prompt')?.addEventListener('click',()=>{downloadBlob('spicychat-recovery-'+state.botId+'-prompt.txt',buildAndShowPrompt(),'text/plain;charset=utf-8');});
-  const ep=document.querySelector('#recovery-ai-endpoint'),model=document.querySelector('#recovery-ai-model');if(ep)ep.value=localStorage.getItem('sca-recovery-ai-endpoint')||'';if(model)model.value=localStorage.getItem('sca-recovery-ai-model')||'';
+  const ep=document.querySelector('#recovery-ai-endpoint'),model=document.querySelector('#recovery-ai-model');
+  if(ep)ep.value=recoveryStorageGet('sca-recovery-ai-endpoint');
+  if(model)model.value=recoveryStorageGet('sca-recovery-ai-model');
   document.querySelector('#recovery-run-ai')?.addEventListener('click',()=>void runAiReconstruction());
   document.querySelector('#recovery-instructions')?.addEventListener('input',markPromptDirty);
   document.querySelector('#recovery-ai-endpoint')?.addEventListener('input',updatePrivacyPreview);
@@ -232,14 +251,19 @@ function bindWorkspace(){
     if(ai)void runAiReconstruction(ai.dataset.suggestAi);
   });}
   updatePrivacyPreview();
-  wireLocalRecovery(workspace,{
-    state,
-    getMessages:()=>selectedConversationMessages(),
-    promptForField:(key,messages)=>fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
-    renderSuggestions,
-    applyDraft:applyLocalDraft
-  });
-  bindEditorOnly();
+  try{
+    wireLocalRecovery(workspace,{
+      state,
+      getMessages:()=>selectedConversationMessages(),
+      promptForField:(key,messages)=>fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
+      renderSuggestions,
+      applyDraft:applyLocalDraft
+    });
+  }catch(error){
+    console.error('Recovery helper failed to initialize:',error);
+    const info=document.querySelector('#recovery-browser-ai-status');
+    if(info)info.textContent='Optional recovery helper unavailable in this browser. Editing, prompts and exports still work.';
+  }
 }
 
 function normalizeRole(raw,speaker,botName,item){
@@ -351,8 +375,8 @@ async function runAiReconstruction(targetField=null){
   buildAndShowPrompt();
  const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? Your private conversation excerpts and archived fields may be included. The Archive itself does not receive them.';
  if(!window.confirm(consent))return;
- localStorage.setItem('sca-recovery-ai-endpoint',endpoint);
- localStorage.setItem('sca-recovery-ai-model',model);
+ recoveryStorageSet('sca-recovery-ai-endpoint',endpoint);
+ recoveryStorageSet('sca-recovery-ai-model',model);
  if(status){status.textContent='Sending selected evidence to '+url.origin+'…';status.className='recovery-status';}
  try{
   const headers={'Content-Type':'application/json'};if(key)headers.Authorization='Bearer '+key;

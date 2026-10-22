@@ -166,6 +166,13 @@ function updatePrivacyPreview(){
  let host='No endpoint entered';try{host=new URL(document.querySelector('#recovery-ai-endpoint')?.value).origin;}catch{}
  box.textContent='Destination: '+host+' · '+messages.length+' selected conversation messages · ~'+fmt(count)+' conversation characters before truncation, plus archived character fields and instructions.';
 }
+function invalidateRecoveryDrafts(){
+ if(!Object.keys(state.drafts||{}).length)return;
+ state.drafts={};
+ const card=document.querySelector('#recovery-suggestions');
+ if(card)card.outerHTML=renderSuggestions();
+ void reportBrowserModelStatus();
+}
 function refreshImportSummary(){
  const summary=document.querySelector('#recovery-conversation-summary');if(summary)summary.innerHTML=renderConversationSummary()+renderImportPreview();
  const insights=document.querySelector('#recovery-insights');if(insights)insights.outerHTML=renderReadiness();
@@ -199,7 +206,7 @@ function bindWorkspace(){
   file?.addEventListener('change',()=>{if(file.files?.[0])void consumeConversationFile(file.files[0]);});
   drop?.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('is-drag');});drop?.addEventListener('dragleave',()=>drop.classList.remove('is-drag'));drop?.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('is-drag');const f=e.dataTransfer?.files?.[0];if(f)void consumeConversationFile(f);});
   document.querySelector('#recovery-use-paste')?.addEventListener('click',()=>{const text=document.querySelector('#recovery-paste')?.value||'';if(text.trim())consumeConversationText(text,'pasted conversation');});
-  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{state.conversation=null;markPromptDirty();refreshImportSummary();});
+  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{state.conversation=null;invalidateRecoveryDrafts();markPromptDirty();refreshImportSummary();});
   for(const el of document.querySelectorAll('input[name="recovery-mode"]'))el.addEventListener('change',e=>{state.mode=e.target.value;markPromptDirty();for(const card of document.querySelectorAll('.recovery-mode'))card.classList.toggle('is-active',card.querySelector('input')?.checked);});
   document.querySelector('#recovery-build-prompt')?.addEventListener('click',()=>buildAndShowPrompt());
   document.querySelector('#recovery-copy-prompt')?.addEventListener('click',async()=>{await copyText(buildAndShowPrompt(),'Prompt copied.');});
@@ -209,7 +216,7 @@ function bindWorkspace(){
   document.querySelector('#recovery-instructions')?.addEventListener('input',markPromptDirty);
   document.querySelector('#recovery-ai-endpoint')?.addEventListener('input',updatePrivacyPreview);
   for(const x of document.querySelectorAll('#recovery-include-user,#recovery-include-ooc,#recovery-include-regen'))
-    x.addEventListener('change',()=>{markPromptDirty();updatePrivacyPreview();});
+    x.addEventListener('change',()=>{invalidateRecoveryDrafts();markPromptDirty();updatePrivacyPreview();});
   const workspace=document.querySelector('#recovery-workspace');
   if(workspace&&!workspace.dataset.suggestionWired){workspace.dataset.suggestionWired='1';workspace.addEventListener('click',e=>{
     if(e.target.closest('#recovery-download-image')){void downloadArchivedPicture();return;}
@@ -280,7 +287,7 @@ function summarizeConversation(messages,sourceName){
 }
 async function consumeConversationFile(file){try{if(file.size>20*1024*1024)throw Error('Conversation export exceeds the 20 MB browser import limit.');const text=await file.text();consumeConversationText(text,file.name);}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not read export: '+esc(e.message||e)+'</div>';}}
 function consumeConversationText(text,sourceName){
-  try{let messages;const trimmed=String(text||'').trim();if(!trimmed)throw new Error('The conversation is empty.');if(trimmed[0]==='{'||trimmed[0]==='[')messages=parseJsonConversation(trimmed,sourceName);else if(/^<!doctype html|^<html|<body[\s>]/i.test(trimmed))messages=parseHtmlConversation(trimmed,sourceName);else messages=parseTextConversation(trimmed,sourceName);state.conversation=summarizeConversation(messages,sourceName);markPromptDirty();refreshImportSummary();}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not parse conversation: '+esc(e.message||e)+'</div>';}
+  try{let messages;const trimmed=String(text||'').trim();if(!trimmed)throw new Error('The conversation is empty.');if(trimmed[0]==='{'||trimmed[0]==='[')messages=parseJsonConversation(trimmed,sourceName);else if(/^<!doctype html|^<html|<body[\s>]/i.test(trimmed))messages=parseHtmlConversation(trimmed,sourceName);else messages=parseTextConversation(trimmed,sourceName);state.conversation=summarizeConversation(messages,sourceName);invalidateRecoveryDrafts();markPromptDirty();refreshImportSummary();}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not parse conversation: '+esc(e.message||e)+'</div>';}
 }
 
 function selectedConversationMessages(){

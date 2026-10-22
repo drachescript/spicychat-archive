@@ -78,3 +78,13 @@ test('browser assistant stays explicit opt-in and never calls an external infere
  assert.doesNotMatch(src,/fetch\(/);
  assert.doesNotMatch(src,/https?:\/\//);
 });
+
+
+test('changing imported evidence or selected message classes invalidates previews',()=>{
+ const source=readFileSync(new URL('../assets/recovery.js',import.meta.url),'utf8');
+ assert.match(source,/function invalidateRecoveryDrafts\(\)/);
+ assert.match(source,/state\.drafts=\{\}/);
+ assert.match(source,/state\.conversation=summarizeConversation\(messages,sourceName\);invalidateRecoveryDrafts\(\)/);
+ assert.match(source,/x\.addEventListener\('change',\(\)=>\{invalidateRecoveryDrafts\(\)/);
+ assert.match(source,/state\.conversation=null;invalidateRecoveryDrafts\(\)/);
+});

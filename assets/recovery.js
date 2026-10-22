@@ -5,7 +5,6 @@ const DEFAULT_DATA_BASE='https://data.spicychatarchive.drache.uk';
 const FIELD_DEFS=[
   {key:'name',label:'Name',aliases:['name'],kind:'input'},
   {key:'title',label:'Title',aliases:['title'],kind:'input'},
-  {key:'description',label:'Description',aliases:['description'],kind:'textarea'},
   {key:'greeting',label:'Greeting',aliases:['greeting','greetings','first_mes','first_message'],kind:'tall'},
   {key:'personality',label:'Personality',aliases:['persona','personality','definition','character_definition','characterDefinition'],kind:'tall'},
   {key:'scenario',label:'Scenario',aliases:['scenario'],kind:'tall'},
@@ -132,7 +131,7 @@ function renderImportPreview(){
  '<div class="recovery-preview-list">'+view.sample.map(m=>'<div class="recovery-preview-message"><b>'+esc(m.role+(m.speaker?' · '+m.speaker:''))+'</b><p>'+esc(m.text.slice(0,360))+(m.text.length>360?'…':'')+'</p></div>').join('')+'</div></details>';
 }
 function renderSuggestions(){
- const missing=['description','personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
+ const missing=['personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
  return '<article class="recovery-card" id="recovery-suggestions"><h2>Suggestions for missing fields</h2>'+
  '<p>These are reconstruction <b>directions</b> based on what was archived, not recovered original wording. Copy a focused prompt, or generate a draft with your connected AI endpoint.</p>'+
  (missing.length?'<div class="recovery-suggestion-grid">'+missing.map(key=>{
@@ -185,15 +184,13 @@ function bindWorkspace(){
     setStatus('Archived picture selected.','good');
   });
   const workspace=document.querySelector('#recovery-workspace');
-  workspace?.addEventListener('click',e=>{
+  if(workspace&&!workspace.dataset.suggestionWired){workspace.dataset.suggestionWired='1';workspace.addEventListener('click',e=>{
     const copy=e.target.closest('[data-suggest-copy]'),ai=e.target.closest('[data-suggest-ai]');
     if(copy)void copyText(fieldSuggestionPrompt(copy.dataset.suggestCopy,state.archiveEvidence,state.conversation),'Suggestion prompt copied.');
     if(ai)void runAiReconstruction(ai.dataset.suggestAi);
-  },{once:false});
+  });}
   updatePrivacyPreview();
-  for(const input of document.querySelectorAll('[data-field]'))input.addEventListener('input',e=>updateEditedField(e.target.dataset.field,e.target.value));
-  for(const btn of document.querySelectorAll('[data-reset-field]'))btn.addEventListener('click',()=>resetOneField(btn.dataset.resetField));
-  document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());
+  bindEditorOnly();
 }
 
 function normalizeRole(raw,speaker,botName,item){
@@ -259,7 +256,7 @@ function buildPrompt(){
   const modeRules=state.mode==='original'?['Goal: reconstruct the original bot as closely as evidence allows.','Ignore any optional customization that conflicts with archived originals; advise using Make It Mine instead.','Every ARCHIVED ORIGINAL field is exact evidence. Copy it exactly and do not rewrite it.','Infer only fields marked NOT ARCHIVED. If conversation behavior conflicts with archived evidence, archived evidence wins.','Do not claim inferred wording came from the original creator.']:['Goal: make a personalized derivative using the archived character as the base.','Treat archived fields as factual source material, but you may modify them when the user instructions call for it.','Keep the character recognizable unless the instructions explicitly request a larger change.','Any field changed from archived evidence must be treated as user-modified, not original.'];
   const conversation=messages.length?sampleConversation(messages):'[NO CONVERSATION EVIDENCE PROVIDED]';
   const summary=state.conversation?'Loaded conversation: '+state.conversation.messages.length+' total messages; '+state.conversation.counts.character+' character, '+state.conversation.counts.user+' user, '+state.conversation.counts.ooc+' OOC/system, '+state.conversation.counts.regen+' possible regenerations.':'No conversation export was loaded.';
-  state.prompt=['You are reconstructing a SpicyChat character from archive evidence and private conversation evidence.','Never blur the difference between archived original text and inference.','',...modeRules,'','Return ONLY valid JSON with this shape:','{"fields":{"name":"","title":"","description":"","greeting":"","personality":"","scenario":"","example_dialogue":"","tags":[],"image":""},"confidence":{"personality":{"level":"high|medium|low","reason":""}},"notes":[""]}','Confidence is about how strongly the evidence supports an inferred field. Do not assign confidence to exact archived fields.','',instructions?'USER CUSTOMIZATION INSTRUCTIONS:\n'+instructions:'USER CUSTOMIZATION INSTRUCTIONS: [NONE]','','ARCHIVE BASE: '+(state.version==='latest'?'latest archived evidence':shortDate(state.version)),'BOT UUID: '+state.botId,'',archived,'','CONVERSATION SUMMARY: '+summary,'','CONVERSATION EVIDENCE:','---',conversation,'---'].join('\n');
+  state.prompt=['You are reconstructing a SpicyChat character from archive evidence and private conversation evidence.','Never blur the difference between archived original text and inference.','',...modeRules,'','Return ONLY valid JSON with this shape:','{"fields":{"name":"","title":"","greeting":"","personality":"","scenario":"","example_dialogue":"","tags":[],"image":""},"confidence":{"personality":{"level":"high|medium|low","reason":"","evidence":["archived greeting or message references"]}},"notes":[""]}','Confidence is about how strongly the evidence supports an inferred field. Do not assign confidence to exact archived fields. Include evidence references in confidence.reason or confidence.evidence; never invent evidence.','',instructions?'USER CUSTOMIZATION INSTRUCTIONS:\n'+instructions:'USER CUSTOMIZATION INSTRUCTIONS: [NONE]','','ARCHIVE BASE: '+(state.version==='latest'?'latest archived evidence':shortDate(state.version)),'BOT UUID: '+state.botId,'',archived,'','CONVERSATION SUMMARY: '+summary,'','CONVERSATION EVIDENCE:','---',conversation,'---'].join('\n');
   return state.prompt;
 }
 function buildAndShowPrompt(){const prompt=buildPrompt();const wrap=document.querySelector('#recovery-prompt-wrap'),box=document.querySelector('#recovery-prompt-preview');if(wrap)wrap.classList.remove('recovery-hidden');if(box)box.textContent=prompt;return prompt;}
@@ -369,7 +366,7 @@ function bindEditorOnly(){
  document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());
 }
 
-function editorFieldObject(){const out={};for(const def of FIELD_DEFS){let value=state.editor[def.key]??'';if(def.key==='tags')value=String(value).split(',').map(x=>x.trim()).filter(Boolean);out[def.key]=value;}return out;}
+function editorFieldObject(){const out={};for(const def of FIELD_DEFS){let value=state.editor[def.key]??'';if(def.key==='tags')value=String(value).split(',').map(x=>x.trim()).filter(Boolean);out[def.key]=value;}if(state.provenance.image==='archived'&&state.record?.avatarArchive?.publicUrl)out.image=imageUrl(state.record,state.archiveEvidence);return out;}
 function conversationSummaryForExport(){const c=state.conversation;if(!c)return null;return {sourceName:c.sourceName,messageCount:c.messages.length,counts:c.counts,detectedGreeting:c.detectedGreeting};}
 function exportRecoveryPackage(){const payload={schemaVersion:1,kind:'spicychat-archive-recovery-package',createdAt:new Date().toISOString(),botId:state.botId,archiveBase:state.version,mode:state.mode,fields:editorFieldObject(),provenance:{...state.provenance},confidence:state.confidence,conversationSummary:conversationSummaryForExport(),privacy:'Conversation message text is intentionally not included in this package.'};downloadBlob('spicychat-recovery-'+state.botId+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
 function exportFields(){const payload={botId:state.botId,fields:editorFieldObject(),provenance:{...state.provenance},confidence:state.confidence};downloadBlob('spicychat-recovery-'+state.botId+'-fields.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}

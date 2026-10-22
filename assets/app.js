@@ -1059,7 +1059,7 @@ async function botPage(){
     ${sources?`<div class="pill-row source-row"><span class="detail-sub">Observed through</span>${sources}</div>`:''}
     <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>
     <div class="detail-actions">${status==='deleted'?
-      '<a class="primary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recover archived bot</a>':
+      '<a class="secondary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recover archived bot</a>':
       '<a class="primary-button" href="'+esc(spicyHref(record.id))+'" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recovery Lab</a>'}
     ${status==='deleted'?'<span class="detail-sub">Confirmed deleted · original SpicyChat link is unavailable</span>':''}<a class="secondary-button" href="../merge/?ids=${encodeURIComponent(record.id)}">Add to Merge</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a><a class="secondary-button" href="../name-trends/?name=${encodeURIComponent(botName)}">Check name usage</a><button class="secondary-button" type="button" id="export-bot-history">Export history JSON</button></div></div></div>
     ${snapshotLabel}

@@ -275,7 +275,11 @@ async function runAiReconstruction(targetField=null){
  const endpoint=String(document.querySelector('#recovery-ai-endpoint')?.value||'').trim();
  const model=String(document.querySelector('#recovery-ai-model')?.value||'').trim();
  const key=String(document.querySelector('#recovery-ai-key')?.value||'').trim();
- if(!endpoint||!model){if(status){status.textContent='Enter an endpoint and model under Direct AI reconstruction first.';status.className='recovery-status is-error';}return;}
+ if(!endpoint||!model){
+  const panel=document.querySelector('.recovery-ai');if(panel)panel.open=true;
+  if(status){status.textContent='Enter an endpoint and model under Direct AI reconstruction first.';status.className='recovery-status is-error';}
+  return;
+ }
  let url;
  try{
   url=new URL(endpoint);

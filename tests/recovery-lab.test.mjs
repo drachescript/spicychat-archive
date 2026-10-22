@@ -64,7 +64,7 @@ test('app preserves raw legacy description but does not expose normal descriptio
  const app=readFileSync(new URL('../assets/recovery.js',import.meta.url),'utf8');
  assert.doesNotMatch(app,/key:'description',label:'Description'/);
  assert.match(app,/function legacyMetadata\(/);
- assert.match(app,/Archived legacy metadata \(advanced\)/);
+ assert.doesNotMatch(app,/Archived legacy metadata \(advanced\)/);
  assert.doesNotMatch(app,/const missing=\['description','personality'/);
  assert.match(app,/refreshTabTitle\(/);
  assert.match(app,/buildAndShowPrompt\(\),'Prompt copied/);

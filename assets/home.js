@@ -1,5 +1,6 @@
 (() => {
   const fmt = value => {
+    if (value === null || value === undefined || value === '') return '—';
     const n = Number(value);
     return Number.isFinite(n) ? n.toLocaleString() : '—';
   };
@@ -33,6 +34,17 @@
       // Use the actual queued per-ID missing checks instead.
       const pendingChecks = Math.max(0, Number(published.pendingVerificationBots ?? manifest.missingBots) || 0);
 
+      const gap = Number(published.countGap);
+      const base = String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');
+      let audit = null;
+      if (base) {
+        try {
+          audit = await json(base + '/indexes/bot-status-audit.json');
+          if (audit.schemaVersion !== 1) audit = null;
+        } catch { /* Audit may not have published yet. */ }
+      }
+      set('stat-bots-indexed', audit?.materializedBotIndexCount ?? null);
+      set('stat-bots-count-gap', Number.isFinite(gap) ? Math.abs(gap) : null);
       set('stat-bots-total', trackedBots);
       set('stat-bots-public', publicBots);
       set('stat-bots-deleted', deletedBots);
@@ -40,14 +52,21 @@
 
       const reconcile = document.getElementById('snapshot-reconcile');
       if (reconcile) {
+        const delta = Number.isFinite(gap) ? fmt(Math.abs(gap)) : 'an unknown number';
+        const indexed = audit?.materializedBotIndexCount;
         reconcile.textContent =
-          'The public count is reported by SpicyChat, while the Archive total ' +
-          'counts every preserved bot ID, including unavailable history. ' +
-          fmt(pendingChecks) + ' specific bot IDs are awaiting missing-status verification. ' +
-          'These totals are different populations and should not be added together.';
+          delta + ' is an arithmetic gap between historical Archive IDs, ' +
+          'SpicyChat\'s current public count and confirmed-gone records — not ' +
+          'a list of identifiable missing bots. ' +
+          fmt(pendingChecks) + ' bot IDs are queued for explicit verification, ' +
+          'but this is not an exhaustive audit of all recorded IDs. ' +
+          (Number.isInteger(indexed)
+            ? fmt(indexed) + ' bot records are represented by the materialized index (snapshot ' +
+              String(audit.materializedIndexGeneratedAt || 'date unknown') + '). '
+            : 'The independent materialized-record audit has not published yet. ') +
+          'An old observation is not proof of present availability or deletion.';
       }
 
-      const base = String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');
       if (base) {
         try {
           const lorebooks = await json(base + '/indexes/lorebooks.json');

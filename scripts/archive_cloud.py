@@ -668,15 +668,19 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 "trackedBots": total_bots,
                 "publicIndexBots": active,
                 "confirmedGoneBots": deleted_bots,
-                # This is intentionally a count-level reconciliation bucket.
-                # It covers archived records not represented by the current
-                # public-index count and not yet confirmed gone. It is not the
-                # same thing as the API verification queue.
+                # This is ONLY an arithmetic comparison of unrelated sets:
+                # discovery-order IDs, all public SpicyChat IDs, and the
+                # verified-gone Archive ID set. Public IDs outside the Archive
+                # may offset archived IDs absent from the live public index.
+                # It cannot identify any individual unaccounted-for bot.
                 "countGap": count_gap,
                 "unreconciledBots": max(0, count_gap),
                 "publicCountBeyondTracked": max(0, -count_gap),
                 "pendingVerificationBots": pending_verification,
-                "basis": "tracked-minus-public-index-minus-confirmed-gone",
+                "basis": "arithmetic-only-not-id-reconciliation",
+                "countGapIsIdentifiedBotIds": False,
+                "fullPerIdPublicComparisonComplete": False,
+                "currentStatusProvenForEveryDiscoveredId": False,
             },
             "tagCount": prior.get("tagCount") or 0,
             "topTags": prior.get("topTags") or [],

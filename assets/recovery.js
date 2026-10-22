@@ -107,7 +107,9 @@ function renderRecoveryControls(){
 function provenanceLabel(value){return value==='archived'?'Archived Original':value==='reconstructed'?'Reconstructed':value==='modified'?'User Modified':'Missing';}
 function provenanceClass(value){return value==='archived'?'archived':value==='reconstructed'?'reconstructed':value==='modified'?'modified':'missing';}
 function renderEditor(){
-  const fields=FIELD_DEFS.map(def=>{const value=state.editor[def.key]??'';const prov=state.provenance[def.key]||'missing';const conf=state.confidence[def.key];const control=def.kind==='input'?'<input data-field="'+esc(def.key)+'" value="'+esc(value)+'">':'<textarea data-field="'+esc(def.key)+'" class="'+(def.kind==='tall'?'is-tall':'')+'">'+esc(value)+'</textarea>';return '<div class="recovery-field"><div class="recovery-field-head"><div class="recovery-field-title"><b>'+esc(def.label)+'</b><span class="recovery-badge '+provenanceClass(prov)+'">'+esc(provenanceLabel(prov))+'</span></div><button class="recovery-reset" type="button" data-reset-field="'+esc(def.key)+'">Reset</button></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+'</div>':'')+'</div>';}).join('');
+  const fields=FIELD_DEFS.map(def=>{const value=state.editor[def.key]??'';const prov=state.provenance[def.key]||'missing';const conf=state.confidence[def.key];const control=def.kind==='input'?'<input data-field="'+esc(def.key)+'" value="'+esc(value)+'">':'<textarea data-field="'+esc(def.key)+'" class="'+(def.kind==='tall'?'is-tall':'')+'">'+esc(value)+'</textarea>';return '<div class="recovery-field"><div class="recovery-field-head"><div class="recovery-field-title"><b>'+esc(def.label)+'</b><span class="recovery-badge '+provenanceClass(prov)+'">'+esc(provenanceLabel(prov))+'</span></div><div class="recovery-field-actions">'+(meaningful(state.archiveEvidence[def.key])?'<button class="recovery-reset" type="button" data-restore-original="'+esc(def.key)+'">Restore archived</button>':'')+
+    (state.generated[def.key]!=null&&state.generatedProvenance[def.key]!=='archived'?'<button class="recovery-reset" type="button" data-restore-generated="'+esc(def.key)+'">Restore reconstruction</button>':'')+
+    '<button class="recovery-reset" type="button" data-clear-field="'+esc(def.key)+'">Clear</button></div></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+'</div>':'')+'</div>';}).join('');
   return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Exports preserve the provenance labels so inferred text is never presented as an original creator field.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div><div class="recovery-output-actions"><button class="primary-button" id="recovery-export-package" type="button">Download recovery package</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button><button class="secondary-button" id="recovery-export-png" type="button">Download image character card (PNG)</button><button class="secondary-button" id="recovery-preview-export" type="button">Preview export</button></div></article>';
 }
 
@@ -267,23 +269,105 @@ function downloadBlob(name,text,type){const blob=new Blob([text],{type:type||'te
 function parseAiPayload(data){
   if(data&&typeof data==='object'&&data.fields)return data;let raw=data?.choices?.[0]?.message?.content??data?.output_text??data?.response??data?.content??data;if(Array.isArray(raw))raw=raw.map(x=>x?.text??x?.content??'').join('');if(typeof raw==='object'&&raw)return raw;let text=String(raw||'').trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');const first=text.indexOf('{'),last=text.lastIndexOf('}');if(first>=0&&last>first)text=text.slice(first,last+1);return JSON.parse(text);
 }
-async function runAiReconstruction(){
-  const status=document.querySelector('#recovery-ai-status'),endpoint=String(document.querySelector('#recovery-ai-endpoint')?.value||'').trim(),model=String(document.querySelector('#recovery-ai-model')?.value||'').trim(),key=String(document.querySelector('#recovery-ai-key')?.value||'').trim();
-  if(!endpoint||!model){if(status){status.textContent='Enter an endpoint and model first.';status.className='recovery-status is-error';}return;}
-  let url;try{url=new URL(endpoint);if(!['http:','https:'].includes(url.protocol))throw new Error();}catch{if(status){status.textContent='Endpoint must be a valid http(s) URL.';status.className='recovery-status is-error';}return;}
-  localStorage.setItem('sca-recovery-ai-endpoint',endpoint);localStorage.setItem('sca-recovery-ai-model',model);const prompt=buildAndShowPrompt();if(status){status.textContent='Sending selected evidence to your AI endpoint…';status.className='recovery-status';}
-  try{const headers={'Content-Type':'application/json'};if(key)headers.Authorization='Bearer '+key;const body={model,messages:[{role:'system',content:'Return only the requested JSON. Preserve all fields explicitly labeled ARCHIVED ORIGINAL unless the requested mode permits intentional customization.'},{role:'user',content:prompt}],temperature:state.mode==='original'?0.2:0.55};const r=await fetch(endpoint,{method:'POST',headers,body:JSON.stringify(body)});if(!r.ok)throw new Error('HTTP '+r.status+' '+(await r.text()).slice(0,300));const payload=parseAiPayload(await r.json());applyAiResult(payload);if(status){status.textContent='Reconstruction applied. Review every inferred field before exporting.';status.className='recovery-status is-good';}}catch(e){if(status){status.textContent='AI request failed: '+(e.message||e)+'. If the endpoint blocks browser CORS, use Copy prompt instead.';status.className='recovery-status is-error';}}
+async function runAiReconstruction(targetField=null){
+ const status=document.querySelector('#recovery-ai-status');
+ const endpoint=String(document.querySelector('#recovery-ai-endpoint')?.value||'').trim();
+ const model=String(document.querySelector('#recovery-ai-model')?.value||'').trim();
+ const key=String(document.querySelector('#recovery-ai-key')?.value||'').trim();
+ if(!endpoint||!model){if(status){status.textContent='Enter an endpoint and model under Direct AI reconstruction first.';status.className='recovery-status is-error';}return;}
+ let url;
+ try{
+  url=new URL(endpoint);
+  const local=['localhost','127.0.0.1','[::1]','::1'].includes(url.hostname);
+  if(url.protocol!=='https:'&&!(url.protocol==='http:'&&local))throw Error('Remote AI endpoints must use HTTPS. HTTP is only supported on localhost.');
+  if(url.username||url.password)throw Error('Do not place credentials in endpoint URLs.');
+ }catch(e){if(status){status.textContent=e?.message||'Enter a valid HTTP(S) endpoint URL.';status.className='recovery-status is-error';}return;}
+ if(!document.querySelector('#recovery-ai-consent')?.checked){
+  if(status){status.textContent='Review the evidence preview and check the consent box before sending a request.';status.className='recovery-status is-error';}
+  document.querySelector('.recovery-ai')?.open=true;return;
+ }
+ if(targetField&&meaningful(state.archiveEvidence[targetField])){
+  setStatus('This field has an archived original; use Make It Mine to edit it intentionally.','error');return;
+ }
+ const prompt=targetField?
+  fieldSuggestionPrompt(targetField,state.archiveEvidence,state.conversation)+
+  '\nReturn ONLY valid JSON: {"fields":{"'+targetField+'":"suggested field text"},"confidence":{"'+targetField+'":{"level":"low|medium|high","reason":"why"}},"notes":["reconstruction only"]}':
+  buildAndShowPrompt();
+ const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? Your private conversation excerpts and archived fields may be included. The Archive itself does not receive them.';
+ if(!window.confirm(consent))return;
+ localStorage.setItem('sca-recovery-ai-endpoint',endpoint);
+ localStorage.setItem('sca-recovery-ai-model',model);
+ if(status){status.textContent='Sending selected evidence to '+url.origin+'…';status.className='recovery-status';}
+ try{
+  const headers={'Content-Type':'application/json'};if(key)headers.Authorization='Bearer '+key;
+  const body={model,messages:[
+   {role:'system',content:'Return only valid JSON. Archived original evidence is authoritative. Proposed content is reconstruction, never historical fact. Do not invent unverified ages or backstory.'},
+   {role:'user',content:prompt}
+  ],temperature:targetField?0.35:(state.mode==='original'?0.2:0.55)};
+  const response=await fetch(endpoint,{method:'POST',headers,body:JSON.stringify(body)});
+  if(!response.ok)throw Error('HTTP '+response.status+' '+(await response.text()).slice(0,250));
+  const payload=parseAiPayload(await response.json());
+  applyAiResult(payload,targetField);
+  if(status){status.textContent=targetField?'Suggestion applied as reconstructed '+(FIELD_BY_KEY[targetField]?.label||targetField)+'. Review it before exporting.':'Reconstruction applied. Review inferred fields before exporting.';status.className='recovery-status is-good';}
+ }catch(e){
+  if(status){status.textContent='AI request failed: '+(e?.message||e)+'. You can copy a suggestion prompt instead if CORS blocks this endpoint.';status.className='recovery-status is-error';}
+ }
 }
+
 function normalizeGeneratedValue(def,value){if(def.key==='tags'){if(Array.isArray(value))return value.join(', ');return String(value||'');}return textValue(value);}
-function applyAiResult(payload){
-  const fields=payload?.fields&&typeof payload.fields==='object'?payload.fields:payload?.card&&typeof payload.card==='object'?payload.card:payload;state.generated={};state.generatedProvenance={};state.confidence=payload?.confidence&&typeof payload.confidence==='object'?payload.confidence:{};
-  for(const def of FIELD_DEFS){let value=fields?.[def.key];if(value==null){for(const alias of def.aliases){if(fields&&fields[alias]!=null){value=fields[alias];break;}}}const archived=state.archiveEvidence[def.key],hasArchive=meaningful(archived);if(state.mode==='original'&&hasArchive)value=def.key==='tags'&&Array.isArray(archived)?archived.join(', '):textValue(archived);if(value==null)value=hasArchive?(def.key==='tags'&&Array.isArray(archived)?archived.join(', '):textValue(archived)):'';const normalized=normalizeGeneratedValue(def,value);state.editor[def.key]=normalized;state.generated[def.key]=normalized;if(hasArchive&&normalized===(def.key==='tags'&&Array.isArray(archived)?archived.join(', '):textValue(archived))){state.provenance[def.key]='archived';state.generatedProvenance[def.key]='archived';}else if(normalized){state.provenance[def.key]=state.mode==='personal'?'modified':'reconstructed';state.generatedProvenance[def.key]=state.provenance[def.key];}else{state.provenance[def.key]='missing';state.generatedProvenance[def.key]='missing';}}
-  const editorCard=document.querySelector('#recovery-editor')?.closest('.recovery-card');if(editorCard){editorCard.outerHTML=renderEditor();bindEditorOnly();}
+function applyAiResult(payload,onlyField=null){
+ const fields=payload?.fields&&typeof payload.fields==='object'?payload.fields:
+   payload?.card&&typeof payload.card==='object'?payload.card:payload;
+ if(!onlyField){state.generated={};state.generatedProvenance={};state.confidence={};}
+ if(payload?.confidence&&typeof payload.confidence==='object')Object.assign(state.confidence,payload.confidence);
+ for(const def of FIELD_DEFS){
+  if(onlyField && def.key!==onlyField)continue;
+  let value=fields?.[def.key];
+  if(value==null){for(const alias of def.aliases){if(fields?.[alias]!=null){value=fields[alias];break;}}}
+  const original=archiveTextForKey(def.key),hasArchive=meaningful(state.archiveEvidence[def.key]);
+  if(state.mode==='original'&&hasArchive)value=original;
+  if(value==null)value=hasArchive?original:'';
+  const normalized=normalizeGeneratedValue(def,value);
+  state.editor[def.key]=normalized;state.generated[def.key]=normalized;
+  const prov=hasArchive&&normalized===original?'archived':
+    normalized?(state.mode==='personal'?'modified':'reconstructed'):'missing';
+  state.provenance[def.key]=prov;state.generatedProvenance[def.key]=prov;
+ }
+ markPromptDirty();refreshTabTitle();
+ const editorCard=document.querySelector('#recovery-editor')?.closest('.recovery-card');
+ if(editorCard){editorCard.outerHTML=renderEditor();bindEditorOnly();}
 }
+
 function archiveTextForKey(key){const def=FIELD_BY_KEY[key],raw=state.archiveEvidence[key];return def?.key==='tags'&&Array.isArray(raw)?raw.join(', '):textValue(raw);}
 function updateEditedField(key,value){state.editor[key]=value;markPromptDirty();if(key==='name')refreshTabTitle();const archived=archiveTextForKey(key);if(meaningful(state.archiveEvidence[key])&&value===archived)state.provenance[key]='archived';else if(state.generated[key]!=null&&value===state.generated[key])state.provenance[key]=state.generatedProvenance[key]||'reconstructed';else state.provenance[key]=value?'modified':'missing';const field=document.querySelector('[data-field="'+CSS.escape(key)+'"]')?.closest('.recovery-field');if(field){const badge=field.querySelector('.recovery-badge');if(badge){badge.className='recovery-badge '+provenanceClass(state.provenance[key]);badge.textContent=provenanceLabel(state.provenance[key]);}}}
-function resetOneField(key){const value=state.generated[key]!=null?state.generated[key]:archiveTextForKey(key);state.editor[key]=value||'';state.provenance[key]=state.generated[key]!=null?(state.generatedProvenance[key]||'reconstructed'):(meaningful(state.archiveEvidence[key])?'archived':'missing');const input=document.querySelector('[data-field="'+CSS.escape(key)+'"]');if(input)input.value=state.editor[key];updateEditedField(key,state.editor[key]);}
-function bindEditorOnly(){for(const input of document.querySelectorAll('[data-field]'))input.addEventListener('input',e=>updateEditedField(e.target.dataset.field,e.target.value));for(const btn of document.querySelectorAll('[data-reset-field]'))btn.addEventListener('click',()=>resetOneField(btn.dataset.resetField));document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());}
+function resetOneField(key,which='archived'){
+ let value='';
+ if(which==='archived')value=archiveTextForKey(key);
+ if(which==='reconstruction')value=state.generated[key]||'';
+ state.editor[key]=value;
+ const input=document.querySelector('[data-field="'+CSS.escape(key)+'"]');if(input)input.value=value;
+ updateEditedField(key,value);
+}
+function bindEditorOnly(){
+ for(const input of document.querySelectorAll('[data-field]'))
+  input.addEventListener('input',e=>updateEditedField(e.target.dataset.field,e.target.value));
+ for(const [selector,mode] of [
+  ['[data-restore-original]','archived'],
+  ['[data-restore-generated]','reconstruction'],
+  ['[data-clear-field]','clear']
+ ]){
+  for(const button of document.querySelectorAll(selector)){
+   const attr=mode==='archived'?'restoreOriginal':mode==='reconstruction'?'restoreGenerated':'clearField';
+   button.addEventListener('click',()=>resetOneField(button.dataset[attr],mode));
+  }
+ }
+ document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);
+ document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);
+ document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);
+ document.querySelector('#recovery-export-png')?.addEventListener('click',()=>void exportCharacterCardPng());
+ document.querySelector('#recovery-preview-export')?.addEventListener('click',previewExport);
+ document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());
+}
 
 function editorFieldObject(){const out={};for(const def of FIELD_DEFS){let value=state.editor[def.key]??'';if(def.key==='tags')value=String(value).split(',').map(x=>x.trim()).filter(Boolean);out[def.key]=value;}return out;}
 function conversationSummaryForExport(){const c=state.conversation;if(!c)return null;return {sourceName:c.sourceName,messageCount:c.messages.length,counts:c.counts,detectedGreeting:c.detectedGreeting};}

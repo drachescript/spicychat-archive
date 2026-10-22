@@ -146,17 +146,17 @@ function renderSuggestions(){
  return '<article class="recovery-card" id="recovery-suggestions"><h2>Fill missing fields</h2>'+
  '<p>Build on the bot’s archived greeting, personality, and selected conversation messages. Quick Draft creates an offline evidence-guided scaffold; Browser AI can propose more natural writing if your browser supports it. Nothing replaces an archived original without your approval.</p>'+
  (sensitive.restricted?'<p class="recovery-caution">'+esc(sensitive.reason)+'</p>':'')+
- '<p class="recovery-privacy" id="recovery-browser-ai-status"'+''+'>'+'Checking whether this browser supports optional on-device AI…'+'</p>'+
+ '<p class="recovery-privacy" id="recovery-browser-ai-status">Checking whether this browser supports optional on-device AI…</p>'+
  (missing.length?'<div class="recovery-suggestion-grid">'+missing.map(key=>{
-  const idea=suggestionForField(key,state.archiveEvidence,state.conversation);
+  const idea=suggestionForField(key,state.archiveEvidence,{messages:selectedConversationMessages()});
   const draft=state.drafts?.[key];
   return '<div class="recovery-suggestion" data-suggestion-field="'+esc(key)+'"><h3>'+esc(idea.label)+'</h3><p>'+esc(idea.instruction)+'</p>'+
   (idea.clues.length?'<details><summary>Archived evidence</summary><ul>'+idea.clues.map(x=>'<li>'+esc(x.slice(0,350))+'</li>').join('')+'</ul></details>':'<p class="recovery-caution">Very little archived evidence is available.</p>')+
-  ('<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'">Quick Draft (offline)</button>'+
+  '<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-quick="'+esc(key)+'">Quick Draft (offline)</button>'+
      '<button class="secondary-button" type="button" data-suggest-browser="'+esc(key)+'">Browser AI</button>'+
      '<button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy prompt</button>'+
-     '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">External AI</button></div>')+
-  (draft?'<div class="recovery-draft-preview"><b>Proposed '+esc(idea.label)+' · '+esc(draft.method==='browser-ai'?'Browser AI':'Offline guided draft')+'</b>'+
+     '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">External AI</button></div>'+
+  (draft?'<div class="recovery-draft-preview"><b>Proposed '+esc(idea.label)+' · '+esc(draft.method==='browser-ai'?'Browser AI':draft.method==='external-ai'?'External AI':'Offline guided draft')+'</b>'+
    '<p class="recovery-privacy">'+esc(draft.reason||'Suggested reconstruction, not the creator’s original wording.')+'</p>'+
    '<textarea class="recovery-textarea" data-draft-edit="'+esc(key)+'">'+esc(draft.text)+'</textarea>'+
    '<div class="recovery-action-row"><button type="button" class="primary-button" data-draft-apply="'+esc(key)+'">Use this draft</button>'+
@@ -371,7 +371,7 @@ async function runAiReconstruction(targetField=null){
   fieldSuggestionPrompt(targetField,state.archiveEvidence,{messages:selectedConversationMessages()})+
   '\nReturn ONLY valid JSON: {"fields":{"'+targetField+'":"suggested field text"},"confidence":{"'+targetField+'":{"level":"low|medium|high","reason":"why"}},"notes":["reconstruction only"]}':
   buildAndShowPrompt();
- const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? Your private conversation excerpts and archived fields may be included. The Archive itself does not receive them.';
+ const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? '+(risk.restricted&&targetField?'Only safe archived observation summaries are included.':'Private conversation excerpts and archived fields may be included.')+' The Archive itself does not receive them.';
  if(!window.confirm(consent))return;
  recoveryStorageSet('sca-recovery-ai-endpoint',endpoint);
  recoveryStorageSet('sca-recovery-ai-model',model);

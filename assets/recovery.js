@@ -1,4 +1,5 @@
 import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
+import {buildOfflineDraft,sensitiveRecoveryContext} from './recovery-local.js';
 const app=document.querySelector('#app');
 const params=new URLSearchParams(location.search);
 const DEFAULT_DATA_BASE='https://data.spicychatarchive.drache.uk';
@@ -13,7 +14,7 @@ const FIELD_DEFS=[
   {key:'image',label:'Image URL',aliases:['avatar_url','avatar','image'],kind:'input'}
 ];
 const FIELD_BY_KEY=Object.fromEntries(FIELD_DEFS.map(x=>[x.key,x]));
-const state={runtime:null,record:null,botId:'',version:'latest',archiveEvidence:{},editor:{},provenance:{},generated:{},generatedProvenance:{},confidence:{},conversation:null,prompt:'',mode:'original'};
+const state={runtime:null,record:null,botId:'',version:'latest',archiveEvidence:{},editor:{},provenance:{},generated:{},generatedProvenance:{},confidence:{},conversation:null,prompt:'',mode:'original',drafts:{}};
 
 function esc(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 function meaningful(value){if(value==null)return false;if(typeof value==='string')return value.trim()!=='';if(Array.isArray(value))return value.some(meaningful);if(typeof value==='object')return Object.values(value).some(meaningful);return true;}
@@ -55,7 +56,7 @@ function versionChoices(record){
 }
 function imageUrl(record,evidence){const archived=record?.avatarArchive?.publicUrl;if(archived)return archived;return textValue(evidence.image||'');}
 function resetEditorFromEvidence(){
-  state.generated={};state.generatedProvenance={};state.confidence={};state.editor={};state.provenance={};
+  state.drafts={};state.generated={};state.generatedProvenance={};state.confidence={};state.editor={};state.provenance={};
   for(const def of FIELD_DEFS){const raw=state.archiveEvidence[def.key];state.editor[def.key]=def.key==='tags'&&Array.isArray(raw)?raw.join(', '):textValue(raw);state.provenance[def.key]=meaningful(raw)?'archived':'missing';}
 }
 
@@ -86,7 +87,7 @@ function evidenceStateLabel(def,value){if(meaningful(value))return 'Archived ori
 function renderEvidence(){
   const record=state.record,evidence=state.archiveEvidence,creator=textValue(bestField(record,['creator_username','creator']));const img=imageUrl(record,evidence);
   const status=record?.status?.current||'unknown';const versions=versionChoices(record);
-  return '<article class="recovery-card"><div class="recovery-bot-head"><div class="recovery-bot-art">'+(img?'<img src="'+esc(img)+'" alt="">':'BOT')+'</div><div class="recovery-bot-meta"><div class="sub">'+esc(state.botId)+'</div><h2>'+esc(textValue(evidence.name)||'Archived bot')+'</h2><div class="sub">'+(creator?'@'+esc(creator)+' · ':'')+esc(status)+' · first captured '+esc(shortDate(record?.firstSeenAt))+'</div><p>'+esc(textValue(evidence.title)||'')+'</p><div class="recovery-action-row"><a class="secondary-button" href="../bot/?id='+encodeURIComponent(state.botId)+'">Open archive record</a><a class="secondary-button" href="../merge/?ids='+encodeURIComponent(state.botId)+'">Add to Merge</a><a class="secondary-button" href="https://spicychat.ai/chatbot/'+encodeURIComponent(state.botId)+'" target="_blank" rel="noopener">Try SpicyChat ↗</a></div></div></div>'+
+  return '<article class="recovery-card"><div class="recovery-bot-head"><div class="recovery-bot-art">'+(img?'<img src="'+esc(img)+'" alt="">':'BOT')+'</div><div class="recovery-bot-meta"><div class="sub">'+esc(state.botId)+'</div><h2>'+esc(textValue(evidence.name)||'Archived bot')+'</h2><div class="sub">'+(creator?'@'+esc(creator)+' · ':'')+esc(status)+' · first captured '+esc(shortDate(record?.firstSeenAt))+'</div><p>'+esc(textValue(evidence.title)||'')+'</p><div class="recovery-action-row"><a class="secondary-button" href="../bot/?id='+encodeURIComponent(state.botId)+'">Open archive record</a><a class="secondary-button" href="../merge/?ids='+encodeURIComponent(state.botId)+'">Add to Merge</a>'+(status==='deleted'?'<span class="recovery-privacy">Confirmed deleted on SpicyChat · original link removed</span>':'<a class="secondary-button" href="https://spicychat.ai/chatbot/'+encodeURIComponent(state.botId)+'" target="_blank" rel="noopener">Try SpicyChat ↗</a>')+'</div></div></div>'+
     '<div class="recovery-version-row"><label for="recovery-version">Base recovery on</label><select class="recovery-control" id="recovery-version">'+versions.map(x=>'<option value="'+esc(x.value)+'"'+(x.value===state.version?' selected':'')+'>'+esc(x.label)+'</option>').join('')+'</select></div>'+
     '<div class="recovery-evidence-grid">'+FIELD_DEFS.map(def=>{const value=evidence[def.key];return '<div class="recovery-evidence-item '+(meaningful(value)?'has-value':'missing')+'"><b>'+esc(def.label)+'</b><span>'+esc(evidenceStateLabel(def,value))+'</span></div>';}).join('')+'</div></article>';
 }
@@ -110,7 +111,8 @@ function renderEditor(){
     (state.generated[def.key]!=null&&state.generatedProvenance[def.key]!=='archived'?'<button class="recovery-reset" type="button" data-restore-generated="'+esc(def.key)+'">Restore reconstruction</button>':'')+
     '<button class="recovery-reset" type="button" data-clear-field="'+esc(def.key)+'">Clear</button></div></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+(Array.isArray(conf.evidence)&&conf.evidence.length?' · Evidence: '+esc(conf.evidence.join('; ').slice(0,700)):'')+'</div>':'')+'</div>';}).join('');
   const legacy=textValue(bestField(state.record,['description']));
-  const metadata=legacy?'<details class="recovery-import-preview"><summary>Archived legacy metadata (advanced)</summary><p>The Description value can be retained from older bot data, but it is not a separate field in SpicyChat’s current creator. It is preserved for compatible exports, never reconstructed.</p><pre class="recovery-legacy">'+esc(legacy)+'</pre></details>':'';
+  // Legacy description remains export-only metadata, never a visible creator field.
+  const metadata='';
   return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Exports preserve the provenance labels so inferred text is never presented as an original creator field.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div>'+metadata+'<div class="recovery-output-actions"><button class="primary-button" id="recovery-export-package" type="button">Download recovery package</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button><button class="secondary-button" id="recovery-export-png" type="button">Download image character card (PNG)</button><button class="secondary-button" id="recovery-preview-export" type="button">Preview export</button></div></article>';
 }
 

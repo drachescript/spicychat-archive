@@ -44,7 +44,7 @@ test('sensitive bot UI allows safe drafts and explains the limited scope',()=>{
  const render=app.slice(app.indexOf('function renderSuggestions(){'),app.indexOf('function updatePrivacyPreview(){'));
  assert.doesNotMatch(render,/disabled title="Automatic expansion/);
  assert.match(render,/sensitive\.restricted\s*\?/);
- assert.match(render,/Non-explicit drafts can still use/);
+ assert.match(render,/esc\(sensitive\.reason\)/);
  assert.match(render,/data-suggest-quick/);
  assert.match(render,/data-suggest-browser/);
  assert.match(render,/data-suggest-copy/);

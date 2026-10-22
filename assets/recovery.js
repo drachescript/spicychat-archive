@@ -373,6 +373,8 @@ function parseAiPayload(data){
 }
 async function runAiReconstruction(targetField=null){
  const status=document.querySelector('#recovery-ai-status');
+ const expansion=typeof targetField==='string'&&targetField.startsWith('expand:');
+ const fieldKey=expansion?targetField.slice('expand:'.length):targetField;
  const risk=sensitiveRecoveryContext(state.archiveEvidence);
  if(risk.restricted&&!targetField){
   const note='For this bot, use a missing-field AI button above. Focused suggestions use non-explicit archived clues; full AI reconstruction includes raw material.';
@@ -398,12 +400,17 @@ async function runAiReconstruction(targetField=null){
   if(status){status.textContent='Review the evidence preview and check the consent box before sending a request.';status.className='recovery-status is-error';}
   const panel=document.querySelector('.recovery-ai');if(panel)panel.open=true;return;
  }
- if(targetField&&meaningful(state.archiveEvidence[targetField])){
-  setStatus('This field has an archived original; use Make It Mine to edit it intentionally.','error');return;
+ if(targetField&&!expansion&&meaningful(state.archiveEvidence[fieldKey])){
+  setStatus('This field has an archived original; use Expand instead of replacing it.','error');return;
+ }
+ if(expansion&&!String(state.editor[fieldKey]||'').trim()){
+  setStatus('There is no existing field text to expand. Use a missing-field draft instead.','error');return;
  }
  const prompt=targetField?
-  fieldSuggestionPrompt(targetField,state.archiveEvidence,{messages:selectedConversationMessages()})+
-  '\nReturn ONLY valid JSON: {"fields":{"'+targetField+'":"suggested field text"},"confidence":{"'+targetField+'":{"level":"low|medium|high","reason":"why"}},"notes":["reconstruction only"]}':
+  (expansion
+   ?fieldExpansionPrompt(fieldKey,{...state.archiveEvidence,[fieldKey]:state.editor[fieldKey]},{messages:selectedConversationMessages()})
+   :fieldSuggestionPrompt(fieldKey,state.archiveEvidence,{messages:selectedConversationMessages()}))+
+  '\nReturn ONLY valid JSON: {"fields":{"'+fieldKey+'":"suggested field text"},"confidence":{"'+fieldKey+'":{"level":"low|medium|high","reason":"why"}},"notes":["reconstruction only"]}':
   buildAndShowPrompt();
  const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? '+(risk.restricted&&targetField?'Only safe archived observation summaries are included.':'Private conversation excerpts and archived fields may be included.')+' The Archive itself does not receive them.';
  if(!window.confirm(consent))return;
@@ -420,15 +427,17 @@ async function runAiReconstruction(targetField=null){
   if(!response.ok)throw Error('HTTP '+response.status+' '+(await response.text()).slice(0,250));
   const payload=parseAiPayload(await response.json());
   if(targetField){
-   const fieldData=payload?.fields?.[targetField]??payload?.[targetField]??'';
-   const value=normalizeGeneratedValue(FIELD_BY_KEY[targetField],fieldData);
-   const review=validateSafeDraft(targetField,value,state.archiveEvidence);
+   const fieldData=payload?.fields?.[fieldKey]??payload?.[fieldKey]??'';
+   const value=normalizeGeneratedValue(FIELD_BY_KEY[fieldKey],fieldData);
+   const review=validateSafeDraft(fieldKey,value,state.archiveEvidence);
    if(!review.ok)throw Error(review.reason);
-   state.drafts[targetField]={text:value,method:'external-ai',reason:'Suggested from selected archived evidence by external AI, not original creator text.'};
+   state.drafts[targetField]={text:value,kind:expansion?'expand':'missing',method:'external-ai',reason:expansion
+    ?'Proposed additional text from external AI. It will be appended only after you approve it; original archived wording stays intact.'
+    :'Suggested from selected archived evidence by external AI, not original creator text.'};
    const suggestions=document.querySelector('#recovery-suggestions');
    if(suggestions)suggestions.outerHTML=renderSuggestions();
    void reportBrowserModelStatus();
-   if(status){status.textContent='Draft ready under '+(FIELD_BY_KEY[targetField]?.label||targetField)+'. Review it and choose Use this draft.';status.className='recovery-status is-good';}
+   if(status){status.textContent=(expansion?'Expansion':'Draft')+' ready under '+(FIELD_BY_KEY[fieldKey]?.label||fieldKey)+'. Review and '+(expansion?'Append to edited field':'Use this draft')+'.';status.className='recovery-status is-good';}
   }else{
    applyAiResult(payload);
    if(status){status.textContent='Reconstruction applied. Review inferred fields before exporting.';status.className='recovery-status is-good';}

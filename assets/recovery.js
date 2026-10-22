@@ -179,14 +179,16 @@ function bindWorkspace(){
   document.querySelector('#recovery-ai-endpoint')?.addEventListener('input',updatePrivacyPreview);
   for(const x of document.querySelectorAll('#recovery-include-user,#recovery-include-ooc,#recovery-include-regen'))
     x.addEventListener('change',()=>{markPromptDirty();updatePrivacyPreview();});
-  document.querySelector('#recovery-download-image')?.addEventListener('click',()=>void downloadArchivedPicture());
-  document.querySelector('#recovery-original-image')?.addEventListener('click',()=>{
-    updateEditedField('image',imageUrl(state.record,state.archiveEvidence));
-    const field=document.querySelector('[data-field="image"]');if(field)field.value=state.editor.image;
-    setStatus('Archived picture selected.','good');
-  });
   const workspace=document.querySelector('#recovery-workspace');
   if(workspace&&!workspace.dataset.suggestionWired){workspace.dataset.suggestionWired='1';workspace.addEventListener('click',e=>{
+    if(e.target.closest('#recovery-download-image')){void downloadArchivedPicture();return;}
+    if(e.target.closest('#recovery-original-image')){
+      const picture=imageUrl(state.record,state.archiveEvidence);
+      updateEditedField('image',picture);
+      const field=document.querySelector('[data-field="image"]');if(field)field.value=picture;
+      setStatus('Archived picture selected.','good');
+      return;
+    }
     const copy=e.target.closest('[data-suggest-copy]'),ai=e.target.closest('[data-suggest-ai]');
     if(copy)void copyText(fieldSuggestionPrompt(copy.dataset.suggestCopy,state.archiveEvidence,state.conversation),'Suggestion prompt copied.');
     if(ai)void runAiReconstruction(ai.dataset.suggestAi);
@@ -338,7 +340,7 @@ function applyAiResult(payload,onlyField=null){
 }
 
 function archiveTextForKey(key){const def=FIELD_BY_KEY[key],raw=state.archiveEvidence[key];return def?.key==='tags'&&Array.isArray(raw)?raw.join(', '):textValue(raw);}
-function updateEditedField(key,value){state.editor[key]=value;markPromptDirty();if(key==='name')refreshTabTitle();const archived=archiveTextForKey(key);if(meaningful(state.archiveEvidence[key])&&value===archived)state.provenance[key]='archived';else if(state.generated[key]!=null&&value===state.generated[key])state.provenance[key]=state.generatedProvenance[key]||'reconstructed';else state.provenance[key]=value?'modified':'missing';const field=document.querySelector('[data-field="'+CSS.escape(key)+'"]')?.closest('.recovery-field');if(field){const badge=field.querySelector('.recovery-badge');if(badge){badge.className='recovery-badge '+provenanceClass(state.provenance[key]);badge.textContent=provenanceLabel(state.provenance[key]);}}}
+function updateEditedField(key,value){state.editor[key]=value;markPromptDirty();if(key==='name')refreshTabTitle();const archived=archiveTextForKey(key);if((meaningful(state.archiveEvidence[key])&&value===archived)||(key==='image'&&value&&value===imageUrl(state.record,state.archiveEvidence)))state.provenance[key]='archived';else if(state.generated[key]!=null&&value===state.generated[key])state.provenance[key]=state.generatedProvenance[key]||'reconstructed';else state.provenance[key]=value?'modified':'missing';const field=document.querySelector('[data-field="'+CSS.escape(key)+'"]')?.closest('.recovery-field');if(field){const badge=field.querySelector('.recovery-badge');if(badge){badge.className='recovery-badge '+provenanceClass(state.provenance[key]);badge.textContent=provenanceLabel(state.provenance[key]);}}}
 function resetOneField(key,which='archived'){
  let value='';
  if(which==='archived')value=archiveTextForKey(key);

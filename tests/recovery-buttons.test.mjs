@@ -50,5 +50,5 @@ test('sensitive bot UI allows safe drafts and explains the limited scope',()=>{
  assert.match(render,/data-suggest-copy/);
  assert.match(render,/data-suggest-ai/);
  assert.doesNotMatch(render,/data-auto-draft-disabled/);
- assert.match(assistant,/validateSafeDraft\(key,draft,state\.archiveEvidence\)/);
+ assert.match(assistant,/validateSafeDraft\(field,draft,state\.archiveEvidence\)/);
 });

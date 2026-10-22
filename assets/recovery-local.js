@@ -94,7 +94,7 @@ export function safeRecoveryEvidencePrompt(evidence,conversation=null) {
 }
 
 export function validateSafeDraft(field,text,evidence) {
- if(!DRAFT_FIELDS.includes(field))return {ok:false,reason:'Not a supported reconstruction field.'};
+ if(!DRAFT_FIELDS.includes(field)&&field!=='greeting')return {ok:false,reason:'Not a supported narrative field.'};
  const content=String(text||'').trim();
  if(!content)return {ok:false,reason:'The model returned no text.'};
  if(content.length>12000)return {ok:false,reason:'Draft is too large; shorten it before use.'};
@@ -150,4 +150,55 @@ export function buildOfflineDraft(field,evidence,conversation=null,style='faithf
  return {text,reason:'Proposed wording built from '+facts.contextType+'; it is not the original creator text. '+
   (sensitiveRecoveryContext(evidence).restricted?'Only non-explicit everyday interactions are used.':''),
   method:'offline-guided',confidence:'low'};
+}
+
+
+// Expand an existing (possibly archived) narrative field with a separate,
+// non-destructive ADDITION. Do not copy or modify the archived text itself.
+// Acceptance is a separate user action that marks the editor's field modified.
+export const EXPAND_FIELDS = Object.freeze(['personality','greeting','scenario','example_dialogue']);
+
+export function buildOfflineExpansion(field,evidence,conversation=null) {
+ if(!EXPAND_FIELDS.includes(field))return {text:'',reason:'Not an expandable narrative field.'};
+ if(!String(evidence?.[field]||'').trim())
+  return {text:'',reason:'This field is empty; use Quick Draft to create it first.'};
+ const facts=safeRecoveryClues(evidence,conversation);
+ if(!facts.hasContext)return {text:'',reason:'Not enough saved character evidence to expand this field.'};
+ const name=facts.name;
+ const characteristic=facts.traits.length?facts.traits.join(', '):'the behavior established by the archived greeting';
+ let addition='';
+ if(field==='personality') {
+  const parts=[
+   'In ordinary conversation, '+name+' shows '+characteristic+' tendencies through how they respond to others.',
+   facts.bored?name+' frequently seeks out something to do and likes having company when restless.':'',
+   facts.tease?name+' tends toward light teasing and quick, lively remarks.':'',
+   facts.watchSomething?name+' readily suggests shared activities, such as picking something to watch.':'',
+   'Keep this characterization consistent with the archived dialogue and allow {{user}} to decide their own actions and replies.'
+  ];
+  addition=parts.filter(Boolean).join(' ');
+ } else if(field==='scenario') {
+  addition=(facts.watchSomething?name+' has suggested watching something together, leaving the choice of what to watch open to {{user}}. ':
+   facts.bored?name+' is looking for a way to pass the time with {{user}}. ':'')+
+   (facts.location?'The original opening refers to '+facts.location+'. ':'')+
+   (facts.tease?'Their banter can stay lighthearted and energetic. ':'')+
+   'The scene can progress through dialogue and small everyday choices without assuming what {{user}} says or does.';
+ } else if(field==='greeting') {
+  addition=facts.watchSomething
+   ?'*'+name+' flips through the available shows with obvious impatience, glancing over for a suggestion.* "okay, your pick first!"'
+   :facts.bored
+   ?'*'+name+' drums their fingers, looking for something to do.* "so, any ideas?"'
+   :'*'+name+' pauses, leaving room for {{user}} to answer before continuing.*';
+ } else {
+  addition=facts.watchSomething
+   ?'{{char}}: "you pick the first show, and i’ll pick the next one!"\n{{user}}: "[Your response]"\n{{char}}: "deal! let’s see what you choose."'
+   :facts.bored
+   ?'{{char}}: "got any ideas for today?"\n{{user}}: "[Your response]"\n{{char}}: "oh, tell me more!"'
+   :'{{char}}: "what would you like to do next?"\n{{user}}: "[Your response]"\n{{char}}: "okay, i’m listening."';
+ }
+ const review=validateSafeDraft(field,addition,evidence);
+ if(!review.ok)return {text:'',reason:review.reason};
+ return {
+  text:addition,kind:'expand',method:'offline-guided',confidence:'low',
+  reason:'Additional suggested wording based on '+facts.contextType+'. The original text is unchanged until you explicitly append this addition.',
+ };
 }

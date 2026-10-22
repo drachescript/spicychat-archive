@@ -8,6 +8,7 @@ on:
       - "scripts/publish_name_trends.py"
       - "scripts/publish_tag_stats.py"
       - "scripts/publish_historical_tags.py"
+      - "scripts/publish_bot_status_audit.py"
       - ".github/workflows/name-trends.yml"
   schedule:
     # Daily snapshot. Reads existing compact index shards (not bot records).
@@ -50,6 +51,9 @@ jobs:
       - name: Publish archived former-tag lookup
         if: steps.guard.outputs.mode == 'r2'
         run: python scripts/publish_historical_tags.py
+      - name: Publish last-observed bot status and materialized-index audit
+        if: steps.guard.outputs.mode == 'r2'
+        run: python scripts/publish_bot_status_audit.py
       - name: Explain quota pause
         if: steps.guard.outputs.mode != 'r2'
         run: echo "Name and tag statistics were left unchanged because the R2 quota guard is paused." >> "$GITHUB_STEP_SUMMARY"

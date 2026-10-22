@@ -94,7 +94,7 @@ export function safeRecoveryEvidencePrompt(evidence,conversation=null) {
 }
 
 export function validateSafeDraft(field,text,evidence) {
- if(!DRAFT_FIELDS.includes(field))return {ok:false,reason:'Not a supported reconstruction field.'};
+ if(!DRAFT_FIELDS.includes(field)&&field!=='greeting')return {ok:false,reason:'Not a supported narrative field.'};
  const content=String(text||'').trim();
  if(!content)return {ok:false,reason:'The model returned no text.'};
  if(content.length>12000)return {ok:false,reason:'Draft is too large; shorten it before use.'};

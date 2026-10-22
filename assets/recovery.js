@@ -1,10 +1,10 @@
+import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
 const app=document.querySelector('#app');
 const params=new URLSearchParams(location.search);
 const DEFAULT_DATA_BASE='https://data.spicychatarchive.drache.uk';
 const FIELD_DEFS=[
   {key:'name',label:'Name',aliases:['name'],kind:'input'},
   {key:'title',label:'Title',aliases:['title'],kind:'input'},
-  {key:'description',label:'Description',aliases:['description'],kind:'textarea'},
   {key:'greeting',label:'Greeting',aliases:['greeting','greetings','first_mes','first_message'],kind:'tall'},
   {key:'personality',label:'Personality',aliases:['persona','personality','definition','character_definition','characterDefinition'],kind:'tall'},
   {key:'scenario',label:'Scenario',aliases:['scenario'],kind:'tall'},
@@ -19,6 +19,8 @@ function esc(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;
 function meaningful(value){if(value==null)return false;if(typeof value==='string')return value.trim()!=='';if(Array.isArray(value))return value.some(meaningful);if(typeof value==='object')return Object.values(value).some(meaningful);return true;}
 function textValue(value){if(value==null)return '';if(Array.isArray(value))return value.map(textValue).filter(Boolean).join(', ');if(typeof value==='object')return JSON.stringify(value);return String(value);}
 function fmt(value){const n=Number(value||0);return Number.isFinite(n)?n.toLocaleString():'0';}
+function refreshTabTitle(){const name=String(state.editor?.name||state.archiveEvidence?.name||'').trim();document.title=(name?name+' Recovery':'Recovery Lab')+' · SpicyChat Archive';}
+function markPromptDirty(){state.prompt='';const preview=document.querySelector('#recovery-prompt-wrap');if(preview)preview.classList.add('recovery-hidden');}
 function shortDate(value){const d=new Date(value);return Number.isFinite(d.getTime())?d.toLocaleString(undefined,{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'Unknown';}
 function normalizeId(value){const m=String(value||'').toLowerCase().match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);return m?m[0]:'';}
 function leafPath(path){const bits=String(path||'').split('.');return bits[bits.length-1]||'';}
@@ -59,7 +61,7 @@ function resetEditorFromEvidence(){
 
 function setStatus(text,type){const el=document.querySelector('#recovery-status');if(!el)return;el.textContent=text||'';el.className='recovery-status'+(type?' is-'+type:'');}
 function renderLanding(){
-  app.innerHTML='<section class="hero recovery-hero"><div><h1>Archive Recovery Lab</h1><p>Recover a lost SpicyChat character from exact archived evidence, then reconstruct missing pieces from one of your old conversations or turn the recovered character into your own version.</p></div><aside class="recovery-hero-note"><b>Original archive data always wins.</b><span>Fields the archive actually captured stay labeled as archived originals. Anything inferred from conversation behavior is labeled reconstructed, and intentional edits are labeled user modified.</span><span>Your conversation files are parsed locally in this browser. They are not uploaded to the Archive.</span></aside></section>'+
+  app.innerHTML='<section class="hero recovery-hero"><div><h1>Recovery Lab</h1><p>Recover a lost SpicyChat character from exact archived evidence, then reconstruct missing pieces from one of your old conversations or turn the recovered character into your own version.</p></div><aside class="recovery-hero-note"><b>Original archive data always wins.</b><span>Fields the archive actually captured stay labeled as archived originals. Anything inferred from conversation behavior is labeled reconstructed, and intentional edits are labeled user modified.</span><span>Your conversation files are parsed locally in this browser. They are not uploaded to the Archive.</span></aside></section>'+
     '<section class="recovery-shell"><article class="recovery-card"><h2>Choose a bot</h2><p>Paste a SpicyChat character URL or UUID. Opening Recovery Lab from an archived bot page fills this automatically.</p><div class="recovery-load-row"><input id="recovery-id" placeholder="SpicyChat bot URL or UUID" autocomplete="off"><button class="primary-button" id="recovery-load" type="button">Load archive evidence</button></div><div class="recovery-status" id="recovery-status"></div></article><div id="recovery-workspace"></div></section>';
   const input=document.querySelector('#recovery-id');input.value=params.get('id')||'';
   document.querySelector('#recovery-load').addEventListener('click',()=>void loadBot(input.value));
@@ -74,7 +76,7 @@ async function loadBot(raw){
     const runtime=await loadRuntime();const record=await fetchJsonRetry404(archiveBotUrl(runtime,id));
     state.record=record;state.botId=id;state.version=params.get('at')||'latest';
     const validVersions=new Set(versionChoices(record).map(x=>x.value));if(!validVersions.has(state.version))state.version='latest';
-    state.archiveEvidence=evidenceAtVersion(record,state.version);resetEditorFromEvidence();state.conversation=null;state.prompt='';
+    state.archiveEvidence=evidenceAtVersion(record,state.version);resetEditorFromEvidence();state.conversation=null;markPromptDirty();refreshTabTitle();
     const u=new URL(location.href);u.searchParams.set('id',id);if(state.version==='latest')u.searchParams.delete('at');history.replaceState(null,'',u);
     setStatus('Archive evidence loaded.','good');renderWorkspace();
   }catch(e){setStatus(e?.status===404?'That UUID does not have a detailed archived record yet.':'Could not load archive record: '+(e.message||e),'error');}
@@ -94,41 +96,105 @@ function renderConversationSummary(){
   return '<div class="recovery-summary"><div><b>'+fmt(c.messages.length)+'</b><span>messages</span></div><div><b>'+fmt(c.counts.character)+'</b><span>character</span></div><div><b>'+fmt(c.counts.user)+'</b><span>user</span></div><div><b>'+fmt(c.counts.ooc)+'</b><span>OOC / system</span></div><div><b>'+fmt(c.counts.regen)+'</b><span>possible regenerations</span></div></div><div class="recovery-status is-good">Loaded '+esc(c.sourceName||'conversation')+(c.detectedGreeting?' · opening character message detected':'')+'.</div>';
 }
 function renderConversationCard(){
-  return '<article class="recovery-card"><h2>Add conversation evidence</h2><p>Use a QoL export, S.AI Toolkit export, JSON/HTML transcript, Markdown, plain text, or paste the conversation directly. Parsing happens locally.</p><div class="recovery-input-grid"><div><label class="recovery-drop" id="recovery-drop"><input type="file" id="recovery-file" accept=".json,.html,.htm,.txt,.md,application/json,text/html,text/plain"><b>Drop a conversation export here</b><span>or click to choose a file</span></label></div><div><textarea class="recovery-textarea" id="recovery-paste" placeholder="Or paste conversation text / JSON here"></textarea><div class="recovery-action-row"><button class="secondary-button" id="recovery-use-paste" type="button">Use pasted conversation</button><button class="secondary-button" id="recovery-clear-chat" type="button">Clear conversation</button></div></div></div><div id="recovery-conversation-summary">'+renderConversationSummary()+'</div><div class="recovery-options"><label class="recovery-check"><input type="checkbox" id="recovery-include-user" checked> Use user messages as relationship/context evidence</label><label class="recovery-check"><input type="checkbox" id="recovery-include-ooc"> Include OOC/system/directive messages</label><label class="recovery-check"><input type="checkbox" id="recovery-include-regen"> Include possible regenerated/swiped replies</label></div><p class="recovery-privacy">Nothing in this section is sent to the Archive. If you later use a direct AI endpoint, only the selected archive evidence and filtered conversation sample are sent to that endpoint.</p></article>';
+  return '<article class="recovery-card"><h2>Add conversation evidence</h2><p>Use a QoL export, S.AI Toolkit export, JSON/HTML transcript, Markdown, plain text, or paste the conversation directly. Parsing happens locally.</p><div class="recovery-input-grid"><div><label class="recovery-drop" id="recovery-drop"><input type="file" id="recovery-file" accept=".json,.html,.htm,.txt,.md,application/json,text/html,text/plain"><b>Drop a conversation export here</b><span>or click to choose a file</span></label></div><div><textarea class="recovery-textarea" id="recovery-paste" placeholder="Or paste conversation text / JSON here"></textarea><div class="recovery-action-row"><button class="secondary-button" id="recovery-use-paste" type="button">Use pasted conversation</button><button class="secondary-button" id="recovery-clear-chat" type="button">Clear conversation</button></div></div></div><div id="recovery-conversation-summary">'+renderConversationSummary()+renderImportPreview()+'</div><div class="recovery-options"><label class="recovery-check"><input type="checkbox" id="recovery-include-user" checked> Use user messages as relationship/context evidence</label><label class="recovery-check"><input type="checkbox" id="recovery-include-ooc"> Include OOC/system/directive messages</label><label class="recovery-check"><input type="checkbox" id="recovery-include-regen"> Include possible regenerated/swiped replies</label></div><p class="recovery-privacy">Nothing in this section is sent to the Archive. If you later use a direct AI endpoint, only the selected archive evidence and filtered conversation sample are sent to that endpoint.</p></article>';
 }
 
 function renderRecoveryControls(){
-  return '<article class="recovery-card"><h2>Recovery approach</h2><div class="recovery-mode-grid"><label class="recovery-mode '+(state.mode==='original'?'is-active':'')+'"><div><input type="radio" name="recovery-mode" value="original" '+(state.mode==='original'?'checked':'')+'><b>Reconstruct Original</b></div><p>Archived original fields are locked as evidence. Missing fields are inferred as closely as possible from the conversation.</p></label><label class="recovery-mode '+(state.mode==='personal'?'is-active':'')+'"><div><input type="radio" name="recovery-mode" value="personal" '+(state.mode==='personal'?'checked':'')+'><b>Make It Mine</b></div><p>Use the recovered character as a base, then intentionally adapt it to your instructions.</p></label></div><label style="display:grid;gap:6px;margin-top:12px"><span style="font-size:12px;color:var(--muted)">Optional instructions</span><textarea class="recovery-textarea" id="recovery-instructions" placeholder="Examples: keep her personality but make the scenario AnyPOV; make him less aggressive; preserve everything except the relationship setup."></textarea></label><div class="recovery-action-row"><button class="primary-button" id="recovery-build-prompt" type="button">Build reconstruction prompt</button><button class="secondary-button" id="recovery-copy-prompt" type="button">Copy prompt</button><button class="secondary-button" id="recovery-download-prompt" type="button">Download prompt</button></div><details class="recovery-ai"><summary>Direct AI reconstruction (optional)</summary><p>Connect any browser-accessible chat-completions-compatible endpoint. Endpoint/model can be remembered by the browser; the API key is kept only in this page session and is never stored by the Archive.</p><div class="recovery-ai-grid"><label>Endpoint<input class="recovery-control" id="recovery-ai-endpoint" placeholder="https://…/v1/chat/completions"></label><label>Model<input class="recovery-control" id="recovery-ai-model" placeholder="model name"></label><label>API key<input class="recovery-control" id="recovery-ai-key" type="password" placeholder="optional for local endpoints"></label></div><div class="recovery-action-row"><button class="primary-button" id="recovery-run-ai" type="button">Reconstruct with AI</button></div><div class="recovery-status" id="recovery-ai-status"></div></details><div id="recovery-prompt-wrap" class="recovery-hidden"><h3 style="margin-top:16px">Prompt preview</h3><div class="recovery-prompt-preview" id="recovery-prompt-preview"></div></div></article>';
+  return '<article class="recovery-card"><h2>Recovery approach</h2><div class="recovery-mode-grid"><label class="recovery-mode '+(state.mode==='original'?'is-active':'')+'"><div><input type="radio" name="recovery-mode" value="original" '+(state.mode==='original'?'checked':'')+'><b>Reconstruct Original</b></div><p>Archived original fields are locked as evidence. Missing fields are inferred as closely as possible from the conversation.</p></label><label class="recovery-mode '+(state.mode==='personal'?'is-active':'')+'"><div><input type="radio" name="recovery-mode" value="personal" '+(state.mode==='personal'?'checked':'')+'><b>Make It Mine</b></div><p>Use the recovered character as a base, then intentionally adapt it to your instructions.</p></label></div><label style="display:grid;gap:6px;margin-top:12px"><span style="font-size:12px;color:var(--muted)">Optional instructions</span><textarea class="recovery-textarea" id="recovery-instructions" placeholder="Examples: keep her personality but make the scenario AnyPOV; make him less aggressive; preserve everything except the relationship setup."></textarea></label><div class="recovery-action-row"><button class="primary-button" id="recovery-build-prompt" type="button">Build reconstruction prompt</button><button class="secondary-button" id="recovery-copy-prompt" type="button">Copy prompt</button><button class="secondary-button" id="recovery-download-prompt" type="button">Download prompt</button></div><details class="recovery-ai"><summary>Direct AI reconstruction (optional)</summary><p>Connect any browser-accessible chat-completions-compatible endpoint. Endpoint/model can be remembered by the browser; the API key is kept only in this page session and is never stored by the Archive.</p><div class="recovery-ai-grid"><label>Endpoint<input class="recovery-control" id="recovery-ai-endpoint" placeholder="https://…/v1/chat/completions"></label><label>Model<input class="recovery-control" id="recovery-ai-model" placeholder="model name"></label><label>API key<input class="recovery-control" id="recovery-ai-key" type="password" placeholder="optional for local endpoints"></label></div><div class="recovery-action-row"><button class="primary-button" id="recovery-run-ai" type="button">Reconstruct with AI</button></div><div id="recovery-ai-preview" class="recovery-privacy"></div><label class="recovery-check recovery-ai-consent"><input type="checkbox" id="recovery-ai-consent"> I understand selected evidence will be sent to this endpoint</label><div class="recovery-status" id="recovery-ai-status"></div></details><div id="recovery-prompt-wrap" class="recovery-hidden"><h3 style="margin-top:16px">Prompt preview</h3><div class="recovery-prompt-preview" id="recovery-prompt-preview"></div></div></article>';
 }
 
 function provenanceLabel(value){return value==='archived'?'Archived Original':value==='reconstructed'?'Reconstructed':value==='modified'?'User Modified':'Missing';}
 function provenanceClass(value){return value==='archived'?'archived':value==='reconstructed'?'reconstructed':value==='modified'?'modified':'missing';}
 function renderEditor(){
-  const fields=FIELD_DEFS.map(def=>{const value=state.editor[def.key]??'';const prov=state.provenance[def.key]||'missing';const conf=state.confidence[def.key];const control=def.kind==='input'?'<input data-field="'+esc(def.key)+'" value="'+esc(value)+'">':'<textarea data-field="'+esc(def.key)+'" class="'+(def.kind==='tall'?'is-tall':'')+'">'+esc(value)+'</textarea>';return '<div class="recovery-field"><div class="recovery-field-head"><div class="recovery-field-title"><b>'+esc(def.label)+'</b><span class="recovery-badge '+provenanceClass(prov)+'">'+esc(provenanceLabel(prov))+'</span></div><button class="recovery-reset" type="button" data-reset-field="'+esc(def.key)+'">Reset</button></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+'</div>':'')+'</div>';}).join('');
-  return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Exports preserve the provenance labels so inferred text is never presented as an original creator field.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div><div class="recovery-output-actions"><button class="primary-button" id="recovery-export-package" type="button">Download recovery package</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button></div></article>';
+  const fields=FIELD_DEFS.map(def=>{const value=state.editor[def.key]??'';const prov=state.provenance[def.key]||'missing';const conf=state.confidence[def.key];const control=def.kind==='input'?'<input data-field="'+esc(def.key)+'" value="'+esc(value)+'">':'<textarea data-field="'+esc(def.key)+'" class="'+(def.kind==='tall'?'is-tall':'')+'">'+esc(value)+'</textarea>';return '<div class="recovery-field"><div class="recovery-field-head"><div class="recovery-field-title"><b>'+esc(def.label)+'</b><span class="recovery-badge '+provenanceClass(prov)+'">'+esc(provenanceLabel(prov))+'</span></div><div class="recovery-field-actions">'+(meaningful(state.archiveEvidence[def.key])?'<button class="recovery-reset" type="button" data-restore-original="'+esc(def.key)+'">Restore archived</button>':'')+
+    (state.generated[def.key]!=null&&state.generatedProvenance[def.key]!=='archived'?'<button class="recovery-reset" type="button" data-restore-generated="'+esc(def.key)+'">Restore reconstruction</button>':'')+
+    '<button class="recovery-reset" type="button" data-clear-field="'+esc(def.key)+'">Clear</button></div></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+(Array.isArray(conf.evidence)&&conf.evidence.length?' · Evidence: '+esc(conf.evidence.join('; ').slice(0,700)):'')+'</div>':'')+'</div>';}).join('');
+  const legacy=textValue(bestField(state.record,['description']));
+  const metadata=legacy?'<details class="recovery-import-preview"><summary>Archived legacy metadata (advanced)</summary><p>The Description value can be retained from older bot data, but it is not a separate field in SpicyChat’s current creator. It is preserved for compatible exports, never reconstructed.</p><pre class="recovery-legacy">'+esc(legacy)+'</pre></details>':'';
+  return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Exports preserve the provenance labels so inferred text is never presented as an original creator field.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div>'+metadata+'<div class="recovery-output-actions"><button class="primary-button" id="recovery-export-package" type="button">Download recovery package</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button><button class="secondary-button" id="recovery-export-png" type="button">Download image character card (PNG)</button><button class="secondary-button" id="recovery-preview-export" type="button">Preview export</button></div></article>';
+}
+
+
+function renderReadiness(){
+ const data=recoveryReadiness({...state.archiveEvidence,image:imageUrl(state.record,state.archiveEvidence)},FIELD_DEFS),warnings=evidenceWarnings(state.archiveEvidence,state.conversation);
+ const missing=data.missing.map(key=>FIELD_BY_KEY[key]?.label||key),picture=imageUrl(state.record,state.archiveEvidence);
+ return '<article class="recovery-card recovery-insights" id="recovery-insights"><h2>Recovery evidence & readiness</h2>'+
+ '<p><b>'+data.complete+' of '+data.total+'</b> fields have archived values. This counts field presence, not quality. Reconstructed details are never described as originals.</p>'+
+ '<div class="recovery-meter" role="progressbar" aria-valuenow="'+data.complete+'" aria-valuemin="0" aria-valuemax="'+data.total+'"><span style="width:'+Math.round(data.complete/data.total*100)+'%"></span></div>'+
+ '<p class="recovery-privacy">'+(missing.length?'Not archived: '+esc(missing.join(', '))+'.':'All listed fields have some archived value.')+'</p>'+
+ warnings.map(w=>'<p class="recovery-caution">'+esc(w)+'</p>').join('')+
+ (picture?'<div class="recovery-action-row"><button class="secondary-button" id="recovery-download-image" type="button">Download archived picture</button><button class="secondary-button" id="recovery-original-image" type="button">Use archived picture URL</button><a class="secondary-button" href="'+esc(picture)+'" target="_blank" rel="noopener noreferrer">View image ↗</a></div><p class="recovery-privacy">An archived image might be a resized copy rather than the creator’s original resolution.</p>':'')+'</article>';
+}
+function renderImportPreview(){
+ if(!state.conversation?.messages?.length)return '';
+ const view=conversationPreview(state.conversation.messages,textValue(state.archiveEvidence.name));
+ return '<details class="recovery-import-preview"><summary>Review imported messages and identity</summary>'+
+ (view.mismatch?'<p class="recovery-caution">Detected character speaker(s): '+esc(view.names.join(', '))+'. These do not match the archived bot name; verify that this is the right conversation.</p>':'')+
+ '<div class="recovery-preview-list">'+view.sample.map(m=>'<div class="recovery-preview-message"><b>'+esc(m.role+(m.speaker?' · '+m.speaker:''))+'</b><p>'+esc(m.text.slice(0,360))+(m.text.length>360?'…':'')+'</p></div>').join('')+'</div></details>';
+}
+function renderSuggestions(){
+ const missing=['personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
+ return '<article class="recovery-card" id="recovery-suggestions"><h2>Suggestions for missing fields</h2>'+
+ '<p>These are reconstruction <b>directions</b> based on what was archived, not recovered original wording. Copy a focused prompt, or generate a draft with your connected AI endpoint.</p>'+
+ (missing.length?'<div class="recovery-suggestion-grid">'+missing.map(key=>{
+  const idea=suggestionForField(key,state.archiveEvidence,state.conversation);
+  return '<div class="recovery-suggestion"><h3>'+esc(idea.label)+'</h3><p>'+esc(idea.instruction)+'</p>'+
+  (idea.clues.length?'<details><summary>What the evidence supports</summary><ul>'+idea.clues.map(x=>'<li>'+esc(x.slice(0,350))+'</li>').join('')+'</ul></details>':'<p class="recovery-caution">There is very little evidence for this field.</p>')+
+  '<div class="recovery-action-row"><button class="secondary-button" type="button" data-suggest-copy="'+esc(key)+'">Copy suggestion prompt</button>'+
+  '<button class="secondary-button" type="button" data-suggest-ai="'+esc(key)+'">Suggest with connected AI</button></div></div>';
+ }).join('')+'</div>':'<p>These fields already contain archived values. You can edit them in Make It Mine mode.</p>')+'</article>';
+}
+function updatePrivacyPreview(){
+ const box=document.querySelector('#recovery-ai-preview');if(!box)return;
+ const messages=selectedConversationMessages(),count=messages.reduce((n,m)=>n+m.text.length,0);
+ let host='No endpoint entered';try{host=new URL(document.querySelector('#recovery-ai-endpoint')?.value).origin;}catch{}
+ box.textContent='Destination: '+host+' · '+messages.length+' selected conversation messages · ~'+fmt(count)+' conversation characters before truncation, plus archived character fields and instructions.';
+}
+function refreshImportSummary(){
+ const summary=document.querySelector('#recovery-conversation-summary');if(summary)summary.innerHTML=renderConversationSummary()+renderImportPreview();
+ const insights=document.querySelector('#recovery-insights');if(insights)insights.outerHTML=renderReadiness();
+ const ideas=document.querySelector('#recovery-suggestions');if(ideas)ideas.outerHTML=renderSuggestions();
+ updatePrivacyPreview();
 }
 
 function renderWorkspace(){
   const host=document.querySelector('#recovery-workspace');if(!host||!state.record)return;
-  host.innerHTML=renderEvidence()+renderConversationCard()+renderRecoveryControls()+renderEditor();
+  host.innerHTML=renderEvidence()+renderReadiness()+renderConversationCard()+renderSuggestions()+renderRecoveryControls()+renderEditor();
   bindWorkspace();
 }
 function bindWorkspace(){
-  document.querySelector('#recovery-version')?.addEventListener('change',e=>{state.version=e.target.value;state.archiveEvidence=evidenceAtVersion(state.record,state.version);resetEditorFromEvidence();state.prompt='';const u=new URL(location.href);if(state.version==='latest')u.searchParams.delete('at');else u.searchParams.set('at',state.version);history.replaceState(null,'',u);renderWorkspace();});
+  document.querySelector('#recovery-version')?.addEventListener('change',e=>{state.version=e.target.value;state.archiveEvidence=evidenceAtVersion(state.record,state.version);resetEditorFromEvidence();markPromptDirty();refreshTabTitle();const u=new URL(location.href);if(state.version==='latest')u.searchParams.delete('at');else u.searchParams.set('at',state.version);history.replaceState(null,'',u);renderWorkspace();});
   const file=document.querySelector('#recovery-file'),drop=document.querySelector('#recovery-drop');
   file?.addEventListener('change',()=>{if(file.files?.[0])void consumeConversationFile(file.files[0]);});
   drop?.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('is-drag');});drop?.addEventListener('dragleave',()=>drop.classList.remove('is-drag'));drop?.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('is-drag');const f=e.dataTransfer?.files?.[0];if(f)void consumeConversationFile(f);});
   document.querySelector('#recovery-use-paste')?.addEventListener('click',()=>{const text=document.querySelector('#recovery-paste')?.value||'';if(text.trim())consumeConversationText(text,'pasted conversation');});
-  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{state.conversation=null;const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML=renderConversationSummary();});
-  for(const el of document.querySelectorAll('input[name="recovery-mode"]'))el.addEventListener('change',e=>{state.mode=e.target.value;for(const card of document.querySelectorAll('.recovery-mode'))card.classList.toggle('is-active',card.querySelector('input')?.checked);});
+  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{state.conversation=null;markPromptDirty();refreshImportSummary();});
+  for(const el of document.querySelectorAll('input[name="recovery-mode"]'))el.addEventListener('change',e=>{state.mode=e.target.value;markPromptDirty();for(const card of document.querySelectorAll('.recovery-mode'))card.classList.toggle('is-active',card.querySelector('input')?.checked);});
   document.querySelector('#recovery-build-prompt')?.addEventListener('click',()=>buildAndShowPrompt());
-  document.querySelector('#recovery-copy-prompt')?.addEventListener('click',async()=>{if(!state.prompt)buildAndShowPrompt();if(state.prompt)await copyText(state.prompt,'Prompt copied.');});
-  document.querySelector('#recovery-download-prompt')?.addEventListener('click',()=>{if(!state.prompt)buildAndShowPrompt();if(state.prompt)downloadBlob('spicychat-recovery-'+state.botId+'-prompt.txt',state.prompt,'text/plain;charset=utf-8');});
+  document.querySelector('#recovery-copy-prompt')?.addEventListener('click',async()=>{await copyText(buildAndShowPrompt(),'Prompt copied.');});
+  document.querySelector('#recovery-download-prompt')?.addEventListener('click',()=>{downloadBlob('spicychat-recovery-'+state.botId+'-prompt.txt',buildAndShowPrompt(),'text/plain;charset=utf-8');});
   const ep=document.querySelector('#recovery-ai-endpoint'),model=document.querySelector('#recovery-ai-model');if(ep)ep.value=localStorage.getItem('sca-recovery-ai-endpoint')||'';if(model)model.value=localStorage.getItem('sca-recovery-ai-model')||'';
   document.querySelector('#recovery-run-ai')?.addEventListener('click',()=>void runAiReconstruction());
-  for(const input of document.querySelectorAll('[data-field]'))input.addEventListener('input',e=>updateEditedField(e.target.dataset.field,e.target.value));
-  for(const btn of document.querySelectorAll('[data-reset-field]'))btn.addEventListener('click',()=>resetOneField(btn.dataset.resetField));
-  document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());
+  document.querySelector('#recovery-instructions')?.addEventListener('input',markPromptDirty);
+  document.querySelector('#recovery-ai-endpoint')?.addEventListener('input',updatePrivacyPreview);
+  for(const x of document.querySelectorAll('#recovery-include-user,#recovery-include-ooc,#recovery-include-regen'))
+    x.addEventListener('change',()=>{markPromptDirty();updatePrivacyPreview();});
+  const workspace=document.querySelector('#recovery-workspace');
+  if(workspace&&!workspace.dataset.suggestionWired){workspace.dataset.suggestionWired='1';workspace.addEventListener('click',e=>{
+    if(e.target.closest('#recovery-download-image')){void downloadArchivedPicture();return;}
+    if(e.target.closest('#recovery-original-image')){
+      const picture=imageUrl(state.record,state.archiveEvidence);
+      updateEditedField('image',picture);
+      const field=document.querySelector('[data-field="image"]');if(field)field.value=picture;
+      setStatus('Archived picture selected.','good');
+      return;
+    }
+    const copy=e.target.closest('[data-suggest-copy]'),ai=e.target.closest('[data-suggest-ai]');
+    if(copy)void copyText(fieldSuggestionPrompt(copy.dataset.suggestCopy,state.archiveEvidence,state.conversation),'Suggestion prompt copied.');
+    if(ai)void runAiReconstruction(ai.dataset.suggestAi);
+  });}
+  updatePrivacyPreview();
+  bindEditorOnly();
 }
 
 function normalizeRole(raw,speaker,botName,item){
@@ -174,9 +240,9 @@ function summarizeConversation(messages,sourceName){
   const counts={character:0,user:0,ooc:0,regen:0,unknown:0};for(const m of messages){if(m.role==='character')counts.character++;else if(m.role==='user')counts.user++;else counts.unknown++;if(m.ooc)counts.ooc++;if(m.regen)counts.regen++;}
   const firstCharacter=messages.find(m=>m.role==='character'&&!m.ooc);return {messages,counts,sourceName,detectedGreeting:!!firstCharacter};
 }
-async function consumeConversationFile(file){try{const text=await file.text();consumeConversationText(text,file.name);}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not read export: '+esc(e.message||e)+'</div>';}}
+async function consumeConversationFile(file){try{if(file.size>20*1024*1024)throw Error('Conversation export exceeds the 20 MB browser import limit.');const text=await file.text();consumeConversationText(text,file.name);}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not read export: '+esc(e.message||e)+'</div>';}}
 function consumeConversationText(text,sourceName){
-  try{let messages;const trimmed=String(text||'').trim();if(!trimmed)throw new Error('The conversation is empty.');if(trimmed[0]==='{'||trimmed[0]==='[')messages=parseJsonConversation(trimmed,sourceName);else if(/^<!doctype html|^<html|<body[\s>]/i.test(trimmed))messages=parseHtmlConversation(trimmed,sourceName);else messages=parseTextConversation(trimmed,sourceName);state.conversation=summarizeConversation(messages,sourceName);const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML=renderConversationSummary();state.prompt='';}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not parse conversation: '+esc(e.message||e)+'</div>';}
+  try{let messages;const trimmed=String(text||'').trim();if(!trimmed)throw new Error('The conversation is empty.');if(trimmed[0]==='{'||trimmed[0]==='[')messages=parseJsonConversation(trimmed,sourceName);else if(/^<!doctype html|^<html|<body[\s>]/i.test(trimmed))messages=parseHtmlConversation(trimmed,sourceName);else messages=parseTextConversation(trimmed,sourceName);state.conversation=summarizeConversation(messages,sourceName);markPromptDirty();refreshImportSummary();}catch(e){const box=document.querySelector('#recovery-conversation-summary');if(box)box.innerHTML='<div class="recovery-status is-error">Could not parse conversation: '+esc(e.message||e)+'</div>';}
 }
 
 function selectedConversationMessages(){
@@ -191,10 +257,10 @@ function sampleConversation(messages,maxMessages=140,maxChars=90000){
 function buildPrompt(){
   state.mode=document.querySelector('input[name="recovery-mode"]:checked')?.value||state.mode||'original';const instructions=String(document.querySelector('#recovery-instructions')?.value||'').trim();const messages=selectedConversationMessages();
   const archived=FIELD_DEFS.map(def=>{const value=state.archiveEvidence[def.key];if(!meaningful(value))return def.label+': [NOT ARCHIVED]';return def.label+' [ARCHIVED ORIGINAL]:\n'+truncate(def.key==='tags'&&Array.isArray(value)?value.join(', '):textValue(value),def.kind==='tall'?24000:8000);}).join('\n\n');
-  const modeRules=state.mode==='original'?['Goal: reconstruct the original bot as closely as evidence allows.','Every ARCHIVED ORIGINAL field is exact evidence. Copy it exactly and do not rewrite it.','Infer only fields marked NOT ARCHIVED. If conversation behavior conflicts with archived evidence, archived evidence wins.','Do not claim inferred wording came from the original creator.']:['Goal: make a personalized derivative using the archived character as the base.','Treat archived fields as factual source material, but you may modify them when the user instructions call for it.','Keep the character recognizable unless the instructions explicitly request a larger change.','Any field changed from archived evidence must be treated as user-modified, not original.'];
+  const modeRules=state.mode==='original'?['Goal: reconstruct the original bot as closely as evidence allows.','Ignore any optional customization that conflicts with archived originals; advise using Make It Mine instead.','Every ARCHIVED ORIGINAL field is exact evidence. Copy it exactly and do not rewrite it.','Infer only fields marked NOT ARCHIVED. If conversation behavior conflicts with archived evidence, archived evidence wins.','Do not claim inferred wording came from the original creator.']:['Goal: make a personalized derivative using the archived character as the base.','Treat archived fields as factual source material, but you may modify them when the user instructions call for it.','Keep the character recognizable unless the instructions explicitly request a larger change.','Any field changed from archived evidence must be treated as user-modified, not original.'];
   const conversation=messages.length?sampleConversation(messages):'[NO CONVERSATION EVIDENCE PROVIDED]';
   const summary=state.conversation?'Loaded conversation: '+state.conversation.messages.length+' total messages; '+state.conversation.counts.character+' character, '+state.conversation.counts.user+' user, '+state.conversation.counts.ooc+' OOC/system, '+state.conversation.counts.regen+' possible regenerations.':'No conversation export was loaded.';
-  state.prompt=['You are reconstructing a SpicyChat character from archive evidence and private conversation evidence.','Never blur the difference between archived original text and inference.','',...modeRules,'','Return ONLY valid JSON with this shape:','{"fields":{"name":"","title":"","description":"","greeting":"","personality":"","scenario":"","example_dialogue":"","tags":[],"image":""},"confidence":{"personality":{"level":"high|medium|low","reason":""}},"notes":[""]}','Confidence is about how strongly the evidence supports an inferred field. Do not assign confidence to exact archived fields.','',instructions?'USER CUSTOMIZATION INSTRUCTIONS:\n'+instructions:'USER CUSTOMIZATION INSTRUCTIONS: [NONE]','','ARCHIVE BASE: '+(state.version==='latest'?'latest archived evidence':shortDate(state.version)),'BOT UUID: '+state.botId,'',archived,'','CONVERSATION SUMMARY: '+summary,'','CONVERSATION EVIDENCE:','---',conversation,'---'].join('\n');
+  state.prompt=['You are reconstructing a SpicyChat character from archive evidence and private conversation evidence.','Never blur the difference between archived original text and inference.','',...modeRules,'','Return ONLY valid JSON with this shape:','{"fields":{"name":"","title":"","greeting":"","personality":"","scenario":"","example_dialogue":"","tags":[],"image":""},"confidence":{"personality":{"level":"high|medium|low","reason":"","evidence":["archived greeting or message references"]}},"notes":[""]}','Confidence is about how strongly the evidence supports an inferred field. Do not assign confidence to exact archived fields. Include evidence references in confidence.reason or confidence.evidence; never invent evidence.','',instructions?'USER CUSTOMIZATION INSTRUCTIONS:\n'+instructions:'USER CUSTOMIZATION INSTRUCTIONS: [NONE]','','ARCHIVE BASE: '+(state.version==='latest'?'latest archived evidence':shortDate(state.version)),'BOT UUID: '+state.botId,'',archived,'','CONVERSATION SUMMARY: '+summary,'','CONVERSATION EVIDENCE:','---',conversation,'---'].join('\n');
   return state.prompt;
 }
 function buildAndShowPrompt(){const prompt=buildPrompt();const wrap=document.querySelector('#recovery-prompt-wrap'),box=document.querySelector('#recovery-prompt-preview');if(wrap)wrap.classList.remove('recovery-hidden');if(box)box.textContent=prompt;return prompt;}
@@ -204,29 +270,212 @@ function downloadBlob(name,text,type){const blob=new Blob([text],{type:type||'te
 function parseAiPayload(data){
   if(data&&typeof data==='object'&&data.fields)return data;let raw=data?.choices?.[0]?.message?.content??data?.output_text??data?.response??data?.content??data;if(Array.isArray(raw))raw=raw.map(x=>x?.text??x?.content??'').join('');if(typeof raw==='object'&&raw)return raw;let text=String(raw||'').trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'');const first=text.indexOf('{'),last=text.lastIndexOf('}');if(first>=0&&last>first)text=text.slice(first,last+1);return JSON.parse(text);
 }
-async function runAiReconstruction(){
-  const status=document.querySelector('#recovery-ai-status'),endpoint=String(document.querySelector('#recovery-ai-endpoint')?.value||'').trim(),model=String(document.querySelector('#recovery-ai-model')?.value||'').trim(),key=String(document.querySelector('#recovery-ai-key')?.value||'').trim();
-  if(!endpoint||!model){if(status){status.textContent='Enter an endpoint and model first.';status.className='recovery-status is-error';}return;}
-  let url;try{url=new URL(endpoint);if(!['http:','https:'].includes(url.protocol))throw new Error();}catch{if(status){status.textContent='Endpoint must be a valid http(s) URL.';status.className='recovery-status is-error';}return;}
-  localStorage.setItem('sca-recovery-ai-endpoint',endpoint);localStorage.setItem('sca-recovery-ai-model',model);const prompt=buildAndShowPrompt();if(status){status.textContent='Sending selected evidence to your AI endpoint…';status.className='recovery-status';}
-  try{const headers={'Content-Type':'application/json'};if(key)headers.Authorization='Bearer '+key;const body={model,messages:[{role:'system',content:'Return only the requested JSON. Preserve all fields explicitly labeled ARCHIVED ORIGINAL unless the requested mode permits intentional customization.'},{role:'user',content:prompt}],temperature:state.mode==='original'?0.2:0.55};const r=await fetch(endpoint,{method:'POST',headers,body:JSON.stringify(body)});if(!r.ok)throw new Error('HTTP '+r.status+' '+(await r.text()).slice(0,300));const payload=parseAiPayload(await r.json());applyAiResult(payload);if(status){status.textContent='Reconstruction applied. Review every inferred field before exporting.';status.className='recovery-status is-good';}}catch(e){if(status){status.textContent='AI request failed: '+(e.message||e)+'. If the endpoint blocks browser CORS, use Copy prompt instead.';status.className='recovery-status is-error';}}
+async function runAiReconstruction(targetField=null){
+ const status=document.querySelector('#recovery-ai-status');
+ const endpoint=String(document.querySelector('#recovery-ai-endpoint')?.value||'').trim();
+ const model=String(document.querySelector('#recovery-ai-model')?.value||'').trim();
+ const key=String(document.querySelector('#recovery-ai-key')?.value||'').trim();
+ if(!endpoint||!model){
+  const panel=document.querySelector('.recovery-ai');if(panel)panel.open=true;
+  if(status){status.textContent='Enter an endpoint and model under Direct AI reconstruction first.';status.className='recovery-status is-error';}
+  return;
+ }
+ let url;
+ try{
+  url=new URL(endpoint);
+  const local=['localhost','127.0.0.1','[::1]','::1'].includes(url.hostname);
+  if(url.protocol!=='https:'&&!(url.protocol==='http:'&&local))throw Error('Remote AI endpoints must use HTTPS. HTTP is only supported on localhost.');
+  if(url.username||url.password)throw Error('Do not place credentials in endpoint URLs.');
+ }catch(e){if(status){status.textContent=e?.message||'Enter a valid HTTP(S) endpoint URL.';status.className='recovery-status is-error';}return;}
+ if(!document.querySelector('#recovery-ai-consent')?.checked){
+  if(status){status.textContent='Review the evidence preview and check the consent box before sending a request.';status.className='recovery-status is-error';}
+  const panel=document.querySelector('.recovery-ai');if(panel)panel.open=true;return;
+ }
+ if(targetField&&meaningful(state.archiveEvidence[targetField])){
+  setStatus('This field has an archived original; use Make It Mine to edit it intentionally.','error');return;
+ }
+ const prompt=targetField?
+  fieldSuggestionPrompt(targetField,state.archiveEvidence,state.conversation)+
+  '\nReturn ONLY valid JSON: {"fields":{"'+targetField+'":"suggested field text"},"confidence":{"'+targetField+'":{"level":"low|medium|high","reason":"why"}},"notes":["reconstruction only"]}':
+  buildAndShowPrompt();
+ const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? Your private conversation excerpts and archived fields may be included. The Archive itself does not receive them.';
+ if(!window.confirm(consent))return;
+ localStorage.setItem('sca-recovery-ai-endpoint',endpoint);
+ localStorage.setItem('sca-recovery-ai-model',model);
+ if(status){status.textContent='Sending selected evidence to '+url.origin+'…';status.className='recovery-status';}
+ try{
+  const headers={'Content-Type':'application/json'};if(key)headers.Authorization='Bearer '+key;
+  const body={model,messages:[
+   {role:'system',content:'Return only valid JSON. Archived original evidence is authoritative. Proposed content is reconstruction, never historical fact. Do not invent unverified ages or backstory.'},
+   {role:'user',content:prompt}
+  ],temperature:targetField?0.35:(state.mode==='original'?0.2:0.55)};
+  const response=await fetch(endpoint,{method:'POST',headers,body:JSON.stringify(body)});
+  if(!response.ok)throw Error('HTTP '+response.status+' '+(await response.text()).slice(0,250));
+  const payload=parseAiPayload(await response.json());
+  applyAiResult(payload,targetField);
+  if(status){status.textContent=targetField?'Suggestion applied as reconstructed '+(FIELD_BY_KEY[targetField]?.label||targetField)+'. Review it before exporting.':'Reconstruction applied. Review inferred fields before exporting.';status.className='recovery-status is-good';}
+ }catch(e){
+  if(status){status.textContent='AI request failed: '+(e?.message||e)+'. You can copy a suggestion prompt instead if CORS blocks this endpoint.';status.className='recovery-status is-error';}
+ }
 }
-function normalizeGeneratedValue(def,value){if(def.key==='tags'){if(Array.isArray(value))return value.join(', ');return String(value||'');}return textValue(value);}
-function applyAiResult(payload){
-  const fields=payload?.fields&&typeof payload.fields==='object'?payload.fields:payload?.card&&typeof payload.card==='object'?payload.card:payload;state.generated={};state.generatedProvenance={};state.confidence=payload?.confidence&&typeof payload.confidence==='object'?payload.confidence:{};
-  for(const def of FIELD_DEFS){let value=fields?.[def.key];if(value==null){for(const alias of def.aliases){if(fields&&fields[alias]!=null){value=fields[alias];break;}}}const archived=state.archiveEvidence[def.key],hasArchive=meaningful(archived);if(state.mode==='original'&&hasArchive)value=def.key==='tags'&&Array.isArray(archived)?archived.join(', '):textValue(archived);if(value==null)value=hasArchive?(def.key==='tags'&&Array.isArray(archived)?archived.join(', '):textValue(archived)):'';const normalized=normalizeGeneratedValue(def,value);state.editor[def.key]=normalized;state.generated[def.key]=normalized;if(hasArchive&&normalized===(def.key==='tags'&&Array.isArray(archived)?archived.join(', '):textValue(archived))){state.provenance[def.key]='archived';state.generatedProvenance[def.key]='archived';}else if(normalized){state.provenance[def.key]=state.mode==='personal'?'modified':'reconstructed';state.generatedProvenance[def.key]=state.provenance[def.key];}else{state.provenance[def.key]='missing';state.generatedProvenance[def.key]='missing';}}
-  const editorCard=document.querySelector('#recovery-editor')?.closest('.recovery-card');if(editorCard){editorCard.outerHTML=renderEditor();bindEditorOnly();}
-}
-function archiveTextForKey(key){const def=FIELD_BY_KEY[key],raw=state.archiveEvidence[key];return def?.key==='tags'&&Array.isArray(raw)?raw.join(', '):textValue(raw);}
-function updateEditedField(key,value){state.editor[key]=value;const archived=archiveTextForKey(key);if(meaningful(state.archiveEvidence[key])&&value===archived)state.provenance[key]='archived';else if(state.generated[key]!=null&&value===state.generated[key])state.provenance[key]=state.generatedProvenance[key]||'reconstructed';else state.provenance[key]=value?'modified':'missing';const field=document.querySelector('[data-field="'+CSS.escape(key)+'"]')?.closest('.recovery-field');if(field){const badge=field.querySelector('.recovery-badge');if(badge){badge.className='recovery-badge '+provenanceClass(state.provenance[key]);badge.textContent=provenanceLabel(state.provenance[key]);}}}
-function resetOneField(key){const value=state.generated[key]!=null?state.generated[key]:archiveTextForKey(key);state.editor[key]=value||'';state.provenance[key]=state.generated[key]!=null?(state.generatedProvenance[key]||'reconstructed'):(meaningful(state.archiveEvidence[key])?'archived':'missing');const input=document.querySelector('[data-field="'+CSS.escape(key)+'"]');if(input)input.value=state.editor[key];updateEditedField(key,state.editor[key]);}
-function bindEditorOnly(){for(const input of document.querySelectorAll('[data-field]'))input.addEventListener('input',e=>updateEditedField(e.target.dataset.field,e.target.value));for(const btn of document.querySelectorAll('[data-reset-field]'))btn.addEventListener('click',()=>resetOneField(btn.dataset.resetField));document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());}
 
-function editorFieldObject(){const out={};for(const def of FIELD_DEFS){let value=state.editor[def.key]??'';if(def.key==='tags')value=String(value).split(',').map(x=>x.trim()).filter(Boolean);out[def.key]=value;}return out;}
+function normalizeGeneratedValue(def,value){if(def.key==='tags'){if(Array.isArray(value))return value.join(', ');return String(value||'');}return textValue(value);}
+function applyAiResult(payload,onlyField=null){
+ const fields=payload?.fields&&typeof payload.fields==='object'?payload.fields:
+   payload?.card&&typeof payload.card==='object'?payload.card:payload;
+ if(!onlyField){state.generated={};state.generatedProvenance={};state.confidence={};}
+ if(payload?.confidence&&typeof payload.confidence==='object')Object.assign(state.confidence,payload.confidence);
+ for(const def of FIELD_DEFS){
+  if(onlyField && def.key!==onlyField)continue;
+  let value=fields?.[def.key];
+  if(value==null){for(const alias of def.aliases){if(fields?.[alias]!=null){value=fields[alias];break;}}}
+  const original=archiveTextForKey(def.key),hasArchive=meaningful(state.archiveEvidence[def.key]);
+  if(state.mode==='original'&&hasArchive)value=original;
+  if(value==null)value=hasArchive?original:'';
+  const normalized=normalizeGeneratedValue(def,value);
+  state.editor[def.key]=normalized;state.generated[def.key]=normalized;
+  const prov=hasArchive&&normalized===original?'archived':
+    normalized?(state.mode==='personal'?'modified':'reconstructed'):'missing';
+  state.provenance[def.key]=prov;state.generatedProvenance[def.key]=prov;
+ }
+ markPromptDirty();refreshTabTitle();
+ const editorCard=document.querySelector('#recovery-editor')?.closest('.recovery-card');
+ if(editorCard){editorCard.outerHTML=renderEditor();bindEditorOnly();}
+}
+
+function archiveTextForKey(key){const def=FIELD_BY_KEY[key],raw=state.archiveEvidence[key];return def?.key==='tags'&&Array.isArray(raw)?raw.join(', '):textValue(raw);}
+function updateEditedField(key,value){state.editor[key]=value;markPromptDirty();if(key==='name')refreshTabTitle();const archived=archiveTextForKey(key);if((meaningful(state.archiveEvidence[key])&&value===archived)||(key==='image'&&value&&value===imageUrl(state.record,state.archiveEvidence)))state.provenance[key]='archived';else if(state.generated[key]!=null&&value===state.generated[key])state.provenance[key]=state.generatedProvenance[key]||'reconstructed';else state.provenance[key]=value?'modified':'missing';const field=document.querySelector('[data-field="'+CSS.escape(key)+'"]')?.closest('.recovery-field');if(field){const badge=field.querySelector('.recovery-badge');if(badge){badge.className='recovery-badge '+provenanceClass(state.provenance[key]);badge.textContent=provenanceLabel(state.provenance[key]);}}}
+function resetOneField(key,which='archived'){
+ let value='';
+ if(which==='archived')value=archiveTextForKey(key);
+ if(which==='reconstruction')value=state.generated[key]||'';
+ state.editor[key]=value;
+ const input=document.querySelector('[data-field="'+CSS.escape(key)+'"]');if(input)input.value=value;
+ updateEditedField(key,value);
+}
+function bindEditorOnly(){
+ for(const input of document.querySelectorAll('[data-field]'))
+  input.addEventListener('input',e=>updateEditedField(e.target.dataset.field,e.target.value));
+ for(const [selector,mode] of [
+  ['[data-restore-original]','archived'],
+  ['[data-restore-generated]','reconstruction'],
+  ['[data-clear-field]','clear']
+ ]){
+  for(const button of document.querySelectorAll(selector)){
+   const attr=mode==='archived'?'restoreOriginal':mode==='reconstruction'?'restoreGenerated':'clearField';
+   button.addEventListener('click',()=>resetOneField(button.dataset[attr],mode));
+  }
+ }
+ document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);
+ document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);
+ document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);
+ document.querySelector('#recovery-export-png')?.addEventListener('click',()=>void exportCharacterCardPng());
+ document.querySelector('#recovery-preview-export')?.addEventListener('click',previewExport);
+ document.querySelector('#recovery-copy-fields')?.addEventListener('click',()=>void copyFields());
+}
+
+function editorFieldObject(){const out={};for(const def of FIELD_DEFS){let value=state.editor[def.key]??'';if(def.key==='tags')value=String(value).split(',').map(x=>x.trim()).filter(Boolean);out[def.key]=value;}if(state.provenance.image==='archived'&&state.record?.avatarArchive?.publicUrl)out.image=imageUrl(state.record,state.archiveEvidence);return out;}
 function conversationSummaryForExport(){const c=state.conversation;if(!c)return null;return {sourceName:c.sourceName,messageCount:c.messages.length,counts:c.counts,detectedGreeting:c.detectedGreeting};}
-function exportRecoveryPackage(){const payload={schemaVersion:1,kind:'spicychat-archive-recovery-package',createdAt:new Date().toISOString(),botId:state.botId,archiveBase:state.version,mode:state.mode,fields:editorFieldObject(),provenance:{...state.provenance},confidence:state.confidence,conversationSummary:conversationSummaryForExport(),privacy:'Conversation message text is intentionally not included in this package.'};downloadBlob('spicychat-recovery-'+state.botId+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
-function exportFields(){const payload={botId:state.botId,fields:editorFieldObject(),provenance:{...state.provenance},confidence:state.confidence};downloadBlob('spicychat-recovery-'+state.botId+'-fields.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
-function exportCharacterCard(){const f=editorFieldObject();const payload={spec:'chara_card_v2',spec_version:'2.0',data:{name:f.name||'',description:f.description||'',personality:f.personality||'',scenario:f.scenario||'',first_mes:f.greeting||'',mes_example:f.example_dialogue||'',tags:Array.isArray(f.tags)?f.tags:[],creator_notes:'Recovered with SpicyChat Archive Recovery Lab. Check provenance metadata before treating reconstructed text as original.',extensions:{spicychat_archive_recovery:{bot_id:state.botId,archive_base:state.version,provenance:{...state.provenance},image_url:f.image||''}}}};downloadBlob('character-'+(f.name||state.botId).replace(/[^a-z0-9._-]+/gi,'_')+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');}
+function legacyMetadata(){
+ const description=textValue(bestField(state.record,['description'])).trim();
+ return description?{description,source:'archived legacy bot metadata, not a current SpicyChat creator field'}:{};
+}
+function cardPayload(){
+ return cardV2Payload({...editorFieldObject(),description:legacyMetadata().description||''},{
+  botId:state.botId,archiveBase:state.version,provenance:state.provenance,confidence:state.confidence
+ });
+}
+function safeFilename(value){
+ return (String(value||state.botId).replace(/[^a-z0-9._-]+/gi,'_').slice(0,70)||state.botId);
+}
+function exportRecoveryPackage(){
+ const payload={
+  schemaVersion:2,kind:'spicychat-archive-recovery-package',createdAt:new Date().toISOString(),
+  botId:state.botId,archiveBase:state.version,mode:state.mode,fields:editorFieldObject(),
+  legacyMetadata:legacyMetadata(),provenance:{...state.provenance},confidence:state.confidence,
+  conversationSummary:conversationSummaryForExport(),
+  privacy:'Conversation message text is intentionally not included in this package.'
+ };
+ downloadBlob('spicychat-recovery-'+state.botId+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');
+}
+function exportFields(){
+ const payload={botId:state.botId,fields:editorFieldObject(),legacyMetadata:legacyMetadata(),
+  provenance:{...state.provenance},confidence:state.confidence};
+ downloadBlob('spicychat-recovery-'+state.botId+'-fields.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');
+}
+function exportCharacterCard(){
+ const f=editorFieldObject();
+ downloadBlob('character-'+safeFilename(f.name)+'.json',JSON.stringify(cardPayload(),null,2)+'\n','application/json;charset=utf-8');
+}
+function previewExport(){
+ const parent=document.querySelector('#recovery-editor')?.closest('.recovery-card');
+ if(!parent)return;
+ let box=parent.querySelector('#recovery-export-preview');
+ if(!box){box=document.createElement('details');box.id='recovery-export-preview';box.className='recovery-import-preview';parent.appendChild(box);}
+ box.innerHTML='<summary>Character Card V2 export preview</summary>'+
+  '<p>Title and provenance are preserved in the Archive extension. The required Character Card V2 Description key is empty unless the original bot data genuinely contained legacy metadata. Character-card JSON links to the image; use PNG to embed it.</p>'+
+  '<pre class="recovery-prompt-preview">'+esc(JSON.stringify(cardPayload(),null,2).slice(0,24000))+'</pre>';
+ box.open=true;
+}
+async function pictureBlob(url=imageUrl(state.record,state.archiveEvidence)){
+ if(!url)throw Error('This bot has no saved picture.');
+ const response=await fetch(url,{mode:'cors',credentials:'omit'});
+ if(!response.ok)throw Error('Image HTTP '+response.status);
+ const blob=await response.blob();
+ if(!blob.type.startsWith('image/'))throw Error('The saved URL did not return an image.');
+ if(blob.size>25*1024*1024)throw Error('This image exceeds the 25 MB browser download limit.');
+ return blob;
+}
+function triggerBlobDownload(name,blob){
+ const anchor=document.createElement('a'),href=URL.createObjectURL(blob);
+ anchor.href=href;anchor.download=name;document.body.appendChild(anchor);anchor.click();anchor.remove();
+ setTimeout(()=>URL.revokeObjectURL(href),2000);
+}
+async function downloadArchivedPicture(){
+ try{
+  const blob=await pictureBlob();
+  const ext=({'image/png':'png','image/jpeg':'jpg','image/gif':'gif','image/webp':'webp','image/avif':'avif'})[blob.type]||'image';
+  triggerBlobDownload('archived-'+safeFilename(state.editor.name)+'.'+ext,blob);
+  setStatus('Archived picture download started.','good');
+ }catch(e){
+  setStatus('Direct picture download unavailable: '+e.message+'. Use View image and save it through your browser.','error');
+ }
+}
+async function imageAsPng(blob){
+ const signature=new Uint8Array(await blob.slice(0,8).arrayBuffer());
+ if(signature.length===8&&[137,80,78,71,13,10,26,10].every((v,i)=>signature[i]===v))
+  return new Uint8Array(await blob.arrayBuffer());
+ const image=await createImageBitmap(blob);
+ try{
+  const canvas=document.createElement('canvas');
+  canvas.width=image.width;canvas.height=image.height;
+  if(!canvas.width||!canvas.height||canvas.width*canvas.height>20000000)
+   throw Error('Image dimensions exceed the safe browser PNG conversion limit.');
+  canvas.getContext('2d').drawImage(image,0,0);
+  const result=await new Promise((resolve,reject)=>canvas.toBlob(
+   b=>b?resolve(b):reject(Error('PNG conversion failed.')),'image/png'));
+  return new Uint8Array(await result.arrayBuffer());
+ }finally{image.close();}
+}
+function base64Card(payload){
+ const data=new TextEncoder().encode(JSON.stringify(payload));
+ let binary='';
+ for(let i=0;i<data.length;i+=8192)binary+=String.fromCharCode(...data.subarray(i,i+8192));
+ return btoa(binary);
+}
+async function exportCharacterCardPng(){
+ const url=String(state.editor.image||imageUrl(state.record,state.archiveEvidence)).trim();
+ if(!url){setStatus('Select an image before exporting a PNG character card.','error');return;}
+ try{
+  const blob=await pictureBlob(url),png=await imageAsPng(blob);
+  const binary=packCardPng(png,base64Card(cardPayload()));
+  triggerBlobDownload('character-'+safeFilename(state.editor.name)+'.png',new Blob([binary],{type:'image/png'}));
+  setStatus('Image-bearing Character Card V2 PNG download started.','good');
+ }catch(e){
+  setStatus('PNG export failed: '+e.message+'. If the image host blocks CORS, export the character-card JSON and save the picture separately.','error');
+ }
+}
+
 async function copyFields(){const f=editorFieldObject();const lines=[];for(const def of FIELD_DEFS){lines.push(def.label+' ['+provenanceLabel(state.provenance[def.key])+']\n'+(Array.isArray(f[def.key])?f[def.key].join(', '):f[def.key]||''));}await copyText(lines.join('\n\n'),'Recovered fields copied.');}
 
 renderLanding();

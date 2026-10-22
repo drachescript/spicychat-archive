@@ -1,5 +1,6 @@
 import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
-import {buildOfflineDraft,sensitiveRecoveryContext} from './recovery-local.js';
+import {sensitiveRecoveryContext} from './recovery-local.js';
+import {wireLocalRecovery,reportBrowserModelStatus} from './recovery-assistant.js';
 const app=document.querySelector('#app');
 const params=new URLSearchParams(location.search);
 const DEFAULT_DATA_BASE='https://data.spicychatarchive.drache.uk';
@@ -110,7 +111,6 @@ function renderEditor(){
   const fields=FIELD_DEFS.map(def=>{const value=state.editor[def.key]??'';const prov=state.provenance[def.key]||'missing';const conf=state.confidence[def.key];const control=def.kind==='input'?'<input data-field="'+esc(def.key)+'" value="'+esc(value)+'">':'<textarea data-field="'+esc(def.key)+'" class="'+(def.kind==='tall'?'is-tall':'')+'">'+esc(value)+'</textarea>';return '<div class="recovery-field"><div class="recovery-field-head"><div class="recovery-field-title"><b>'+esc(def.label)+'</b><span class="recovery-badge '+provenanceClass(prov)+'">'+esc(provenanceLabel(prov))+'</span></div><div class="recovery-field-actions">'+(meaningful(state.archiveEvidence[def.key])?'<button class="recovery-reset" type="button" data-restore-original="'+esc(def.key)+'">Restore archived</button>':'')+
     (state.generated[def.key]!=null&&state.generatedProvenance[def.key]!=='archived'?'<button class="recovery-reset" type="button" data-restore-generated="'+esc(def.key)+'">Restore reconstruction</button>':'')+
     '<button class="recovery-reset" type="button" data-clear-field="'+esc(def.key)+'">Clear</button></div></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+(Array.isArray(conf.evidence)&&conf.evidence.length?' · Evidence: '+esc(conf.evidence.join('; ').slice(0,700)):'')+'</div>':'')+'</div>';}).join('');
-  const legacy=textValue(bestField(state.record,['description']));
   // Legacy description remains export-only metadata, never a visible creator field.
   const metadata='';
   return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Exports preserve the provenance labels so inferred text is never presented as an original creator field.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div>'+metadata+'<div class="recovery-output-actions"><button class="primary-button" id="recovery-export-package" type="button">Download recovery package</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button><button class="secondary-button" id="recovery-export-png" type="button">Download image character card (PNG)</button><button class="secondary-button" id="recovery-preview-export" type="button">Preview export</button></div></article>';
@@ -169,7 +169,22 @@ function refreshImportSummary(){
  const summary=document.querySelector('#recovery-conversation-summary');if(summary)summary.innerHTML=renderConversationSummary()+renderImportPreview();
  const insights=document.querySelector('#recovery-insights');if(insights)insights.outerHTML=renderReadiness();
  const ideas=document.querySelector('#recovery-suggestions');if(ideas)ideas.outerHTML=renderSuggestions();
+ void reportBrowserModelStatus();
  updatePrivacyPreview();
+}
+
+function applyLocalDraft(key,text,source,edited){
+ if(meaningful(state.archiveEvidence[key]))return;
+ const provenance=edited?'modified':'reconstructed';
+ state.editor[key]=text;
+ state.generated[key]=text;
+ state.generatedProvenance[key]=provenance;
+ state.provenance[key]=provenance;
+ state.confidence[key]={level:'low',reason:edited?'User-edited recovery suggestion; never an archived original.':source.reason};
+ markPromptDirty();
+ const card=document.querySelector('#recovery-editor')?.closest('.recovery-card');
+ if(card){card.outerHTML=renderEditor();bindEditorOnly();}
+ setStatus('Suggested '+(FIELD_BY_KEY[key]?.label||key)+' applied as '+provenance+'. The archived record was not changed.','good');
 }
 
 function renderWorkspace(){
@@ -209,6 +224,13 @@ function bindWorkspace(){
     if(ai)void runAiReconstruction(ai.dataset.suggestAi);
   });}
   updatePrivacyPreview();
+  wireLocalRecovery(workspace,{
+    state,
+    getMessages:()=>selectedConversationMessages(),
+    promptForField:(key,messages)=>fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
+    renderSuggestions,
+    applyDraft:applyLocalDraft
+  });
   bindEditorOnly();
 }
 

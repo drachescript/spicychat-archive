@@ -116,7 +116,7 @@ function renderEditor(){
 
 
 function renderReadiness(){
- const data=recoveryReadiness(state.archiveEvidence,FIELD_DEFS),warnings=evidenceWarnings(state.archiveEvidence,state.conversation);
+ const data=recoveryReadiness({...state.archiveEvidence,image:imageUrl(state.record,state.archiveEvidence)},FIELD_DEFS),warnings=evidenceWarnings(state.archiveEvidence,state.conversation);
  const missing=data.missing.map(key=>FIELD_BY_KEY[key]?.label||key),picture=imageUrl(state.record,state.archiveEvidence);
  return '<article class="recovery-card recovery-insights" id="recovery-insights"><h2>Recovery evidence & readiness</h2>'+
  '<p><b>'+data.complete+' of '+data.total+'</b> fields have archived values. This counts field presence, not quality. Reconstructed details are never described as originals.</p>'+

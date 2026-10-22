@@ -1,4 +1,4 @@
-import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
+import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,fieldExpansionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
 import {sensitiveRecoveryContext,validateSafeDraft} from './recovery-local.js';
 import {wireLocalRecovery,reportBrowserModelStatus} from './recovery-assistant.js';
 const app=document.querySelector('#app');
@@ -142,6 +142,7 @@ function renderImportPreview(){
 }
 function renderSuggestions(){
  const missing=['personality','scenario','example_dialogue'].filter(key=>!meaningful(state.archiveEvidence[key]));
+ const expandable=['personality','greeting','scenario','example_dialogue'].filter(key=>meaningful(state.editor[key]));
  const sensitive=sensitiveRecoveryContext(state.archiveEvidence);
  return '<article class="recovery-card" id="recovery-suggestions"><h2>Fill missing fields</h2>'+
  '<p>Build on the bot’s archived greeting, personality, and selected conversation messages. Quick Draft creates an offline evidence-guided scaffold; Browser AI can propose more natural writing if your browser supports it. Nothing replaces an archived original without your approval.</p>'+
@@ -162,7 +163,23 @@ function renderSuggestions(){
    '<div class="recovery-action-row"><button type="button" class="primary-button" data-draft-apply="'+esc(key)+'">Use this draft</button>'+
    '<button type="button" class="secondary-button" data-draft-dismiss="'+esc(key)+'">Discard</button></div></div>':'')+
   '<div role="status" aria-live="polite" class="recovery-status" data-local-status="'+esc(key)+'"></div></div>';
- }).join('')+'</div>':'<p>All three narrative fields have archived values. Use Make It Mine to edit intentionally.</p>')+
+ }).join('')+'</div>':'<p>There are no missing narrative fields to draft.</p>')+
+ (expandable.length?'<h3 class="recovery-expand-heading">Expand existing fields</h3><p class="recovery-privacy">Expand proposes only extra text. The saved original remains unchanged. Choosing Append creates a User Modified recovery copy.</p>'+
+ '<div class="recovery-suggestion-grid">'+expandable.map(key=>{
+  const token='expand:'+key,idea=FIELD_BY_KEY[key]?.label||key,draft=state.drafts?.[token];
+  return '<div class="recovery-suggestion" data-expansion-field="'+esc(key)+'"><h3>Expand '+esc(idea)+'</h3>'+
+   '<p>Extend the current field using established character traits, greeting, and selected conversation evidence. Do not repeat or replace the original wording.</p>'+
+   '<div class="recovery-action-row"><button class="secondary-button" type="button" data-expand-quick="'+esc(key)+'">Quick Expand (offline)</button>'+
+   '<button class="secondary-button" type="button" data-expand-browser="'+esc(key)+'">Browser AI</button>'+
+   '<button class="secondary-button" type="button" data-expand-copy="'+esc(key)+'">Copy expansion prompt</button>'+
+   '<button class="secondary-button" type="button" data-expand-ai="'+esc(key)+'">External AI</button></div>'+
+   (draft?'<div class="recovery-draft-preview"><b>Optional '+esc(idea)+' addition · '+esc(draft.method==='browser-ai'?'Browser AI':draft.method==='external-ai'?'External AI':'Offline guided expansion')+'</b>'+
+    '<p class="recovery-privacy">'+esc(draft.reason||'New suggested text, not recovered original text.')+'</p>'+
+    '<textarea class="recovery-textarea" data-draft-edit="'+esc(token)+'">'+esc(draft.text)+'</textarea>'+
+    '<div class="recovery-action-row"><button type="button" class="primary-button" data-draft-apply="'+esc(token)+'">Append to edited field</button>'+
+    '<button type="button" class="secondary-button" data-draft-dismiss="'+esc(token)+'">Discard</button></div></div>':'')+
+   '<div role="status" aria-live="polite" class="recovery-status" data-local-status="'+esc(token)+'"></div></div>';
+ }).join('')+'</div>':'')+
  '</article>';
 }
 function updatePrivacyPreview(){
@@ -186,18 +203,30 @@ function refreshImportSummary(){
  updatePrivacyPreview();
 }
 
-function applyLocalDraft(key,text,source,edited){
- if(meaningful(state.archiveEvidence[key]))return;
- const provenance=edited?'modified':'reconstructed';
- state.editor[key]=text;
- state.generated[key]=text;
- state.generatedProvenance[key]=provenance;
- state.provenance[key]=provenance;
- state.confidence[key]={level:'low',reason:edited?'User-edited recovery suggestion; never an archived original.':source.reason};
+function applyLocalDraft(key,text,source,edited,kind='missing'){
+ if(kind==='expand'){
+  // Never rewrite the Archive's saved value; append to the editable copy only.
+  const before=String(state.editor[key]||'').trimEnd();
+  if(!before)return;
+  const full=before+'\n\n'+text;
+  state.editor[key]=full;
+  state.generated[key]=full;
+  state.generatedProvenance[key]='modified';
+  state.provenance[key]='modified';
+  state.confidence[key]={level:'low',reason:'User-approved expansion appended to the existing field; archived original preserved.'};
+ }else{
+  if(meaningful(state.archiveEvidence[key]))return;
+  const provenance=edited?'modified':'reconstructed';
+  state.editor[key]=text;
+  state.generated[key]=text;
+  state.generatedProvenance[key]=provenance;
+  state.provenance[key]=provenance;
+  state.confidence[key]={level:'low',reason:edited?'User-edited recovery suggestion; never an archived original.':source.reason};
+ }
  markPromptDirty();
  const card=document.querySelector('#recovery-editor')?.closest('.recovery-card');
  if(card){card.outerHTML=renderEditor();bindEditorOnly();}
- setStatus('Suggested '+(FIELD_BY_KEY[key]?.label||key)+' applied as '+provenance+'. The archived record was not changed.','good');
+ setStatus((kind==='expand'?'Expansion appended to ':'Draft applied to ')+(FIELD_BY_KEY[key]?.label||key)+' in your editable copy. The archived original remains unchanged.','good');
 }
 
 function renderWorkspace(){
@@ -244,8 +273,11 @@ function bindWorkspace(){
       setStatus('Archived picture selected.','good');
       return;
     }
+    const expandCopy=e.target.closest('[data-expand-copy]'),expandAi=e.target.closest('[data-expand-ai]');
     const copy=e.target.closest('[data-suggest-copy]'),ai=e.target.closest('[data-suggest-ai]');
-    if(copy)void copyText(fieldSuggestionPrompt(copy.dataset.suggestCopy,state.archiveEvidence,state.conversation),'Suggestion prompt copied.');
+    if(expandCopy){void copyText(fieldExpansionPrompt(expandCopy.dataset.expandCopy,{...state.archiveEvidence,[expandCopy.dataset.expandCopy]:state.editor[expandCopy.dataset.expandCopy]},{messages:selectedConversationMessages()}),'Expansion prompt copied.');return;}
+    if(expandAi){void runAiReconstruction('expand:'+expandAi.dataset.expandAi);return;}
+    if(copy)void copyText(fieldSuggestionPrompt(copy.dataset.suggestCopy,state.archiveEvidence,{messages:selectedConversationMessages()}),'Suggestion prompt copied.');
     if(ai)void runAiReconstruction(ai.dataset.suggestAi);
   });}
   updatePrivacyPreview();
@@ -253,7 +285,9 @@ function bindWorkspace(){
     wireLocalRecovery(workspace,{
       state,
       getMessages:()=>selectedConversationMessages(),
-      promptForField:(key,messages)=>fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
+      promptForField:(key,messages,kind='missing')=>kind==='expand'
+        ?fieldExpansionPrompt(key,{...state.archiveEvidence,[key]:state.editor[key]},{messages})
+        :fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
       renderSuggestions,
       applyDraft:applyLocalDraft
     });

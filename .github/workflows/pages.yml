@@ -10,6 +10,13 @@ on:
       - "bot/**"
       - "bots/**"
       - "deleted/**"
+      - "deleted-lorebooks/**"
+      - "lorebook/**"
+      - "lorebooks/**"
+      - "recovery/**"
+      - "merge/**"
+      - "name-trends/**"
+      - "tag-stats/**"
       - "creator/**"
       - "changes/**"
       - "activity/**"
@@ -61,7 +68,9 @@ jobs:
           OUT="$RUNNER_TEMP/pages-site"
           rm -rf "$OUT"
           mkdir -p "$OUT"
-          cp -a index.html favicon.svg assets bot bots deleted creator changes activity search explorer restored health stats faq admin data tags.json blocked-words.json CNAME .nojekyll "$OUT/"
+          # Keep this explicit so workflows, tests and private archive files are
+          # not accidentally published. Include *all* public route directories.
+          cp -a index.html favicon.svg assets bot bots deleted deleted-lorebooks lorebook lorebooks recovery merge name-trends tag-stats creator changes activity search explorer restored health stats faq admin data tags.json blocked-words.json CNAME .nojekyll "$OUT/"
 
           # Archive v2 is developed independently on archive-v2-wip, but is
           # published alongside the production site at /wip. This lets the live
@@ -102,6 +111,31 @@ jobs:
               cp -a media "$OUT/"
             fi
           fi
+
+      - name: Verify required Pages routes before publishing
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/pages-site"
+          python - "$OUT" <<'PY_VERIFY'
+          from pathlib import Path
+          import sys
+          root = Path(sys.argv[1])
+          required = [
+              'index.html', 'bot/index.html', 'deleted/index.html',
+              'deleted-lorebooks/index.html', 'lorebook/index.html',
+              'lorebooks/index.html', 'recovery/index.html',
+              'merge/index.html', 'name-trends/index.html',
+              'tag-stats/index.html', 'creator/index.html',
+              'changes/index.html', 'stats/index.html', 'faq/index.html',
+          ]
+          missing = [path for path in required if not (root / path).is_file()]
+          if missing:
+              raise SystemExit('Pages artifact missing required routes: ' + ', '.join(missing))
+          if (root / 'CNAME').read_text().strip() != 'spicychatarchive.drache.uk':
+              raise SystemExit('Missing or unexpected custom domain in Pages artifact')
+          print(f'Pages artifact verified: {len(required)} required routes and CNAME present')
+          PY_VERIFY
 
       - uses: actions/upload-pages-artifact@v3
         with:

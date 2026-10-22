@@ -74,5 +74,5 @@ jobs:
           node --check assets/recovery-tools.js
           node --check assets/recovery-local.js
           node --check assets/recovery-assistant.js
-          node --test --experimental-default-type=module tests/recovery-lab.test.mjs tests/recovery-local.test.mjs
+          node --test --experimental-default-type=module tests/recovery-lab.test.mjs tests/recovery-local.test.mjs tests/recovery-buttons.test.mjs
           node --check assets/merge.js

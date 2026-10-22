@@ -22,6 +22,12 @@ function meaningful(value){if(value==null)return false;if(typeof value==='string
 function textValue(value){if(value==null)return '';if(Array.isArray(value))return value.map(textValue).filter(Boolean).join(', ');if(typeof value==='object')return JSON.stringify(value);return String(value);}
 function fmt(value){const n=Number(value||0);return Number.isFinite(n)?n.toLocaleString():'0';}
 function refreshTabTitle(){const name=String(state.editor?.name||state.archiveEvidence?.name||'').trim();document.title=(name?name+' Recovery':'Recovery Lab')+' · SpicyChat Archive';}
+function recoveryStorageGet(key){
+  try{return window.localStorage?.getItem(key)||'';}catch{return '';}
+}
+function recoveryStorageSet(key,value){
+  try{window.localStorage?.setItem(key,value);return true;}catch{return false;}
+}
 function markPromptDirty(){state.prompt='';const preview=document.querySelector('#recovery-prompt-wrap');if(preview)preview.classList.add('recovery-hidden');}
 function shortDate(value){const d=new Date(value);return Number.isFinite(d.getTime())?d.toLocaleString(undefined,{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'Unknown';}
 function normalizeId(value){const m=String(value||'').toLowerCase().match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);return m?m[0]:'';}
@@ -198,6 +204,9 @@ function applyLocalDraft(key,text,source,edited){
 function renderWorkspace(){
   const host=document.querySelector('#recovery-workspace');if(!host||!state.record)return;
   host.innerHTML=renderEvidence()+renderReadiness()+renderConversationCard()+renderSuggestions()+renderRecoveryControls()+renderEditor();
+  // Essential editor/export controls must remain usable even if an optional
+  // AI integration or a blocked browser setting fails during initialization.
+  bindEditorOnly();
   bindWorkspace();
 }
 function bindWorkspace(){
@@ -205,13 +214,22 @@ function bindWorkspace(){
   const file=document.querySelector('#recovery-file'),drop=document.querySelector('#recovery-drop');
   file?.addEventListener('change',()=>{if(file.files?.[0])void consumeConversationFile(file.files[0]);});
   drop?.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('is-drag');});drop?.addEventListener('dragleave',()=>drop.classList.remove('is-drag'));drop?.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('is-drag');const f=e.dataTransfer?.files?.[0];if(f)void consumeConversationFile(f);});
-  document.querySelector('#recovery-use-paste')?.addEventListener('click',()=>{const text=document.querySelector('#recovery-paste')?.value||'';if(text.trim())consumeConversationText(text,'pasted conversation');});
-  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{state.conversation=null;invalidateRecoveryDrafts();markPromptDirty();refreshImportSummary();});
+  document.querySelector('#recovery-use-paste')?.addEventListener('click',()=>{
+    const text=document.querySelector('#recovery-paste')?.value||'';
+    if(text.trim())consumeConversationText(text,'pasted conversation');
+    else setStatus('Paste some conversation text first, or choose a file.','error');
+  });
+  document.querySelector('#recovery-clear-chat')?.addEventListener('click',()=>{
+    state.conversation=null;invalidateRecoveryDrafts();markPromptDirty();refreshImportSummary();
+    setStatus('Conversation evidence cleared.','good');
+  });
   for(const el of document.querySelectorAll('input[name="recovery-mode"]'))el.addEventListener('change',e=>{state.mode=e.target.value;markPromptDirty();for(const card of document.querySelectorAll('.recovery-mode'))card.classList.toggle('is-active',card.querySelector('input')?.checked);});
   document.querySelector('#recovery-build-prompt')?.addEventListener('click',()=>buildAndShowPrompt());
   document.querySelector('#recovery-copy-prompt')?.addEventListener('click',async()=>{await copyText(buildAndShowPrompt(),'Prompt copied.');});
   document.querySelector('#recovery-download-prompt')?.addEventListener('click',()=>{downloadBlob('spicychat-recovery-'+state.botId+'-prompt.txt',buildAndShowPrompt(),'text/plain;charset=utf-8');});
-  const ep=document.querySelector('#recovery-ai-endpoint'),model=document.querySelector('#recovery-ai-model');if(ep)ep.value=localStorage.getItem('sca-recovery-ai-endpoint')||'';if(model)model.value=localStorage.getItem('sca-recovery-ai-model')||'';
+  const ep=document.querySelector('#recovery-ai-endpoint'),model=document.querySelector('#recovery-ai-model');
+  if(ep)ep.value=recoveryStorageGet('sca-recovery-ai-endpoint');
+  if(model)model.value=recoveryStorageGet('sca-recovery-ai-model');
   document.querySelector('#recovery-run-ai')?.addEventListener('click',()=>void runAiReconstruction());
   document.querySelector('#recovery-instructions')?.addEventListener('input',markPromptDirty);
   document.querySelector('#recovery-ai-endpoint')?.addEventListener('input',updatePrivacyPreview);
@@ -232,14 +250,19 @@ function bindWorkspace(){
     if(ai)void runAiReconstruction(ai.dataset.suggestAi);
   });}
   updatePrivacyPreview();
-  wireLocalRecovery(workspace,{
-    state,
-    getMessages:()=>selectedConversationMessages(),
-    promptForField:(key,messages)=>fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
-    renderSuggestions,
-    applyDraft:applyLocalDraft
-  });
-  bindEditorOnly();
+  try{
+    wireLocalRecovery(workspace,{
+      state,
+      getMessages:()=>selectedConversationMessages(),
+      promptForField:(key,messages)=>fieldSuggestionPrompt(key,state.archiveEvidence,{messages}),
+      renderSuggestions,
+      applyDraft:applyLocalDraft
+    });
+  }catch(error){
+    console.error('Recovery helper failed to initialize:',error);
+    const info=document.querySelector('#recovery-browser-ai-status');
+    if(info)info.textContent='Optional recovery helper unavailable in this browser. Editing, prompts and exports still work.';
+  }
 }
 
 function normalizeRole(raw,speaker,botName,item){
@@ -351,8 +374,8 @@ async function runAiReconstruction(targetField=null){
   buildAndShowPrompt();
  const consent='Send '+fmt(prompt.length)+' prompt characters to '+url.origin+'? Your private conversation excerpts and archived fields may be included. The Archive itself does not receive them.';
  if(!window.confirm(consent))return;
- localStorage.setItem('sca-recovery-ai-endpoint',endpoint);
- localStorage.setItem('sca-recovery-ai-model',model);
+ recoveryStorageSet('sca-recovery-ai-endpoint',endpoint);
+ recoveryStorageSet('sca-recovery-ai-model',model);
  if(status){status.textContent='Sending selected evidence to '+url.origin+'…';status.className='recovery-status';}
  try{
   const headers={'Content-Type':'application/json'};if(key)headers.Authorization='Bearer '+key;

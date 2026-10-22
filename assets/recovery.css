@@ -81,3 +81,13 @@
 .recovery-ai-consent{margin-top:8px;color:var(--text)}
 .recovery-legacy{white-space:pre-wrap;max-height:180px;overflow:auto;font:11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
 @media(max-width:700px){.recovery-suggestion-grid{grid-template-columns:1fr}.recovery-field-head{align-items:flex-start;flex-direction:column}.recovery-field-actions{justify-content:flex-start}}
+
+/* Local recovery companion: optional browser AI and explicit draft acceptance. */
+.recovery-draft-preview{border:1px solid var(--line2);background:var(--panel);border-radius:12px;margin-top:13px;padding:12px;min-width:0}
+.recovery-draft-preview>b{font-size:12px;display:block;margin-bottom:8px}
+.recovery-draft-preview textarea{width:100%;min-height:145px;box-sizing:border-box;font-size:12px;line-height:1.55;resize:vertical}
+.recovery-draft-preview .recovery-action-row{margin-top:9px}
+#recovery-browser-ai-status{border-top:1px solid var(--line);padding-top:12px;margin:12px 0}
+.recovery-suggestion .recovery-action-row{gap:7px}
+.recovery-suggestion .recovery-action-row button{white-space:normal;text-align:center}
+@media(max-width:460px){.recovery-draft-preview .recovery-action-row>*{flex:1}}

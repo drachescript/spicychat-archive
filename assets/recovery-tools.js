@@ -1,5 +1,5 @@
 // Dependency-free Recovery Lab helpers; no network or browser state.
-import {sensitiveRecoveryContext,safeRecoveryEvidencePrompt} from './recovery-local.js';
+import {sensitiveRecoveryContext,safeRecoveryEvidencePrompt,EXPAND_FIELDS} from './recovery-local.js';
 export const NARRATIVE_FIELDS = ['greeting','personality','scenario','example_dialogue'];
 
 export function recoveryReadiness(evidence, fields) {
@@ -85,6 +85,34 @@ export function fieldSuggestionPrompt(key, evidence, conversation) {
     'Return only the suggested field text (no surrounding explanation).',
     ...idea.clues.map(x => '\n'+x)
   ].join('\n');
+}
+
+export function fieldExpansionPrompt(field,evidence,conversation=null){
+ if(!EXPAND_FIELDS.includes(field))return '';
+ const restricted=sensitiveRecoveryContext(evidence).restricted;
+ const existing=String(evidence?.[field]||'').trim();
+ const clues=restricted
+  ?safeRecoveryEvidencePrompt(evidence,conversation)
+  :[
+    'Character name: '+String(evidence?.name||'{{char}}').slice(0,80),
+    'Archived title: '+String(evidence?.title||'').slice(0,160),
+    'Archived greeting: '+String(evidence?.greeting||'').slice(0,750),
+    'Archived personality: '+String(evidence?.personality||'').slice(0,950),
+    'Existing field text: '+existing.slice(0,1400),
+    'Selected character dialogue: '+(conversation?.messages||[]).filter(m=>m.role==='character'&&!m.ooc)
+      .slice(0,4).map(m=>String(m.text||'').slice(0,320)).join('\n'),
+  ].filter(Boolean).join('\n');
+ return [
+  'Suggest a useful ADDITION to an existing SpicyChat '+field+' field.',
+  'DO NOT return the original text. Return ONLY 1-3 new, complementary paragraphs or dialogue beats to APPEND after the current field.',
+  'This expansion is an optional USER MODIFICATION, never an archived original.',
+  'Keep character voice and previously established traits consistent; do not invent exact ages, identities or undocumented relationships.',
+  '{{user}} controls their own choices, actions and speech.',
+  restricted?'NON-EXPLICIT ONLY. The source has age-ambiguous or family-related sexual context. Use only the following sanitized observations. Do NOT invent or depict romantic/sexual scenes or sexual anatomy.':'Avoid invented facts unsupported by the evidence.',
+  'Archived observation clues:',
+  clues,
+  'Return only the additional field text, without markup, labels or explanations.'
+ ].join('\n');
 }
 
 export function cardV2Payload(fields, context = {}) {

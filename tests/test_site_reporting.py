@@ -40,6 +40,17 @@ class SiteReportingTests(unittest.TestCase):
         self.assertEqual(page.count('<div><b id="stat-'), 6)
         self.assertNotIn("set('stat-bots-unreconciled'", home)
 
+    def test_stats_separates_old_status_audits_from_verified_file_counts(self):
+        app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+        growth = (ROOT / "assets" / "stats-live.js").read_text(encoding="utf-8")
+        self.assertIn("saved bot files (last full check)", app)
+        self.assertIn("search entries (some have no saved file)", app)
+        self.assertIn("IDs in the creator index at that check", app)
+        self.assertIn("Separate creator/status report, checked", app)
+        self.assertIn("last recorded as '+esc(key)", app)
+        self.assertNotIn("indexed materialized bot records", app)
+        self.assertIn("Recent public-bot count change per day", growth)
+
     def test_missing_bot_page_offers_recovery_instead_of_dead_end(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
         self.assertIn("No detailed bot file saved", app)

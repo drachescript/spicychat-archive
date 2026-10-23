@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Repair only mismatched Archive search entries, never bot files or live statuses.
+"""Add saved bots missing from search without discarding historical index evidence.
 
-Uses a complete R2 object listing and all 64 text-search shards. Dry-run by
-default. A fresh inventory, not a prior report's sample IDs, defines the work.
+A full R2 object-key listing and all 64 search shards identify discrepancies.
+The search-only entries are *preserved*: without a stored JSON file they may
+be the last surviving bot metadata. No status changes, bot deletion or live
+SpicyChat checks. Dry-run by default.
 """
 from __future__ import annotations
 
@@ -40,12 +42,12 @@ def repair(store: R2ArchiveStore, *, apply: bool = False, max_changes: int = 500
                 raise RuntimeError("Duplicate or incorrectly bucketed index ID; no changes made")
             indexed.add(bot_id)
     stored, listing = inventory_bot_file_ids(store, max_pages=max_list_pages)
-    add, remove = plan(indexed, stored)
-    if len(add) + len(remove) > max_changes:
-        raise RuntimeError(f"{len(add)+len(remove)} mismatches exceed safety cap {max_changes}; no changes made")
+    add, preserve = plan(indexed, stored)
+    if len(add) > max_changes:
+        raise RuntimeError(f"{len(add)} additions exceed safety cap {max_changes}; no changes made")
     result = {"generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
               "dryRun": not apply, "stored": len(stored), "indexedBefore": len(indexed),
-              "missingFromSearch": len(add), "staleSearchEntries": len(remove),
+              "missingFromSearch": len(add), "preservedSearchOnlyEntries": len(preserve),
               "listing": listing}
     if not apply:
         return result
@@ -61,16 +63,16 @@ def repair(store: R2ArchiveStore, *, apply: bool = False, max_changes: int = 500
         bucket = text_search_bucket(bot_id)
         shards[bucket]["bots"][bot_id] = additions[bot_id]
         dirty.add(bucket)
-    for bot_id in remove:
-        bucket = text_search_bucket(bot_id)
-        del shards[bucket]["bots"][bot_id]
-        dirty.add(bucket)
-    # Full inventory and 64 validated shards form the source of truth.
+    # Keep search-only entries: absence of a saved file is not proof they are
+    # wrong or safe to erase. Some may contain our last historical metadata.
+    # Only write shards with additions, never mass-rebuild or delete entries.
     for bucket in sorted(dirty):
         store.put_json(store.key("indexes", "text-search", f"{bucket}.json"),
                        {"schemaVersion": SCHEMA_VERSION, "generatedAt": result["generatedAt"],
                         "bots": shards[bucket]["bots"]}, public=True)
-    result["indexedAfter"] = sum(len(s["bots"]) for s in shards.values())
+    result["indexedAfter"] = sum(len(shard["bots"]) for shard in shards.values())
+    result["addedToSearch"] = len(add)
+    result["remainingSearchOnlyEntries"] = len(preserve)
     store.put_json(manifest_key, {**meta, "generatedAt": result["generatedAt"],
                                  "botCount": result["indexedAfter"]}, public=True)
     store.put_json(store.key("indexes", "text-search-repair.json"), result, public=True)

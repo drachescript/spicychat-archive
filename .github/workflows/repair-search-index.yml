@@ -41,4 +41,5 @@ jobs:
         run: python scripts/repair_text_search_inventory.py ${{ inputs.apply && '--apply' || '' }} --max-changes 500
       - name: Explain quota pause
         if: steps.guard.outputs.mode != 'r2'
-        run: echo "Skipped: R2 quota guard did not approve the repair." >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "Skipped: R2 quota guard did not approve the repair." >> "$GITHUB_STEP_SUMMARY"

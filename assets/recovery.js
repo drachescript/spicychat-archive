@@ -1,6 +1,7 @@
 import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,fieldExpansionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
 import {sensitiveRecoveryContext,validateSafeDraft} from './recovery-local.js';
 import {wireLocalRecovery,reportBrowserModelStatus} from './recovery-assistant.js';
+import {searchShardForId,recordFromSearchIndex,recordWithoutArchive} from './recovery-index.js';
 const app=document.querySelector('#app');
 const params=new URLSearchParams(location.search);
 const DEFAULT_DATA_BASE='https://data.spicychatarchive.drache.uk';
@@ -29,7 +30,7 @@ function recoveryStorageSet(key,value){
   try{window.localStorage?.setItem(key,value);return true;}catch{return false;}
 }
 function markPromptDirty(){state.prompt='';const preview=document.querySelector('#recovery-prompt-wrap');if(preview)preview.classList.add('recovery-hidden');}
-function shortDate(value){const d=new Date(value);return Number.isFinite(d.getTime())?d.toLocaleString(undefined,{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'Unknown';}
+function shortDate(value){if(!value)return 'Unknown';const d=new Date(value);return Number.isFinite(d.getTime())?d.toLocaleString(undefined,{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'Unknown';}
 function normalizeId(value){const m=String(value||'').toLowerCase().match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);return m?m[0]:'';}
 function leafPath(path){const bits=String(path||'').split('.');return bits[bits.length-1]||'';}
 function base(runtime){return String(runtime?.publicDataBaseUrl||DEFAULT_DATA_BASE).replace(/\/$/,'');}
@@ -37,6 +38,14 @@ function archiveBotUrl(runtime,id){const compact=String(id||'').replaceAll('-','
 async function fetchJson(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok){const e=new Error('HTTP '+r.status);e.status=r.status;throw e;}return r.json();}
 async function fetchJsonRetry404(url){try{return await fetchJson(url);}catch(e){if(e?.status!==404)throw e;const u=new URL(url,location.href);u.searchParams.set('_fresh',Date.now().toString(36));return fetchJson(u.toString());}}
 async function loadRuntime(){if(state.runtime)return state.runtime;try{state.runtime=await fetchJson('../data/runtime.json');}catch{state.runtime={publicDataBaseUrl:DEFAULT_DATA_BASE};}return state.runtime;}
+async function limitedEvidence(runtime,id){
+  try{
+    const index=await fetchJson(base(runtime)+'/indexes/text-search/'+searchShardForId(id)+'.json');
+    const record=recordFromSearchIndex(id,index?.bots?.[id]);
+    if(record)return record;
+  }catch{/* No full file; an unavailable search shard must not block local recovery. */}
+  return recordWithoutArchive(id);
+}
 
 function bestField(record,aliases){
   const last=record?.lastKnown&&typeof record.lastKnown==='object'?record.lastKnown:{};
@@ -81,20 +90,36 @@ async function loadBot(raw){
   const id=normalizeId(raw);if(!id){setStatus('Enter a valid SpicyChat bot URL or UUID.','error');return;}
   setStatus('Loading archived bot evidence…');
   try{
-    const runtime=await loadRuntime();const record=await fetchJsonRetry404(archiveBotUrl(runtime,id));
+    const runtime=await loadRuntime();
+    let record;
+    try{
+      record=await fetchJsonRetry404(archiveBotUrl(runtime,id));
+    }catch(e){
+      if(e?.status!==404)throw e;
+      record=await limitedEvidence(runtime,id);
+    }
     state.record=record;state.botId=id;state.version=params.get('at')||'latest';
     const validVersions=new Set(versionChoices(record).map(x=>x.value));if(!validVersions.has(state.version))state.version='latest';
     state.archiveEvidence=evidenceAtVersion(record,state.version);resetEditorFromEvidence();state.conversation=null;markPromptDirty();refreshTabTitle();
     const u=new URL(location.href);u.searchParams.set('id',id);if(state.version==='latest')u.searchParams.delete('at');history.replaceState(null,'',u);
-    setStatus('Archive evidence loaded.','good');renderWorkspace();
+    const coverage=record._archiveCoverage;
+    setStatus(coverage==='search-only'?'Only an older search entry was saved. You can still use a conversation export or fill in the missing fields.':
+      coverage==='id-only'?'No saved character details found for this ID. You can still rebuild your own copy from a conversation export.':
+      'Saved bot record loaded.',coverage?'info':'good');renderWorkspace();
   }catch(e){setStatus(e?.status===404?'That UUID does not have a detailed archived record yet.':'Could not load archive record: '+(e.message||e),'error');}
 }
 
 function evidenceStateLabel(def,value){if(meaningful(value))return 'Archived original';return 'Not archived';}
 function renderEvidence(){
   const record=state.record,evidence=state.archiveEvidence,creator=textValue(bestField(record,['creator_username','creator']));const img=imageUrl(record,evidence);
+  const limited=record?._archiveCoverage;
+  const limitedNote=limited==='search-only'
+    ?'<p class="recovery-status">The detailed bot file is missing, but an older search entry still has a little information. Only that information is treated as saved evidence. The rest is yours to rebuild.</p>'
+    :limited==='id-only'
+      ?'<p class="recovery-status">No saved bot details were found. Nothing on this page is an archived original unless you add evidence yourself. You can still load an old chat and make a new character card.</p>'
+      :'';
   const status=record?.status?.current||'unknown';const versions=versionChoices(record);
-  return '<article class="recovery-card"><div class="recovery-bot-head"><div class="recovery-bot-art">'+(img?'<img src="'+esc(img)+'" alt="">':'BOT')+'</div><div class="recovery-bot-meta"><div class="sub">'+esc(state.botId)+'</div><h2>'+esc(textValue(evidence.name)||'Archived bot')+'</h2><div class="sub">'+(creator?'@'+esc(creator)+' · ':'')+esc(status)+' · first captured '+esc(shortDate(record?.firstSeenAt))+'</div><p>'+esc(textValue(evidence.title)||'')+'</p><div class="recovery-action-row"><a class="secondary-button" href="../bot/?id='+encodeURIComponent(state.botId)+'">Open archive record</a><a class="secondary-button" href="../merge/?ids='+encodeURIComponent(state.botId)+'">Add to Merge</a>'+(status==='deleted'?'<span class="recovery-privacy">Confirmed deleted on SpicyChat · original link removed</span>':'<a class="secondary-button" href="https://spicychat.ai/chatbot/'+encodeURIComponent(state.botId)+'" target="_blank" rel="noopener">Try SpicyChat ↗</a>')+'</div></div></div>'+
+  return '<article class="recovery-card">'+limitedNote+'<div class="recovery-bot-head"><div class="recovery-bot-art">'+(img?'<img src="'+esc(img)+'" alt="">':'BOT')+'</div><div class="recovery-bot-meta"><div class="sub">'+esc(state.botId)+'</div><h2>'+esc(textValue(evidence.name)||(limited?'Bot ID only':'Archived bot'))+'</h2><div class="sub">'+(creator?'@'+esc(creator)+' · ':'')+esc(status)+' · first captured '+esc(shortDate(record?.firstSeenAt))+'</div><p>'+esc(textValue(evidence.title)||'')+'</p><div class="recovery-action-row"><a class="secondary-button" href="../bot/?id='+encodeURIComponent(state.botId)+'">Open archive record</a><a class="secondary-button" href="../merge/?ids='+encodeURIComponent(state.botId)+'">Add to Merge</a>'+(status==='deleted'?'<span class="recovery-privacy">Confirmed deleted on SpicyChat · original link removed</span>':limited?'<span class="recovery-privacy">No verified current SpicyChat status</span>':'<a class="secondary-button" href="https://spicychat.ai/chatbot/'+encodeURIComponent(state.botId)+'" target="_blank" rel="noopener">Try SpicyChat ↗</a>')+'</div></div></div>'+
     '<div class="recovery-version-row"><label for="recovery-version">Base recovery on</label><select class="recovery-control" id="recovery-version">'+versions.map(x=>'<option value="'+esc(x.value)+'"'+(x.value===state.version?' selected':'')+'>'+esc(x.label)+'</option>').join('')+'</select></div>'+
     '<div class="recovery-evidence-grid">'+FIELD_DEFS.map(def=>{const value=evidence[def.key];return '<div class="recovery-evidence-item '+(meaningful(value)?'has-value':'missing')+'"><b>'+esc(def.label)+'</b><span>'+esc(evidenceStateLabel(def,value))+'</span></div>';}).join('')+'</div></article>';
 }

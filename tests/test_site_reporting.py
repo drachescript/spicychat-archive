@@ -33,7 +33,11 @@ class SiteReportingTests(unittest.TestCase):
     def test_homepage_verification_is_real_queue_not_arithmetic_gap(self):
         home = (ROOT / "assets" / "home.js").read_text(encoding="utf-8")
         self.assertIn("pendingVerificationBots", home)
-        self.assertIn("stat-bots-verification-pending", home)
+        self.assertIn("snapshot-reconcile", home)
+        self.assertIn("stat-bots-saved", home)
+        page = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn('class="snapshot-more"', page)
+        self.assertEqual(page.count('<div><b id="stat-'), 6)
         self.assertNotIn("set('stat-bots-unreconciled'", home)
 
     def test_stats_show_both_newest_and_deep_discovery(self):

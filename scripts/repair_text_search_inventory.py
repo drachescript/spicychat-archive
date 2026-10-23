@@ -12,7 +12,7 @@ import argparse
 from datetime import datetime, timezone
 
 import archive as legacy
-from audit_discovery_ids import inventory_bot_file_ids
+from audit_discovery_ids import build_audit, inventory_bot_file_ids
 from site_indexes import SCHEMA_VERSION, TEXT_SEARCH_SHARDS, text_search_bucket, text_search_meta
 from storage_r2 import R2ArchiveStore
 
@@ -74,7 +74,21 @@ def repair(store: R2ArchiveStore, *, apply: bool = False, max_changes: int = 500
     result["addedToSearch"] = len(add)
     result["remainingSearchOnlyEntries"] = len(preserve)
     store.put_json(manifest_key, {**meta, "generatedAt": result["generatedAt"],
-                                 "botCount": result["indexedAfter"]}, public=True)
+                                 "botCount": result["indexedAfter"],
+                                 "shardCounts": {bucket: len(data["bots"])
+                                                 for bucket, data in shards.items()}}, public=True)
+    # Update the published report from the SAME full inventory; no second LIST.
+    # If this fails, never remove source data or report invented statuses.
+    store.load_discovery_order()
+    checked = build_audit(
+        store.discovery_order,
+        set().union(*(set(data["bots"]) for data in shards.values())),
+        stored,
+        at=result["generatedAt"],
+        listing=listing,
+        materialized_index_generated_at=result["generatedAt"]
+    )
+    store.put_json(store.key("indexes", "discovery-id-audit.json"), checked, public=True)
     store.put_json(store.key("indexes", "text-search-repair.json"), result, public=True)
     store.flush_usage(force=True)
     return result

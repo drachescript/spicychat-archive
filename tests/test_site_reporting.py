@@ -40,6 +40,12 @@ class SiteReportingTests(unittest.TestCase):
         self.assertEqual(page.count('<div><b id="stat-'), 6)
         self.assertNotIn("set('stat-bots-unreconciled'", home)
 
+    def test_missing_bot_page_offers_recovery_instead_of_dead_end(self):
+        app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("No detailed bot file saved", app)
+        self.assertIn("Open Recovery Lab", app)
+        self.assertIn("R2_READ_BUDGET_PAUSED", app)
+
     def test_stats_show_both_newest_and_deep_discovery(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
         live = (ROOT / "assets" / "stats-live.js").read_text(encoding="utf-8")

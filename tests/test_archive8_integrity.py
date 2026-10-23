@@ -32,7 +32,8 @@ class Archive8IntegrityTests(unittest.TestCase):
     def test_site_uses_v2_full_inventory(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
         home = (ROOT / "assets" / "home.js").read_text(encoding="utf-8")
-        self.assertIn("idAudit?.schemaVersion===2", app)
+        self.assertIn("loadCoverage(auditBase, fetchJson)", app)
+        self.assertIn("loadCoverage(base, json)", home)
         self.assertIn("inventory.materializedIndexIds", home)
         self.assertNotIn("arithmetic public/archive", app)
         self.assertNotIn("is an arithmetic gap", home)

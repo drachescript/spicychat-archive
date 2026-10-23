@@ -43,7 +43,14 @@
           if (audit.schemaVersion !== 1) audit = null;
         } catch { /* Audit may not have published yet. */ }
       }
-      set('stat-bots-indexed', audit?.materializedBotIndexCount ?? null);
+      let inventory = null;
+      if (base) {
+        try {
+          const report = await json(base + '/indexes/discovery-id-audit.json');
+          if (report.schemaVersion === 2 && report.complete === true && report.readOnly === true) inventory = report;
+        } catch { /* Keep the status report as a fallback. */ }
+      }
+      set('stat-bots-indexed', inventory?.materializedIndexIds ?? audit?.materializedBotIndexCount ?? null);
       set('stat-bots-count-gap', Number.isFinite(gap) ? Math.abs(gap) : null);
       set('stat-bots-total', trackedBots);
       set('stat-bots-public', publicBots);
@@ -52,55 +59,39 @@
 
       const reconcile = document.getElementById('snapshot-reconcile');
       if (reconcile) {
-        const delta = Number.isFinite(gap) ? fmt(Math.abs(gap)) : 'an unknown number';
-        const indexed = audit?.materializedBotIndexCount;
+         const gapText = Number.isFinite(gap) ? fmt(Math.abs(gap)) : 'Some';
+        const source = inventory || audit;
+        const indexed = inventory?.materializedIndexIds ?? audit?.materializedBotIndexCount;
+        const indexedAt = inventory?.materializedIndexGeneratedAt || audit?.materializedIndexGeneratedAt;
         reconcile.textContent =
-          delta + ' is an arithmetic gap between historical Archive IDs, ' +
-          'SpicyChat\'s current public count and confirmed-gone records — not ' +
-          'a list of identifiable missing bots. ' +
-          fmt(pendingChecks) + ' bot IDs are queued for explicit verification, ' +
-          'but this is not an exhaustive audit of all recorded IDs. ' +
-          (Number.isInteger(indexed)
-            ? fmt(indexed) + ' bot records are represented by the materialized index (snapshot ' +
-              String(audit.materializedIndexGeneratedAt || 'date unknown') + '). '
-            : 'The independent materialized-record audit has not published yet. ') +
-          'An old observation is not proof of present availability or deletion.';
+          gapText + ' is the difference when we compare the Archive’s old ID total with ' +
+          'SpicyChat’s current public total and bots confirmed gone. ' +
+          'It does not identify missing or deleted bots. ' +
+          fmt(pendingChecks) + ' individual bot IDs are currently queued for status checks; ' +
+          'that is not a check of every recorded ID. ' +
+          (Number.isInteger(indexed) ? fmt(indexed) + ' records are searchable in the saved Archive index' +
+            (indexedAt ? ' (checked ' + new Date(indexedAt).toLocaleString() + ')' : '') + '. ' : '') +
+          'Seeing a bot in the past does not prove it is still public or has been deleted.';
       }
 
       const inventoryStatus = document.getElementById('snapshot-audit');
       if (inventoryStatus) {
-        if (!base) {
-          inventoryStatus.textContent = 'The complete stored-file audit is not available yet.';
+        if (inventory) {
+          const items = [
+            fmt(inventory.storedBotFileIds) + ' bot files saved',
+            fmt(inventory.observedWithoutStoredFile) + ' IDs seen but not saved',
+            fmt(inventory.storedFileWithoutIndex) + ' saved files missing from search',
+            fmt(inventory.indexedWithoutStoredFile) + ' search entries without a saved file'
+          ];
+          inventoryStatus.replaceChildren();
+          inventoryStatus.append(document.createTextNode('File check: ' + items.join(' · ') + '. Not having a saved file does not mean a bot is deleted. '));
+          const link = document.createElement('a');
+          link.href = base + '/indexes/discovery-id-audit.json';
+          link.textContent = 'Audit details';
+          link.rel = 'noopener noreferrer';
+          inventoryStatus.append(link);
         } else {
-          try {
-            const inventory = await json(base + '/indexes/discovery-id-audit.json');
-            if (inventory.schemaVersion !== 2 || inventory.complete !== true || inventory.readOnly !== true)
-              throw new Error('No complete published inventory');
-            const stamped = new Date(inventory.generatedAt);
-            const inventoryDate = !Number.isNaN(stamped.getTime()) ? stamped.toLocaleString() : 'unknown';
-            // Each count is based on exact ID membership, not the unrelated
-            // arithmetic difference between historical and public totals.
-            const lines = [
-              ['Stored bot JSON objects', inventory.storedBotFileIds],
-              ['Observed IDs with saved bot JSON', inventory.observedWithStoredFile],
-              ['Observed IDs without saved bot JSON', inventory.observedWithoutStoredFile],
-              ['Saved bot JSON not in search index', inventory.observedWithoutIndexButWithStoredFile],
-              ['Search-index IDs without saved bot JSON', inventory.indexedWithoutStoredFile]
-            ];
-            inventoryStatus.replaceChildren();
-            const title = document.createElement('strong');
-            title.textContent = 'Complete per-ID storage audit (' + inventoryDate + '): ';
-            inventoryStatus.append(title);
-            inventoryStatus.append(document.createTextNode(lines.map(([label, count]) => label + ': ' + fmt(count)).join(' · ')));
-            inventoryStatus.append(document.createTextNode('. R2 file existence is not proof of live SpicyChat availability or of complete recoverable content. '));
-            const link = document.createElement('a');
-            link.href = base + '/indexes/discovery-id-audit.json';
-            link.textContent = 'Full audit details';
-            link.rel = 'noopener noreferrer';
-            inventoryStatus.append(link);
-          } catch {
-            inventoryStatus.textContent = 'A complete per-ID stored-file audit has not published yet. Historical ID totals are not equivalent to recoverable bot records.';
-          }
+          inventoryStatus.textContent = 'The complete file check is not available yet.';
         }
       }
 

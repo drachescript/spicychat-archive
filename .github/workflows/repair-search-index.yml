@@ -1,0 +1,44 @@
+name: Repair Archive search index
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write safe index-only fixes (false previews)"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Check billing-period R2 quota guard
+        id: guard
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file "$RUNNER_TEMP/repair-r2-usage.json"
+      - name: Verify and repair search-only discrepancies
+        if: steps.guard.outputs.mode == 'r2'
+        run: python scripts/repair_text_search_inventory.py ${{ inputs.apply && '--apply' || '' }} --max-changes 500
+      - name: Explain quota pause
+        if: steps.guard.outputs.mode != 'r2'
+        run: echo "Skipped: R2 quota guard did not approve the repair." >> "$GITHUB_STEP_SUMMARY"

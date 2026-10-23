@@ -284,7 +284,7 @@ def main() -> int:
     s = int(usage["storageBytes"])
     previous_mode = str(prior.get("selectedMode") or "")
     # A previous billing period must not keep the new period in fallback mode.
-    if prior.get("monthStart") != month_start():
+    if prior.get("monthStart") and prior.get("monthStart") != month_start():
         previous_mode = ""
     previous_reasons = set(prior.get("reasonCodes") or [])
 

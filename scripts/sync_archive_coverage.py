@@ -7,7 +7,7 @@ The page can use this file even if a visitor cannot fetch the R2 report.
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import archive as legacy
@@ -32,7 +32,7 @@ def verified_summary(report: object) -> dict:
     if not isinstance(stamp, str):
         raise ValueError("File audit is missing its date")
     when = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
-    if when.tzinfo is None or when > datetime.now(timezone.utc).replace(microsecond=0) + __import__("datetime").timedelta(days=1):
+    if when.tzinfo is None or when > datetime.now(timezone.utc) + timedelta(days=1):
         raise ValueError("File audit has an invalid date")
     for key in COUNTS:
         if type(report.get(key)) is not int or report[key] < 0:

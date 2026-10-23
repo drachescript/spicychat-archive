@@ -26,7 +26,7 @@
 
     <details class="faq-card">
       <summary>Why does Browse search more bots than the archive has saved?</summary>
-      <div class="faq-answer"><p>Browse uses SpicyChat's live public Typesense index so you can search what SpicyChat is reporting right now. The archive total is the number of bots I've actually captured and stored so far.</p><p>Those are two different numbers. The result header intentionally shows the archive count instead of presenting SpicyChat's live match count like it was the archive total.</p></div>
+      <div class="faq-answer"><p>Browse searches SpicyChat's current public listings. The Archive separately keeps track of IDs it has seen and bot files it has saved.</p><p>Those numbers aren't interchangeable. A bot can show up in Browse even if there's no saved Archive copy yet.</p></div>
     </details>
 
     <details class="faq-card">
@@ -36,12 +36,12 @@
 
     <details class="faq-card">
       <summary>Why don't archived + public + deleted bot counts always line up immediately?</summary>
-      <div class="faq-answer"><p>The three numbers come from different evidence: the archive total is cumulative, the public number is SpicyChat's current public index count, and deleted only includes bots that passed the archive's deletion-confirmation rules.</p><p>The homepage now shows the remaining difference as <strong>not yet reconciled</strong> instead of hiding it. That bucket covers archived records that are not represented by the current public-index count but also have not been confirmed gone yet. It is separate from the smaller API verification queue.</p></div>
+      <div class="faq-answer"><p>Those numbers are counting different things. The Archive remembers bot IDs from past searches, SpicyChat reports what's public now, and the deleted count only includes bots we've checked and confirmed gone.</p><p>The difference between the totals is not a list of missing bots. We can't tell which bots disappeared just by subtracting those numbers. The smaller status-check queue contains specific IDs to check separately.</p></div>
     </details>
 
     <details class="faq-card">
       <summary>Why is a bot missing from the archive?</summary>
-      <div class="faq-answer"><p>The crawler is still working through a very large public catalog, so it may simply not have reached that bot yet. A bot can also become private or unavailable before the archive first sees it.</p><p>The archive is designed to keep filling those gaps over time rather than pretending it already has everything.</p></div>
+      <div class="faq-answer"><p>The crawler is still working through a very large public catalog, so it may simply not have reached that bot yet. A bot can also become private or unavailable before the archive first sees it.</p><p>I'm working through older records too, but some information may no longer be available to save.</p></div>
     </details>
 
     <details class="faq-card">

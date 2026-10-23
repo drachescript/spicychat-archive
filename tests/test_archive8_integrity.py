@@ -58,6 +58,9 @@ class Archive8IntegrityTests(unittest.TestCase):
         class Store:
             def __init__(self):
                 self.writes = []
+                self.discovery_order = [stale_id, new_id]
+            def load_discovery_order(self):
+                return self.discovery_order
             def key(self, *parts):
                 return "/".join(parts)
             def bot_key(self, bot_id):
@@ -83,6 +86,7 @@ class Archive8IntegrityTests(unittest.TestCase):
             result = repair_script.repair(store, apply=True)
             self.assertEqual(result["indexedAfter"], 2)
             self.assertEqual(result["remainingSearchOnlyEntries"], 1)
+            self.assertTrue(any(key.endswith("discovery-id-audit.json") for key, _ in store.writes))
             shard_writes = [data for key, data in store.writes if key.endswith("/" + text_search_bucket(stale_id) + ".json")]
             self.assertTrue(shard_writes)
             self.assertIn(stale_id, shard_writes[-1]["bots"])

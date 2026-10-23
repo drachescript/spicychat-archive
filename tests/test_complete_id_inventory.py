@@ -50,14 +50,15 @@ class CompleteIDInventoryTests(unittest.TestCase):
         self.assertEqual(store.s3.calls[1]["ContinuationToken"], "NEXT")
 
     def test_fail_closed_when_listing_incomplete(self):
-        for first in [
-            {"Contents": [], "IsTruncated": True},
+        store = FakeStore([{"Contents": [], "IsTruncated": True}])
+        with self.assertRaisesRegex(RuntimeError, "continuation token"):
+            audit.inventory_bot_file_ids(store)
+        store = FakeStore([
             {"Contents": [], "IsTruncated": True, "NextContinuationToken": "stuck"},
-        ]:
-            with self.subTest(first=first):
-                store = FakeStore([first])
-                with self.assertRaises(RuntimeError):
-                    audit.inventory_bot_file_ids(store)
+            {"Contents": [], "IsTruncated": True, "NextContinuationToken": "stuck"},
+        ])
+        with self.assertRaisesRegex(RuntimeError, "progressing continuation token"):
+            audit.inventory_bot_file_ids(store)
         store = FakeStore([
             {"Contents": [{"Key": botkey("aa00")}], "IsTruncated": True, "NextContinuationToken": "MORE"},
         ])

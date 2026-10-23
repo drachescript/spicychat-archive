@@ -762,7 +762,10 @@ def flush_indexes(store: R2ArchiveStore, *, force: bool = False) -> None:
             "schemaVersion": SCHEMA_VERSION,
             "generatedAt": now,
             "shards": [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)],
-            "botCount": len(state["times"]),
+            "botCount": max(0, int(manifest.get("botCount") or 0) + sum(
+                len(state["textShards"][bucket].get(bot_id, [])) * 0
+                for bucket in []
+            )),
             "bloomBytes": TEXT_BLOOM_BYTES,
             "hashes": TEXT_BLOOM_HASHES,
         }, public=True)

@@ -1140,35 +1140,39 @@ async function statsPage(){
   const diff=Number((manifest.reconciliation||{}).countGap);
   const statusItems=auditStatus?.lastObservedStatus||{};
   const statusRows=Object.entries(statusItems).map(([key,value])=>
-    '<div class="recent-run"><div><b>'+fmt(value)+'</b><br><span>last-observed '+esc(key)+'</span></div></div>'
+    '<div class="recent-run"><div><b>'+fmt(value)+'</b><br><span>last recorded as '+esc(key)+' (older report)</span></div></div>'
   ).join('');
+  const statusDate=auditStatus?.generatedAt
+    ? esc(new Date(auditStatus.generatedAt).toLocaleString()) : 'unknown date';
+  const fileDate=physicalAudit?.generatedAt
+    ? esc(new Date(physicalAudit.generatedAt).toLocaleString()) : 'unknown date';
   const auditSummary=
     '<section class="table-card"><h2>Saved Archive records</h2>'+
-    '<p class="detail-sub">A bot ID we saw, a file we saved, and a bot SpicyChat currently lists are three different things. The numbers below keep them separate.</p>'+
+    '<p class="detail-sub">Seeing a bot ID, saving its file and finding it in search are different things. Here is what the Archive actually has.</p>'+
     '<div class="recent-list">'+
-    '<div class="recent-run"><div><b>'+fmt(manifest.totalBots)+'</b><br><span>discovery-order IDs ever observed</span></div>'+
-    '<div><b>'+(indexedCount==null?'Not audited':fmt(indexedCount))+'</b><br><span>indexed materialized bot records</span></div></div>'+
-    '<div class="recent-run"><div><b>'+(Number.isFinite(diff)?fmt(Math.abs(diff)):'—')+'</b><br><span>difference between historical and current public totals (not missing bots)</span></div>'+
-    '<div><b>'+fmt((manifest.reconciliation||{}).pendingVerificationBots??manifest.missingBots??0)+'</b><br><span>specifically queued for missing-status API checks (not exhaustive)</span></div></div>'+
-    (auditStatus?'<div class="recent-run"><div><b>'+fmt(auditStatus.creatorIndexedIds)+'</b><br><span>creator-indexed saved IDs</span></div>'+
-      '<div><b>'+fmt(auditStatus.lastSeenMoreThan90DaysAgo)+'</b><br><span>not observed in 90+ days (NOT confirmed gone)</span></div></div>':'')+
+    '<div class="recent-run"><div><b>'+fmt(manifest.totalBots)+'</b><br><span>bot IDs seen over time</span></div>'+
+    '<div><b>'+(physicalAudit?fmt(physicalAudit.storedBotFileIds):'—')+'</b><br><span>saved bot files (last full check)</span></div></div>'+
+    '<div class="recent-run"><div><b>'+(indexedCount==null?'—':fmt(indexedCount))+'</b><br><span>search entries (some have no saved file)</span></div>'+
+    '<div><b>'+(physicalAudit?fmt(physicalAudit.indexedWithoutStoredFile):'—')+'</b><br><span>older search entries without saved files</span></div></div>'+
+    '<div class="recent-run"><div><b>'+(Number.isFinite(diff)?fmt(Math.abs(diff)):'—')+'</b><br><span>difference between old and current totals, not missing bots</span></div>'+
+    '<div><b>'+fmt((manifest.reconciliation||{}).pendingVerificationBots??manifest.missingBots??0)+'</b><br><span>IDs waiting for individual status checks</span></div></div>'+
     '</div>'+
-    (auditStatus?'<h3>Last-recorded Archive status (not live availability)</h3><div class="recent-list">'+statusRows+'</div>'+
-      '<p class="detail-sub">Materialized index snapshot: '+esc(auditStatus.materializedIndexGeneratedAt||'unknown')+
-      (auditStatus.materializedIndexOlderThan7Days?' · This snapshot is older than seven days.':'')+'</p>':
-      '<p class="detail-sub">Status audit is awaiting its first successful daily publication.</p>')+
-    (physicalAudit?'<h3>Saved file check</h3>'+
-       '<p class="detail-sub">Last checked '+esc(new Date(physicalAudit.generatedAt).toLocaleString())+'. '+
-       fmt(physicalAudit.storedBotFileIds)+' bot JSON files saved, '+
-       fmt(physicalAudit.materializedIndexIds)+' search entries. '+
-       fmt(physicalAudit.storedFileWithoutIndex)+' saved files missing from search and '+
-       fmt(physicalAudit.indexedWithoutStoredFile)+' older search entries without saved files. '+
-       'This does not tell us whether those bots are still public.</p>'+
-       '<p><a class="secondary-button" href="'+esc(physicalAudit._source==='r2'?auditBase+'/indexes/discovery-id-audit.json':'/data/archive-coverage.json')+'" target="_blank" rel="noopener">See file check numbers ↗</a></p>':
-       '<p class="detail-sub">Saved-file totals could not be loaded right now.</p>')+
-    '<p class="detail-sub">The '+(Number.isFinite(diff)?fmt(Math.abs(diff)):'unknown')+
-    ' difference is just from comparing old Archive IDs, SpicyChat’s public count, and confirmed-gone bots. It does not identify missing bots.</p>'+
-    '<p class="detail-sub"><b>Rule:</b> do not mark a bot deleted without sufficient per-ID evidence. Do not count a discovery-only ID as a saved bot record without a materialized file.</p>'+
+    (physicalAudit?'<p class="detail-sub">Full file check: '+fileDate+'. '+fmt(physicalAudit.storedFileWithoutIndex)+
+      ' saved files were missing from search. This does not check whether bots are public now. '+
+      '<a href="'+esc(physicalAudit._source==='r2'?auditBase+'/indexes/discovery-id-audit.json':'/data/archive-coverage.json')+
+      '" target="_blank" rel="noopener">View file check</a></p>':
+      '<p class="detail-sub">The last full file-check report could not be loaded.</p>')+
+    (auditStatus?
+      '<h3>Older creator and status records</h3>'+
+      '<p class="detail-sub">Separate creator/status report, checked '+statusDate+
+      '. It can have different totals and is not a fresh check of whether bots are still public or deleted.</p>'+
+      '<div class="recent-list"><div class="recent-run"><div><b>'+fmt(auditStatus.creatorIndexedIds)+
+      '</b><br><span>IDs in the creator index at that check</span></div>'+
+      '<div><b>'+fmt(auditStatus.lastSeenMoreThan90DaysAgo)+
+      '</b><br><span>not seen for 90+ days at that check</span></div></div></div>'+
+      '<div class="recent-list">'+statusRows+'</div>':
+      '<p class="detail-sub">The separate creator/status report is not available right now.</p>')+
+    '<p class="detail-sub">An old sighting does not prove a bot is still public. A missing file does not prove it was deleted.</p>'+
     '</section>';
   const historyRows=[...milestones.map(row=>({...row,_historyKind:'milestone'})),...(stats.runs||[]).map(row=>({...row,_historyKind:row.kind||'archive-run'}))].filter(row=>row?.at).sort((a,b)=>new Date(b.at)-new Date(a.at));
   app.innerHTML=`<section class="hero"><h1>Archive stats</h1><p>How the archive is growing, what recent batches found, and the full project history from the early small archive through the current crawler.</p><div class="detail-actions"><a class="secondary-button" href="../name-trends/">Bot names &amp; trends</a><a class="secondary-button" href="../health/">Archive health</a><a class="secondary-button" href="../changes/">Recently changed</a><a class="secondary-button" href="../restored/">Restored bots</a></div></section>

@@ -158,8 +158,8 @@
 
     const pace = signed(growth.averagePerDay);
     setText(cards[1].querySelector('b'), `${pace}/day`);
-    setText(cards[1].querySelector('span'), "How SpicyChat's public bot count is moving");
-    cards[1].title = 'This follows SpicyChat’s reported public index, not how quickly I backfilled the archive.';
+    setText(cards[1].querySelector('span'), "Recent public-bot count change per day");
+    cards[1].title = 'Average net change in SpicyChat’s reported public bot count, not the number of bots the Archive saved.';
 
     const day = periodText(growth, '24h', 'Net public bot change in the last 24h');
     setText(cards[4].querySelector('b'), day.value);

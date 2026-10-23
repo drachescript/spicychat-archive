@@ -1125,7 +1125,9 @@ async function statsPage(){
     auditBase?fetchJson(auditBase+'/indexes/discovery-id-audit.json').catch(()=>null):Promise.resolve(null)
   ]);
   const auditStatus=statusAudit?.schemaVersion===1?statusAudit:null;
-  const physicalAudit=idAudit?.schemaVersion===1?idAudit:null;
+  const physicalAudit=idAudit?.schemaVersion===2&&idAudit.complete===true?idAudit:null;
+  const indexedCount=physicalAudit?.materializedIndexIds??auditStatus?.materializedBotIndexCount;
+  const indexedAt=physicalAudit?.materializedIndexGeneratedAt??auditStatus?.materializedIndexGeneratedAt;
   const diff=Number((manifest.reconciliation||{}).countGap);
   const statusItems=auditStatus?.lastObservedStatus||{};
   const statusRows=Object.entries(statusItems).map(([key,value])=>
@@ -1136,8 +1138,8 @@ async function statsPage(){
     '<p class="detail-sub">These numbers deliberately distinguish discovered IDs, materialized records, and last-observed statuses. The historical Archive and live SpicyChat public indexes have different memberships.</p>'+
     '<div class="recent-list">'+
     '<div class="recent-run"><div><b>'+fmt(manifest.totalBots)+'</b><br><span>discovery-order IDs ever observed</span></div>'+
-    '<div><b>'+(auditStatus?.materializedBotIndexCount==null?'Not audited':fmt(auditStatus.materializedBotIndexCount))+'</b><br><span>indexed materialized bot records</span></div></div>'+
-    '<div class="recent-run"><div><b>'+(Number.isFinite(diff)?fmt(Math.abs(diff)):'—')+'</b><br><span>arithmetic public/archive count difference — NOT an ID list</span></div>'+
+    '<div><b>'+(indexedCount==null?'Not audited':fmt(indexedCount))+'</b><br><span>indexed materialized bot records</span></div></div>'+
+    '<div class="recent-run"><div><b>'+(Number.isFinite(diff)?fmt(Math.abs(diff)):'—')+'</b><br><span>difference between historical and current public totals (not missing bots)</span></div>'+
     '<div><b>'+fmt((manifest.reconciliation||{}).pendingVerificationBots??manifest.missingBots??0)+'</b><br><span>specifically queued for missing-status API checks (not exhaustive)</span></div></div>'+
     (auditStatus?'<div class="recent-run"><div><b>'+fmt(auditStatus.creatorIndexedIds)+'</b><br><span>creator-indexed saved IDs</span></div>'+
       '<div><b>'+fmt(auditStatus.lastSeenMoreThan90DaysAgo)+'</b><br><span>not observed in 90+ days (NOT confirmed gone)</span></div></div>':'')+
@@ -1146,13 +1148,15 @@ async function statsPage(){
       '<p class="detail-sub">Materialized index snapshot: '+esc(auditStatus.materializedIndexGeneratedAt||'unknown')+
       (auditStatus.materializedIndexOlderThan7Days?' · This snapshot is older than seven days.':'')+'</p>':
       '<p class="detail-sub">Status audit is awaiting its first successful daily publication.</p>')+
-    (physicalAudit?'<h3>Exact ID/file audit</h3>'+
-       '<p class="detail-sub">'+fmt(physicalAudit.discoveryOnlyIds)+' discovery IDs were not found in the materialized index. '+fmt(physicalAudit.discoveryOnlyWithNoBotFile)+
-       ' of these had no saved bot JSON object after checking '+fmt(physicalAudit.botFileHeadChecks)+
-       ' IDs; '+fmt(physicalAudit.discoveryOnlyWithStoredBotFile)+' did have a saved object; '+fmt(physicalAudit.discoveryOnlyUnchecked)+
-       ' were not checked individually. None of this establishes SpicyChat deletion.</p>'+
-       '<p><a class="secondary-button" href="'+esc(auditBase+'/indexes/discovery-id-audit.json')+'" target="_blank" rel="noopener">Inspect per-ID evidence JSON ↗</a></p>':
-       '<p class="detail-sub">The separate exact-ID/file audit has not published yet. A numeric gap cannot be used to select records for deletion.</p>')+
+    (physicalAudit?'<h3>Saved file check</h3>'+ 
+       '<p class="detail-sub">The Archive has saved '+fmt(physicalAudit.storedBotFileIds)+' bot JSON files from '+fmt(physicalAudit.observedDiscoveryIds)+' IDs seen over time. '+
+       fmt(physicalAudit.observedWithoutStoredFile)+' seen IDs do not have a saved bot file here. This does not mean those bots were deleted. '+
+       fmt(physicalAudit.storedFileWithoutIndex)+' saved files were absent from search and '+fmt(physicalAudit.indexedWithoutStoredFile)+
+       ' search entries did not have a saved file when checked. Check made '+esc(physicalAudit.generatedAt||'at an unknown time')+'.</p>'+ 
+       '<p><a class="secondary-button" href="'+esc(auditBase+'/indexes/discovery-id-audit.json')+'" target="_blank" rel="noopener">View file check details ↗</a></p>':
+       '<p class="detail-sub">The complete saved-file check is not available yet. Totals alone cannot tell us which bots have gone missing.</p>')+
+    '<p class="detail-sub">The '+(Number.isFinite(diff)?fmt(Math.abs(diff)):'unknown')+' difference comes from comparing historical Archive IDs, SpicyChat’s public total, and confirmed-gone bots. It is not a list of missing bots. ' +
+    fmt((manifest.reconciliation||{}).pendingVerificationBots??manifest.missingBots??0)+' IDs are queued for individual status checks, not a check of every ID. Previous sightings do not prove that a bot is public or deleted today.</p>'+ 
     '<p class="detail-sub"><b>Rule:</b> do not mark a bot deleted without sufficient per-ID evidence. Do not count a discovery-only ID as a saved bot record without a materialized file.</p>'+
     '</section>';
   const historyRows=[...milestones.map(row=>({...row,_historyKind:'milestone'})),...(stats.runs||[]).map(row=>({...row,_historyKind:row.kind||'archive-run'}))].filter(row=>row?.at).sort((a,b)=>new Date(b.at)-new Date(a.at));

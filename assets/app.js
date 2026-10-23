@@ -1012,7 +1012,13 @@ function archivedAvatar(record,runtime){
 async function botPage(){
   const id=qs('id');if(!id){app.innerHTML='<div class="error">No bot ID supplied.</div>';return;}
   const runtime=await loadRuntime();let record;
-  try{record=await loadBotRecord(id,runtime);}catch(e){app.innerHTML=`<div class="error">${e?.code==='R2_READ_BUDGET_PAUSED'?'Archived bot details are temporarily paused by the R2 quota safety guard.':'This bot has not been captured by the archive yet.'}</div>`;return;}
+  try{record=await loadBotRecord(id,runtime);}catch(e){
+    const paused=e?.code==='R2_READ_BUDGET_PAUSED';
+    app.innerHTML=paused
+      ?'<div class="error">Archived bot details are temporarily paused by the R2 quota safety guard.</div>'
+      :'<section class="section"><h1>No detailed bot file saved</h1><p>There may still be older search information for this ID. You can check Recovery Lab or use your own conversation export to rebuild a copy.</p><div class="detail-actions"><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(id)+'">Open Recovery Lab</a><a class="secondary-button" href="../">Back to Archive</a></div></section>';
+    return;
+  }
   const lk=record.lastKnown||{},status=record.status?.current||'unknown',requestedAt=qs('at')||'';
   const requestedSnapshot=requestedAt?versionSnapshot(record,requestedAt):null;
   const snapshotValue=keys=>{if(!requestedSnapshot)return bestFieldAny(record,keys);for(const key of keys){if(meaningfulFieldValue(requestedSnapshot[key]))return requestedSnapshot[key];}return null;};

@@ -69,6 +69,7 @@
       "discovery_write_soft_limit": 950000
     },
     "quota_guard": {
+      "billing_cycle_day": 28,
       "enabled": true,
       "fail_closed": true,
       "storage_pause_bytes": 8000000000,

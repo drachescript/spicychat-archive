@@ -45,6 +45,8 @@ class SiteReportingTests(unittest.TestCase):
         self.assertIn("No detailed bot file saved", app)
         self.assertIn("Open Recovery Lab", app)
         self.assertIn("R2_READ_BUDGET_PAUSED", app)
+        self.assertIn("const missing=e?.status===404", app)
+        self.assertIn("Could not load this bot right now", app)
 
     def test_stats_show_both_newest_and_deep_discovery(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")

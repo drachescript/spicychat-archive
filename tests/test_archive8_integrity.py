@@ -37,16 +37,13 @@ class Archive8IntegrityTests(unittest.TestCase):
         self.assertNotIn("arithmetic public/archive", app)
         self.assertNotIn("is an arithmetic gap", home)
 
-
-if __name__ == "__main__":
-    unittest.main()
-
     def test_repair_keeps_search_only_metadata(self):
         from unittest.mock import patch
         import repair_text_search_inventory as repair_script
         from site_indexes import SCHEMA_VERSION, text_search_bucket
         stale_id = "old-history"
-        new_id = "newly-saved"
+        new_id = next("newly-saved-" + str(i) for i in range(2000)
+                      if text_search_bucket("newly-saved-" + str(i)) == text_search_bucket(stale_id))
         shard_names = [f"{i:02x}" for i in range(64)]
         paths = {
             ("indexes", "text-search.json"): {
@@ -90,3 +87,7 @@ if __name__ == "__main__":
             self.assertTrue(shard_writes)
             self.assertIn(stale_id, shard_writes[-1]["bots"])
 
+
+
+if __name__ == "__main__":
+    unittest.main()

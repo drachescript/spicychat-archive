@@ -1,3 +1,5 @@
+import {loadCoverage} from './archive-coverage.js';
+
 (() => {
   const fmt = value => {
     if (value == null || value === '') return '—';
@@ -23,12 +25,10 @@
         json('/data/manifest.json'), json('/data/runtime.json')
       ]);
       const base = String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');
-      const [rawInventory, lorebooks] = await Promise.all([
-        base ? json(base + '/indexes/discovery-id-audit.json').catch(() => null) : null,
+      const [inventory, lorebooks] = await Promise.all([
+        loadCoverage(base, json),
         base ? json(base + '/indexes/lorebooks.json').catch(() => null) : null
       ]);
-      const inventory = rawInventory?.schemaVersion === 2 &&
-        rawInventory.complete === true && rawInventory.readOnly === true ? rawInventory : null;
 
       set('stat-bots-total', manifest.totalBots);
       set('stat-bots-saved', inventory?.storedBotFileIds);
@@ -43,30 +43,34 @@
       const reconcile = document.getElementById('snapshot-reconcile');
       if (reconcile) {
         reconcile.textContent =
-          (Number.isFinite(gap) ? fmt(Math.abs(gap)) + ' is the difference between our old bot ID total, SpicyChat’s public count and confirmed-gone bots. ' : '') +
-          'It is not a list of missing bots. ' + fmt(pending) + ' IDs are queued for individual status checks. ' +
-          'An old sighting does not tell us whether a bot is still public or deleted.';
+          (Number.isFinite(gap) ? fmt(Math.abs(gap)) + ' is the difference when we compare old Archive IDs with SpicyChat’s public count and confirmed-gone bots. ' : '') +
+          'It is not a list of missing bots. ' +
+          (pending ? fmt(pending) + ' specific IDs are waiting for availability checks.' :
+            'No individual bot IDs are currently waiting for availability checks.');
       }
 
       const auditBox = document.getElementById('snapshot-audit');
       if (auditBox) {
         auditBox.replaceChildren();
         if (inventory) {
+          const checked = new Date(inventory.generatedAt).toLocaleString();
           auditBox.append(document.createTextNode(
-            'Last file check: ' + fmt(inventory.observedDiscoveryIds) + ' IDs seen, ' +
-            fmt(inventory.storedBotFileIds) + ' saved bot files, ' +
+            'Last full file check (' + checked + '): ' +
+            fmt(inventory.storedBotFileIds) + ' bot files saved, ' +
             fmt(inventory.materializedIndexIds) + ' search entries. ' +
-            fmt(inventory.storedFileWithoutIndex) + ' saved files are missing from search; ' +
-            fmt(inventory.indexedWithoutStoredFile) + ' search entries have no saved file. ' +
-            'Neither result proves that a bot was deleted. '
+            fmt(inventory.storedFileWithoutIndex) + ' saved files missing from search, ' +
+            fmt(inventory.indexedWithoutStoredFile) + ' older search entries without a saved file. ' +
+            'This only checks Archive storage, not whether bots are public now. '
           ));
           const link = document.createElement('a');
-          link.href = base + '/indexes/discovery-id-audit.json';
-          link.textContent = 'See the full check';
+          link.href = inventory._source === 'r2'
+            ? base + '/indexes/discovery-id-audit.json'
+            : '/data/archive-coverage.json';
+          link.textContent = 'See the numbers';
           link.rel = 'noopener noreferrer';
           auditBox.append(link);
         } else {
-          auditBox.textContent = 'A complete saved-file check is not available right now.';
+          auditBox.textContent = 'The saved-file totals could not be loaded. Other Archive counts are still available.';
         }
       }
 

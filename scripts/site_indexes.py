@@ -758,11 +758,24 @@ def flush_indexes(store: R2ArchiveStore, *, force: bool = False) -> None:
         }, public=True)
     if state["dirtyText"]:
         manifest = store.get_json(_index_key(store, "text-search.json"), {}) or {}
+        buckets = [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)]
+        shard_counts = manifest.get("shardCounts")
+        if not (isinstance(shard_counts, dict) and
+                set(shard_counts) == set(buckets) and
+                all(isinstance(shard_counts[b], int) and shard_counts[b] >= 0 for b in buckets)):
+            # One-time count refresh for older indexes; later runs only need
+            # the shards already touched by this archive batch.
+            shard_counts = {b: len(_load_text_shard(store, state, b)) for b in buckets}
+        else:
+            shard_counts = dict(shard_counts)
+        for bucket in state["dirtyText"]:
+            shard_counts[bucket] = len(state["textShards"][bucket])
         store.put_json(_index_key(store, "text-search.json"), {
             "schemaVersion": SCHEMA_VERSION,
             "generatedAt": now,
-            "shards": [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)],
-            "botCount": sum(len(_load_text_shard(store, state, f"{i:02x}")) for i in range(TEXT_SEARCH_SHARDS)),
+            "shards": buckets,
+            "shardCounts": shard_counts,
+            "botCount": sum(shard_counts.values()),
             "bloomBytes": TEXT_BLOOM_BYTES,
             "hashes": TEXT_BLOOM_HASHES,
         }, public=True)
@@ -969,6 +982,8 @@ def rebuild_indexes(store: R2ArchiveStore, *, workers: int = 24) -> dict[str, An
         "generatedAt": now,
         "shards": [f"{i:02x}" for i in range(TEXT_SEARCH_SHARDS)],
         "botCount": sum(len(x) for x in text_shards.values()),
+        "shardCounts": {f"{i:02x}": len(text_shards.get(f"{i:02x}", {}))
+                        for i in range(TEXT_SEARCH_SHARDS)},
         "bloomBytes": TEXT_BLOOM_BYTES,
         "hashes": TEXT_BLOOM_HASHES,
     }, public=True)

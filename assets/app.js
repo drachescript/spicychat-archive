@@ -74,7 +74,7 @@ const spicyHref = id => `https://spicychat.ai/chatbot/${encodeURIComponent(id)}`
 
 async function fetchJson(url, options={}){
   const r=await fetch(url,{cache:'no-store',...options});
-  if(!r.ok)throw new Error(`${r.status} ${r.statusText}`);
+  if(!r.ok){const error=new Error(`${r.status} ${r.statusText}`);error.status=r.status;throw error;}
   return r.json();
 }
 async function fetchCachedJson(url){
@@ -1014,9 +1014,12 @@ async function botPage(){
   const runtime=await loadRuntime();let record;
   try{record=await loadBotRecord(id,runtime);}catch(e){
     const paused=e?.code==='R2_READ_BUDGET_PAUSED';
+    const missing=e?.status===404;
     app.innerHTML=paused
       ?'<div class="error">Archived bot details are temporarily paused by the R2 quota safety guard.</div>'
-      :'<section class="section"><h1>No detailed bot file saved</h1><p>There may still be older search information for this ID. You can check Recovery Lab or use your own conversation export to rebuild a copy.</p><div class="detail-actions"><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(id)+'">Open Recovery Lab</a><a class="secondary-button" href="../">Back to Archive</a></div></section>';
+      :missing
+        ?'<section class="section"><h1>No detailed bot file saved</h1><p>There may still be older search information for this ID. You can check Recovery Lab or use your own conversation export to rebuild a copy.</p><div class="detail-actions"><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(id)+'">Open Recovery Lab</a><a class="secondary-button" href="../">Back to Archive</a></div></section>'
+        :'<div class="error">Could not load this bot right now. Try again later.</div>';
     return;
   }
   const lk=record.lastKnown||{},status=record.status?.current||'unknown',requestedAt=qs('at')||'';

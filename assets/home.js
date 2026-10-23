@@ -67,6 +67,43 @@
           'An old observation is not proof of present availability or deletion.';
       }
 
+      const inventoryStatus = document.getElementById('snapshot-audit');
+      if (inventoryStatus) {
+        if (!base) {
+          inventoryStatus.textContent = 'The complete stored-file audit is not available yet.';
+        } else {
+          try {
+            const inventory = await json(base + '/indexes/discovery-id-audit.json');
+            if (inventory.schemaVersion !== 2 || inventory.complete !== true || inventory.readOnly !== true)
+              throw new Error('No complete published inventory');
+            const stamped = new Date(inventory.generatedAt);
+            const inventoryDate = !Number.isNaN(stamped.getTime()) ? stamped.toLocaleString() : 'unknown';
+            // Each count is based on exact ID membership, not the unrelated
+            // arithmetic difference between historical and public totals.
+            const lines = [
+              ['Stored bot JSON objects', inventory.storedBotFileIds],
+              ['Observed IDs with saved bot JSON', inventory.observedWithStoredFile],
+              ['Observed IDs without saved bot JSON', inventory.observedWithoutStoredFile],
+              ['Saved bot JSON not in search index', inventory.observedWithoutIndexButWithStoredFile],
+              ['Search-index IDs without saved bot JSON', inventory.indexedWithoutStoredFile]
+            ];
+            inventoryStatus.replaceChildren();
+            const title = document.createElement('strong');
+            title.textContent = 'Complete per-ID storage audit (' + inventoryDate + '): ';
+            inventoryStatus.append(title);
+            inventoryStatus.append(document.createTextNode(lines.map(([label, count]) => label + ': ' + fmt(count)).join(' · ')));
+            inventoryStatus.append(document.createTextNode('. R2 file existence is not proof of live SpicyChat availability or of complete recoverable content. '));
+            const link = document.createElement('a');
+            link.href = base + '/indexes/discovery-id-audit.json';
+            link.textContent = 'Full audit details';
+            link.rel = 'noopener noreferrer';
+            inventoryStatus.append(link);
+          } catch {
+            inventoryStatus.textContent = 'A complete per-ID stored-file audit has not published yet. Historical ID totals are not equivalent to recoverable bot records.';
+          }
+        }
+      }
+
       if (base) {
         try {
           const lorebooks = await json(base + '/indexes/lorebooks.json');

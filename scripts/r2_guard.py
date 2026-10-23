@@ -11,7 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -40,9 +40,22 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def billing_period_start(now: datetime | None = None, day: int = 28) -> str:
+    """Start of the configured R2 billing period in UTC, not calendar month."""
+    if not 1 <= day <= 28:
+        raise ValueError("Billing cycle day must be between 1 and 28")
+    now = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
+    start = now.replace(day=day, hour=0, minute=0, second=0, microsecond=0)
+    if now < start:
+        start = (start.replace(day=1) - timedelta(days=1)).replace(day=day)
+    return start.isoformat().replace("+00:00", "Z")
+
+
 def month_start() -> str:
-    now = datetime.now(timezone.utc)
-    return now.replace(day=1, hour=0, minute=0, second=0, microsecond=0).isoformat().replace("+00:00", "Z")
+    """Compatibility helper: R2 billing window, configured separately."""
+    config = read_json(CONFIG_PATH, {})
+    day = int(((config.get("storage") or {}).get("quota_guard") or {}).get("billing_cycle_day") or 28)
+    return billing_period_start(day=day)
 
 
 def read_json(path: Path, default: Any) -> Any:
@@ -270,6 +283,9 @@ def main() -> int:
     b = int(usage["classB"])
     s = int(usage["storageBytes"])
     previous_mode = str(prior.get("selectedMode") or "")
+    # A previous billing period must not keep the new period in fallback mode.
+    if prior.get("monthStart") and prior.get("monthStart") != month_start():
+        previous_mode = ""
     previous_reasons = set(prior.get("reasonCodes") or [])
 
     reasons: list[str] = []

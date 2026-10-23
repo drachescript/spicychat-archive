@@ -140,6 +140,10 @@ jobs:
         if: always() && steps.r2guard.outputs.mode == 'r2' && steps.archive.outcome != 'skipped'
         run: python scripts/public_growth.py
 
+      - name: Sync verified Archive file count
+        if: always() && steps.r2guard.outputs.mode == 'r2'
+        run: python scripts/sync_archive_coverage.py
+
       - name: Update pre-migration local archive
         if: steps.r2guard.outputs.mode == 'legacy' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"

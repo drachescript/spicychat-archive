@@ -3,7 +3,7 @@
 export function botTimestamp(value, now = Date.now()) {
   if (value == null || value === '' || typeof value === 'boolean') return null;
   let parsed = null;
-  if (typeof value === 'number' || (typeof value === 'string' && /^\\d+(?:\\.\\d+)?$/.test(value.trim()))) {
+  if (typeof value === 'number' || (typeof value === 'string' && /^\d+(?:\.\d+)?$/.test(value.trim()))) {
     const n = Number(value);
     if (!Number.isFinite(n) || n <= 0) return null;
     const ms = n < 100000000000 ? n * 1000 : n;

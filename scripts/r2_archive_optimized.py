@@ -119,6 +119,19 @@ def _clean_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _observation_typesense_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    """Keep reported dates on inspected records without changing fingerprints.
+
+    Adding dates to the content fingerprint would trigger millions of pointless
+    R2 reads across bots whose creator-controlled content has not changed.
+    """
+    cleaned = _clean_typesense_doc(doc)
+    for key in ("createdAt", "created_at", "publishedAt", "published_at"):
+        if key in doc and legacy.meaningful(doc[key]):
+            cleaned[key] = doc[key]
+    return cleaned
+
+
 def _content_hash(doc: dict[str, Any]) -> str:
     raw = json.dumps(
         _clean_typesense_doc(doc),
@@ -445,7 +458,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
             observed_doc = doc
             if existing is not None and source.startswith("typesense:"):
-                observed_doc = _clean_typesense_doc(doc)
+                observed_doc = _observation_typesense_doc(doc)
 
             record, changed = legacy.observe_bot(
                 existing,

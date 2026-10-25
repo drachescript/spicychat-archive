@@ -51,6 +51,16 @@ class SiteReportingTests(unittest.TestCase):
         self.assertNotIn("indexed materialized bot records", app)
         self.assertIn("Recent public-bot count change per day", growth)
 
+    def test_bot_dates_are_reported_separately_from_archive_first_seen(self):
+        app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("reportedBotTimestamp(record,['createdAt','created_at'])", app)
+        self.assertIn("reportedBotTimestamp(record,['publishedAt','published_at'])", app)
+        self.assertIn("Created (reported by SpicyChat)", app)
+        self.assertIn("Made public (exact date)", app)
+        self.assertIn("First captured by Archive", app)
+        self.assertIn("not when it was published", app)
+        self.assertIn("status==='public'?await publicBotCreationDate(runtime,record.id):null", app)
+
     def test_missing_bot_page_offers_recovery_instead_of_dead_end(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
         self.assertIn("No detailed bot file saved", app)

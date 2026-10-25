@@ -1,5 +1,5 @@
 import {loadCoverage} from './archive-coverage.js';
-import {reportedBotTimestamp} from './bot-dates.js';
+import {botTimestamp,reportedBotTimestamp} from './bot-dates.js';
 const asset = (path) => new URL(`../${path}`, import.meta.url);
 const app = document.querySelector('#app');
 const page = document.body.dataset.page || 'browse';
@@ -594,6 +594,31 @@ async function typesenseSearch(runtime,search){
   if(result.error)throw new Error(result.error);
   return result;
 }
+async function publicBotCreationDate(runtime,botId){
+  // This is only a best-effort current public listing read for old saved bots.
+  // It does not verify their original publication date.
+  if(!runtime?.typesense?.collection || !runtime?.typesense?.apiKey) return null;
+  const id=String(botId||'').toLowerCase();
+  if(!/^[a-f0-9]{8}-[a-f0-9-]{27,}$/.test(id))return null;
+  const base=String(runtime.typesense.baseFilter||'application_ids:=spicychat && type:!=META && visibility:=public');
+  try{
+    const result=await typesenseSearch(runtime,{
+      collection:runtime.typesense.collection,
+      q:'*',
+      query_by:runtime.typesense.queryBy||'name',
+      page:1,
+      per_page:1,
+      filter_by:base+' && character_id:='+tsLiteral(id),
+      include_fields:'character_id,createdAt'
+    });
+    const doc=result?.hits?.[0]?.document;
+    if(String(doc?.character_id||'').toLowerCase()!==id)return null;
+    return botTimestamp(doc.createdAt);
+  }catch{
+    // Offline, deleted and private bots simply keep the existing saved data.
+    return null;
+  }
+}
 function docToCard(doc){
   return {
     id:String(doc.character_id||doc.id||'').toLowerCase(),
@@ -1025,7 +1050,8 @@ async function botPage(){
     return;
   }
   const lk=record.lastKnown||{},status=record.status?.current||'unknown',requestedAt=qs('at')||'';
-  const createdAt=reportedBotTimestamp(record,['createdAt','created_at']);
+  const createdAt=reportedBotTimestamp(record,['createdAt','created_at']) ||
+    (status==='public'?await publicBotCreationDate(runtime,record.id):null);
   const publishedAt=reportedBotTimestamp(record,['publishedAt','published_at']);
 
   const requestedSnapshot=requestedAt?versionSnapshot(record,requestedAt):null;

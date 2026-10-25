@@ -44,7 +44,9 @@ SITE_BOTS_DIR = SITE_DATA_DIR / "bots"
 UUID_RE = re.compile(r"^[0-9a-fA-F-]{16,}$")
 VOLATILE_FIELDS = {
     "num_messages", "num_messages_24h", "rating_score", "rating_count",
-    "recommendation_score", "rank"
+    "recommendation_score", "rank",
+    # Dates from SpicyChat are metadata, not creator edits or version history.
+    "createdAt", "created_at", "publishedAt", "published_at"
 }
 KNOWN_TEXT_FIELDS = {
     "name", "title", "description", "greeting", "personality", "scenario",

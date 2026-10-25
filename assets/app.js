@@ -1,4 +1,5 @@
 import {loadCoverage} from './archive-coverage.js';
+import {botTimestamp,reportedBotTimestamp} from './bot-dates.js';
 const asset = (path) => new URL(`../${path}`, import.meta.url);
 const app = document.querySelector('#app');
 const page = document.body.dataset.page || 'browse';
@@ -593,6 +594,31 @@ async function typesenseSearch(runtime,search){
   if(result.error)throw new Error(result.error);
   return result;
 }
+async function publicBotCreationDate(runtime,botId){
+  // This is only a best-effort current public listing read for old saved bots.
+  // It does not verify their original publication date.
+  if(!runtime?.typesense?.collection || !runtime?.typesense?.apiKey) return null;
+  const id=String(botId||'').toLowerCase();
+  if(!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id))return null;
+  const base=String(runtime.typesense.baseFilter||'application_ids:=spicychat && type:!=META && visibility:=public');
+  try{
+    const result=await typesenseSearch(runtime,{
+      collection:runtime.typesense.collection,
+      q:'*',
+      query_by:runtime.typesense.queryBy||'name',
+      page:1,
+      per_page:1,
+      filter_by:base+' && character_id:='+tsLiteral(id),
+      include_fields:'character_id,createdAt'
+    });
+    const doc=result?.hits?.[0]?.document;
+    if(String(doc?.character_id||'').toLowerCase()!==id)return null;
+    return botTimestamp(doc.createdAt);
+  }catch{
+    // Offline, deleted and private bots simply keep the existing saved data.
+    return null;
+  }
+}
 function docToCard(doc){
   return {
     id:String(doc.character_id||doc.id||'').toLowerCase(),
@@ -1024,6 +1050,10 @@ async function botPage(){
     return;
   }
   const lk=record.lastKnown||{},status=record.status?.current||'unknown',requestedAt=qs('at')||'';
+  const createdAt=reportedBotTimestamp(record,['createdAt','created_at']) ||
+    (status==='public'?await publicBotCreationDate(runtime,record.id):null);
+  const publishedAt=reportedBotTimestamp(record,['publishedAt','published_at']);
+
   const requestedSnapshot=requestedAt?versionSnapshot(record,requestedAt):null;
   const snapshotValue=keys=>{if(!requestedSnapshot)return bestFieldAny(record,keys);for(const key of keys){if(meaningfulFieldValue(requestedSnapshot[key]))return requestedSnapshot[key];}return null;};
   const cdn=resolveAvatar(lk.avatar_url||lk.avatar||lk.image),archived=archivedAvatar(record,runtime);
@@ -1056,6 +1086,8 @@ async function botPage(){
   const beforeFirst=requestedAt&&new Date(requestedAt).getTime()<new Date(record.firstSeenAt||0).getTime();
   const snapshotLabel=requestedAt?'<div class="history-banner">'+(beforeFirst?'This bot had <b>not yet been observed by the archive</b> on '+esc(date(requestedAt))+'.':'Viewing reconstructed archived fields as of <b>'+esc(date(requestedAt))+'</b>. Fields first captured later are rolled back when the archive recorded that transition.')+'</div>':'';
   const timelineEvents=[
+    createdAt?{at:createdAt,label:'Created (SpicyChat)',detail:'Date reported by SpicyChat, not an Archive observation'}:null,
+    publishedAt?{at:publishedAt,label:'Made public (SpicyChat)',detail:'Publish date reported by SpicyChat'}:null,
     record.firstSeenAt?{at:record.firstSeenAt,label:'First captured',detail:'Archive first observed this bot'}:null,
     ...(record.availabilityHistory||[]).filter(Boolean).map(row=>({at:row.from||row.at,label:String(row.status||'Availability change'),detail:sourceDisplayName(row.source||'')})),
     ...allHistoryRows.map(row=>({at:row.at,label:archiveFieldLabel(row.path)+' changed',detail:sourceDisplayName(row.source||'')})),
@@ -1065,7 +1097,7 @@ async function botPage(){
   app.innerHTML=`<article class="detail"><div class="detail-head"><div class="detail-art">${imgHtml(primary,fallback,{alt:bestField(record,'name')||''})}</div>
     <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(botName)}</h1>
     <div class="detail-sub">${creator?`<a class="creator-profile-link" href="${esc(creatorHref(creator))}">@${esc(creator)}</a>`:'Unknown creator'}</div>
-    <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
+    <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}${createdAt?'<span class="pill">created '+esc(date(createdAt))+'</span>':''}${publishedAt?'<span class="pill">made public '+esc(date(publishedAt))+'</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
     ${sources?`<div class="pill-row source-row"><span class="detail-sub">Observed through</span>${sources}</div>`:''}
     <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>
     <div class="detail-actions">${status==='deleted'?
@@ -1073,7 +1105,7 @@ async function botPage(){
       '<a class="primary-button" href="'+esc(spicyHref(record.id))+'" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recovery Lab</a>'}
     ${status==='deleted'?'<span class="detail-sub">Confirmed deleted · original SpicyChat link is unavailable</span>':''}<a class="secondary-button" href="../merge/?ids=${encodeURIComponent(record.id)}">Add to Merge</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a><a class="secondary-button" href="../name-trends/?name=${encodeURIComponent(botName)}">Check name usage</a><button class="secondary-button" type="button" id="export-bot-history">Export history JSON</button></div></div></div>
     ${snapshotLabel}
-    <section class="section"><h2>Archive completeness</h2><p class="detail-sub">Concrete coverage facts only; the archive does not invent a completeness percentage for time it never observed.</p><div class="stats-grid"><div class="stat"><b>${esc(date(record.firstSeenAt))}</b><span>First captured</span></div><div class="stat"><b>${esc(date(record.lastSeenAt))}</b><span>Last observed</span></div><div class="stat"><b>${fmt(allHistoryRows.length)}</b><span>Meaningful field changes recorded</span></div><div class="stat"><b>${fmt(availabilityCount)}</b><span>Availability observations</span></div><div class="stat"><b>${fmt(sourceCount)}</b><span>Archive sources represented</span></div><div class="stat"><b>${fmt(richCaptured.length)}</b><span>Rich field groups recovered</span></div></div><p class="detail-sub">${richCaptured.length?'Recovered fields: '+esc(richCaptured.join(', '))+'.':'No rich definition fields recovered yet.'}</p></section>
+    <section class="section"><h2>Archive completeness</h2><p class="detail-sub">Concrete coverage facts only; the archive does not invent a completeness percentage for time it never observed.</p><div class="stats-grid"><div class="stat"><b>${createdAt?esc(date(createdAt)):'Not available'}</b><span>Created (reported by SpicyChat)</span></div><div class="stat"><b>${publishedAt?esc(date(publishedAt)):'Not provided'}</b><span>Made public (exact date)</span></div><div class="stat"><b>${esc(date(record.firstSeenAt))}</b><span>First captured by Archive</span></div><div class="stat"><b>${esc(date(record.lastSeenAt))}</b><span>Last observed</span></div><div class="stat"><b>${fmt(allHistoryRows.length)}</b><span>Meaningful field changes recorded</span></div><div class="stat"><b>${fmt(availabilityCount)}</b><span>Availability observations</span></div><div class="stat"><b>${fmt(sourceCount)}</b><span>Archive sources represented</span></div><div class="stat"><b>${fmt(richCaptured.length)}</b><span>Rich field groups recovered</span></div></div><p class="detail-sub">Created and published dates are only shown when SpicyChat provided those values. “First captured” is when the Archive noticed the bot, not when it was published.</p><p class="detail-sub">${richCaptured.length?'Recovered fields: '+esc(richCaptured.join(', '))+'.':'No rich definition fields recovered yet.'}</p></section>
     <section class="section"><h2>Archive timeline</h2><p class="detail-sub">First/last observations, availability changes and meaningful creator-content edits in chronological order. The newest 160 events are shown.</p>${timelineHtml||'<p class="detail-sub">No timeline events recorded yet.</p>'}</section>
     <section class="section"><h2>Last-known archived fields</h2><p class="detail-sub">A field stays here after SpicyChat stops exposing it. That does not mean it is still currently public.</p>${fieldHtml||'<p class="detail-sub">No rich definition fields have been recovered yet.</p>'}</section>
     <section class="section"><h2>Version history & compare</h2><p class="detail-sub">Versions are reconstructed from the archive's recorded before/after field changes. Untouched fields use the last-known archive value.</p>
@@ -1093,7 +1125,7 @@ async function botPage(){
     older.addEventListener('change',renderCompare);newer.addEventListener('change',renderCompare);renderCompare();
   }
   document.querySelector('#export-bot-history')?.addEventListener('click',()=>{
-    const payload={schemaVersion:1,exportedAt:new Date().toISOString(),id:record.id,firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,status:record.status,sources:record.sources||{},availabilityHistory:record.availabilityHistory||[],fieldHistory:record.fieldHistory||[],metrics:record.metrics||{},lastKnown:record.lastKnown||{},avatarArchive:record.avatarArchive||{}};
+    const payload={schemaVersion:1,exportedAt:new Date().toISOString(),id:record.id,createdAt,publishedAt,firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,status:record.status,sources:record.sources||{},availabilityHistory:record.availabilityHistory||[],fieldHistory:record.fieldHistory||[],metrics:record.metrics||{},lastKnown:record.lastKnown||{},avatarArchive:record.avatarArchive||{}};
     const blob=new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='spicychat-archive-'+record.id+'-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   });
 }

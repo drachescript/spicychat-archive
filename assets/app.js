@@ -599,7 +599,7 @@ async function publicBotCreationDate(runtime,botId){
   // It does not verify their original publication date.
   if(!runtime?.typesense?.collection || !runtime?.typesense?.apiKey) return null;
   const id=String(botId||'').toLowerCase();
-  if(!/^[a-f0-9]{8}-[a-f0-9-]{27,}$/.test(id))return null;
+  if(!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id))return null;
   const base=String(runtime.typesense.baseFilter||'application_ids:=spicychat && type:!=META && visibility:=public');
   try{
     const result=await typesenseSearch(runtime,{

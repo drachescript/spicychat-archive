@@ -14,6 +14,7 @@ import mimetypes
 import os
 import uuid
 import threading
+import time
 from datetime import datetime, timezone
 from collections import OrderedDict
 from copy import deepcopy
@@ -23,7 +24,11 @@ from urllib.parse import urlparse
 
 import boto3
 from botocore.config import Config
-from botocore.exceptions import ClientError
+from botocore.exceptions import (
+    ClientError, ConnectionClosedError, ConnectTimeoutError,
+    EndpointConnectionError, ReadTimeoutError,
+)
+from urllib3.exceptions import ReadTimeoutError as Urllib3ReadTimeoutError
 
 
 class StorageQuotaExceeded(RuntimeError):
@@ -298,16 +303,43 @@ class R2ArchiveStore:
             raise
 
     def get_bytes(self, key: str, default: bytes | None = None) -> bytes | None:
-        try:
-            obj = self.s3.get_object(Bucket=self.bucket, Key=key)
-            body = obj["Body"].read()
-            if str(obj.get("ContentEncoding") or "").lower() == "gzip":
-                body = gzip.decompress(body)
-            return body
-        except ClientError as exc:
-            if self._missing(exc):
-                return default
-            raise
+        """Read a complete object, including retrying interrupted response streams.
+
+        Botocore's built-in GET retries cover requests, but a failure *after*
+        get_object() returns (while StreamingBody.read() is consuming the body)
+        needs a fresh GET. Never return partially read bytes or an empty
+        default after timeouts. Keep retries bounded to protect R2 quotas.
+        """
+        retryable = (
+            ReadTimeoutError, ConnectTimeoutError, ConnectionClosedError,
+            EndpointConnectionError, Urllib3ReadTimeoutError, TimeoutError,
+        )
+        max_attempts = 3
+        for attempt in range(1, max_attempts + 1):
+            stream = None
+            try:
+                obj = self.s3.get_object(Bucket=self.bucket, Key=key)
+                stream = obj["Body"]
+                body = stream.read()
+                if str(obj.get("ContentEncoding") or "").lower() == "gzip":
+                    body = gzip.decompress(body)
+                return body
+            except ClientError as exc:
+                if self._missing(exc):
+                    return default
+                raise
+            except retryable:
+                if attempt >= max_attempts:
+                    raise
+                print(
+                    f"R2 read interrupted for {key}; retry {attempt}/{max_attempts - 1}.",
+                    flush=True,
+                )
+                time.sleep((0.75, 2.0)[attempt - 1])
+            finally:
+                if stream is not None:
+                    stream.close()
+        raise AssertionError("unreachable R2 read retry state")
 
     def put_bytes(
         self,

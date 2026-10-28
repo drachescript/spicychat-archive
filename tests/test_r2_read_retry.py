@@ -76,7 +76,8 @@ class R2ReadRetryTests(unittest.TestCase):
 
     @patch("storage_r2.time.sleep")
     def test_invalid_gzip_is_not_silently_replaced(self, sleep):
-        bad = streaming_response(b"not gzip", gzipped=True)
+        bad = streaming_response(b"not gzip")
+        bad["ContentEncoding"] = "gzip"
         store = store_with_reads(bad)
         with self.assertRaises(gzip.BadGzipFile):
             store.get_bytes("bad", b"fallback")

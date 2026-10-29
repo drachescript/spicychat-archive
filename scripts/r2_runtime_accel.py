@@ -25,6 +25,8 @@ from concurrent.futures import Future, ThreadPoolExecutor, as_completed
 from copy import deepcopy
 from typing import Any
 
+from botocore.exceptions import ClientError
+
 import archive as legacy
 from storage_r2 import R2ArchiveStore
 
@@ -154,6 +156,17 @@ def flush_all_stores() -> None:
         raise first_error
 
 
+def _retryable_r2_put_error(error: ClientError) -> bool:
+    """Only retry R2 throttling / temporary availability errors on a bot PUT."""
+    detail = error.response.get("Error") or {}
+    code = str(detail.get("Code") or "")
+    status = int((error.response.get("ResponseMetadata") or {}).get("HTTPStatusCode") or 0)
+    return status in (429, 503) or code in (
+        "ServiceUnavailable", "SlowDown", "Throttling", "ThrottlingException",
+        "TooManyRequests", "RequestLimitExceeded",
+    )
+
+
 def _async_put_bytes(
     self: R2ArchiveStore,
     key: str,
@@ -208,8 +221,23 @@ def _async_put_bytes(
 
     def put_one() -> None:
         try:
-            self.s3.put_object(**kwargs)
+            for attempt in range(4):
+                try:
+                    self.s3.put_object(**kwargs)
+                    return
+                except ClientError as error:
+                    if not _retryable_r2_put_error(error) or attempt == 3:
+                        raise
+                    # R2 may reject bursts to the same object even though we
+                    # already serialize duplicate keys within this process.
+                    # A PUT of the same immutable bytes is safe to retry.
+                    print(
+                        f"R2 bot write temporarily throttled; retry {attempt + 1}/3.",
+                        flush=True,
+                    )
+                    time.sleep((0.75, 1.5, 3.0)[attempt])
         except BaseException:
+            # Only roll back quota accounting after retries are exhausted.
             self._rollback_usage(delta, media_delta, was_new)
             raise
 

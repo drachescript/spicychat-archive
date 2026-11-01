@@ -3,7 +3,7 @@
   "storageMode": "r2",
   "r2ReadAllowed": true,
   "publicDataBaseUrl": "https://data.spicychatarchive.drache.uk",
-  "deletedIndexUrl": "https://data.spicychatarchive.drache.uk/indexes/deleted.json?v=e887bc6a709be245",
+  "deletedIndexUrl": "https://data.spicychatarchive.drache.uk/indexes/deleted.json?v=3090a026cfe44b52",
   "typesense": {
     "url": "https://ts-lb.nd-api.com/multi_search",
     "fallbackUrls": [
@@ -15,6 +15,9 @@
     "baseFilter": "application_ids:=spicychat && type:!=META && visibility:=public"
   },
   "sorts": {
-    "latest": "createdAt:desc"
+    "latest": "createdAt:desc",
+    "trending": "_text_match(buckets: 3):desc,num_messages_24h:desc",
+    "top-rated": "rating_score:desc,num_messages:desc",
+    "popular": "num_messages:desc"
   }
 }

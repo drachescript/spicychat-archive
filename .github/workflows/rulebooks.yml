@@ -1,0 +1,48 @@
+name: Update SpicyChat Rulebook archive
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Small public catalog; queue behind bot and Lorebook R2 writers.
+    - cron: "37 */12 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+
+jobs:
+  rulebooks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check R2 safety guard
+        id: r2guard
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
+
+      - name: Archive public Rulebook listings
+        if: steps.r2guard.outputs.mode == 'r2'
+        run: python scripts/rulebook_archive.py
+
+      - name: Test Rulebook archiver
+        run: python -m unittest tests.test_rulebook_archive -v

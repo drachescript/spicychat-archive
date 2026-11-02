@@ -71,6 +71,7 @@ jobs:
           NODE
           node --check assets/archive-history-pages.js
           node --check assets/lorebooks.js
+          node --check assets/rulebooks.js
           node --check assets/recovery.js
           node --check assets/recovery-index.js
           node --check assets/archive-coverage.js

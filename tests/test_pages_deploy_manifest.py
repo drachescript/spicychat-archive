@@ -10,6 +10,7 @@ ROUTES = (
     "bot", "bots", "deleted", "deleted-lorebooks", "lorebook", "lorebooks",
     "recovery", "merge", "name-trends", "tag-stats", "creator", "changes",
     "activity", "search", "explorer", "restored", "health", "stats", "faq",
+    "rulebook", "rulebooks", "deleted-rulebooks",
 )
 
 
@@ -27,6 +28,12 @@ class PagesManifestTests(unittest.TestCase):
                               f"{folder}/ missing from deployed Pages artifact")
                 self.assertIn(f'      - "{folder}/**"', content,
                               f"{folder}/ changes do not trigger deployment")
+
+    def test_wip_is_no_longer_published(self):
+        content = WORKFLOW.read_text(encoding="utf-8")
+        self.assertNotIn("archive-v2-wip", content)
+        self.assertNotIn('      - "wip/**"', content)
+        self.assertIn("rulebook-tags.json", content)
 
     def test_publish_fails_if_required_html_is_missing(self):
         content = WORKFLOW.read_text(encoding="utf-8")

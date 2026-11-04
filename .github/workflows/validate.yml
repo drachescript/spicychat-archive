@@ -73,7 +73,7 @@ jobs:
           node --check assets/lorebooks.js
           node --check assets/rulebooks.js
           node --check assets/rulebook-filters.js
-          node --test --experimental-default-type=module tests/rulebook-filters.test.mjs
+          node --test --experimental-default-type=module tests/rulebook-filters.test.mjs tests/rulebook-tags-catalog.test.mjs
           node --check assets/site-shell.js
           node --check assets/recovery.js
           node --check assets/recovery-index.js

@@ -314,3 +314,27 @@
 .rulebook-card .lorebook-status.is-archived{color:#d6c3b1;border-color:#6a5345;background:#32261f}
 @media(max-width:1060px){.rulebook-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){.rulebook-toolbar{grid-template-columns:1fr}.rulebook-detail-hero .rulebook-detail-cover{width:150px;height:195px}.rulebook-card .lorebook-cover{min-height:145px}}
+
+
+/* Rulebook tag filters use the same include/exclude conventions as bot browsing. */
+.rulebook-tag-panel{margin:0 0 15px;padding:14px;border:1px solid var(--line);border-radius:13px;background:var(--panel)}
+.rulebook-tag-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.rulebook-tag-heading strong{font-size:13px}
+.rulebook-tag-heading span{font-size:11px;color:var(--muted)}
+.rulebook-tag-heading button{margin-left:auto;border:1px solid var(--line);background:var(--panel2);border-radius:8px;padding:5px 9px;font-size:11px;cursor:pointer}
+.rulebook-tag-controls{display:flex;gap:9px;margin:0 0 10px;flex-wrap:wrap}
+.rulebook-tag-controls input,.rulebook-tag-controls select{min-width:180px;flex:1 1 200px;padding:9px 10px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--text);font-size:12px}
+.rulebook-tag-panel .selected-filters{min-height:0;margin:0 0 10px}
+.rulebook-tag-panel .selected-filters:empty{display:none}
+.rulebook-tag-panel .selected-filters .chip{cursor:pointer;color:var(--text)}
+.rulebook-tag-groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-height:375px;overflow-y:auto;align-items:start}
+.rulebook-tag-group{min-width:0}
+.rulebook-tag-group[hidden],.rulebook-tag-row[hidden]{display:none!important}
+.rulebook-tag-group h3{font-size:11px;color:var(--accent2);letter-spacing:.05em;text-transform:uppercase;margin:5px 0 8px}
+.rulebook-tag-row{display:grid;grid-template-columns:minmax(0,1fr) 38px 28px 28px;align-items:center;gap:5px;padding:3px 1px}
+.rulebook-tag-row:hover{background:var(--panel2)}
+.rulebook-tag-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.rulebook-tag-row small{text-align:right;color:var(--muted);font-size:10px}
+.rulebook-tag-row .tag-toggle{width:28px;height:26px}
+@media(max-width:1100px){.rulebook-tag-groups{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.rulebook-tag-groups{grid-template-columns:1fr;max-height:320px}.rulebook-tag-controls{flex-direction:column}.rulebook-tag-controls input,.rulebook-tag-controls select{width:100%;flex:0 0 auto}}

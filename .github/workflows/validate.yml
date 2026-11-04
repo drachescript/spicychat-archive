@@ -72,6 +72,7 @@ jobs:
           node --check assets/archive-history-pages.js
           node --check assets/lorebooks.js
           node --check assets/rulebooks.js
+          node --check assets/rulebook-filters.mjs
           node --check assets/site-shell.js
           node --check assets/recovery.js
           node --check assets/recovery-index.js
@@ -80,5 +81,5 @@ jobs:
           node --check assets/recovery-tools.js
           node --check assets/recovery-local.js
           node --check assets/recovery-assistant.js
-          node --test --experimental-default-type=module tests/recovery-lab.test.mjs tests/recovery-local.test.mjs tests/recovery-buttons.test.mjs tests/recovery-expand.test.mjs tests/recovery-index.test.mjs tests/archive-coverage.test.mjs tests/bot-dates.test.mjs
+          node --test --experimental-default-type=module tests/recovery-lab.test.mjs tests/recovery-local.test.mjs tests/recovery-buttons.test.mjs tests/recovery-expand.test.mjs tests/recovery-index.test.mjs tests/archive-coverage.test.mjs tests/bot-dates.test.mjs tests/rulebook-filters.test.mjs
           node --check assets/merge.js

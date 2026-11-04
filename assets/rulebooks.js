@@ -1,9 +1,12 @@
+import {parseTagList, matchesTagFilters, groupTags} from './rulebook-filters.mjs';
 // Public Rulebook metadata only. Private rule bodies and hidden values are
 // intentionally not in the Archive's Rulebook data source.
 const app = document.getElementById('app');
 const isDetail = document.body.dataset.page === 'rulebook';
 const removedView = document.body.dataset.page === 'deleted-rulebooks';
 const params = new URLSearchParams(location.search);
+let coverRefs=Object.create(null);
+let tagCatalog=[];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
 })[ch]);
@@ -59,7 +62,7 @@ function bindBrokenCovers(root=document) {
 }
 function card(x) {
   const gone=x.status==='not-public',name=x.name||x.id;
-  const cover=savedCover(x);
+  const cover=savedCover(x)||imageUrl(coverRefs[x.id]);
   return '<article class="lorebook-card rulebook-card" data-rulebook-id="'+esc(x.id)+'">'+
     '<a class="lorebook-cover" href="'+esc(detailHref(x.id))+'">'+coverMarkup(cover,name)+
       (x.isNsfw?'<span class="lorebook-nsfw">NSFW</span>':'')+'</a>'+
@@ -80,19 +83,28 @@ function setParams(values) {
   }
   history.replaceState(null,'',url);
 }
-function excludedByTags(tags, excluded, match){
-  const actual=(Array.isArray(tags)?tags:[]).map(t=>String(t).toLowerCase());
-  if(!excluded.length)return false;
-  return match==='all'?excluded.every(tag=>actual.includes(tag)):excluded.some(tag=>actual.includes(tag));
-}
 function renderBrowse(payload) {
   const all=Array.isArray(payload.rulebooks)?payload.rulebooks:[];
-  const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]))].sort((a,b)=>String(a).localeCompare(String(b)));
+  const tagGroups=groupTags(tagCatalog, all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]));
   const only=removedView?'not-public':'public';
   const title=removedView?'Deleted / Unlisted Rulebooks':'Public Rulebooks';
   const summary=removedView
     ?'Rulebooks that were saved while public and later disappeared from SpicyChat’s public listings. They may be deleted, private or unlisted; disappearance alone cannot tell us which.'
     :'Rulebooks still appearing in SpicyChat’s public listings, with saved details, covers where available and change history.';
+  const statuses=Object.create(null);
+  for(const x of all)for(const t of Array.isArray(x.tags)?x.tags:[]){
+    const key=String(t).toLowerCase();statuses[key]=(statuses[key]||0)+1;
+  }
+  const tagList=tagGroups.map(group=>
+    '<section class="rulebook-tag-group" data-rb-tag-group><h3>'+esc(group.name)+'</h3>'+
+    group.tags.map(t=>
+      '<div class="rulebook-tag-row" data-rb-tag-row data-rb-tag-name="'+esc(t.toLowerCase())+'">'+
+        '<span class="rulebook-tag-name" title="'+esc(t)+'">'+esc(t)+'</span>'+
+        '<small>'+fmt(statuses[t.toLowerCase()]||0)+'</small>'+
+        '<button type="button" class="tag-toggle include" data-rb-tag-action="include" data-rb-tag="'+esc(t)+'" aria-label="Include '+esc(t)+'" aria-pressed="false" title="Include '+esc(t)+'">+</button>'+
+        '<button type="button" class="tag-toggle exclude" data-rb-tag-action="exclude" data-rb-tag="'+esc(t)+'" aria-label="Exclude '+esc(t)+'" aria-pressed="false" title="Exclude '+esc(t)+'">−</button>'+
+      '</div>'
+    ).join('')+'</section>').join('');
   app.innerHTML=
     '<section class="hero lorebook-hero"><div><h1>'+title+'</h1>'+
     '<p>'+summary+'</p>'+
@@ -104,37 +116,56 @@ function renderBrowse(payload) {
     '<div><b>'+fmt(payload.totalArchived)+'</b><span>Saved in total</span></div></div></section>'+
     '<div class="lorebook-toolbar rulebook-toolbar">'+
     '<input id="rb-q" type="search" placeholder="Search Rulebooks or creators" aria-label="Search Rulebooks">'+
-    '<select id="rb-tag" aria-label="Rulebook tag"><option value="">Any tag</option>'+
-    tags.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('')+'</select>'+
     '<select id="rb-status" aria-label="Public availability"><option value="'+only+'">'+(removedView?'No longer public':'Still public')+'</option>'+
     '<option value="all">All archived</option><option value="'+(removedView?'public':'not-public')+'">'+
       (removedView?'Still public':'No longer public')+'</option></select>'+
     '<select id="rb-sort" aria-label="Sort Rulebooks"><option value="newest">Newest created</option>'+
-    '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select>'+
-    '<input id="rb-exclude" type="search" placeholder="Exclude tags, comma-separated" aria-label="Excluded Rulebook tags"></div>'+
+    '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select></div>'+
+    '<section class="rulebook-tag-panel" aria-label="Rulebook tag filters">'+
+    '<div class="rulebook-tag-heading"><strong>Narrow by tag</strong><span>Include + / Exclude −</span>'+
+    '<button type="button" id="rb-clear-tags">Clear tags</button></div>'+
+    '<div class="rulebook-tag-controls"><input id="rb-tag-search" type="search" placeholder="Search tags" aria-label="Find Rulebook tags">'+
+    '<select id="rb-match" aria-label="Included tag matching"><option value="any">Match any included tag</option><option value="all">Match all included tags</option></select></div>'+
+    '<div id="rb-selected-tags" class="selected-filters" aria-live="polite"></div>'+
+    '<div id="rb-tag-groups" class="rulebook-tag-groups">'+tagList+'</div></section>'+
     '<div class="results-head"><h2>'+(removedView?'Saved unavailable Rulebooks':'Still-public Rulebooks')+'</h2>'+
     '<span id="rb-count"></span></div><div id="rb-pager-top" class="pager-wrap pager-top"></div>'+
     '<section id="rb-grid" class="lorebook-grid"></section><div id="rb-pager" class="pager-wrap"></div>'+
     '<p class="detail-sub">Last catalog check: '+esc(date(payload.generatedAt))+
     (payload.lastScanComplete===false?' (incomplete scan; older statuses were kept)':'')+'</p>';
-  const q=document.getElementById('rb-q'),tag=document.getElementById('rb-tag'),
-    status=document.getElementById('rb-status'),sort=document.getElementById('rb-sort'),
-    exclude=document.getElementById('rb-exclude');
+  const q=document.getElementById('rb-q'), status=document.getElementById('rb-status'),
+    sort=document.getElementById('rb-sort'), match=document.getElementById('rb-match'),
+    tagSearch=document.getElementById('rb-tag-search'), tagPanel=document.getElementById('rb-tag-groups');
+  const state={
+    include:parseTagList(params.get('include')||params.get('tag')),
+    exclude:parseTagList(params.get('exclude')),
+  };
   q.value=params.get('q')||'';
-  tag.value=params.get('tag')||params.get('include')||'';
   status.value=params.get('status')||only;
   sort.value=params.get('sort')||'newest';
-  exclude.value=params.get('exclude')==='none'?'':(params.get('exclude')||'');
-  const match=params.get('match')==='all'?'all':'any';
+  match.value=params.get('match')==='all'?'all':'any';
   let page=Math.max(1,Number(params.get('p'))||1);
+  function selectedTagsHtml(kind,values) {
+    return values.map(t=>'<button type="button" class="chip '+kind+'" data-rb-remove="'+kind+'" data-rb-tag="'+esc(t)+'" title="Remove '+kind+' tag '+esc(t)+'">'+
+      (kind==='include'?'+ ':'− ')+esc(t)+' ×</button>').join('');
+  }
+  function refreshTagControls() {
+    const included=new Set(state.include.map(t=>t.toLowerCase()));
+    const excluded=new Set(state.exclude.map(t=>t.toLowerCase()));
+    for(const button of tagPanel.querySelectorAll('[data-rb-tag-action]')){
+      const active=(button.dataset.rbTagAction==='include'?included:excluded).has(button.dataset.rbTag.toLowerCase());
+      button.classList.toggle('active',active);
+      button.setAttribute('aria-pressed',String(active));
+    }
+    document.getElementById('rb-selected-tags').innerHTML=
+      selectedTagsHtml('include',state.include)+selectedTagsHtml('exclude',state.exclude);
+  }
   function render() {
-    const term=q.value.toLowerCase().trim(), selected=tag.value.toLowerCase();
-    const excluded=exclude.value.split(',').map(t=>t.trim().toLowerCase()).filter(Boolean);
+    const term=q.value.toLowerCase().trim();
     let rows=all.filter(x=>{
       if(status.value!=='all'&&x.status!==status.value)return false;
       const rowTags=Array.isArray(x.tags)?x.tags:[];
-      if(selected&&!rowTags.some(t=>String(t).toLowerCase()===selected))return false;
-      if(excludedByTags(rowTags,excluded,match))return false;
+      if(!matchesTagFilters(rowTags,state.include,state.exclude,match.value))return false;
       return !term||[x.id,x.name,x.description,x.creator,...rowTags].join(' ').toLowerCase().includes(term);
     });
     rows.sort((a,b)=>sort.value==='name'?String(a.name||'').localeCompare(String(b.name||'')):
@@ -142,8 +173,9 @@ function renderBrowse(payload) {
       sort.value==='seen'?String(b.lastSeenAt||'').localeCompare(String(a.lastSeenAt||'')):
       String(b.createdAt||b.firstSeenAt||'').localeCompare(String(a.createdAt||a.firstSeenAt||'')));
     const per=48,pages=Math.max(1,Math.ceil(rows.length/per));page=Math.min(page,pages);
-    setParams({q:q.value,tag:tag.value,status:status.value===only?'':status.value,sort:sort.value,p:page,
-      exclude:exclude.value||null});
+    setParams({q:q.value,tag:null,include:state.include.join(','),exclude:state.exclude.join(','),
+      match:match.value==='all'?'all':null,status:status.value===only?'':status.value,
+      sort:sort.value,p:page});
     document.getElementById('rb-count').textContent=fmt(rows.length)+' matches';
     const grid=document.getElementById('rb-grid');
     grid.innerHTML=rows.slice((page-1)*per,page*per).map(card).join('')||
@@ -155,8 +187,42 @@ function renderBrowse(payload) {
     document.querySelectorAll('button[data-rb-page]').forEach(button=>button.onclick=()=>{
       page=Number(button.dataset.rbPage);render();window.scrollTo({top:0,behavior:'smooth'});
     });
+    refreshTagControls();
   }
-  for(const el of [q,tag,status,sort,exclude])el.addEventListener(el===q||el===exclude?'input':'change',()=>{page=1;render();});
+  function updateTag(kind,value,remove=false) {
+    const tag=String(value||'').trim();if(!tag)return;
+    const own=state[kind],other=state[kind==='include'?'exclude':'include'];
+    const index=own.findIndex(t=>t.toLowerCase()===tag.toLowerCase());
+    if(index>=0)own.splice(index,1);
+    else if(!remove){
+      const opposite=other.findIndex(t=>t.toLowerCase()===tag.toLowerCase());
+      if(opposite>=0)other.splice(opposite,1);
+      own.push(tag);
+    }
+    page=1;render();
+  }
+  tagPanel.addEventListener('click',event=>{
+    const button=event.target.closest('button[data-rb-tag-action]');
+    if(button)updateTag(button.dataset.rbTagAction,button.dataset.rbTag);
+  });
+  document.getElementById('rb-selected-tags').addEventListener('click',event=>{
+    const button=event.target.closest('button[data-rb-remove]');
+    if(button)updateTag(button.dataset.rbRemove,button.dataset.rbTag,true);
+  });
+  tagSearch.addEventListener('input',()=>{
+    const term=tagSearch.value.trim().toLowerCase();
+    for(const group of tagPanel.querySelectorAll('[data-rb-tag-group]')){
+      let count=0;
+      for(const row of group.querySelectorAll('[data-rb-tag-row]')){
+        const visible=row.dataset.rbTagName.includes(term);row.hidden=!visible;if(visible)count++;
+      }
+      group.hidden=count===0;
+    }
+  });
+  document.getElementById('rb-clear-tags').addEventListener('click',()=>{
+    state.include=[];state.exclude=[];page=1;render();
+  });
+  for(const el of [q,status,sort,match])el.addEventListener(el===q?'input':'change',()=>{page=1;render();});
   render();
 }
 function renderDetail(record, id) {
@@ -164,7 +230,7 @@ function renderDetail(record, id) {
     statuses=record.statusHistory||[], status=record.status?.current||'unknown';
   const name=doc.name||doc.title||id;
   document.title=name+' · SpicyChat Archive';
-  const image=savedCover(doc);
+  const image=savedCover(doc)||imageUrl(coverRefs[id]);
   app.innerHTML='<section class="lorebook-detail-hero rulebook-detail-hero">'+coverMarkup(image,name,true)+'<div>'+
     '<div class="lorebook-detail-title"><h1>'+esc(name)+'</h1>'+
     (status!=='public'?'<span class="lorebook-status">No longer public</span>':'')+'</div>'+
@@ -202,6 +268,12 @@ function renderDetail(record, id) {
   bindBrokenCovers(app);
 }
 async function main() {
+  const [covers,tags]=await Promise.all([
+    fetchJson('../data/rulebook-cover-refs.json').catch(()=>({})),
+    fetchJson('../rulebook-tags.json').catch(()=>({})),
+  ]);
+  coverRefs=covers&&typeof covers.covers==='object'&&covers.covers?covers.covers:Object.create(null);
+  tagCatalog=Array.isArray(tags.groups)?tags.groups:[];
   const base=await sourceBase();
   if (!base) throw new Error('Archive data source is not configured');
   if(isDetail) {

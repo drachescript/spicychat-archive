@@ -73,7 +73,8 @@ jobs:
             const retired = new Map([
               ['archive-explorer-activity-polish', '46589fa999216a02bccfef22d1226d9d5700407f'],
               ['archive-v2-wip', '79f40ed96232e4b3c8c70eda14ba26ae4f9a2200'],
-              ['fix-archive-run-confirmation-and-feed', '22536a4a36d001d50741bff0a27464f0a31dcdeb']
+              ['fix-archive-run-confirmation-and-feed', '22536a4a36d001d50741bff0a27464f0a31dcdeb'],
+              ['fix/rulebook-filters-and-search-consistency', '762d7989552f8bc2c093d7455a68957479e91635']
             ]);
             for (const branch of branches) {
               if (!retired.has(branch.name) || branch.protected ||

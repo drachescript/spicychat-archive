@@ -299,3 +299,18 @@
 .historic-bot-hit>span{color:var(--text)}
 .historic-bot-hit>small{color:var(--muted);line-height:1.45}
 .historic-bot-hit:last-child{border-bottom:0}
+
+/* Rulebook covers use the same card geometry as Lorebooks.
+   A saved public image is displayed when available; otherwise keep a neutral RB tile. */
+.rulebook-card .rulebook-card-cover{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.rulebook-cover{position:relative;overflow:hidden;background:linear-gradient(145deg,#232833,#11151c)}
+.rulebook-cover-empty{position:absolute;inset:0;display:grid;place-items:center;color:#8894a4;font-size:24px;font-weight:800;letter-spacing:.12em}
+.rulebook-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rulebook-detail-hero .rulebook-detail-cover{width:200px;height:260px;border:1px solid var(--line);border-radius:14px}
+.rulebook-detail-hero .rulebook-cover-empty{font-size:36px}
+.rulebook-toolbar{grid-template-columns:minmax(220px,1.5fr) minmax(145px,.65fr) minmax(155px,.75fr) minmax(145px,.65fr) minmax(190px,1fr)}
+.rulebook-card .lorebook-cover{min-height:175px}
+.rulebook-card .lorebook-card-body{grid-template-rows:auto auto 1fr auto auto}
+.rulebook-card .lorebook-status.is-archived{color:#d6c3b1;border-color:#6a5345;background:#32261f}
+@media(max-width:1060px){.rulebook-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){.rulebook-toolbar{grid-template-columns:1fr}.rulebook-detail-hero .rulebook-detail-cover{width:150px;height:195px}.rulebook-card .lorebook-cover{min-height:145px}}

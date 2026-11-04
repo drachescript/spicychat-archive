@@ -21,6 +21,20 @@ class RulebookArchiveTests(unittest.TestCase):
             "private_config": {"token": "should never appear"},
         }
 
+    def test_public_cover_seeds_are_links_only_and_never_override_api(self):
+        saved = rules.public_cover_seeds()
+        dante = "63416959-f266-593d-830d-37bc1c474ef9"
+        self.assertEqual(saved[dante],
+                         "https://cdn.nd-api.com/avatars/"
+                         "66f8c467-db24-4546-b36b-0e94d19d4f38.webp?class=image500x650")
+        self.assertEqual(len(saved), 48)
+        public = {"rulebook_id": dante, "name": "Dante"}
+        filled = rules.add_seed_cover(public, dante, saved)
+        self.assertEqual(filled["cover_image_url"], saved[dante])
+        self.assertNotIn("cover_image_url", public)
+        authoritative = {**public, "cover_url": "https://cdn.nd-api.com/avatars/new.webp"}
+        self.assertEqual(rules.add_seed_cover(authoritative, dante, saved), authoritative)
+
     def test_cover_metadata_preserved_without_private_rule_content(self):
         doc = {**self.doc, "cover_image_url": "rulebooks/public-cover.webp"}
         record, _ = rules.build_record(None, doc, "2026-11-04T12:00:00Z")

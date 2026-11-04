@@ -55,8 +55,8 @@ class IndexOnlyRepairTests(unittest.TestCase):
 
         store = Store()
         with patch.object(repair_mod, "inventory_bot_file_ids",
-                          return_value=({existing, missing}, {"r2ListPages": 1})), \\
-             patch.object(repair_mod, "text_search_meta", return_value={"name": "Recovered"}), \\
+                          return_value=({existing, missing}, {"r2ListPages": 1})), \
+             patch.object(repair_mod, "text_search_meta", return_value={"name": "Recovered"}), \
              patch.object(repair_mod, "build_audit", return_value={"complete": True}):
             preview = repair_mod.repair(store, apply=False, max_changes=5)
             self.assertTrue(preview["dryRun"])

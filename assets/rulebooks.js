@@ -1,4 +1,4 @@
-import {canonicalRulebookTag, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags} from './rulebook-filters.js';
+import {canonicalRulebookTag, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags, rulebookCoverSeedUrl} from './rulebook-filters.js';
 // Public Rulebook metadata only. Private rule bodies and hidden values are
 // intentionally not in the Archive's Rulebook data source.
 const app = document.getElementById('app');
@@ -25,6 +25,15 @@ async function sourceBase() {
   return String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');
 }
 function detailHref(id) {return '../rulebook/?id=' + encodeURIComponent(id);}
+async function publicCoverSeeds() {
+  // The public browser capture stores only filenames, not media.
+  // This fallback also works while a new R2 Rulebook scan is in progress.
+  try {
+    const value=await fetchJson('../data/rulebook-cover-seeds.json');
+    return value?.schemaVersion===1 && value.covers && typeof value.covers==='object'
+      ? value.covers : {};
+  } catch {return {};}
+}
 function tagsHtml(values) {
   return (Array.isArray(values)?values:[]).slice(0,14).map(v=>'<span>'+esc(v)+'</span>').join('');
 }
@@ -58,9 +67,9 @@ function coverMarkup(url, name, large=false) {
 function bindBrokenCovers(root=document) {
   root.querySelectorAll('img[data-rulebook-cover]').forEach(img=>img.addEventListener('error',()=>img.remove(),{once:true}));
 }
-function card(x) {
+function card(x, seeds) {
   const gone=x.status==='not-public',name=x.name||x.id;
-  const cover=savedCover(x);
+  const cover=savedCover(x)||rulebookCoverSeedUrl(x.id,seeds);
   return '<article class="lorebook-card rulebook-card" data-rulebook-id="'+esc(x.id)+'">'+
     '<a class="lorebook-cover" href="'+esc(detailHref(x.id))+'">'+coverMarkup(cover,name)+
       (x.isNsfw?'<span class="lorebook-nsfw">NSFW</span>':'')+'</a>'+
@@ -81,7 +90,7 @@ function setParams(values) {
   }
   history.replaceState(null,'',url);
 }
-function renderBrowse(payload) {
+function renderBrowse(payload, seeds) {
   const all=Array.isArray(payload.rulebooks)?payload.rulebooks:[];
   const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string'&&t.trim()))]
     .sort((a,b)=>String(a).localeCompare(String(b)));
@@ -173,7 +182,7 @@ function renderBrowse(payload) {
       status:status.value===only?'':status.value,sort:sort.value,p:page});
     document.getElementById('rb-count').textContent=fmt(rows.length)+' matches';
     const grid=document.getElementById('rb-grid');
-    grid.innerHTML=rows.slice((page-1)*per,page*per).map(card).join('')||
+    grid.innerHTML=rows.slice((page-1)*per,page*per).map(x=>card(x,seeds)).join('')||
       '<div class="empty">No Rulebooks match those filters.</div>';
     bindBrokenCovers(grid);
     const pager=pages<=1?'':'<nav class="pager"><button data-rb-page="'+(page-1)+'" '+(page===1?'disabled':'')+'>Previous</button>'+
@@ -200,12 +209,12 @@ function renderBrowse(payload) {
   });
   render();
 }
-function renderDetail(record, id) {
+function renderDetail(record, id, seeds) {
   const doc=record.listing||{}, tags=doc.tags||[], versions=record.versions||[],
     statuses=record.statusHistory||[], status=record.status?.current||'unknown';
   const name=doc.name||doc.title||id;
   document.title=name+' · SpicyChat Archive';
-  const image=savedCover(doc);
+  const image=savedCover(doc)||rulebookCoverSeedUrl(id,seeds);
   app.innerHTML='<section class="lorebook-detail-hero rulebook-detail-hero">'+coverMarkup(image,name,true)+'<div>'+
     '<div class="lorebook-detail-title"><h1>'+esc(name)+'</h1>'+
     (status!=='public'?'<span class="lorebook-status">No longer public</span>':'')+'</div>'+
@@ -243,7 +252,7 @@ function renderDetail(record, id) {
   bindBrokenCovers(app);
 }
 async function main() {
-  const base=await sourceBase();
+  const [base, seeds]=await Promise.all([sourceBase(),publicCoverSeeds()]);
   if (!base) throw new Error('Archive data source is not configured');
   if(isDetail) {
     const id=String(params.get('id')||'').trim().toLowerCase();
@@ -252,10 +261,10 @@ async function main() {
     }
     const prefix=id.replaceAll('-','').slice(0,2);
     const record=await fetchJson(base+'/rulebooks/'+prefix+'/'+encodeURIComponent(id)+'.json');
-    renderDetail(record,id);
+    renderDetail(record,id,seeds);
   } else {
     const index=await fetchJson(base+'/indexes/rulebooks.json');
-    renderBrowse(index);
+    renderBrowse(index,seeds);
   }
 }
 main().catch(error=>{

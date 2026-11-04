@@ -42,6 +42,19 @@ class RulebookArchiveTests(unittest.TestCase):
                 self.assertEqual(rules.summary(record)["cover"], "cover.webp")
                 self.assertNotIn("secret", str(record))
 
+    def test_cover_diagnostics_only_list_public_field_names(self):
+        doc = {
+            **self.doc,
+            "coverImageFilename": "safe-image.webp",
+            "thumbnail_url": "safe-thumb.webp",
+            "private_image_secret": "do-not-log",
+            "imageAuthToken": "do-not-log",
+        }
+        fields = rules.public_cover_field_names(doc)
+        self.assertEqual(fields, ["coverImageFilename", "thumbnail_url"])
+        self.assertNotIn("do-not-log", str(fields))
+        self.assertNotIn("private_image_secret", fields)
+
     def test_uuid_only_public_rulebook_ids(self):
         self.assertEqual(rules.rulebook_id(self.doc), self.id)
         self.assertIsNone(rules.rulebook_id({"id": "../../private"}))

@@ -1,0 +1,73 @@
+name: Clean up merged Archive branches
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: archive-merged-branch-cleanup
+  cancel-in-progress: false
+
+jobs:
+  prune:
+    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Remove only branches whose exact heads match merged PRs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner, repo} = context.repo;
+            const name = `${owner}/${repo}`;
+            const branches = await github.paginate(github.rest.repos.listBranches, {
+              owner, repo, per_page: 100,
+            });
+            const prs = await github.paginate(github.rest.pulls.list, {
+              owner, repo, state: 'all', per_page: 100,
+            });
+            const openHeads = new Set(
+              prs.filter(pr => pr.state === 'open' && pr.head.repo?.full_name === name)
+                .map(pr => pr.head.ref)
+            );
+            const mergedHeads = new Map();
+            // API response is newest-first; only the latest matching merged PR counts.
+            for (const pr of prs) {
+              if (!pr.merged_at || pr.head.repo?.full_name !== name) continue;
+              if (!mergedHeads.has(pr.head.ref)) mergedHeads.set(pr.head.ref, pr.head.sha);
+            }
+            const defaultBranch = context.payload.repository.default_branch;
+            let deleted = 0;
+            const kept = [];
+            for (const branch of branches) {
+              if (branch.name === defaultBranch || openHeads.has(branch.name)) {
+                kept.push(branch.name);
+                continue;
+              }
+              const oldSha = mergedHeads.get(branch.name);
+              if (!oldSha || oldSha !== branch.commit.sha || branch.protected) {
+                kept.push(branch.name);
+                continue;
+              }
+              try {
+                await github.rest.git.deleteRef({
+                  owner, repo, ref: `heads/${branch.name}`,
+                });
+                deleted++;
+                core.info(`Deleted merged branch: ${branch.name}`);
+              } catch (error) {
+                core.warning(`Could not delete ${branch.name}: ${error.message}`);
+                kept.push(branch.name);
+              }
+            }
+            core.summary.addHeading('Archive branch cleanup')
+              .addRaw(`Removed ${deleted} merged branch(es). Kept ${kept.length}: ${kept.join(', ')}`)
+              .write();
+            core.info(`Removed ${deleted}; kept: ${kept.join(', ')}`);

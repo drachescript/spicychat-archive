@@ -39,7 +39,9 @@ class SharedArchiveHeaderTests(unittest.TestCase):
         self.assertIn('rulebook-cover-empty',source)
         self.assertIn('cdn.nd-api.com',source)
         self.assertIn('bindBrokenCovers',source)
-        self.assertIn('rb-exclude',source)
+        self.assertIn('data-rb-tag-action="exclude"', source)
+        self.assertIn('rb-match', source)
+        self.assertIn('rulebook-cover-refs.json', source)
 
 
 if __name__ == '__main__':

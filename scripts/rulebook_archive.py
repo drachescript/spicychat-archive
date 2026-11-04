@@ -15,6 +15,7 @@ import re
 import time
 from copy import deepcopy
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 import archive
@@ -33,6 +34,41 @@ PUBLIC_FIELDS = (
     "rules_visible", "language",
 )
 MAX_TEXT = 6000
+COVER_REFS_PATH = Path(__file__).resolve().parents[1] / "data" / "rulebook-cover-refs.json"
+PUBLIC_CDN_COVER = re.compile(
+    r"^https://cdn\.nd-api\.com/avatars/[a-f0-9-]{36}\.(?:webp|png|jpg|jpeg)"
+    r"\?class=image500x650$", re.I
+)
+
+
+def load_public_cover_references(path: Path = COVER_REFS_PATH) -> dict[str, str]:
+    """Read known PUBLIC cover URLs only; never image content."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    covers = data.get("covers") if isinstance(data, dict) else None
+    if not isinstance(covers, dict):
+        return {}
+    return {
+        id.lower(): url for id, url in covers.items()
+        if isinstance(id, str) and RULEBOOK_ID.fullmatch(id.lower())
+        and isinstance(url, str) and PUBLIC_CDN_COVER.fullmatch(url)
+    }
+
+
+def listing_with_cover(
+    doc: dict[str, Any], id: str, known_cover: str = "",
+    cover_references: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    """Use public catalog image first, then saved public links, then last known."""
+    listing = public_metadata(doc)
+    if not cover_from_metadata(listing):
+        cover = (cover_references or {}).get(id) or known_cover
+        if cover:
+            listing["cover_image_url"] = cover
+    return listing
+
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -241,6 +277,7 @@ def run() -> int:
     complete = False
     found = None
     new_count = changed_count = 0
+    cover_references = load_public_cover_references()
     public_cover_refs = 0
     public_image_fields: dict[str, int] = {}
     started = time.monotonic()
@@ -265,13 +302,15 @@ def run() -> int:
             if not id or id in seen:
                 continue
             seen.add(id)
-            metadata = public_metadata(doc)
-            if cover_from_metadata(metadata):
+            public_listing = public_metadata(doc)
+            if cover_from_metadata(public_listing):
                 public_cover_refs += 1
             for field in public_cover_field_names(doc):
                 public_image_fields[field] = public_image_fields.get(field, 0) + 1
-            fingerprint = digest(metadata)
             old = known.get(id)
+            previous_cover = cover_from_metadata((old or {}).get("summary") or {})
+            metadata = listing_with_cover(doc, id, previous_cover, cover_references)
+            fingerprint = digest(metadata)
             if (isinstance(old, dict) and old.get("fingerprint") == fingerprint
                     and old.get("status") == "public"):
                 old["lastSeenAt"] = at
@@ -285,7 +324,7 @@ def run() -> int:
             store.put_json(rulebook_key(store, id), record, public=True,
                            category="data", known_new=not isinstance(existing, dict))
             known[id] = {
-                "fingerprint": fingerprint, "status": "public",
+                "fingerprint": record["fingerprint"], "status": "public",
                 "summary": summary(record),
                 "firstSeenAt": record["firstSeenAt"], "lastSeenAt": at,
             }

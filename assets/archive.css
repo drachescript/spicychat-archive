@@ -314,3 +314,27 @@
 .rulebook-card .lorebook-status.is-archived{color:#d6c3b1;border-color:#6a5345;background:#32261f}
 @media(max-width:1060px){.rulebook-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){.rulebook-toolbar{grid-template-columns:1fr}.rulebook-detail-hero .rulebook-detail-cover{width:150px;height:195px}.rulebook-card .lorebook-cover{min-height:145px}}
+
+/* Rulebook filters: public Explore-style grouped include/exclude tags. */
+.rulebook-toolbar{grid-template-columns:minmax(235px,2fr) minmax(150px,.8fr) minmax(140px,.8fr)}
+.rulebook-tag-panel{margin:0 0 17px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.rulebook-tag-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;margin-bottom:11px}
+.rulebook-tag-controls strong{font-size:13px;margin-right:auto}
+.rulebook-tag-controls label{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11px}
+.rulebook-tag-controls select{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:7px;padding:6px 10px}
+.rulebook-tag-controls button{padding:7px 10px;font-size:11px}
+#rb-tag-search{width:min(100%,380px);padding:9px 11px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:9px}
+#rb-tag-summary{margin:8px 0 12px}
+.rulebook-tag-groups{max-height:380px;overflow-y:auto;display:grid;grid-template-columns:repeat(4,minmax(175px,1fr));gap:12px;align-items:start;scrollbar-width:thin}
+.rulebook-tag-group{border:1px solid var(--line);background:var(--panel2);border-radius:10px;overflow:hidden;min-width:0}
+.rulebook-tag-group h3{position:sticky;top:0;z-index:1;margin:0;padding:9px 10px;font-size:11px;color:var(--accent2);background:var(--panel3);border-bottom:1px solid var(--line)}
+.rulebook-tag-option{display:flex;align-items:center;gap:5px;padding:5px 8px;border-bottom:1px solid rgba(140,140,140,.10)}
+.rulebook-tag-option:last-child{border:0}
+.rulebook-tag-label{flex:1;min-width:0;font-size:11px;overflow-wrap:anywhere}
+.rulebook-tag-count{font-size:10px;color:var(--muted);min-width:20px;text-align:right}
+.rulebook-tag-toggle{flex:0 0 auto;width:25px;height:25px;padding:0;border:1px solid var(--line2);border-radius:6px;color:var(--muted);background:transparent;cursor:pointer;font-size:16px;line-height:1}
+.rulebook-tag-toggle:hover,.rulebook-tag-toggle:focus-visible{border-color:var(--accent2);color:var(--text)}
+.rulebook-tag-toggle.is-include{background:#213c36;color:#9ee0b5;border-color:#3e8067}
+.rulebook-tag-toggle.is-exclude{background:#422725;color:#ffc3bd;border-color:#945a50}
+@media(max-width:1100px){.rulebook-tag-groups{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.rulebook-toolbar,.rulebook-tag-groups{grid-template-columns:1fr}.rulebook-tag-groups{max-height:390px}}

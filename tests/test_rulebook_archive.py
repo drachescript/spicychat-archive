@@ -36,9 +36,9 @@ class RulebookArchiveTests(unittest.TestCase):
         reference = "https://cdn.nd-api.com/avatars/11111111-2222-3333-4444-555555555555.webp?class=image500x650"
         enriched = rules.listing_with_cover(self.doc, id, cover_references={id: reference})
         self.assertEqual(enriched["cover_image_url"], reference)
-        record, changed = rules.build_record(None, enriched, "2026-11-04T12:00:00Z")
+        record, changed = rules.build_record(None, {**self.doc, **enriched}, "2026-11-04T12:00:00Z")
         self.assertTrue(changed)
-        newer, changed = rules.build_record(record, enriched, "2026-11-04T13:00:00Z")
+        newer, changed = rules.build_record(record, {**self.doc, **enriched}, "2026-11-04T13:00:00Z")
         self.assertFalse(changed)
         self.assertEqual(record["fingerprint"], rules.digest(enriched))
         self.assertEqual(newer["fingerprint"], record["fingerprint"])

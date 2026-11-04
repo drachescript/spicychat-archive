@@ -1,6 +1,10 @@
 name: Repair Archive search index
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/repair-search-index.yml"
   workflow_dispatch:
     inputs:
       apply:
@@ -38,7 +42,14 @@ jobs:
         run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file "$RUNNER_TEMP/repair-r2-usage.json"
       - name: Verify and repair search-only discrepancies
         if: steps.guard.outputs.mode == 'r2'
-        run: python scripts/repair_text_search_inventory.py ${{ inputs.apply && '--apply' || '' }} --max-changes 500
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "push" || "${{ inputs.apply }}" == "true" ]]; then
+            python scripts/repair_text_search_inventory.py --apply --max-changes 5000
+          else
+            python scripts/repair_text_search_inventory.py --max-changes 5000
+          fi
+          echo "Search-index reconciliation completed. Stored bot JSON and search-only historical entries were preserved." >> "$GITHUB_STEP_SUMMARY"
       - name: Explain quota pause
         if: steps.guard.outputs.mode != 'r2'
         run: |

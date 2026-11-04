@@ -76,6 +76,21 @@ def cover_from_metadata(doc: dict[str, Any]) -> str:
                 return value
     return ""
 
+def public_cover_field_names(doc: dict[str, Any]) -> list[str]:
+    """Report image-like public listing field NAMES only; never log values.
+
+    This helps identify renamed cover fields without dumping search responses
+    or fetching private Rulebook contents.
+    """
+    return sorted(
+        key for key in doc
+        if isinstance(key, str)
+        and len(key) <= 80
+        and re.search(r"cover|image|avatar|thumbnail|picture|photo", key, re.I)
+        and not re.search(r"secret|token|auth|credential|private|signed", key, re.I)
+    )
+
+
 def digest(value: Any) -> str:
     raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()[:24]
@@ -226,6 +241,8 @@ def run() -> int:
     complete = False
     found = None
     new_count = changed_count = 0
+    public_cover_refs = 0
+    public_image_fields: dict[str, int] = {}
     started = time.monotonic()
 
     for page in range(1, max_pages + 1):
@@ -249,6 +266,10 @@ def run() -> int:
                 continue
             seen.add(id)
             metadata = public_metadata(doc)
+            if cover_from_metadata(metadata):
+                public_cover_refs += 1
+            for field in public_cover_field_names(doc):
+                public_image_fields[field] = public_image_fields.get(field, 0) + 1
             fingerprint = digest(metadata)
             old = known.get(id)
             if (isinstance(old, dict) and old.get("fingerprint") == fingerprint
@@ -297,11 +318,25 @@ def run() -> int:
         row["lastSeenAt"] = item.get("lastSeenAt") or row.get("lastSeenAt")
         rows.append(row)
     rows.sort(key=lambda row: str(row.get("createdAt") or row.get("firstSeenAt") or ""), reverse=True)
+    public_saved_covers = sum(
+        1 for row in rows if row["status"] == "public" and bool(row.get("cover"))
+    )
+    print(
+        f"Rulebooks: public listing covers {public_cover_refs}/{len(seen)}; "
+        f"saved public covers {public_saved_covers}/{sum(x['status'] == 'public' for x in rows)}; "
+        f"public image field names/counts: {', '.join(f'{key}={count}' for key, count in sorted(public_image_fields.items())) or 'none'}",
+        flush=True,
+    )
     store.put_json(index_key(store), {
         "schemaVersion": SCHEMA_VERSION, "generatedAt": at,
         "collection": collection, "totalArchived": len(rows),
         "publicNow": sum(1 for x in rows if x["status"] == "public"),
         "notPublic": sum(1 for x in rows if x["status"] == "not-public"),
+        "coverStats": {
+            "publicListingWithCover": public_cover_refs,
+            "publicSavedWithCover": public_saved_covers,
+            "publicSeen": len(seen),
+        },
         "lastScanComplete": complete and not errors, "rulebooks": rows,
     }, public=True)
     state["lastRun"] = {

@@ -21,7 +21,7 @@ def plan(indexed: set[str], stored: set[str]) -> tuple[set[str], set[str]]:
     return stored - indexed, indexed - stored
 
 
-def repair(store: R2ArchiveStore, *, apply: bool = False, max_changes: int = 500,
+def repair(store: R2ArchiveStore, *, apply: bool = False, max_changes: int = 5000,
            max_list_pages: int = 2000) -> dict:
     manifest_key = store.key("indexes", "text-search.json")
     meta = store.get_json(manifest_key, None)
@@ -97,7 +97,7 @@ def repair(store: R2ArchiveStore, *, apply: bool = False, max_changes: int = 500
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--apply", action="store_true")
-    ap.add_argument("--max-changes", type=int, default=500)
+    ap.add_argument("--max-changes", type=int, default=5000)
     ap.add_argument("--max-list-pages", type=int, default=2000)
     args = ap.parse_args()
     store = R2ArchiveStore(legacy.load_config())

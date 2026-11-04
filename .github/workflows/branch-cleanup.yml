@@ -43,6 +43,13 @@ jobs:
               if (!pr.merged_at || pr.head.repo?.full_name !== name) continue;
               if (!mergedHeads.has(pr.head.ref)) mergedHeads.set(pr.head.ref, pr.head.sha);
             }
+            // Retire previous unmerged staging branches only at their
+            // verified, unchanged heads. A reused branch name stays safe.
+            const retiredHeads = new Map([
+              ['archive-explorer-activity-polish', '46589fa999216a02bccfef22d1226d9d5700407f'],
+              ['archive-v2-wip', '79f40ed96232e4b3c8c70eda14ba26ae4f9a2200'],
+              ['fix-archive-run-confirmation-and-feed', '22536a4a36d001d50741bff0a27464f0a31dcdeb'],
+            ]);
             const defaultBranch = context.payload.repository.default_branch;
             let deleted = 0;
             const kept = [];
@@ -51,7 +58,7 @@ jobs:
                 kept.push(branch.name);
                 continue;
               }
-              const oldSha = mergedHeads.get(branch.name);
+              const oldSha = mergedHeads.get(branch.name) || retiredHeads.get(branch.name);
               if (!oldSha || oldSha !== branch.commit.sha || branch.protected) {
                 kept.push(branch.name);
                 continue;

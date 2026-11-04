@@ -745,6 +745,11 @@ def archive_images(client: Client, config: dict[str, Any], at: str, state: dict[
     return {"processed": processed, "saved": saved, "failed": failed}
 
 
+def missing_check_due(info: dict[str, Any], at: str) -> bool:
+    """One missing-confirmation attempt per bot per archive run."""
+    return str(info.get("lastAt") or "") != str(at or "")
+
+
 def verify_missing(client: Client, config: dict[str, Any], at: str, state: dict[str, Any], seen_public: set[str]) -> dict[str, int]:
     """Verify only already-suspect bots. Missing from a listing alone never means deleted."""
     checks = state.setdefault("missingChecks", {})
@@ -760,6 +765,8 @@ def verify_missing(client: Client, config: dict[str, Any], at: str, state: dict[
                 continue
             # A listing hit is only a restoration candidate.  Confirm it with
             # the Character API below before clearing a confirmed deletion.
+        if not missing_check_due(info, at):
+            continue
         response = client.character(bot_id)
         verified += 1
         if response.ok:

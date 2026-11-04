@@ -49,3 +49,12 @@ export function groupedRulebookTags(tags) {
   }
   return [...groups].filter(([,values]) => values.length);
 }
+
+export function rulebookCoverSeedUrl(id, seeds) {
+  const key=String(id||'').trim().toLowerCase();
+  const filename=seeds?.[key];
+  if (!/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/.test(key) ||
+      typeof filename!=='string' ||
+      !/^[0-9a-f-]{36}\.(?:webp|png|jpg|jpeg)$/i.test(filename)) return '';
+  return 'https://cdn.nd-api.com/avatars/'+filename+'?class=image500x650';
+}

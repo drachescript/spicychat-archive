@@ -1,0 +1,20 @@
+/* One shared header for all public Archive pages. */
+.archive-unified-header.sca-shared-header{position:sticky;top:0;z-index:60;background:rgba(8,9,12,.95);backdrop-filter:blur(18px);border-bottom:1px solid #2b313b}
+.sca-shared-header .archive-head-inner{width:min(1360px,calc(100% - 32px));margin:auto;min-height:68px;display:flex;align-items:center;gap:18px;justify-content:space-between}
+.sca-shared-header .archive-head-brand{display:flex;align-items:center;gap:9px;white-space:nowrap;min-width:0;flex-shrink:0;text-decoration:none;color:#f6f7f9}
+.sca-shared-header .archive-head-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid #5a392d;border-radius:10px;background:#221914;color:#ff9b73;font-size:12px;font-weight:900}
+.sca-shared-header .archive-head-title{display:grid;gap:1px}
+.sca-shared-header .archive-head-title b{font-size:13px;font-weight:800}
+.sca-shared-header .archive-head-title small{font-size:9px;color:#9ca6b4;text-transform:uppercase;letter-spacing:.08em}
+.sca-shared-header .archive-head-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:3px}
+.sca-shared-header .archive-head-links a,.sca-shared-header .archive-more summary{display:inline-flex;align-items:center;gap:4px;text-decoration:none;color:#9ca6b4;font:650 11px/1.3 system-ui,sans-serif;padding:8px 9px;border-radius:8px;white-space:nowrap;cursor:pointer}
+.sca-shared-header .archive-head-links a:hover,.sca-shared-header .archive-head-links a.active,.sca-shared-header .archive-more summary:hover{background:#171b22;color:#f6f7f9}
+.sca-shared-header .archive-head-links a.active{box-shadow:inset 0 -2px #ff9b73}
+.sca-shared-header .archive-more{position:relative}
+.sca-shared-header .archive-more summary{list-style:none}
+.sca-shared-header .archive-more summary::-webkit-details-marker{display:none}
+.sca-shared-header .archive-more[open] summary{background:#171b22;color:#f6f7f9}
+.sca-shared-header .archive-more-list{position:absolute;right:0;top:calc(100% + 7px);min-width:188px;padding:6px;z-index:90;display:grid;gap:2px;background:#12151b;border:1px solid #39414d;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.45)}
+.sca-shared-header .archive-more-list a{display:block;padding:8px 10px}
+@media(max-width:1120px){.sca-shared-header .archive-head-inner{align-items:flex-start;flex-direction:column;gap:6px;padding:10px 0}.sca-shared-header .archive-head-links{justify-content:flex-start}}
+@media(max-width:620px){.sca-shared-header .archive-head-title small{font-size:8px}.sca-shared-header .archive-head-links{max-width:100%;gap:2px}.sca-shared-header .archive-head-links a,.sca-shared-header .archive-more summary{font-size:10px;padding:7px 7px}.sca-shared-header .archive-more-list{left:0;right:auto}}

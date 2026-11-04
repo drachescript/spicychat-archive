@@ -21,6 +21,27 @@ class RulebookArchiveTests(unittest.TestCase):
             "private_config": {"token": "should never appear"},
         }
 
+    def test_cover_metadata_preserved_without_private_rule_content(self):
+        doc = {**self.doc, "cover_image_url": "rulebooks/public-cover.webp"}
+        record, _ = rules.build_record(None, doc, "2026-11-04T12:00:00Z")
+        self.assertEqual(record["listing"]["cover_image_url"], "rulebooks/public-cover.webp")
+        self.assertEqual(rules.summary(record)["cover"], "rulebooks/public-cover.webp")
+        self.assertNotIn("private rule text", str(record))
+        # If a later public listing omits the image, retain the last-known cover
+        # so a missing public image field never erases the archived reference.
+        newer, changed = rules.build_record(record, self.doc, "2026-11-04T13:00:00Z")
+        self.assertFalse(changed)
+        self.assertEqual(newer["listing"]["cover_image_url"], "rulebooks/public-cover.webp")
+        self.assertEqual(len(newer["versions"]), 1)
+
+    def test_multiple_public_image_fields_without_rule_body_extraction(self):
+        for field in ("cover_url", "coverImage", "avatar_url", "image_url", "image"):
+            with self.subTest(field=field):
+                record, _ = rules.build_record(None, {**self.doc, field: "cover.webp"},
+                                                "2026-11-04T14:00:00Z")
+                self.assertEqual(rules.summary(record)["cover"], "cover.webp")
+                self.assertNotIn("secret", str(record))
+
     def test_uuid_only_public_rulebook_ids(self):
         self.assertEqual(rules.rulebook_id(self.doc), self.id)
         self.assertIsNone(rules.rulebook_id({"id": "../../private"}))

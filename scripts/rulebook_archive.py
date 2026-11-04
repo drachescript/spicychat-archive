@@ -24,7 +24,10 @@ SCHEMA_VERSION = 1
 RULEBOOK_ID = re.compile(r"^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$")
 PUBLIC_FIELDS = (
     "name", "description", "title", "tags", "creator_username",
-    "avatar_url", "image_url", "is_nsfw", "isNsfw", "createdAt", "updatedAt",
+    "avatar_url", "image_url", "avatar", "image", "thumbnail_url",
+    "cover", "cover_url", "coverUrl", "cover_image", "cover_image_url",
+    "coverImage", "coverImageUrl", "cover_path", "coverPath",
+    "is_nsfw", "isNsfw", "createdAt", "updatedAt",
     "num_rules", "numRules", "rule_count", "numAttachedCharacters",
     "numAttachedPersonas", "numAttachedBots", "show_rules",
     "rules_visible", "language",
@@ -55,6 +58,23 @@ def public_metadata(doc: dict[str, Any]) -> dict[str, Any]:
         elif field == "tags" and isinstance(value, list):
             result[field] = [str(x)[:120] for x in value[:80] if isinstance(x, str)]
     return result
+
+IMAGE_FIELDS = (
+    "cover_image_url", "coverImageUrl", "cover_url", "coverUrl",
+    "cover_image", "coverImage", "cover_path", "coverPath",
+    "avatar_url", "image_url", "thumbnail_url", "avatar", "image", "cover",
+)
+
+def cover_from_metadata(doc: dict[str, Any]) -> str:
+    """Retain only a public image reference, never an unrelated private object."""
+    for key in IMAGE_FIELDS:
+        value = doc.get(key)
+        if isinstance(value, str):
+            value = value.strip()
+            if value and len(value) <= 2048 and not value.lower().startswith(
+                    ("javascript:", "data:", "file:", "blob:")):
+                return value
+    return ""
 
 def digest(value: Any) -> str:
     raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -123,6 +143,9 @@ def build_record(previous: dict[str, Any] | None, doc: dict[str, Any], at: str
     if not id:
         raise ValueError("Rulebook has no valid public ID")
     snapshot = public_metadata(doc)
+    previous_cover = cover_from_metadata((previous or {}).get("listing") or {})
+    if not cover_from_metadata(snapshot) and previous_cover:
+        snapshot["cover_image_url"] = previous_cover
     fp = digest(snapshot)
     record = deepcopy(previous) if isinstance(previous, dict) else {
         "schemaVersion": SCHEMA_VERSION, "id": id,
@@ -149,6 +172,7 @@ def summary(record: dict[str, Any]) -> dict[str, Any]:
         "id": id,
         "name": data.get("name") or data.get("title") or id,
         "description": data.get("description") or "",
+        "cover": cover_from_metadata(data),
         "creator": data.get("creator_username") or "",
         "tags": data.get("tags") or [],
         "isNsfw": bool(data.get("is_nsfw") or data.get("isNsfw")),

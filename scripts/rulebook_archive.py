@@ -316,7 +316,7 @@ def run() -> int:
                 old["lastSeenAt"] = at
                 continue
             existing = store.get_json(rulebook_key(store, id), None)
-            record, changed = build_record(existing, doc, at)
+            record, changed = build_record(existing, {**doc, **metadata}, at)
             if not isinstance(existing, dict):
                 new_count += 1
             if changed:

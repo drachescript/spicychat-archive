@@ -1,6 +1,13 @@
 name: Update SpicyChat Rulebook archive
 
 on:
+  # Refresh public, URL-only covers when the source extraction code changes.
+  push:
+    branches: [main]
+    paths:
+      - "scripts/rulebook_archive.py"
+      - "data/rulebook-cover-seeds.json"
+      - ".github/workflows/rulebooks.yml"
   workflow_dispatch:
   schedule:
     # Small public catalog; queue behind bot and Lorebook R2 writers.

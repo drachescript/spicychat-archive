@@ -15,6 +15,7 @@ import re
 import time
 from copy import deepcopy
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 import archive
@@ -33,6 +34,8 @@ PUBLIC_FIELDS = (
     "rules_visible", "language",
 )
 MAX_TEXT = 6000
+PUBLIC_COVER_SEED_PATH = Path(__file__).resolve().parents[1] / "data" / "rulebook-cover-seeds.json"
+COVER_FILENAME = re.compile(r"^[a-f0-9-]{36}\.(?:webp|png|jpg|jpeg)$", re.I)
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -89,6 +92,34 @@ def public_cover_field_names(doc: dict[str, Any]) -> list[str]:
         and re.search(r"cover|image|avatar|thumbnail|picture|photo", key, re.I)
         and not re.search(r"secret|token|auth|credential|private|signed", key, re.I)
     )
+
+
+def public_cover_seeds(path: Path = PUBLIC_COVER_SEED_PATH) -> dict[str, str]:
+    """Use only public cover *filenames*, never save or download image bytes.
+
+    Browser Save-As rewrites CDN image src into local paths. This tiny
+    filename map comes from a captured public Rulebook Explore listing.
+    """
+    if not path.is_file():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict) or not isinstance(payload.get("covers"), dict):
+        raise ValueError("Invalid public Rulebook cover filename map")
+    found: dict[str, str] = {}
+    for key, filename in payload["covers"].items():
+        if (isinstance(key, str) and RULEBOOK_ID.fullmatch(key)
+                and isinstance(filename, str) and COVER_FILENAME.fullmatch(filename)):
+            found[key] = (
+                f"https://cdn.nd-api.com/avatars/{filename}?class=image500x650"
+            )
+    return found
+
+
+def add_seed_cover(doc: dict[str, Any], id: str, seeds: dict[str, str]) -> dict[str, Any]:
+    """Only fill absent cover references; public API data always wins."""
+    if cover_from_metadata(public_metadata(doc)) or id not in seeds:
+        return doc
+    return {**doc, "cover_image_url": seeds[id]}
 
 
 def digest(value: Any) -> str:
@@ -226,6 +257,7 @@ def run() -> int:
     collection = configure_public_key(client, config)
     if collection is None:
         return 0
+    seed_covers = public_cover_seeds()
 
     at = now_iso()
     state = store.get_json(state_key(store), {"schemaVersion": SCHEMA_VERSION, "known": {}})
@@ -242,6 +274,7 @@ def run() -> int:
     found = None
     new_count = changed_count = 0
     public_cover_refs = 0
+    seeded_cover_refs = 0
     public_image_fields: dict[str, int] = {}
     started = time.monotonic()
 
@@ -265,11 +298,15 @@ def run() -> int:
             if not id or id in seen:
                 continue
             seen.add(id)
-            metadata = public_metadata(doc)
-            if cover_from_metadata(metadata):
+            original_metadata = public_metadata(doc)
+            if cover_from_metadata(original_metadata):
                 public_cover_refs += 1
             for field in public_cover_field_names(doc):
                 public_image_fields[field] = public_image_fields.get(field, 0) + 1
+            doc = add_seed_cover(doc, id, seed_covers)
+            metadata = public_metadata(doc)
+            if not cover_from_metadata(original_metadata) and cover_from_metadata(metadata):
+                seeded_cover_refs += 1
             fingerprint = digest(metadata)
             old = known.get(id)
             if (isinstance(old, dict) and old.get("fingerprint") == fingerprint
@@ -285,7 +322,7 @@ def run() -> int:
             store.put_json(rulebook_key(store, id), record, public=True,
                            category="data", known_new=not isinstance(existing, dict))
             known[id] = {
-                "fingerprint": fingerprint, "status": "public",
+                "fingerprint": record["fingerprint"], "status": "public",
                 "summary": summary(record),
                 "firstSeenAt": record["firstSeenAt"], "lastSeenAt": at,
             }
@@ -323,6 +360,7 @@ def run() -> int:
     )
     print(
         f"Rulebooks: public listing covers {public_cover_refs}/{len(seen)}; "
+        f"seeded public cover URLs {seeded_cover_refs}/{len(seen)}; "
         f"saved public covers {public_saved_covers}/{sum(x['status'] == 'public' for x in rows)}; "
         f"public image field names/counts: {', '.join(f'{key}={count}' for key, count in sorted(public_image_fields.items())) or 'none'}",
         flush=True,
@@ -334,6 +372,7 @@ def run() -> int:
         "notPublic": sum(1 for x in rows if x["status"] == "not-public"),
         "coverStats": {
             "publicListingWithCover": public_cover_refs,
+            "seededPublicCoverUrls": seeded_cover_refs,
             "publicSavedWithCover": public_saved_covers,
             "publicSeen": len(seen),
         },

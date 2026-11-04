@@ -21,6 +21,34 @@ class RulebookArchiveTests(unittest.TestCase):
             "private_config": {"token": "should never appear"},
         }
 
+    def test_known_public_cover_references_are_url_only(self):
+        refs = rules.load_public_cover_references()
+        self.assertEqual(len(refs), 48)
+        dante = "63416959-f266-593d-830d-37bc1c474ef9"
+        self.assertEqual(
+            refs[dante],
+            "https://cdn.nd-api.com/avatars/66f8c467-db24-4546-b36b-0e94d19d4f38.webp?class=image500x650",
+        )
+        self.assertTrue(all(url.startswith("https://cdn.nd-api.com/") for url in refs.values()))
+
+    def test_cover_priority_and_stable_fingerprint(self):
+        id = self.id
+        reference = "https://cdn.nd-api.com/avatars/11111111-2222-3333-4444-555555555555.webp?class=image500x650"
+        enriched = rules.listing_with_cover(self.doc, id, cover_references={id: reference})
+        self.assertEqual(enriched["cover_image_url"], reference)
+        record, changed = rules.build_record(None, enriched, "2026-11-04T12:00:00Z")
+        self.assertTrue(changed)
+        newer, changed = rules.build_record(record, enriched, "2026-11-04T13:00:00Z")
+        self.assertFalse(changed)
+        self.assertEqual(record["fingerprint"], rules.digest(enriched))
+        self.assertEqual(newer["fingerprint"], record["fingerprint"])
+        public = {**self.doc, "image_url": "avatars/public.webp"}
+        self.assertEqual(
+            rules.listing_with_cover(public, id, cover_references={id: reference})["image_url"],
+            "avatars/public.webp",
+        )
+        self.assertNotIn("cover_image_url", rules.listing_with_cover(public, id, cover_references={id: reference}))
+
     def test_cover_metadata_preserved_without_private_rule_content(self):
         doc = {**self.doc, "cover_image_url": "rulebooks/public-cover.webp"}
         record, _ = rules.build_record(None, doc, "2026-11-04T12:00:00Z")

@@ -67,6 +67,30 @@ jobs:
                 kept.push(branch.name);
               }
             }
+            // The user explicitly retired these three October-era branches
+            // after reviewing their diffs. Keep the commit leases so no later
+            // changes can be erased by this one-time cleanup.
+            const retired = new Map([
+              ['archive-explorer-activity-polish', '46589fa999216a02bccfef22d1226d9d5700407f'],
+              ['archive-v2-wip', '79f40ed96232e4b3c8c70eda14ba26ae4f9a2200'],
+              ['fix-archive-run-confirmation-and-feed', '22536a4a36d001d50741bff0a27464f0a31dcdeb']
+            ]);
+            for (const branch of branches) {
+              if (!retired.has(branch.name) || branch.protected ||
+                  openHeads.has(branch.name) ||
+                  branch.commit.sha !== retired.get(branch.name)) continue;
+              try {
+                await github.rest.git.deleteRef({
+                  owner, repo, ref: `heads/${branch.name}`,
+                });
+                deleted++;
+                core.info(`Retired obsolete branch: ${branch.name}`);
+                const index = kept.indexOf(branch.name);
+                if (index >= 0) kept.splice(index, 1);
+              } catch (error) {
+                core.warning(`Could not retire ${branch.name}: ${error.message}`);
+              }
+            }
             core.summary.addHeading('Archive branch cleanup')
               .addRaw(`Removed ${deleted} merged branch(es). Kept ${kept.length}: ${kept.join(', ')}`)
               .write();

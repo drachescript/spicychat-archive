@@ -1,3 +1,4 @@
+import {canonicalRulebookTag, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags} from './rulebook-filters.js';
 // Public Rulebook metadata only. Private rule bodies and hidden values are
 // intentionally not in the Archive's Rulebook data source.
 const app = document.getElementById('app');
@@ -80,19 +81,16 @@ function setParams(values) {
   }
   history.replaceState(null,'',url);
 }
-function excludedByTags(tags, excluded, match){
-  const actual=(Array.isArray(tags)?tags:[]).map(t=>String(t).toLowerCase());
-  if(!excluded.length)return false;
-  return match==='all'?excluded.every(tag=>actual.includes(tag)):excluded.some(tag=>actual.includes(tag));
-}
 function renderBrowse(payload) {
   const all=Array.isArray(payload.rulebooks)?payload.rulebooks:[];
-  const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]))].sort((a,b)=>String(a).localeCompare(String(b)));
+  const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string'&&t.trim()))]
+    .sort((a,b)=>String(a).localeCompare(String(b)));
   const only=removedView?'not-public':'public';
   const title=removedView?'Deleted / Unlisted Rulebooks':'Public Rulebooks';
   const summary=removedView
     ?'Rulebooks that were saved while public and later disappeared from SpicyChat’s public listings. They may be deleted, private or unlisted; disappearance alone cannot tell us which.'
     :'Rulebooks still appearing in SpicyChat’s public listings, with saved details, covers where available and change history.';
+  const countByTag=new Map();
   app.innerHTML=
     '<section class="hero lorebook-hero"><div><h1>'+title+'</h1>'+
     '<p>'+summary+'</p>'+
@@ -104,37 +102,65 @@ function renderBrowse(payload) {
     '<div><b>'+fmt(payload.totalArchived)+'</b><span>Saved in total</span></div></div></section>'+
     '<div class="lorebook-toolbar rulebook-toolbar">'+
     '<input id="rb-q" type="search" placeholder="Search Rulebooks or creators" aria-label="Search Rulebooks">'+
-    '<select id="rb-tag" aria-label="Rulebook tag"><option value="">Any tag</option>'+
-    tags.map(t=>'<option value="'+esc(t)+'">'+esc(t)+'</option>').join('')+'</select>'+
     '<select id="rb-status" aria-label="Public availability"><option value="'+only+'">'+(removedView?'No longer public':'Still public')+'</option>'+
     '<option value="all">All archived</option><option value="'+(removedView?'public':'not-public')+'">'+
-      (removedView?'Still public':'No longer public')+'</option></select>'+
+    (removedView?'Still public':'No longer public')+'</option></select>'+
     '<select id="rb-sort" aria-label="Sort Rulebooks"><option value="newest">Newest created</option>'+
-    '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select>'+
-    '<input id="rb-exclude" type="search" placeholder="Exclude tags, comma-separated" aria-label="Excluded Rulebook tags"></div>'+
+    '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select></div>'+
+    '<section class="rulebook-tag-panel" aria-label="Filter Rulebooks by tags">'+
+    '<div class="rulebook-tag-controls"><strong>Narrow by tag</strong>'+
+    '<label for="rb-match">Match included tags <select id="rb-match" aria-label="Match included tags">'+
+    '<option value="any">Any</option><option value="all">All</option></select></label>'+
+    '<button id="rb-tag-clear" type="button" class="secondary-button">Clear tag filters</button></div>'+
+    '<input id="rb-tag-search" type="search" placeholder="Search tags" aria-label="Search Rulebook tags">'+
+    '<p id="rb-tag-summary" class="filter-note" aria-live="polite"></p>'+
+    '<div id="rb-tag-groups" class="rulebook-tag-groups"></div></section>'+
     '<div class="results-head"><h2>'+(removedView?'Saved unavailable Rulebooks':'Still-public Rulebooks')+'</h2>'+
     '<span id="rb-count"></span></div><div id="rb-pager-top" class="pager-wrap pager-top"></div>'+
     '<section id="rb-grid" class="lorebook-grid"></section><div id="rb-pager" class="pager-wrap"></div>'+
     '<p class="detail-sub">Last catalog check: '+esc(date(payload.generatedAt))+
     (payload.lastScanComplete===false?' (incomplete scan; older statuses were kept)':'')+'</p>';
-  const q=document.getElementById('rb-q'),tag=document.getElementById('rb-tag'),
-    status=document.getElementById('rb-status'),sort=document.getElementById('rb-sort'),
-    exclude=document.getElementById('rb-exclude');
+  const q=document.getElementById('rb-q'),status=document.getElementById('rb-status'),
+    sort=document.getElementById('rb-sort'),match=document.getElementById('rb-match'),
+    tagSearch=document.getElementById('rb-tag-search'),tagGroups=document.getElementById('rb-tag-groups');
   q.value=params.get('q')||'';
-  tag.value=params.get('tag')||params.get('include')||'';
   status.value=params.get('status')||only;
   sort.value=params.get('sort')||'newest';
-  exclude.value=params.get('exclude')==='none'?'':(params.get('exclude')||'');
-  const match=params.get('match')==='all'?'all':'any';
+  match.value=params.get('match')==='all'?'all':'any';
+  let selectedInclude=parseRulebookTags(params.get('include')||params.get('tag')||'');
+  let selectedExclude=parseRulebookTags(params.get('exclude')==='none'?'':(params.get('exclude')||''));
   let page=Math.max(1,Number(params.get('p'))||1);
-  function render() {
-    const term=q.value.toLowerCase().trim(), selected=tag.value.toLowerCase();
-    const excluded=exclude.value.split(',').map(t=>t.trim().toLowerCase()).filter(Boolean);
+
+  function renderTagPanel(){
+    const keyword=canonicalRulebookTag(tagSearch.value);
+    const visible=tags.filter(tag=>canonicalRulebookTag(tag).includes(keyword));
+    const baseRows=all.filter(item=>status.value==='all'||item.status===status.value);
+    countByTag.clear();
+    for(const item of baseRows){
+      for(const value of new Set(parseRulebookTags(item.tags))){
+        countByTag.set(value,(countByTag.get(value)||0)+1);
+      }
+    }
+    tagGroups.innerHTML=groupedRulebookTags(visible).map(([group,values])=>
+      '<div class="rulebook-tag-group"><h3>'+esc(group)+'</h3>'+
+      values.map(tag=>{
+        const key=canonicalRulebookTag(tag),inc=selectedInclude.includes(key),exc=selectedExclude.includes(key);
+        return '<div class="rulebook-tag-option"><span class="rulebook-tag-label">'+esc(tag)+'</span>'+
+          '<span class="rulebook-tag-count">'+fmt(countByTag.get(key)||0)+'</span>'+
+          '<button type="button" data-rb-action="include" data-rb-tag="'+esc(tag)+'" aria-label="Include '+esc(tag)+'" aria-pressed="'+inc+'" class="rulebook-tag-toggle '+(inc?'is-include':'')+'" title="Include '+esc(tag)+'">+</button>'+
+          '<button type="button" data-rb-action="exclude" data-rb-tag="'+esc(tag)+'" aria-label="Exclude '+esc(tag)+'" aria-pressed="'+exc+'" class="rulebook-tag-toggle '+(exc?'is-exclude':'')+'" title="Exclude '+esc(tag)+'">−</button></div>';
+      }).join('')+'</div>'
+    ).join('')||'<div class="empty">No matching tags.</div>';
+    document.getElementById('rb-tag-summary').textContent=
+      selectedInclude.length+' included · '+selectedExclude.length+' excluded. '+
+      'Exclusions always remove any Rulebook with a selected tag.';
+  }
+  function render(){
+    const term=q.value.toLowerCase().trim();
     let rows=all.filter(x=>{
       if(status.value!=='all'&&x.status!==status.value)return false;
       const rowTags=Array.isArray(x.tags)?x.tags:[];
-      if(selected&&!rowTags.some(t=>String(t).toLowerCase()===selected))return false;
-      if(excludedByTags(rowTags,excluded,match))return false;
+      if(!matchesRulebookTags(rowTags,selectedInclude,selectedExclude,match.value))return false;
       return !term||[x.id,x.name,x.description,x.creator,...rowTags].join(' ').toLowerCase().includes(term);
     });
     rows.sort((a,b)=>sort.value==='name'?String(a.name||'').localeCompare(String(b.name||'')):
@@ -142,8 +168,9 @@ function renderBrowse(payload) {
       sort.value==='seen'?String(b.lastSeenAt||'').localeCompare(String(a.lastSeenAt||'')):
       String(b.createdAt||b.firstSeenAt||'').localeCompare(String(a.createdAt||a.firstSeenAt||'')));
     const per=48,pages=Math.max(1,Math.ceil(rows.length/per));page=Math.min(page,pages);
-    setParams({q:q.value,tag:tag.value,status:status.value===only?'':status.value,sort:sort.value,p:page,
-      exclude:exclude.value||null});
+    setParams({q:q.value,tag:null,include:selectedInclude.join(',')||null,
+      exclude:selectedExclude.join(',')||null,match:match.value==='all'?'all':null,
+      status:status.value===only?'':status.value,sort:sort.value,p:page});
     document.getElementById('rb-count').textContent=fmt(rows.length)+' matches';
     const grid=document.getElementById('rb-grid');
     grid.innerHTML=rows.slice((page-1)*per,page*per).map(card).join('')||
@@ -155,8 +182,22 @@ function renderBrowse(payload) {
     document.querySelectorAll('button[data-rb-page]').forEach(button=>button.onclick=()=>{
       page=Number(button.dataset.rbPage);render();window.scrollTo({top:0,behavior:'smooth'});
     });
+    renderTagPanel();
   }
-  for(const el of [q,tag,status,sort,exclude])el.addEventListener(el===q||el===exclude?'input':'change',()=>{page=1;render();});
+  for(const el of [q,status,sort,match]){
+    el.addEventListener(el===q?'input':'change',()=>{page=1;render();});
+  }
+  tagSearch.addEventListener('input',renderTagPanel);
+  tagGroups.addEventListener('click',event=>{
+    const button=event.target.closest('button[data-rb-action][data-rb-tag]');
+    if(!button)return;
+    const selection=toggleRulebookTag(selectedInclude,selectedExclude,
+      button.dataset.rbTag,button.dataset.rbAction);
+    selectedInclude=selection.include;selectedExclude=selection.exclude;page=1;render();
+  });
+  document.getElementById('rb-tag-clear').addEventListener('click',()=>{
+    selectedInclude=[];selectedExclude=[];tagSearch.value='';match.value='any';page=1;render();
+  });
   render();
 }
 function renderDetail(record, id) {

@@ -1,10 +1,17 @@
 name: Repair Archive search index
 
 on:
+  # One guarded, index-only catch-up after this change merges.
+  # Future repairs can also be invoked manually in dry-run mode.
+  push:
+    branches: [main]
+    paths:
+      - "scripts/repair_text_search_inventory.py"
+      - ".github/workflows/repair-search-index.yml"
   workflow_dispatch:
     inputs:
       apply:
-        description: "Write safe index-only fixes (false previews)"
+        description: "Write safe index-only fixes (otherwise preview only)"
         required: true
         default: false
         type: boolean
@@ -38,7 +45,7 @@ jobs:
         run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file "$RUNNER_TEMP/repair-r2-usage.json"
       - name: Verify and repair search-only discrepancies
         if: steps.guard.outputs.mode == 'r2'
-        run: python scripts/repair_text_search_inventory.py ${{ inputs.apply && '--apply' || '' }} --max-changes 500
+        run: python scripts/repair_text_search_inventory.py ${{ (github.event_name == 'push' || inputs.apply) && '--apply' || '' }} --max-changes 5000
       - name: Explain quota pause
         if: steps.guard.outputs.mode != 'r2'
         run: |

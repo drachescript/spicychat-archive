@@ -163,6 +163,13 @@ class ArchiveMergeTests(unittest.TestCase):
             e.get('token_count') == 1450 for e in record['metrics']['history']
         ))
 
+    def test_deletion_404s_must_come_from_separate_archive_runs(self):
+        info = {'count': 1, 'lastAt': '2026-10-08T01:00:00Z', 'lastStatus': 404}
+        self.assertFalse(mod.missing_check_due(info, '2026-10-08T01:00:00Z'))
+        self.assertTrue(mod.missing_check_due(info, '2026-10-08T04:00:00Z'))
+        self.assertTrue(mod.missing_check_due({'count': 0, 'lastAt': None},
+                                              '2026-10-08T01:00:00Z'))
+
     def test_avatar_normalization(self):
         self.assertEqual(
             mod.normalize_avatar_url('avatars/foo.webp'),

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {RULEBOOK_TAG_GROUPS, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags, rulebookCoverSeedUrl} from '../assets/rulebook-filters.js';
+import {RULEBOOK_TAG_GROUPS, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags, rulebookCoverSeedUrl, hasSavedPublicRuleContent} from '../assets/rulebook-filters.js';
 
 test('tag groups mirror the public Rulebook Explore categories', () => {
   assert.equal(Object.values(RULEBOOK_TAG_GROUPS).reduce((n, tags) => n + tags.length, 0), 62);
@@ -34,4 +34,15 @@ test('cover fallback is URL-only and validates filenames',()=>{
     'https://cdn.nd-api.com/avatars/'+file+'?class=image500x650');
   assert.equal(rulebookCoverSeedUrl(id,{[id]:'../../private.webp'}),'');
   assert.equal(rulebookCoverSeedUrl('invalid',{invalid:file}),'');
+});
+
+test('listing counts never masquerade as saved public Rulebook definitions',()=>{
+  const doc={listing:{name:'War of Races',num_rules:173,cover_url:'https://cdn.nd-api.com/avatars/a.webp'}};
+  assert.equal(hasSavedPublicRuleContent(doc),false);
+  assert.equal(hasSavedPublicRuleContent({publicDefinition:{visibility:'private',
+    meters:[{rules:[{instruction:'hidden'}]}]}}),false);
+  assert.equal(hasSavedPublicRuleContent({publicDefinition:{visibility:'shared',
+    meters:[{name:'Love'}]}}),false);
+  assert.equal(hasSavedPublicRuleContent({publicDefinition:{visibility:'shared',
+    meters:[{levels:[{name:'Friend',instruction:'Warm up slowly.'}]}]}}),true);
 });

@@ -69,12 +69,15 @@ function bindBrokenCovers(root=document) {
 }
 function card(x, seeds) {
   const gone=x.status==='not-public',name=x.name||x.id;
+  const saved=Boolean(x.contentSaved);
+  const href=saved?detailHref(x.id):'https://spicychat.ai/rulebook/'+encodeURIComponent(x.id);
+  const extra=saved?'':' target="_blank" rel="noopener noreferrer"';
   const cover=savedCover(x)||rulebookCoverSeedUrl(x.id,seeds);
   return '<article class="lorebook-card rulebook-card" data-rulebook-id="'+esc(x.id)+'">'+
-    '<a class="lorebook-cover" href="'+esc(detailHref(x.id))+'">'+coverMarkup(cover,name)+
+    '<a class="lorebook-cover" href="'+esc(href)+'"'+extra+'>'+coverMarkup(cover,name)+
       (x.isNsfw?'<span class="lorebook-nsfw">NSFW</span>':'')+'</a>'+
     '<div class="lorebook-card-body"><div class="lorebook-card-top">'+
-    '<a class="lorebook-name" href="'+esc(detailHref(x.id))+'">'+esc(name)+'</a>'+
+    '<a class="lorebook-name" href="'+esc(href)+'"'+extra+'>'+esc(name)+'</a>'+
     (gone?'<span class="lorebook-status is-archived">No longer public</span>':'')+'</div>'+
     (x.creator?'<a class="creator-link" href="../creator/?name='+encodeURIComponent(x.creator)+'">@'+esc(x.creator)+'</a>':'')+
     '<p class="lorebook-description">'+esc(x.description||'No description saved.')+'</p>'+
@@ -91,14 +94,15 @@ function setParams(values) {
   history.replaceState(null,'',url);
 }
 function renderBrowse(payload, seeds) {
-  const all=Array.isArray(payload.rulebooks)?payload.rulebooks:[];
+  const all=Array.isArray(payload.rulebooks)
+    ?payload.rulebooks.filter(x=>x.status==='public'||x.contentSaved===true):[];
   const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string'&&t.trim()))]
     .sort((a,b)=>String(a).localeCompare(String(b)));
   const only=removedView?'not-public':'public';
   const title=removedView?'Deleted / Unlisted Rulebooks':'Public Rulebooks';
   const summary=removedView
-    ?'Rulebooks that were saved while public and later disappeared from SpicyChat’s public listings. They may be deleted, private or unlisted; disappearance alone cannot tell us which.'
-    :'Rulebooks still appearing in SpicyChat’s public listings, with saved details, covers where available and change history.';
+    ?'Only Rulebooks whose actual public rules were captured before they disappeared are shown here. Listing-only records are not recoverable archives. Disappearance alone does not prove deletion.'
+    :'Public Rulebooks directory. Only Rulebooks with actual captured public rule content count as saved archives; others link to SpicyChat.';
   const countByTag=new Map();
   app.innerHTML=
     '<section class="hero lorebook-hero"><div><h1>'+title+'</h1>'+
@@ -108,7 +112,7 @@ function renderBrowse(payload, seeds) {
     '<a class="secondary-button" href="../rulebooks/">Still public</a></div></div>'+
     '<div class="lorebook-hero-stats"><div><b>'+fmt(payload.notPublic)+'</b><span>No longer public</span></div>'+
     '<div><b>'+fmt(payload.publicNow)+'</b><span>Still public</span></div>'+
-    '<div><b>'+fmt(payload.totalArchived)+'</b><span>Saved in total</span></div></div></section>'+
+    '<div><b>'+fmt(payload.totalArchived)+'</b><span>Saved rule content</span></div></div></section>'+
     '<div class="layout filters-collapsed rulebook-browse-layout" id="rb-layout">'+
     '<aside id="rb-filters" class="filters rulebook-filters" aria-label="Rulebook tag filters">'+
     '<section class="rulebook-tag-panel" aria-label="Filter Rulebooks by tags">'+
@@ -231,6 +235,15 @@ function renderDetail(record, id, seeds) {
   const doc=record.listing||{}, tags=doc.tags||[], versions=record.versions||[],
     statuses=record.statusHistory||[], status=record.status?.current||'unknown';
   const name=doc.name||doc.title||id;
+  if(!record.publicDefinition || record.publicDefinition.visibility!=='shared' ||
+     !Array.isArray(record.publicDefinition.meters) || !record.publicDefinition.meters.length){
+    app.innerHTML='<section class="table-card"><h1>Rule content was not archived</h1>'+
+      '<p>Only a public listing was observed. Titles, tags, cover links and rule counts '+
+      'do not preserve the rules themselves. This is not a recoverable Rulebook archive.</p>'+
+      '<a class="secondary-button" target="_blank" rel="noopener noreferrer" href="https://spicychat.ai/rulebook/'+
+      esc(id)+'">View original on SpicyChat</a></section>';
+    return;
+  }
   document.title=name+' · SpicyChat Archive';
   const image=savedCover(doc)||rulebookCoverSeedUrl(id,seeds);
   app.innerHTML='<section class="lorebook-detail-hero rulebook-detail-hero">'+coverMarkup(image,name,true)+'<div>'+

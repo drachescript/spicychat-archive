@@ -99,6 +99,9 @@ function renderBrowse(payload, seeds) {
   const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string'&&t.trim()))]
     .sort((a,b)=>String(a).localeCompare(String(b)));
   const only=removedView?'not-public':'public';
+  const publicCount=all.filter(x=>x.status==='public').length;
+  const unavailableCount=all.filter(x=>x.status==='not-public'&&x.contentSaved===true).length;
+  const savedCount=all.filter(x=>x.contentSaved===true).length;
   const title=removedView?'Deleted / Unlisted Rulebooks':'Public Rulebooks';
   const summary=removedView
     ?'Only Rulebooks whose actual public rules were captured before they disappeared are shown here. Listing-only records are not recoverable archives. Disappearance alone does not prove deletion.'
@@ -110,9 +113,9 @@ function renderBrowse(payload, seeds) {
     '<p class="filter-note">Only public listing information is archived. Private rules and hidden values are not included.</p>'+
     '<div class="detail-actions"><a class="secondary-button" href="../deleted-rulebooks/">No longer public</a>'+
     '<a class="secondary-button" href="../rulebooks/">Still public</a></div></div>'+
-    '<div class="lorebook-hero-stats"><div><b>'+fmt(payload.notPublic)+'</b><span>No longer public</span></div>'+
-    '<div><b>'+fmt(payload.publicNow)+'</b><span>Still public</span></div>'+
-    '<div><b>'+fmt(payload.totalArchived)+'</b><span>Saved rule content</span></div></div></section>'+
+    '<div class="lorebook-hero-stats"><div><b>'+fmt(unavailableCount)+'</b><span>Saved, unavailable</span></div>'+
+    '<div><b>'+fmt(publicCount)+'</b><span>Still public</span></div>'+
+    '<div><b>'+fmt(savedCount)+'</b><span>Saved rule content</span></div></div></section>'+
     '<div class="layout filters-collapsed rulebook-browse-layout" id="rb-layout">'+
     '<aside id="rb-filters" class="filters rulebook-filters" aria-label="Rulebook tag filters">'+
     '<section class="rulebook-tag-panel" aria-label="Filter Rulebooks by tags">'+
@@ -205,7 +208,7 @@ function renderBrowse(payload, seeds) {
     document.getElementById('rb-count').textContent=fmt(rows.length)+' matches';
     const grid=document.getElementById('rb-grid');
     grid.innerHTML=rows.slice((page-1)*per,page*per).map(x=>card(x,seeds)).join('')||
-      '<div class="empty">No Rulebooks match those filters.</div>';
+      '<div class="empty">'+(removedView?'No unavailable Rulebooks with saved rule content yet.':'No Rulebooks match those filters.')+'</div>';
     bindBrokenCovers(grid);
     const pager=pages<=1?'':'<nav class="pager"><button data-rb-page="'+(page-1)+'" '+(page===1?'disabled':'')+'>Previous</button>'+
       '<span>Page '+page+' of '+pages+'</span><button data-rb-page="'+(page+1)+'" '+(page===pages?'disabled':'')+'>Next</button></nav>';

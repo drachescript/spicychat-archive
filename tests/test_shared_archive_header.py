@@ -33,6 +33,23 @@ class SharedArchiveHeaderTests(unittest.TestCase):
             self.assertIn(link,source)
         self.assertIn("className = 'archive-unified-header sca-shared-header'",source)
 
+    def test_rulebook_filters_share_collapsed_bot_sidebar_layout(self):
+        source=(ROOT/'assets'/'rulebooks.js').read_text(encoding='utf-8')
+        styles=(ROOT/'assets'/'archive.css').read_text(encoding='utf-8')
+        for expected in ('layout filters-collapsed rulebook-browse-layout',
+                         'aside id="rb-filters"', 'rb-toggle-filters',
+                         'Show filters', 'Hide filters',
+                         'sca-rulebook-filters-open', 'rb-tag-groups'):
+            with self.subTest(expected=expected):
+                self.assertIn(expected, source)
+        self.assertIn('rulebook-browse-layout.filters-collapsed', styles)
+
+    def test_deleted_rulebook_cards_require_captured_rules(self):
+        source=(ROOT/'assets'/'rulebooks.js').read_text(encoding='utf-8')
+        self.assertIn("x.status==='public'||x.contentSaved===true", source)
+        self.assertIn('No unavailable Rulebooks with saved rule content yet', source)
+        self.assertIn("https://spicychat.ai/rulebook/", source)
+
     def test_rulebook_images_have_fallback_and_safe_refs(self):
         source=(ROOT/'assets'/'rulebooks.js').read_text(encoding='utf-8')
         self.assertIn('data-rulebook-cover',source)

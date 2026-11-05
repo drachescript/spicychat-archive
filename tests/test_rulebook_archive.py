@@ -89,6 +89,36 @@ class RulebookArchiveTests(unittest.TestCase):
         self.assertFalse(changed)
         self.assertEqual(len(again["versions"]), 1)
 
+    def test_rule_counts_and_public_listing_do_not_equal_saved_rule_content(self):
+        record, _ = rules.build_record(None, self.doc, "2026-11-01T00:00:00Z")
+        self.assertFalse(rules.has_saved_public_rule_content(record))
+        self.assertFalse(rules.summary(record)["contentSaved"])
+        # A rule count of 173 and a cover URL are still only metadata.
+        record["listing"]["num_rules"] = 173
+        record["listing"]["cover_url"] = "https://cdn.nd-api.com/avatars/test.webp"
+        self.assertFalse(rules.has_saved_public_rule_content(record))
+        self.assertFalse(rules.has_saved_public_rule_content({
+            "publicDefinition": {"visibility": "private",
+                "meters": [{"rules": [{"instruction": "not-public"}]}]}
+        }))
+        self.assertFalse(rules.has_saved_public_rule_content({
+            "publicDefinition": {"visibility": "shared", "meters": [{"name": "Love"}]}
+        }))
+
+    def test_verified_public_meter_instructions_count_as_actual_content(self):
+        record, _ = rules.build_record(None, self.doc, "2026-11-01T00:00:00Z")
+        record["publicDefinition"] = {
+            "visibility": "shared",
+            "meters": [{"name": "Love", "levels": [
+                {"name": "Close", "instruction": "The bot opens up gradually."}]}],
+        }
+        self.assertTrue(rules.has_saved_public_rule_content(record))
+        self.assertTrue(rules.summary(record)["contentSaved"])
+        snapshot = rules.listing_summary(self.doc, self.id, "2026-11-04T00:00:00Z",
+                                         "2026-11-02T00:00:00Z")
+        self.assertFalse(snapshot["contentSaved"])
+        self.assertEqual(snapshot["numRules"], 12)
+
     def test_status_change_only_means_no_longer_public(self):
         record, _ = rules.build_record(None, self.doc, "2026-11-01T00:00:00Z")
         self.assertTrue(rules.apply_disappearance(record, "2026-11-02T00:00:00Z"))

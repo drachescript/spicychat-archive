@@ -211,6 +211,47 @@ def build_record(previous: dict[str, Any] | None, doc: dict[str, Any], at: str
     record["status"] = {"current": "public"}
     return record, changed
 
+def has_saved_public_rule_content(record: dict[str, Any] | None) -> bool:
+    """Only a captured, explicitly shared public definition counts as an archive.
+
+    Listing names, cover URLs, tags and even num_rules=173 are NOT rule data.
+    Private or unverified definition objects must not be treated as saved.
+    """
+    if not isinstance(record, dict):
+        return False
+    detail = record.get("publicDefinition")
+    if not isinstance(detail, dict) or detail.get("visibility") != "shared":
+        return False
+    meters = detail.get("meters")
+    if not isinstance(meters, list):
+        return False
+    for meter in meters:
+        if not isinstance(meter, dict):
+            continue
+        for group in ("rules", "levels", "conditions"):
+            values = meter.get(group)
+            if not isinstance(values, list):
+                continue
+            for value in values:
+                if not isinstance(value, dict):
+                    continue
+                if any(isinstance(value.get(field), str) and value[field].strip()
+                       for field in ("instruction", "content", "prompt", "effect",
+                                     "description", "condition", "text")):
+                    return True
+    return False
+
+
+def listing_summary(doc: dict[str, Any], id: str, at: str,
+                    first_seen: str) -> dict[str, Any]:
+    """Public directory entry, NOT evidence that the Rulebook was archived."""
+    return summary({
+        "id": id, "listing": public_metadata(doc),
+        "status": {"current": "public"},
+        "firstSeenAt": first_seen, "lastObservedAt": at,
+    })
+
+
 def summary(record: dict[str, Any]) -> dict[str, Any]:
     data = record.get("listing") or {}
     id = record["id"]
@@ -229,6 +270,7 @@ def summary(record: dict[str, Any]) -> dict[str, Any]:
         "createdAt": data.get("createdAt"),
         "updatedAt": data.get("updatedAt"),
         "status": (record.get("status") or {}).get("current") or "unknown",
+        "contentSaved": has_saved_public_rule_content(record),
         "firstSeenAt": record.get("firstSeenAt"),
         "lastSeenAt": record.get("lastObservedAt"),
     }
@@ -308,21 +350,41 @@ def run() -> int:
             if not cover_from_metadata(original_metadata) and cover_from_metadata(metadata):
                 seeded_cover_refs += 1
             fingerprint = digest(metadata)
-            old = known.get(id)
-            if (isinstance(old, dict) and old.get("fingerprint") == fingerprint
-                    and old.get("status") == "public"):
+            old = known.get(id) if isinstance(known.get(id), dict) else {}
+            if not old.get("contentSaved"):
+                # A directory entry is fine while public, but do not write a
+                # per-Rulebook R2 archive without actual captured public rules.
+                first_seen = str(old.get("firstSeenAt") or at)
+                known[id] = {
+                    "fingerprint": fingerprint, "status": "public",
+                    "contentSaved": False, "catalogOnly": True,
+                    "summary": listing_summary(doc, id, at, first_seen),
+                    "firstSeenAt": first_seen, "lastSeenAt": at,
+                }
+                continue
+            if (old.get("fingerprint") == fingerprint and
+                    old.get("status") == "public"):
                 old["lastSeenAt"] = at
                 continue
             existing = store.get_json(rulebook_key(store, id), None)
+            if not has_saved_public_rule_content(existing):
+                # Fail closed if state claims a save but content is absent.
+                first_seen = str(old.get("firstSeenAt") or at)
+                known[id] = {
+                    "fingerprint": fingerprint, "status": "public",
+                    "contentSaved": False, "catalogOnly": True,
+                    "summary": listing_summary(doc, id, at, first_seen),
+                    "firstSeenAt": first_seen, "lastSeenAt": at,
+                }
+                continue
             record, changed = build_record(existing, doc, at)
-            if not isinstance(existing, dict):
-                new_count += 1
             if changed:
                 changed_count += 1
             store.put_json(rulebook_key(store, id), record, public=True,
-                           category="data", known_new=not isinstance(existing, dict))
+                           category="data")
             known[id] = {
                 "fingerprint": record["fingerprint"], "status": "public",
+                "contentSaved": True, "catalogOnly": False,
                 "summary": summary(record),
                 "firstSeenAt": record["firstSeenAt"], "lastSeenAt": at,
             }
@@ -334,6 +396,11 @@ def run() -> int:
     if complete and not errors:
         for id, previous in list(known.items()):
             if id in seen or not isinstance(previous, dict):
+                continue
+            if not previous.get("contentSaved"):
+                # Metadata-only listings disappearing is not a recoverable
+                # archive. Remove from the active catalog; do not label deleted.
+                known.pop(id, None)
                 continue
             if previous.get("status") != "public":
                 continue
@@ -351,6 +418,7 @@ def run() -> int:
             continue
         row = dict(item["summary"])
         row["status"] = item.get("status") or "unknown"
+        row["contentSaved"] = bool(item.get("contentSaved"))
         row["firstSeenAt"] = item.get("firstSeenAt") or row.get("firstSeenAt")
         row["lastSeenAt"] = item.get("lastSeenAt") or row.get("lastSeenAt")
         rows.append(row)
@@ -367,9 +435,11 @@ def run() -> int:
     )
     store.put_json(index_key(store), {
         "schemaVersion": SCHEMA_VERSION, "generatedAt": at,
-        "collection": collection, "totalArchived": len(rows),
+        "collection": collection,
+        "totalArchived": sum(1 for x in rows if x["contentSaved"]),
+        "catalogNow": sum(1 for x in rows if x["status"] == "public" and not x["contentSaved"]),
         "publicNow": sum(1 for x in rows if x["status"] == "public"),
-        "notPublic": sum(1 for x in rows if x["status"] == "not-public"),
+        "notPublic": sum(1 for x in rows if x["status"] == "not-public" and x["contentSaved"]),
         "coverStats": {
             "publicListingWithCover": public_cover_refs,
             "seededPublicCoverUrls": seeded_cover_refs,

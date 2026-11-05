@@ -58,3 +58,18 @@ export function rulebookCoverSeedUrl(id, seeds) {
       !/^[0-9a-f-]{36}\.(?:webp|png|jpg|jpeg)$/i.test(filename)) return '';
   return 'https://cdn.nd-api.com/avatars/'+filename+'?class=image500x650';
 }
+
+export function hasSavedPublicRuleContent(record) {
+  const definition=record?.publicDefinition;
+  if(!definition || definition.visibility!=='shared' ||
+     !Array.isArray(definition.meters))return false;
+  return definition.meters.some(meter=>
+    meter && typeof meter==='object' && ['rules','levels','conditions'].some(group=>
+      Array.isArray(meter[group]) && meter[group].some(rule=>
+        rule && typeof rule==='object' &&
+        ['instruction','content','prompt','effect','description','condition','text']
+          .some(field=>typeof rule[field]==='string'&&rule[field].trim())
+      )
+    )
+  );
+}

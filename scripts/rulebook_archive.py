@@ -457,7 +457,8 @@ def run() -> int:
     store.put_json(state_key(store), state)
     store.flush_usage(force=True)
     print(f"Rulebooks: {len(seen)} public listings, {new_count} new, {changed_count} changed; "
-          f"full pass={complete and not errors}; {len(rows)} archived.", flush=True)
+          f"full pass={complete and not errors}; {len(rows)} catalog rows, " 
+          f"{sum(1 for x in rows if x['contentSaved'])} with saved public rules.", flush=True)
     if errors:
         print("Rulebooks: incomplete scan: " + "; ".join(errors), flush=True)
         return 1

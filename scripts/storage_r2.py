@@ -374,6 +374,32 @@ class R2ArchiveStore:
             raise
         self.flush_usage()
 
+    def delete_bytes(self, key: str, *, category: str = "data") -> bool:
+        """Remove a verified R2 object while keeping quota usage accounting in sync.
+
+        Callers must validate content and namespace BEFORE invoking this method.
+        Does not delete an absent object or the usage-ledger itself.
+        """
+        if not key or key == self.usage_key:
+            raise ValueError("Refusing to delete usage metadata")
+        self.storage_usage()
+        old_size = self._head_size(key)
+        if old_size <= 0:
+            return False
+        # Do not change quota metadata unless the DELETE succeeded.
+        self.s3.delete_object(Bucket=self.bucket, Key=key)
+        with self._usage_lock:
+            u = self._normalize_usage(self._usage)
+            u["totalBytes"] = max(0, int(u["totalBytes"]) - old_size)
+            if category == "media":
+                u["mediaBytes"] = max(0, int(u["mediaBytes"]) - old_size)
+            u["objects"] = max(0, int(u["objects"]) - 1)
+            u["writesThisMonth"] = int(u.get("writesThisMonth") or 0) + 1
+            self._usage = u
+            self._usage_dirty_writes += 1
+        self.flush_usage()
+        return True
+
     def get_json(self, key: str, default: Any = None) -> Any:
         raw = self.get_bytes(key)
         if raw is None:

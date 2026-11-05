@@ -109,13 +109,8 @@ function renderBrowse(payload, seeds) {
     '<div class="lorebook-hero-stats"><div><b>'+fmt(payload.notPublic)+'</b><span>No longer public</span></div>'+
     '<div><b>'+fmt(payload.publicNow)+'</b><span>Still public</span></div>'+
     '<div><b>'+fmt(payload.totalArchived)+'</b><span>Saved in total</span></div></div></section>'+
-    '<div class="lorebook-toolbar rulebook-toolbar">'+
-    '<input id="rb-q" type="search" placeholder="Search Rulebooks or creators" aria-label="Search Rulebooks">'+
-    '<select id="rb-status" aria-label="Public availability"><option value="'+only+'">'+(removedView?'No longer public':'Still public')+'</option>'+
-    '<option value="all">All archived</option><option value="'+(removedView?'public':'not-public')+'">'+
-    (removedView?'Still public':'No longer public')+'</option></select>'+
-    '<select id="rb-sort" aria-label="Sort Rulebooks"><option value="newest">Newest created</option>'+
-    '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select></div>'+
+    '<div class="layout filters-collapsed rulebook-browse-layout" id="rb-layout">'+
+    '<aside id="rb-filters" class="filters rulebook-filters" aria-label="Rulebook tag filters">'+
     '<section class="rulebook-tag-panel" aria-label="Filter Rulebooks by tags">'+
     '<div class="rulebook-tag-controls"><strong>Narrow by tag</strong>'+
     '<label for="rb-match">Match included tags <select id="rb-match" aria-label="Match included tags">'+
@@ -123,12 +118,21 @@ function renderBrowse(payload, seeds) {
     '<button id="rb-tag-clear" type="button" class="secondary-button">Clear tag filters</button></div>'+
     '<input id="rb-tag-search" type="search" placeholder="Search tags" aria-label="Search Rulebook tags">'+
     '<p id="rb-tag-summary" class="filter-note" aria-live="polite"></p>'+
-    '<div id="rb-tag-groups" class="rulebook-tag-groups"></div></section>'+
+    '<div id="rb-tag-groups" class="rulebook-tag-groups"></div></section></aside>'+
+    '<section class="results rulebook-results">'+
+    '<button type="button" id="rb-toggle-filters" class="secondary-button filter-panel-toggle" aria-controls="rb-filters" aria-expanded="false">Show filters</button>'+
+    '<div class="lorebook-toolbar rulebook-toolbar">'+
+    '<input id="rb-q" type="search" placeholder="Search Rulebooks or creators" aria-label="Search Rulebooks">'+
+    '<select id="rb-status" aria-label="Public availability"><option value="'+only+'">'+(removedView?'No longer public':'Still public')+'</option>'+
+    '<option value="all">All archived</option><option value="'+(removedView?'public':'not-public')+'">'+
+    (removedView?'Still public':'No longer public')+'</option></select>'+
+    '<select id="rb-sort" aria-label="Sort Rulebooks"><option value="newest">Newest created</option>'+
+    '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select></div>'+
     '<div class="results-head"><h2>'+(removedView?'Saved unavailable Rulebooks':'Still-public Rulebooks')+'</h2>'+
     '<span id="rb-count"></span></div><div id="rb-pager-top" class="pager-wrap pager-top"></div>'+
     '<section id="rb-grid" class="lorebook-grid"></section><div id="rb-pager" class="pager-wrap"></div>'+
     '<p class="detail-sub">Last catalog check: '+esc(date(payload.generatedAt))+
-    (payload.lastScanComplete===false?' (incomplete scan; older statuses were kept)':'')+'</p>';
+    (payload.lastScanComplete===false?' (incomplete scan; older statuses were kept)':'')+'</p></section></div>';
   const q=document.getElementById('rb-q'),status=document.getElementById('rb-status'),
     sort=document.getElementById('rb-sort'),match=document.getElementById('rb-match'),
     tagSearch=document.getElementById('rb-tag-search'),tagGroups=document.getElementById('rb-tag-groups');
@@ -139,6 +143,20 @@ function renderBrowse(payload, seeds) {
   let selectedInclude=parseRulebookTags(params.get('include')||params.get('tag')||'');
   let selectedExclude=parseRulebookTags(params.get('exclude')==='none'?'':(params.get('exclude')||''));
   let page=Math.max(1,Number(params.get('p'))||1);
+  const layout=document.getElementById('rb-layout');
+  const filterToggle=document.getElementById('rb-toggle-filters');
+  const filters=document.getElementById('rb-filters');
+  let filtersOpen=false;
+  try{filtersOpen=localStorage.getItem('sca-rulebook-filters-open')==='1';}catch{}
+  function updateFilters(){
+    layout.classList.toggle('filters-collapsed',!filtersOpen);
+    filters.classList.toggle('open',filtersOpen);
+    filterToggle.textContent=filtersOpen?'Hide filters':'Show filters';
+    filterToggle.setAttribute('aria-expanded',String(filtersOpen));
+    try{localStorage.setItem('sca-rulebook-filters-open',filtersOpen?'1':'0');}catch{}
+  }
+  filterToggle.addEventListener('click',()=>{filtersOpen=!filtersOpen;updateFilters();});
+  updateFilters();
 
   function renderTagPanel(){
     const keyword=canonicalRulebookTag(tagSearch.value);

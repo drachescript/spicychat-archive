@@ -297,7 +297,19 @@ async function main() {
       app.innerHTML='<div class="error">A valid Rulebook ID is needed.</div>';return;
     }
     const prefix=id.replaceAll('-','').slice(0,2);
-    const record=await fetchJson(base+'/rulebooks/'+prefix+'/'+encodeURIComponent(id)+'.json');
+    let record;
+    try {
+      record=await fetchJson(base+'/rulebooks/'+prefix+'/'+encodeURIComponent(id)+'.json');
+    } catch(error) {
+      if(String(error.message||error).includes('HTTP 404')) {
+        app.innerHTML='<section class="table-card"><h1>No saved Rulebook definition</h1>'+
+          '<p>This Rulebook had only listing metadata, not captured rules. It is not a recoverable archive.</p>'+
+          '<a class="secondary-button" href="https://spicychat.ai/rulebook/'+esc(id)+
+          '" target="_blank" rel="noopener noreferrer">Open original on SpicyChat</a></section>';
+        return;
+      }
+      throw error;
+    }
     renderDetail(record,id,seeds);
   } else {
     const index=await fetchJson(base+'/indexes/rulebooks.json');

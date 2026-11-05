@@ -1,4 +1,4 @@
-import {canonicalRulebookTag, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags, rulebookCoverSeedUrl} from './rulebook-filters.js';
+import {canonicalRulebookTag, parseRulebookTags, matchesRulebookTags, toggleRulebookTag, groupedRulebookTags, rulebookCoverSeedUrl, hasSavedPublicRuleContent} from './rulebook-filters.js';
 // Public Rulebook metadata only. Private rule bodies and hidden values are
 // intentionally not in the Archive's Rulebook data source.
 const app = document.getElementById('app');
@@ -110,7 +110,7 @@ function renderBrowse(payload, seeds) {
   app.innerHTML=
     '<section class="hero lorebook-hero"><div><h1>'+title+'</h1>'+
     '<p>'+summary+'</p>'+
-    '<p class="filter-note">Only public listing information is archived. Private rules and hidden values are not included.</p>'+
+    '<p class="filter-note">Public listing metadata is a directory entry, not an archived rule definition. Private rules and hidden values are never stored.</p>'+
     '<div class="detail-actions"><a class="secondary-button" href="../deleted-rulebooks/">No longer public</a>'+
     '<a class="secondary-button" href="../rulebooks/">Still public</a></div></div>'+
     '<div class="lorebook-hero-stats"><div><b>'+fmt(unavailableCount)+'</b><span>Saved, unavailable</span></div>'+
@@ -131,7 +131,7 @@ function renderBrowse(payload, seeds) {
     '<div class="lorebook-toolbar rulebook-toolbar">'+
     '<input id="rb-q" type="search" placeholder="Search Rulebooks or creators" aria-label="Search Rulebooks">'+
     '<select id="rb-status" aria-label="Public availability"><option value="'+only+'">'+(removedView?'No longer public':'Still public')+'</option>'+
-    '<option value="all">All archived</option><option value="'+(removedView?'public':'not-public')+'">'+
+    '<option value="all">All available listings and saved archives</option><option value="'+(removedView?'public':'not-public')+'">'+
     (removedView?'Still public':'No longer public')+'</option></select>'+
     '<select id="rb-sort" aria-label="Sort Rulebooks"><option value="newest">Newest created</option>'+
     '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select></div>'+
@@ -238,8 +238,7 @@ function renderDetail(record, id, seeds) {
   const doc=record.listing||{}, tags=doc.tags||[], versions=record.versions||[],
     statuses=record.statusHistory||[], status=record.status?.current||'unknown';
   const name=doc.name||doc.title||id;
-  if(!record.publicDefinition || record.publicDefinition.visibility!=='shared' ||
-     !Array.isArray(record.publicDefinition.meters) || !record.publicDefinition.meters.length){
+  if(!hasSavedPublicRuleContent(record)){
     app.innerHTML='<section class="table-card"><h1>Rule content was not archived</h1>'+
       '<p>Only a public listing was observed. Titles, tags, cover links and rule counts '+
       'do not preserve the rules themselves. This is not a recoverable Rulebook archive.</p>'+
@@ -271,8 +270,12 @@ function renderDetail(record, id, seeds) {
     '<div><span>Last observed</span><b>'+esc(date(record.lastObservedAt))+'</b></div>'+
     '<div><span>Last updated</span><b>'+esc(date(doc.updatedAt))+'</b></div>'+
     '<div><span>Rulebook ID</span><b class="mono">'+esc(id)+'</b></div></div></section>'+
-    '<section class="table-card"><h2>What was saved?</h2><p>Public listing details and any cover reference SpicyChat shared. '+
-    'Rule content, private configuration and hidden variables are not captured here.</p></section>'+
+    '<section class="table-card"><h2>Saved public Rulebook definition</h2>'+
+    '<p>Shared public meter and rule instructions captured while available. Private and hidden configuration is not included.</p>'+
+    '<div class="lorebook-history-list">'+record.publicDefinition.meters.map((meter,i)=>
+      '<details class="history-detail"><summary>Meter '+(i+1)+': '+
+      esc(meter.name||meter.title||'Untitled meter')+'</summary><div class="pre">'+
+      esc(JSON.stringify(meter,null,2))+'</div></details>').join('')+'</div></section>'+
     '<section class="table-card"><h2>Availability history</h2><div class="lorebook-history-list">'+
     (statuses.length?statuses.slice().reverse().map(x=>
       '<div class="recent-run"><span>'+esc(date(x.at))+'</span><b>'+

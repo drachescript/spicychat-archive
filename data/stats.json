@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T20:53:56Z",
+  "generatedAt": "2026-11-06T08:02:01Z",
   "startedAt": "2026-09-28T00:00:00Z",
-  "totalBots": 1448339,
-  "publicIndexBots": 1430768,
-  "deletedBots": 7481,
-  "latestAdded": 1167,
+  "totalBots": 1448757,
+  "publicIndexBots": 1431133,
+  "deletedBots": 7509,
+  "latestAdded": 418,
   "growth": {
-    "added24h": 2449,
-    "added7d": 10728,
-    "added30d": 46207,
-    "averagePerDay": 1477.2,
-    "observedHours": 920.4,
-    "observedGrowth": 1437070
+    "added24h": 1824,
+    "added7d": 10291,
+    "added30d": 46145,
+    "averagePerDay": 1517.4,
+    "observedHours": 931.5,
+    "observedGrowth": 1437488
   },
   "adaptiveDiscovery": {
     "basePages": 500,
@@ -8464,39 +8464,89 @@
         "writesThisMonth": 69390
       },
       "addedSincePrevious": 1167
+    },
+    {
+      "at": "2026-11-06T08:02:01Z",
+      "kind": "archive-run",
+      "totalBots": 1448757,
+      "publicIndexBots": 1431133,
+      "deletedBots": 7509,
+      "missingBots": 42,
+      "reconciliationGap": 10115,
+      "unreconciledBots": 10115,
+      "runDurationSeconds": 2587,
+      "listings": {
+        "latest": {
+          "found": 1431133,
+          "count": 3500,
+          "new": 418,
+          "changed": 488
+        }
+      },
+      "exploration": {
+        "hits": 0,
+        "new": 0,
+        "changed": 0,
+        "pageBudget": 0,
+        "pagesCompleted": 0,
+        "nextPageBudget": 0,
+        "timeLimited": false,
+        "durationSeconds": 0,
+        "errors": [],
+        "partial": false,
+        "naturalEnd": false,
+        "resultCapReached": false,
+        "switchedToCursor": false
+      },
+      "enrichment": {
+        "attempted": 4760,
+        "enriched": 4711
+      },
+      "images": {
+        "attempted": 100,
+        "saved": 100
+      },
+      "deletedConfirmed": 28,
+      "storage": {
+        "usedBytes": 5121666245,
+        "mediaBytes": 1946728546,
+        "objects": 678018,
+        "writesThisMonth": 75013
+      },
+      "addedSincePrevious": 418
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-05T20:53:56Z",
-    "sampleCount": 178,
-    "latestPublicIndexBots": 1430768,
+    "generatedAt": "2026-11-06T08:02:01Z",
+    "sampleCount": 179,
+    "latestPublicIndexBots": 1431133,
     "firstSampleAt": "2026-09-28T17:36:57Z",
-    "lastSampleAt": "2026-11-05T20:53:56Z",
-    "observedHours": 915.28,
-    "observedNet": 40729,
-    "averagePerDay": 867.6,
+    "lastSampleAt": "2026-11-06T08:02:01Z",
+    "observedHours": 926.42,
+    "observedNet": 41094,
+    "averagePerDay": 1217.3,
     "periods": {
       "24h": {
         "hours": 24,
-        "net": 1351,
+        "net": 1232,
         "complete": true,
-        "spanHours": 37.37,
-        "baselineAt": "2026-11-04T07:31:50Z"
+        "spanHours": 24.29,
+        "baselineAt": "2026-11-05T07:44:42Z"
       },
       "7d": {
         "hours": 168,
-        "net": 7877,
+        "net": 7621,
         "complete": true,
-        "spanHours": 174.29,
-        "baselineAt": "2026-10-29T14:36:45Z"
+        "spanHours": 168.98,
+        "baselineAt": "2026-10-30T07:03:13Z"
       },
       "30d": {
         "hours": 720,
-        "net": 33150,
+        "net": 32351,
         "complete": true,
-        "spanHours": 723.52,
-        "baselineAt": "2026-10-06T17:22:28Z"
+        "spanHours": 720.71,
+        "baselineAt": "2026-10-07T07:19:21Z"
       }
     }
   }

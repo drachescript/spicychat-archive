@@ -25,6 +25,32 @@ class PublishRunFeedTests(unittest.TestCase):
         self.assertIsNone(mod.stop_reason(exploration))
         self.assertTrue(mod.exploration_is_successful(exploration))
 
+    def test_natural_end_of_701_of_1000_pages_is_complete(self):
+        exploration = {
+            "pageBudget": 1000, "pagesCompleted": 701, "naturalEnd": True,
+            "timeLimited": False, "errors": [], "partial": False,
+            "new": 61,
+        }
+        self.assertEqual(mod.classify_run_status("success", exploration), "success")
+        self.assertEqual(mod.discovery_completion(exploration), "results-exhausted")
+        self.assertTrue(mod.exploration_is_successful(exploration))
+        self.assertIsNone(mod.stop_reason(exploration))
+
+    def test_scheduled_maintenance_is_success_without_deep_search(self):
+        exploration = {"pageBudget": 0, "pagesCompleted": 0, "naturalEnd": False,
+                       "timeLimited": False, "errors": []}
+        self.assertEqual(mod.classify_run_status("success", exploration), "success")
+        self.assertEqual(mod.discovery_completion(exploration), "not-run")
+
+    def test_early_stop_without_natural_end_is_partial(self):
+        exploration = {
+            "pageBudget": 1000, "pagesCompleted": 701, "naturalEnd": False,
+            "errors": [], "timeLimited": False,
+        }
+        self.assertEqual(mod.classify_run_status("success", exploration), "partial")
+        self.assertEqual(mod.discovery_completion(exploration, "partial"), "partial")
+        self.assertFalse(mod.exploration_is_successful(exploration))
+
     def test_typesense_error_is_partial_not_success(self):
         exploration = {
             "pageBudget": 1000,
@@ -52,7 +78,7 @@ class PublishRunFeedTests(unittest.TestCase):
         self.assertIsNone(mod.stop_reason(exploration))
         self.assertTrue(mod.exploration_is_successful(exploration))
 
-    def test_clean_result_cap_switch_is_successful_without_natural_end(self):
+    def test_cursor_switch_does_not_falsely_complete_early_sweep(self):
         exploration = {
             "pageBudget": 100,
             "pagesCompleted": 99,
@@ -63,9 +89,9 @@ class PublishRunFeedTests(unittest.TestCase):
             "resultCapReached": True,
             "switchedToCursor": True,
         }
-        self.assertEqual(mod.classify_run_status("success", exploration), "success")
-        self.assertIsNone(mod.stop_reason(exploration))
-        self.assertTrue(mod.exploration_is_successful(exploration))
+        self.assertEqual(mod.classify_run_status("success", exploration), "partial")
+        self.assertIn("verified end", mod.stop_reason(exploration))
+        self.assertFalse(mod.exploration_is_successful(exploration))
 
     def test_legacy_incomplete_run_is_not_assumed_successful(self):
         exploration = {
@@ -124,6 +150,29 @@ class PublishRunFeedTests(unittest.TestCase):
         }
         merged = mod.apply_current_outcome(latest, exploration, outcome)
         self.assertEqual(merged, exploration)
+
+    def test_last_discovery_persists_across_zero_addition_maintenance(self):
+        manual = {
+            "kind": "archive-run", "at": "2026-11-07T00:49:52Z",
+            "addedSincePrevious": 342, "runDurationSeconds": 1377,
+            "exploration": {
+                "pageBudget": 1000, "pagesCompleted": 701, "new": 61,
+                "naturalEnd": True, "errors": [], "partial": False,
+            },
+        }
+        maintenance = {
+            "kind": "archive-run", "at": "2026-11-07T06:57:12Z",
+            "addedSincePrevious": 0,
+            "exploration": {"pageBudget": 0, "pagesCompleted": 0, "new": 0},
+        }
+        last = mod.last_discovery_run([manual, maintenance])
+        self.assertEqual(last["finishedAt"], manual["at"])
+        self.assertEqual(last["addedBots"], 342)
+        self.assertEqual(last["newFromDiscovery"], 61)
+        self.assertEqual(last["pagesCompleted"], 701)
+        self.assertEqual(last["completion"], "results-exhausted")
+        self.assertEqual(last["status"], "success")
+        self.assertIsNone(mod.last_discovery_run([maintenance]))
 
     def test_last_successful_run_skips_ambiguous_incomplete_history(self):
         runs = [

@@ -65,6 +65,13 @@ def _apply_manual_archive_profile(
             int(crawler.get("explore_time_limit_seconds") or 4200), 7200
         )
         crawler["manual_request_delay_seconds"] = 0.15
+    elif target >= 1000:
+        # A successful 1,000-page sweep previously stopped at 961/1,000
+        # when the regular 70-minute discovery timer expired. Keep this
+        # override manual-only; scheduled maintenance is unchanged.
+        crawler["explore_time_limit_seconds"] = max(
+            int(crawler.get("explore_time_limit_seconds") or 4200), 5400
+        )
 
     # Manual workflow_dispatch runs are primarily used to advance the deep
     # Typesense sweep. Scheduled runs already perform the 5,000-bot rolling

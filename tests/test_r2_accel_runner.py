@@ -60,15 +60,19 @@ class ManualArchiveProfileTests(unittest.TestCase):
         base = self.base_config()
         base["crawler"]["explore_pages_max"] = 2500
         base["crawler"]["explore_time_limit_seconds"] = 4200
-        small, _, _ = runner._apply_manual_archive_profile(base, 1000)
+        smaller, _, _ = runner._apply_manual_archive_profile(base, 750)
+        thousand, _, _ = runner._apply_manual_archive_profile(base, 1000)
         middle, middle_target, _ = runner._apply_manual_archive_profile(base, 1500)
         large, large_target, cap = runner._apply_manual_archive_profile(base, 2500)
         self.assertEqual((middle_target, large_target, cap), (1500, 2500, 2500))
+        self.assertEqual(smaller["crawler"]["explore_time_limit_seconds"], 4200)
+        self.assertEqual(thousand["crawler"]["explore_time_limit_seconds"], 5400)
         self.assertEqual(middle["crawler"]["explore_time_limit_seconds"], 7200)
         self.assertEqual(large["crawler"]["explore_time_limit_seconds"], 9000)
         self.assertEqual(middle["crawler"]["manual_request_delay_seconds"], 0.15)
         self.assertEqual(large["crawler"]["manual_request_delay_seconds"], 0.30)
-        self.assertNotIn("manual_request_delay_seconds", small["crawler"])
+        self.assertNotIn("manual_request_delay_seconds", thousand["crawler"])
+        self.assertNotIn("manual_request_delay_seconds", smaller["crawler"])
         self.assertEqual(base["crawler"]["explore_time_limit_seconds"], 4200)
 
     def test_large_manual_guard_targets(self):
@@ -110,6 +114,9 @@ class ScheduledArchiveProfileTests(unittest.TestCase):
         self.assertEqual(scheduled["crawler"]["explore_pages_per_run"], 500)
         self.assertEqual(original["listings"].keys(), {"latest", "trending", "popular"})
         self.assertNotIn("scheduled_latest_only", original["crawler"])
+        self.assertNotIn("manual_discovery_run", scheduled["crawler"])
+        self.assertNotIn("manual_request_delay_seconds", scheduled["crawler"])
+        self.assertNotIn("explore_time_limit_seconds", scheduled["crawler"])
 
     def test_requires_latest_listing_to_avoid_silent_data_loss(self):
         with self.assertRaisesRegex(ValueError, "latest"):

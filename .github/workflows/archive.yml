@@ -24,6 +24,8 @@ on:
           - "500"
           - "750"
           - "1000"
+          - "1500"
+          - "2500"
       full_maintenance:
         description: "Discovery mode only: also run status verification and image maintenance"
         required: true
@@ -43,22 +45,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  archive:
-    if: >-
-      ${{ github.event_name != 'workflow_run' ||
-          (github.event.workflow_run.conclusion == 'success' &&
-           github.event.workflow_run.event == 'workflow_dispatch') }}
+  preflight:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 10
+    outputs:
+      allowed: ${{ steps.cooldown.outputs.allowed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Check manual deep-sweep cooldown
+        id: cooldown
+        shell: bash
+        run: |
+          python scripts/manual_discovery_cooldown.py \
+            --pages "${{ github.event_name == 'workflow_dispatch' && inputs.run_mode != 'import-only' && inputs.discovery_pages || '0' }}" \
+            --github-output "$GITHUB_OUTPUT"
+
+  archive:
+    needs: preflight
+    if: >-
+      ${{ needs.preflight.outputs.allowed == 'true' &&
+          (github.event_name != 'workflow_run' ||
+           (github.event.workflow_run.conclusion == 'success' &&
+            github.event.workflow_run.event == 'workflow_dispatch')) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 210
     env:
       CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
       CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       # Scheduled/probe-triggered runs use latest-first + rolling maintenance.
-      # Manual discovery keeps its explicit 50–1000 page deep-sweep control.
+      # Manual discovery supports 50–2500 page deep-sweep control.
       SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode != 'import-only' && github.event.inputs.discovery_pages || '' }}
-      # Manual deep sweeps default to discovery-only so a 500-1,000 page run does
+      # Manual deep sweeps default to discovery-only so a 500-2,500 page run does
       # not immediately repeat the scheduled 5,000-bot verification + image pass.
       # The checkbox above provides an explicit escape hatch when that is wanted.
       SPICYCHAT_ARCHIVE_MANUAL_FULL_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.full_maintenance && 'true' || 'false' }}

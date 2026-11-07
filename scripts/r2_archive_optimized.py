@@ -542,6 +542,10 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 per_page=min(page_size, max_hits - len(docs)),
                 sort_by=sort_by,
             )
+            # Do not hammer Typesense during exceptional 1,500/2,500-page
+            # manual sweeps. Retry/backoff logic still handles transient faults.
+            if request_pause and completed_pages:
+                time.sleep(request_pause)
             response = client.multi_search([request])
             if not response.ok:
                 return {
@@ -675,6 +679,10 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         result_cap_reached = False
         switched_to_cursor = False
         discovery_started = time.monotonic()
+        request_pause = (
+            min(1.0, max(0.0, float(crawler.get("manual_request_delay_seconds") or 0)))
+            if manual_discovery else 0.0
+        )
 
         discovery_write_soft_limit = int(
             (config.get("storage") or {})

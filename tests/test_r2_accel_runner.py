@@ -56,6 +56,27 @@ class ManualArchiveProfileTests(unittest.TestCase):
         self.assertEqual(target, 50)
         self.assertEqual(config["crawler"]["explore_pages_per_run"], 50)
 
+    def test_large_sweeps_increase_only_manual_time_and_pacing(self):
+        base = self.base_config()
+        base["crawler"]["explore_pages_max"] = 2500
+        base["crawler"]["explore_time_limit_seconds"] = 4200
+        small, _, _ = runner._apply_manual_archive_profile(base, 1000)
+        middle, middle_target, _ = runner._apply_manual_archive_profile(base, 1500)
+        large, large_target, cap = runner._apply_manual_archive_profile(base, 2500)
+        self.assertEqual((middle_target, large_target, cap), (1500, 2500, 2500))
+        self.assertEqual(middle["crawler"]["explore_time_limit_seconds"], 7200)
+        self.assertEqual(large["crawler"]["explore_time_limit_seconds"], 9000)
+        self.assertEqual(middle["crawler"]["manual_request_delay_seconds"], 0.15)
+        self.assertEqual(large["crawler"]["manual_request_delay_seconds"], 0.30)
+        self.assertNotIn("manual_request_delay_seconds", small["crawler"])
+        self.assertEqual(base["crawler"]["explore_time_limit_seconds"], 4200)
+
+    def test_large_manual_guard_targets(self):
+        for selected in (1500, 2500):
+            with self.subTest(selected=selected):
+                with patch.dict(os.environ, {"SPICYCHAT_ARCHIVE_MANUAL_PAGES": str(selected)}):
+                    self.assertEqual(guard._manual_pages(500, 2500), selected)
+
     def test_manual_profile_never_exceeds_configured_max(self):
         config, target, _ = runner._apply_manual_archive_profile(
             self.base_config(),

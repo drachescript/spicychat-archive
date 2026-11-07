@@ -53,6 +53,18 @@ def _apply_manual_archive_profile(
     target = min(configured_max, max(1, int(requested)))
     crawler["explore_pages_per_run"] = target
     crawler["manual_discovery_run"] = True
+    # Larger sweeps get extra runtime headroom and gentler request pacing.
+    # These are one-run overrides, never the scheduled maintenance defaults.
+    if target >= 2500:
+        crawler["explore_time_limit_seconds"] = max(
+            int(crawler.get("explore_time_limit_seconds") or 4200), 9000
+        )
+        crawler["manual_request_delay_seconds"] = 0.30
+    elif target >= 1500:
+        crawler["explore_time_limit_seconds"] = max(
+            int(crawler.get("explore_time_limit_seconds") or 4200), 7200
+        )
+        crawler["manual_request_delay_seconds"] = 0.15
 
     # Manual workflow_dispatch runs are primarily used to advance the deep
     # Typesense sweep. Scheduled runs already perform the 5,000-bot rolling

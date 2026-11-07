@@ -542,10 +542,7 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 per_page=min(page_size, max_hits - len(docs)),
                 sort_by=sort_by,
             )
-            # Do not hammer Typesense during exceptional 1,500/2,500-page
-            # manual sweeps. Retry/backoff logic still handles transient faults.
-            if request_pause and completed_pages:
-                time.sleep(request_pause)
+            # Ranking listings follow the standard Typesense retry path.
             response = client.multi_search([request])
             if not response.ok:
                 return {
@@ -747,6 +744,10 @@ def optimized_configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     sort_by="createdAt:desc",
                 )
 
+            # Pace exceptional 1,500/2,500-page manual deep sweeps only.
+            # Existing Typesense retry/backoff still handles transient faults.
+            if request_pause and completed_pages:
+                time.sleep(request_pause)
             response = client.multi_search([request])
             if not response.ok:
                 errors.append(response.error or f"HTTP {response.status}")

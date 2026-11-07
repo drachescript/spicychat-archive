@@ -56,6 +56,12 @@ def classify_run_status(raw_status: str, exploration: dict[str, Any]) -> str:
         or exploration_errors(exploration)
     ):
         return "partial"
+    budget = int_or_none(exploration.get("pageBudget")) or 0
+    completed = int_or_none(exploration.get("pagesCompleted")) or 0
+    # A genuine end-of-results is complete even when fewer pages than
+    # requested were available. Other early stops must not silently succeed.
+    if budget > 0 and completed < budget and not exploration.get("naturalEnd"):
+        return "partial"
     return "success"
 
 
@@ -67,6 +73,53 @@ def stop_reason(exploration: dict[str, Any]) -> str | None:
         return "Discovery time limit reached before the page budget completed."
     if bool(exploration.get("partial")):
         return "Discovery stopped before the requested crawl completed."
+    budget = int_or_none(exploration.get("pageBudget")) or 0
+    completed = int_or_none(exploration.get("pagesCompleted")) or 0
+    if budget > 0 and completed < budget and not exploration.get("naturalEnd"):
+        return "Discovery stopped before reaching its page budget or a verified end of results."
+    return None
+
+
+def discovery_completion(exploration: dict[str, Any], raw_status: str = "success") -> str:
+    """A short but naturally exhausted catalog is a completed discovery sweep."""
+    if raw_status == "failure":
+        return "failed"
+    if raw_status == "partial" or exploration_errors(exploration) or exploration.get("timeLimited"):
+        return "partial"
+    budget = int_or_none(exploration.get("pageBudget")) or 0
+    done = int_or_none(exploration.get("pagesCompleted")) or 0
+    if budget <= 0:
+        return "not-run"
+    if exploration.get("naturalEnd"):
+        return "results-exhausted"
+    if done >= budget:
+        return "page-budget-met"
+    return "partial"
+
+
+def last_discovery_run(runs: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """Keep the last meaningful sweep visible after scheduled +0 maintenance.
+
+    This is previous-run context, not additions credited to the current run.
+    """
+    for row in reversed(runs):
+        if row.get("kind") != "archive-run":
+            continue
+        exploration = row.get("exploration") or {}
+        if not isinstance(exploration, dict) or (int_or_none(exploration.get("pageBudget")) or 0) <= 0:
+            continue
+        status = classify_run_status("success", exploration)
+        return {
+            "finishedAt": row.get("at"),
+            "durationSeconds": int(row.get("runDurationSeconds") or 0),
+            "addedBots": int(row.get("addedSincePrevious") or 0),
+            "newFromDiscovery": int(exploration.get("new") or 0),
+            "pagesBudget": int(exploration.get("pageBudget") or 0),
+            "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+            "naturalEnd": bool(exploration.get("naturalEnd")),
+            "completion": discovery_completion(exploration, status),
+            "status": status,
+        }
     return None
 
 
@@ -117,10 +170,7 @@ def exploration_is_successful(exploration: Any) -> bool:
         # Older rows did not persist stop reasons. Do not call an ambiguous
         # incomplete historical run successful unless it explicitly says the
         # Typesense pass naturally ran out of hits.
-        return bool(
-            exploration.get("naturalEnd")
-            or exploration.get("switchedToCursor")
-        )
+        return bool(exploration.get("naturalEnd"))
     return budget > 0 and completed >= budget
 
 
@@ -169,7 +219,10 @@ def main() -> int:
     storage = latest.get("storage") or manifest.get("storage") or {}
 
     total = int(stats.get("totalBots") or manifest.get("totalBots") or latest.get("totalBots") or 0)
-    added = int(stats.get("latestAdded") or latest.get("addedSincePrevious") or 0)
+    # Zero is a real result. Never fall back to stale stats when a current
+    # archive-run record explicitly reports zero additions.
+    added = int(latest.get("addedSincePrevious") if "addedSincePrevious" in latest
+                else (stats.get("latestAdded") or 0))
     crawler = config.get("crawler") or {}
     scheduled_pages = int(crawler.get("explore_pages_per_run") or 0)
 
@@ -204,6 +257,8 @@ def main() -> int:
     discovery_share = round((discovery_duration / total_duration) * 100, 1) if total_duration else 0.0
     errors = exploration_errors(exploration)
     reason = stop_reason(exploration)
+    completion = discovery_completion(exploration, run_status)
+    last_discovery = last_discovery_run(runs)
 
     if run_status == "failure":
         run_payload = {
@@ -223,6 +278,14 @@ def main() -> int:
             "scheduledPages": scheduled_pages,
             "pagesBudget": int(exploration.get("pageBudget") or 0),
             "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
+            "discoveryCompletion": completion,
+            "runType": (
+                "manual-discovery"
+                if requested_raw and (int_or_none(requested_raw) or 0) > 0
+                else "scheduled-maintenance"
+                if int(exploration.get("pageBudget") or 0) == 0
+                else "discovery"
+            ),
             "hits": int(exploration.get("hits") or 0),
             # Keep the two discovery surfaces separate. "addedBots" is the
             # authoritative total delta for the batch; newest-first listing
@@ -279,6 +342,7 @@ def main() -> int:
         },
         "run": run_payload,
         "lastSuccessfulRun": last_successful_run(runs, run_status),
+        "lastDiscoveryRun": last_discovery,
         "growth": stats.get("growth") or {},
         "storage": {
             "usedBytes": int(storage.get("usedBytes") or 0),
@@ -303,8 +367,8 @@ def main() -> int:
         )
         print(
             f"Archive feed: status={run_status}; {total:,} total; "
-            f"+{added:,}; {run_payload['pagesCompleted']:,}/{run_payload['pagesBudget']:,} pages; "
-            f"{run_payload['durationSeconds']:,}s total.{suffix}"
+            f"+{added:,}; {run_payload['pagesCompleted']:,}/{run_payload['pagesBudget']:,} pages "
+            f"({completion}); {run_payload['durationSeconds']:,}s total.{suffix}"
         )
     else:
         print(

@@ -38,6 +38,15 @@ on:
       - ".nojekyll"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
+  # GITHUB_TOKEN pushes from crawler/stat workflows do not fire push workflows.
+  # Rebuild the public feed after those workflows finish, including failed runs
+  # that published a failure event for the Discord archive notifier.
+  workflow_run:
+    workflows:
+      - "Update SpicyChat archive"
+      - "Build Archive name, title and tag stats"
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read

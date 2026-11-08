@@ -1,20 +1,20 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-07T23:17:15Z",
+  "generatedAt": "2026-11-08T06:38:46Z",
   "totalBots": 1454470,
-  "activeBots": 1432981,
-  "publicIndexBots": 1432981,
-  "deletedBots": 8835,
+  "activeBots": 1432811,
+  "publicIndexBots": 1432811,
+  "deletedBots": 8917,
   "restrictedBots": 0,
-  "missingBots": 39464,
+  "missingBots": 39196,
   "reconciliation": {
     "trackedBots": 1454470,
-    "publicIndexBots": 1432981,
-    "confirmedGoneBots": 8835,
-    "countGap": 12654,
-    "unreconciledBots": 12654,
+    "publicIndexBots": 1432811,
+    "confirmedGoneBots": 8917,
+    "countGap": 12742,
+    "unreconciledBots": 12742,
     "publicCountBeyondTracked": 0,
-    "pendingVerificationBots": 39464,
+    "pendingVerificationBots": 39196,
     "basis": "arithmetic-only-not-id-reconciliation",
     "countGapIsIdentifiedBotIds": false,
     "fullPerIdPublicComparisonComplete": false,
@@ -711,7 +711,6 @@
       "d45fb1dd-8b4c-490b-975b-c26f79865143",
       "5c80b460-1d36-4120-9765-d80247dfc61a",
       "70dff8e8-ef00-479c-b0ca-050f3c94d55b",
-      "c79dfb34-ea0e-47c9-98ed-b1ee9c2c4acf",
       "d336e339-4dca-4f29-bf9b-72f4d4e78493",
       "1e6bc970-5cac-4624-8ffc-cb4488ff82d0",
       "237561e4-d299-4112-8dcb-343aff576ee0",
@@ -811,7 +810,6 @@
       "6dab5070-5f0e-487f-b0c6-e54a86fd34a2",
       "021a8e13-0d93-40ec-900f-906e25937b5c",
       "5c9f0688-050b-4e9a-a7d3-73376c9e5dee",
-      "7cf78409-3508-4736-9d1e-8b870127be21",
       "019207ee-417c-40cb-8fa0-571a0dcff8e1",
       "789b2489-57a3-4adf-9333-8a6a4760815c",
       "140a3c1e-2fc9-4322-bf2f-a890b773ad7d",
@@ -940,7 +938,6 @@
       "70a637c4-62d5-4e3d-9f50-66f047fd6f2e",
       "b78b41c0-bdd9-4240-9a2c-c305f2515182",
       "673bfa60-1ea1-4495-abb6-c06507b56c92",
-      "05e7dee6-59f4-4acb-9220-6ac2508e7b09",
       "a931244f-0135-45d4-ab43-f17626bbab3a",
       "dc869f20-e196-4a07-a808-4e8e34347783",
       "dd7c6da9-c180-4bdb-8d98-89ef6462d7ac",
@@ -1138,24 +1135,27 @@
       "76a2ad6c-97bc-4eec-bc1c-c4aae6081b4f",
       "b7a29bc0-98c5-490f-8c03-5c5b3ef6a8d6",
       "9be667b1-aaf3-4cb5-bd5c-455d99ae8d81",
-      "58a41352-9ea6-4646-8707-106993d7978f"
+      "58a41352-9ea6-4646-8707-106993d7978f",
+      "eba31f2b-2d7a-4bea-b2cd-cafc12c79ab8",
+      "cf2985c1-0654-49a4-8749-f7f7b53cb676",
+      "24e05cc2-905e-4d7b-a0b3-e4953749ae0b"
     ]
   },
-  "lastScan": "2026-11-07T23:17:15Z",
+  "lastScan": "2026-11-08T06:38:46Z",
   "storageMode": "r2",
   "quotaGuard": {
     "selectedMode": "r2",
     "reasonCodes": [],
     "r2ReadAllowed": true,
-    "checkedAt": "2026-11-07T23:13:58Z"
+    "checkedAt": "2026-11-08T06:38:34Z"
   },
   "storage": {
-    "usedBytes": 5225248804,
-    "mediaBytes": 1983718000,
+    "usedBytes": 5246860570,
+    "mediaBytes": 1989043946,
     "hardLimitBytes": 9000000000,
     "warningBytes": 8000000000,
     "mediaLimitBytes": 2000000000,
-    "writesThisMonth": 116879
+    "writesThisMonth": 122722
   },
   "exploration": {
     "mode": "page",

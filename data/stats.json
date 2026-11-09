@@ -3,7 +3,7 @@
   "generatedAt": "2026-11-09T08:03:31Z",
   "startedAt": "2026-09-28T00:00:00Z",
   "totalBots": 1456963,
-  "publicIndexBots": 145,
+  "publicIndexBots": 1434392,
   "deletedBots": 9977,
   "latestAdded": 0,
   "growth": {
@@ -9209,11 +9209,11 @@
       "at": "2026-11-09T08:03:31Z",
       "kind": "archive-run",
       "totalBots": 1456963,
-      "publicIndexBots": 145,
+      "publicIndexBots": 1434392,
       "deletedBots": 9977,
       "missingBots": 40181,
-      "reconciliationGap": 1446841,
-      "unreconciledBots": 1446841,
+      "reconciliationGap": 12594,
+      "unreconciledBots": 12594,
       "runDurationSeconds": 4672,
       "listings": {
         "latest": {
@@ -9271,40 +9271,41 @@
         "objects": 714370,
         "writesThisMonth": 154068
       },
-      "addedSincePrevious": 0
+      "addedSincePrevious": 0,
+      "publicIndexCountSource": "carried-forward"
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
     "generatedAt": "2026-11-09T08:03:31Z",
-    "sampleCount": 192,
-    "latestPublicIndexBots": 145,
+    "sampleCount": 191,
+    "latestPublicIndexBots": 1434392,
     "firstSampleAt": "2026-09-28T17:36:57Z",
-    "lastSampleAt": "2026-11-09T08:03:31Z",
-    "observedHours": 998.44,
-    "observedNet": -1389894,
-    "averagePerDay": -1385333.8,
+    "lastSampleAt": "2026-11-09T05:39:28Z",
+    "observedHours": 996.04,
+    "observedNet": 44353,
+    "averagePerDay": 1141.4,
     "periods": {
       "24h": {
         "hours": 24,
-        "net": -1432666,
+        "net": 1411,
         "complete": true,
-        "spanHours": 24.82,
-        "baselineAt": "2026-11-08T07:14:16Z"
+        "spanHours": 29.67,
+        "baselineAt": "2026-11-07T23:59:02Z"
       },
       "7d": {
         "hours": 168,
-        "net": -1426774,
+        "net": 7366,
         "complete": true,
-        "spanHours": 168.75,
-        "baselineAt": "2026-11-02T07:18:41Z"
+        "spanHours": 174.7,
+        "baselineAt": "2026-11-01T22:57:42Z"
       },
       "30d": {
         "hours": 720,
-        "net": -1401602,
+        "net": 32894,
         "complete": true,
-        "spanHours": 720.66,
-        "baselineAt": "2026-10-10T07:24:12Z"
+        "spanHours": 725.75,
+        "baselineAt": "2026-10-09T23:54:44Z"
       }
     }
   }

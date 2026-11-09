@@ -545,6 +545,13 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
     legacy.archive_images = cloud_archive_images
 
+    def requeue_missing(bot_id: str, checks: dict[str, dict[str, Any]]) -> None:
+        # Move an unresolved candidate behind IDs not yet checked in this
+        # catch-up cycle. JSON preserves this insertion order across runs.
+        pending = checks.pop(bot_id, None)
+        if pending is not None:
+            checks[bot_id] = pending
+
     def cloud_verify_missing(client, config, at: str, state: dict[str, Any], seen_public: set[str]):
         checks = state.setdefault("missingChecks", {})
         required = max(2, int(config["crawler"].get("deleted_confirmations_required", 2)))
@@ -608,11 +615,11 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     checks.pop(bot_id, None)
                     cleared += 1
                 else:
-                    checks[bot_id] = checks.pop(bot_id)
+                    requeue_missing(bot_id, checks)
                 continue
             info["lastAt"] = at
             info["lastStatus"] = response.status
-            checks[bot_id] = checks.pop(bot_id)
+            requeue_missing(bot_id, checks)
 
         result = {"verified": verified, "deleted": deleted, "restored": restored,
                   "cleared": cleared, "pendingBefore": started_with,

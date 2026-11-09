@@ -70,7 +70,9 @@ jobs:
            (github.event.workflow_run.conclusion == 'success' &&
             github.event.workflow_run.event == 'workflow_dispatch')) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 210
+    # Give the exceptional 2,500-page manual sweep time to finish discovery
+    # plus post-processing; preserve the normal 210m limit for other runs.
+    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode == 'discovery' && inputs.discovery_pages == '2500' && 270 || 210 }}
     env:
       CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}

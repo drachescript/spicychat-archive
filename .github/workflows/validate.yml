@@ -7,6 +7,7 @@ on:
       - "tests/**"
       - "assets/**"
       - "flagged/**"
+      - "inconclusive/**"
       - "worker/**"
       - ".github/workflows/**"
   workflow_dispatch:
@@ -35,6 +36,7 @@ jobs:
         run: |
           node --check assets/app.js
           node --check assets/flagged.js
+          node --check assets/inconclusive.js
           node --check assets/flagged-rules.js
           node --check worker/src/index.js
           node --check assets/bot-dates.js

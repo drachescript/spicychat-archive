@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Public, unlisted review of inconclusive archive bot status checks.">
+  <title>Inconclusive bot checks · SpicyChat Archive</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/archive.css">
+  <link rel="stylesheet" href="../assets/inconclusive.css">
+  <script defer src="../assets/site-shell.js"></script>
+</head>
+<body data-page="inconclusive">
+  <header class="archive-unified-header"><div class="archive-head-inner"><a class="archive-head-brand" href="../"><span class="archive-head-mark">SA</span><span class="archive-head-title"><b>SpicyChat Archive</b><small>Independent historical archive</small></span></a></div></header>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Inconclusive bot checks</h1>
+      <p>Review archived bot IDs whose Character API checks returned an error, an empty response, or a first 404 still awaiting independent confirmation.</p>
+    </section>
+
+    <section class="ic-panel">
+      <p><strong>Nothing here is automatically designated deleted.</strong> An HTTP 403, timeout, 429, 5xx, empty payload, or a single 404 is not proof a bot is unavailable. The archive will keep retrying on scheduled runs and removes resolved cases automatically.</p>
+      <p>This unlisted page is public but not linked from the main navigation. All data comes from the existing verification queue; loading it does not run a new scan or spend R2 bot reads.</p>
+    </section>
+
+    <section class="ic-panel" aria-label="Search and filter">
+      <div class="ic-controls">
+        <label>Show
+          <select id="ic-filter">
+            <option value="api-error">API errors</option>
+            <option value="empty-response">Empty 200 responses</option>
+            <option value="awaiting-confirmation">Waiting for second 404</option>
+            <option value="all">All review candidates</option>
+          </select>
+        </label>
+        <label class="ic-grow">Find bot ID
+          <input id="ic-search" type="search" placeholder="Paste bot ID or part of it" autocomplete="off">
+        </label>
+        <label>Reviewed
+          <select id="ic-reviewed">
+            <option value="all">All cases</option>
+            <option value="pending">No manual designation</option>
+            <option value="reviewed">Manually designated</option>
+          </select>
+        </label>
+      </div>
+      <div class="ic-summary" id="ic-summary">Loading review index…</div>
+      <p class="ic-subtle" id="ic-updated"></p>
+    </section>
+
+    <section class="ic-panel">
+      <h2>Correction JSON</h2>
+      <p>On any bot below, set a proposed designation, add a note or evidence link, and save a draft locally. Then copy or download the combined JSON and place it in <code>data/inconclusive-corrections.json</code> on GitHub. The next successful archive run picks up your review notes.</p>
+      <p><strong>Manual designations are annotations, not verified availability.</strong> They do not override Character API evidence. Confirmed API outcomes automatically clear the review case and its saved annotation.</p>
+      <div class="ic-actions">
+        <button id="ic-copy" type="button">Copy corrections JSON</button>
+        <button id="ic-download" type="button">Download corrections JSON</button>
+        <a href="https://github.com/drachescript/spicychat-archive/edit/main/data/inconclusive-corrections.json" target="_blank" rel="noopener noreferrer">Edit JSON on GitHub</a>
+      </div>
+      <p class="ic-subtle" id="ic-draft-status" aria-live="polite"></p>
+    </section>
+
+    <section class="ic-results">
+      <div class="ic-results-head"><h2>Review candidates</h2><span id="ic-result-count"></span></div>
+      <div id="ic-list" class="ic-cards" aria-live="polite"></div>
+      <button id="ic-more" type="button" hidden>Show more</button>
+    </section>
+  </main>
+  <script type="module" src="../assets/inconclusive.js"></script>
+</body>
+</html>

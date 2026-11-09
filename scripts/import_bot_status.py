@@ -50,7 +50,7 @@ PUBLIC_IMPORT_FIELDS = {
     "character_id", "characterId", "id", "uuid",
     # Authored/public character data
     "name", "title", "description", "greeting", "greetings",
-    "alternate_greetings", "personality", "scenario",
+    "alternate_greetings", "personality", "scenario", "dialogue",
     "example_dialogue", "example_dialogues", "definition", "persona",
     "character_definition", "characterDefinition", "system_prompt",
     "post_history_instructions",
@@ -69,16 +69,20 @@ QOL_NESTED_FIELD_ALIASES = {
     "title": "title",
     "description": "description",
     "greeting": "greeting",
-    "personality": "personality",
+    "personality": "persona",
     "scenario": "scenario",
-    "exampleDialogues": "example_dialogues",
+    "exampleDialogues": "dialogue",
     "tags": "tags",
     "visibility": "visibility",
-    "creator": "creator",
-    "image": "image",
+    "creator": "creator_username",
+    "image": "avatar_url",
     "messageCount": "num_messages",
     "rating": "rating_score",
     "tokenCount": "token_count",
+    "isNsfw": "is_nsfw",
+    "avatarIsNsfw": "avatar_is_nsfw",
+    "definitionVisible": "definition_visible",
+    "hasLorebooks": "has_lorebooks",
 }
 
 
@@ -171,6 +175,25 @@ def sanitize_snapshot(snapshot: dict[str, Any], bot_id: str) -> dict[str, Any]:
     for source_key, archive_key in QOL_NESTED_FIELD_ALIASES.items():
         if archive_key not in clean and source_key in nested_fields:
             clean[archive_key] = deepcopy(nested_fields[source_key])
+
+    # QoL exports and the Character API can use different keys for the same
+    # public field. Align imported copies with the Character API record shape
+    # before deduplication/indexing, without touching verified status/history.
+    # Keep title and description separate: their meanings can differ.
+    aliases = {
+        "creator_username": ("creator",),
+        "avatar_url": ("avatar", "image"),
+        "persona": ("personality",),
+        "dialogue": ("example_dialogue", "example_dialogues"),
+    }
+    for canonical, alternatives in aliases.items():
+        if not legacy.meaningful(clean.get(canonical)):
+            for alias in alternatives:
+                if legacy.meaningful(clean.get(alias)):
+                    clean[canonical] = deepcopy(clean[alias])
+                    break
+        for alias in alternatives:
+            clean.pop(alias, None)
 
     # One canonical ID makes downstream archive helpers deterministic.
     clean["character_id"] = bot_id.lower()

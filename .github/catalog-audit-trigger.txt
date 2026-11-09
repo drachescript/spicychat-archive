@@ -1,0 +1,4 @@
+One-time public catalog baseline completion request, initiated 2026-11-09.
+Resume the existing public Typesense wildcard cursor, preserving already processed pages and change history.
+After reaching a natural end, queue missing IDs and perform at most 2,000 Character API verification probes; require independent repeated 404s for deletions.
+Do not bypass R2 free-tier guards or scheduled archive writer concurrency.

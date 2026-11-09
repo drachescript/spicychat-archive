@@ -503,7 +503,7 @@ function toolbar(state,deletedOnly){
 function tsLiteral(value){return `\`${String(value).replace(/\\/g,'\\\\').replace(/`/g,'\\`')}\``;}
 function buildTsFilter(runtime,state){
   const parts=[runtime.typesense.baseFilter];
-  if(state.creator)parts.push(`creator_username:${tsLiteral(state.creator+'*')}`);
+  if(state.creator){const term=state.creator.trim();parts.push(`creator_username:${/^[a-z0-9_-]+$/i.test(term)?term+'*':tsLiteral(term+'*')}`);}
   if(state.definition==='exposed')parts.push('definition_visible:=true'); else if(state.definition==='hidden')parts.push('definition_visible:=false');
   if(state.definitionSize&&state.definitionSize!=='any')parts.push(`definition_size_category:=${tsLiteral(state.definitionSize)}`);
   if(state.lorebook==='yes')parts.push('has_lorebooks:=true'); else if(state.lorebook==='no')parts.push('has_lorebooks:=false');

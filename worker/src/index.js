@@ -146,6 +146,109 @@ async function handleArchiveFieldPresence(request, env) {
   return json({ ok: true, fields });
 }
 
+
+// On-demand, text-only snapshot for link-based archive research. One R2 GET
+// on a cache miss; no listing, crawl, database writes or background jobs.
+// The public endpoint must not disclose unverified QoL-only imports.
+const PUBLIC_ARCHIVE_SOURCES = ["character-api", "typesense", "typesense:trending", "typesense:popular", "typesense:top-rated", "typesense:explore"];
+function verifiedArchivedPublic(record) {
+  const status = String(record?.status?.current || "").toLowerCase();
+  if (status !== "public" && status !== "deleted") return false;
+  return (Array.isArray(record?.availabilityHistory) ? record.availabilityHistory : []).some(row => {
+    const source = String(row?.source || "").toLowerCase();
+    return String(row?.status || "").toLowerCase() === "public" &&
+      (source === "character-api" || source === "typesense" || source.startsWith("typesense:"));
+  });
+}
+function archivePublicField(record, names) {
+  const current = record?.current && typeof record.current === "object" ? record.current : {};
+  for (const source of PUBLIC_ARCHIVE_SOURCES) {
+    const row = current[source];
+    if (!row || typeof row !== "object") continue;
+    for (const name of names) if (archiveMeaningful(row[name])) return row[name];
+  }
+  // Older public fields may no longer exist in the latest source snapshot.
+  // Keep only content from trusted public crawler observations, not QoL imports.
+  const history = Array.isArray(record?.fieldHistory) ? record.fieldHistory : [];
+  for (let i = history.length - 1; i >= 0; i--) {
+    const entry = history[i];
+    if (!entry || !PUBLIC_ARCHIVE_SOURCES.includes(String(entry.source || ""))) continue;
+    const leaf = String(entry.path || "").split(".").pop();
+    if (!names.includes(leaf)) continue;
+    if (archiveMeaningful(entry.to)) return entry.to;
+    if (archiveMeaningful(entry.from)) return entry.from;
+  }
+  return null;
+}
+function archiveBotText(record, botId) {
+  const sections = [
+    ["Name", ["name"]],
+    ["Title", ["title", "description"]],
+    ["Creator", ["creator_username", "creator"]],
+    ["Tags", ["tags"]],
+    ["Greeting", ["greeting", "greetings"]],
+    ["Personality", ["persona", "personality", "definition", "character_definition", "characterDefinition"]],
+    ["Scenario", ["scenario"]],
+    ["Example Dialogue", ["dialogue", "example_dialogue", "example_dialogues"]],
+  ];
+  const lines = [
+    "SpicyChat Archive — publicly observed bot record",
+    "Bot ID: " + botId,
+    "Archive page: https://spicychatarchive.drache.uk/bot/?id=" + botId,
+    "Original URL: https://spicychat.ai/chatbot/" + botId,
+    "Last archive observation: " + String(record.lastSeenAt || "unknown"),
+    "Last verified status: " + String(record?.status?.current || "unknown"),
+    "Historical snapshot. A saved field does not prove it is still public or current.",
+  ];
+  for (const [label, names] of sections) {
+    const value = archivePublicField(record, names);
+    if (!archiveMeaningful(value)) continue;
+    const full = Array.isArray(value) ? value.map(String).join(", ") : typeof value === "string" ? value : "";
+    if (!full.trim()) continue;
+    const max = 20000;
+    lines.push("", "## " + label, full.length > max ? full.slice(0, max) + "\n[Truncated; open the Archive page for more.]" : full);
+  }
+  return lines.join("\n") + "\n";
+}
+async function handleArchiveBotText(request, env, botId) {
+  const id = validArchiveBotId(botId);
+  if (!id) return json({ ok: false, error: "invalid_bot_id" }, 400);
+  const cache = globalThis.caches?.default;
+  const cacheRequest = new Request(new URL("/api/archive/bot/" + id + ".txt", request.url).href);
+  if (cache) {
+    try { const cached = await cache.match(cacheRequest); if (cached) return cached; } catch {}
+  }
+  const recordKey = "bots/" + id.replaceAll("-", "").slice(0, 2) + "/" + id + ".json";
+  let record;
+  try { record = await readArchiveJson(env.ARCHIVE_BUCKET, recordKey); }
+  catch { return json({ ok: false, error: "archive_read_unavailable" }, 503); }
+  const visible = record && String(record.id || "").toLowerCase() === id && verifiedArchivedPublic(record);
+  const response = visible
+    ? new Response(archiveBotText(record, id), {
+        status: 200,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "public, max-age=21600",
+          "Content-Disposition": 'inline; filename="spicychat-archive-' + id + '.txt"',
+          "X-Robots-Tag": "noindex, nofollow",
+          "Access-Control-Allow-Origin": "*",
+        }
+      })
+    : new Response("No publicly verified archived bot record is available for this ID.\n", {
+        status: 404,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "public, max-age=300",
+          "X-Robots-Tag": "noindex, nofollow",
+          "Access-Control-Allow-Origin": "*",
+        }
+      });
+  if (cache) {
+    try { await cache.put(cacheRequest, response.clone()); } catch {}
+  }
+  return response;
+}
+
 async function sameToken(left, right) {
   if (!left || !right) return false;
   const enc = new TextEncoder();
@@ -999,9 +1102,16 @@ export default {
         adminSubmissionEndpoint: "/api/admin/submissions",
         translationEndpoint: "/api/translate",
         archiveFieldPresenceEndpoint: "/api/archive-field-presence",
+        publicBotTextEndpoint: "/api/archive/bot/{uuid}.txt",
       });
     }
 
+
+    // One validated ID per request. Never enumerate the R2 archive.
+    const readableBot = url.pathname.match(/^\/api\/archive\/bot\/([^/]+)\.txt$/i);
+    if (request.method === "GET" && readableBot) {
+      return handleArchiveBotText(request, env, readableBot[1]);
+    }
 
     if (request.method === "POST" && url.pathname === "/api/translate") {
       return handleTranslation(request);

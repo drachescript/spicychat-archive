@@ -14,6 +14,7 @@ import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from copy import deepcopy
 from pathlib import Path
+from inconclusive_review import publish_review_files
 from typing import Any, Iterable
 
 import archive as legacy
@@ -606,6 +607,14 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             verified += 1
             if response.ok:
                 payload = legacy.unwrap_character_payload(response.data)
+                if not payload:
+                    # The Character API sometimes returns 200 + {}. That is
+                    # not evidence that a bot is accessible or gone.
+                    info["lastAt"] = at
+                    info["lastStatus"] = 200
+                    info["errorKind"] = "empty-character-payload"
+                    requeue_missing(bot_id, checks)
+                    continue
                 record = load_bot(bot_id)
                 was_deleted = bool(record and (record.get("status") or {}).get("current") == "deleted")
                 if payload:
@@ -622,6 +631,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 info["count"] = int(info.get("count") or 0) + 1
                 info["lastAt"] = at
                 info["lastStatus"] = 404
+                info.pop("errorKind", None)
                 if info["count"] >= required:
                     record = load_bot(bot_id)
                     if record and (record.get("status") or {}).get("current") != "deleted":
@@ -645,6 +655,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 continue
             info["lastAt"] = at
             info["lastStatus"] = response.status
+            info["errorKind"] = "http-" + str(response.status) if response.status else "transport-error"
             requeue_missing(bot_id, checks)
 
         result = {"verified": verified, "deleted": deleted, "restored": restored,
@@ -846,6 +857,14 @@ def run() -> int:
     print(f"SpicyChat Archive storage: Cloudflare R2 bucket {store.bucket}")
     state, bloom = configure_cloud(config, store)
     rc = legacy.run()
+
+    # Publish a tiny browser-review index directly from the in-memory queue.
+    # Do not enumerate R2 records or make additional Character API requests.
+    if rc == 0:
+        publish_review_files(
+            ROOT / "data", state, str(state.get("lastRunAt") or legacy.utc_now()),
+            required=int((config.get("crawler") or {}).get("deleted_confirmations_required", 2)),
+        )
 
     # Persist only compact state objects to R2. The Git repo no longer receives
     # millions of bot JSON/image files or an ever-growing UUID queue.

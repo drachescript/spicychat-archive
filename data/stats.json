@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T08:03:31Z",
+  "generatedAt": "2026-11-09T10:00:40Z",
   "startedAt": "2026-09-28T00:00:00Z",
   "totalBots": 1456963,
   "publicIndexBots": 1434392,
@@ -8,10 +8,10 @@
   "latestAdded": 0,
   "growth": {
     "added24h": 2493,
-    "added7d": 14207,
-    "added30d": 49082,
-    "averagePerDay": 2036.1,
-    "observedHours": 1002.9,
+    "added7d": 14206,
+    "added30d": 48746,
+    "averagePerDay": 2000.4,
+    "observedHours": 1005.0,
     "observedGrowth": 1445694
   },
   "adaptiveDiscovery": {
@@ -9212,8 +9212,8 @@
       "publicIndexBots": 1434392,
       "deletedBots": 9977,
       "missingBots": 40181,
-      "reconciliationGap": 12594,
-      "unreconciledBots": 12594,
+      "reconciliationGap": 1446841,
+      "unreconciledBots": 1446841,
       "runDurationSeconds": 4672,
       "listings": {
         "latest": {
@@ -9271,13 +9271,82 @@
         "objects": 714370,
         "writesThisMonth": 154068
       },
-      "addedSincePrevious": 0,
-      "publicIndexCountSource": "carried-forward"
+      "publicIndexCountSource": "carried-forward",
+      "addedSincePrevious": 0
+    },
+    {
+      "at": "2026-11-09T10:00:40Z",
+      "kind": "archive-run",
+      "totalBots": 1456963,
+      "publicIndexBots": 1434392,
+      "deletedBots": 9977,
+      "missingBots": 30990,
+      "reconciliationGap": 12594,
+      "unreconciledBots": 12594,
+      "runDurationSeconds": 4192,
+      "listings": {
+        "latest": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "trending": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "top-rated": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "popular": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        }
+      },
+      "exploration": {
+        "hits": 0,
+        "new": 0,
+        "changed": 0,
+        "pageBudget": 0,
+        "pagesCompleted": 0,
+        "nextPageBudget": 0,
+        "timeLimited": false,
+        "durationSeconds": 0,
+        "errors": [],
+        "partial": false,
+        "naturalEnd": false,
+        "resultCapReached": false,
+        "switchedToCursor": false
+      },
+      "enrichment": {
+        "attempted": 0,
+        "enriched": 0
+      },
+      "images": {
+        "attempted": 0,
+        "saved": 0
+      },
+      "deletedConfirmed": 0,
+      "storage": {
+        "usedBytes": 5302583479,
+        "mediaBytes": 1999994650,
+        "objects": 714371,
+        "writesThisMonth": 163595
+      },
+      "publicIndexCountSource": "carried-forward",
+      "addedSincePrevious": 0
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-09T08:03:31Z",
+    "generatedAt": "2026-11-09T10:00:40Z",
     "sampleCount": 191,
     "latestPublicIndexBots": 1434392,
     "firstSampleAt": "2026-09-28T17:36:57Z",

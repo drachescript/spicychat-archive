@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T08:03:37Z",
-  "runId": "github:42574960270:1",
+  "generatedAt": "2026-11-09T10:00:47Z",
+  "runId": "github:42588811737:1",
   "status": "success",
   "archive": {
     "totalBots": 1456963,
@@ -10,10 +10,10 @@
     "startedAt": "2026-09-28T00:00:00Z"
   },
   "run": {
-    "finishedAt": "2026-11-09T08:03:31Z",
-    "durationSeconds": 4672,
+    "finishedAt": "2026-11-09T10:00:40Z",
+    "durationSeconds": 4192,
     "addedBots": 0,
-    "deletedConfirmed": 173,
+    "deletedConfirmed": 0,
     "pagesRequested": 500,
     "scheduledPages": 500,
     "pagesBudget": 0,
@@ -27,8 +27,8 @@
     "newFromDiscovery": 0,
     "changedIngestRecords": 0,
     "discoveryDurationSeconds": 0,
-    "nonDiscoveryDurationSeconds": 4672,
-    "discoverySharePercent": 0,
+    "nonDiscoveryDurationSeconds": 4192,
+    "discoverySharePercent": 0.0,
     "timeLimited": false,
     "naturalEnd": false,
     "resultCapReached": false,
@@ -39,7 +39,7 @@
     "enriched": 0,
     "imagesAttempted": 0,
     "imagesSaved": 0,
-    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/42574960270",
+    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/42588811737",
     "newOther": 0
   },
   "lastSuccessfulRun": null,
@@ -56,21 +56,21 @@
   },
   "growth": {
     "added24h": 2493,
-    "added7d": 14207,
-    "added30d": 49082,
-    "averagePerDay": 2036.1,
-    "observedHours": 1002.9,
+    "added7d": 14206,
+    "added30d": 48746,
+    "averagePerDay": 2000.4,
+    "observedHours": 1005.0,
     "observedGrowth": 1445694
   },
   "storage": {
-    "usedBytes": 5301870528,
+    "usedBytes": 5302583479,
     "mediaBytes": 1999994650,
-    "objects": 714370,
-    "writesThisMonth": 154068
+    "objects": 714371,
+    "writesThisMonth": 163595
   },
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-09T08:03:31Z",
+    "generatedAt": "2026-11-09T10:00:40Z",
     "sampleCount": 191,
     "latestPublicIndexBots": 1434392,
     "firstSampleAt": "2026-09-28T17:36:57Z",

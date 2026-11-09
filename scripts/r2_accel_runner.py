@@ -109,7 +109,8 @@ def _apply_missing_verification_profile(config: dict, *, budget: int = 10000) ->
     crawler["maintenance_verification_enabled"] = False
     crawler["image_archive_enabled"] = False
     crawler["missing_verification_budget"] = max(1, min(10000, int(budget)))
-    config["listings"] = {}
+    # Keep listing *configuration* for the published runtime/sort selectors.
+    # maintenance_scan_listing() skips the actual requests for this profile.
     return config
 
 

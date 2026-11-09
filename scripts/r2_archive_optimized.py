@@ -1018,8 +1018,23 @@ def _public_stats(history: dict[str, Any], config: dict[str, Any], manifest: dic
     keep = max(24, int((config.get("site") or {}).get("public_stats_history_points") or 480))
     public_runs = []
     prev_total = None
+    last_public_observation = 0
     for row in runs[-keep:]:
         item = dict(row)
+        listing_info = item.get("listings") or {}
+        measured_public = [
+            int((info or {}).get("found") or 0)
+            for info in listing_info.values()
+            if isinstance(info, dict) and int(info.get("found") or 0) > 0
+        ] if isinstance(listing_info, dict) else []
+        if measured_public:
+            last_public_observation = max(measured_public)
+        elif isinstance(listing_info, dict) and listing_info and last_public_observation:
+            # R2 stats-history may contain an older verification-only run
+            # recorded before the no-scan-count fix. Repair its published
+            # presentation without a rewrite/extra R2 operation.
+            item["publicIndexBots"] = last_public_observation
+            item["publicIndexCountSource"] = "carried-forward"
         total = int(item.get("totalBots") or 0)
         item["addedSincePrevious"] = None if prev_total is None else max(0, total - prev_total)
         prev_total = total

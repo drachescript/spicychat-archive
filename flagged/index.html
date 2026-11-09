@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Unlisted, on-demand review of potential SpicyChat community guideline signals. Not a moderation verdict.">
+  <title>Guideline Review · SpicyChat Archive</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/archive.css">
+  <link rel="stylesheet" href="../assets/flagged.css">
+  <script defer src="/assets/site-shell.js"></script>
+</head>
+<body data-page="flagged">
+  <header class="archive-unified-header"><div class="archive-head-inner"><a class="archive-head-brand" href="../"><span class="archive-head-mark">SA</span><span class="archive-head-title"><b>SpicyChat Archive</b><small>Independent historical archive</small></span></a></div></header>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Guideline review</h1>
+      <p>An unlisted, publicly accessible research page for <b>possible</b> guideline concerns in current public or previously verified-restored bots. A keyword signal is not a proven violation or a finding of illegal activity.</p>
+    </section>
+    <section class="fg-info">
+      <p><strong>No moderation decisions.</strong> Nothing here deletes, blocks, demotes, modifies, or reports a bot. Original archive pages remain available. Human review is required, especially for realistic images and context-dependent topics.</p>
+      <p>Checks are voluntary and on-demand. Normal discovery uses the existing public Typesense listing index (no Archive R2 bot reads). Including historical restorations fetches one existing compact index, not individual bot files. Results are samples, <b>not</b> a complete audit of the archive.</p>
+      <p><a href="https://docs.spicychat.ai/community-guidelines" target="_blank" rel="noopener noreferrer">SpicyChat Community Guidelines</a> · <a href="../bots/">Public bots</a> · <a href="../restored/">Restored bots</a></p>
+    </section>
+    <section class="fg-panel" aria-label="Guideline review controls">
+      <div class="fg-controls">
+        <label>Category
+          <select id="fg-category"><option value="all">All review categories</option></select>
+        </label>
+        <label class="fg-wide">Single bot ID or link
+          <input id="fg-bot-id" type="text" autocomplete="off" spellcheck="false" placeholder="SpicyChat / Archive URL or bot UUID">
+        </label>
+        <button type="button" id="fg-check-one">Check this ID</button>
+        <button type="button" id="fg-scan">Check a bounded sample of public listings</button>
+      </div>
+      <div class="fg-toggles">
+        <label><input id="fg-restored" type="checkbox"> Also check verified restoration history (one indexed R2 read)</label>
+        <label><input id="fg-show-images" type="checkbox"> Reveal NSFW avatar thumbnails</label>
+        <label><input id="fg-hide-marked" type="checkbox"> Hide locally reviewed cards</label>
+      </div>
+      <p class="fg-note">Avatar appearance is <b>not automatically classified</b>. Review thumbnails yourself; text indicators cannot establish whether a picture depicts an actual person. No facial recognition, AI moderation API, reporting, or background scan is used.</p>
+    </section>
+    <section class="fg-results" aria-live="polite">
+      <div class="fg-results-header"><h2>Review candidates</h2><span id="fg-count">No checks run</span></div>
+      <div id="fg-status" class="fg-note">Choose a category and check a sample, or paste a specific bot ID. These checks are not exhaustive.</div>
+      <div id="fg-list" class="fg-grid"></div>
+    </section>
+  </main>
+  <script type="module" src="../assets/flagged.js"></script>
+</body>
+</html>

@@ -42,6 +42,7 @@ def _apply_manual_archive_profile(
     requested: int,
     *,
     full_maintenance: bool = False,
+    catalog_audit: bool = False,
 ) -> tuple[dict, int, int]:
     """Build the in-memory config used by workflow_dispatch archive runs."""
     config = deepcopy(config)
@@ -85,9 +86,16 @@ def _apply_manual_archive_profile(
     # Character API verification and image maintenance every six hours, so
     # repeating those jobs after a 500-1,000 page manual sweep wastes ~30m.
     # Keep a manual escape hatch for the rare run that intentionally wants both.
-    if not full_maintenance:
+    if not full_maintenance or catalog_audit:
         crawler["maintenance_verification_enabled"] = False
         crawler["image_archive_enabled"] = False
+
+    if catalog_audit:
+        # Finish the saved wildcard cursor, record changed listing metadata,
+        # and only after reaching a natural end verify suspects from the pass.
+        # Limit API probes per run; never trust listing absence as a deletion.
+        crawler["catalog_audit_run"] = True
+        crawler["missing_verification_budget"] = 2000
 
     return config, target, configured_max
 
@@ -136,20 +144,25 @@ def _install_manual_archive_target() -> None:
         return
 
     original_load_config = legacy.load_config
-    full_maintenance = _manual_full_maintenance_requested()
+    catalog_audit = os.environ.get(
+        "SPICYCHAT_ARCHIVE_CATALOG_AUDIT", ""
+    ).strip().lower() in {"1", "true", "yes", "on"}
+    full_maintenance = _manual_full_maintenance_requested() and not catalog_audit
 
     def load_config_with_manual_target():
         config, target, configured_max = _apply_manual_archive_profile(
             original_load_config(),
             requested,
             full_maintenance=full_maintenance,
+            catalog_audit=catalog_audit,
         )
         # Manual runs are intentionally one-off. The checked-in config remains
         # at its normal scheduled target, and no config file is rewritten here.
         suffix = (
-            "full maintenance enabled"
-            if full_maintenance
-            else "discovery-only: rolling verification + images skipped"
+            "catalog completion: current public pass, then bounded missing-ID checks"
+            if catalog_audit else
+            "full maintenance enabled" if full_maintenance else
+            "discovery-only: rolling verification + images skipped"
         )
         print(
             f"Manual discovery target: {target} pages for this run "

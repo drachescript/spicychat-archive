@@ -2,17 +2,17 @@
   "schemaVersion": 3,
   "generatedAt": "2026-11-09T06:45:47Z",
   "totalBots": 1456963,
-  "activeBots": 145,
-  "publicIndexBots": 145,
+  "activeBots": 1434392,
+  "publicIndexBots": 1434392,
   "deletedBots": 9977,
   "restrictedBots": 0,
   "missingBots": 40181,
   "reconciliation": {
     "trackedBots": 1456963,
-    "publicIndexBots": 145,
+    "publicIndexBots": 1434392,
     "confirmedGoneBots": 9977,
-    "countGap": 1446841,
-    "unreconciledBots": 1446841,
+    "countGap": 12594,
+    "unreconciledBots": 12594,
     "publicCountBeyondTracked": 0,
     "pendingVerificationBots": 40181,
     "basis": "arithmetic-only-not-id-reconciliation",
@@ -411,5 +411,7 @@
     "found": 145,
     "cursorCreatedAt": null,
     "lastCreatedAt": null
-  }
+  },
+  "publicIndexCountSource": "carried-forward",
+  "publicIndexLastObservedAt": "2026-11-09T05:39:28Z"
 }

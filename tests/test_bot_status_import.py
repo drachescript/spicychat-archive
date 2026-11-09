@@ -41,7 +41,7 @@ class BotStatusImportTests(unittest.TestCase):
         }
         clean = imp.sanitize_snapshot(snapshot, "abc")
         self.assertEqual(clean["name"], "Test Bot")
-        self.assertIn("personality", clean)
+        self.assertIn("persona", clean)
         self.assertNotIn("messages", clean)
         self.assertNotIn("cookies", clean)
         self.assertNotIn("extensionSettings", clean)
@@ -155,7 +155,7 @@ class BotStatusImportTests(unittest.TestCase):
         self.assertEqual(bot_id, "abc")
         self.assertEqual(saved_at, "2026-09-20T12:00:00Z")
         self.assertEqual(snapshot["character_id"], "abc")
-        self.assertEqual(snapshot["personality"], "P")
+        self.assertEqual(snapshot["persona"], "P")
 
     def test_preload_uses_one_r2_read_per_unique_uncached_bot(self):
         class FakeStore:

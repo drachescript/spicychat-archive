@@ -32,6 +32,28 @@ test('youthful cues are reviewed but adult statements do not trigger by themselv
  assert.deepEqual(reviewSignals(bot('Kidnapper')).map(x=>x.id),[]);
  assert.deepEqual(reviewSignals(bot('18 years old')).map(x=>x.id),[]);
 });
+test('underage review ignores parenting, updates, age disclaimers, and negations',()=>{
+ const ordinary=[
+  'You cannot bear his child so his secretary did',
+  'A father with three children',
+  'Minor update and new lorebook',
+  'He punishes even minor mistakes',
+  'His child is the heir',
+  'She is NOT UNDERAGE',
+  'No underage content',
+  "They're 19, not underage",
+  'Teenager character aged up to 19',
+  'Rebellious teenager age=18',
+  'All characters are 18+ schoolgirls',
+  'A teenager who is explicitly 20 years old',
+ ];
+ for(const title of ordinary){
+   assert.deepEqual(reviewSignals(bot('Ordinary Adult',title)),[],title);
+ }
+ for(const title of ['a minor', '16 years old', 'Underage character', 'teenager schoolboy']){
+   assert.deepEqual(reviewSignals(bot('Age cue',title)).map(x=>x.id),['underage'],title);
+ }
+});
 test('fictional violence and consensual adult content are outside these focus filters',()=>{
  for(const title of ['Assassin in the city','Warrior with a sword','Consensual romance','High fantasy war']) {
    assert.deepEqual(reviewSignals(bot(title)),[],title);

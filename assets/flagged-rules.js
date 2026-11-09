@@ -15,8 +15,10 @@ export const REVIEW_RULES=Object.freeze([
     id:'underage',
     label:'Possible underage portrayal',
     section:'Community Guidelines §§1, 4, 6 and 8: Age restrictions',
-    terms:['underage','minor','child','teenager','schoolgirl','schoolboy','17 years old','16 years old'],
-    pattern:/\b(?:under[\s-]?age|minors?|child(?:ren)?|kids?|teen(?:age|ager|agers)?|school[\s-]?(?:girl|boy)|middle[\s-]?school(?:er|ers)?|(?:[1-9]|1[0-7])[\s-]?(?:years?[\s-]?old|yr[\s-]?old|y[\s-]?o))\b/i,
+    terms:['underage','minor','teenager','schoolgirl','schoolboy','17 years old','16 years old'],
+    // A child being born, "my child", and "minor update" say nothing
+    // about the roleplayed bot's age. Require a more specific age cue.
+    pattern:/\b(?:under[\s-]?age|(?:a|the)[\s-]+minor|minor[\s-]+(?:character|student|girl|boy)|teen(?:age|ager|agers)?|school[\s-]?(?:girl|boy)|middle[\s-]?school(?:er|ers)?|(?:[1-9]|1[0-7])[\s-]?(?:years?[\s-]?old|yr[\s-]?old|y[\s-]?o))\b/i,
     note:'An age-related word does not establish the character’s age or whether its content is sexual. An adult “aged-up” portrayal needs context.'
   },
   {
@@ -61,15 +63,42 @@ export function normalizeReviewBot(doc,source='public') {
     restoredAt:source==='restored'?trim(doc.restoredAt):''
   };
 }
+// Conservative textual triage; explicit *adult* and *negated* phrases
+// should not manufacture a minor-related allegation.
+function ageSignalContradicted(fieldText, matchedText, at){
+  const text=String(fieldText||''),matched=matchedText.toLowerCase();
+  const before=text.slice(Math.max(0,at-70),at).toLowerCase();
+  const after=text.slice(at+matchedText.length,at+matchedText.length+65).toLowerCase();
+  const explicitChildAge=/\b(?:[1-9]|1[0-7])[\s-]?(?:years?[\s-]?old|yr[\s-]?old|y[\s-]?o)\b/i.test(text);
+  const explicitAdult=/\b(?:18|19|2[0-9]|3[0-9])\s*(?:\+(?!\d)|years?\s*old\b|yr\s*old\b|y\s*o\b)|\bage\s*[:=]\s*(?:18|19|2[0-9]|3[0-9])\b|\ball\s+(?:characters|chars|people)\s+(?:are\s+)?(?:18\+|adults?)\b|\baged?[\s-]+up\s+to\s+(?:18|19|2[0-9])\b/i.test(text);
+  if(!explicitChildAge&&explicitAdult)return true;
+  if(/under[\s-]?age|minor/.test(matched)){
+    if(/\b(?:no|not|never|without|isn['’]?t|aren['’]?t|is\s+not|are\s+not|was\s+not|don['’]?t|doesn['’]?t)\s+(?:\w+[\s-]+){0,4}$/.test(before))return true;
+    if(/\b(?:how|why)\s+(?:is|was)\s+(?:this|it|he|she)\s*$/i.test(before))return true;
+    if(/\b(?:content|activity|characters?)\s+(?:is|are)\s+not\s*$/i.test(before))return true;
+    if(/^(?:\s*(?:stuff|content|bots?)\s*(?:is|are)\s+not\s+underage)/i.test(after))return true;
+  }
+  return false;
+}
 export function reviewSignals(bot,category='all') {
   if(!bot)return [];
   const fields=[['Name',bot.name],['Title',bot.title],['Tags',(bot.tags||[]).join(' ')]];
   const results=[];
   for(const rule of REVIEW_RULES) {
     if(category!=='all'&&category!==rule.id)continue;
-    const hit=fields.find(([,v])=>rule.pattern.test(String(v||'')));
-    if(hit)results.push({id:rule.id,label:rule.label,section:rule.section,
-      field:hit[0],matched:(String(hit[1]).match(rule.pattern)||[])[0]?.slice(0,70)||'',note:rule.note});
+    let found=null;
+    for(const [field,text] of fields){
+      const value=String(text||'');
+      const expression=new RegExp(rule.pattern.source,rule.pattern.flags.replace('g','')+'g');
+      for(const hit of value.matchAll(expression)){
+        if(rule.id==='underage'&&ageSignalContradicted(value,hit[0],hit.index??0))continue;
+        found={id:rule.id,label:rule.label,section:rule.section,
+          field,matched:hit[0].slice(0,70),note:rule.note};
+        break;
+      }
+      if(found)break;
+    }
+    if(found)results.push(found);
   }
   return results;
 }

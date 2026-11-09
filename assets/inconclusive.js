@@ -7,7 +7,7 @@ const STORAGE='spicychat-archive-inconclusive-correction-drafts-v1';
 const CHUNK=48;
 const labels={'api-error':'API error','empty-response':'Empty 200 response','awaiting-confirmation':'Awaiting second 404'};
 const designations=new Map([
-  ['inconclusive','Still inconclusive'],['public','Appears public'],
+  ['unreviewed','Not reviewed yet'],['inconclusive','Still inconclusive'],['public','Appears public'],
   ['unavailable','Appears unavailable'],['restricted','Appears restricted']
 ]);
 let cases=[],published=[],drafts={},visible=CHUNK,ready=false,generatedAt=null;
@@ -43,10 +43,20 @@ function merged(){
     const normalized=normalizeReview(row);
     if(normalized)map.set(id,normalized);
   }
-  // Only export currently unresolved IDs. The server makes the same check
-  // and cleans its committed annotations on the next successful run.
-  const unresolved=new Set(cases.map(row=>row.id));
-  return [...map.values()].filter(row=>unresolved.has(row.id)).sort((a,b)=>a.id.localeCompare(b.id));
+  // Download is a prefilled, editable review queue, not an empty list of
+  // decisions. Save all unresolved cases with links and status evidence;
+  // manual designations overwrite only the relevant fields.
+  return cases.map(c=>{
+    const review=map.get(c.id)||{designation:'unreviewed'};
+    return {
+      id:c.id,designation:review.designation,category:c.category,
+      httpStatus:c.httpStatus,lastCheckedAt:c.lastCheckedAt,
+      spicychatUrl:c.spicychatUrl,archiveUrl:c.archiveUrl,
+      note:review.note||'',
+      ...(review.evidenceUrl?{evidenceUrl:review.evidenceUrl}:{}),
+      ...(review.correctBotId?{correctBotId:review.correctBotId}:{})
+    };
+  }).sort((a,b)=>a.id.localeCompare(b.id));
 }
 function decisionFor(id){
   if(Object.hasOwn(drafts,id)){
@@ -65,7 +75,7 @@ function render(){
   const found=cases.filter(row=>{
     if(category!=='all'&&row.category!==category)return false;
     if(search&&!row.id.includes(search))return false;
-    const hasReview=!!decisionFor(row.id);
+    const hasReview=Boolean(decisionFor(row.id)&&decisionFor(row.id).designation!=='unreviewed');
     return reviewed==='all'||(reviewed==='reviewed'&&hasReview)||(reviewed==='pending'&&!hasReview);
   });
   $('#ic-result-count').textContent=found.length.toLocaleString()+' matching cases';
@@ -74,7 +84,7 @@ function render(){
     list.innerHTML='<p class="ic-empty">'+(ready?'No candidates match these filters. This is not evidence that every ID is available.':'No review index has been generated yet. The next archive run will populate it.')+'</p>';
   }
   for(const row of found.slice(0,visible)){
-    const review=decisionFor(row.id)||{designation:'inconclusive'};
+    const review=decisionFor(row.id)||{designation:'unreviewed'};
     const el=document.createElement('article');el.className='ic-card';el.dataset.id=row.id;
     const opts=[...designations].map(([value,label])=>'<option value="'+value+'"'+(review.designation===value?' selected':'')+'>'+esc(label)+'</option>').join('');
     const when=row.lastCheckedAt?new Date(row.lastCheckedAt).toLocaleString():'Unknown';
@@ -89,7 +99,7 @@ function render(){
       '<div class="ic-meta">'+esc(extra)+'</div>'+
       '<div class="ic-links"><a target="_blank" rel="noopener noreferrer" href="'+esc(row.archiveUrl)+'">Archive bot</a>'+
       '<a target="_blank" rel="noopener noreferrer" href="'+esc(row.spicychatUrl)+'">SpicyChat bot</a></div>'+
-      '<details><summary>'+(review.note||review.evidenceUrl||review.designation!=='inconclusive'?'Edit existing review':'Add manual review')+'</summary>'+
+      '<details><summary>'+(review.note||review.evidenceUrl||review.designation!=='unreviewed'?'Edit existing review':'Add manual review')+'</summary>'+
       '<div class="ic-edit"><label>Proposed designation<select data-field="designation">'+opts+'</select></label>'+
       '<label>Evidence URL (HTTPS)<input data-field="evidenceUrl" type="url" placeholder="https://…" value="'+esc(review.evidenceUrl||'')+'"></label>'+
       '<label>Note / explanation<input data-field="note" type="text" maxlength="500" placeholder="What did you verify?" value="'+esc(review.note||'')+'"></label>'+
@@ -101,7 +111,9 @@ function render(){
   const more=$('#ic-more');
   more.hidden=found.length<=visible;
   if(!more.hidden)more.textContent='Show more ('+(found.length-visible).toLocaleString()+' remaining)';
-  status(merged().length.toLocaleString()+' reviewed designations in current corrections JSON. Draft edits stay in this browser until you copy or download the file.');
+  status(merged().length.toLocaleString()+' IDs prefilled in corrections JSON · '+
+    merged().filter(row=>row.designation!=='unreviewed').length.toLocaleString()+
+    ' manually designated. Changes stay in this browser until you copy or download the JSON.');
 }
 function saveReview(card){
   const id=validId(card.dataset.id);

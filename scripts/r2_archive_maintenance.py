@@ -723,6 +723,26 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
                 "sweepPass": int((run_state.get("exploration") or {}).get("pass") or 0),
             }
         result = optimized_explore_more(client, run_config, at, run_state)
+        if (run_config.get("crawler") or {}).get("catalog_audit_run"):
+            complete = bool(result.get("naturalEnd")) and not result.get("errors") and not result.get("timeLimited")
+            run_state["_catalogAuditReady"] = complete
+            audit = run_state.setdefault("catalogAudit", {})
+            audit.update({
+                "lastAttemptAt": at,
+                "lastPassComplete": complete,
+                "lastPagesCompleted": int(result.get("pagesCompleted") or 0),
+                "lastCandidatesQueued": int(result.get("missingQueued") or 0),
+                "lastPublicChangesSaved": int(result.get("changed") or 0),
+            })
+            if complete:
+                audit["lastCompletedAt"] = at
+                audit["lastCompletedPass"] = int((run_state.get("exploration") or {}).get("pass") or 0)
+            print(
+                "catalog audit: " +
+                ("public pass complete; begin bounded Character API checks for missing IDs"
+                 if complete else "public pass not complete; preserve cursor and defer missing-ID checks"),
+                flush=True,
+            )
         result["purpose"] = "deep-refresh-and-deletion-sweep"
         result["sweepPass"] = int((run_state.get("exploration") or {}).get("pass") or 0)
         return result
@@ -748,6 +768,15 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
         run_state: dict[str, Any],
         seen_public: set[str],
     ):
+        if (run_config.get("crawler") or {}).get("catalog_audit_run"):
+            pass_complete = bool(run_state.pop("_catalogAuditReady", False))
+            if not pass_complete:
+                return {
+                    "verified": 0, "deleted": 0, "restored": 0,
+                    "skipped": True, "skipReason": "awaiting-complete-public-pass",
+                    "deferredSameRun404": 0,
+                }
+
         # A first 404 discovered by the rolling character sweep is already one
         # explicit observation. Do not immediately hit the same bot again a few
         # minutes later and count that as an independent confirmation.

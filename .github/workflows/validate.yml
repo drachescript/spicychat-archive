@@ -6,6 +6,7 @@ on:
       - "scripts/**"
       - "tests/**"
       - "assets/**"
+      - "flagged/**"
       - "worker/**"
       - ".github/workflows/**"
   workflow_dispatch:
@@ -33,6 +34,8 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check assets/app.js
+          node --check assets/flagged.js
+          node --check assets/flagged-rules.js
           node --check worker/src/index.js
           node --check assets/bot-dates.js
           node --check assets/stats-live.js
@@ -87,3 +90,4 @@ jobs:
           node --test --experimental-default-type=module tests/recovery-lab.test.mjs tests/recovery-local.test.mjs tests/recovery-buttons.test.mjs tests/recovery-expand.test.mjs tests/recovery-index.test.mjs tests/archive-coverage.test.mjs tests/bot-dates.test.mjs
           node --check assets/merge.js
           node --test tests/archive-bot-text.test.mjs
+          node --test --experimental-default-type=module tests/flagged-rules.test.mjs

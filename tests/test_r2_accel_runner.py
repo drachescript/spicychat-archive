@@ -131,6 +131,31 @@ class ManualArchiveProfileTests(unittest.TestCase):
         self.assertEqual(config["crawler"]["explore_pages_per_run"], 1000)
 
 
+class MissingVerificationProfileTests(unittest.TestCase):
+    def test_verification_profile_preserves_normal_config_and_skips_scans(self):
+        original = {
+            "crawler": {
+                "explore_pages_per_run": 500,
+                "maintenance_verification_budget": 5000,
+                "image_archive_enabled": True,
+            },
+            "listings": {"latest": "createdAt:desc", "popular": "num_messages:desc"},
+        }
+        verified = runner._apply_missing_verification_profile(original, budget=10000)
+        self.assertTrue(verified["crawler"]["verify_missing_only"])
+        self.assertTrue(verified["crawler"]["scheduled_latest_only"])
+        self.assertFalse(verified["crawler"]["maintenance_verification_enabled"])
+        self.assertFalse(verified["crawler"]["image_archive_enabled"])
+        self.assertEqual(verified["crawler"]["missing_verification_budget"], 10000)
+        self.assertEqual(verified["listings"], {"latest": "createdAt:desc", "popular": "num_messages:desc"})
+        self.assertEqual(original["listings"], {"latest": "createdAt:desc", "popular": "num_messages:desc"})
+        self.assertNotIn("verify_missing_only", original["crawler"])
+
+    def test_verification_budget_is_strictly_capped(self):
+        self.assertEqual(runner._apply_missing_verification_profile({}, budget=999999)["crawler"]["missing_verification_budget"], 10000)
+        self.assertEqual(runner._apply_missing_verification_profile({}, budget=0)["crawler"]["missing_verification_budget"], 1)
+
+
 class ScheduledArchiveProfileTests(unittest.TestCase):
     def test_latest_only_keeps_verification_and_images(self):
         original = {

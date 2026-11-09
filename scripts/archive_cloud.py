@@ -545,18 +545,30 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
 
     legacy.archive_images = cloud_archive_images
 
+    def requeue_missing(bot_id: str, checks: dict[str, dict[str, Any]]) -> None:
+        # Move an unresolved candidate behind IDs not yet checked in this
+        # catch-up cycle. JSON preserves this insertion order across runs.
+        pending = checks.pop(bot_id, None)
+        if pending is not None:
+            checks[bot_id] = pending
+
     def cloud_verify_missing(client, config, at: str, state: dict[str, Any], seen_public: set[str]):
         checks = state.setdefault("missingChecks", {})
         required = max(2, int(config["crawler"].get("deleted_confirmations_required", 2)))
         budget = int(config["crawler"].get("missing_verification_budget", 100))
-        verified = deleted = restored = 0
+        verified = deleted = restored = cleared = 0
+        started_with = len(checks)
 
+        # Persistent JSON dict insertion order acts as a cheap checkpointed
+        # round-robin queue. Restriction/transient/first 404 responses rotate
+        # to the back so no single group of IDs can starve all later suspects.
         for bot_id in list(checks)[:budget]:
             info = checks[bot_id]
             if bot_id in seen_public:
                 record = load_bot(bot_id)
                 if not record or (record.get("status") or {}).get("current") != "deleted":
                     checks.pop(bot_id, None)
+                    cleared += 1
                     if record and (record.get("status") or {}).get("current") == "public":
                         store.clear_deleted_summary(bot_id)
                     continue
@@ -575,6 +587,7 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                     record, _ = legacy.observe_bot(record, payload, source="character-api", at=at)
                     save_bot(record)
                 checks.pop(bot_id, None)
+                cleared += 1
                 if was_deleted and record and (record.get("status") or {}).get("current") == "public":
                     store.clear_deleted_summary(bot_id)
                     restored += 1
@@ -600,11 +613,25 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                         store.set_deleted_summary(bot_id, _cloud_summary(record))
                         deleted += 1
                     checks.pop(bot_id, None)
+                    cleared += 1
+                else:
+                    requeue_missing(bot_id, checks)
                 continue
             info["lastAt"] = at
             info["lastStatus"] = response.status
+            requeue_missing(bot_id, checks)
 
-        return {"verified": verified, "deleted": deleted, "restored": restored}
+        result = {"verified": verified, "deleted": deleted, "restored": restored,
+                  "cleared": cleared, "pendingBefore": started_with,
+                  "pendingAfter": len(checks)}
+        if (config.get("crawler") or {}).get("verify_missing_only"):
+            print(
+                f"Missing-ID backlog: {started_with:,} pending at start; "
+                f"{verified:,} queried; {cleared:,} resolved; "
+                f"{deleted:,} confirmed unavailable; {len(checks):,} still pending.",
+                flush=True,
+            )
+        return result
 
     legacy.verify_missing = cloud_verify_missing
 

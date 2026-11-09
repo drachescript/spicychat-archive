@@ -638,6 +638,36 @@ def _maintenance_character_refresh(
 def maintenance_configure_cloud(config: dict[str, Any], store):
     state, bloom = _original_configure_cloud(config, store)
 
+    crawler = config.setdefault("crawler", {})
+    if crawler.get("verify_missing_only"):
+        # The user-requested 49k backlog needs multiple independent runs for
+        # 404 confirmation. Bound the catch-up period to 18 scheduled runs;
+        # ordinary scans automatically revert to the configured 500 checks.
+        state["missingVerificationCatchup"] = {
+            "runsRemaining": 18,
+            "perRunBudget": 5000,
+            "startedAt": legacy.utc_now(),
+        }
+        print(
+            f"Missing-ID catch-up queued: {len(state.get('missingChecks') or {}):,} "
+            "suspects; up to 18 scheduled follow-up batches of 5,000.",
+            flush=True,
+        )
+    elif crawler.get("scheduled_latest_only"):
+        catchup = state.get("missingVerificationCatchup") or {}
+        remaining = max(0, int(catchup.get("runsRemaining") or 0))
+        if remaining and len(state.get("missingChecks") or {}) > 0:
+            crawler["missing_verification_budget"] = min(
+                5000, max(1, int(catchup.get("perRunBudget") or 5000))
+            )
+            crawler["missing_verification_catchup_active"] = True
+            print(
+                f"Missing-ID catch-up: {remaining} scheduled batches remain; "
+                f"up to {crawler['missing_verification_budget']:,} missing checks "
+                "this run; normal schedule/rolling sweep unchanged.",
+                flush=True,
+            )
+
     optimized_scan_listing = legacy.scan_listing
     optimized_explore_more = legacy.explore_more
     optimized_observe_bot = legacy.observe_bot
@@ -674,6 +704,11 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
         at: str,
         run_state: dict[str, Any],
     ):
+        if (run_config.get("crawler") or {}).get("verify_missing_only"):
+            # Preserve stored rankings and the site runtime config, while making
+            # zero public Typesense discovery/listing requests.
+            return {"ok": False, "skipped": True, "count": 0,
+                    "new": 0, "changed": 0, "ids": []}
         if name == "latest":
             return _scan_latest_until_overlap(
                 client,
@@ -804,6 +839,17 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
             for bot_id, info in deferred.items():
                 checks.setdefault(bot_id, info)
         result["deferredSameRun404"] = len(deferred)
+        if (run_config.get("crawler") or {}).get("missing_verification_catchup_active"):
+            catchup = run_state.get("missingVerificationCatchup") or {}
+            catchup["runsRemaining"] = max(0, int(catchup.get("runsRemaining") or 0) - 1)
+            catchup["lastBatchAt"] = at
+            catchup["lastBatchChecked"] = int(result.get("verified") or 0)
+            catchup["lastPending"] = len(checks)
+            print(
+                f"Missing-ID catch-up: {len(checks):,} candidates remain; "
+                f"{catchup['runsRemaining']} boosted scheduled batches left.",
+                flush=True,
+            )
         return result
 
     legacy.observe_bot = observe_with_change_refresh

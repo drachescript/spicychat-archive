@@ -36,7 +36,12 @@ class ReviewIndexTests(unittest.TestCase):
             self.assertTrue(row["spicychatUrl"].endswith(row["id"]))
             self.assertIn(row["id"], row["archiveUrl"])
             self.assertIn(row["category"], mod.ERROR_CLASSES)
-        self.assertEqual(corrections["corrections"], [])
+        self.assertEqual(len(corrections["corrections"]), 3)
+        for row in corrections["corrections"]:
+            self.assertEqual(row["designation"], "unreviewed")
+            self.assertIn("spicychat.ai/chatbot/", row["spicychatUrl"])
+            self.assertIn("spicychatarchive.drache.uk/bot/", row["archiveUrl"])
+            self.assertIn("httpStatus", row)
 
     def test_unqueried_does_not_look_like_an_error(self):
         state = {"missingChecks": {
@@ -61,14 +66,23 @@ class ReviewIndexTests(unittest.TestCase):
             {"id": C, "designation": "public", "note": "Previously corrected"},
         ]}
         index, retained = mod.build_review_index(state, manual, "now")
-        self.assertEqual(len(retained["corrections"]), 1)
-        self.assertEqual(retained["corrections"][0]["id"], A)
+        self.assertEqual(len(retained["corrections"]), 2)
+        self.assertEqual(
+            next(row for row in retained["corrections"] if row["id"] == A)["designation"],
+            "unavailable",
+        )
+        self.assertEqual(
+            next(row for row in retained["corrections"] if row["id"] == B)["designation"],
+            "unreviewed",
+        )
         self.assertEqual(next(c for c in index["cases"] if c["id"] == A)["manualReview"]["designation"], "unavailable")
         # After API confirmation removes the resolved bot ID, no stale review survives.
         del state["missingChecks"][A]
         index2, corrected = mod.build_review_index(state, retained, "later")
         self.assertEqual(index2["caseCount"], 1)
-        self.assertEqual(corrected["corrections"], [])
+        self.assertEqual(len(corrected["corrections"]), 1)
+        self.assertEqual(corrected["corrections"][0]["id"], B)
+        self.assertEqual(corrected["corrections"][0]["designation"], "unreviewed")
 
     def test_manual_corrections_cannot_inject_urls_or_untrusted_statuses(self):
         corrections = mod.normalize_corrections({"corrections": [
@@ -101,6 +115,8 @@ class ReviewIndexTests(unittest.TestCase):
             index = mod.publish_review_files(data, state, "2026-11-09T08:00:00Z")
             self.assertEqual(index["caseCount"], 1)
             self.assertIn('"api-error"', (data / "inconclusive.json").read_text())
+            self.assertIn(A, (data / "inconclusive-corrections.json").read_text())
+            self.assertIn('"restricted"', (data / "inconclusive-corrections.json").read_text())
             self.assertNotIn(B, (data / "inconclusive-corrections.json").read_text())
             self.assertFalse(mod.write_if_changed(data / "inconclusive.json", index))
 

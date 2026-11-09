@@ -65,10 +65,10 @@ class ManualArchiveProfileTests(unittest.TestCase):
         middle, middle_target, _ = runner._apply_manual_archive_profile(base, 1500)
         large, large_target, cap = runner._apply_manual_archive_profile(base, 2500)
         self.assertEqual((middle_target, large_target, cap), (1500, 2500, 2500))
-        self.assertEqual(smaller["crawler"]["explore_time_limit_seconds"], 4200)
-        self.assertEqual(thousand["crawler"]["explore_time_limit_seconds"], 5400)
-        self.assertEqual(middle["crawler"]["explore_time_limit_seconds"], 7200)
-        self.assertEqual(large["crawler"]["explore_time_limit_seconds"], 12600)
+        self.assertEqual(smaller["crawler"]["explore_time_limit_seconds"], 7200)
+        self.assertEqual(thousand["crawler"]["explore_time_limit_seconds"], 9000)
+        self.assertEqual(middle["crawler"]["explore_time_limit_seconds"], 12600)
+        self.assertEqual(large["crawler"]["explore_time_limit_seconds"], 16200)
         self.assertEqual(middle["crawler"]["manual_request_delay_seconds"], 0.15)
         self.assertEqual(large["crawler"]["manual_request_delay_seconds"], 0.30)
         self.assertNotIn("manual_request_delay_seconds", thousand["crawler"])
@@ -83,11 +83,23 @@ class ManualArchiveProfileTests(unittest.TestCase):
         manual_with_maintenance, _, _ = runner._apply_manual_archive_profile(
             config, 2500, full_maintenance=True,
         )
-        self.assertEqual(manual["crawler"]["explore_time_limit_seconds"], 12600)
-        self.assertEqual(manual_with_maintenance["crawler"]["explore_time_limit_seconds"], 12600)
+        self.assertEqual(manual["crawler"]["explore_time_limit_seconds"], 16200)
+        self.assertEqual(manual_with_maintenance["crawler"]["explore_time_limit_seconds"], 16200)
         self.assertFalse(manual["crawler"]["maintenance_verification_enabled"])
         self.assertTrue(manual_with_maintenance["crawler"]["maintenance_verification_enabled"])
         self.assertNotIn("explore_time_limit_seconds", config["crawler"])
+
+    def test_small_manual_profiles_receive_extra_headroom_without_page_increase(self):
+        config = self.base_config()
+        config["crawler"]["explore_pages_max"] = 2500
+        config["crawler"]["explore_time_limit_seconds"] = 4200
+        for requested in (50, 100, 250, 500, 750):
+            with self.subTest(pages=requested):
+                profile, target, maximum = runner._apply_manual_archive_profile(config, requested)
+                self.assertEqual(target, requested)
+                self.assertEqual(maximum, 2500)
+                self.assertEqual(profile["crawler"]["explore_time_limit_seconds"], 7200)
+        self.assertEqual(config["crawler"]["explore_time_limit_seconds"], 4200)
 
     def test_large_manual_guard_targets(self):
         for selected in (1500, 2500):

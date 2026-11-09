@@ -70,9 +70,11 @@ jobs:
            (github.event.workflow_run.conclusion == 'success' &&
             github.event.workflow_run.event == 'workflow_dispatch')) }}
     runs-on: ubuntu-latest
-    # Give the exceptional 2,500-page manual sweep time to finish discovery
-    # plus post-processing; preserve the normal 210m limit for other runs.
-    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode == 'discovery' && inputs.discovery_pages == '2500' && 270 || 210 }}
+    # All manual scan tiers have more discovery headroom; this job timeout
+    # leaves 60-90m for archiving state, stats, tests and the final Git commit.
+    # Scheduled and import-only runs have a separate 240m cap. All job limits
+    # remain below GitHub-hosted runners' 360m maximum and the 6h schedule.
+    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mode == 'discovery' && (inputs.discovery_pages == '2500' && 330 || inputs.discovery_pages == '1500' && 285 || inputs.discovery_pages == '1000' && 240 || 210) || 240 }}
     env:
       CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
       CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}

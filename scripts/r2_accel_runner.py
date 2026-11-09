@@ -53,28 +53,31 @@ def _apply_manual_archive_profile(
     target = min(configured_max, max(1, int(requested)))
     crawler["explore_pages_per_run"] = target
     crawler["manual_discovery_run"] = True
-    # Larger sweeps get extra runtime headroom and gentler request pacing.
-    # These are one-run overrides, never the scheduled maintenance defaults.
+    # Every manual sweep gets a generous discovery window, while larger sweeps
+    # receive proportionally more time. These are only in-memory manual-run
+    # overrides; scheduled latest-only maintenance and R2 quotas are unchanged.
+    # The GitHub job timeout is higher than these discovery timers so the
+    # crawler can checkpoint and publish results before its runner is stopped.
     if target >= 2500:
-        # 1,000 pages took about 64m. Linear 2,500-page extrapolation plus
-        # deliberate pacing and retries can exceed the old 150m cutoff.
-        # This stays an in-memory, manual-only profile; saved state/cursors
-        # and the R2 operation guard remain unchanged.
+        # Keep extra room for retries and variable R2 checkpoint latency.
         crawler["explore_time_limit_seconds"] = max(
-            int(crawler.get("explore_time_limit_seconds") or 4200), 12600
+            int(crawler.get("explore_time_limit_seconds") or 4200), 16200
         )
         crawler["manual_request_delay_seconds"] = 0.30
     elif target >= 1500:
         crawler["explore_time_limit_seconds"] = max(
-            int(crawler.get("explore_time_limit_seconds") or 4200), 7200
+            int(crawler.get("explore_time_limit_seconds") or 4200), 12600
         )
         crawler["manual_request_delay_seconds"] = 0.15
     elif target >= 1000:
-        # A successful 1,000-page sweep previously stopped at 961/1,000
-        # when the regular 70-minute discovery timer expired. Keep this
-        # override manual-only; scheduled maintenance is unchanged.
         crawler["explore_time_limit_seconds"] = max(
-            int(crawler.get("explore_time_limit_seconds") or 4200), 5400
+            int(crawler.get("explore_time_limit_seconds") or 4200), 9000
+        )
+    else:
+        # Even smaller/manual runs should not hit the regular 70m cutoff
+        # during unusually slow API or R2 checkpoint conditions.
+        crawler["explore_time_limit_seconds"] = max(
+            int(crawler.get("explore_time_limit_seconds") or 4200), 7200
         )
 
     # Manual workflow_dispatch runs are primarily used to advance the deep

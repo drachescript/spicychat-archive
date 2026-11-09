@@ -74,11 +74,11 @@ class BotStatusImportTests(unittest.TestCase):
         self.assertEqual(clean["name"], "QoL Bot")
         self.assertEqual(clean["description"], "Saved description")
         self.assertEqual(clean["greeting"], "Hello")
-        self.assertEqual(clean["personality"], "Saved personality")
+        self.assertEqual(clean["persona"], "Saved personality")
         self.assertEqual(clean["scenario"], "Saved scenario")
-        self.assertEqual(clean["example_dialogues"], "Example")
-        self.assertEqual(clean["creator"], "creator_name")
-        self.assertEqual(clean["image"], "https://cdn.nd-api.com/avatars/example.webp")
+        self.assertEqual(clean["dialogue"], "Example")
+        self.assertEqual(clean["creator_username"], "creator_name")
+        self.assertEqual(clean["avatar_url"], "https://cdn.nd-api.com/avatars/example.webp")
         self.assertEqual(clean["num_messages"], 12345)
         self.assertEqual(clean["rating_score"], 4.8)
         self.assertEqual(clean["token_count"], 987)
@@ -236,6 +236,47 @@ class BotStatusImportTests(unittest.TestCase):
         self.assertEqual(
             store.record["current"][imp.SOURCE]["name"], "Third"
         )
+
+    def test_import_normalizes_aliases_without_discarding_public_fields(self):
+        snapshot = {
+            "character_id": "test",
+            "name": "Kept name",
+            "title": "Kept title",
+            "description": "Kept description",
+            "creator": "dragon_bot",
+            "image": "avatars/test.png",
+            "personality": "Original definition",
+            "example_dialogue": "Original dialogue",
+            "scenario": "Original scenario",
+            "messages": [{"role": "user", "content": "private data"}],
+        }
+        clean = imp.sanitize_snapshot(snapshot, "test")
+        self.assertEqual(clean["creator_username"], "dragon_bot")
+        self.assertEqual(clean["avatar_url"], "https://cdn.nd-api.com/avatars/test.png?class=avatar256x256")
+        self.assertEqual(clean["persona"], "Original definition")
+        self.assertEqual(clean["dialogue"], "Original dialogue")
+        self.assertEqual(clean["scenario"], "Original scenario")
+        self.assertEqual(clean["description"], "Kept description")
+        self.assertEqual(clean["title"], "Kept title")
+        for alias in ("creator", "image", "personality", "example_dialogue", "messages"):
+            self.assertNotIn(alias, clean)
+
+    def test_canonical_fields_prefer_native_keys_over_import_aliases(self):
+        clean = imp.sanitize_snapshot({
+            "id": "test",
+            "creator_username": "canonical",
+            "creator": "old_name",
+            "avatar_url": "https://cdn.nd-api.com/avatars/new.png",
+            "image": "https://cdn.nd-api.com/avatars/old.png",
+            "persona": "Canonical persona",
+            "personality": "Old persona",
+            "dialogue": "Canonical dialogue",
+            "example_dialogues": "Old dialogue",
+        }, "test")
+        self.assertEqual(clean["creator_username"], "canonical")
+        self.assertEqual(clean["avatar_url"], "https://cdn.nd-api.com/avatars/new.png")
+        self.assertEqual(clean["persona"], "Canonical persona")
+        self.assertEqual(clean["dialogue"], "Canonical dialogue")
 
 
 if __name__ == "__main__":

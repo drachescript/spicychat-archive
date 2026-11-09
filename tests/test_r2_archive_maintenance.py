@@ -121,31 +121,70 @@ class FullCatalogAuditOrderTests(unittest.TestCase):
             self.assertTrue(result["skipped"])
             self.assertFalse(result["ok"])
             scanner.assert_not_called()
-        self.assertEqual(state["missingVerificationCatchup"]["runsRemaining"], 18)
+        self.assertTrue(state["missingVerificationCatchup"]["enabled"])
         self.assertEqual(state["missingVerificationCatchup"]["perRunBudget"], 5000)
+        self.assertNotIn("runsRemaining", state["missingVerificationCatchup"])
 
-    def test_scheduled_catchup_budgets_expire_and_decrement_on_verification(self):
+    def test_existing_catchup_survives_expired_legacy_run_counter(self):
         state = {"missingChecks": {"bot-a": {"count": 0}},
-                 "missingVerificationCatchup": {"runsRemaining": 1, "perRunBudget": 5000}}
+                 "missingVerificationCatchup": {"runsRemaining": 0, "perRunBudget": 5000}}
+        for batch in range(3):
+            config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
+            with patch.object(maintenance, "_original_configure_cloud",
+                              return_value=(state, object())), \
+                 patch.object(archive, "scan_listing"), \
+                 patch.object(archive, "explore_more"), \
+                 patch.object(archive, "observe_bot"), \
+                 patch.object(archive, "enrich_queue"), \
+                 patch.object(archive, "verify_missing", return_value={
+                     "verified": 1, "deleted": 0, "restored": 0,
+                 }):
+                maintenance.maintenance_configure_cloud(config, FakeStore([]))
+                self.assertEqual(config["crawler"]["missing_verification_budget"], 5000)
+                archive.verify_missing(None, config, f"run-{batch}", state, set())
+            self.assertTrue(state["missingVerificationCatchup"]["enabled"])
+            self.assertEqual(state["missingVerificationCatchup"]["runsCompleted"], batch + 1)
+            self.assertNotIn("runsRemaining", state["missingVerificationCatchup"])
+
+        state["missingChecks"].clear()
         config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
+        with patch.object(maintenance, "_original_configure_cloud",
+                          return_value=(state, object())):
+            maintenance.maintenance_configure_cloud(config, FakeStore([]))
+        self.assertEqual(config["crawler"]["missing_verification_budget"], 500)
+        self.assertFalse(state["missingVerificationCatchup"]["enabled"])
+        self.assertIn("completedAt", state["missingVerificationCatchup"])
+
+    def test_final_batch_marks_catchup_complete_and_restores_normal_budget(self):
+        state = {"missingChecks": {"bot-a": {"count": 0}},
+                 "missingVerificationCatchup": {"enabled": True, "perRunBudget": 5000,
+                                                "runsCompleted": 22}}
+        config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
+
+        def resolve(*args):
+            state["missingChecks"].clear()
+            return {"verified": 1, "deleted": 1, "restored": 0}
+
         with patch.object(maintenance, "_original_configure_cloud",
                           return_value=(state, object())), \
              patch.object(archive, "scan_listing"), \
              patch.object(archive, "explore_more"), \
              patch.object(archive, "observe_bot"), \
              patch.object(archive, "enrich_queue"), \
-             patch.object(archive, "verify_missing", return_value={
-                 "verified": 1, "deleted": 0, "restored": 0,
-             }):
+             patch.object(archive, "verify_missing", side_effect=resolve):
             maintenance.maintenance_configure_cloud(config, FakeStore([]))
             self.assertEqual(config["crawler"]["missing_verification_budget"], 5000)
-            archive.verify_missing(None, config, "now", state, set())
-        self.assertEqual(state["missingVerificationCatchup"]["runsRemaining"], 0)
-        next_config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
+            archive.verify_missing(None, config, "finished", state, set())
+
+        self.assertEqual(state["missingVerificationCatchup"]["runsCompleted"], 23)
+        self.assertFalse(state["missingVerificationCatchup"]["enabled"])
+        self.assertEqual(state["missingVerificationCatchup"]["completedAt"], "finished")
+        normal_config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
         with patch.object(maintenance, "_original_configure_cloud",
                           return_value=(state, object())):
-            maintenance.maintenance_configure_cloud(next_config, FakeStore([]))
-        self.assertEqual(next_config["crawler"]["missing_verification_budget"], 500)
+            maintenance.maintenance_configure_cloud(normal_config, FakeStore([]))
+        self.assertEqual(normal_config["crawler"]["missing_verification_budget"], 500)
+
 
 
 class FakeStore:

@@ -147,7 +147,7 @@ class MissingVerificationProfileTests(unittest.TestCase):
         self.assertFalse(verified["crawler"]["maintenance_verification_enabled"])
         self.assertFalse(verified["crawler"]["image_archive_enabled"])
         self.assertEqual(verified["crawler"]["missing_verification_budget"], 10000)
-        self.assertEqual(verified["listings"], {})
+        self.assertEqual(verified["listings"], {"latest": "createdAt:desc", "popular": "num_messages:desc"})
         self.assertEqual(original["listings"], {"latest": "createdAt:desc", "popular": "num_messages:desc"})
         self.assertNotIn("verify_missing_only", original["crawler"])
 

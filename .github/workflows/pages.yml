@@ -26,6 +26,7 @@ on:
       - "search/**"
       - "explorer/**"
       - "restored/**"
+      - "flagged/**"
       - "health/**"
       - "stats/**"
       - "faq/**"
@@ -81,7 +82,7 @@ jobs:
           mkdir -p "$OUT"
           # Keep this explicit so workflows, tests and private archive files are
           # not accidentally published. Include *all* public route directories.
-          cp -a index.html favicon.svg assets bot bots deleted deleted-lorebooks deleted-rulebooks lorebook lorebooks rulebook rulebooks recovery merge name-trends tag-stats creator changes activity search explorer restored health stats faq admin data tags.json blocked-words.json rulebook-tags.json CNAME .nojekyll "$OUT/"
+          cp -a index.html favicon.svg assets bot bots deleted deleted-lorebooks deleted-rulebooks lorebook lorebooks rulebook rulebooks recovery merge name-trends tag-stats creator changes activity search explorer restored flagged health stats faq admin data tags.json blocked-words.json rulebook-tags.json CNAME .nojekyll "$OUT/"
 
           # In R2 mode, bot detail JSON and media live in R2. Old generated Git
           # copies can still exist in checkout until the cleanup commit lands, so
@@ -126,6 +127,7 @@ jobs:
               'merge/index.html', 'name-trends/index.html',
               'tag-stats/index.html', 'creator/index.html',
               'changes/index.html', 'stats/index.html', 'faq/index.html',
+              'flagged/index.html', 'assets/flagged.js', 'assets/flagged-rules.js',
           ]
           missing = [path for path in required if not (root / path).is_file()]
           if missing:

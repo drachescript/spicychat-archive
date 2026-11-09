@@ -29,10 +29,10 @@
       <div class="ic-controls">
         <label>Show
           <select id="ic-filter">
+            <option value="all">All review candidates</option>
             <option value="api-error">API errors</option>
             <option value="empty-response">Empty 200 responses</option>
             <option value="awaiting-confirmation">Waiting for second 404</option>
-            <option value="all">All review candidates</option>
           </select>
         </label>
         <label class="ic-grow">Find bot ID
@@ -52,7 +52,7 @@
 
     <section class="ic-panel">
       <h2>Correction JSON</h2>
-      <p>On any bot below, set a proposed designation, add a note or evidence link, and save a draft locally. Then copy or download the combined JSON and place it in <code>data/inconclusive-corrections.json</code> on GitHub. The next successful archive run picks up your review notes.</p>
+      <p>The corrections JSON is prefilled with every reviewable bot ID, its SpicyChat and Archive links, and the latest API result. Edit <code>designation</code> from <code>unreviewed</code> to your proposed classification, with optional notes or evidence. You can also edit a card below and copy/download the full JSON, then commit it to <code>data/inconclusive-corrections.json</code> on GitHub.</p>
       <p><strong>Manual designations are annotations, not verified availability.</strong> They do not override Character API evidence. Confirmed API outcomes automatically clear the review case and its saved annotation.</p>
       <div class="ic-actions">
         <button id="ic-copy" type="button">Copy corrections JSON</button>

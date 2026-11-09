@@ -36,6 +36,18 @@ class PublicGrowthTests(unittest.TestCase):
         self.assertEqual(growth["periods"]["24h"]["net"], 800)
         self.assertLess(growth["averagePerDay"], 1_000)
 
+    def test_carried_forward_counts_do_not_create_fake_growth_points(self):
+        stats = {"runs": [
+            {"kind": "archive-run", "at": "2026-09-29T00:00:00Z", "publicIndexBots": 1000},
+            {"kind": "archive-run", "at": "2026-09-30T00:00:00Z", "publicIndexBots": 1100},
+            {"kind": "archive-run", "at": "2026-09-30T01:00:00Z", "publicIndexBots": 1100,
+             "publicIndexCountSource": "carried-forward"},
+        ]}
+        result = mod.build_public_growth(stats)
+        self.assertEqual(result["sampleCount"], 2)
+        self.assertEqual(result["latestPublicIndexBots"], 1100)
+        self.assertEqual(result["lastSampleAt"], "2026-09-30T00:00:00Z")
+
     def test_negative_public_growth_is_preserved(self):
         stats = {
             "runs": [

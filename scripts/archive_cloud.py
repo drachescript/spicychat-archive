@@ -25,6 +25,32 @@ from site_indexes import flush_indexes as flush_site_indexes, note_record as not
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def observed_public_count(
+    stats: dict[str, Any], prior_manifest: dict[str, Any]
+) -> tuple[int, str | None]:
+    """Last *actual* listing count, never a deep-sweep cursor/page size.
+
+    Some archive runs only verify statuses and intentionally skip Typesense.
+    An exhausted cursor's 'found' may be just the final partial page (145),
+    so it must never replace a previously measured 1M+ catalog count.
+    """
+    for row in reversed((stats or {}).get("runs") or []):
+        if not isinstance(row, dict) or row.get("kind") != "archive-run":
+            continue
+        listings = row.get("listings") or {}
+        if not isinstance(listings, dict):
+            continue
+        measured = [
+            int((info or {}).get("found") or 0)
+            for info in listings.values()
+            if isinstance(info, dict) and int(info.get("found") or 0) > 0
+        ]
+        if measured:
+            return max(measured), str(row.get("at") or "") or None
+    previous = int((prior_manifest or {}).get("publicIndexBots") or (prior_manifest or {}).get("activeBots") or 0)
+    return previous, str((prior_manifest or {}).get("lastScan") or "") or None
+
+
 def _priority_add(state: dict[str, Any], key: str, bot_id: str, limit: int = 20000) -> None:
     q = state.setdefault(key, [])
     if bot_id not in q:
@@ -671,8 +697,22 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
                 shutil.rmtree(stale)
 
         prior = original_read_json(legacy.SITE_DATA_DIR / "manifest.json", {})
-        public_counts = [int(v.get("found") or 0) for v in (listings or {}).values() if v.get("ok") and v.get("found") is not None]
-        active = max(public_counts) if public_counts else int((state.get("exploration") or {}).get("lastFound") or prior.get("activeBots") or 0)
+        public_counts = [
+            int(v.get("found") or 0)
+            for v in (listings or {}).values()
+            if v.get("ok") and int(v.get("found") or 0) > 0
+        ]
+        if public_counts:
+            active = max(public_counts)
+            public_count_basis = "observed-this-run"
+            public_count_at = at
+        else:
+            # No public search was performed (verify-only), or every listing
+            # request failed. Never treat the cursor's last partial page as
+            # the total public catalog.
+            previous_stats = original_read_json(legacy.SITE_DATA_DIR / "stats.json", {})
+            active, public_count_at = observed_public_count(previous_stats, prior)
+            public_count_basis = "carried-forward"
         _refresh_deleted_summary_metadata(store)
         deleted_url = store.publish_deleted_index()
         usage = store.storage_usage()
@@ -690,6 +730,8 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             # last-known status is public".
             "activeBots": active,
             "publicIndexBots": active,
+            "publicIndexCountSource": public_count_basis,
+            "publicIndexLastObservedAt": public_count_at,
             "deletedBots": deleted_bots,
             "restrictedBots": 0,
             "missingBots": pending_verification,
@@ -713,7 +755,10 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             },
             "tagCount": prior.get("tagCount") or 0,
             "topTags": prior.get("topTags") or [],
-            "listings": {k: v.get("ids", []) for k, v in (listings or {}).items() if v.get("ok")},
+            "listings": (
+                {k: v.get("ids", []) for k, v in (listings or {}).items() if v.get("ok")}
+                if public_counts else (prior.get("listings") or {})
+            ),
             "lastScan": at,
             "storageMode": "r2",
             "quotaGuard": {

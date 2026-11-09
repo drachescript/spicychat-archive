@@ -50,6 +50,10 @@ def public_samples(stats: dict[str, Any]) -> list[dict[str, Any]]:
     for row in stats.get("runs") or []:
         if not isinstance(row, dict) or row.get("kind") != "archive-run":
             continue
+        # Status-only runs carry the preceding public count. They are not a
+        # new Typesense measurement and must not create a growth sample.
+        if row.get("publicIndexCountSource") == "carried-forward":
+            continue
         when = epoch(row.get("at"))
         try:
             count = int(row.get("publicIndexBots"))

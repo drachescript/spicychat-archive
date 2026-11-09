@@ -1,5 +1,5 @@
 name: Update SpicyChat archive
-run-name: ${{ (github.event_name == 'push' || inputs.run_mode == 'full-catalog') && 'Finish public catalog pass and verify absences' || (github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only' && 'Import queued QoL / Bot Status copies' || 'Update SpicyChat archive') }}
+run-name: ${{ ((github.event_name == 'push' && contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'verify-missing') && 'Verify archived missing-ID backlog' || ((github.event_name == 'push' || inputs.run_mode == 'full-catalog') && 'Finish public catalog pass and verify absences' || (github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only' && 'Import queued QoL / Bot Status copies' || 'Update SpicyChat archive')) }}
 
 on:
   # One-time, user-requested kickoff. A GitHub-app push of this exact marker
@@ -8,10 +8,11 @@ on:
     branches: [main]
     paths:
       - ".github/catalog-audit-trigger.txt"
+      - ".github/verify-missing-trigger.txt"
   workflow_dispatch:
     inputs:
       run_mode:
-        description: "Discovery, one-time full-catalog completion, or import-only"
+        description: "Discovery, full-catalog completion, missing-ID verification, or import-only"
         required: true
         default: "discovery"
         type: choice
@@ -19,6 +20,7 @@ on:
           - "discovery"
           - "import-only"
           - "full-catalog"
+          - "verify-missing"
       discovery_pages:
         description: "Manual discovery: 1,500 requires 12h cooldown; 2,500 requires 24h; quotas may cap pages"
         required: true
@@ -89,14 +91,17 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       # Scheduled/probe-triggered runs use latest-first + rolling maintenance.
       # Manual discovery supports 50–2500 page deep-sweep control.
-      SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ (github.event_name == 'push' || inputs.run_mode == 'full-catalog') && '2500' || (github.event_name == 'workflow_dispatch' && inputs.run_mode == 'discovery' && github.event.inputs.discovery_pages || '') }}
+      SPICYCHAT_ARCHIVE_MANUAL_PAGES: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'full-catalog') && '2500' || (github.event_name == 'workflow_dispatch' && inputs.run_mode == 'discovery' && github.event.inputs.discovery_pages || '') }}
       # Manual deep sweeps default to discovery-only so a 500-2,500 page run does
       # not immediately repeat the scheduled 5,000-bot verification + image pass.
       # The checkbox above provides an explicit escape hatch when that is wanted.
       SPICYCHAT_ARCHIVE_MANUAL_FULL_MAINTENANCE: ${{ github.event_name == 'workflow_dispatch' && inputs.full_maintenance && 'true' || 'false' }}
       # Dedicated catalog audit bypasses only the manual cooldown; the R2 quota
       # guard, write soft-stop and resume checkpoints remain fully enforced.
-      SPICYCHAT_ARCHIVE_CATALOG_AUDIT: ${{ (github.event_name == 'push' || inputs.run_mode == 'full-catalog') && 'true' || 'false' }}
+      SPICYCHAT_ARCHIVE_CATALOG_AUDIT: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'full-catalog') && 'true' || 'false' }}
+      # A separate verification-only run does not search Typesense, fetch images,
+      # or perform the normal 5,000-bot rolling enrichment pass.
+      SPICYCHAT_ARCHIVE_VERIFY_MISSING: ${{ ((github.event_name == 'push' && contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'verify-missing') && 'true' || 'false' }}
       # Automatic runs avoid repeating 500 deep Typesense pages every 6 hours.
       # They still scan newest pages through the known-overlap stop and perform
       # the existing Character API verification, missing checks, and images.
@@ -136,20 +141,23 @@ jobs:
 
       - name: Replay pending Git fallback into R2
         if: >-
-          ${{ steps.r2guard.outputs.mode == 'r2' &&
+          ${{ env.SPICYCHAT_ARCHIVE_VERIFY_MISSING != 'true' &&
+              steps.r2guard.outputs.mode == 'r2' &&
               steps.r2guard.outputs.replay_write_budget != '0' &&
               (inputs.run_mode != 'import-only' || steps.importcheck.outputs.has_work == 'true') }}
         run: python scripts/r2_safe_runner.py replay_fallback.py --max-writes "${{ steps.r2guard.outputs.replay_write_budget }}" --summary-file "$RUNNER_TEMP/replay-summary.md"
 
       - name: Analyze pending public Bot Status submissions
         if: >-
-          ${{ steps.r2guard.outputs.mode == 'r2' &&
+          ${{ env.SPICYCHAT_ARCHIVE_VERIFY_MISSING != 'true' &&
+              steps.r2guard.outputs.mode == 'r2' &&
               (inputs.run_mode != 'import-only' || steps.importcheck.outputs.public_pending == 'true') }}
         run: python scripts/review_bot_status_submissions.py --summary-file "$RUNNER_TEMP/public-submission-summary.md"
 
       - name: Import queued Bot Status Center exports
         if: >-
-          ${{ steps.r2guard.outputs.mode == 'r2' &&
+          ${{ env.SPICYCHAT_ARCHIVE_VERIFY_MISSING != 'true' &&
+              steps.r2guard.outputs.mode == 'r2' &&
               (inputs.run_mode != 'import-only' || steps.importcheck.outputs.private_pending == 'true') }}
         run: python scripts/r2_accel_runner.py import --inbox --summary-file "$RUNNER_TEMP/bot-status-import-summary.md"
 
@@ -180,12 +188,18 @@ jobs:
         run: python scripts/sync_archive_coverage.py
 
       - name: Update pre-migration local archive
-        if: steps.r2guard.outputs.mode == 'legacy' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
+        if: env.SPICYCHAT_ARCHIVE_VERIFY_MISSING != 'true' && steps.r2guard.outputs.mode == 'legacy' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         run: python scripts/r2_safe_runner.py archive_cloud.py --summary-file "$RUNNER_TEMP/archive-summary.md"
 
       - name: Update compact Git fallback journal
-        if: steps.r2guard.outputs.mode == 'github' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
+        if: env.SPICYCHAT_ARCHIVE_VERIFY_MISSING != 'true' && steps.r2guard.outputs.mode == 'github' && (github.event_name != 'workflow_dispatch' || inputs.run_mode != 'import-only')
         run: python scripts/archive_fallback.py --summary-file "$RUNNER_TEMP/archive-summary.md"
+
+      - name: Refuse unsafe verification fallback
+        if: env.SPICYCHAT_ARCHIVE_VERIFY_MISSING == 'true' && steps.r2guard.outputs.mode != 'r2'
+        run: |
+          echo "Missing-ID verification was not started because the R2 quota guard did not permit R2 access."
+          exit 1
 
       - name: Explain import-only result
         if: github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only'

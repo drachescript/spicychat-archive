@@ -56,8 +56,12 @@ def _apply_manual_archive_profile(
     # Larger sweeps get extra runtime headroom and gentler request pacing.
     # These are one-run overrides, never the scheduled maintenance defaults.
     if target >= 2500:
+        # 1,000 pages took about 64m. Linear 2,500-page extrapolation plus
+        # deliberate pacing and retries can exceed the old 150m cutoff.
+        # This stays an in-memory, manual-only profile; saved state/cursors
+        # and the R2 operation guard remain unchanged.
         crawler["explore_time_limit_seconds"] = max(
-            int(crawler.get("explore_time_limit_seconds") or 4200), 9000
+            int(crawler.get("explore_time_limit_seconds") or 4200), 12600
         )
         crawler["manual_request_delay_seconds"] = 0.30
     elif target >= 1500:

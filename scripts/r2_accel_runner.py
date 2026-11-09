@@ -100,6 +100,39 @@ def _apply_manual_archive_profile(
     return config, target, configured_max
 
 
+def _apply_missing_verification_profile(config: dict, *, budget: int = 10000) -> dict:
+    """Inspect a bounded suspect-ID batch without touching catalog cursors."""
+    config = deepcopy(config)
+    crawler = config.setdefault("crawler", {})
+    crawler["verify_missing_only"] = True
+    crawler["scheduled_latest_only"] = True
+    crawler["maintenance_verification_enabled"] = False
+    crawler["image_archive_enabled"] = False
+    crawler["missing_verification_budget"] = max(1, min(10000, int(budget)))
+    config["listings"] = {}
+    return config
+
+
+def _install_missing_verification_profile() -> None:
+    original_load_config = legacy.load_config
+
+    def load_missing_verification_profile():
+        config = _apply_missing_verification_profile(
+            original_load_config(),
+            budget=_env_int("SPICYCHAT_ARCHIVE_VERIFY_BUDGET", 10000),
+        )
+        print(
+            "Missing-ID verification only: no Typesense scan, no deep-discovery "
+            "cursor movement, no image downloads, no rolling enrichment. "
+            f"Max {config['crawler']['missing_verification_budget']:,} "
+            "Character API checks; R2 guard enforced.",
+            flush=True,
+        )
+        return config
+
+    legacy.load_config = load_missing_verification_profile
+
+
 def _apply_scheduled_archive_profile(config: dict) -> dict:
     """Newest-first + existing maintenance; preserve all manual deep-sweep settings."""
     config = deepcopy(config)
@@ -202,7 +235,11 @@ def main() -> int:
         # Install this after the batching/maintenance wrapper so retries repeat
         # the exact same logical Typesense request, including failover.
         install_typesense_retry()
-        if os.environ.get("SPICYCHAT_ARCHIVE_SCHEDULED_LATEST_ONLY", "").strip().lower() in {
+        if os.environ.get("SPICYCHAT_ARCHIVE_VERIFY_MISSING", "").strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            _install_missing_verification_profile()
+        elif os.environ.get("SPICYCHAT_ARCHIVE_SCHEDULED_LATEST_ONLY", "").strip().lower() in {
             "1", "true", "yes", "on",
         }:
             _install_scheduled_archive_profile()

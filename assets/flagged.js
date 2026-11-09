@@ -4,6 +4,7 @@ const $=s=>document.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const storageKey='sca-guideline-reviewed-v1';
+const imagePreferenceKey='sca-guideline-reveal-nsfw-v1';
 const category=$('#fg-category'),input=$('#fg-bot-id'),scanButton=$('#fg-scan'),
   checkButton=$('#fg-check-one'),list=$('#fg-list'),message=$('#fg-status'),
   count=$('#fg-count'),images=$('#fg-show-images'),hideMarked=$('#fg-hide-marked'),
@@ -13,6 +14,7 @@ for(const rule of REVIEW_RULES){
   o.value=rule.id;o.textContent=rule.label;category.append(o);
 }
 let runtimePromise,restoredPromise,items=[],busy=false;
+try{images.checked=localStorage.getItem(imagePreferenceKey)==='1';}catch{}
 let reviewed=new Set();
 try{
   const data=JSON.parse(localStorage.getItem(storageKey)||'[]');
@@ -217,7 +219,10 @@ list.addEventListener('click',event=>{
 scanButton.addEventListener('click',()=>void scan());
 checkButton.addEventListener('click',()=>void checkOne());
 input.addEventListener('keydown',e=>{if(e.key==='Enter')void checkOne();});
-images.addEventListener('change',render);
+images.addEventListener('change',()=>{
+  try{localStorage.setItem(imagePreferenceKey,images.checked?'1':'0');}catch{}
+  render();
+});
 hideMarked.addEventListener('change',render);
 const initialId=new URL(location.href).searchParams.get('id');
 if(initialId){input.value=initialId;void checkOne();}

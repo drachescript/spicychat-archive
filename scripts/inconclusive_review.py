@@ -15,7 +15,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
-DESIGNATIONS = frozenset({"public", "unavailable", "restricted", "inconclusive"})
+DESIGNATIONS = frozenset({"unreviewed", "public", "unavailable", "restricted", "inconclusive"})
 ERROR_CLASSES = {"api-error", "empty-response", "awaiting-confirmation"}
 SCHEMA_VERSION = 1
 
@@ -121,7 +121,7 @@ def build_review_index(
         }
         if info.get("errorKind"):
             entry["errorKind"] = str(info.get("errorKind"))[:64]
-        if bot_id in by_id:
+        if bot_id in by_id and by_id[bot_id]["designation"] != "unreviewed":
             entry["manualReview"] = deepcopy(by_id[bot_id])
         entries.append(entry)
     entries.sort(key=lambda row: (row["category"], row["id"]))
@@ -135,7 +135,31 @@ def build_review_index(
         "cases": entries,
         "note": "Review candidates only. No single HTTP error or 404 proves deletion. Manual designations do not change archived status.",
     }
-    corrections_file = {"schemaVersion": SCHEMA_VERSION, "corrections": remaining_corrections}
+    # The corrections file is also the editable *review queue*. Every
+    # inconclusive case gets a populated row with its bot links and observed
+    # status, so the user can simply edit "designation" and "note" in GitHub.
+    # Unreviewed is explicitly NOT an API claim, and existing manual reviews
+    # are retained until the verifier conclusively resolves an ID.
+    corrections_rows = []
+    for case in entries:
+        row = {
+            "id": case["id"],
+            "designation": "unreviewed",
+            "category": case["category"],
+            "httpStatus": case["httpStatus"],
+            "lastCheckedAt": case["lastCheckedAt"],
+            "spicychatUrl": case["spicychatUrl"],
+            "archiveUrl": case["archiveUrl"],
+            "note": "",
+        }
+        manual = by_id.get(case["id"])
+        if manual:
+            row["designation"] = manual["designation"]
+            for name in ("note", "evidenceUrl", "correctBotId"):
+                if name in manual:
+                    row[name] = manual[name]
+        corrections_rows.append(row)
+    corrections_file = {"schemaVersion": SCHEMA_VERSION, "corrections": corrections_rows}
     return index, corrections_file
 
 
@@ -156,7 +180,8 @@ def publish_review_files(data_dir: Path, state: dict[str, Any], at: str, *, requ
         corrections = {"schemaVersion": SCHEMA_VERSION, "corrections": []}
     index, cleaned = build_review_index(state, corrections, at, required=required)
     write_if_changed(data_dir / "inconclusive.json", index)
-    # Empty/new user-managed files remain stable; remove resolved IDs only.
+    # Repopulate every unresolved review candidate; conclusive API outcomes
+    # disappear automatically, while manually edited designations survive.
     write_if_changed(corrections_path, cleaned)
     print(
         f"Inconclusive review: {index['caseCount']:,} cases "
@@ -164,7 +189,7 @@ def publish_review_files(data_dir: Path, state: dict[str, Any], at: str, *, requ
         f"{index['counts']['empty-response']:,} empty responses, "
         f"{index['counts']['awaiting-confirmation']:,} awaiting 2nd 404); "
         f"{index['notYetChecked']:,} IDs still unqueried; "
-        f"{len(cleaned['corrections']):,} manual annotations retained.",
+        f"{sum(row['designation'] != 'unreviewed' for row in cleaned['corrections']):,} manual annotations retained.",
         flush=True,
     )
     return index

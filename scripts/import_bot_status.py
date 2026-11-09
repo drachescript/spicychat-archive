@@ -50,7 +50,7 @@ PUBLIC_IMPORT_FIELDS = {
     "character_id", "characterId", "id", "uuid",
     # Authored/public character data
     "name", "title", "description", "greeting", "greetings",
-    "alternate_greetings", "personality", "scenario",
+    "alternate_greetings", "personality", "scenario", "dialogue",
     "example_dialogue", "example_dialogues", "definition", "persona",
     "character_definition", "characterDefinition", "system_prompt",
     "post_history_instructions",

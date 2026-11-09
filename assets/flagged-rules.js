@@ -70,7 +70,7 @@ function ageSignalContradicted(fieldText, matchedText, at){
   const before=text.slice(Math.max(0,at-70),at).toLowerCase();
   const after=text.slice(at+matchedText.length,at+matchedText.length+65).toLowerCase();
   const explicitChildAge=/\b(?:[1-9]|1[0-7])[\s-]?(?:years?[\s-]?old|yr[\s-]?old|y[\s-]?o)\b/i.test(text);
-  const explicitAdult=/\b(?:18|19|2[0-9]|3[0-9])\s*(?:\+|years?\s*old|yr\s*old|y\s*o)\b|\bage\s*[:=]\s*(?:18|19|2[0-9]|3[0-9])\b|\ball\s+(?:characters|chars|people)\s+(?:are\s+)?(?:18\+|adults?)\b|\baged?[\s-]+up\s+to\s+(?:18|19|2[0-9])\b/i.test(text);
+  const explicitAdult=/\b(?:18|19|2[0-9]|3[0-9])\s*(?:\+(?!\d)|years?\s*old\b|yr\s*old\b|y\s*o\b)|\bage\s*[:=]\s*(?:18|19|2[0-9]|3[0-9])\b|\ball\s+(?:characters|chars|people)\s+(?:are\s+)?(?:18\+|adults?)\b|\baged?[\s-]+up\s+to\s+(?:18|19|2[0-9])\b/i.test(text);
   if(!explicitChildAge&&explicitAdult)return true;
   if(/under[\s-]?age|minor/.test(matched)){
     if(/\b(?:no|not|never|without|isn['’]?t|aren['’]?t|is\s+not|are\s+not|was\s+not|don['’]?t|doesn['’]?t)\s+(?:\w+[\s-]+){0,4}$/.test(before))return true;

@@ -194,7 +194,7 @@ function resolveAvatar(v){
 }
 function badge(status){
   const s=(status||'unknown').toLowerCase();
-  const label=s==='public'?'Active':s==='deleted'?'Archived':s;
+  const label=s==='public'?'Active':s==='deleted'?'Archived':s==='unverified-import'?'Saved copy · unverified':s;
   return `<span class="badge ${esc(s)}">${esc(label)}</span>`;
 }
 
@@ -349,7 +349,7 @@ async function renderHistoricalPublicMatches(runtime,state,el){
       const matching=new Set([...item.tags,...(b.tags||[]).map(historyTagKey)]);
       if(state.match!=='any'&&!state.include.every(t=>matching.has(historyTagKey(t))))return false;
       if(!state.showBlocked&&(b.tags||[]).some(t=>state.exclude.some(x=>historyTagKey(x)===historyTagKey(t))))return false;
-      if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
+      if(creator&&!String(b.creator||'').toLowerCase().includes(creator))return false;
       if(q&&!([b.id,b.name,b.title,b.creator].join(' ').toLowerCase().includes(q)))return false;
       return true;
     }).sort((a,b)=>String(a.bot.name||'').localeCompare(String(b.bot.name||'')));
@@ -484,10 +484,11 @@ function toolbar(state,deletedOnly){
   const selected=(value,wanted)=>value===wanted?' selected':'';
   return `<button type="button" class="secondary-button mobile-filter-toggle" id="mobile-filter-toggle">Filters</button>
     <div class="toolbar archive-search-toolbar"><input id="search" value="${esc(state.q)}" placeholder="Search bots">
-      <input id="creator" value="${esc(state.creator)}" placeholder="Creator username">
+      <input id="creator" value="${esc(state.creator)}" placeholder="Creator username (partial)">
       <select id="sort">${sorts}</select>
       <select id="saved-field" aria-label="Archived field saved">
-        <option value="any"${selected(state.savedField,'any')}>Everything</option>
+        <option value="any"${selected(state.savedField,'any')}>Any saved fields (default)</option>
+        <option value="everything"${selected(state.savedField,'everything')}>Everything (all three)</option>
         <option value="personality"${selected(state.savedField,'personality')}>Personality</option>
         <option value="scenario"${selected(state.savedField,'scenario')}>Scenario</option>
         <option value="dialogue"${selected(state.savedField,'dialogue')}>Example Dialogue</option>
@@ -502,7 +503,7 @@ function toolbar(state,deletedOnly){
 function tsLiteral(value){return `\`${String(value).replace(/\\/g,'\\\\').replace(/`/g,'\\`')}\``;}
 function buildTsFilter(runtime,state){
   const parts=[runtime.typesense.baseFilter];
-  if(state.creator)parts.push(`creator_username:=${tsLiteral(state.creator)}`);
+  if(state.creator)parts.push(`creator_username:${tsLiteral(state.creator+'*')}`);
   if(state.definition==='exposed')parts.push('definition_visible:=true'); else if(state.definition==='hidden')parts.push('definition_visible:=false');
   if(state.definitionSize&&state.definitionSize!=='any')parts.push(`definition_size_category:=${tsLiteral(state.definitionSize)}`);
   if(state.lorebook==='yes')parts.push('has_lorebooks:=true'); else if(state.lorebook==='no')parts.push('has_lorebooks:=false');
@@ -520,7 +521,7 @@ function buildTsFilter(runtime,state){
 let archiveRichFieldIndexPromise=null;
 function flagsFromRichFieldMask(mask){
   const value=Number(mask||0);
-  return {personality:!!(value&1),scenario:!!(value&2),dialogue:!!(value&4)};
+  return {personality:!!(value&1),scenario:!!(value&2),dialogue:!!(value&4),everything:(value&7)===7};
 }
 async function loadArchiveRichFieldIndex(runtime){
   if(archiveRichFieldIndexPromise)return archiveRichFieldIndexPromise;
@@ -643,7 +644,7 @@ function localFilterAndSort(bots,state,formerTagMembers=new Map()){
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
   const firstSeenCutoff=archiveTimeCutoff(state.firstSeen),lastSeenCutoff=archiveTimeCutoff(state.lastSeen);
   let rows=bots.filter(b=>{
-    if(creator&&String(b.creator||'').toLowerCase()!==creator)return false;
+    if(creator&&!String(b.creator||'').toLowerCase().includes(creator))return false;
     const tags=(b.tags||[]).map(x=>String(x).toLowerCase());
     const historic=formerTagMembers.get(String(b.id||'').toLowerCase());
     if(historic&&state.includeHistorical)tags.push(...historic.tags);
@@ -1097,7 +1098,7 @@ async function botPage(){
   app.innerHTML=`<article class="detail"><div class="detail-head"><div class="detail-art">${imgHtml(primary,fallback,{alt:bestField(record,'name')||''})}</div>
     <div><div class="detail-sub">${esc(record.id)}</div><h1>${esc(botName)}</h1>
     <div class="detail-sub">${creator?`<a class="creator-profile-link" href="${esc(creatorHref(creator))}">@${esc(creator)}</a>`:'Unknown creator'}</div>
-    <div class="pill-row"><span class="pill">${esc(status)}</span>${archived?'<span class="pill">image archived</span>':''}${createdAt?'<span class="pill">created '+esc(date(createdAt))+'</span>':''}${publishedAt?'<span class="pill">made public '+esc(date(publishedAt))+'</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
+    <div class="pill-row"><span class="pill">${esc(status==='unverified-import'?'Saved copy · unverified':status)}</span>${archived?'<span class="pill">image archived</span>':''}${createdAt?'<span class="pill">created '+esc(date(createdAt))+'</span>':''}${publishedAt?'<span class="pill">made public '+esc(date(publishedAt))+'</span>':''}<span class="pill">first seen ${date(record.firstSeenAt)}</span><span class="pill">last seen ${date(record.lastSeenAt)}</span></div>
     ${sources?`<div class="pill-row source-row"><span class="detail-sub">Observed through</span>${sources}</div>`:''}
     <div class="pill-row">${tags}</div><p>${esc(normalizeDisplayText(bestField(record,'title')||''))}</p>
     <div class="detail-actions">${status==='deleted'?
@@ -1105,7 +1106,7 @@ async function botPage(){
       '<a class="primary-button" href="'+esc(spicyHref(record.id))+'" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recovery Lab</a>'}
     ${status==='deleted'?'<span class="detail-sub">Confirmed deleted · original SpicyChat link is unavailable</span>':''}<a class="secondary-button" href="../merge/?ids=${encodeURIComponent(record.id)}">Add to Merge</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a><a class="secondary-button" href="../name-trends/?name=${encodeURIComponent(botName)}">Check name usage</a><button class="secondary-button" type="button" id="export-bot-history">Export history JSON</button></div></div></div>
     ${snapshotLabel}
-    <section class="section"><h2>Archive completeness</h2><p class="detail-sub">Concrete coverage facts only; the archive does not invent a completeness percentage for time it never observed.</p><div class="stats-grid"><div class="stat"><b>${createdAt?esc(date(createdAt)):'Not available'}</b><span>Created (reported by SpicyChat)</span></div><div class="stat"><b>${publishedAt?esc(date(publishedAt)):'Not provided'}</b><span>Made public (exact date)</span></div><div class="stat"><b>${esc(date(record.firstSeenAt))}</b><span>First captured by Archive</span></div><div class="stat"><b>${esc(date(record.lastSeenAt))}</b><span>Last observed</span></div><div class="stat"><b>${fmt(allHistoryRows.length)}</b><span>Meaningful field changes recorded</span></div><div class="stat"><b>${fmt(availabilityCount)}</b><span>Availability observations</span></div><div class="stat"><b>${fmt(sourceCount)}</b><span>Archive sources represented</span></div><div class="stat"><b>${fmt(richCaptured.length)}</b><span>Rich field groups recovered</span></div></div><p class="detail-sub">Created and published dates are only shown when SpicyChat provided those values. “First captured” is when the Archive noticed the bot, not when it was published.</p><p class="detail-sub">${richCaptured.length?'Recovered fields: '+esc(richCaptured.join(', '))+'.':'No rich definition fields recovered yet.'}</p></section>
+    <section class="section"><h2>Archive completeness</h2><p class="detail-sub">Concrete coverage facts only; the archive does not invent a completeness percentage for time it never observed.</p><div class="stats-grid"><div class="stat"><b>${createdAt?esc(date(createdAt)):'Not available'}</b><span>Created (reported by SpicyChat)</span></div><div class="stat"><b>${publishedAt?esc(date(publishedAt)):'Not provided'}</b><span>Made public (exact date)</span></div><div class="stat"><b>${esc(date(record.firstSeenAt))}</b><span>First captured by Archive</span></div><div class="stat"><b>${esc(date(record.lastSeenAt))}</b><span>Last observed</span></div><div class="stat"><b>${fmt(allHistoryRows.length)}</b><span>Meaningful field changes recorded</span></div><div class="stat"><b>${fmt(availabilityCount)}</b><span>Availability observations</span></div><div class="stat"><b>${fmt(sourceCount)}</b><span>Archive sources represented</span></div><div class="stat"><b>${fmt(richCaptured.length)}</b><span>Rich field groups recovered</span></div></div><p class="detail-sub">Created and published dates are only shown when SpicyChat provided those values. “First captured” is when the Archive noticed the bot, not when it was published.</p><p class="detail-sub">${status==='unverified-import'?'This bot was imported from a saved QoL copy. Its current availability is not verified by SpicyChat. ':''}${richCaptured.length?'Recovered fields: '+esc(richCaptured.join(', '))+'.':'No rich definition fields recovered yet.'}</p></section>
     <section class="section"><h2>Archive timeline</h2><p class="detail-sub">First/last observations, availability changes and meaningful creator-content edits in chronological order. The newest 160 events are shown.</p>${timelineHtml||'<p class="detail-sub">No timeline events recorded yet.</p>'}</section>
     <section class="section"><h2>Last-known archived fields</h2><p class="detail-sub">A field stays here after SpicyChat stops exposing it. That does not mean it is still currently public.</p>${fieldHtml||'<p class="detail-sub">No rich definition fields have been recovered yet.</p>'}</section>
     <section class="section"><h2>Version history & compare</h2><p class="detail-sub">Versions are reconstructed from the archive's recorded before/after field changes. Untouched fields use the last-known archive value.</p>

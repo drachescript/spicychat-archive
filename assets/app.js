@@ -1104,7 +1104,7 @@ async function botPage(){
     <div class="detail-actions">${status==='deleted'?
       '<a class="secondary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recover archived bot</a>':
       '<a class="primary-button" href="'+esc(spicyHref(record.id))+'" target="_blank" rel="noopener">Open in SpicyChat ↗</a><a class="secondary-button" href="../recovery/?id='+encodeURIComponent(record.id)+(requestedAt?'&at='+encodeURIComponent(requestedAt):'')+'">Recovery Lab</a>'}
-    ${status==='deleted'?'<span class="detail-sub">Confirmed deleted · original SpicyChat link is unavailable</span>':''}<a class="secondary-button" href="../merge/?ids=${encodeURIComponent(record.id)}">Add to Merge</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a><a class="secondary-button" href="../name-trends/?name=${encodeURIComponent(botName)}">Check name usage</a><button class="secondary-button" type="button" id="export-bot-history">Export history JSON</button></div></div></div>
+    ${status==='deleted'?'<span class="detail-sub">Confirmed deleted · original SpicyChat link is unavailable</span>':''}<a class="secondary-button" href="../merge/?ids=${encodeURIComponent(record.id)}">Add to Merge</a><a class="secondary-button" href="${creator?esc(creatorHref(creator)):'../'}">${creator?'Creator archive':'Back to archive'}</a><a class="secondary-button" href="../changes/?q=${encodeURIComponent(record.id)}">Changes</a><a class="secondary-button" href="../name-trends/?name=${encodeURIComponent(botName)}">Check name usage</a><button class="secondary-button" type="button" id="export-bot-history">Export history JSON</button><button class="secondary-button" type="button" id="copy-bot-for-chatgpt">Copy for ChatGPT</button>${(status==='public'||status==='deleted')&&Array.isArray(record.availabilityHistory)&&record.availabilityHistory.some(e=>e?.status==='public'&&/^(character-api|typesense)/.test(String(e.source||'')))?'<a class="secondary-button" href="https://spicychat-archive-import.dragongraf.workers.dev/api/archive/bot/'+encodeURIComponent(record.id)+'.txt" target="_blank" rel="noopener noreferrer nofollow">AI-readable link ↗</a>':''}</div></div></div>
     ${snapshotLabel}
     <section class="section"><h2>Archive completeness</h2><p class="detail-sub">Concrete coverage facts only; the archive does not invent a completeness percentage for time it never observed.</p><div class="stats-grid"><div class="stat"><b>${createdAt?esc(date(createdAt)):'Not available'}</b><span>Created (reported by SpicyChat)</span></div><div class="stat"><b>${publishedAt?esc(date(publishedAt)):'Not provided'}</b><span>Made public (exact date)</span></div><div class="stat"><b>${esc(date(record.firstSeenAt))}</b><span>First captured by Archive</span></div><div class="stat"><b>${esc(date(record.lastSeenAt))}</b><span>Last observed</span></div><div class="stat"><b>${fmt(allHistoryRows.length)}</b><span>Meaningful field changes recorded</span></div><div class="stat"><b>${fmt(availabilityCount)}</b><span>Availability observations</span></div><div class="stat"><b>${fmt(sourceCount)}</b><span>Archive sources represented</span></div><div class="stat"><b>${fmt(richCaptured.length)}</b><span>Rich field groups recovered</span></div></div><p class="detail-sub">Created and published dates are only shown when SpicyChat provided those values. “First captured” is when the Archive noticed the bot, not when it was published.</p><p class="detail-sub">${status==='unverified-import'?'This bot was imported from a saved QoL copy. Its current availability is not verified by SpicyChat. ':''}${richCaptured.length?'Recovered fields: '+esc(richCaptured.join(', '))+'.':'No rich definition fields recovered yet.'}</p></section>
     <section class="section"><h2>Archive timeline</h2><p class="detail-sub">First/last observations, availability changes and meaningful creator-content edits in chronological order. The newest 160 events are shown.</p>${timelineHtml||'<p class="detail-sub">No timeline events recorded yet.</p>'}</section>
@@ -1125,6 +1125,39 @@ async function botPage(){
     const renderCompare=()=>{const rows=versionCompareRows(record,older.value,newer.value);if(snapshotLink){const u=new URL(location.href);if(newer.value==='current')u.searchParams.delete('at');else u.searchParams.set('at',newer.value);snapshotLink.href=u.href;}compare.innerHTML=rows.length?`<div class="version-table">${rows.map(row=>`<article class="version-row"><h3>${esc(archiveFieldLabel(row.path))}</h3><div class="version-values"><div><span>Older</span><div class="pre">${esc(compareValueText(row.from))}</div></div><div><span>Newer</span><div class="pre">${esc(compareValueText(row.to))}</div></div></div></article>`).join('')}</div>`:'<div class="empty compact-empty">Those two points have no tracked content differences.</div>';};
     older.addEventListener('change',renderCompare);newer.addEventListener('change',renderCompare);renderCompare();
   }
+  document.querySelector('#copy-bot-for-chatgpt')?.addEventListener('click',async event=>{
+    // Reuse the record already loaded on this page: no additional R2 read.
+    const labels=[
+      ['Greeting',['greeting','greetings']],
+      ['Personality',['persona','personality','definition','character_definition','characterDefinition']],
+      ['Scenario',['scenario']],
+      ['Example Dialogue',['dialogue','example_dialogue','example_dialogues']],
+      ['System Prompt',['system_prompt']],
+      ['Post History Instructions',['post_history_instructions']]
+    ];
+    const chunks=['SpicyChat Archive — last-known bot data','Bot ID: '+record.id,'Name: '+botName,'Title: '+currentTitle,'Creator: '+creator,
+      'Archive URL: https://spicychatarchive.drache.uk/bot/?id='+record.id,
+      'Status: '+status,'Last seen: '+String(record.lastSeenAt||'unknown'),
+      'Note: This is historical data, not proof of current availability.'];
+    for(const [label,keys] of labels){
+      const value=requestedAt?snapshotValue(keys):bestFieldAny(record,keys);
+      if(!meaningfulFieldValue(value))continue;
+      const text=typeof value==='string'?value:Array.isArray(value)?value.map(x=>typeof x==='string'?x:JSON.stringify(x)).join('\n\n'):JSON.stringify(value,null,2);
+      if(text.trim())chunks.push('\n## '+label+'\n'+text);
+    }
+    const copy=chunks.join('\n');
+    const button=event.currentTarget;
+    try{
+      await navigator.clipboard.writeText(copy);
+      button.textContent='Copied for ChatGPT';
+    }catch{
+      const area=document.createElement('textarea');
+      area.value=copy;area.style.position='fixed';area.style.left='-9999px';document.body.append(area);area.select();
+      const ok=document.execCommand('copy');area.remove();
+      button.textContent=ok?'Copied for ChatGPT':'Copy failed — use Export history JSON';
+    }
+  });
+
   document.querySelector('#export-bot-history')?.addEventListener('click',()=>{
     const payload={schemaVersion:1,exportedAt:new Date().toISOString(),id:record.id,createdAt,publishedAt,firstSeenAt:record.firstSeenAt,lastSeenAt:record.lastSeenAt,status:record.status,sources:record.sources||{},availabilityHistory:record.availabilityHistory||[],fieldHistory:record.fieldHistory||[],metrics:record.metrics||{},lastKnown:record.lastKnown||{},avatarArchive:record.avatarArchive||{}};
     const blob=new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='spicychat-archive-'+record.id+'-history.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);

@@ -104,6 +104,50 @@ class FullCatalogAuditOrderTests(unittest.TestCase):
             self.assertNotIn("_catalogAuditReady", state)
 
 
+    def test_verify_only_skips_typesense_and_arms_bounded_catchup(self):
+        from unittest.mock import Mock
+        state = {"missingChecks": {"bot-a": {"count": 0}}}
+        config = {"crawler": {"verify_missing_only": True},
+                  "listings": {"latest": "createdAt:desc"}}
+        with patch.object(maintenance, "_original_configure_cloud",
+                          return_value=(state, object())), \
+             patch.object(archive, "scan_listing") as scanner, \
+             patch.object(archive, "explore_more"), \
+             patch.object(archive, "observe_bot"), \
+             patch.object(archive, "enrich_queue"), \
+             patch.object(archive, "verify_missing"):
+            maintenance.maintenance_configure_cloud(config, FakeStore([]))
+            result = archive.scan_listing(None, config, "latest", "createdAt:desc", "now", state)
+            self.assertTrue(result["skipped"])
+            self.assertFalse(result["ok"])
+            scanner.assert_not_called()
+        self.assertEqual(state["missingVerificationCatchup"]["runsRemaining"], 18)
+        self.assertEqual(state["missingVerificationCatchup"]["perRunBudget"], 5000)
+
+    def test_scheduled_catchup_budgets_expire_and_decrement_on_verification(self):
+        state = {"missingChecks": {"bot-a": {"count": 0}},
+                 "missingVerificationCatchup": {"runsRemaining": 1, "perRunBudget": 5000}}
+        config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
+        with patch.object(maintenance, "_original_configure_cloud",
+                          return_value=(state, object())), \
+             patch.object(archive, "scan_listing"), \
+             patch.object(archive, "explore_more"), \
+             patch.object(archive, "observe_bot"), \
+             patch.object(archive, "enrich_queue"), \
+             patch.object(archive, "verify_missing", return_value={
+                 "verified": 1, "deleted": 0, "restored": 0,
+             }):
+            maintenance.maintenance_configure_cloud(config, FakeStore([]))
+            self.assertEqual(config["crawler"]["missing_verification_budget"], 5000)
+            archive.verify_missing(None, config, "now", state, set())
+        self.assertEqual(state["missingVerificationCatchup"]["runsRemaining"], 0)
+        next_config = {"crawler": {"scheduled_latest_only": True, "missing_verification_budget": 500}}
+        with patch.object(maintenance, "_original_configure_cloud",
+                          return_value=(state, object())):
+            maintenance.maintenance_configure_cloud(next_config, FakeStore([]))
+        self.assertEqual(next_config["crawler"]["missing_verification_budget"], 500)
+
+
 class FakeStore:
     def __init__(self, ids):
         self.discovery_order = list(ids)

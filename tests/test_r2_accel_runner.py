@@ -101,6 +101,20 @@ class ManualArchiveProfileTests(unittest.TestCase):
                 self.assertEqual(profile["crawler"]["explore_time_limit_seconds"], 7200)
         self.assertEqual(config["crawler"]["explore_time_limit_seconds"], 4200)
 
+    def test_catalog_completion_is_discovery_then_bounded_verification(self):
+        config = self.base_config()
+        config["crawler"]["explore_pages_max"] = 2500
+        profile, target, _ = runner._apply_manual_archive_profile(
+            config, 2500, catalog_audit=True, full_maintenance=True,
+        )
+        self.assertEqual(target, 2500)
+        self.assertTrue(profile["crawler"]["catalog_audit_run"])
+        self.assertEqual(profile["crawler"]["missing_verification_budget"], 2000)
+        self.assertFalse(profile["crawler"]["maintenance_verification_enabled"])
+        self.assertFalse(profile["crawler"]["image_archive_enabled"])
+        self.assertEqual(profile["crawler"]["explore_time_limit_seconds"], 16200)
+        self.assertNotIn("catalog_audit_run", config["crawler"])
+
     def test_large_manual_guard_targets(self):
         for selected in (1500, 2500):
             with self.subTest(selected=selected):

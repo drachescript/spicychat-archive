@@ -43,6 +43,67 @@ class ScheduledLatestOnlyExplorationTests(unittest.TestCase):
         self.assertEqual(state["exploration"], checkpoint)
 
 
+
+class FullCatalogAuditOrderTests(unittest.TestCase):
+    def test_missing_verification_waits_until_public_pass_natural_end(self):
+        from unittest.mock import Mock
+        state = {"exploration": {"mode": "cursor", "pass": 3}, "missingChecks": {
+            "suspect-id": {"count": 0, "lastAt": None, "reason": "absent-from-complete-typesense-pass"},
+        }}
+        config = {"crawler": {"catalog_audit_run": True}}
+        partial = {"naturalEnd": False, "pagesCompleted": 2500,
+                   "changed": 2, "missingQueued": 0, "errors": [], "timeLimited": False}
+        with patch.object(maintenance, "_original_configure_cloud",
+                          return_value=(state, object())), \
+             patch.object(archive, "scan_listing"), \
+             patch.object(archive, "explore_more", return_value=partial), \
+             patch.object(archive, "observe_bot"), \
+             patch.object(archive, "enrich_queue"), \
+             patch.object(archive, "verify_missing", return_value={
+                 "verified": 5, "deleted": 0, "restored": 0,
+             }) as verifier:
+            maintenance.maintenance_configure_cloud(config, FakeStore([]))
+            progress = archive.explore_more(None, config, "2026-11-09T00:00:00Z", state)
+            self.assertFalse(progress["naturalEnd"])
+            result = archive.verify_missing(None, config, "2026-11-09T00:00:00Z", state, set())
+            self.assertTrue(result["skipped"])
+            self.assertEqual(result["verified"], 0)
+            self.assertEqual(result["deleted"], 0)
+            verifier.assert_not_called()
+            self.assertNotIn("_catalogAuditReady", state)
+            self.assertIn("suspect-id", state["missingChecks"])
+
+    def test_completed_public_pass_allows_bounded_missing_checks(self):
+        from unittest.mock import Mock
+        state = {"exploration": {"mode": "page", "pass": 4}, "missingChecks": {
+            "suspect-id": {"count": 0, "lastAt": None, "reason": "absent-from-complete-typesense-pass"},
+        }}
+        config = {"crawler": {"catalog_audit_run": True, "missing_verification_budget": 2000}}
+        completed = {"naturalEnd": True, "pagesCompleted": 1300,
+                     "changed": 20, "missingQueued": 100, "errors": [], "timeLimited": False}
+        with patch.object(maintenance, "_original_configure_cloud",
+                          return_value=(state, object())), \
+             patch.object(archive, "scan_listing"), \
+             patch.object(archive, "explore_more", return_value=completed), \
+             patch.object(archive, "observe_bot"), \
+             patch.object(archive, "enrich_queue"), \
+             patch.object(archive, "verify_missing", return_value={
+                 "verified": 12, "deleted": 0, "restored": 0,
+             }) as verifier:
+            maintenance.maintenance_configure_cloud(config, FakeStore([]))
+            progress = archive.explore_more(None, config, "2026-11-09T01:00:00Z", state)
+            self.assertTrue(progress["naturalEnd"])
+            result = archive.verify_missing(None, config, "2026-11-09T01:00:00Z", state, set())
+            self.assertEqual(result["verified"], 12)
+            self.assertFalse(result.get("skipped", False))
+            verifier.assert_called_once()
+            self.assertEqual(state["catalogAudit"]["lastCandidatesQueued"], 100)
+            self.assertEqual(state["catalogAudit"]["lastPublicChangesSaved"], 20)
+            self.assertTrue(state["catalogAudit"]["lastPassComplete"])
+            self.assertEqual(state["catalogAudit"]["lastCompletedPass"], 4)
+            self.assertNotIn("_catalogAuditReady", state)
+
+
 class FakeStore:
     def __init__(self, ids):
         self.discovery_order = list(ids)

@@ -67,13 +67,24 @@ test('unknown or unsafe image paths never become invented bot metadata',()=>{
   assert.equal(resolveArchivedAvatar('https://example.com/a.jpg'),'https://example.com/a.jpg');
   assert.equal(archivedBotPreview(null),null);
 });
-test('only visible review cards request historical previews, with a concurrency cap',()=>{
+test('review cards use generated names/avatars, without per-bot R2 fetches',()=>{
   const code=readFileSync(new URL('../assets/inconclusive.js',import.meta.url),'utf8');
-  assert.match(code,/IntersectionObserver/);
-  assert.match(code,/PREVIEW_CONCURRENCY=3/);
-  assert.match(code,/\.observe\(el\)/);
+  const html=readFileSync(new URL('../inconclusive/index.html',import.meta.url),'utf8');
+  assert.match(code,/paintPreview\(el,row\)/);
+  assert.match(code,/row\.name/);
+  assert.match(code,/resolveArchivedAvatar\(row\.avatar\)/);
+  assert.match(code,/img\.loading='lazy'/);
   assert.match(code,/ic-bot-name/);
   assert.match(code,/ic-bot-avatar/);
   assert.match(code,/Archive bot/);
   assert.match(code,/SpicyChat bot/);
+  assert.doesNotMatch(code,/archivedBotRecordUrl\(/);
+  assert.doesNotMatch(code,/IntersectionObserver/);
+  assert.doesNotMatch(html,/shard-fetch\.js/);
+});
+test('precomputed metadata survives record normalization',()=>{
+  const id='0004d9d6-473d-4c4c-b536-d25e184d5cec';
+  const row=normalizeReviewCase({id,category:'awaiting-confirmation',name:'Saved bot',avatar:'https://cdn.nd-api.com/avatars/a.webp'});
+  assert.equal(row.name,'Saved bot');
+  assert.equal(row.avatar,'https://cdn.nd-api.com/avatars/a.webp');
 });

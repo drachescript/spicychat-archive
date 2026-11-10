@@ -130,6 +130,7 @@ jobs:
               'changes/index.html', 'stats/index.html', 'faq/index.html',
               'flagged/index.html', 'assets/flagged.js', 'assets/flagged-rules.js',
               'inconclusive/index.html', 'assets/inconclusive.js',
+              'assets/inconclusive-records.js',
               'data/inconclusive.json', 'data/inconclusive-corrections.json',
           ]
           missing = [path for path in required if not (root / path).is_file()]
@@ -137,7 +138,30 @@ jobs:
               raise SystemExit('Pages artifact missing required routes: ' + ', '.join(missing))
           if (root / 'CNAME').read_text().strip() != 'spicychatarchive.drache.uk':
               raise SystemExit('Missing or unexpected custom domain in Pages artifact')
-          print(f'Pages artifact verified: {len(required)} required routes and CNAME present')
+          import json, re
+          index = json.loads((root / 'data/inconclusive.json').read_text(encoding='utf-8'))
+          corrections = json.loads((root / 'data/inconclusive-corrections.json').read_text(encoding='utf-8'))
+          cases = index.get('cases', [])
+          rows = corrections.get('corrections', [])
+          ident = re.compile(r'^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}
+          PY_VERIFY
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/pages-site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+, re.I)
+          if len(cases) != index.get('caseCount', 0):
+              raise SystemExit(f'Review index mismatch: claimed {index.get("caseCount")} but published {len(cases)} rows')
+          for source, entries in [('index', cases), ('corrections', rows)]:
+              if not isinstance(entries, list):
+                  raise SystemExit(f'Invalid {source}: no review list')
+              if any(not isinstance(row, dict) or not ident.fullmatch(str(row.get('id', ''))) for row in entries):
+                  raise SystemExit(f'Invalid {source}: at least one review ID is malformed')
+          print(f'Pages artifact verified: {len(required)} required routes, CNAME, and {len(cases)} review candidates')
           PY_VERIFY
 
       - uses: actions/upload-pages-artifact@v3

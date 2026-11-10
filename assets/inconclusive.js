@@ -1,4 +1,5 @@
 import { validBotId, normalizeReviewCase, reviewSourceDiagnostic } from './inconclusive-records.js';
+import { archivedBotRecordUrl, archivedBotPreview } from './inconclusive-metadata.js';
 // This page reads two static GitHub Pages JSON files only. It does not call
 // SpicyChat, Cloudflare R2, or any background moderation service.
 const $=s=>document.querySelector(s);
@@ -6,6 +7,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const validId=validBotId;
 const STORAGE='spicychat-archive-inconclusive-correction-drafts-v1';
 const CHUNK=48;
+const PREVIEW_CONCURRENCY=3;
 const labels={'api-error':'API error','empty-response':'Empty 200 response','awaiting-confirmation':'Awaiting second 404'};
 const designations=new Map([
   ['unreviewed','Not reviewed yet'],['inconclusive','Still inconclusive'],['public','Appears public'],
@@ -37,6 +39,91 @@ function normalizeReview(row){
   return result;
 }
 const normalizeCase=normalizeReviewCase;
+// Metadata is loaded only when a card enters the viewport. This avoids
+// fetching ~2,000 individual records on every visit to the review page.
+const previewCache=new Map();
+const previewRequested=new Set();
+const previewQueue=[];
+let previewActive=0;
+const previewObserver=typeof IntersectionObserver==='function'
+  ? new IntersectionObserver(entries=>{
+      for(const entry of entries){
+        if(!entry.isIntersecting)continue;
+        previewObserver.unobserve(entry.target);
+        queuePreview(entry.target.dataset.id);
+      }
+    },{rootMargin:'180px 0px',threshold:0.01})
+  : null;
+
+function paintPreview(card,preview){
+  if(!card||!card.isConnected)return;
+  const heading=card.querySelector('.ic-bot-name');
+  const description=card.querySelector('.ic-bot-description');
+  const photo=card.querySelector('.ic-bot-avatar');
+  if(!heading||!description||!photo)return;
+  heading.textContent=preview?.name||'Name not saved';
+  const details=[preview?.subtitle,preview?.creator?'@'+preview.creator:''].filter(Boolean);
+  description.textContent=details.join(' · ')||'';
+  description.hidden=!details.length;
+  photo.replaceChildren();
+  if(preview?.image){
+    const img=document.createElement('img');
+    img.src=preview.image;
+    img.alt=preview.name?preview.name+' avatar':'Archived bot avatar';
+    img.loading='lazy';
+    img.decoding='async';
+    img.referrerPolicy='no-referrer';
+    img.addEventListener('error',()=>{
+      if(preview.fallbackImage&&img.src!==preview.fallbackImage){
+        img.src=preview.fallbackImage;
+      }else{
+        photo.textContent='No saved image';
+      }
+    });
+    photo.append(img);
+  }else{
+    photo.textContent='No saved image';
+  }
+}
+function updateVisiblePreviews(id,preview){
+  for(const card of document.querySelectorAll('#ic-list .ic-card')){
+    if(card.dataset.id===id)paintPreview(card,preview);
+  }
+}
+async function getArchivedPreview(id){
+  const url=archivedBotRecordUrl(id);
+  if(!url)return null;
+  try{
+    // Same existing public archive record used on the bot detail page.
+    // The page's shard-fetch helper also supports older sharded records.
+    const response=await fetch(url,{cache:'force-cache'});
+    if(!response.ok)return null;
+    const record=await response.json();
+    if(record?.id&&validId(record.id)!==id)return null;
+    return archivedBotPreview(record);
+  }catch{return null;}
+}
+function pumpPreviews(){
+  while(previewActive<PREVIEW_CONCURRENCY&&previewQueue.length){
+    const id=previewQueue.shift();
+    previewActive++;
+    void getArchivedPreview(id).then(preview=>{
+      previewCache.set(id,preview);
+      updateVisiblePreviews(id,preview);
+    }).finally(()=>{previewActive--;pumpPreviews();});
+  }
+}
+function queuePreview(id){
+  if(!validId(id))return;
+  if(previewCache.has(id)){
+    updateVisiblePreviews(id,previewCache.get(id));
+    return;
+  }
+  if(previewRequested.has(id))return;
+  previewRequested.add(id);
+  previewQueue.push(id);
+  pumpPreviews();
+}
 function merged(){
   const map=new Map(published.map(row=>[row.id,row]));
   for(const [id,row] of Object.entries(drafts)){
@@ -97,6 +184,9 @@ function render(){
       :row.category==='empty-response'?'HTTP 200 contained no usable bot data.': 'The server or network response was not conclusive.';
     el.innerHTML='<div class="ic-card-head"><strong>'+esc(labels[row.category]||'Inconclusive')+'</strong>'+
       '<span class="ic-chip">HTTP '+esc(row.httpStatus??'?')+'</span></div>'+
+      '<div class="ic-bot-preview"><div class="ic-bot-avatar">No image</div>'+
+      '<div class="ic-bot-text"><h3 class="ic-bot-name">Checking saved details…</h3>'+
+      '<p class="ic-bot-description" hidden></p></div></div>'+
       '<div class="ic-id">'+esc(row.id)+'</div>'+
       '<div class="ic-meta">Last checked: '+esc(when)+' · 404 confirmations: '+Number(row.confirmations||0)+
       (row.errorKind?' · '+esc(row.errorKind):'')+'</div>'+
@@ -111,6 +201,9 @@ function render(){
       '<div class="ic-buttons"><button data-action="save" type="button">Save review draft</button>'+
       '<button data-action="reset" type="button">Reset local draft</button></div></div></details>';
     list.append(el);
+    if(previewCache.has(row.id))paintPreview(el,previewCache.get(row.id));
+    else if(previewObserver)previewObserver.observe(el);
+    else queuePreview(row.id);
   }
   const more=$('#ic-more');
   more.hidden=found.length<=visible;

@@ -1,8 +1,9 @@
+import { validBotId, normalizeReviewCase, reviewSourceDiagnostic } from './inconclusive-records.js';
 // This page reads two static GitHub Pages JSON files only. It does not call
 // SpicyChat, Cloudflare R2, or any background moderation service.
 const $=s=>document.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+const validId=validBotId;
 const STORAGE='spicychat-archive-inconclusive-correction-drafts-v1';
 const CHUNK=48;
 const labels={'api-error':'API error','empty-response':'Empty 200 response','awaiting-confirmation':'Awaiting second 404'};
@@ -16,7 +17,6 @@ try{
   if(raw&&typeof raw==='object'&&!Array.isArray(raw))drafts=raw;
 }catch{}
 
-function validId(v){v=String(v||'').toLowerCase();return UUID.test(v)?v:'';}
 function safeUrl(value){
   try{
     const u=new URL(String(value||'').trim());
@@ -36,18 +36,7 @@ function normalizeReview(row){
   if(correctBotId&&correctBotId!==id)result.correctBotId=correctBotId;
   return result;
 }
-// Keep the IDs/links safe and consistent even when falling back to correction rows.
-function normalizeCase(row){
-  const id=validId(row?.id),category=String(row?.category||'');
-  if(!id||!Object.hasOwn(labels,category))return null;
-  return {
-    ...row,id,category,
-    httpStatus:Number(row.httpStatus||0),
-    confirmations:Number(row.confirmations??(category==='awaiting-confirmation'?1:0)),
-    spicychatUrl:'https://spicychat.ai/chatbot/'+id,
-    archiveUrl:'https://spicychatarchive.drache.uk/bot/?id='+id
-  };
-}
+const normalizeCase=normalizeReviewCase;
 function merged(){
   const map=new Map(published.map(row=>[row.id,row]));
   for(const [id,row] of Object.entries(drafts)){
@@ -177,6 +166,7 @@ $('#ic-filter').value='all';
 $('#ic-reviewed').value='all';
 $('#ic-search').value='';
 $('#ic-copy').addEventListener('click',async()=>{
+  if(!cases.length){status('No review cards loaded. Reload review data before exporting.');return;}
   const content=reviewJson();
   try{
     await navigator.clipboard.writeText(content);
@@ -190,6 +180,7 @@ $('#ic-copy').addEventListener('click',async()=>{
   }
 });
 $('#ic-download').addEventListener('click',()=>{
+  if(!cases.length){status('No review cards loaded. Reload review data before exporting.');return;}
   const blob=new Blob([reviewJson()],{type:'application/json'});
   const url=URL.createObjectURL(blob),link=document.createElement('a');
   link.href=url;link.download='inconclusive-corrections.json';document.body.append(link);
@@ -234,7 +225,9 @@ async function load(){
     cases=recovered?correctionCases:indexCases;
     if(!cases.length&&correctionCases.length)cases=correctionCases;
     if(expected>0&&!cases.length)throw Error(
-      'The index reports '+expected+' cases, but neither file provided usable bot IDs');
+      'The index reports '+expected+' cases, but the data did not contain usable review records. '+
+      reviewSourceDiagnostic('Index',index?.cases||[],indexCases.length)+'. '+
+      reviewSourceDiagnostic('Corrections',corrections?.corrections||[],correctionCases.length));
     generatedAt=index?.generatedAt||null;
     published=(corrections?.corrections||[]).map(normalizeReview).filter(Boolean);
     // Keep local annotations if files have differing snapshots. A complete,
@@ -257,6 +250,10 @@ async function load(){
       cases.length.toLocaleString()+' review cards loaded';
     const warnings=[];
     if(recovered)warnings.push('Recovered cards from corrections JSON because the review index was missing or incomplete');
+    if(indexCases.length===0&&Array.isArray(index?.cases)&&index.cases.length)
+      warnings.push(reviewSourceDiagnostic('Index',index.cases,indexCases.length));
+    if(correctionCases.length===0&&Array.isArray(corrections?.corrections)&&corrections.corrections.length)
+      warnings.push(reviewSourceDiagnostic('Corrections',corrections.corrections,correctionCases.length));
     if(index&&expected!==indexCases.length)
       warnings.push('Review index says '+expected+' cases, but contains '+indexCases.length+' usable records');
     if(index&&corrections&&correctionCases.length!==indexCases.length)

@@ -10,7 +10,7 @@ const designations=new Map([
   ['unreviewed','Not reviewed yet'],['inconclusive','Still inconclusive'],['public','Appears public'],
   ['unavailable','Appears unavailable'],['restricted','Appears restricted']
 ]);
-let cases=[],published=[],drafts={},visible=CHUNK,ready=false,generatedAt=null;
+let cases=[],published=[],drafts={},visible=CHUNK,ready=false,generatedAt=null,loading=false;
 try{
   const raw=JSON.parse(localStorage.getItem(STORAGE)||'{}');
   if(raw&&typeof raw==='object'&&!Array.isArray(raw))drafts=raw;
@@ -35,6 +35,18 @@ function normalizeReview(row){
   const correctBotId=validId(row.correctBotId);
   if(correctBotId&&correctBotId!==id)result.correctBotId=correctBotId;
   return result;
+}
+// Keep the IDs/links safe and consistent even when falling back to correction rows.
+function normalizeCase(row){
+  const id=validId(row?.id),category=String(row?.category||'');
+  if(!id||!Object.hasOwn(labels,category))return null;
+  return {
+    ...row,id,category,
+    httpStatus:Number(row.httpStatus||0),
+    confirmations:Number(row.confirmations??(category==='awaiting-confirmation'?1:0)),
+    spicychatUrl:'https://spicychat.ai/chatbot/'+id,
+    archiveUrl:'https://spicychatarchive.drache.uk/bot/?id='+id
+  };
 }
 function merged(){
   const map=new Map(published.map(row=>[row.id,row]));
@@ -81,7 +93,10 @@ function render(){
   $('#ic-result-count').textContent=found.length.toLocaleString()+' matching cases';
   const list=$('#ic-list');list.innerHTML='';
   if(!found.length){
-    list.innerHTML='<p class="ic-empty">'+(ready?'No candidates match these filters. This is not evidence that every ID is available.':'No review index has been generated yet. The next archive run will populate it.')+'</p>';
+    const message=cases.length
+      ? 'No review candidates match the current filters. There are '+cases.length.toLocaleString()+' cases loaded; clear the filters to see them.'
+      : ready?'The review index contains no cases. Try Reload review data, or check the warning above.':'No review index has been generated yet. The next archive run will populate it.';
+    list.innerHTML='<p class="ic-empty">'+esc(message)+'</p>';
   }
   for(const row of found.slice(0,visible)){
     const review=decisionFor(row.id)||{designation:'unreviewed'};
@@ -111,8 +126,9 @@ function render(){
   const more=$('#ic-more');
   more.hidden=found.length<=visible;
   if(!more.hidden)more.textContent='Show more ('+(found.length-visible).toLocaleString()+' remaining)';
-  status(merged().length.toLocaleString()+' IDs prefilled in corrections JSON · '+
-    merged().filter(row=>row.designation!=='unreviewed').length.toLocaleString()+
+  const rows=merged();
+  status(rows.length.toLocaleString()+' IDs prefilled in corrections JSON · '+
+    rows.filter(row=>row.designation!=='unreviewed').length.toLocaleString()+
     ' manually designated. Changes stay in this browser until you copy or download the JSON.');
 }
 function saveReview(card){
@@ -149,6 +165,17 @@ for(const input of ['#ic-filter','#ic-reviewed','#ic-search']){
   $(input).addEventListener(input==='#ic-search'?'input':'change',()=>{visible=CHUNK;render();});
 }
 $('#ic-more').addEventListener('click',()=>{visible+=CHUNK;render();});
+$('#ic-clear-filters').addEventListener('click',()=>{
+  $('#ic-filter').value='all';
+  $('#ic-reviewed').value='all';
+  $('#ic-search').value='';
+  visible=CHUNK;render();
+});
+$('#ic-reload').addEventListener('click',()=>void load());
+// Reset restored filters on first view, so an old selection cannot hide cases.
+$('#ic-filter').value='all';
+$('#ic-reviewed').value='all';
+$('#ic-search').value='';
 $('#ic-copy').addEventListener('click',async()=>{
   const content=reviewJson();
   try{
@@ -170,43 +197,89 @@ $('#ic-download').addEventListener('click',()=>{
   status('Download prepared. Commit the resulting file to data/inconclusive-corrections.json for the next archive run.');
 });
 async function load(){
+  if(loading)return;
+  loading=true;
+  $('#ic-reload').disabled=true;
+  $('#ic-updated').textContent='Loading the latest review data…';
   try{
-    const [indexResponse,correctionsResponse]=await Promise.all([
-      fetch('../data/inconclusive.json',{cache:'no-cache'}),
-      fetch('../data/inconclusive-corrections.json',{cache:'no-cache'})
+    // Bypass stale browser/CDN copies. Each source can recover the other:
+    // the corrections JSON includes a full snapshot of unresolved review IDs.
+    const stamp=Date.now();
+    const results=await Promise.allSettled([
+      fetch('../data/inconclusive.json?v='+stamp,{cache:'no-store'}),
+      fetch('../data/inconclusive-corrections.json?v='+stamp,{cache:'no-store'})
     ]);
-    if(!indexResponse.ok)throw Error('Review index HTTP '+indexResponse.status);
-    const index=await indexResponse.json();
-    if(index.schemaVersion!==1||!Array.isArray(index.cases))throw Error('Unexpected review index format');
-    cases=index.cases.filter(x=>validId(x.id)&&labels[x.category]);
-    generatedAt=index.generatedAt;
-    if(correctionsResponse.ok){
-      const corrections=await correctionsResponse.json();
-      published=(Array.isArray(corrections.corrections)?corrections.corrections:[])
-        .map(normalizeReview).filter(Boolean);
-    }
-    // Resolved IDs disappear from the JSON and locally saved drafts alike.
-    if(generatedAt){
+    const readJson=async (result,name)=>{
+      if(result.status!=='fulfilled')throw Error(name+': '+String(result.reason));
+      if(!result.value.ok)throw Error(name+' HTTP '+result.value.status);
+      return result.value.json();
+    };
+    const [indexResult,correctionsResult]=await Promise.allSettled([
+      readJson(results[0],'Review index'),
+      readJson(results[1],'Corrections')
+    ]);
+    const index=indexResult.status==='fulfilled'?indexResult.value:null;
+    const corrections=correctionsResult.status==='fulfilled'?correctionsResult.value:null;
+    if(index&&(index.schemaVersion!==1||!Array.isArray(index.cases)))
+      throw Error('Unexpected review index format');
+    if(corrections&&(corrections.schemaVersion!==1||!Array.isArray(corrections.corrections)))
+      throw Error('Unexpected corrections format');
+    if(!index&&!corrections)throw Error('Both review JSON files were unavailable');
+    const indexCases=(index?.cases||[]).map(normalizeCase).filter(Boolean);
+    const correctionCases=(corrections?.corrections||[]).map(normalizeCase).filter(Boolean);
+    const expected=Math.max(Number(index?.caseCount||0),
+      Object.values(index?.counts||{}).reduce((n,v)=>n+(Number(v)||0),0));
+    const recovered=correctionCases.length>indexCases.length&&
+      (indexCases.length<expected||!index);
+    cases=recovered?correctionCases:indexCases;
+    if(!cases.length&&correctionCases.length)cases=correctionCases;
+    if(expected>0&&!cases.length)throw Error(
+      'The index reports '+expected+' cases, but neither file provided usable bot IDs');
+    generatedAt=index?.generatedAt||null;
+    published=(corrections?.corrections||[]).map(normalizeReview).filter(Boolean);
+    // Keep local annotations if files have differing snapshots. A complete,
+    // consistent index is needed before any draft can be pruned.
+    if(generatedAt&&indexCases.length>=expected&&
+      (!correctionCases.length||correctionCases.length===indexCases.length)){
       const unresolved=new Set(cases.map(x=>x.id));
       for(const id of Object.keys(drafts))if(!unresolved.has(id))delete drafts[id];
       saveDrafts();
     }
-    ready=Boolean(generatedAt);
-    const counts=index.counts||{};
+    ready=Boolean(index?.generatedAt||cases.length);
+    const counts=index?.counts||{};
+    const total=Number(index?.pendingTotal||0),unqueried=Number(index?.notYetChecked||0);
     $('#ic-summary').textContent=
-      Number(index.pendingTotal||0).toLocaleString()+' total pending IDs · '+
-      Number(index.notYetChecked||0).toLocaleString()+' not yet checked · '+
+      (index?total.toLocaleString()+' total pending IDs · '+
+      unqueried.toLocaleString()+' not yet checked · '+
       Number(counts['api-error']||0).toLocaleString()+' API errors · '+
       Number(counts['empty-response']||0).toLocaleString()+' empty responses · '+
-      Number(counts['awaiting-confirmation']||0).toLocaleString()+' awaiting another 404';
-    $('#ic-updated').textContent=generatedAt?'Last generated: '+new Date(generatedAt).toLocaleString()+
-      ' · Data updates after successful archive runs.':
-      'The index will be populated by the next successful archive run.';
+      Number(counts['awaiting-confirmation']||0).toLocaleString()+' awaiting another 404 · ':'')+
+      cases.length.toLocaleString()+' review cards loaded';
+    const warnings=[];
+    if(recovered)warnings.push('Recovered cards from corrections JSON because the review index was missing or incomplete');
+    if(index&&expected!==indexCases.length)
+      warnings.push('Review index says '+expected+' cases, but contains '+indexCases.length+' usable records');
+    if(index&&corrections&&correctionCases.length!==indexCases.length)
+      warnings.push('Review JSON files have different counts');
+    if(index&&!corrections)warnings.push('Corrections data unavailable; draft exports still work');
+    if(!index)warnings.push('Review index unavailable; loaded corrections data only');
+    $('#ic-updated').textContent=(generatedAt?'Last generated: '+
+      new Date(generatedAt).toLocaleString()+' · Data updates after successful archive runs.':
+      'Data loaded from the review corrections file.')+
+      (warnings.length?' Warning: '+warnings.join('. ')+'.':'');
+    visible=CHUNK;
     render();
   }catch(error){
+    cases=[];published=[];ready=false;
     $('#ic-summary').textContent='Review data unavailable: '+error.message;
-    $('#ic-result-count').textContent='Unavailable';
-    status('The archive queue was not changed.');
+    $('#ic-updated').textContent='The archive verification queue was not changed. Try Reload review data.';
+    $('#ic-result-count').textContent='Unable to load';
+    $('#ic-list').innerHTML='<p class="ic-empty">Could not load review candidates: '+
+      esc(error.message)+'. Try Reload review data.</p>';
+    status('No review records loaded. The queue was not changed.');
+  }finally{
+    loading=false;
+    $('#ic-reload').disabled=false;
   }
 }
 void load();

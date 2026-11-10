@@ -1,9 +1,9 @@
 """Review-only public index of unresolved missing-ID API responses.
 
-Use the queue already loaded into memory by the archive. No per-bot R2 GETs,
-no additional Character API calls, and no changes to verified bot history.
-Only IDs already queued from past public discovery are included. User review
-decisions are annotations, never proof of current API availability.
+Use the verification queue already loaded by the archive. Review status never
+triggers a Character API request or changes verified history. Optional saved
+name/avatar previews are backfilled once from existing archived R2 records,
+then kept in this generated index for future runs.
 """
 from __future__ import annotations
 
@@ -11,7 +11,8 @@ import json
 import re
 from copy import deepcopy
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
+from inconclusive_metadata import PREVIEW_FIELDS, enrich_case_previews
 from urllib.parse import urlparse
 
 UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
@@ -172,13 +173,33 @@ def write_if_changed(path: Path, data: Any) -> bool:
     return True
 
 
-def publish_review_files(data_dir: Path, state: dict[str, Any], at: str, *, required: int = 2) -> dict[str, Any]:
+def publish_review_files(
+    data_dir: Path, state: dict[str, Any], at: str, *, required: int = 2,
+    lookup_record: Callable[[str], Any] | None = None,
+    public_base: str = "", max_preview_lookups: int = 2500,
+) -> dict[str, Any]:
     corrections_path = data_dir / "inconclusive-corrections.json"
+    prior_path = data_dir / "inconclusive.json"
+    try:
+        prior_index = json.loads(prior_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, ValueError):
+        prior_index = {}
+    prior_rows = prior_index.get("cases") if isinstance(prior_index, dict) else []
     try:
         corrections = json.loads(corrections_path.read_text(encoding="utf-8"))
     except (FileNotFoundError, ValueError):
         corrections = {"schemaVersion": SCHEMA_VERSION, "corrections": []}
     index, cleaned = build_review_index(state, corrections, at, required=required)
+    stats = enrich_case_previews(
+        index["cases"], prior_rows, lookup_record, at,
+        public_base=public_base, max_lookups=max_preview_lookups,
+    )
+    # Corrections JSON is editable, but useful historical metadata is a
+    # generated convenience field. Only published archive evidence supplies it.
+    for case, row in zip(index["cases"], cleaned["corrections"]):
+        for key in PREVIEW_FIELDS:
+            if key in case:
+                row[key] = case[key]
     write_if_changed(data_dir / "inconclusive.json", index)
     # Repopulate every unresolved review candidate; conclusive API outcomes
     # disappear automatically, while manually edited designations survive.
@@ -189,7 +210,10 @@ def publish_review_files(data_dir: Path, state: dict[str, Any], at: str, *, requ
         f"{index['counts']['empty-response']:,} empty responses, "
         f"{index['counts']['awaiting-confirmation']:,} awaiting 2nd 404); "
         f"{index['notYetChecked']:,} IDs still unqueried; "
-        f"{sum(row['designation'] != 'unreviewed' for row in cleaned['corrections']):,} manual annotations retained.",
+        f"{sum(row['designation'] != 'unreviewed' for row in cleaned['corrections']):,} manual annotations retained; "
+        f"{stats['withNames']:,} named, {stats['withAvatars']:,} with avatar, "
+        f"{stats['lookupAttempts']:,} one-time R2 lookups "
+        f"({stats['lookupErrors']:,} errors, {stats['deferred']:,} deferred).",
         flush=True,
     )
     return index

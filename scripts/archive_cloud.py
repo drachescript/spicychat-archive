@@ -858,12 +858,27 @@ def run() -> int:
     state, bloom = configure_cloud(config, store)
     rc = legacy.run()
 
-    # Publish a tiny browser-review index directly from the in-memory queue.
-    # Do not enumerate R2 records or make additional Character API requests.
+    # Build the review page's metadata once during normal archive processing.
+    # Reuse records loaded by this very run; fetch only prior review candidates
+    # whose preview has never been looked up (capped at 2,500 per run).
+    # Sharded R2 record lookup is installed by the normal archive entry point.
+    # The generated review JSON remembers results, so future runs/viewers do
+    # not repeat thousands of individual reads.
     if rc == 0:
+        def archived_preview_record(bot_id: str):
+            cached = store._records.get(bot_id)
+            if isinstance(cached, dict):
+                return cached
+            if bot_id not in store.known_ids:
+                return None
+            return store.get_json(store.bot_key(bot_id), None)
+
         publish_review_files(
             ROOT / "data", state, str(state.get("lastRunAt") or legacy.utc_now()),
             required=int((config.get("crawler") or {}).get("deleted_confirmations_required", 2)),
+            lookup_record=archived_preview_record,
+            public_base=store.public_base_url,
+            max_preview_lookups=2500,
         )
 
     # Persist only compact state objects to R2. The Git repo no longer receives

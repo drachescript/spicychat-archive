@@ -33,3 +33,12 @@
 #ic-more{display:block;margin:0 auto 18px}
 #ic-more[hidden]{display:none}
 @media(max-width:680px){.ic-cards{grid-template-columns:1fr}.ic-controls label{width:100%}.ic-panel{padding:13px}}
+
+/* Optional historical identity, loaded only as a review card enters view. */
+.ic-bot-preview{display:flex;align-items:center;gap:13px;min-height:88px;margin:12px 0 4px}
+.ic-bot-avatar{display:flex;align-items:center;justify-content:center;flex:0 0 88px;width:88px;height:88px;overflow:hidden;background:var(--panel2);border:1px solid var(--line2);border-radius:9px;color:var(--muted);font-size:10px;text-align:center;padding:5px}
+.ic-bot-avatar img{display:block;width:100%;height:100%;object-fit:cover;border-radius:5px}
+.ic-bot-text{flex:1;min-width:0}
+.ic-bot-name{margin:0 0 4px;font-size:15px;line-height:1.4;color:var(--text);font-weight:650;overflow-wrap:anywhere}
+.ic-bot-description{margin:0;font-size:11px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:380px){.ic-bot-preview{gap:10px}.ic-bot-avatar{flex-basis:72px;width:72px;height:72px}}

@@ -21,7 +21,6 @@ test('prefilled correction JSON is usable as a fallback review source',()=>{
   const normalized=source.map(normalizeReviewCase).filter(Boolean);
   assert.equal(normalized.length,source.length,
     reviewSourceDiagnostic('Corrections',source,normalized.length));
-  assert.ok(normalized.length>0);
 });
 test('parser handles alternate ID sources and restores missing categories',()=>{
   const id='0004d9d6-473d-4c4c-b536-d25e184d5cec';

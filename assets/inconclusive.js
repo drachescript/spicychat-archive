@@ -1,7 +1,8 @@
 import { validBotId, normalizeReviewCase, reviewSourceDiagnostic } from './inconclusive-records.js';
 import { archivedBotRecordUrl, archivedBotPreview } from './inconclusive-metadata.js';
-// This page reads two static GitHub Pages JSON files only. It does not call
-// SpicyChat, Cloudflare R2, or any background moderation service.
+// The review queue is served from static GitHub Pages JSON.
+// Historical names and avatars are optional, lazy public R2 reads only for
+// cards in view; this page never calls the SpicyChat Character API.
 const $=s=>document.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const validId=validBotId;
@@ -48,7 +49,7 @@ let previewActive=0;
 const previewObserver=typeof IntersectionObserver==='function'
   ? new IntersectionObserver(entries=>{
       for(const entry of entries){
-        if(!entry.isIntersecting)continue;
+        if(!entry.isIntersecting||!entry.target.isConnected)continue;
         previewObserver.unobserve(entry.target);
         queuePreview(entry.target.dataset.id);
       }

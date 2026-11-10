@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-10T08:15:22Z",
-  "runId": "github:42776987811:1",
+  "generatedAt": "2026-11-10T21:35:51Z",
+  "runId": "github:42885773252:1",
   "status": "success",
   "archive": {
     "totalBots": 1458582,
@@ -10,8 +10,8 @@
     "startedAt": "2026-09-28T00:00:00Z"
   },
   "run": {
-    "finishedAt": "2026-11-10T08:15:16Z",
-    "durationSeconds": 2013,
+    "finishedAt": "2026-11-10T21:35:43Z",
+    "durationSeconds": 7529,
     "addedBots": 0,
     "deletedConfirmed": 0,
     "pagesRequested": 500,
@@ -22,12 +22,12 @@
     "runType": "scheduled-maintenance",
     "hits": 0,
     "newFromListings": 0,
-    "newestListingsChecked": 750,
+    "newestListingsChecked": 0,
     "newFromNewest": 0,
     "newFromDiscovery": 0,
     "changedIngestRecords": 0,
     "discoveryDurationSeconds": 0,
-    "nonDiscoveryDurationSeconds": 2013,
+    "nonDiscoveryDurationSeconds": 7529,
     "discoverySharePercent": 0.0,
     "timeLimited": false,
     "naturalEnd": false,
@@ -35,11 +35,11 @@
     "switchedToCursor": false,
     "errors": [],
     "stopReason": null,
-    "enrichmentAttempted": 5000,
-    "enriched": 4954,
-    "imagesAttempted": 1,
+    "enrichmentAttempted": 0,
+    "enriched": 0,
+    "imagesAttempted": 0,
     "imagesSaved": 0,
-    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/42776987811",
+    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/42885773252",
     "newOther": 0
   },
   "lastSuccessfulRun": null,
@@ -57,20 +57,20 @@
   "growth": {
     "added24h": 1619,
     "added7d": 14437,
-    "added30d": 48412,
-    "averagePerDay": 1994.9,
-    "observedHours": 1027.9,
+    "added30d": 48365,
+    "averagePerDay": 1853.8,
+    "observedHours": 1039.7,
     "observedGrowth": 1447313
   },
   "storage": {
-    "usedBytes": 5332530569,
+    "usedBytes": 5335891957,
     "mediaBytes": 1999994650,
-    "objects": 722428,
-    "writesThisMonth": 175934
+    "objects": 722431,
+    "writesThisMonth": 186055
   },
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-10T08:15:16Z",
+    "generatedAt": "2026-11-10T21:35:43Z",
     "sampleCount": 193,
     "latestPublicIndexBots": 1435515,
     "firstSampleAt": "2026-09-28T17:36:57Z",

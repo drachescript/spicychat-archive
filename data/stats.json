@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-15T07:09:16Z",
+  "generatedAt": "2026-11-15T09:19:58Z",
   "startedAt": "2026-09-28T00:00:00Z",
   "totalBots": 1467024,
   "publicIndexBots": 1441434,
-  "deletedBots": 9944,
-  "latestAdded": 269,
+  "deletedBots": 13094,
+  "latestAdded": 0,
   "growth": {
-    "added24h": 1614,
+    "added24h": 1209,
     "added7d": 12554,
-    "added30d": 50000,
-    "averagePerDay": 1817.1,
-    "observedHours": 1145.2,
+    "added30d": 49437,
+    "averagePerDay": 1613.6,
+    "observedHours": 1148.9,
     "observedGrowth": 1455755
   },
   "adaptiveDiscovery": {
@@ -10097,11 +10097,80 @@
         "writesThisMonth": 245150
       },
       "addedSincePrevious": 269
+    },
+    {
+      "at": "2026-11-15T09:19:58Z",
+      "kind": "archive-run",
+      "totalBots": 1467024,
+      "publicIndexBots": 1441434,
+      "deletedBots": 13094,
+      "missingBots": 9824,
+      "reconciliationGap": 12496,
+      "unreconciledBots": 12496,
+      "runDurationSeconds": 2155,
+      "listings": {
+        "latest": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "trending": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "top-rated": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "popular": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        }
+      },
+      "exploration": {
+        "hits": 0,
+        "new": 0,
+        "changed": 0,
+        "pageBudget": 0,
+        "pagesCompleted": 0,
+        "nextPageBudget": 0,
+        "timeLimited": false,
+        "durationSeconds": 0,
+        "errors": [],
+        "partial": false,
+        "naturalEnd": false,
+        "resultCapReached": false,
+        "switchedToCursor": false
+      },
+      "enrichment": {
+        "attempted": 0,
+        "enriched": 0
+      },
+      "images": {
+        "attempted": 0,
+        "saved": 0
+      },
+      "deletedConfirmed": 3150,
+      "storage": {
+        "usedBytes": 5471818393,
+        "mediaBytes": 1999994650,
+        "objects": 759549,
+        "writesThisMonth": 249352
+      },
+      "publicIndexCountSource": "carried-forward",
+      "addedSincePrevious": 0
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-15T07:09:16Z",
+    "generatedAt": "2026-11-15T09:19:58Z",
     "sampleCount": 204,
     "latestPublicIndexBots": 1441434,
     "firstSampleAt": "2026-09-28T17:36:57Z",

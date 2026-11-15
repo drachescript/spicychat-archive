@@ -30,7 +30,7 @@ $localPath = [System.IO.Path]::GetFullPath(
     [Environment]::ExpandEnvironmentVariables($Destination)
 )
 $root = [System.IO.Path]::GetPathRoot($localPath)
-if ($localPath.TrimEnd('\', '/') -eq $root.TrimEnd('\', '/')) {
+if ($localPath.TrimEnd([char[]]@('\', '/')) -eq $root.TrimEnd([char[]]@('\', '/'))) {
     throw "Refusing to mirror directly into the drive root; choose a dedicated folder."
 }
 if (-not (Test-Path -LiteralPath $root)) {
@@ -44,9 +44,10 @@ $disk = New-Object System.IO.DriveInfo($root)
 $freeBytes = [int64]$disk.AvailableFreeSpace
 $minimumBytes = [int64]$MinimumFreeGB * 1000000000L
 if ($freeBytes -lt $minimumBytes) {
-    throw ("Insufficient destination free space: {0:N2} GB available, {1} GB required. " +
-           "The existing bucket has hundreds of thousands of objects, so allow room for NTFS overhead.") -f
-        ($freeBytes / 1000000000.0), $MinimumFreeGB
+    $message = ("Insufficient destination free space: {0:N2} GB available, {1} GB required. " +
+                "Allow room for hundreds of thousands of NTFS files.") -f
+                ($freeBytes / 1000000000.0), $MinimumFreeGB
+    throw $message
 }
 
 New-Item -Path $localPath -ItemType Directory -Force | Out-Null

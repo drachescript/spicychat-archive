@@ -35,7 +35,9 @@
     "deleted_confirmations_required": 2,
     "request_timeout_seconds": 20,
     "request_delay_ms": 80,
-    "image_archive_policy": "priority-only"
+    "image_archive_policy": "priority-only",
+    "missing_verification_workers": 8,
+    "missing_verification_requests_per_second": 8
   },
   "site": {
     "started_at": "2026-09-28T00:00:00Z",

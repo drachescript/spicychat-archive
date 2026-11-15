@@ -29,14 +29,14 @@ class R2GuardTests(unittest.TestCase):
     def test_unknown_mutation_is_conservative_class_a(self):
         self.assertEqual(mod.classify('FutureWriteOperation'), 'A')
 
-    def _guard_status_at(self, class_a, previous=None):
+    def _guard_status_at(self, class_a, previous=None, storage_bytes=1_000_000):
         config = json.loads((ROOT / 'config.json').read_text(encoding='utf-8'))
         status_path = Path('/unused/test-r2-status.json')
         captured = {}
         usage = {
             'classA': class_a,
             'classB': 1000,
-            'storageBytes': 1_000_000,
+            'storageBytes': storage_bytes,
             'actions': {'PutObject': class_a},
             'buckets': {},
         }
@@ -76,6 +76,30 @@ class R2GuardTests(unittest.TestCase):
         previous = {'selectedMode': 'github', 'reasonCodes': ['class-a']}
         self.assertEqual(self._guard_status_at(900_000, previous)['selectedMode'], 'github')
         self.assertEqual(self._guard_status_at(899_999, previous)['selectedMode'], 'r2')
+
+    def test_storage_pauses_at_9_4gb_and_resumes_below_9_2gb(self):
+        self.assertEqual(self._guard_status_at(300_000, storage_bytes=9_399_999_999)['selectedMode'], 'r2')
+        paused = self._guard_status_at(300_000, storage_bytes=9_400_000_000)
+        self.assertEqual(paused['selectedMode'], 'github')
+        self.assertIn('storage', paused['reasonCodes'])
+        self.assertEqual(paused['limits']['storagePauseBytes'], 9_400_000_000)
+        self.assertEqual(paused['limits']['storageResumeBytes'], 9_200_000_000)
+        previous = {'selectedMode': 'github', 'reasonCodes': ['storage']}
+        self.assertEqual(self._guard_status_at(300_000, previous, 9_200_000_000)['selectedMode'], 'github')
+        self.assertEqual(self._guard_status_at(300_000, previous, 9_199_999_999)['selectedMode'], 'r2')
+
+    def test_r2_hard_limit_and_warning_both_exceed_normal_pause(self):
+        config = json.loads((ROOT / 'config.json').read_text(encoding='utf-8'))
+        store = config['storage']['r2']
+        guard = config['storage']['quota_guard']
+        self.assertEqual(store['warning_bytes'], 9_300_000_000)
+        self.assertEqual(store['hard_limit_bytes'], 9_500_000_000)
+        self.assertLess(guard['storage_resume_bytes'], store['warning_bytes'])
+        self.assertLess(store['warning_bytes'], guard['storage_pause_bytes'])
+        self.assertLess(guard['storage_pause_bytes'], store['hard_limit_bytes'])
+        self.assertLess(store['hard_limit_bytes'], 10_000_000_000)
+        self.assertEqual(guard['class_a_pause'], 950_000)
+        self.assertEqual(guard['image_pause_storage_bytes'], 5_000_000_000)
 
     def test_discovery_write_limit_matches_class_a_pause(self):
         config = json.loads((ROOT / 'config.json').read_text(encoding='utf-8'))

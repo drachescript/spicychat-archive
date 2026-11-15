@@ -98,7 +98,7 @@ class FastVerificationTests(unittest.TestCase):
         ))
         self.assertEqual(len(results), 12)
         self.assertEqual(len(client.calls), 12)
-        self.assertEqual(pauses[-3:], [1, 2, 4])
+        self.assertEqual([p for p in pauses if p >= 1], [1, 2, 4])
         self.assertTrue(all(response.status == 429 for _, response in results))
 
     def test_isolated_error_does_not_stop_the_pass(self):

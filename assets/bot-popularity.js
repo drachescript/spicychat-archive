@@ -7,13 +7,17 @@ export const BOT_VIEW_ENDPOINT =
 const BOT_ID = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/;
 const COOLDOWN_MS = 30 * 60 * 1000;
 
+function safeSessionStorage() {
+  try { return globalThis.sessionStorage; } catch { return null; }
+}
+
 export function validViewedBotId(value) {
   const id = String(value ?? '').trim().toLowerCase();
   return BOT_ID.test(id) ? id : '';
 }
 
 export function shouldTrackBotView(id, {
-  storage = globalThis.sessionStorage,
+  storage = safeSessionStorage(),
   now = Date.now(),
   navigator = globalThis.navigator,
 } = {}) {
@@ -30,7 +34,7 @@ export function shouldTrackBotView(id, {
 }
 
 export async function recordBotView(id, {
-  storage = globalThis.sessionStorage,
+  storage = safeSessionStorage(),
   navigator = globalThis.navigator,
   fetchImpl = globalThis.fetch,
   now = Date.now(),

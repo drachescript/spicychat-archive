@@ -141,11 +141,20 @@ Worker configuration is in worker/wrangler.toml:
   binding = "BOT_VIEWS_ANALYTICS"
   dataset = "sca_bot_views_v1"
 
-The normal deploy-import-worker.yml workflow deploys this Worker when merged.
-Check that the job succeeds, and verify the deployed Worker responds with
-botViewEndpoint in its /health JSON. The analytics dataset exists only after
-its first successful write; if Cloudflare refuses a new dataset binding,
-review the Cloudflare Workers permissions on the GitHub deploy token.
+Before deploying the Worker binding, **enable Workers Analytics Engine in
+the Cloudflare dashboard** under Workers & Pages > Analytics Engine for the
+account that owns spicychat-archive-import. The first deployment with this
+binding failed with Cloudflare error 10089 ("You need to enable Analytics
+Engine"). This requires an account-owner dashboard action, not a code patch
+or a token pasted into the repository. Do not post secrets in a chat.
+
+After enabling it, rerun the failed GitHub Action:
+https://github.com/drachescript/spicychat-archive/actions/workflows/deploy-import-worker.yml
+The normal deploy-import-worker.yml workflow deploys this Worker. Verify
+the job succeeds and the deployed Worker responds with botViewEndpoint in
+its /health JSON. The Analytics Engine dataset is created on its first
+successful write. Until that deployment succeeds, page views are not
+collected (the website remains usable).
 
 ### Export a PRIVATE 30-day popularity table
 

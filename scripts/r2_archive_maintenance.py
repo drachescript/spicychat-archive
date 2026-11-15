@@ -635,6 +635,15 @@ def _maintenance_character_refresh(
     }
 
 
+def should_start_missing_catchup(pending: int, catchup: Any, *, threshold: int = 1000) -> bool:
+    """Start/restart automatic catch-up when a substantial new queue appears."""
+    return pending >= threshold and (
+        not isinstance(catchup, dict)
+        or not catchup
+        or catchup.get("enabled") is False
+    )
+
+
 def maintenance_configure_cloud(config: dict[str, Any], store):
     state, bloom = _original_configure_cloud(config, store)
 
@@ -656,7 +665,23 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
             flush=True,
         )
     elif crawler.get("scheduled_latest_only"):
+        pending = len(state.get("missingChecks") or {})
         catchup = state.get("missingVerificationCatchup")
+        if should_start_missing_catchup(pending, catchup):
+            catchup = state.setdefault("missingVerificationCatchup", {})
+            catchup.update({
+                "enabled": True,
+                "perRunBudget": 5000,
+                "startedAt": legacy.utc_now(),
+                "runsCompleted": 0,
+                "lastPending": pending,
+            })
+            catchup.pop("completedAt", None)
+            print(
+                f"Automatic missing-ID catch-up activated for {pending:,} "
+                "unresolved IDs (no manual kickoff required).",
+                flush=True,
+            )
         if isinstance(catchup, dict) and catchup:
             # Migrate the already-started 18-run campaign, even if the old
             # runsRemaining counter has reached zero.

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "mode": "observe-only",
+  "mirrorRoot": "E:\\Bots\\Spicychat_Archive",
+  "r2TargetBytes": 8000000000,
+  "r2WarningBytes": 9300000000,
+  "r2PauseBytes": 9400000000,
+  "mirrorVerified": false,
+  "offloadEnabled": false,
+  "deleteR2Objects": false,
+  "dataSafety": {
+    "requireIndependentBackup": true,
+    "requireRecoverableHetznerReadAPI": true,
+    "requireR2FallbackTest": true,
+    "neverMoveWithoutLocationManifest": true
+  },
+  "eligibilityDefaults": {
+    "minimumCollectionDays": 30,
+    "viewWindowDays": 30,
+    "maximumRecentViews": 2,
+    "minimumRecordAgeDays": 90,
+    "pinnedCategories": [
+      "crawler-state",
+      "indexes",
+      "rankings",
+      "recently-deleted",
+      "discovery-shards",
+      "media"
+    ]
+  },
+  "images": {
+    "preserveOriginalAvatarUrls": true,
+    "archiveEveryAvatar": false,
+    "priorityOnlyForLostOrDeleted": true
+  }
+}

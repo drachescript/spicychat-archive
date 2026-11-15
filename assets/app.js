@@ -1,5 +1,6 @@
 import {loadCoverage} from './archive-coverage.js';
 import {botTimestamp,reportedBotTimestamp} from './bot-dates.js';
+import {recordBotView} from './bot-popularity.js';
 const asset = (path) => new URL(`../${path}`, import.meta.url);
 const app = document.querySelector('#app');
 const page = document.body.dataset.page || 'browse';
@@ -1125,6 +1126,8 @@ async function botPage(){
     const renderCompare=()=>{const rows=versionCompareRows(record,older.value,newer.value);if(snapshotLink){const u=new URL(location.href);if(newer.value==='current')u.searchParams.delete('at');else u.searchParams.set('at',newer.value);snapshotLink.href=u.href;}compare.innerHTML=rows.length?`<div class="version-table">${rows.map(row=>`<article class="version-row"><h3>${esc(archiveFieldLabel(row.path))}</h3><div class="version-values"><div><span>Older</span><div class="pre">${esc(compareValueText(row.from))}</div></div><div><span>Newer</span><div class="pre">${esc(compareValueText(row.to))}</div></div></div></article>`).join('')}</div>`:'<div class="empty compact-empty">Those two points have no tracked content differences.</div>';};
     older.addEventListener('change',renderCompare);newer.addEventListener('change',renderCompare);renderCompare();
   }
+  // Successful bot detail render only. No events for missing/unavailable records.
+  void recordBotView(record.id);
   document.querySelector('#copy-bot-for-chatgpt')?.addEventListener('click',async event=>{
     // Reuse the record already loaded on this page: no additional R2 read.
     const labels=[

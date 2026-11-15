@@ -1085,9 +1085,60 @@ async function handleTranslation(request) {
   return json({ ok: true, items: translated });
 }
 
+// Public read-view telemetry. No R2 operations and no personal identifiers.
+const VIEW_ORIGIN = 'https://spicychatarchive.drache.uk';
+const VIEW_ID_RE = /^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/;
+function viewCors(origin) {
+  return {
+    'Access-Control-Allow-Origin': origin === VIEW_ORIGIN ? VIEW_ORIGIN : 'null',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin',
+    'Cache-Control': 'no-store',
+  };
+}
+async function handleBotView(request, env) {
+  const origin = request.headers.get('Origin');
+  if (origin !== VIEW_ORIGIN) {
+    return new Response(null, {status: 403, headers: viewCors(origin)});
+  }
+  const type = (request.headers.get('Content-Type') || '').split(';')[0].toLowerCase().trim();
+  if (type !== 'text/plain' || Number(request.headers.get('Content-Length') || '0') > 80) {
+    return new Response(null, {status: 415, headers: viewCors(origin)});
+  }
+  const id = (await request.text()).trim().toLowerCase();
+  if (!VIEW_ID_RE.test(id)) {
+    return new Response(null, {status: 400, headers: viewCors(origin)});
+  }
+  if (!env.BOT_VIEWS_ANALYTICS?.writeDataPoint) {
+    return new Response(null, {status: 503, headers: viewCors(origin)});
+  }
+  try {
+    // One anonymous event; index is bot UUID to support per-bot aggregation.
+    env.BOT_VIEWS_ANALYTICS.writeDataPoint({
+      indexes: [id],
+      blobs: ['bot-detail'],
+      doubles: [1],
+    });
+  } catch {
+    return new Response(null, {status: 503, headers: viewCors(origin)});
+  }
+  return new Response(null, {status: 204, headers: viewCors(origin)});
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    if (request.method === "OPTIONS" && url.pathname === "/api/analytics/bot-view") {
+      const origin = request.headers.get("Origin");
+      return new Response(null, {
+        status: origin === VIEW_ORIGIN ? 204 : 403, headers: viewCors(origin)
+      });
+    }
+    if (request.method === "POST" && url.pathname === "/api/analytics/bot-view") {
+      return handleBotView(request, env);
+    }
 
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders() });
@@ -1103,6 +1154,7 @@ export default {
         translationEndpoint: "/api/translate",
         archiveFieldPresenceEndpoint: "/api/archive-field-presence",
         publicBotTextEndpoint: "/api/archive/bot/{uuid}.txt",
+        botViewEndpoint: "/api/analytics/bot-view",
       });
     }
 

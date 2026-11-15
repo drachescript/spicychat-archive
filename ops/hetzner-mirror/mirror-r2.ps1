@@ -40,7 +40,7 @@ if ($RcloneConfig -and -not (Test-Path -LiteralPath $RcloneConfig -PathType Leaf
     throw "The specified rclone config does not exist: $RcloneConfig"
 }
 
-$disk = New-Object System.IO.DriveInfo($root)
+$disk = [System.IO.DriveInfo]::new($root)
 $freeBytes = [int64]$disk.AvailableFreeSpace
 $minimumBytes = [int64]$MinimumFreeGB * 1000000000L
 if ($freeBytes -lt $minimumBytes) {

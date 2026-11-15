@@ -35,6 +35,8 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check assets/app.js
+          node --check assets/bot-popularity.js
+          node --test --experimental-default-type=module tests/bot-popularity.test.mjs
           node --check assets/flagged.js
           node --check assets/inconclusive.js
           node --check assets/inconclusive-records.js

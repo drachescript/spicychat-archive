@@ -3,8 +3,8 @@
 # No deletions, no public HTTP listener, and no credentials stored in this file.
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
-    [string]$Destination,
+    # User-selected Hetzner volume; override with -Destination if it moves.
+    [string]$Destination = 'E:\Bots\Spicychat_Archive\R2',
     [string]$Remote = "r2",
     [string]$Bucket = "spicychat-archiv",
     [string]$RcloneConfig = "",

@@ -1,5 +1,5 @@
 name: Update SpicyChat archive
-run-name: ${{ (github.event_name == 'schedule' && github.event.schedule == '17 2 * * 1,3,5') && 'Automatic full-index catalog sweep' || (github.event_name == 'schedule' && github.event.schedule == '17 10 * * *') && 'Automatic pending and inconclusive verification' || ((github.event_name == 'push' && contains(github.event.head_commit.message, 'Start bounded missing-ID verification') || inputs.run_mode == 'verify-missing') && 'Verify archived missing-ID backlog') || ((github.event_name == 'push' || inputs.run_mode == 'full-catalog') && 'Finish public catalog pass and verify absences') || ((github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only') && 'Import queued QoL / Bot Status copies') || 'Update SpicyChat archive' }}
+run-name: ${{ (github.event_name == 'schedule' && github.event.schedule == '17 2 * * 1,3,5') && 'Automatic full-index catalog sweep' || (github.event_name == 'schedule' && github.event.schedule == '17 */4 * * *') && 'Automatic pending and inconclusive verification' || ((github.event_name == 'push' && contains(github.event.head_commit.message, 'Start bounded missing-ID verification') || inputs.run_mode == 'verify-missing') && 'Verify archived missing-ID backlog') || ((github.event_name == 'push' || inputs.run_mode == 'full-catalog') && 'Finish public catalog pass and verify absences') || ((github.event_name == 'workflow_dispatch' && inputs.run_mode == 'import-only') && 'Import queued QoL / Bot Status copies') || 'Update SpicyChat archive' }}
 
 on:
   # One-time, user-requested kickoff. A GitHub-app push of this exact marker
@@ -47,7 +47,8 @@ on:
     # Existing 24h cooldown and quota guard can safely skip or shorten a run.
     - cron: "17 2 * * 1,3,5"
     # Extra bounded verification of queued API errors and first 404s, no scan.
-    - cron: "17 10 * * *"
+    # Four-hour catch-up campaign; R2 writer lock and API rate limiter apply.
+    - cron: "17 */4 * * *"
   workflow_run:
     workflows: ["Probe SpicyChat public APIs"]
     types: [completed]
@@ -108,7 +109,7 @@ jobs:
       SPICYCHAT_ARCHIVE_CATALOG_AUDIT: ${{ ((github.event_name == 'push' && !contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'full-catalog' || (github.event_name == 'schedule' && github.event.schedule == '17 2 * * 1,3,5')) && 'true' || 'false' }}
       # A separate verification-only run does not search Typesense, fetch images,
       # or perform the normal 5,000-bot rolling enrichment pass.
-      SPICYCHAT_ARCHIVE_VERIFY_MISSING: ${{ ((github.event_name == 'push' && contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'verify-missing' || (github.event_name == 'schedule' && github.event.schedule == '17 10 * * *')) && 'true' || 'false' }}
+      SPICYCHAT_ARCHIVE_VERIFY_MISSING: ${{ ((github.event_name == 'push' && contains(github.event.head_commit.message, 'Start bounded missing-ID verification')) || inputs.run_mode == 'verify-missing' || (github.event_name == 'schedule' && github.event.schedule == '17 */4 * * *')) && 'true' || 'false' }}
       # Standard automatic maintenance avoids a deep Typesense scan, while
       # the three weekly audit schedules explicitly resume the full index cursor.
       # Dedicated daily missing-only checks never scan the public index.

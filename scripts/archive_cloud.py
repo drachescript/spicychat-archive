@@ -18,6 +18,7 @@ from inconclusive_review import publish_review_files
 from typing import Any, Iterable
 
 import archive as legacy
+import missing_verification_fast as fast_missing
 from storage_r2 import R2ArchiveStore, StorageQuotaExceeded
 from rich_field_index import SCHEMA_VERSION as RICH_FIELDS_VERSION, field_flags, flush_index as flush_rich_field_index, note_record as note_rich_field_record
 from site_indexes import flush_indexes as flush_site_indexes, note_record as note_site_record
@@ -586,24 +587,47 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
         verified = deleted = restored = cleared = 0
         started_with = len(checks)
 
-        # Persistent JSON dict insertion order acts as a cheap checkpointed
-        # round-robin queue. Restriction/transient/first 404 responses rotate
-        # to the back so no single group of IDs can starve all later suspects.
-        for bot_id in list(checks)[:budget]:
-            info = checks[bot_id]
-            if bot_id in seen_public:
-                record = load_bot(bot_id)
-                if not record or (record.get("status") or {}).get("current") != "deleted":
-                    checks.pop(bot_id, None)
-                    cleared += 1
-                    if record and (record.get("status") or {}).get("current") == "public":
-                        store.clear_deleted_summary(bot_id)
-                    continue
-                # A Typesense/listing hit is only a restoration candidate.
-                # Keep the deleted state until the Character API confirms 200.
-            if not legacy.missing_check_due(info, at):
+        # Only query the Character API in worker threads. All R2 reads/writes,
+        # 404 confirmations, and JSON state mutations stay on the main thread.
+        # Clear known-public listing hits before selecting the bounded batch.
+        for bot_id in list(checks):
+            if bot_id not in seen_public:
                 continue
-            response = client.character(bot_id)
+            info = checks[bot_id]
+            record = load_bot(bot_id)
+            if not record or (record.get("status") or {}).get("current") != "deleted":
+                checks.pop(bot_id, None)
+                cleared += 1
+                if record and (record.get("status") or {}).get("current") == "public":
+                    store.clear_deleted_summary(bot_id)
+
+        selected = fast_missing.ordered_suspects(
+            checks, at, budget, due=legacy.missing_check_due,
+        )
+        workers = max(1, min(16, int(config["crawler"].get(
+            "missing_verification_workers", 8,
+        ))))
+        rate = max(1, min(16, int(config["crawler"].get(
+            "missing_verification_requests_per_second", 8,
+        ))))
+        checkpoint_every = 250 if config["crawler"].get("verify_missing_only") else 500
+        last_checkpoint = 0
+        print(f"Missing verifier: {len(selected):,} prioritized IDs, "
+              f"{workers} workers, {rate} requests/sec, "
+              f"R2 progress every {checkpoint_every} checks.", flush=True)
+        for bot_id, response in fast_missing.verified_responses(
+            selected, client, config, workers=workers, rate_per_sec=rate,
+        ):
+            # Persist each completed checkpoint so an interrupted GitHub job
+            # normally repeats no more than the latest small batch.
+            if verified and verified % checkpoint_every == 0 and verified != last_checkpoint:
+                store.save_state(state)
+                last_checkpoint = verified
+                print(f"Missing verifier: saved R2 checkpoint after "
+                      f"{verified:,} API checks.", flush=True)
+            info = checks.get(bot_id)
+            if info is None or not legacy.missing_check_due(info, at):
+                continue
             verified += 1
             if response.ok:
                 payload = legacy.unwrap_character_payload(response.data)
@@ -658,9 +682,15 @@ def configure_cloud(config: dict[str, Any], store: R2ArchiveStore):
             info["errorKind"] = "http-" + str(response.status) if response.status else "transport-error"
             requeue_missing(bot_id, checks)
 
+        # Persist the final partial batch for verification-only runs as well;
+        # the normal archive finalizer will also persist the complete state.
+        if config["crawler"].get("verify_missing_only") and verified != last_checkpoint:
+            store.save_state(state)
         result = {"verified": verified, "deleted": deleted, "restored": restored,
                   "cleared": cleared, "pendingBefore": started_with,
-                  "pendingAfter": len(checks)}
+                  "pendingAfter": len(checks), "prioritySelected": len(selected),
+                  "workers": workers, "ratePerSec": rate,
+                  "checkpoints": verified // checkpoint_every}
         if (config.get("crawler") or {}).get("verify_missing_only"):
             print(
                 f"Missing-ID backlog: {started_with:,} pending at start; "

@@ -19,6 +19,7 @@ permissions:
 concurrency:
   group: spicychat-archive-writer
   cancel-in-progress: false
+  queue: max
 
 jobs:
   prune:

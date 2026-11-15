@@ -110,23 +110,24 @@ def verified_responses(
             futures = [pool.submit(fetch, idx, bot_id)
                        for idx, bot_id in enumerate(subset)]
             failures = 0
+            rate_limited = False
             for bot_id, future in zip(subset, futures):
                 try:
                     response = future.result()
                 except Exception as exc:
                     response = legacy.HTTPResult(False, 0, error=str(exc))
+                if response.status == 429:
+                    rate_limited = True
                 if response.status == 429 or response.status == 0 or response.status >= 500:
                     failures += 1
                 yield bot_id, response
-            if failures:
+            troubled = failures >= max(2, (len(subset) + 1) // 2)
+            if rate_limited or troubled:
                 # Cloudflare or API throttling: back off *between* batches;
                 # never retry the same ID inside this verification run.
                 sleep(pause_seconds)
                 pause_seconds = min(pause_seconds * 2, 16)
-                if failures >= max(2, (len(subset) + 1) // 2):
-                    failed_batches += 1
-                else:
-                    failed_batches = 0
+                failed_batches = failed_batches + 1 if troubled else 0
             else:
                 pause_seconds = 1
                 failed_batches = 0

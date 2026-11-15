@@ -9,3 +9,8 @@ crons = ["17 5 * * *"]
 [[r2_buckets]]
 binding = "ARCHIVE_BUCKET"
 bucket_name = "spicychat-archiv"
+
+# Anonymous per-bot detail-page view counts (no R2 writes, IPs, or cookies).
+[[analytics_engine_datasets]]
+binding = "BOT_VIEWS_ANALYTICS"
+dataset = "sca_bot_views_v1"

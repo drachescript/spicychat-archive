@@ -116,13 +116,18 @@
     </details>
 
     <details class="faq-card">
+      <summary>Does the Archive track which bot pages are opened?</summary>
+      <div class="faq-answer"><p>When an archived bot record successfully loads, the site sends a small anonymous count for that bot's ID to Cloudflare Workers Analytics Engine. It does not send searches, hidden-bot preferences, chat content, IP addresses, account identifiers or cookies as analytics fields. Repeated opens of the same bot in a tab are limited to roughly one count per 30 minutes, and browser Global Privacy Control or Do Not Track settings are respected.</p><p>These approximate counts will help identify rarely viewed historical records for a future optional Hetzner cold-storage tier. They are never used alone as permission to delete archived records. Browser privacy tools can block the count, and public endpoints can receive automated traffic.</p></div>
+    </details>
+
+    <details class="faq-card">
       <summary>Where is archive data stored?</summary>
       <div class="faq-answer"><p>The large bot records and archived media live in the project's Cloudflare R2 storage, while the public website keeps compact runtime/stat files in GitHub. The crawler has quota/storage guards so it can slow or pause expensive work before hitting configured limits.</p><p>The site only publishes archive data meant to be public. Local QoL recovery copies stay local unless you explicitly export or submit them.</p></div>
     </details>
 
     <details class="faq-card">
       <summary>How often does the archive update?</summary>
-      <div class="faq-answer"><p>The normal crawler is scheduled every three hours, with quota and storage guards that can reduce or pause work when needed. Larger manual discovery batches are tested separately instead of silently changing the normal schedule.</p><p>The Stats page shows the latest completed batches and the current archive totals.</p></div>
+      <div class="faq-answer"><p>The newest-first crawler and rolling checks are scheduled roughly every six hours, with additional scheduled deep-catalog sweeps and missing-ID verification. GitHub scheduling can be delayed, and quota/storage guards may pause expensive work.</p><p>The Stats page shows the latest completed batches and the current archive totals.</p></div>
     </details>
 
     <details class="faq-card">

@@ -22,10 +22,10 @@ class AutomatedArchiveScheduleTests(unittest.TestCase):
 
     def test_three_distinct_schedules_for_maintenance_deep_and_verification(self):
         workflow = self.workflow
-        for schedule in ('37 */6 * * *', '17 2 * * 1,3,5', '17 10 * * *'):
+        for schedule in ('37 */6 * * *', '17 2 * * 1,3,5', '17 */4 * * *'):
             self.assertEqual(workflow.count(f'cron: "{schedule}"'), 1)
         self.assertIn("github.event.schedule == '17 2 * * 1,3,5'", workflow)
-        self.assertIn("github.event.schedule == '17 10 * * *'", workflow)
+        self.assertIn("github.event.schedule == '17 */4 * * *'", workflow)
         self.assertIn("github.event.schedule == '37 */6 * * *'", workflow)
 
     def test_deep_sweep_respects_cooldown_and_uses_bounded_catalog_profile(self):

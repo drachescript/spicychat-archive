@@ -1,0 +1,39 @@
+name: Recover missed SpicyChat deep sweep
+run-name: Check for missed deep catalog sweep
+
+on:
+  # A delayed or dropped archive schedule can be recovered the same day.
+  # Next-day checks help if the watchdog's own scheduled event is dropped.
+  schedule:
+    - cron: "47 13 * * 1,2,3,4,5,6"
+  # A normal bot run finishing provides a second, cheap recovery opportunity.
+  workflow_run:
+    workflows: ["Update SpicyChat archive"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: spicychat-archive-sweep-watchdog
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  recover:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check run history, cooldown, fresh quotas, and queue before a recovery dispatch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/archive_sweep_watchdog.py

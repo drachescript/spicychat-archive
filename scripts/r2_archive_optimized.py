@@ -1108,6 +1108,11 @@ def _record_successful_run_stats() -> None:
     event = {
         "at": state.get("lastRunAt") or legacy.utc_now(),
         "kind": "archive-run",
+        "workflowRunUrl": (
+            f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
+            if os.environ.get("GITHUB_REPOSITORY") and os.environ.get("GITHUB_RUN_ID")
+            else None
+        ),
         "totalBots": len(store.discovery_order),
         "publicIndexBots": int(manifest.get("publicIndexBots") or manifest.get("activeBots") or 0),
         "deletedBots": len(store.deleted_index),

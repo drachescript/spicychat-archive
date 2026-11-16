@@ -111,6 +111,7 @@ def last_discovery_run(runs: list[dict[str, Any]]) -> dict[str, Any] | None:
         status = classify_run_status("success", exploration)
         return {
             "finishedAt": row.get("at"),
+            "workflowRunUrl": row.get("workflowRunUrl"),
             "durationSeconds": int(row.get("runDurationSeconds") or 0),
             "addedBots": int(row.get("addedSincePrevious") or 0),
             "newFromDiscovery": int(exploration.get("new") or 0),

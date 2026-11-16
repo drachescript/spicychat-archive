@@ -155,6 +155,7 @@ class PublishRunFeedTests(unittest.TestCase):
         manual = {
             "kind": "archive-run", "at": "2026-11-07T00:49:52Z",
             "addedSincePrevious": 342, "runDurationSeconds": 1377,
+            "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/12345",
             "exploration": {
                 "pageBudget": 1000, "pagesCompleted": 701, "new": 61,
                 "naturalEnd": True, "errors": [], "partial": False,
@@ -167,6 +168,8 @@ class PublishRunFeedTests(unittest.TestCase):
         }
         last = mod.last_discovery_run([manual, maintenance])
         self.assertEqual(last["finishedAt"], manual["at"])
+        self.assertEqual(last["workflowRunUrl"],
+                         "https://github.com/drachescript/spicychat-archive/actions/runs/12345")
         self.assertEqual(last["addedBots"], 342)
         self.assertEqual(last["newFromDiscovery"], 61)
         self.assertEqual(last["pagesCompleted"], 701)

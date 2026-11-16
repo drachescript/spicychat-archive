@@ -74,7 +74,7 @@ class MissedSweepWatchdogTests(unittest.TestCase):
         self.assertTrue(self.decide(stats=stats)[0])
 
     def test_cooldown_is_enforced(self):
-        stats = {"runs": [row(SLOT - timedelta(hours=15))]}
+        stats = {"runs": [row(SLOT - timedelta(hours=5))]}
         self.assertFalse(self.decide(stats=stats)[0])
 
     def test_queued_or_running_writer_is_not_duplicated(self):

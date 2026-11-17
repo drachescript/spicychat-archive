@@ -70,8 +70,8 @@ function bindBrokenCovers(root=document) {
 function card(x, seeds) {
   const gone=x.status==='not-public',name=x.name||x.id;
   const saved=Boolean(x.contentSaved);
-  const href=saved?detailHref(x.id):'https://spicychat.ai/rulebook/'+encodeURIComponent(x.id);
-  const extra=saved?'':' target="_blank" rel="noopener noreferrer"';
+  const href=(saved||gone)?detailHref(x.id):'https://spicychat.ai/rulebook/'+encodeURIComponent(x.id);
+  const extra=(saved||gone)?'':' target="_blank" rel="noopener noreferrer"';
   const cover=savedCover(x)||rulebookCoverSeedUrl(x.id,seeds);
   return '<article class="lorebook-card rulebook-card" data-rulebook-id="'+esc(x.id)+'">'+
     '<a class="lorebook-cover" href="'+esc(href)+'"'+extra+'>'+coverMarkup(cover,name)+
@@ -95,16 +95,16 @@ function setParams(values) {
 }
 function renderBrowse(payload, seeds) {
   const all=Array.isArray(payload.rulebooks)
-    ?payload.rulebooks.filter(x=>x.status==='public'||x.contentSaved===true):[];
+    ?payload.rulebooks.filter(x=>x.status==='public'||x.status==='not-public'):[];
   const tags=[...new Set(all.flatMap(x=>Array.isArray(x.tags)?x.tags:[]).filter(t=>typeof t==='string'&&t.trim()))]
     .sort((a,b)=>String(a).localeCompare(String(b)));
   const only=removedView?'not-public':'public';
   const publicCount=all.filter(x=>x.status==='public').length;
-  const unavailableCount=all.filter(x=>x.status==='not-public'&&x.contentSaved===true).length;
+  const unavailableCount=all.filter(x=>x.status==='not-public').length;
   const savedCount=all.filter(x=>x.contentSaved===true).length;
   const title=removedView?'Deleted / Unlisted Rulebooks':'Public Rulebooks';
   const summary=removedView
-    ?'Only Rulebooks whose actual public rules were captured before they disappeared are shown here. Listing-only records are not recoverable archives. Disappearance alone does not prove deletion.'
+    ?'Previously public Rulebook listings absent after a complete scan. Names, covers and descriptions may remain even when the rule definitions were never captured; absence does not prove deletion.'
     :'Public Rulebooks directory. Only Rulebooks with actual captured public rule content count as saved archives; others link to SpicyChat.';
   const countByTag=new Map();
   app.innerHTML=
@@ -113,7 +113,7 @@ function renderBrowse(payload, seeds) {
     '<p class="filter-note">Public listing metadata is a directory entry, not an archived rule definition. Private rules and hidden values are never stored.</p>'+
     '<div class="detail-actions"><a class="secondary-button" href="../deleted-rulebooks/">No longer public</a>'+
     '<a class="secondary-button" href="../rulebooks/">Still public</a></div></div>'+
-    '<div class="lorebook-hero-stats"><div><b>'+fmt(unavailableCount)+'</b><span>Saved, unavailable</span></div>'+
+    '<div class="lorebook-hero-stats"><div><b>'+fmt(unavailableCount)+'</b><span>Listings no longer public</span></div>'+
     '<div><b>'+fmt(publicCount)+'</b><span>Still public</span></div>'+
     '<div><b>'+fmt(savedCount)+'</b><span>Saved rule content</span></div></div></section>'+
     '<div class="layout filters-collapsed rulebook-browse-layout" id="rb-layout">'+
@@ -135,7 +135,7 @@ function renderBrowse(payload, seeds) {
     (removedView?'Still public':'No longer public')+'</option></select>'+
     '<select id="rb-sort" aria-label="Sort Rulebooks"><option value="newest">Newest created</option>'+
     '<option value="seen">Last seen</option><option value="name">Name</option><option value="rules">Most rules</option></select></div>'+
-    '<div class="results-head"><h2>'+(removedView?'Saved unavailable Rulebooks':'Still-public Rulebooks')+'</h2>'+
+    '<div class="results-head"><h2>'+(removedView?'Previously public Rulebook listings':'Still-public Rulebooks')+'</h2>'+
     '<span id="rb-count"></span></div><div id="rb-pager-top" class="pager-wrap pager-top"></div>'+
     '<section id="rb-grid" class="lorebook-grid"></section><div id="rb-pager" class="pager-wrap"></div>'+
     '<p class="detail-sub">Last catalog check: '+esc(date(payload.generatedAt))+
@@ -208,7 +208,7 @@ function renderBrowse(payload, seeds) {
     document.getElementById('rb-count').textContent=fmt(rows.length)+' matches';
     const grid=document.getElementById('rb-grid');
     grid.innerHTML=rows.slice((page-1)*per,page*per).map(x=>card(x,seeds)).join('')||
-      '<div class="empty">'+(removedView?'No unavailable Rulebooks with saved rule content yet.':'No Rulebooks match those filters.')+'</div>';
+      '<div class="empty">'+(removedView?'No Rulebook listings have been confirmed absent after a complete scan yet.':'No Rulebooks match those filters.')+'</div>';
     bindBrokenCovers(grid);
     const pager=pages<=1?'':'<nav class="pager"><button data-rb-page="'+(page-1)+'" '+(page===1?'disabled':'')+'>Previous</button>'+
       '<span>Page '+page+' of '+pages+'</span><button data-rb-page="'+(page+1)+'" '+(page===pages?'disabled':'')+'>Next</button></nav>';
@@ -233,6 +233,29 @@ function renderBrowse(payload, seeds) {
     selectedInclude=[];selectedExclude=[];tagSearch.value='';match.value='any';page=1;render();
   });
   render();
+}
+function renderListingOnlyDetail(entry, id, seeds) {
+  const name=entry.name||id;
+  document.title=name+' · SpicyChat Archive';
+  const cover=entry.cover||rulebookCoverSeedUrl(id,seeds);
+  app.innerHTML='<section class="lorebook-detail-hero rulebook-detail-hero">'+coverMarkup(cover,name,true)+'<div>'+
+    '<div class="lorebook-detail-title"><h1>'+esc(name)+'</h1>'+
+    (entry.status==='not-public'?'<span class="lorebook-status">No longer public</span>':'')+'</div>'+
+    (entry.creator?'<span class="creator-link">@'+esc(entry.creator)+'</span>':'')+
+    '<p>'+esc(entry.description||'No public description was recorded.')+'</p>'+
+    '<div class="lorebook-tags">'+tagsHtml(entry.tags)+'</div>'+
+    '<div class="detail-actions"><a class="secondary-button" href="../deleted-rulebooks/">Unlisted Rulebooks</a>'+
+    '<a class="secondary-button" href="../rulebooks/">Public Rulebooks</a>'+
+    '<a class="secondary-button" href="https://spicychat.ai/rulebook/'+esc(id)+'" target="_blank" rel="noopener noreferrer">Original SpicyChat page</a></div></div></section>'+
+    '<section class="table-card"><h2>Historical public listing only</h2>'+
+    '<p>The Archive retained publicly listed information, not the Rulebook definitions, meter instructions or hidden settings. This is not a recoverable full Rulebook. A listing disappearing does not prove deletion.</p>'+
+    '<div class="lorebook-meta-grid">'+
+    '<div><span>Rule count shown in listing</span><b>'+fmt(entry.numRules)+'</b></div>'+
+    '<div><span>First observed</span><b>'+esc(date(entry.firstSeenAt))+'</b></div>'+
+    '<div><span>Last seen public</span><b>'+esc(date(entry.lastSeenAt))+'</b></div>'+
+    '<div><span>No longer listed since</span><b>'+esc(date(entry.unlistedSince))+'</b></div>'+
+    '<div><span>Rulebook ID</span><b class="mono">'+esc(id)+'</b></div></div></section>';
+  bindBrokenCovers(app);
 }
 function renderDetail(record, id, seeds) {
   const doc=record.listing||{}, tags=doc.tags||[], versions=record.versions||[],
@@ -295,6 +318,13 @@ async function main() {
     const id=String(params.get('id')||'').trim().toLowerCase();
     if(!/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/.test(id)){
       app.innerHTML='<div class="error">A valid Rulebook ID is needed.</div>';return;
+    }
+    const catalog=await fetchJson(base+'/indexes/rulebooks.json');
+    const listing=Array.isArray(catalog.rulebooks)
+      ?catalog.rulebooks.find(row=>row.id===id):null;
+    if(listing && !listing.contentSaved){
+      renderListingOnlyDetail(listing,id,seeds);
+      return;
     }
     const prefix=id.replaceAll('-','').slice(0,2);
     let record;

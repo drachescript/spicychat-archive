@@ -98,6 +98,13 @@
     "top-rated": "rating_score:desc,num_messages:desc",
     "popular": "num_messages:desc"
   },
+  "rulebooks": {
+    "enabled": true,
+    "typesense_collection": "rulebooks_public",
+    "page_size": 100,
+    "max_pages_per_run": 100,
+    "application_config_url": "https://prod.nd-api.com/v2/applications/spicychat"
+  },
   "lorebooks": {
     "enabled": true,
     "typesense_collection": "lorebooks_public",

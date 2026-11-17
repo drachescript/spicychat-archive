@@ -37,8 +37,10 @@ import {loadCoverage} from './archive-coverage.js';
       set('stat-bots-deleted', manifest.deletedBots);
       set('stat-lorebooks-total', lorebooks?.totalArchived);
       set('stat-lorebooks-gone', lorebooks?.notPublic);
-      set('stat-rulebooks-total', rulebooks?.totalArchived);
-      set('stat-rulebooks-gone', rulebooks?.notPublic);
+      set('stat-rulebooks-total', rulebooks?.publicNow);
+      set('stat-rulebooks-gone', rulebooks?.notPublicListings ??
+        (Array.isArray(rulebooks?.rulebooks)
+          ? rulebooks.rulebooks.filter(item => item.status === 'not-public').length : null));
 
       const published = manifest.reconciliation || {};
       const pending = Math.max(0, Number(published.pendingVerificationBots ?? manifest.missingBots) || 0);

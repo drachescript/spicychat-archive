@@ -308,8 +308,10 @@ def run() -> int:
     known = state.setdefault("known", {})
     if not isinstance(known, dict):
         raise RuntimeError("Rulebook index state is invalid")
-    per_page = max(1, min(100, int(options.get("page_size") or 48)))
-    max_pages = max(1, min(100, int(options.get("max_pages_per_run") or 20)))
+    # A complete catalog scan is required before confirming disappearance.
+    # The old 20 x 48 cap could not cover the 1,500+ public Rulebooks.
+    per_page = max(1, min(100, int(options.get("page_size") or 100)))
+    max_pages = max(1, min(100, int(options.get("max_pages_per_run") or 100)))
     seen: set[str] = set()
     errors: list[str] = []
     complete = False
@@ -352,13 +354,18 @@ def run() -> int:
             fingerprint = digest(metadata)
             old = known.get(id) if isinstance(known.get(id), dict) else {}
             if not old.get("contentSaved"):
-                # A directory entry is fine while public, but do not write a
-                # per-Rulebook R2 archive without actual captured public rules.
+                # Preserve publicly observed listing metadata, not rule bodies.
+                # Listing-only Rulebooks never get individual definition files.
                 first_seen = str(old.get("firstSeenAt") or at)
+                listing = listing_summary(doc, id, at, first_seen)
+                previous_listing = old.get("summary") or {}
+                if (not listing.get("cover") and isinstance(previous_listing, dict)
+                        and previous_listing.get("cover")):
+                    listing["cover"] = previous_listing["cover"]
                 known[id] = {
                     "fingerprint": fingerprint, "status": "public",
                     "contentSaved": False, "catalogOnly": True,
-                    "summary": listing_summary(doc, id, at, first_seen),
+                    "summary": listing,
                     "firstSeenAt": first_seen, "lastSeenAt": at,
                 }
                 continue
@@ -398,9 +405,13 @@ def run() -> int:
             if id in seen or not isinstance(previous, dict):
                 continue
             if not previous.get("contentSaved"):
-                # Metadata-only listings disappearing is not a recoverable
-                # archive. Remove from the active catalog; do not label deleted.
-                known.pop(id, None)
+                # Keep the last public listing as historical metadata. This
+                # does not recover rule definitions or prove deletion.
+                if previous.get("status") == "public":
+                    previous["status"] = "not-public"
+                    previous["unlistedSince"] = at
+                    if isinstance(previous.get("summary"), dict):
+                        previous["summary"]["status"] = "not-public"
                 continue
             if previous.get("status") != "public":
                 continue
@@ -421,6 +432,8 @@ def run() -> int:
         row["contentSaved"] = bool(item.get("contentSaved"))
         row["firstSeenAt"] = item.get("firstSeenAt") or row.get("firstSeenAt")
         row["lastSeenAt"] = item.get("lastSeenAt") or row.get("lastSeenAt")
+        if item.get("unlistedSince"):
+            row["unlistedSince"] = item["unlistedSince"]
         rows.append(row)
     rows.sort(key=lambda row: str(row.get("createdAt") or row.get("firstSeenAt") or ""), reverse=True)
     public_saved_covers = sum(
@@ -440,6 +453,8 @@ def run() -> int:
         "catalogNow": sum(1 for x in rows if x["status"] == "public" and not x["contentSaved"]),
         "publicNow": sum(1 for x in rows if x["status"] == "public"),
         "notPublic": sum(1 for x in rows if x["status"] == "not-public" and x["contentSaved"]),
+        "notPublicListings": sum(1 for x in rows if x["status"] == "not-public"),
+        "totalListingsObserved": len(rows),
         "coverStats": {
             "publicListingWithCover": public_cover_refs,
             "seededPublicCoverUrls": seeded_cover_refs,

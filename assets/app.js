@@ -1249,12 +1249,14 @@ async function statsPage(){
     ['Lorebooks saved',lorebooks?.totalArchived],
     ['Lorebooks still public',lorebooks?.publicNow],
     ['Lorebooks no longer public',lorebooks?.notPublic],
+    ['Rulebooks currently listed as public',rulebooks?.publicNow],
+    ['Rulebook listings no longer public',rulebooks?.notPublicListings ??
+      (Array.isArray(rulebooks?.rulebooks) ? rulebooks.rulebooks.filter(x=>x.status==='not-public').length : null)],
     ['Rulebooks with saved public rules',rulebooks?.totalArchived],
-    ['Rulebooks currently public (including listings)',rulebooks?.publicNow],
     ['Saved Rulebooks no longer public',rulebooks?.notPublic]
   ];
   const definitionsSummary='<section class="table-card"><h2>Lorebooks &amp; Rulebooks</h2>'+
-    '<p class="detail-sub">Current published archive indexes. Unavailable means no longer listed as public, not necessarily deleted. Rulebook archive totals count captured public rule definitions, not listing-only entries; the public directory count can include listing-only Rulebooks.</p>'+
+    '<p class="detail-sub">Current published archive indexes. Public Rulebook listings are tracked separately from full rule definitions. “No longer public” means missing after a complete listing scan, not confirmed deleted. Listing-only records preserve public metadata, not the rules themselves.</p>'+
     '<div class="stats-grid">'+definitionTotals.map(([label,value])=>
       '<div class="stat"><b>'+(value==null?'—':fmt(value))+'</b><span>'+esc(label)+'</span></div>'
     ).join('')+'</div>'+

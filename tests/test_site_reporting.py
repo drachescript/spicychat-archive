@@ -40,8 +40,8 @@ class SiteReportingTests(unittest.TestCase):
         self.assertEqual(page.count('<div><b id="stat-'), 8)
         self.assertIn('stat-rulebooks-total', page)
         self.assertIn('stat-rulebooks-gone', page)
-        self.assertIn("rulebooks?.totalArchived", home)
-        self.assertIn("rulebooks?.notPublic", home)
+        self.assertIn("rulebooks?.publicNow", home)
+        self.assertIn("rulebooks?.notPublicListings", home)
         self.assertNotIn("set('stat-bots-unreconciled'", home)
 
     def test_stats_separates_old_status_audits_from_verified_file_counts(self):
@@ -55,6 +55,8 @@ class SiteReportingTests(unittest.TestCase):
         self.assertNotIn("indexed materialized bot records", app)
         self.assertIn("Recent public-bot count change per day", growth)
         self.assertIn("Saved Rulebooks no longer public", app)
+        self.assertIn("Rulebook listings no longer public", app)
+        self.assertIn("Rulebooks currently listed as public", app)
         self.assertIn("Rulebooks with saved public rules", app)
         self.assertIn("lorebooks?.notPublic", app)
         self.assertIn("rulebooks?.notPublic", app)

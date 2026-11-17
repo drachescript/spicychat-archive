@@ -59,10 +59,11 @@ class SharedArchiveHeaderTests(unittest.TestCase):
                 self.assertIn(expected, source)
         self.assertIn('rulebook-browse-layout.filters-collapsed', styles)
 
-    def test_deleted_rulebook_cards_require_captured_rules(self):
+    def test_unlisted_rulebook_cards_preserve_metadata_without_claiming_saved_rules(self):
         source=(ROOT/'assets'/'rulebooks.js').read_text(encoding='utf-8')
-        self.assertIn("x.status==='public'||x.contentSaved===true", source)
-        self.assertIn('No unavailable Rulebooks with saved rule content yet', source)
+        self.assertIn("x.status==='public'||x.status==='not-public'", source)
+        self.assertIn('Historical public listing only', source)
+        self.assertIn('not the Rulebook definitions', source)
         self.assertIn("https://spicychat.ai/rulebook/", source)
 
     def test_rulebook_images_have_fallback_and_safe_refs(self):

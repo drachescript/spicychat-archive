@@ -36,9 +36,9 @@ class SharedArchiveHeaderTests(unittest.TestCase):
 
     def test_shared_primary_nav_order_and_more(self):
         source=(ROOT/'assets'/'site-shell.js').read_text(encoding='utf-8')
-        match=re.search(r'const primary = \\[(.*?)\\];',source,re.DOTALL)
+        match=re.search(r'const primary = \[(.*?)\];',source,re.DOTALL)
         self.assertIsNotNone(match)
-        links=re.findall(r"\\['([^']+)', '([^']+)'\\]",match.group(1))
+        links=re.findall(r"\['([^']+)', '([^']+)'\]",match.group(1))
         self.assertEqual(links,[
             ('/', 'Home'), ('/deleted/', 'Deleted bots'),
             ('/deleted-lorebooks/', 'Deleted Lorebooks'),

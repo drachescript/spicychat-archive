@@ -1,0 +1,2592 @@
+{
+  "schemaVersion": 1,
+  "vocabularyVersion": 1,
+  "generatedFrom": "Archive historical bot tags, SpicyChat Guides Lorebook tags, and public Rulebook Explore tags",
+  "coverage": {
+    "bot": {
+      "catalogEntries": 91,
+      "scope": "Archived historical tags include retired picker values"
+    },
+    "lorebook": {
+      "catalogEntries": 227
+    },
+    "rulebook": {
+      "catalogEntries": 62
+    }
+  },
+  "sourceCatalogs": [
+    {
+      "scope": "bot",
+      "url": "https://github.com/drachescript/spicychat-archive/blob/main/data/tags.json"
+    },
+    {
+      "scope": "lorebook",
+      "url": "https://github.com/drachescript/spicychat-guides/blob/main/lorebook-tags.json"
+    },
+    {
+      "scope": "rulebook",
+      "url": "https://github.com/drachescript/spicychat-archive/blob/main/rulebook-tags.json"
+    }
+  ],
+  "tags": [
+    {
+      "id": "academia",
+      "label": "Academia",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "academy",
+      "label": "Academy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "action",
+      "label": "Action",
+      "scopes": [
+        "bot",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "adventure",
+      "label": "Adventure",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "age-play",
+      "label": "Age Play",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "age-play-adult-only",
+      "label": "Age Play (Adult Only)",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ai",
+      "label": "AI",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ai-assistant",
+      "label": "AI Assistant",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "alliance",
+      "label": "Alliance",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ally",
+      "label": "Ally",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "alternate-history",
+      "label": "Alternate History",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "anal",
+      "label": "Anal",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ancient",
+      "label": "Ancient",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "anime",
+      "label": "Anime",
+      "scopes": [
+        "bot",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "anthro",
+      "label": "Anthro",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "antihero",
+      "label": "Antihero",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "architecture",
+      "label": "Architecture",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "armor",
+      "label": "Armor",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "art",
+      "label": "Art",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "artifact",
+      "label": "Artifact",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "artifact-set",
+      "label": "Artifact Set",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "awakened",
+      "label": "Awakened",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "battle",
+      "label": "Battle",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "bdsm",
+      "label": "BDSM",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "biome",
+      "label": "Biome",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "blessed",
+      "label": "Blessed",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "bloodline",
+      "label": "Bloodline",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "bondage",
+      "label": "Bondage",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "bullying",
+      "label": "Bullying",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Bullying as a story premise"
+    },
+    {
+      "id": "calendar",
+      "label": "Calendar",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "celestial",
+      "label": "Celestial",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "character",
+      "label": "Character",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "character-creation",
+      "label": "Character creation",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "chastity",
+      "label": "Chastity",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cheating",
+      "label": "Cheating",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "choices-branches",
+      "label": "Choices & branches",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "chubby",
+      "label": "Chubby",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "city",
+      "label": "City",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "clan",
+      "label": "Clan",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "class",
+      "label": "Class",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cnc",
+      "label": "CNC",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "colonization",
+      "label": "Colonization",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "combat-health",
+      "label": "Combat & Health",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "comedy",
+      "label": "Comedy",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "conquest",
+      "label": "Conquest",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "construct",
+      "label": "Construct",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "contemporary",
+      "label": "Contemporary",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "corruption",
+      "label": "Corruption",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "countdown-deadlines",
+      "label": "Countdown & deadlines",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "creature",
+      "label": "Creature",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "crime",
+      "label": "Crime",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "crossdressing",
+      "label": "Crossdressing",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cuckold",
+      "label": "Cuckold",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cuisine",
+      "label": "Cuisine",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cult",
+      "label": "Cult",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "culture",
+      "label": "Culture",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "currency",
+      "label": "Currency",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cursed",
+      "label": "Cursed",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "custom",
+      "label": "Custom",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "cyberpunk",
+      "label": "Cyberpunk",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dark-fantasy",
+      "label": "Dark Fantasy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "deity",
+      "label": "Deity",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "desert",
+      "label": "Desert",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "destroyed",
+      "label": "Destroyed",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "device",
+      "label": "Device",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dice-rolls",
+      "label": "Dice rolls",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dieselpunk",
+      "label": "Dieselpunk",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dimension",
+      "label": "Dimension",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "diplomacy",
+      "label": "Diplomacy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "disease",
+      "label": "Disease",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "divine",
+      "label": "Divine",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dominant",
+      "label": "Dominant",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dormant",
+      "label": "Dormant",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "drama",
+      "label": "Drama",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dungeon",
+      "label": "Dungeon",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dynasty",
+      "label": "Dynasty",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "dystopian",
+      "label": "Dystopian",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "economy",
+      "label": "Economy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "eldritch",
+      "label": "Eldritch",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "elemental",
+      "label": "Elemental",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "emotional-affair",
+      "label": "Emotional Affair",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Emotional infidelity as a distinct theme, not simply a suspicion"
+    },
+    {
+      "id": "emotions-mood",
+      "label": "Emotions & Mood",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "empire",
+      "label": "Empire",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "endangered",
+      "label": "Endangered",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "enemies-rivals",
+      "label": "Enemies & Rivals",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "enemy",
+      "label": "Enemy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "english",
+      "label": "English",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "epic",
+      "label": "Epic",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "era",
+      "label": "Era",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "erotic-romance",
+      "label": "Erotic Romance",
+      "scopes": [
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "event",
+      "label": "Event",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "exhibitionism",
+      "label": "Exhibitionism",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "explorer",
+      "label": "Explorer",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "extinct",
+      "label": "Extinct",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "faction",
+      "label": "Faction",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "factions-reputation",
+      "label": "Factions & Reputation",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "fantasy",
+      "label": "Fantasy",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "fat",
+      "label": "Fat",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "fauna",
+      "label": "Fauna",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "feet",
+      "label": "Feet",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "female",
+      "label": "Female",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "femalepov",
+      "label": "FemalePOV",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "femboy",
+      "label": "Femboy",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "fetish",
+      "label": "Fetish",
+      "scopes": [
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "fictional-media",
+      "label": "Fictional Media",
+      "scopes": [
+        "bot",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "field-guide",
+      "label": "Field Guide",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "flatulence",
+      "label": "Flatulence",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "flora",
+      "label": "Flora",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "folklore",
+      "label": "Folklore",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "forbidden",
+      "label": "Forbidden",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "forest",
+      "label": "Forest",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "fortress",
+      "label": "Fortress",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "friend",
+      "label": "Friend",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "furry",
+      "label": "Furry",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "futanari",
+      "label": "Futanari",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "game",
+      "label": "Game",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "gateway",
+      "label": "Gateway",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "gazetteer",
+      "label": "Gazetteer",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "gentle-dom",
+      "label": "Gentle Dom",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "geography",
+      "label": "Geography",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "giant",
+      "label": "Giant",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "golem",
+      "label": "Golem",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "gothic",
+      "label": "Gothic",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "government",
+      "label": "Government",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "guild",
+      "label": "Guild",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "heist",
+      "label": "Heist",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "hero",
+      "label": "Hero",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "hidden",
+      "label": "Hidden",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "hidden-stats",
+      "label": "Hidden stats",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "high-fantasy",
+      "label": "High Fantasy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "historical",
+      "label": "Historical",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "history",
+      "label": "History",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "holiday",
+      "label": "Holiday",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "horror",
+      "label": "Horror",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "hypnosis",
+      "label": "Hypnosis",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "impregnation",
+      "label": "Impregnation",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "inanimate",
+      "label": "Inanimate",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "infernal",
+      "label": "Infernal",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "inflation",
+      "label": "Inflation",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "intrigue",
+      "label": "Intrigue",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "inventory-items",
+      "label": "Inventory & Items",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "investigation",
+      "label": "Investigation",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "island",
+      "label": "Island",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "item",
+      "label": "Item",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "kingdom",
+      "label": "Kingdom",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "lactation",
+      "label": "Lactation",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "language",
+      "label": "Language",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "law",
+      "label": "Law",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "legend",
+      "label": "Legend",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "lgbtq",
+      "label": "LGBTQ+",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "library",
+      "label": "Library",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "library-archive",
+      "label": "Library Archive",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "lineage",
+      "label": "Lineage",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "literature",
+      "label": "Literature",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "location",
+      "label": "Location",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "lost",
+      "label": "Lost",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "low-quality",
+      "label": "Low Quality",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mafia",
+      "label": "Mafia",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Mafia and organized-crime settings"
+    },
+    {
+      "id": "magic",
+      "label": "Magic",
+      "scopes": [
+        "bot",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "magic-system",
+      "label": "Magic System",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "male",
+      "label": "Male",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "malepov",
+      "label": "MalePOV",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "marketplace",
+      "label": "Marketplace",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "married-partner",
+      "label": "Married Partner",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "masochistic",
+      "label": "Masochistic",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "material",
+      "label": "Material",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mature",
+      "label": "Mature",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "medicine",
+      "label": "Medicine",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mentor",
+      "label": "Mentor",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "migrant",
+      "label": "Migrant",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "milf",
+      "label": "MILF",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mind-control",
+      "label": "Mind Control",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mini-games",
+      "label": "Mini-games",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mlm",
+      "label": "MLM",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "modern",
+      "label": "Modern",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "money-trade",
+      "label": "Money & Trade",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "monster",
+      "label": "Monster",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mountain",
+      "label": "Mountain",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "multiple-characters",
+      "label": "Multiple Characters",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "multiverse",
+      "label": "Multiverse",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "muscle",
+      "label": "Muscle",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "music",
+      "label": "Music",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mystery",
+      "label": "Mystery",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mystery-clues",
+      "label": "Mystery & Clues",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "myth",
+      "label": "Myth",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "mythological",
+      "label": "Mythological",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "natural-phenomenon",
+      "label": "Natural Phenomenon",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "nature",
+      "label": "Nature",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "non-binary",
+      "label": "Non-Binary",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "non-english",
+      "label": "Non-English",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "nsfw",
+      "label": "NSFW",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ntr",
+      "label": "NTR",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ocean",
+      "label": "Ocean",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "omegaverse",
+      "label": "Omegaverse",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "omen",
+      "label": "Omen",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "oral",
+      "label": "Oral",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "order",
+      "label": "Order",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "organization",
+      "label": "Organization",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "original-character",
+      "label": "Original Character",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "pantheon",
+      "label": "Pantheon",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "paranormal",
+      "label": "Paranormal",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "partner",
+      "label": "Partner",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "plane",
+      "label": "Plane",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "planet",
+      "label": "Planet",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "points-scoring",
+      "label": "Points & scoring",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "politics",
+      "label": "Politics",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "portal",
+      "label": "Portal",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "post-apocalyptic",
+      "label": "Post-Apocalyptic",
+      "scopes": [
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "power-dynamics",
+      "label": "Power Dynamics",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "pregnant",
+      "label": "Pregnant",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "profession",
+      "label": "Profession",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "prophecy",
+      "label": "Prophecy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "psionic",
+      "label": "Psionic",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "quests-story-progress",
+      "label": "Quests & Story Progress",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "race",
+      "label": "Race",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "random-events",
+      "label": "Random events",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "real",
+      "label": "Real",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "realism",
+      "label": "Realism",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "realm",
+      "label": "Realm",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "rebellion",
+      "label": "Rebellion",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "reborn",
+      "label": "Reborn",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "rediscovered",
+      "label": "Rediscovered",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "reference",
+      "label": "Reference",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "region",
+      "label": "Region",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "relationship",
+      "label": "Relationship",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "relationship-boundary-risk",
+      "label": "Relationship Boundary Risk",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Potential boundary-crossing with uncertainty explicitly preserved"
+    },
+    {
+      "id": "relationship-misunderstanding",
+      "label": "Relationship Misunderstanding",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "False accusation, ambiguity, or disproven romantic betrayal"
+    },
+    {
+      "id": "relic",
+      "label": "Relic",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "religion",
+      "label": "Religion",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "resource",
+      "label": "Resource",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "revolution",
+      "label": "Revolution",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ritual",
+      "label": "Ritual",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "rival",
+      "label": "Rival",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "river",
+      "label": "River",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "roleplay",
+      "label": "Roleplay",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "romantic",
+      "label": "Romantic",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "roommate",
+      "label": "Roommate",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "rpg",
+      "label": "RPG",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "rpg-rules",
+      "label": "RPG rules",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "ruined",
+      "label": "Ruined",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "sacred",
+      "label": "Sacred",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "sadistic",
+      "label": "Sadistic",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "sandbox",
+      "label": "Sandbox",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "scenario",
+      "label": "Scenario",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "scenario-driven",
+      "label": "Scenario-Driven",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "school",
+      "label": "School",
+      "scopes": [
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "school-of-magic",
+      "label": "School of Magic",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "sci-fi",
+      "label": "Sci-Fi",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "script",
+      "label": "Script",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "sealed",
+      "label": "Sealed",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "secret",
+      "label": "Secret",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "servant",
+      "label": "Servant",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "simulator",
+      "label": "Simulator",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "sissification",
+      "label": "Sissification",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "size-difference",
+      "label": "Size Difference",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "skill-checks",
+      "label": "Skill checks",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "slave",
+      "label": "Slave",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "slow-burn",
+      "label": "Slow Burn",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "smell",
+      "label": "Smell",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "solarpunk",
+      "label": "Solarpunk",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "space-opera",
+      "label": "Space Opera",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "species",
+      "label": "Species",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "species-creatures",
+      "label": "Species & Creatures",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "spell",
+      "label": "Spell",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "stats-leveling",
+      "label": "Stats & Leveling",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "steampunk",
+      "label": "Steampunk",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "step-family",
+      "label": "Step-Family",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "strategy",
+      "label": "Strategy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "submissive",
+      "label": "Submissive",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "supernatural",
+      "label": "Supernatural",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "survival",
+      "label": "Survival",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "switch",
+      "label": "Switch",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "technology",
+      "label": "Technology",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "temple",
+      "label": "Temple",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "time-calendar",
+      "label": "Time & Calendar",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "time-travel",
+      "label": "Time Travel",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "timeline",
+      "label": "Timeline",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "title",
+      "label": "Title",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "tomboy",
+      "label": "Tomboy",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "tool",
+      "label": "Tool",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "trade",
+      "label": "Trade",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "tradition",
+      "label": "Tradition",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "trans",
+      "label": "Trans",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "transformation",
+      "label": "Transformation",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "treaty",
+      "label": "Treaty",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "tsundere",
+      "label": "Tsundere",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "turn-based",
+      "label": "Turn-based",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "undead",
+      "label": "Undead",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "urban-fantasy",
+      "label": "Urban Fantasy",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "utopian",
+      "label": "Utopian",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "vampire",
+      "label": "Vampire",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Vampires and related fantasy species"
+    },
+    {
+      "id": "vehicle",
+      "label": "Vehicle",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "villain",
+      "label": "Villain",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "visual-novel",
+      "label": "Visual Novel",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "vore",
+      "label": "Vore",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "voyeurism",
+      "label": "Voyeurism",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "war",
+      "label": "War",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "watersport",
+      "label": "Watersport",
+      "scopes": [
+        "bot",
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "weapon",
+      "label": "Weapon",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "weather",
+      "label": "Weather",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "werewolf",
+      "label": "Werewolf",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Werewolves and related fantasy species"
+    },
+    {
+      "id": "wholesome",
+      "label": "Wholesome",
+      "scopes": [
+        "bot",
+        "lorebook",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "wlw",
+      "label": "WLW",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "workplace-authority",
+      "label": "Workplace & Authority",
+      "scopes": [
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "world",
+      "label": "World",
+      "scopes": [
+        "lorebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "yandere",
+      "label": "Yandere",
+      "scopes": [
+        "bot",
+        "rulebook"
+      ],
+      "kind": "official"
+    },
+    {
+      "id": "zombie",
+      "label": "Zombie",
+      "scopes": [
+        "bot"
+      ],
+      "kind": "community-theme",
+      "description": "Zombies and undead outbreak scenarios"
+    }
+  ]
+}

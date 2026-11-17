@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Archive community theme lookup",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "ok",
+    "matches"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "generatedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "matches": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "status",
+          "signals"
+        ],
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "lastSeenAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "tagId",
+                "kind",
+                "confidence"
+              ],
+              "properties": {
+                "tagId": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "historical-tag",
+                    "rule-candidate",
+                    "reviewed"
+                  ]
+                },
+                "confidence": {
+                  "enum": [
+                    "historical-only",
+                    "candidate",
+                    "verified"
+                  ]
+                },
+                "ruleId": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "reviewedAt": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

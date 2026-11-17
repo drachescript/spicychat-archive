@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 1,
+  "method": "deterministic-title-only",
+  "notes": "These are conservative, low-trust candidate hints, not verified labels. All catalog tags support official or human-reviewed assignments even without text rules.",
+  "rules": [
+    {
+      "id": "explicit-cheating",
+      "tagId": "cheating",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "cheating wife",
+          "cheating husband",
+          "cheating girlfriend",
+          "cheating boyfriend",
+          "cheating spouse",
+          "unfaithful wife",
+          "unfaithful husband",
+          "unfaithful girlfriend",
+          "unfaithful boyfriend",
+          "unfaithful partner",
+          "affair partner",
+          "marital infidelity",
+          "caught cheating",
+          "having an affair",
+          "secret affair",
+          "adulterous spouse"
+        ]
+      ],
+      "noneOf": [
+        "not cheating",
+        "never cheated",
+        "falsely accused",
+        "misunderstanding",
+        "no affair",
+        "affair of state",
+        "political affairs"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit infidelity wording in a public title"
+    },
+    {
+      "id": "explicit-emotional-affair",
+      "tagId": "emotional-affair",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "emotional affair",
+          "emotional cheating",
+          "emotional infidelity"
+        ]
+      ],
+      "noneOf": [
+        "not an emotional affair",
+        "false accusation",
+        "never cheated"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit emotional affair wording in a public title"
+    },
+    {
+      "id": "ntr-label",
+      "tagId": "ntr",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "ntr",
+          "netorare",
+          "netorase"
+        ]
+      ],
+      "noneOf": [
+        "anti ntr",
+        "no ntr",
+        "not ntr",
+        "without ntr"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit NTR label in a public title"
+    },
+    {
+      "id": "cuckold-label",
+      "tagId": "cuckold",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "cuckold",
+          "cuckolding",
+          "cuckquean",
+          "cuckqueaning"
+        ]
+      ],
+      "noneOf": [
+        "not a cuckold",
+        "anti cuckold",
+        "no cuckold"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit cuckolding label in a public title"
+    },
+    {
+      "id": "omegaverse-label",
+      "tagId": "omegaverse",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "omegaverse",
+          "alpha omega",
+          "alpha beta omega"
+        ]
+      ],
+      "noneOf": [
+        "not omegaverse"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit omegaverse title cue"
+    },
+    {
+      "id": "vampire-label",
+      "tagId": "vampire",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "vampire",
+          "vampires"
+        ]
+      ],
+      "noneOf": [
+        "not a vampire",
+        "fake vampire"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit vampire title cue"
+    },
+    {
+      "id": "werewolf-label",
+      "tagId": "werewolf",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "werewolf",
+          "werewolves",
+          "lycanthrope"
+        ]
+      ],
+      "noneOf": [
+        "not a werewolf",
+        "fake werewolf"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit werewolf title cue"
+    },
+    {
+      "id": "zombie-label",
+      "tagId": "zombie",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "zombie",
+          "zombies",
+          "zombie apocalypse"
+        ]
+      ],
+      "noneOf": [
+        "not a zombie"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit zombie title cue"
+    },
+    {
+      "id": "mafia-label",
+      "tagId": "mafia",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "mafia",
+          "crime boss",
+          "mob boss"
+        ]
+      ],
+      "noneOf": [
+        "mafia game",
+        "not the mafia"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit organized-crime setting title cue"
+    },
+    {
+      "id": "bullying-label",
+      "tagId": "bullying",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "bully",
+          "bullies",
+          "bullied",
+          "bullying"
+        ]
+      ],
+      "noneOf": [
+        "anti bullying",
+        "stop bullying",
+        "not a bully"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit bullying title cue"
+    },
+    {
+      "id": "apocalypse-label",
+      "tagId": "post-apocalyptic",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "post apocalyptic",
+          "post apocalypse",
+          "the apocalypse"
+        ]
+      ],
+      "noneOf": [
+        "prevent the apocalypse"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit post-apocalyptic setting title cue"
+    },
+    {
+      "id": "roommate-label",
+      "tagId": "roommate",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "roommate",
+          "roommates"
+        ]
+      ],
+      "noneOf": [
+        "not roommates"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit roommate title cue"
+    },
+    {
+      "id": "yandere-label",
+      "tagId": "yandere",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "yandere"
+        ]
+      ],
+      "noneOf": [
+        "not yandere",
+        "anti yandere"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit character-archetype title cue"
+    },
+    {
+      "id": "mind-control-label",
+      "tagId": "mind-control",
+      "fields": [
+        "title"
+      ],
+      "allOf": [
+        [
+          "mind control",
+          "mindcontrolled"
+        ]
+      ],
+      "noneOf": [
+        "resist mind control",
+        "anti mind control",
+        "no mind control"
+      ],
+      "confidence": "candidate",
+      "reason": "Explicit mind-control premise title cue"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "contract": "spicychat-archive-community-tags-v1",
+  "generatedAt": "2026-11-17",
+  "catalog": {
+    "taxonomy": "https://spicychatarchive.drache.uk/data/community-tags/taxonomy.json",
+    "aliases": "https://spicychatarchive.drache.uk/data/community-tags/aliases.json",
+    "rules": "https://spicychatarchive.drache.uk/data/community-tags/rules.json",
+    "reviews": "https://spicychatarchive.drache.uk/data/community-tags/reviews.json",
+    "schema": "https://spicychatarchive.drache.uk/data/community-tags/schema.json"
+  },
+  "live": {
+    "manifest": "https://data.spicychatarchive.drache.uk/indexes/community-tags/manifest.json",
+    "lookup": "https://spicychat-archive-import.dragongraf.workers.dev/api/community-tags/lookup",
+    "batchSize": 80
+  },
+  "scopes": [
+    "bot",
+    "lorebook",
+    "rulebook"
+  ],
+  "coverageDisclaimer": "All known tag vocabulary is cataloged, but bot evidence only covers Archive creator-indexed metadata; missing results mean UNKNOWN, not safe or reviewed.",
+  "trustLevels": [
+    "creator-declared-former",
+    "rule-candidate",
+    "human-reviewed"
+  ],
+  "privacy": "No private chats, personas, session data or hidden definitions. No AI classifiers. Submissions must be moderated."
+}

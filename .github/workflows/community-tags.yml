@@ -1,0 +1,54 @@
+name: Publish Archive community theme signals
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/community-tags/**"
+      - "scripts/publish_community_tags.py"
+      - "tests/test_community_tags.py"
+      - ".github/workflows/community-tags.yml"
+  schedule:
+    # Run after creator-index and tag-history daily snapshots; shared R2 writer lock.
+    - cron: "53 5 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spicychat-archive-writer
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  community-tags:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Test taxonomy and conservative signal rules
+        run: python -m unittest tests.test_community_tags -v
+      - name: Check R2 quota guard
+        id: guard
+        run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file "$RUNNER_TEMP/community-tags-usage.json"
+      - name: Publish sparse theme index
+        if: steps.guard.outputs.mode == 'r2'
+        run: python scripts/publish_community_tags.py
+      - name: Explain quota pause
+        if: steps.guard.outputs.mode != 'r2'
+        run: echo "Community tag index unchanged; quota guard paused R2 writes." >> "$GITHUB_STEP_SUMMARY"

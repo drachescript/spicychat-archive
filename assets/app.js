@@ -1199,9 +1199,11 @@ async function statsPage(){
   const table=recent.map(r=>`<tr><td>${date(r.at)}</td><td>+${fmt(r.addedSincePrevious??0)}</td><td>+${fmt(newestRunBots(r))}</td><td>${latestScanCount(r)}</td><td>${deepRunText(r)}</td><td>${r.runDurationSeconds?`${Math.round(r.runDurationSeconds/60)}m`:'—'}</td></tr>`).join('');
   const guard=runtime.r2QuotaGuard||{},usage=guard.usage||{},adaptive=stats.adaptiveDiscovery||{},milestones=Array.isArray(historyData?.milestones)?historyData.milestones:[];
   const auditBase=String(runtime.publicDataBaseUrl||'').replace(/\/$/,'');
-  const [statusAudit,physicalAudit]=await Promise.all([
+  const [statusAudit,physicalAudit,lorebooks,rulebooks]=await Promise.all([
     auditBase?fetchJson(auditBase+'/indexes/bot-status-audit.json').catch(()=>null):Promise.resolve(null),
-    loadCoverage(auditBase, fetchJson)
+    loadCoverage(auditBase, fetchJson),
+    auditBase?fetchJson(auditBase+'/indexes/lorebooks.json').catch(()=>null):Promise.resolve(null),
+    auditBase?fetchJson(auditBase+'/indexes/rulebooks.json').catch(()=>null):Promise.resolve(null)
   ]);
   const auditStatus=statusAudit?.schemaVersion===1?statusAudit:null;
   const indexedCount=physicalAudit?.materializedIndexIds??auditStatus?.materializedBotIndexCount;
@@ -1243,10 +1245,27 @@ async function statsPage(){
       '<p class="detail-sub">The separate creator/status report is not available right now.</p>')+
     '<p class="detail-sub">An old sighting does not prove a bot is still public. A missing file does not prove it was deleted.</p>'+
     '</section>';
+  const definitionTotals=[
+    ['Lorebooks saved',lorebooks?.totalArchived],
+    ['Lorebooks still public',lorebooks?.publicNow],
+    ['Lorebooks no longer public',lorebooks?.notPublic],
+    ['Rulebooks with saved public rules',rulebooks?.totalArchived],
+    ['Rulebooks currently public (including listings)',rulebooks?.publicNow],
+    ['Saved Rulebooks no longer public',rulebooks?.notPublic]
+  ];
+  const definitionsSummary='<section class="table-card"><h2>Lorebooks &amp; Rulebooks</h2>'+
+    '<p class="detail-sub">Current published archive indexes. Unavailable means no longer listed as public, not necessarily deleted. Rulebook archive totals count captured public rule definitions, not listing-only entries; the public directory count can include listing-only Rulebooks.</p>'+
+    '<div class="stats-grid">'+definitionTotals.map(([label,value])=>
+      '<div class="stat"><b>'+(value==null?'—':fmt(value))+'</b><span>'+esc(label)+'</span></div>'
+    ).join('')+'</div>'+
+    '<div class="detail-actions"><a class="secondary-button" href="../deleted-lorebooks/">Deleted / unlisted Lorebooks</a>'+
+    '<a class="secondary-button" href="../deleted-rulebooks/">Deleted / unlisted Rulebooks</a>'+
+    '<a class="secondary-button" href="../rulebooks/">Public Rulebooks</a></div></section>';
   const historyRows=[...milestones.map(row=>({...row,_historyKind:'milestone'})),...(stats.runs||[]).map(row=>({...row,_historyKind:row.kind||'archive-run'}))].filter(row=>row?.at).sort((a,b)=>new Date(b.at)-new Date(a.at));
   app.innerHTML=`<section class="hero"><h1>Archive stats</h1><p>How the archive is growing, what recent batches found, and the full project history from the early small archive through the current crawler.</p><div class="detail-actions"><a class="secondary-button" href="../name-trends/">Bot names &amp; trends</a><a class="secondary-button" href="../health/">Archive health</a><a class="secondary-button" href="../changes/">Recently changed</a><a class="secondary-button" href="../restored/">Restored bots</a></div></section>
     <section class="stats-grid"><div class="stat"><b>${fmt(stats.totalBots)}</b><span>Distinct bot IDs ever observed (not all verified public)</span></div><div class="stat"><b>~${fmt(Math.round(stats.growth?.averagePerDay||0))}/day</b><span>Observed archive growth pace</span></div><div class="stat"><b>${fmt(stats.publicIndexBots)}</b><span>Public bots reported by SpicyChat's index</span></div><div class="stat"><b>${ageText(stats.startedAt)}</b><span>Archive site age</span></div><div class="stat"><b>+${fmt(stats.growth?.added24h)}</b><span>New bot IDs observed in the last ~24h window</span></div><div class="stat"><b>+${fmt(stats.growth?.added7d)}</b><span>New bot IDs observed in the last ~7d window</span></div><div class="stat"><b>${fmt(stats.deletedBots)}</b><span>Confirmed deleted / archived</span></div><div class="stat"><b>${fmt(tags.length)}</b><span>Archive filter tags (including retired tags)</span></div></section>
     ${auditSummary}
+    ${definitionsSummary}
     <div class="stats-layout"><section class="chart-card"><h2>Archive growth</h2>${growthChart(stats.runs)}</section><section class="table-card"><h2>Crawler right now</h2><div class="recent-list"><div class="recent-run"><div><b>Every 6h</b><br><span>automatic latest-first scan</span></div><div><b>50 pages max</b><br><span>newest scan safety cap</span></div></div><div class="recent-run"><div><b>${latestScanCount(latest)}</b><br><span>newest listings checked last run</span></div><div><b>+${fmt(newestRunBots(latest))}</b><br><span>new bots found on newest scan</span></div></div><div class="recent-run"><div><b>${deepRunText(latest)}</b><br><span>deep discovery (manual only)</span></div><div><b>${fmt(latest.enrichment?.attempted)}</b><br><span>availability checks last run</span></div></div></div></section></div>
     <div class="stats-layout"><section class="table-card"><h2>Recent batches</h2><p class="filter-note">The latest batches that actually added bots. Zero-add maintenance runs are kept in History below instead of duplicating this list.</p><div style="overflow:auto"><table class="stats-table"><thead><tr><th>Run</th><th>Saved</th><th>New from newest</th><th>Newest listings scanned</th><th>Deep discovery</th><th>Took</th></tr></thead><tbody>${table||'<tr><td colspan="6">No batches with new bots yet.</td></tr>'}</tbody></table></div></section><section class="table-card"><h2>Storage + crawler</h2><div class="recent-list"><div class="recent-run"><div><b>${fmtBytes(latest.storage?.usedBytes||manifest.storage?.usedBytes)}</b><br><span>archive storage used</span></div><div><b>${fmt(latest.storage?.objects||usage.objectCount)}</b><br><span>files / objects in R2</span></div></div><div class="recent-run"><div><b>${fmt(usage.classA)}</b><br><span>Class A operations (dashboard may lag)</span></div><div><b>${fmt(usage.classB)}</b><br><span>Class B operations</span></div></div><div class="recent-run"><div><b>${fmt(latest.enrichment?.enriched)}</b><br><span>full bot details refreshed last batch</span></div><div><b>${fmt(latest.images?.saved)}</b><br><span>images saved last batch</span></div></div><div class="recent-run"><div><b>${fmtBytes(latest.storage?.mediaBytes??manifest.storage?.mediaBytes)}</b><br><span>archived image/media storage</span></div><div><b>${fmtBytes(Math.max(0,Number(latest.storage?.usedBytes??manifest.storage?.usedBytes??0)-Number(latest.storage?.mediaBytes??manifest.storage?.mediaBytes??0)))}</b><br><span>other archive objects (estimated)</span></div></div></div></section></div>
     <section class="table-card history-card"><div class="history-head"><div><h2>History</h2><p class="filter-note">Everything from the early project milestones through every recorded crawler/import run. Unlike Recent batches, +0 maintenance runs stay here too.</p></div><span class="manager-count" id="archive-history-count"></span></div><div class="history-list" id="archive-history-list"></div><div class="history-actions"><button class="load-more" id="archive-history-more" type="button">Load more</button></div></section>

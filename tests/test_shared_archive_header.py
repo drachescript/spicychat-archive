@@ -1,5 +1,6 @@
 """Keep navigation shared and Rulebooks separate from Lorebooks."""
 from pathlib import Path
+import re
 import unittest
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -32,6 +33,20 @@ class SharedArchiveHeaderTests(unittest.TestCase):
                      '/bots/', '/lorebooks/', '/rulebooks/'):
             self.assertIn(link,source)
         self.assertIn("className = 'archive-unified-header sca-shared-header'",source)
+
+    def test_shared_primary_nav_order_and_more(self):
+        source=(ROOT/'assets'/'site-shell.js').read_text(encoding='utf-8')
+        match=re.search(r'const primary = \\[(.*?)\\];',source,re.DOTALL)
+        self.assertIsNotNone(match)
+        links=re.findall(r"\\['([^']+)', '([^']+)'\\]",match.group(1))
+        self.assertEqual(links,[
+            ('/', 'Home'), ('/deleted/', 'Deleted bots'),
+            ('/deleted-lorebooks/', 'Deleted Lorebooks'),
+            ('/deleted-rulebooks/', 'Deleted Rulebooks'),
+            ('/recovery/', 'Recovery Lab'), ('/stats/', 'Stats'),
+            ('/faq/', 'FAQ')
+        ])
+        self.assertIn("summary.textContent = 'More'",source)
 
     def test_rulebook_filters_share_collapsed_bot_sidebar_layout(self):
         source=(ROOT/'assets'/'rulebooks.js').read_text(encoding='utf-8')

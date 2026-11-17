@@ -37,7 +37,11 @@ class SiteReportingTests(unittest.TestCase):
         self.assertIn("stat-bots-saved", home)
         page = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('class="snapshot-more"', page)
-        self.assertEqual(page.count('<div><b id="stat-'), 6)
+        self.assertEqual(page.count('<div><b id="stat-'), 8)
+        self.assertIn('stat-rulebooks-total', page)
+        self.assertIn('stat-rulebooks-gone', page)
+        self.assertIn("rulebooks?.totalArchived", home)
+        self.assertIn("rulebooks?.notPublic", home)
         self.assertNotIn("set('stat-bots-unreconciled'", home)
 
     def test_stats_separates_old_status_audits_from_verified_file_counts(self):
@@ -50,6 +54,11 @@ class SiteReportingTests(unittest.TestCase):
         self.assertIn("last recorded as '+esc(key)", app)
         self.assertNotIn("indexed materialized bot records", app)
         self.assertIn("Recent public-bot count change per day", growth)
+        self.assertIn("Saved Rulebooks no longer public", app)
+        self.assertIn("Rulebooks with saved public rules", app)
+        self.assertIn("lorebooks?.notPublic", app)
+        self.assertIn("rulebooks?.notPublic", app)
+        self.assertIn("rulebooks.json", app)
 
     def test_bot_dates_are_reported_separately_from_archive_first_seen(self):
         app = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")

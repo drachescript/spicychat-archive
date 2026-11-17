@@ -25,9 +25,10 @@ import {loadCoverage} from './archive-coverage.js';
         json('/data/manifest.json'), json('/data/runtime.json')
       ]);
       const base = String(runtime.publicDataBaseUrl || '').replace(/\/$/, '');
-      const [inventory, lorebooks] = await Promise.all([
+      const [inventory, lorebooks, rulebooks] = await Promise.all([
         loadCoverage(base, json),
-        base ? json(base + '/indexes/lorebooks.json').catch(() => null) : null
+        base ? json(base + '/indexes/lorebooks.json').catch(() => null) : null,
+        base ? json(base + '/indexes/rulebooks.json').catch(() => null) : null
       ]);
 
       set('stat-bots-total', manifest.totalBots);
@@ -36,6 +37,8 @@ import {loadCoverage} from './archive-coverage.js';
       set('stat-bots-deleted', manifest.deletedBots);
       set('stat-lorebooks-total', lorebooks?.totalArchived);
       set('stat-lorebooks-gone', lorebooks?.notPublic);
+      set('stat-rulebooks-total', rulebooks?.totalArchived);
+      set('stat-rulebooks-gone', rulebooks?.notPublic);
 
       const published = manifest.reconciliation || {};
       const pending = Math.max(0, Number(published.pendingVerificationBots ?? manifest.missingBots) || 0);

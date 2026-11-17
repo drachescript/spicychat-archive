@@ -6,22 +6,22 @@
     ['/deleted/', 'Deleted bots'],
     ['/deleted-lorebooks/', 'Deleted Lorebooks'],
     ['/deleted-rulebooks/', 'Deleted Rulebooks'],
+    ['/recovery/', 'Recovery Lab'],
+    ['/stats/', 'Stats'],
+    ['/faq/', 'FAQ'],
+  ];
+  const secondary = [
     ['/bots/', 'Public bots'],
     ['/lorebooks/', 'Public Lorebooks'],
     ['/rulebooks/', 'Public Rulebooks'],
-  ];
-  const secondary = [
-    ['/stats/', 'Stats'],
     ['/restored/', 'Restored bots'],
     ['/activity/', 'Archive activity'],
     ['/changes/', 'Recently changed'],
     ['/search/', 'Search'],
-    ['/recovery/', 'Recovery Lab'],
     ['/merge/', 'Merge Lab'],
     ['/name-trends/', 'Names & trends'],
     ['/tag-stats/', 'Tag stats'],
     ['/health/', 'Archive health'],
-    ['/faq/', 'FAQ'],
     ['https://github.com/drachescript/spicychat-archive', 'GitHub'],
   ];
   const current = location.pathname.replace(/\/index\.html$/, '/');

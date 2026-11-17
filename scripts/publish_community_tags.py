@@ -12,6 +12,8 @@ import hashlib
 import json
 import re
 import unicodedata
+from functools import lru_cache
+from urllib.parse import urlsplit
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -59,10 +61,16 @@ def metadata_fingerprint(meta: dict[str, Any]) -> str:
     })[:24]
 
 
-def phrase_in(text: str, phrase: str) -> bool:
+@lru_cache(maxsize=1024)
+def phrase_pattern(phrase: str) -> re.Pattern[str]:
     term = canonical(phrase)
-    return bool(term and re.search(r"(?<![a-z0-9])" + re.escape(term)
-                                   + r"(?![a-z0-9])", text))
+    if not term:
+        raise ValueError("Empty rule phrase")
+    return re.compile(r"(?<![a-z0-9])" + re.escape(term) + r"(?![a-z0-9])")
+
+
+def phrase_in(text: str, phrase: str) -> bool:
+    return bool(phrase_pattern(phrase).search(text))
 
 
 def validate(taxonomy: dict[str, Any], rules: dict[str, Any],
@@ -108,14 +116,16 @@ def validate(taxonomy: dict[str, Any], rules: dict[str, Any],
         if not re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ",
                             str(decision.get("reviewedAt") or "")):
             raise ValueError("Review timestamp must use UTC ISO 8601")
-        if not str(decision.get("evidenceUrl") or "").startswith(
-                ("https://spicychatarchive.drache.uk/", "https://spicychat.ai/")):
-            raise ValueError("Approved evidence must be a public source URL")
+        url = urlsplit(str(decision.get("evidenceUrl") or ""))
+        if (url.scheme != "https" or url.hostname not in
+                {"spicychatarchive.drache.uk", "spicychat.ai"} or
+                url.username or url.password):
+            raise ValueError("Reviewed evidence must be an approved public-source URL")
     return ids
 
 
 def scan_meta(bot_id: str, meta: dict[str, Any], rules: dict[str, Any],
-              bot_ids: set[str], decisions: dict[tuple[str, str], dict[str, Any]]
+              bot_ids: set[str], decisions: dict[str, dict[str, Any]]
               ) -> dict[str, Any] | None:
     if not UUID.fullmatch(bot_id) or not isinstance(meta, dict):
         return None
@@ -146,8 +156,9 @@ def scan_meta(bot_id: str, meta: dict[str, Any], rules: dict[str, Any],
             signals.append({"tagId": tag, "kind": "rule-candidate",
                             "confidence": "candidate", "ruleId": rule["id"],
                             "reason": rule.get("reason") or "Explicit public title cue"})
-    for (id_, theme), decision in decisions.items():
-        if id_ != bot_id or decision["fingerprint"] != fingerprint:
+    # O(reviews for THIS bot), not O(all reviews) for every indexed bot.
+    for theme, decision in decisions.get(bot_id, {}).items():
+        if decision["fingerprint"] != fingerprint:
             continue
         if decision["decision"] == "reject":
             signals = [s for s in signals if not (
@@ -175,7 +186,9 @@ def build(creator_shards: Iterable[dict[str, Any]], taxonomy: dict[str, Any],
           ) -> tuple[dict[str, dict[str, Any]], dict[str, int]]:
     validate(taxonomy, rules, reviews)
     bot_ids = {t["id"] for t in taxonomy["tags"] if "bot" in t["scopes"]}
-    decisions = {(d["botId"], d["tagId"]): d for d in reviews["decisions"]}
+    decisions: dict[str, dict[str, dict[str, Any]]] = {}
+    for d in reviews["decisions"]:
+        decisions.setdefault(d["botId"], {})[d["tagId"]] = d
     seen: set[str] = set()
     signal_bots: dict[str, dict[str, Any]] = {}
     counts: Counter[str] = Counter()

@@ -1,0 +1,56 @@
+name: Suggest or correct a public bot theme
+description: Report an incorrectly tagged bot, missing theme, false positive, or outdated Archive classification (manual review only).
+title: "[Theme review] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a public issue. Use ONLY publicly visible bot premise information. Never include private chat logs, user data, private bot definitions, authentication tokens, or screenshots of personal conversations. A suggestion is not automatically verified or published.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you reporting?
+      options:
+        - Missing theme / creator forgot a tag
+        - Incorrect or misleading tag
+        - False positive from the Archive's rules
+        - Bot was changed / review is now outdated
+        - New deterministic rule suggestion
+    validations:
+      required: true
+  - type: input
+    id: bot
+    attributes:
+      label: Bot UUID or public bot URL
+      placeholder: https://spicychat.ai/chatbot/...
+    validations:
+      required: true
+  - type: input
+    id: theme
+    attributes:
+      label: Suggested tag or theme
+      description: Can be an existing official tag or a proposed community theme.
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Public evidence URL
+      description: Public SpicyChat bot page or Archive record. No account-only links.
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Public premise evidence and reasoning
+      description: Explain what publicly visible title, greeting, or scenario supports your report, and why ambiguities or denials do not change it.
+      placeholder: The public title says ...; the current tags don't include ...
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Privacy and review
+      options:
+        - label: I only included public bot information and understand this requires human review.
+          required: true

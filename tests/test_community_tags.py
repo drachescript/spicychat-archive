@@ -69,10 +69,10 @@ class CommunityThemeTests(unittest.TestCase):
         d = {"botId": ID, "tagId": "cheating", "decision": "approve",
              "fingerprint": fingerprint, "reviewedAt": "2026-11-17T00:00:00Z",
              "evidenceUrl": "https://spicychatarchive.drache.uk/bot/?id=" + ID}
-        row = self.scan(meta["title"], decisions={(ID, "cheating"): d})
+        row = self.scan(meta["title"], decisions={ID: {"cheating": d}})
         self.assertEqual(row["signals"][0]["kind"], "reviewed")
         self.assertEqual(row["signals"][0]["confidence"], "verified")
-        changed = self.scan("Changed title", decisions={(ID, "cheating"): d})
+        changed = self.scan("Changed title", decisions={ID: {"cheating": d}})
         self.assertIsNone(changed)
 
     def test_reject_suppresses_candidate_not_historical_evidence(self):
@@ -80,7 +80,7 @@ class CommunityThemeTests(unittest.TestCase):
         d = {"botId": ID, "tagId": "cheating", "decision": "reject",
              "fingerprint": ct.metadata_fingerprint(meta)}
         row = self.scan(meta["title"], former=["Cheating"],
-                        decisions={(ID, "cheating"): d})
+                        decisions={ID: {"cheating": d}})
         self.assertEqual(len(row["signals"]), 1)
         self.assertEqual(row["signals"][0]["kind"], "historical-tag")
 

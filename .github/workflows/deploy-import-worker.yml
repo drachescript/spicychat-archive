@@ -44,6 +44,9 @@ jobs:
             exit 1
           fi
 
+      - name: Test public community-tag lookup
+        run: node --test --experimental-default-type=module tests/community-tags-worker.test.mjs
+
       - name: Deploy upload worker
         run: npx --yes wrangler@4 deploy --config worker/wrangler.toml
 

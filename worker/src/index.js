@@ -1126,6 +1126,85 @@ async function handleBotView(request, env) {
   return new Response(null, {status: 204, headers: viewCors(origin)});
 }
 
+
+// Public, bounded, batched theme lookup for QoL or the Archive website.
+// No authenticated account data, per-bot reads, browsing telemetry or ratings.
+const COMMUNITY_TAGS_MAX_IDS = 80;
+const COMMUNITY_MANIFEST_KEY = "indexes/community-tags/manifest.json";
+
+async function cachedCommunityIndex(env, key, cacheId, seconds = 180) {
+  // In Workers, share repeated public index reads across browser sessions.
+  // In local tests, operate correctly without the Cache API.
+  const cache = typeof caches !== "undefined" ? caches.default : null;
+  const req = new Request("https://archive-community-cache.invalid/" + cacheId);
+  if (cache) {
+    const hit = await cache.match(req);
+    if (hit) {
+      try { return await hit.json(); } catch {}
+    }
+  }
+  const data = await readArchiveJson(env.ARCHIVE_BUCKET, key);
+  if (data && cache) {
+    await cache.put(req, new Response(JSON.stringify(data), {
+      headers: { "Content-Type": "application/json",
+                 "Cache-Control": "public, max-age=" + seconds }
+    }));
+  }
+  return data;
+}
+
+async function communityTagManifest(env) {
+  const data = await cachedCommunityIndex(env, COMMUNITY_MANIFEST_KEY,
+                                           "current-manifest", 120);
+  return data && data.schemaVersion === 1 && data.complete === true &&
+    /^[a-f0-9]{20}$/.test(data.snapshot || "") &&
+    data.shardPrefix === "indexes/community-tags/snapshots/" + data.snapshot
+    ? data : null;
+}
+
+async function handleCommunityTagLookup(request, env) {
+  let body;
+  try {
+    const raw = await request.text();
+    if (raw.length > 10000) return json({ ok: false, error: "request_too_large" }, 413);
+    body = JSON.parse(raw);
+  } catch { return json({ ok: false, error: "invalid_json" }, 400); }
+  if (!Array.isArray(body?.ids) || body.ids.length < 1 ||
+      body.ids.length > COMMUNITY_TAGS_MAX_IDS ||
+      body.ids.some(id => typeof id !== "string" || !validArchiveBotId(id))) {
+    return json({ ok: false, error: "invalid_ids", maxIds: COMMUNITY_TAGS_MAX_IDS }, 400);
+  }
+  const ids = [...new Set(body.ids.map(validArchiveBotId))];
+  const manifest = await communityTagManifest(env);
+  if (!manifest) return json({ ok: false, error: "community_index_unavailable",
+                               unknownUntilAvailable: true }, 503);
+  const shards = [...new Set(ids.map(id => id[0]))];
+  const loaded = await Promise.all(shards.map(async hex => {
+    const key = manifest.shardPrefix + "/" + hex + ".json";
+    const result = await cachedCommunityIndex(env, key, manifest.snapshot + "/" + hex, 3600);
+    if (!result || result.snapshot !== manifest.snapshot ||
+        result.schemaVersion !== 1 || !result.bots || typeof result.bots !== "object") {
+      throw Error("Unavailable index shard");
+    }
+    return [hex, result.bots];
+  })).catch(() => null);
+  if (!loaded) return json({ ok: false, error: "community_shard_unavailable",
+                             unknownUntilAvailable: true }, 503);
+  const byHex = Object.fromEntries(loaded);
+  const matches = Object.create(null);
+  for (const id of ids) {
+    const record = byHex[id[0]]?.[id];
+    if (record && Array.isArray(record.signals)) matches[id] = record;
+  }
+  return json({
+    ok: true, schemaVersion: 1, complete: true,
+    snapshot: manifest.snapshot, generatedAt: manifest.generatedAt,
+    coverage: manifest.coverage || {},
+    matches, checked: ids.length, matched: Object.keys(matches).length,
+    note: "No match means UNKNOWN; rule candidates and historical tags are not verified themes."
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -1153,11 +1232,22 @@ export default {
         adminSubmissionEndpoint: "/api/admin/submissions",
         translationEndpoint: "/api/translate",
         archiveFieldPresenceEndpoint: "/api/archive-field-presence",
+        communityTagLookupEndpoint: "/api/community-tags/lookup",
+        communityTagManifestEndpoint: "/api/community-tags/manifest",
         publicBotTextEndpoint: "/api/archive/bot/{uuid}.txt",
         botViewEndpoint: "/api/analytics/bot-view",
       });
     }
 
+
+    if (request.method === "GET" && url.pathname === "/api/community-tags/manifest") {
+      const manifest = await communityTagManifest(env);
+      return manifest ? json({ ok: true, ...manifest }) :
+        json({ ok: false, error: "community_index_unavailable" }, 503);
+    }
+    if (request.method === "POST" && url.pathname === "/api/community-tags/lookup") {
+      return handleCommunityTagLookup(request, env);
+    }
 
     // One validated ID per request. Never enumerate the R2 archive.
     const readableBot = url.pathname.match(/^\/api\/archive\/bot\/([^/]+)\.txt$/i);

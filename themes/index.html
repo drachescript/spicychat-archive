@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore the Archive's public tag vocabulary, historical tag observations and human-reviewed theme evidence">
+  <title>Community themes · SpicyChat Archive</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css"><link rel="stylesheet" href="../assets/archive.css">
+  <script defer src="/assets/site-shell.js"></script>
+  <style>
+    .theme-tag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:9px;margin:15px 0}
+    .theme-tag-row,.theme-signal{padding:12px;border:1px solid rgba(148,163,184,.22);border-radius:9px;display:flex;flex-direction:column;gap:5px}
+    .theme-tag-row span,.theme-tag-row small,.theme-signal small{opacity:.7}
+    .theme-query{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+    .theme-query input{flex:1;min-width:240px}
+    .theme-signal-list{display:grid;gap:10px}
+  </style>
+</head>
+<body>
+<header class="archive-unified-header"><div class="archive-head-inner"><a class="archive-head-brand" href="../">SpicyChat Archive</a><nav class="archive-head-links"></nav></div></header>
+<main class="wrap" id="theme-app">
+  <section class="hero"><h1>Community themes &amp; tag intelligence</h1>
+    <p>A public, rule-based vocabulary shared with DragonScript QoL. No AI classifiers and no private chat data.</p>
+    <p id="theme-count">Loading known tags…</p>
+    <p id="theme-index-status">Checking the indexed public evidence feed…</p>
+    <p class="filter-note">Every known catalog tag is supported. A rule hit is only a candidate; a historic tag is only a past observation. Unmatched bots are UNKNOWN, not safe. The Archive cannot access full definitions for every indexed bot.</p>
+  </section>
+  <section class="table-card"><h2>Look up a bot's archived theme evidence</h2>
+    <form id="theme-lookup" class="theme-query"><input id="theme-bot-id" required placeholder="Paste a bot UUID" aria-label="Bot UUID">
+      <button type="submit">Check public evidence</button></form>
+    <div id="theme-lookup-result" aria-live="polite"></div>
+  </section>
+  <section class="table-card"><h2>Browse the known tag and theme vocabulary</h2>
+    <div class="theme-query"><input id="theme-search" type="search" placeholder="Find a theme or official tag" aria-label="Search themes">
+      <select id="theme-scope" aria-label="Tag scope"><option value="all">All catalogs</option>
+      <option value="bot">Bots</option><option value="lorebook">Lorebooks</option>
+      <option value="rulebook">Rulebooks</option></select></div>
+    <p id="theme-results-count" class="filter-note"></p><div id="theme-tag-list" class="theme-tag-grid"></div>
+    <p class="filter-note">Official tags are recorded as official vocabulary, not proof that creators tagged bots correctly. Custom and extended themes are distinguishable from native tags.</p>
+  </section>
+  <section class="table-card"><h2>Use the public JSON</h2>
+    <p><a href="../data/community-tags/manifest.json">Catalog manifest</a> ·
+      <a href="../data/community-tags/taxonomy.json">Complete tag taxonomy</a> ·
+      <a href="../data/community-tags/rules.json">Conservative rules</a> ·
+      <a href="https://github.com/drachescript/spicychat-archive/blob/main/data/community-tags/README.md">API documentation and review policy</a></p>
+    <p>For missing tags or corrections, <a href="https://github.com/drachescript/spicychat-archive/issues/new">open a public review issue</a> with the bot UUID and publicly visible evidence. Never include personal chats, private bot data or another user's account details. Reports are not automatically accepted as verified.</p>
+  </section>
+</main>
+<script defer type="module" src="/assets/themes.js"></script><script defer src="/assets/ui-polish.js"></script>
+</body></html>

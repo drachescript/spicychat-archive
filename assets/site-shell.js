@@ -21,6 +21,7 @@
     ['/merge/', 'Merge Lab'],
     ['/name-trends/', 'Names & trends'],
     ['/tag-stats/', 'Tag stats'],
+    ['/themes/', 'Community themes'],
     ['/health/', 'Archive health'],
     ['https://github.com/drachescript/spicychat-archive', 'GitHub'],
   ];

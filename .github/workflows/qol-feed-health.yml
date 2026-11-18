@@ -1,0 +1,34 @@
+name: QoL public feed health check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/block-presets/**"
+      - "data/community-tags/**"
+      - "scripts/check_qol_feeds.py"
+      - "tests/archive-qol-contract.test.mjs"
+      - ".github/workflows/qol-feed-health.yml"
+  schedule:
+    - cron: "19 9 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate Archive schemas and QoL matching parity
+        run: node --test --experimental-default-type=module tests/archive-qol-contract.test.mjs tests/block-presets.test.mjs
+      - name: Check deployed public JSON and lookup Worker
+        run: python scripts/check_qol_feeds.py

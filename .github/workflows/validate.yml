@@ -36,6 +36,8 @@ jobs:
         run: node --test --experimental-default-type=module tests/community-tags-worker.test.mjs
       - name: Blocking preset regression checks
         run: node --test --experimental-default-type=module tests/block-presets.test.mjs
+      - name: QoL integration contract compatibility
+        run: node --test --experimental-default-type=module tests/archive-qol-contract.test.mjs
       - name: JavaScript syntax
         run: |
           node --check assets/app.js

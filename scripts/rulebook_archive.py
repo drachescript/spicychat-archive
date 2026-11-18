@@ -32,9 +32,12 @@ PUBLIC_FIELDS = (
     "num_rules", "numRules", "rule_count", "numAttachedCharacters",
     "numAttachedPersonas", "numAttachedBots", "show_rules",
     "rules_visible", "language",
+    "definition_visibility", "profile_visibility_at_capture",
+    "profile_captured_at", "num_visible_meters", "profile_meter_preview",
 )
 MAX_TEXT = 6000
 PUBLIC_COVER_SEED_PATH = Path(__file__).resolve().parents[1] / "data" / "rulebook-cover-seeds.json"
+PUBLIC_PROFILE_SEED_PATH = Path(__file__).resolve().parents[1] / "data" / "rulebook-profile-seeds.json"
 COVER_FILENAME = re.compile(r"^[a-f0-9-]{36}\.(?:webp|png|jpg|jpeg)$", re.I)
 
 def now_iso() -> str:
@@ -60,6 +63,21 @@ def public_metadata(doc: dict[str, Any]) -> dict[str, Any]:
             result[field] = value
         elif field == "tags" and isinstance(value, list):
             result[field] = [str(x)[:120] for x in value[:80] if isinstance(x, str)]
+        elif field == "profile_meter_preview" and isinstance(value, list):
+            # Public-facing meter names and level names only. Never copy API
+            # meter objects wholesale (they can contain private instructions).
+            result[field] = []
+            for item in value[:32]:
+                if not isinstance(item, dict):
+                    continue
+                meter = {key: item[key][:120] for key in ("label", "kind")
+                         if isinstance(item.get(key), str)}
+                if not meter.get("label"):
+                    continue
+                if isinstance(item.get("levels"), list):
+                    meter["levels"] = [x[:100] for x in item["levels"][:32]
+                                       if isinstance(x, str)]
+                result[field].append(meter)
     return result
 
 IMAGE_FIELDS = (
@@ -113,6 +131,54 @@ def public_cover_seeds(path: Path = PUBLIC_COVER_SEED_PATH) -> dict[str, str]:
                 f"https://cdn.nd-api.com/avatars/{filename}?class=image500x650"
             )
     return found
+
+
+def load_public_profile_seeds(path: Path = PUBLIC_PROFILE_SEED_PATH) -> dict[str, dict[str, Any]]:
+    """Trusted reviewed public profile snapshots, never raw HTML/private rules."""
+    if not path.is_file():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schemaVersion") != 1 or not isinstance(payload.get("profiles"), dict):
+        raise ValueError("Invalid public Rulebook profile snapshots")
+    result = {}
+    for id, item in payload["profiles"].items():
+        if not RULEBOOK_ID.fullmatch(id) or not isinstance(item, dict):
+            raise ValueError("Invalid public Rulebook profile seed")
+        if item.get("visibility") not in {"shared", "private"}:
+            raise ValueError("Missing observed public visibility")
+        if item.get("visibility") == "private" and "publicDefinition" in item:
+            raise ValueError("Never publish a private Rulebook definition")
+        definition = item.get("publicDefinition")
+        if definition is not None and (not isinstance(definition, dict)
+                                      or definition.get("visibility") != "shared"
+                                      or definition.get("format") != "rulebook/v1-draft"
+                                      or not isinstance(definition.get("meters"), list)):
+            raise ValueError("Unverified Rulebook definition")
+        result[id] = item
+    return result
+
+
+def observed_definition_visibility(doc: dict[str, Any], seed: dict[str, Any] | None
+                                   ) -> str:
+    """The latest explicit listing visibility overrides older profile evidence."""
+    for field in ("show_rules", "rules_visible"):
+        if field in doc and doc[field] is not None:
+            return "shared" if doc[field] is True or doc[field] == 1 else "private"
+    return str((seed or {}).get("visibility") or "unknown")
+
+
+def add_profile_seed(doc: dict[str, Any], id: str,
+                     seeds: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    seed = seeds.get(id)
+    if not seed:
+        return doc
+    return {
+        **doc, "profile_meter_preview": seed.get("meterPreview") or [],
+        "num_visible_meters": seed.get("numVisibleMeters", 0),
+        "profile_visibility_at_capture": seed["visibility"],
+        "profile_captured_at": seed.get("observedAt") or "",
+        "definition_visibility": observed_definition_visibility(doc, seed),
+    }
 
 
 def add_seed_cover(doc: dict[str, Any], id: str, seeds: dict[str, str]) -> dict[str, Any]:
@@ -228,6 +294,17 @@ def has_saved_public_rule_content(record: dict[str, Any] | None) -> bool:
     for meter in meters:
         if not isinstance(meter, dict):
             continue
+        # SpicyChat rulebook/v1-draft stores instructions in raises/lowers and
+        # AI rule "when" clauses, not only older rule/level instruction nodes.
+        if any(isinstance(text, str) and text.strip()
+               for key in ("raises", "lowers")
+               for text in (meter.get(key) if isinstance(meter.get(key), list) else [])):
+            return True
+        ai = meter.get("ai")
+        if isinstance(ai, dict) and isinstance(ai.get("rules"), list) and any(
+                isinstance(item, dict) and isinstance(item.get("when"), str)
+                and item["when"].strip() for item in ai["rules"]):
+            return True
         for group in ("rules", "levels", "conditions"):
             values = meter.get(group)
             if not isinstance(values, list):
@@ -267,6 +344,16 @@ def summary(record: dict[str, Any]) -> dict[str, Any]:
                      data.get("rule_count") or 0),
         "numBots": data.get("numAttachedBots") or data.get("numAttachedCharacters") or 0,
         "numPersonas": data.get("numAttachedPersonas") or 0,
+        "definitionVisibility": data.get("definition_visibility") or
+                                ("shared" if data.get("show_rules") is True else
+                                 "private" if data.get("show_rules") is False else
+                                 "shared" if data.get("rules_visible") is True else
+                                 "private" if data.get("rules_visible") is False else
+                                 data.get("profile_visibility_at_capture") or "unknown"),
+        "visibilityEvidenceAt": data.get("profile_captured_at") or None,
+        "numVisibleMeters": data.get("num_visible_meters") or
+                            len(data.get("profile_meter_preview") or []),
+        "meterPreview": data.get("profile_meter_preview") or [],
         "createdAt": data.get("createdAt"),
         "updatedAt": data.get("updatedAt"),
         "status": (record.get("status") or {}).get("current") or "unknown",
@@ -300,6 +387,7 @@ def run() -> int:
     if collection is None:
         return 0
     seed_covers = public_cover_seeds()
+    profile_seeds = load_public_profile_seeds()
 
     at = now_iso()
     state = store.get_json(state_key(store), {"schemaVersion": SCHEMA_VERSION, "known": {}})
@@ -347,18 +435,41 @@ def run() -> int:
                 public_cover_refs += 1
             for field in public_cover_field_names(doc):
                 public_image_fields[field] = public_image_fields.get(field, 0) + 1
-            doc = add_seed_cover(doc, id, seed_covers)
+            doc = add_profile_seed(add_seed_cover(doc, id, seed_covers),
+                                   id, profile_seeds)
             metadata = public_metadata(doc)
             if not cover_from_metadata(original_metadata) and cover_from_metadata(metadata):
                 seeded_cover_refs += 1
             fingerprint = digest(metadata)
             old = known.get(id) if isinstance(known.get(id), dict) else {}
+            seed = profile_seeds.get(id) or {}
+            public_export = seed.get("publicDefinition")
+            # Explicit shared-profile evidence supplied with an actual
+            # export is required. A private listing flag always vetoes it.
+            if (not old.get("contentSaved") and isinstance(public_export, dict)
+                    and observed_definition_visibility(doc, seed) == "shared"):
+                record, _ = build_record(None, doc, at)
+                record["publicDefinition"] = deepcopy(public_export)
+                if has_saved_public_rule_content(record):
+                    store.put_json(rulebook_key(store, id), record, public=True,
+                                   category="data")
+                    known[id] = {
+                        "fingerprint": record["fingerprint"], "status": "public",
+                        "contentSaved": True, "catalogOnly": False,
+                        "summary": summary(record), "firstSeenAt": record["firstSeenAt"],
+                        "lastSeenAt": at,
+                    }
+                    new_count += 1
+                    continue
             if not old.get("contentSaved"):
                 # Preserve publicly observed listing metadata, not rule bodies.
                 # Listing-only Rulebooks never get individual definition files.
                 first_seen = str(old.get("firstSeenAt") or at)
                 listing = listing_summary(doc, id, at, first_seen)
                 previous_listing = old.get("summary") or {}
+                if not listing.get("meterPreview") and previous_listing.get("meterPreview"):
+                    listing["meterPreview"] = previous_listing["meterPreview"]
+                    listing["numVisibleMeters"] = previous_listing.get("numVisibleMeters")
                 if (not listing.get("cover") and isinstance(previous_listing, dict)
                         and previous_listing.get("cover")):
                     listing["cover"] = previous_listing["cover"]

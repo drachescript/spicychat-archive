@@ -234,6 +234,24 @@ function renderBrowse(payload, seeds) {
   });
   render();
 }
+function publicMeterPreview(entry) {
+  const meters=Array.isArray(entry?.meterPreview)?entry.meterPreview:[];
+  if(!meters.length)return '';
+  return '<section class="table-card"><h2>Public meter preview</h2>'+
+    '<p class="filter-note">Only meter names and publicly displayed level labels. No private triggers, AI conditions or instructions are included.</p>'+
+    '<div class="lorebook-history-list">'+meters.map(meter=>
+      '<details class="history-detail"><summary>'+esc(meter.label||'Untitled')+
+      (meter.kind?' · '+esc(meter.kind):'')+'</summary>'+
+      (Array.isArray(meter.levels)&&meter.levels.length?
+        '<p>'+esc(meter.levels.join(' · '))+'</p>':
+        '<p>Meter details were not publicly captured.</p>')+
+      '</details>').join('')+'</div></section>';
+}
+function visibilityLabel(entry) {
+  const type=entry?.definitionVisibility;
+  return type==='shared'?'Definition shared when observed':
+         type==='private'?'Definition private when observed':'Definition visibility unknown';
+}
 function renderListingOnlyDetail(entry, id, seeds) {
   const name=entry.name||id;
   document.title=name+' · SpicyChat Archive';
@@ -251,10 +269,13 @@ function renderListingOnlyDetail(entry, id, seeds) {
     '<p>The Archive retained publicly listed information, not the Rulebook definitions, meter instructions or hidden settings. This is not a recoverable full Rulebook. A listing disappearing does not prove deletion.</p>'+
     '<div class="lorebook-meta-grid">'+
     '<div><span>Rule count shown in listing</span><b>'+fmt(entry.numRules)+'</b></div>'+
+    '<div><span>Visible meters captured</span><b>'+fmt(entry.numVisibleMeters)+'</b></div>'+
+    '<div><span>Definition visibility</span><b>'+esc(visibilityLabel(entry))+'</b></div>'+
     '<div><span>First observed</span><b>'+esc(date(entry.firstSeenAt))+'</b></div>'+
     '<div><span>Last seen public</span><b>'+esc(date(entry.lastSeenAt))+'</b></div>'+
     '<div><span>No longer listed since</span><b>'+esc(date(entry.unlistedSince))+'</b></div>'+
-    '<div><span>Rulebook ID</span><b class="mono">'+esc(id)+'</b></div></div></section>';
+    '<div><span>Rulebook ID</span><b class="mono">'+esc(id)+'</b></div></div></section>'+
+    publicMeterPreview(entry);
   bindBrokenCovers(app);
 }
 function renderDetail(record, id, seeds) {
@@ -287,6 +308,9 @@ function renderDetail(record, id, seeds) {
     '<div class="stat"><b>'+fmt(versions.length)+'</b><span>Saved listing versions</span></div>'+
     '<div class="stat"><b>'+fmt(doc.numAttachedBots??doc.numAttachedCharacters)+'</b><span>Attached bots</span></div>'+
     '<div class="stat"><b>'+fmt(doc.numAttachedPersonas)+'</b><span>Attached personas</span></div></section>'+
+    '<section class="table-card"><h2>Public visibility</h2><p>'+
+    esc(visibilityLabel({definitionVisibility:doc.definition_visibility||doc.profile_visibility_at_capture}))+
+    '</p></section>'+
     '<section class="table-card"><h2>Archive dates</h2><div class="lorebook-meta-grid">'+
     '<div><span>Created (SpicyChat)</span><b>'+esc(date(doc.createdAt))+'</b></div>'+
     '<div><span>First saved by Archive</span><b>'+esc(date(record.firstSeenAt))+'</b></div>'+
@@ -297,7 +321,7 @@ function renderDetail(record, id, seeds) {
     '<p>Shared public meter and rule instructions captured while available. Private and hidden configuration is not included.</p>'+
     '<div class="lorebook-history-list">'+record.publicDefinition.meters.map((meter,i)=>
       '<details class="history-detail"><summary>Meter '+(i+1)+': '+
-      esc(meter.name||meter.title||'Untitled meter')+'</summary><div class="pre">'+
+      esc(meter.name||meter.label||meter.title||'Untitled meter')+'</summary><div class="pre">'+
       esc(JSON.stringify(meter,null,2))+'</div></details>').join('')+'</div></section>'+
     '<section class="table-card"><h2>Availability history</h2><div class="lorebook-history-list">'+
     (statuses.length?statuses.slice().reverse().map(x=>

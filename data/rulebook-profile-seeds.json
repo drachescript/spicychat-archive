@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "source": "Sanitized publicly visible SpicyChat Rulebook profile HTML snapshots and explicitly shared JSON export supplied 2026-11-18; never store page HTML or private definition data",
+  "profiles": {
+    "493221f1-5dac-500d-b705-fd3b4dd56643": {
+      "name": "Connection and Sexual Drive",
+      "creator": "woolyyy",
+      "observedAt": "2026-11-18T18:49:23.941Z",
+      "visibility": "shared",
+      "numRules": 3,
+      "numVisibleMeters": 6,
+      "meterPreview": [
+        {
+          "label": "Time",
+          "kind": "clock"
+        },
+        {
+          "label": "Affection",
+          "kind": "bar"
+        },
+        {
+          "label": "Heart Rate (BPM)",
+          "kind": "bar"
+        },
+        {
+          "label": "Heat",
+          "kind": "select"
+        },
+        {
+          "label": "Slickness",
+          "kind": "select"
+        },
+        {
+          "label": "Orgasms",
+          "kind": "number"
+        }
+      ],
+      "publicDefinition": {
+        "visibility": "shared",
+        "format": "rulebook/v1-draft",
+        "sourceUrl": "https://spicychat.ai/rulebook/493221f1-5dac-500d-b705-fd3b4dd56643",
+        "capturedAt": "2026-11-18T18:49:23.941Z",
+        "meters": [
+          {
+            "id": "m1",
+            "type": "clock",
+            "label": "Time",
+            "color": "royal",
+            "tracks": "chat",
+            "visible": true,
+            "userEditable": true,
+            "raises": [
+              "The Time"
+            ],
+            "lowers": [],
+            "mode": "datetime",
+            "display": "daycount",
+            "start": "2026-01-01T12:00",
+            "stepMin": 3,
+            "stepEvery": 0,
+            "skips": true,
+            "tellModel": true,
+            "ruleDims": [
+              "tod"
+            ],
+            "todBands": [
+              {
+                "label": "Morning",
+                "to": 359,
+                "revealed": true,
+                "override": false
+              },
+              {
+                "label": "Afternoon",
+                "to": 719,
+                "revealed": true,
+                "override": false
+              },
+              {
+                "label": "Evening",
+                "to": 1079,
+                "revealed": true,
+                "override": false
+              },
+              {
+                "label": "Night",
+                "to": 1439,
+                "revealed": true,
+                "override": false
+              }
+            ],
+            "dayBands": []
+          },
+          {
+            "id": "m2",
+            "type": "bar",
+            "label": "Affection",
+            "icon": "heart",
+            "color": "pink",
+            "tracks": "chat",
+            "visible": true,
+            "userEditable": true,
+            "raises": [
+              "Affection raised to{{meters.m2}}"
+            ],
+            "lowers": [
+              "Affection dropped to{{meters.m2}}"
+            ],
+            "min": 0,
+            "max": 100,
+            "def": 50,
+            "decay": 0,
+            "tellModel": true,
+            "keywords": [
+              {
+                "words": [
+                  "love"
+                ],
+                "delta": 1
+              }
+            ],
+            "ai": {
+              "on": true,
+              "rules": [
+                {
+                  "id": "a1",
+                  "d": 1,
+                  "when": "{{char}} feels more affectionate toward {{user}} "
+                }
+              ],
+              "lo": -99,
+              "hi": 99,
+              "mode": "rules"
+            },
+            "bands": [
+              {
+                "label": "Low",
+                "to": 50,
+                "revealed": true,
+                "override": false
+              },
+              {
+                "label": "High",
+                "to": 100,
+                "revealed": true,
+                "override": false
+              }
+            ]
+          },
+          {
+            "id": "m6",
+            "type": "bar",
+            "label": "Heart Rate (BPM)",
+            "icon": "heart",
+            "color": "red",
+            "tracks": "chat",
+            "visible": true,
+            "userEditable": true,
+            "raises": [
+              "{{char}}gets excited or feels things that would make the heart rate raise"
+            ],
+            "lowers": [
+              "{{char}} gets more relaxed"
+            ],
+            "min": 60,
+            "max": 230,
+            "def": 60,
+            "decay": 0,
+            "tellModel": true,
+            "keywords": [],
+            "ai": {
+              "on": true,
+              "rules": [
+                {
+                  "id": "a1",
+                  "d": 1,
+                  "when": "Adjust according to {{char}} 's body and mind state"
+                }
+              ],
+              "lo": -99,
+              "hi": 99,
+              "mode": "rules"
+            },
+            "bands": [
+              {
+                "label": "Low",
+                "to": 145,
+                "revealed": true,
+                "override": false
+              },
+              {
+                "label": "High",
+                "to": 230,
+                "revealed": true,
+                "override": false
+              }
+            ]
+          },
+          {
+            "id": "m5",
+            "type": "select",
+            "label": "Heat",
+            "tracks": "user",
+            "visible": true,
+            "userEditable": true,
+            "def": "item-ad70fe52",
+            "tellModel": true,
+            "detectHint": "The horniness of the bot",
+            "items": [
+              {
+                "id": "item-ad70fe52",
+                "label": "Uninterested",
+                "revealed": true
+              },
+              {
+                "id": "item-f7a0de3d",
+                "label": "Interested",
+                "revealed": true
+              },
+              {
+                "id": "item-0e3b849b",
+                "label": "Horny",
+                "revealed": true
+              },
+              {
+                "id": "item-77f42fc5",
+                "label": "Really horny",
+                "revealed": true
+              },
+              {
+                "id": "item-4f4502be",
+                "label": "Out of control",
+                "revealed": true
+              }
+            ]
+          },
+          {
+            "id": "m4",
+            "type": "select",
+            "label": "Slickness",
+            "icon": "drop",
+            "color": "cyan",
+            "tracks": "user",
+            "visible": true,
+            "userEditable": true,
+            "def": "item-7a5ea8a5",
+            "tellModel": true,
+            "detectHint": "The more horny the bot is the higher this value goes",
+            "items": [
+              {
+                "id": "item-7a5ea8a5",
+                "label": "Dry",
+                "revealed": true
+              },
+              {
+                "id": "item-f2ea2463",
+                "label": "Slightly wet",
+                "revealed": true
+              },
+              {
+                "id": "item-15e6f60b",
+                "label": "Wet",
+                "revealed": true
+              },
+              {
+                "id": "item-21744511",
+                "label": "Really Wet",
+                "revealed": true
+              },
+              {
+                "id": "item-35f8d2b0",
+                "label": "Leaking",
+                "revealed": true
+              },
+              {
+                "id": "item-503195f1",
+                "label": "Overflowing",
+                "revealed": true
+              }
+            ]
+          },
+          {
+            "id": "m3",
+            "type": "number",
+            "label": "Orgasms",
+            "icon": "wand",
+            "color": "yellow",
+            "tracks": "character",
+            "visible": true,
+            "raises": [
+              "+1 Orgasm"
+            ],
+            "lowers": [],
+            "def": 0,
+            "unit": "Orgasms",
+            "display": "number",
+            "perMsg": 0,
+            "spend": false,
+            "tellModel": true,
+            "keywords": [],
+            "ai": {
+              "on": true,
+              "rules": [
+                {
+                  "id": "a1",
+                  "d": 1,
+                  "when": "Message clearly states that {{char}} orgasms or cums"
+                }
+              ],
+              "lo": -20000000,
+              "hi": 20000000,
+              "mode": "rules"
+            },
+            "bands": [
+              {
+                "label": "Low",
+                "to": 50,
+                "revealed": true,
+                "override": false
+              },
+              {
+                "label": "High",
+                "to": null,
+                "revealed": true,
+                "override": false
+              }
+            ]
+          }
+        ],
+        "combinedRules": []
+      }
+    },
+    "f747df21-144c-48a8-8aac-ca2ef8f58e43": {
+      "name": "RelationShip System",
+      "creator": "chillwolfy",
+      "observedAt": "2026-11-18T18:49:00Z",
+      "visibility": "private",
+      "numRules": 47,
+      "numVisibleMeters": 8,
+      "meterPreview": [
+        {
+          "label": "Time & Day",
+          "kind": "clock",
+          "levels": [
+            "Morning",
+            "Afternoon",
+            "Evening",
+            "Night",
+            "First Days",
+            "Early days",
+            "Established days",
+            "Long-term story",
+            "Connected Story"
+          ]
+        },
+        {
+          "label": "Love",
+          "kind": "bar",
+          "levels": [
+            "HATE",
+            "Despises",
+            "Away",
+            "Annoyed",
+            "Likes",
+            "Wants",
+            "Crazy",
+            "LOVE"
+          ]
+        },
+        {
+          "label": "Arousal",
+          "kind": "bar",
+          "levels": [
+            "Turned off",
+            "Calm",
+            "Stirred",
+            "Heated",
+            "INTENESE"
+          ]
+        },
+        {
+          "label": "Trust",
+          "kind": "bar",
+          "levels": [
+            "AGAINST",
+            "Cautious",
+            "Alert",
+            "Casual",
+            "Building",
+            "Strong",
+            "TRUSTED"
+          ]
+        },
+        {
+          "label": "pregnancy chance",
+          "kind": "bar",
+          "levels": [
+            "Not Pregnant",
+            "PREGNANT"
+          ]
+        },
+        {
+          "label": "Jealousy",
+          "kind": "bar",
+          "levels": [
+            "Unbothered",
+            "Jealous",
+            "Very jealous",
+            "Overwhelmed"
+          ]
+        },
+        {
+          "label": "Possessiveness",
+          "kind": "bar",
+          "levels": [
+            "Independent",
+            "Attached",
+            "Protective",
+            "Intensely attached - YANDERE MODE"
+          ]
+        },
+        {
+          "label": "Relationship",
+          "kind": "clock"
+        }
+      ]
+    }
+  }
+}

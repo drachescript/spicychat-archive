@@ -119,6 +119,31 @@ class RulebookArchiveTests(unittest.TestCase):
         self.assertFalse(snapshot["contentSaved"])
         self.assertEqual(snapshot["numRules"], 12)
 
+    def test_shared_export_fixture_and_private_preview_are_separate(self):
+        seeds = rules.load_public_profile_seeds()
+        public = seeds["493221f1-5dac-500d-b705-fd3b4dd56643"]
+        private = seeds["f747df21-144c-48a8-8aac-ca2ef8f58e43"]
+        self.assertEqual(public["visibility"], "shared")
+        self.assertEqual(len(public["publicDefinition"]["meters"]), 6)
+        self.assertNotIn("publicDefinition", private)
+        self.assertEqual(len(private["meterPreview"]), 8)
+        self.assertEqual([m["label"] for m in private["meterPreview"]][-1], "Relationship")
+        sample = rules.add_profile_seed({"rulebook_id": self.id}, public["publicDefinition"]["sourceUrl"].split("/")[-1], seeds)
+        self.assertEqual(sample["definition_visibility"], "shared")
+        self.assertEqual(len(rules.public_metadata(sample)["profile_meter_preview"]), 6)
+        rec, _ = rules.build_record(None, {"rulebook_id": self.id}, "2026-11-18T00:00:00Z")
+        rec["publicDefinition"] = public["publicDefinition"]
+        self.assertTrue(rules.has_saved_public_rule_content(rec))
+        unsafe = {"rulebook_id": self.id, "show_rules": False,
+                  "rules": [{"instruction": "SECRET PRIVATE INSTRUCTIONS"}]}
+        hidden = rules.add_profile_seed(unsafe,
+                                        "493221f1-5dac-500d-b705-fd3b4dd56643", seeds)
+        self.assertEqual(hidden["definition_visibility"], "private")
+        self.assertNotIn("SECRET", str(rules.public_metadata(hidden)))
+        self.assertFalse(rules.has_saved_public_rule_content(
+            {"publicDefinition": {"visibility": "private",
+                "meters": public["publicDefinition"]["meters"]}}))
+
     def test_status_change_only_means_no_longer_public(self):
         record, _ = rules.build_record(None, self.doc, "2026-11-01T00:00:00Z")
         self.assertTrue(rules.apply_disappearance(record, "2026-11-02T00:00:00Z"))

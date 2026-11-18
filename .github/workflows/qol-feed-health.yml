@@ -30,5 +30,7 @@ jobs:
           python-version: "3.12"
       - name: Validate Archive schemas and QoL matching parity
         run: node --test --experimental-default-type=module tests/archive-qol-contract.test.mjs tests/block-presets.test.mjs
+      - name: Validate R2 writer queue automatic discovery
+        run: python -m unittest tests.test_archive_writer_queue -v
       - name: Check deployed public JSON and lookup Worker
         run: python scripts/check_qol_feeds.py

@@ -11,14 +11,14 @@ Current consumers: QoL v0.2.86+ (**Community Themes**) and v0.2.87+
 - Community taxonomy: https://spicychatarchive.drache.uk/data/community-tags/taxonomy.json
 - Community aliases: https://spicychatarchive.drache.uk/data/community-tags/aliases.json
 - Community evidence manifest: https://data.spicychatarchive.drache.uk/indexes/community-tags/manifest.json
-- Community batch API: POST https://spicychat-archive-import.dragongraf.workers.dev/api/community-tags/lookup with JSON \`{"ids":["<bot-uuid>"]}\`, at most 80 IDs.
+- Community batch API: POST https://spicychat-archive-import.dragongraf.workers.dev/api/community-tags/lookup with JSON `{"ids":["<bot-uuid>"]}`, at most 80 IDs.
 - Preset manifest: https://spicychatarchive.drache.uk/data/block-presets/manifest.json
 - Preset catalog: https://spicychatarchive.drache.uk/data/block-presets/catalog.json
 - Preset reference matcher: https://spicychatarchive.drache.uk/assets/block-preset-matcher.js
 
 ## Versioning
 
-- Bump both preset manifest and catalog \`catalogVersion\` for changes to
+- Bump both preset manifest and catalog `catalogVersion` for changes to
   preset JSON, names, labels, aliases, gender identities, or selections.
   QoL refreshes the manifest every ~6 hours when enabled and downloads
   the catalog only if its version changed.
@@ -40,7 +40,7 @@ automated native Block/Dislike/Less Like This, and no private conversations,
 personas, authenticated Rulebook definitions, or user settings uploaded.
 Submissions require review of publicly visible bot premise evidence.
 
-Archive CI: \`node --test --experimental-default-type=module tests/archive-qol-contract.test.mjs\`
+Archive CI: `node --test --experimental-default-type=module tests/archive-qol-contract.test.mjs`
 
 Scheduled GitHub workflow: **QoL public feed health check** tests the deployed
 JSON and bot-ID lookup contract once per day and on relevant repository changes.

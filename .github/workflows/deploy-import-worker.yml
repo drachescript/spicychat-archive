@@ -54,9 +54,31 @@ jobs:
         shell: bash
         run: printf '%s' "$IMPORT_TOKEN" | npx --yes wrangler@4 secret put IMPORT_TOKEN --config worker/wrangler.toml
 
+  # Deploy the Worker immediately; queue only the optional R2 index writes.
+  rebuild-if-needed:
+    needs: deploy
+    runs-on: ubuntu-latest
+    concurrency:
+      group: spicychat-archive-writer
+      cancel-in-progress: false
+      queue: max
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install Archive dependencies
+        run: python -m pip install --quiet -r requirements.txt
       - name: Build archive indexes if needed
         shell: bash
         run: |
-          python -m pip install --quiet boto3
           python scripts/rich_field_index.py --rebuild-if-missing
           python scripts/site_indexes.py --rebuild-if-missing

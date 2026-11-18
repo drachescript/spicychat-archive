@@ -14,8 +14,10 @@ permissions:
   contents: read
 
 concurrency:
-  group: spicychat-archive-index-rebuild
+  # Index rebuild writes to the same R2 bucket as bot and Rulebook crawlers.
+  group: spicychat-archive-writer
   cancel-in-progress: false
+  queue: max
 
 jobs:
   rebuild:

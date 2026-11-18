@@ -1,8 +1,8 @@
-"""Regression guard: archive writers must queue instead of replacing pending runs.
+"""Every R2 writer must share the multi-pending FIFO queue.
 
-GitHub's default concurrency queue keeps only one pending run, so a scheduled
-Rulebook job can otherwise cancel a waiting normal bot run during a long catalog
-sweep, even though cancel-in-progress is false.
+Detect new archive-writing workflows automatically. A manually maintained
+allowlist previously broke the bot crawler when theme/preset publishers were
+added, even though those jobs already had the correct queue policy.
 """
 import re
 import unittest
@@ -11,35 +11,53 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
 
-WRITERS = {
-    "archive.yml",
-    "archive-id-audit.yml",
-    "lorebooks.yml",
-    "rulebooks.yml",
-    "name-trends.yml",
-    "migrate-r2.yml",
-    "prune-rulebook-listing-only.yml",
-    "repair-search-index.yml",
-}
+
+def is_r2_writer(source: str) -> bool:
+    """Detect R2-credentialed workflows which execute Archive Python scripts.
+
+    Worker deployments count only when they also rebuild R2 indexes.
+    """
+    return ("CLOUDFLARE_R2_ACCESS_KEY_ID" in source
+            and bool(re.search(r"python\s+scripts/[a-zA-Z0-9_.-]+\.py\b", source)))
+
+
+def has_fifo_lock(source: str) -> bool:
+    return all(re.search(r"(?m)^\s*" + re.escape(line) + r"\s*$", source)
+               for line in ("group: spicychat-archive-writer",
+                            "cancel-in-progress: false", "queue: max"))
 
 
 class SharedWriterQueueTests(unittest.TestCase):
-    def test_every_shared_writer_uses_multi_pending_fifo_queue(self):
-        for filename in sorted(WRITERS):
-            with self.subTest(workflow=filename):
-                source = (WORKFLOWS / filename).read_text(encoding="utf-8")
-                block = re.search(r"(?m)^concurrency:\s*\n((?:[ \t]+[^\n]*\n)+)", source)
-                self.assertIsNotNone(block, "Shared writer must retain a concurrency block")
-                settings = block.group(1)
-                self.assertRegex(settings, r"(?m)^  group: spicychat-archive-writer\s*$")
-                self.assertRegex(settings, r"(?m)^  cancel-in-progress: false\s*$")
-                self.assertRegex(settings, r"(?m)^  queue: max\s*$")
-
-    def test_all_writers_of_shared_r2_bucket_are_covered(self):
-        for path in WORKFLOWS.glob("*.yml"):
+    def test_every_r2_writer_uses_multi_pending_fifo_queue(self):
+        found = set()
+        for path in sorted(WORKFLOWS.glob("*.yml")):
             source = path.read_text(encoding="utf-8")
-            if re.search(r"(?m)^  group: spicychat-archive-writer\s*$", source):
-                self.assertIn(path.name, WRITERS, "New writer must be added to queue regression test")
+            if not is_r2_writer(source):
+                continue
+            found.add(path.name)
+            with self.subTest(workflow=path.name):
+                self.assertTrue(has_fifo_lock(source),
+                                "Every R2 writer needs the shared FIFO queue")
+        for required in ("archive.yml", "rulebooks.yml", "lorebooks.yml",
+                         "block-presets.yml", "community-tags.yml",
+                         "deploy-import-worker.yml", "rebuild-derived-indexes.yml"):
+            self.assertIn(required, found)
+
+    def test_queue_members_are_archive_writers(self):
+        for path in sorted(WORKFLOWS.glob("*.yml")):
+            source = path.read_text(encoding="utf-8")
+            if re.search(r"(?m)^\s*group: spicychat-archive-writer\s*$", source):
+                with self.subTest(workflow=path.name):
+                    self.assertTrue(is_r2_writer(source),
+                                    "Don't hold R2 writer lock for non-writers")
+
+    def test_worker_deployment_does_not_wait_behind_r2_writers(self):
+        source = (WORKFLOWS / "deploy-import-worker.yml").read_text(encoding="utf-8")
+        self.assertRegex(source, r"(?m)^  deploy:\s*$")
+        self.assertRegex(source, r"(?m)^  rebuild-if-needed:\s*$")
+        self.assertRegex(source, r"(?m)^    needs: deploy\s*$")
+        self.assertRegex(source, r"(?m)^    concurrency:\s*$")
+        self.assertNotRegex(source, r"(?m)^concurrency:\s*$")
 
     def test_pages_still_cancels_stale_deployments_not_writers(self):
         source = (WORKFLOWS / "pages.yml").read_text(encoding="utf-8")

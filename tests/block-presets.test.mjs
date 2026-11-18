@@ -28,6 +28,11 @@ test('unknown, groups and gender variants stay visible in gender filters',()=>{
   assert.equal(check(cod,'Female Ghost, Call of Duty','keep-female').hide,false);
   assert.equal(check(atl,'Katara and Zuko','keep-female').hide,false);
   assert.equal(check(atl,'Katara and Zuko','keep-male').hide,false);
+  assert.equal(check(cod,'Simon Riley and John Price','keep-female').hide,false);
+  assert.equal(check(cod,'Farah Karim and Kate Laswell','keep-male').hide,false);
+  assert.equal(check(cod,'Female OC: Simon Riley','keep-female').hide,false);
+  assert.equal(check(cod,'Male OC: Farah Karim','keep-male').hide,false);
+  assert.equal(check(cod,'Simon Riley','keep-female').hide,true);
 });
 test('ambiguous nicknames do not hide unrelated titles',()=>{
   for(const title of ['Soap dishes','Gazebo sale','Ghost stories','Gas price','The Theory','BBC news','a marvel at nature'])

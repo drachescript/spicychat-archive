@@ -21,7 +21,7 @@ function matchAlias(text, aliases, context) {
 function isGenderVariant(text) {
   // Identity of an RP character may be different from the canonical character.
   // Don't turn a canonical gender into a bot-gender verdict in that case.
-  return /\b(?:gender ?bent|gender ?bend|gender ?swap|gender ?flipped|fem(?:ale)? version|male version|fem ?ghost|female ghost|male katara|female price|fem ?soap)\b/.test(text);
+  return /\b(?:gender ?bent|gender ?bend|gender ?swap|gender ?flipped|fem(?:ale)? version|male version|female oc|male oc|fem ?ghost|female ghost|male katara|female price|fem ?soap)\b/.test(text);
 }
 export function evaluateBlockPreset(catalog, presetId, title, options = {}) {
   const preset=catalog?.presets?.find(p=>p.id===presetId);
@@ -50,18 +50,20 @@ export function evaluateBlockPreset(catalog, presetId, title, options = {}) {
   const genderVariant=isGenderVariant(text);
   const matchedIds=matchedChars.map(c=>c.id);
   const selected=matchedChars.filter(c=>keepCharacters.has(c.id) || keepGenders.has(c.gender));
-  const allKnown=matchedChars.length>0 && !genderVariant && matchedChars.every(c=>c.gender!=='unknown');
+  // QoL v0.2.87 requires exactly ONE canonical character for a
+  // gender-selective hide. Even two recognized males make a mixed cast.
+  const singleKnown=matchedChars.length===1 &&
+    ['female','male','nonbinary'].includes(matchedChars[0].gender);
   const gender=genderVariant || matchedChars.length!==1?'unknown':matchedChars[0].gender;
   let hide=false,reason='';
   if(selected.length) { hide=false; reason='explicit keep exception for a recognized character'; }
   else if(mode==='all') { hide=true;reason='franchise, group, or character name matched'; }
   else if(genderVariant) {hide=false;reason='gender-variant roleplay: canonical gender not applied';}
-  else if(!allKnown) { hide=false;reason='no confident character identity; keep unknown';}
+  else if(!singleKnown) { hide=false;reason='unknown, group-only or mixed character identity';}
   else if(mode==='keep-female'||mode==='keep-male'||mode==='custom') {
-    // If no characters of a selected keep-gender are found, the identified
-    // other-gender characters are excluded. Mixed titles containing kept
-    // characters were handled above.
-    hide=true;reason='identified character(s) outside keep exceptions';
+    // Only one confidently identified character may be hidden in a
+    // gender-selective mode. Kept and mixed characters were handled above.
+    hide=true;reason='single identified character outside keep exceptions';
   } else return { ...unknown,reason:'invalid preset mode' };
   return {matched:true,hide,reason,presetId:preset.id,characterIds:matchedIds,
     gender,groupIds:matchedGroups.map(g=>g.id),terms:directFranchise.map(a=>a.text)};

@@ -36,7 +36,8 @@ export function evaluateBlockPreset(catalog, presetId, title, options = {}) {
   const groups=(catalog.groups||[]).filter(g=>g.franchiseId===preset.franchiseId);
   const directFranchise=matchAlias(text,preset.aliases);
   const matchedGroups=groups.filter(g=>matchAlias(text,g.aliases).length);
-  const context=directFranchise.some(a=>a.strength==='strong') || matchedGroups.length>0;
+  // A group mention alone never determines which specific member is the main bot.
+  const context=directFranchise.some(a=>a.strength==='strong');
   const matchedChars=chars.filter(c=>matchAlias(text,c.aliases,context).length);
   // Contextual franchise words need corroboration from a recognisable character.
   const strongFranchise=directFranchise.some(a=>a.strength==='strong');

@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore opt-in franchise and character blocking presets for DragonScript QoL">
+<title>Blocking presets · SpicyChat Archive</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/archive.css">
+<script defer src="/assets/site-shell.js"></script>
+<style>.preset-columns{display:grid;grid-template-columns:minmax(190px,280px) minmax(0,1fr);gap:18px}
+.preset-list{display:flex;flex-direction:column;gap:8px;max-height:540px;overflow:auto}
+.preset-select{border:1px solid #7776;border-radius:8px;background:transparent;color:inherit;padding:10px;text-align:left;cursor:pointer}
+.preset-select.active{border-color:#a99de8;background:#a99de820}
+.preset-characters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.preset-character{border:1px solid #7776;border-radius:8px;padding:5px 9px;font-size:.85em}
+.preset-input{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+.preset-input label{display:flex;flex:1;flex-direction:column;gap:5px;min-width:180px}
+#preview-result{border:1px solid #7776;border-radius:8px;padding:12px}
+@media(max-width:760px){.preset-columns{grid-template-columns:1fr}}</style>
+</head><body><header class="archive-unified-header"><div class="archive-head-inner"><a href="/" class="archive-head-brand">SpicyChat Archive</a></div></header>
+<main class="wrap"><section class="hero"><h1>Blocking preset library</h1>
+<p>Opt-in name/title filters for franchises, characters, groups and themes. This page only previews matching. It does not change QoL settings.</p>
+<p id="status">Loading preset catalog…</p><p id="discovery">Checking candidate discovery…</p></section>
+<section class="table-card"><h2>Browse and preview</h2><div class="preset-columns">
+<aside><label for="preset-search">Search presets</label><input id="preset-search" type="search" placeholder="Call of Duty, JJK, etc.">
+<div class="preset-list" id="preset-list"></div></aside>
+<div><h3 id="preset-title">Call of Duty</h3><p id="preset-description"></p>
+<p>Male/female exceptions use curated canonical character identities, not assumed bot gender. Unknown, mixed or gender-swapped cases stay visible in gender-selective modes.</p>
+<div class="preset-characters" id="characters"></div>
+<div class="preset-input"><label for="preview-mode">Matching mode<select id="preview-mode">
+<option value="all">Hide all franchise/character matches</option>
+<option value="keep-female">Keep female/unknown; hide recognized males</option>
+<option value="keep-male">Keep male/unknown; hide recognized females</option></select></label>
+<label for="preview-name">Sample bot name/title<input id="preview-name" placeholder="Paste a sample title" value='Simon "Ghost" Riley'></label></div>
+<div id="preview-result" aria-live="polite"></div></div></div></section>
+<section class="table-card"><h2>Archive discovery</h2>
+<p>Weekly scans of the existing public Archive creator-index titles suggest additional aliases for review. Candidates never become blocking rules automatically. No AI, personal chats or permanent blocks.</p>
+<p><a href="/data/block-presets/manifest.json">Preset manifest</a> ·
+<a href="/data/block-presets/catalog.json">Full JSON catalog</a> ·
+<a href="https://github.com/drachescript/spicychat-archive/blob/main/data/block-presets/README.md">QoL contract</a></p>
+</section></main><script type="module" src="/assets/block-presets.js"></script>
+<script defer src="/assets/ui-polish.js"></script></body></html>

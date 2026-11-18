@@ -22,6 +22,7 @@
     ['/name-trends/', 'Names & trends'],
     ['/tag-stats/', 'Tag stats'],
     ['/themes/', 'Community themes'],
+    ['/presets/', 'Blocking presets'],
     ['/health/', 'Archive health'],
     ['https://github.com/drachescript/spicychat-archive', 'GitHub'],
   ];

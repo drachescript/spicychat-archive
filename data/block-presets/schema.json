@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpicyChat Archive blocking preset catalog",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contract",
+    "presets",
+    "characters",
+    "groups"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "contract": {
+      "const": "spicychat-archive-block-presets-v1"
+    },
+    "catalogVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "franchise",
+              "theme"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array"
+          },
+          "characterIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "groupIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "franchiseId",
+          "name",
+          "gender",
+          "aliases"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "franchiseId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "enum": [
+              "female",
+              "male",
+              "nonbinary",
+              "unknown"
+            ]
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "text",
+                "strength"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "strength": {
+                  "enum": [
+                    "strong",
+                    "contextual"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "franchiseId",
+          "name",
+          "aliases"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "franchiseId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

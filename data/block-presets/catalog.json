@@ -1,0 +1,1322 @@
+{
+  "schemaVersion": 1,
+  "contract": "spicychat-archive-block-presets-v1",
+  "catalogVersion": 1,
+  "updatedAt": "2026-11-18",
+  "matchPolicy": {
+    "sourceFields": [
+      "botName",
+      "publicTitle"
+    ],
+    "descriptionMatches": false,
+    "defaultEnabled": false,
+    "automaticPersistentBlocks": false,
+    "perCharacterIdentity": "curated-canonical-only",
+    "genderCategories": [
+      "female",
+      "male",
+      "nonbinary",
+      "unknown"
+    ],
+    "genderExceptionPolicy": "If keeping a gender, hide only a strong matching character of another known canonical gender. Unknown, group-only, mixed and explicitly gender-swapped cases remain visible. A kept character always overrides a hide.",
+    "ambiguousAliasPolicy": "Contextual single-word/short-name aliases require a strong franchise or group cue in the same title.",
+    "normalization": "NFKD, diacritic-insensitive, casefold, punctuation/quote-insensitive, whole-token boundaries; split camelCase."
+  },
+  "presets": [
+    {
+      "id": "franchise:call-of-duty",
+      "kind": "franchise",
+      "franchiseId": "call-of-duty",
+      "name": "Call of Duty",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Call of Duty",
+          "strength": "strong"
+        },
+        {
+          "text": "COD Modern Warfare",
+          "strength": "strong"
+        },
+        {
+          "text": "Modern Warfare 2",
+          "strength": "strong"
+        },
+        {
+          "text": "Modern Warfare 3",
+          "strength": "strong"
+        },
+        {
+          "text": "COD",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "cod-ghost",
+        "cod-soap",
+        "cod-price",
+        "cod-gaz",
+        "cod-konig",
+        "cod-farah",
+        "cod-laswell",
+        "cod-valeria"
+      ],
+      "groupIds": [
+        "task-force-141",
+        "ghost-and-soap"
+      ],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:resident-evil",
+      "kind": "franchise",
+      "franchiseId": "resident-evil",
+      "name": "Resident Evil",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Resident Evil",
+          "strength": "strong"
+        },
+        {
+          "text": "Biohazard",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "re-leon",
+        "re-chris",
+        "re-wesker",
+        "re-jill",
+        "re-ada",
+        "re-claire",
+        "re-rebecca"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:jujutsu-kaisen",
+      "kind": "franchise",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Jujutsu Kaisen",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Jujutsu Kaisen",
+          "strength": "strong"
+        },
+        {
+          "text": "JJK",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "jjk-gojo",
+        "jjk-sukuna",
+        "jjk-yuji",
+        "jjk-megumi",
+        "jjk-nobara",
+        "jjk-maki",
+        "jjk-shoko"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:my-hero-academia",
+      "kind": "franchise",
+      "franchiseId": "my-hero-academia",
+      "name": "My Hero Academia",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "My Hero Academia",
+          "strength": "strong"
+        },
+        {
+          "text": "Boku No Hero Academia",
+          "strength": "strong"
+        },
+        {
+          "text": "BNHA",
+          "strength": "strong"
+        },
+        {
+          "text": "MHA",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "mha-deku",
+        "mha-bakugo",
+        "mha-todoroki",
+        "mha-ochaco",
+        "mha-momo",
+        "mha-jiro"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:marvel",
+      "kind": "franchise",
+      "franchiseId": "marvel",
+      "name": "Marvel",
+      "category": "comics-film",
+      "aliases": [
+        {
+          "text": "Marvel Comics",
+          "strength": "strong"
+        },
+        {
+          "text": "Marvel Studios",
+          "strength": "strong"
+        },
+        {
+          "text": "MCU",
+          "strength": "strong"
+        },
+        {
+          "text": "Avengers",
+          "strength": "strong"
+        },
+        {
+          "text": "Marvel",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "marvel-tony",
+        "marvel-steve",
+        "marvel-natasha",
+        "marvel-wanda",
+        "marvel-carol"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:pacific-rim",
+      "kind": "franchise",
+      "franchiseId": "pacific-rim",
+      "name": "Pacific Rim",
+      "category": "film",
+      "aliases": [
+        {
+          "text": "Pacific Rim",
+          "strength": "strong"
+        },
+        {
+          "text": "Pacififc Rim",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "pacific-raleigh",
+        "pacific-mako"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:avatar-the-last-airbender",
+      "kind": "franchise",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Avatar: The Last Airbender",
+      "category": "animation",
+      "aliases": [
+        {
+          "text": "Avatar The Last Airbender",
+          "strength": "strong"
+        },
+        {
+          "text": "ATLA",
+          "strength": "strong"
+        },
+        {
+          "text": "Legend of Aang",
+          "strength": "strong"
+        },
+        {
+          "text": "Avatar",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "atla-zuko",
+        "atla-aang",
+        "atla-sokka",
+        "atla-katara",
+        "atla-azula",
+        "atla-toph"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:bts",
+      "kind": "franchise",
+      "franchiseId": "bts",
+      "name": "BTS / Bangtan",
+      "category": "music",
+      "aliases": [
+        {
+          "text": "Bangtan Sonyeondan",
+          "strength": "strong"
+        },
+        {
+          "text": "Bangtan Boys",
+          "strength": "strong"
+        },
+        {
+          "text": "BTS",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "bts-taehyung"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "theme:ntr",
+      "kind": "theme",
+      "name": "NTR / cheating-related themes",
+      "category": "relationship",
+      "aliases": [
+        "NTR",
+        "Netorare",
+        "Netorase"
+      ],
+      "linkedThemeIds": [
+        "ntr",
+        "cheating",
+        "emotional-affair"
+      ],
+      "enabledByDefault": false,
+      "note": "Title-keyword blocking is separate from reviewed Archive Community Themes."
+    },
+    {
+      "id": "theme:swinging",
+      "kind": "theme",
+      "name": "Swinging / partner-sharing",
+      "category": "relationship",
+      "aliases": [
+        "Swinging",
+        "Swingers",
+        "Swinger",
+        "Partner swapping"
+      ],
+      "linkedThemeIds": [
+        "cuckold"
+      ],
+      "enabledByDefault": false
+    },
+    {
+      "id": "theme:omegaverse",
+      "kind": "theme",
+      "name": "Omegaverse / alpha-omega",
+      "category": "genre",
+      "aliases": [
+        "Omegaverse",
+        "Alpha Omega",
+        "User Omega"
+      ],
+      "linkedThemeIds": [
+        "omegaverse"
+      ],
+      "enabledByDefault": false,
+      "note": "Do not match 'enigma' alone; it is ambiguous outside context."
+    },
+    {
+      "id": "theme:ex-partners",
+      "kind": "theme",
+      "name": "Ex-partner stories",
+      "category": "relationship",
+      "aliases": [
+        "Ex boyfriend",
+        "Ex husband",
+        "Ex girlfriend",
+        "Ex wife"
+      ],
+      "linkedThemeIds": [],
+      "enabledByDefault": false
+    },
+    {
+      "id": "theme:pregnancy",
+      "kind": "theme",
+      "name": "Pregnancy-related premises",
+      "category": "scenario",
+      "aliases": [
+        "Your pregnancy",
+        "Pregnant",
+        "Impregnation"
+      ],
+      "linkedThemeIds": [
+        "pregnant",
+        "impregnation"
+      ],
+      "enabledByDefault": false
+    }
+  ],
+  "characters": [
+    {
+      "id": "cod-ghost",
+      "franchiseId": "call-of-duty",
+      "name": "Simon \"Ghost\" Riley",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Simon Riley",
+          "strength": "strong"
+        },
+        {
+          "text": "Simon Ghost Riley",
+          "strength": "strong"
+        },
+        {
+          "text": "Ghost Riley",
+          "strength": "strong"
+        },
+        {
+          "text": "Ghost Simon",
+          "strength": "strong"
+        },
+        {
+          "text": "Simon Ghost",
+          "strength": "strong"
+        },
+        {
+          "text": "Ghost",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-soap",
+      "franchiseId": "call-of-duty",
+      "name": "John \"Soap\" MacTavish",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "John MacTavish",
+          "strength": "strong"
+        },
+        {
+          "text": "Johnny MacTavish",
+          "strength": "strong"
+        },
+        {
+          "text": "Soap MacTavish",
+          "strength": "strong"
+        },
+        {
+          "text": "John Soap MacTavish",
+          "strength": "strong"
+        },
+        {
+          "text": "Johnny Soap MacTavish",
+          "strength": "strong"
+        },
+        {
+          "text": "Soap",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-price",
+      "franchiseId": "call-of-duty",
+      "name": "John Price",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "John Price",
+          "strength": "strong"
+        },
+        {
+          "text": "Captain Price",
+          "strength": "strong"
+        },
+        {
+          "text": "Captain John Price",
+          "strength": "strong"
+        },
+        {
+          "text": "Price",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-gaz",
+      "franchiseId": "call-of-duty",
+      "name": "Kyle \"Gaz\" Garrick",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Kyle Garrick",
+          "strength": "strong"
+        },
+        {
+          "text": "Kyle Gaz Garrick",
+          "strength": "strong"
+        },
+        {
+          "text": "Gaz",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-konig",
+      "franchiseId": "call-of-duty",
+      "name": "König",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "König",
+          "strength": "strong"
+        },
+        {
+          "text": "Konig",
+          "strength": "strong"
+        },
+        {
+          "text": "Koenig",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-farah",
+      "franchiseId": "call-of-duty",
+      "name": "Farah Karim",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Farah Karim",
+          "strength": "strong"
+        },
+        {
+          "text": "Farah Ahmed Karim",
+          "strength": "strong"
+        },
+        {
+          "text": "Farah",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-laswell",
+      "franchiseId": "call-of-duty",
+      "name": "Kate Laswell",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Kate Laswell",
+          "strength": "strong"
+        },
+        {
+          "text": "Laswell",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "cod-valeria",
+      "franchiseId": "call-of-duty",
+      "name": "Valeria Garza",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Valeria Garza",
+          "strength": "strong"
+        },
+        {
+          "text": "Valeria Garza El Sin Nombre",
+          "strength": "strong"
+        },
+        {
+          "text": "Valeria",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-leon",
+      "franchiseId": "resident-evil",
+      "name": "Leon S. Kennedy",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Leon S Kennedy",
+          "strength": "strong"
+        },
+        {
+          "text": "Leon Kennedy",
+          "strength": "strong"
+        },
+        {
+          "text": "Leon",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-chris",
+      "franchiseId": "resident-evil",
+      "name": "Chris Redfield",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Chris Redfield",
+          "strength": "strong"
+        },
+        {
+          "text": "Chris",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-wesker",
+      "franchiseId": "resident-evil",
+      "name": "Albert Wesker",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Albert Wesker",
+          "strength": "strong"
+        },
+        {
+          "text": "Wesker",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-jill",
+      "franchiseId": "resident-evil",
+      "name": "Jill Valentine",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Jill Valentine",
+          "strength": "strong"
+        },
+        {
+          "text": "Jill",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-ada",
+      "franchiseId": "resident-evil",
+      "name": "Ada Wong",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Ada Wong",
+          "strength": "strong"
+        },
+        {
+          "text": "Ada",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-claire",
+      "franchiseId": "resident-evil",
+      "name": "Claire Redfield",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Claire Redfield",
+          "strength": "strong"
+        },
+        {
+          "text": "Claire",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "re-rebecca",
+      "franchiseId": "resident-evil",
+      "name": "Rebecca Chambers",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Rebecca Chambers",
+          "strength": "strong"
+        },
+        {
+          "text": "Rebecca",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-gojo",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Satoru Gojo",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Satoru Gojo",
+          "strength": "strong"
+        },
+        {
+          "text": "Gojo Satoru",
+          "strength": "strong"
+        },
+        {
+          "text": "Gojo",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-sukuna",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Ryomen Sukuna",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Ryomen Sukuna",
+          "strength": "strong"
+        },
+        {
+          "text": "Sukuna",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-yuji",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Yuji Itadori",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Yuji Itadori",
+          "strength": "strong"
+        },
+        {
+          "text": "Itadori Yuji",
+          "strength": "strong"
+        },
+        {
+          "text": "Yuji",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-megumi",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Megumi Fushiguro",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Megumi Fushiguro",
+          "strength": "strong"
+        },
+        {
+          "text": "Megumi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-nobara",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Nobara Kugisaki",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Nobara Kugisaki",
+          "strength": "strong"
+        },
+        {
+          "text": "Nobara",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-maki",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Maki Zenin",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Maki Zenin",
+          "strength": "strong"
+        },
+        {
+          "text": "Maki Zen'in",
+          "strength": "strong"
+        },
+        {
+          "text": "Maki",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "jjk-shoko",
+      "franchiseId": "jujutsu-kaisen",
+      "name": "Shoko Ieiri",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Shoko Ieiri",
+          "strength": "strong"
+        },
+        {
+          "text": "Shoko",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "mha-deku",
+      "franchiseId": "my-hero-academia",
+      "name": "Izuku Midoriya",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Izuku Midoriya",
+          "strength": "strong"
+        },
+        {
+          "text": "Midoriya Izuku",
+          "strength": "strong"
+        },
+        {
+          "text": "Deku",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "mha-bakugo",
+      "franchiseId": "my-hero-academia",
+      "name": "Katsuki Bakugo",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Katsuki Bakugo",
+          "strength": "strong"
+        },
+        {
+          "text": "Katsuki Bakugou",
+          "strength": "strong"
+        },
+        {
+          "text": "Bakugo Katsuki",
+          "strength": "strong"
+        },
+        {
+          "text": "Bakugo",
+          "strength": "contextual"
+        },
+        {
+          "text": "Bakugou",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "mha-todoroki",
+      "franchiseId": "my-hero-academia",
+      "name": "Shoto Todoroki",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Shoto Todoroki",
+          "strength": "strong"
+        },
+        {
+          "text": "Shouto Todoroki",
+          "strength": "strong"
+        },
+        {
+          "text": "Todoroki",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "mha-ochaco",
+      "franchiseId": "my-hero-academia",
+      "name": "Ochaco Uraraka",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Ochaco Uraraka",
+          "strength": "strong"
+        },
+        {
+          "text": "Ochako Uraraka",
+          "strength": "strong"
+        },
+        {
+          "text": "Uraraka",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "mha-momo",
+      "franchiseId": "my-hero-academia",
+      "name": "Momo Yaoyorozu",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Momo Yaoyorozu",
+          "strength": "strong"
+        },
+        {
+          "text": "Yaoyorozu",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "mha-jiro",
+      "franchiseId": "my-hero-academia",
+      "name": "Kyoka Jiro",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Kyoka Jiro",
+          "strength": "strong"
+        },
+        {
+          "text": "Kyouka Jirou",
+          "strength": "strong"
+        },
+        {
+          "text": "Jiro",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "marvel-tony",
+      "franchiseId": "marvel",
+      "name": "Tony Stark",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Tony Stark",
+          "strength": "strong"
+        },
+        {
+          "text": "Anthony Stark",
+          "strength": "strong"
+        },
+        {
+          "text": "Iron Man",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "marvel-steve",
+      "franchiseId": "marvel",
+      "name": "Steve Rogers",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Steve Rogers",
+          "strength": "strong"
+        },
+        {
+          "text": "Steven Rogers",
+          "strength": "strong"
+        },
+        {
+          "text": "Captain America",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "marvel-natasha",
+      "franchiseId": "marvel",
+      "name": "Natasha Romanoff",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Natasha Romanoff",
+          "strength": "strong"
+        },
+        {
+          "text": "Natasha Romanova",
+          "strength": "strong"
+        },
+        {
+          "text": "Black Widow",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "marvel-wanda",
+      "franchiseId": "marvel",
+      "name": "Wanda Maximoff",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Wanda Maximoff",
+          "strength": "strong"
+        },
+        {
+          "text": "Scarlet Witch",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "marvel-carol",
+      "franchiseId": "marvel",
+      "name": "Carol Danvers",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Carol Danvers",
+          "strength": "strong"
+        },
+        {
+          "text": "Captain Marvel",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "pacific-raleigh",
+      "franchiseId": "pacific-rim",
+      "name": "Raleigh Becket",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Raleigh Becket",
+          "strength": "strong"
+        },
+        {
+          "text": "Raleigh",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "pacific-mako",
+      "franchiseId": "pacific-rim",
+      "name": "Mako Mori",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Mako Mori",
+          "strength": "strong"
+        },
+        {
+          "text": "Mako",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "atla-zuko",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Zuko",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Zuko",
+          "strength": "strong"
+        },
+        {
+          "text": "Prince Zuko",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "atla-aang",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Aang",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Aang",
+          "strength": "strong"
+        },
+        {
+          "text": "Avatar Aang",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "atla-sokka",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Sokka",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Sokka",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "atla-katara",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Katara",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Katara",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "atla-azula",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Azula",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Azula",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "atla-toph",
+      "franchiseId": "avatar-the-last-airbender",
+      "name": "Toph Beifong",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Toph Beifong",
+          "strength": "strong"
+        },
+        {
+          "text": "Toph",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "bts-taehyung",
+      "franchiseId": "bts",
+      "name": "Kim Taehyung",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Kim Taehyung",
+          "strength": "strong"
+        },
+        {
+          "text": "Kim Tae Hyung",
+          "strength": "strong"
+        },
+        {
+          "text": "Taehyung",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    }
+  ],
+  "groups": [
+    {
+      "id": "task-force-141",
+      "franchiseId": "call-of-duty",
+      "name": "Task Force 141",
+      "aliases": [
+        "Task Force 141",
+        "TaskForce 141",
+        "Taskforce 141",
+        "TF141",
+        "TF 141",
+        "TF-141"
+      ],
+      "memberIds": [
+        "cod-ghost",
+        "cod-soap",
+        "cod-price",
+        "cod-gaz"
+      ],
+      "gender": "unknown",
+      "note": "Group mention alone does not establish the main character's gender."
+    },
+    {
+      "id": "ghost-and-soap",
+      "franchiseId": "call-of-duty",
+      "name": "Ghost and Soap",
+      "aliases": [
+        "Ghost and Soap",
+        "Soap and Ghost",
+        "Ghost & Soap",
+        "Soap & Ghost"
+      ],
+      "memberIds": [
+        "cod-ghost",
+        "cod-soap"
+      ],
+      "gender": "unknown",
+      "note": "Multi-character group. Gender of the primary bot character remains unknown."
+    }
+  ]
+}

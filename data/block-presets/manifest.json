@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "contract": "spicychat-archive-block-presets-v1",
+  "catalogVersion": 1,
+  "updatedAt": "2026-11-18",
+  "catalog": "https://spicychatarchive.drache.uk/data/block-presets/catalog.json",
+  "schema": "https://spicychatarchive.drache.uk/data/block-presets/schema.json",
+  "readme": "https://github.com/drachescript/spicychat-archive/blob/main/data/block-presets/README.md",
+  "page": "https://spicychatarchive.drache.uk/presets/",
+  "discovery": "https://data.spicychatarchive.drache.uk/indexes/block-presets/discovery.json",
+  "counts": {
+    "presets": 13,
+    "franchises": 8,
+    "characters": 42,
+    "groups": 2,
+    "themes": 5
+  },
+  "defaults": {
+    "enabled": false,
+    "mode": "all",
+    "keepGender": [
+      "female",
+      "male"
+    ],
+    "unknownGenderHandling": "keep in gender-selective mode",
+    "matchFields": [
+      "name",
+      "publicTitle"
+    ]
+  },
+  "notices": [
+    "Presets represent preferences, not community safety classifications.",
+    "Gender is curated canonical character metadata, not a bot gender inference.",
+    "No model, private chats, or automated blocking."
+  ]
+}

@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-19T21:38:15Z",
+  "generatedAt": "2026-11-19T23:05:32Z",
   "startedAt": "2026-09-28T00:00:00Z",
   "totalBots": 1476140,
   "publicIndexBots": 1447962,
-  "deletedBots": 25081,
-  "latestAdded": 1328,
+  "deletedBots": 25101,
+  "latestAdded": 0,
   "growth": {
-    "added24h": 2761,
-    "added7d": 13729,
-    "added30d": 51780,
-    "averagePerDay": 1779.2,
-    "observedHours": 1257.1,
+    "added24h": 1580,
+    "added7d": 12438,
+    "added30d": 51357,
+    "averagePerDay": 1803.1,
+    "observedHours": 1259.2,
     "observedGrowth": 1464871
   },
   "adaptiveDiscovery": {
@@ -11529,11 +11529,81 @@
         "writesThisMonth": 329414
       },
       "addedSincePrevious": 1328
+    },
+    {
+      "at": "2026-11-19T23:05:32Z",
+      "kind": "archive-run",
+      "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/44634353591",
+      "totalBots": 1476140,
+      "publicIndexBots": 1447962,
+      "deletedBots": 25101,
+      "missingBots": 0,
+      "reconciliationGap": 3077,
+      "unreconciledBots": 3077,
+      "runDurationSeconds": 49,
+      "listings": {
+        "latest": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "trending": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "top-rated": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        },
+        "popular": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        }
+      },
+      "exploration": {
+        "hits": 0,
+        "new": 0,
+        "changed": 0,
+        "pageBudget": 0,
+        "pagesCompleted": 0,
+        "nextPageBudget": 0,
+        "timeLimited": false,
+        "durationSeconds": 0,
+        "errors": [],
+        "partial": false,
+        "naturalEnd": false,
+        "resultCapReached": false,
+        "switchedToCursor": false
+      },
+      "enrichment": {
+        "attempted": 0,
+        "enriched": 0
+      },
+      "images": {
+        "attempted": 0,
+        "saved": 0
+      },
+      "deletedConfirmed": 20,
+      "storage": {
+        "usedBytes": 5640052993,
+        "mediaBytes": 1999994650,
+        "objects": 807075,
+        "writesThisMonth": 329473
+      },
+      "publicIndexCountSource": "carried-forward",
+      "addedSincePrevious": 0
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-19T21:38:15Z",
+    "generatedAt": "2026-11-19T23:05:32Z",
     "sampleCount": 215,
     "latestPublicIndexBots": 1447962,
     "firstSampleAt": "2026-09-28T17:36:57Z",

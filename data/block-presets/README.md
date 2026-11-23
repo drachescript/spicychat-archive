@@ -35,4 +35,6 @@ Weekly discovery aggregates the existing 256 public Archive creator-index shards
 
 The initial expansion adds 23 new franchise choices including Genshin Impact, Honkai Star Rail, Naruto, One Piece, Overwatch, Baldur's Gate 3 and Helluva Boss. Helluva Boss and Hazbin Hotel are separate choices. Short or generic nicknames (e.g. March 7th, Power, Link, V, Jinx) do **not** match without more franchise context.
 
+Archive-discovered candidates now appear on the [preset library page](https://spicychatarchive.drache.uk/presets/). Public examples may accompany candidates; users can suggest a correction with the GitHub [preset review form](https://github.com/drachescript/spicychat-archive/issues/new/choose). Suggestions do not become active automatically.
+
 A reviewed alias/character addition should be committed to the catalog with regression cases and a version bump. Do not take reports as proof; require public evidence and allow corrections. No AI models, private chats, imported user blocked words, account details, or automatic permanent blocks / dislikes.

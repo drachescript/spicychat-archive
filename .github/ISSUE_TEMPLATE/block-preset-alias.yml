@@ -1,0 +1,53 @@
+name: Suggest or correct a franchise preset alias
+description: Public evidence for a missing character, wrong franchise, ambiguous nickname, or discovery false positive.
+title: "[Preset review] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is public. Only provide publicly visible character or bot information. Never include private chats, user details, hidden bot definitions, or account tokens. Submission does not automatically change blocking presets.
+  - type: dropdown
+    id: issue
+    attributes:
+      label: What needs review?
+      options:
+        - Missing franchise
+        - Missing character or alias
+        - Incorrect franchise association
+        - Ambiguous or false-positive name
+        - Character metadata correction
+    validations:
+      required: true
+  - type: input
+    id: franchise
+    attributes:
+      label: Franchise or preset
+    validations:
+      required: true
+  - type: input
+    id: alias
+    attributes:
+      label: Suggested or disputed character name / alias
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Public evidence URL
+      description: Official media reference, public Archive record, or public SpicyChat bot page
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Explanation and false-positive risks
+      description: Is this name a main character, another franchise, common word, fan-made name, or group?
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Privacy and review
+      options:
+        - label: My report contains only public evidence and requires review.
+          required: true

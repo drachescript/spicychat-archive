@@ -14,6 +14,10 @@
 .preset-input{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
 .preset-input label{display:flex;flex:1;flex-direction:column;gap:5px;min-width:180px}
 #preview-result{border:1px solid #7776;border-radius:8px;padding:12px}
+#candidate-queue{display:grid;gap:10px;margin:12px 0}
+.preset-candidate{border:1px solid #7776;border-radius:9px;padding:12px;display:flex;flex-direction:column;gap:7px}
+.preset-candidate small{opacity:.8}
+.preset-candidate a{align-self:flex-start}
 @media(max-width:760px){.preset-columns{grid-template-columns:1fr}}</style>
 </head><body><header class="archive-unified-header"><div class="archive-head-inner"><a href="/" class="archive-head-brand">SpicyChat Archive</a></div></header>
 <main class="wrap"><section class="hero"><h1>Blocking preset library</h1>
@@ -32,7 +36,12 @@
 <label for="preview-name">Sample bot name/title<input id="preview-name" placeholder="Paste a sample title" value='Simon "Ghost" Riley'></label></div>
 <div id="preview-result" aria-live="polite"></div></div></div></section>
 <section class="table-card"><h2>Archive discovery</h2>
-<p>Weekly scans of the existing public Archive creator-index titles suggest additional aliases for review. Candidates never become blocking rules automatically. No AI, personal chats or permanent blocks.</p>
+<p>Weekly scans of existing public Archive titles suggest character names and aliases for review. These candidates never become blocking rules automatically. No AI, personal chats or permanent blocks.</p>
+<label for="candidate-search">Search suggested names</label>
+<input id="candidate-search" type="search" placeholder="Franchise or suggested alias">
+<p id="candidate-count" class="filter-note">Loading candidate queue…</p>
+<div id="candidate-queue" aria-live="polite"></div>
+<p class="filter-note">New aliases require public evidence, manual approval, regression tests, and a catalog version change before QoL can use them.</p>
 <p><a href="/data/block-presets/manifest.json">Preset manifest</a> ·
 <a href="/data/block-presets/catalog.json">Full JSON catalog</a> ·
 <a href="https://github.com/drachescript/spicychat-archive/blob/main/data/block-presets/README.md">QoL contract</a></p>

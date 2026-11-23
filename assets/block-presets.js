@@ -1,7 +1,7 @@
 import {evaluateBlockPreset} from './block-preset-matcher.js';
 const get=id=>document.getElementById(id);
 const elem=(tag,text,cls)=>{const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e;};
-let catalog,selected='franchise:call-of-duty';
+let catalog,selected='franchise:call-of-duty',discovered=[];
 function preview(){
   if(!catalog)return;
   const name=get('preview-name').value,mode=get('preview-mode').value;
@@ -38,6 +38,36 @@ function render(){
   }
   preview();
 }
+function renderCandidates() {
+  const query=get('candidate-search').value.trim().toLowerCase();
+  const labels=new Map((catalog?.presets||[]).map(p=>[p.id,p.name]));
+  const shown=discovered.filter(row=>!query||
+    String((labels.get(row.presetId)||row.presetId)+' '+row.candidateText).toLowerCase().includes(query));
+  const target=get('candidate-queue');
+  target.replaceChildren();
+  get('candidate-count').textContent=shown.length+' of '+discovered.length+
+    ' review-only suggestions. None are active aliases.';
+  for(const candidate of shown.slice(0,60)) {
+    const card=elem('article',null,'preset-candidate');
+    const franchise=labels.get(candidate.presetId)||candidate.presetId;
+    card.append(elem('strong',franchise+' · '+candidate.candidateText),
+      elem('small',Number(candidate.observedTitleCount||0).toLocaleString()+
+        ' public title observations · NOT a verified character or active block'));
+    const example=Array.isArray(candidate.examples)?candidate.examples[0]:null;
+    if(typeof example?.botId==='string' && /^[0-9a-f-]{36}$/i.test(example.botId)) {
+      const a=elem('a','View a public Archive example');
+      a.href='/bot/?id='+encodeURIComponent(example.botId);
+      a.target='_blank';a.rel='noopener noreferrer';card.append(a);
+    }
+    const review=elem('a','Suggest review or correction');
+    review.href='https://github.com/drachescript/spicychat-archive/issues/new?template=block-preset-alias.yml&title='+
+      encodeURIComponent(('[Preset review] '+franchise+': '+candidate.candidateText).slice(0,110));
+    review.rel='noopener noreferrer';review.target='_blank';card.append(review);
+    target.append(card);
+  }
+  if(shown.length>60)target.append(elem('p','Only the first 60 are shown. Refine the search to see others.'));
+  if(!shown.length)target.append(elem('p','No matching suggestions are available.'));
+}
 async function init(){
   try{
     const r=await fetch('/data/block-presets/catalog.json');
@@ -55,8 +85,15 @@ async function init(){
     const r=await fetch('https://data.spicychatarchive.drache.uk/indexes/block-presets/discovery.json');
     if(!r.ok)throw Error('unavailable');
     const d=await r.json();
+    discovered=Array.isArray(d.reviewCandidates)?d.reviewCandidates:[];
     get('discovery').textContent=Number(d.coverage?.creatorIndexedBotsExamined||0).toLocaleString()+
-      ' indexed Archive bots examined · '+(d.reviewCandidates?.length||0)+' candidate patterns awaiting review';
-  }catch{get('discovery').textContent='Weekly pattern-discovery index is not yet available.';}
+      ' indexed Archive bots examined · '+discovered.length+' candidate patterns for review'+
+      (d.generatedAt?' · last updated '+new Date(d.generatedAt).toLocaleDateString():'');
+    get('candidate-search').addEventListener('input',renderCandidates);
+    renderCandidates();
+  }catch{
+    get('discovery').textContent='Weekly pattern-discovery index is not yet available.';
+    get('candidate-count').textContent='Review candidates unavailable; existing presets still work.';
+  }
 }
 init();

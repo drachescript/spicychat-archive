@@ -59,6 +59,16 @@ class SharedWriterQueueTests(unittest.TestCase):
         self.assertRegex(source, r"(?m)^    concurrency:\s*$")
         self.assertNotRegex(source, r"(?m)^concurrency:\s*$")
 
+    def test_archive_crawler_tests_run_before_r2_work(self):
+        source = (WORKFLOWS / "archive.yml").read_text(encoding="utf-8")
+        test = source.find("name: Test archive code before crawler")
+        guard = source.find("name: Check R2 free-tier guard")
+        crawl = source.find("name: Update archive in R2")
+        publish = source.find("name: Publish archive run feed")
+        commit = source.find("name: Commit public stats/runtime changes")
+        self.assertTrue(0 <= test < guard < crawl < publish < commit,
+                        "Test regressions before crawling; publish the run feed after the crawl")
+
     def test_pages_still_cancels_stale_deployments_not_writers(self):
         source = (WORKFLOWS / "pages.yml").read_text(encoding="utf-8")
         self.assertIn("group: pages", source)

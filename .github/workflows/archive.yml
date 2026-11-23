@@ -139,6 +139,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Fail on code regressions before the potentially multi-hour R2 crawl.
+      # Previously these tests ran after discovery and could prevent the Git
+      # feed/stats commit (and therefore the Discord bot notification) despite
+      # a completed and saved crawl.
+      - name: Test archive code before crawler
+        run: python -m unittest discover -s tests -v
+
       - name: Check R2 free-tier guard
         id: r2guard
         run: python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
@@ -222,10 +229,6 @@ jobs:
             echo "No R2 import was processed (storage mode: ${{ steps.r2guard.outputs.mode }})." >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
-
-      - name: Test archive code
-        if: inputs.run_mode != 'import-only' || steps.importcheck.outputs.has_work == 'true'
-        run: python -m unittest discover -s tests -v
 
       - name: Add run summary
         if: always()

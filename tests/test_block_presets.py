@@ -44,19 +44,19 @@ class BlockingPresetTests(unittest.TestCase):
     def test_review_queue_examples_and_suppression(self):
         ids = ["11111111-1111-4111-8111-%012d" % i for i in (1, 2, 3)]
         shard = {"creator": {"bots": {
-            id_: {"title": "Call of Duty: Unlisted Character", "status": "public"}
+            id_: {"title": "Call of Duty: Unlisted Ranger", "status": "public"}
             for id_ in ids
         }}}
         before = pub.collect([shard], catalog)
         row = next(item for item in before["reviewCandidates"]
-                   if item["candidateText"] == "unlisted character")
+                   if item["candidateText"] == "unlisted ranger")
         self.assertEqual(row["status"], "review-needed")
         self.assertEqual(row["confidence"], "unverified-pattern")
         self.assertEqual(len(row["examples"]), 3)
         self.assertEqual(row["examples"][0]["botId"], ids[0])
         decision = {"schemaVersion": 1, "decisions": [{
             "presetId": "franchise:call-of-duty",
-            "candidateText": "Unlisted Character",
+            "candidateText": "Unlisted Ranger",
             "decision": "rejected",
             "reviewedAt": "2026-11-22T00:00:00Z",
             "evidenceUrl": "https://spicychatarchive.drache.uk/bot/?id="+ids[0],
@@ -69,6 +69,17 @@ class BlockingPresetTests(unittest.TestCase):
                     "decision":"accepted"}]}
         with self.assertRaisesRegex(ValueError, "promoted"):
             pub.collect([shard], catalog, invalid)
+
+    def test_generic_character_word_stays_excluded(self):
+        # The crawler must not propose generic story descriptors as
+        # franchise character names just because they appear repeatedly.
+        shard = {"creator": {"bots": {
+            str(i): {"title": "Call of Duty: Unlisted Character"}
+            for i in range(4)
+        }}}
+        result = pub.collect([shard], catalog)
+        self.assertFalse(any(row["candidateText"] == "unlisted character"
+                             for row in result["reviewCandidates"]))
 
     def test_unchanged_snapshot_not_rewritten(self):
         store=Mock()

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "contract": "spicychat-archive-block-presets-v1",
-  "catalogVersion": 1,
-  "updatedAt": "2026-11-18",
+  "catalogVersion": 2,
+  "updatedAt": "2026-11-22",
   "matchPolicy": {
     "sourceFields": [
       "botName",
@@ -414,6 +414,898 @@
         "pregnant",
         "impregnation"
       ],
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:genshin-impact",
+      "kind": "franchise",
+      "franchiseId": "genshin-impact",
+      "name": "Genshin Impact",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Genshin Impact",
+          "strength": "strong"
+        },
+        {
+          "text": "Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "GI",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "genshin-impact-zhongli",
+        "genshin-impact-diluc-ragnvindr",
+        "genshin-impact-kaeya-alberich",
+        "genshin-impact-tartaglia",
+        "genshin-impact-raiden-shogun",
+        "genshin-impact-hu-tao",
+        "genshin-impact-furina",
+        "genshin-impact-arlecchino"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:honkai-star-rail",
+      "kind": "franchise",
+      "franchiseId": "honkai-star-rail",
+      "name": "Honkai: Star Rail",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Honkai Star Rail",
+          "strength": "strong"
+        },
+        {
+          "text": "Honkai: Star Rail",
+          "strength": "strong"
+        },
+        {
+          "text": "HSR",
+          "strength": "contextual"
+        },
+        {
+          "text": "Star Rail",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "honkai-star-rail-dan-heng",
+        "honkai-star-rail-jing-yuan",
+        "honkai-star-rail-aventurine",
+        "honkai-star-rail-blade",
+        "honkai-star-rail-march-7th",
+        "honkai-star-rail-himeko",
+        "honkai-star-rail-kafka",
+        "honkai-star-rail-firefly"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:naruto",
+      "kind": "franchise",
+      "franchiseId": "naruto",
+      "name": "Naruto",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Naruto",
+          "strength": "strong"
+        },
+        {
+          "text": "Naruto Shippuden",
+          "strength": "strong"
+        },
+        {
+          "text": "Naruto: Shippuden",
+          "strength": "strong"
+        },
+        {
+          "text": "Shippuden",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "naruto-naruto-uzumaki",
+        "naruto-sasuke-uchiha",
+        "naruto-kakashi-hatake",
+        "naruto-itachi-uchiha",
+        "naruto-sakura-haruno",
+        "naruto-hinata-hyuga",
+        "naruto-tsunade",
+        "naruto-ino-yamanaka"
+      ],
+      "groupIds": [
+        "akatsuki",
+        "team-7"
+      ],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:one-piece",
+      "kind": "franchise",
+      "franchiseId": "one-piece",
+      "name": "One Piece",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "One Piece",
+          "strength": "strong"
+        },
+        {
+          "text": "OP Anime",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "one-piece-monkey-d-luffy",
+        "one-piece-roronoa-zoro",
+        "one-piece-sanji-vinsmoke",
+        "one-piece-trafalgar-law",
+        "one-piece-nami",
+        "one-piece-nico-robin",
+        "one-piece-boa-hancock"
+      ],
+      "groupIds": [
+        "straw-hat-pirates"
+      ],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:demon-slayer",
+      "kind": "franchise",
+      "franchiseId": "demon-slayer",
+      "name": "Demon Slayer",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Demon Slayer",
+          "strength": "strong"
+        },
+        {
+          "text": "Kimetsu no Yaiba",
+          "strength": "strong"
+        },
+        {
+          "text": "KNY",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "demon-slayer-tanjiro-kamado",
+        "demon-slayer-zenitsu-agatsuma",
+        "demon-slayer-inosuke-hashibira",
+        "demon-slayer-nezuko-kamado",
+        "demon-slayer-shinobu-kocho",
+        "demon-slayer-mitsuri-kanroji"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:chainsaw-man",
+      "kind": "franchise",
+      "franchiseId": "chainsaw-man",
+      "name": "Chainsaw Man",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Chainsaw Man",
+          "strength": "strong"
+        },
+        {
+          "text": "CSM",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "chainsaw-man-denji",
+        "chainsaw-man-aki-hayakawa",
+        "chainsaw-man-kishibe",
+        "chainsaw-man-makima",
+        "chainsaw-man-power",
+        "chainsaw-man-kobeni-higashiyama"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:attack-on-titan",
+      "kind": "franchise",
+      "franchiseId": "attack-on-titan",
+      "name": "Attack on Titan",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Attack on Titan",
+          "strength": "strong"
+        },
+        {
+          "text": "Shingeki no Kyojin",
+          "strength": "strong"
+        },
+        {
+          "text": "AOT",
+          "strength": "contextual"
+        },
+        {
+          "text": "SNK",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "attack-on-titan-eren-yeager",
+        "attack-on-titan-levi-ackerman",
+        "attack-on-titan-armin-arlert",
+        "attack-on-titan-mikasa-ackerman",
+        "attack-on-titan-annie-leonhart",
+        "attack-on-titan-historia-reiss"
+      ],
+      "groupIds": [
+        "survey-corps"
+      ],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:dragon-ball",
+      "kind": "franchise",
+      "franchiseId": "dragon-ball",
+      "name": "Dragon Ball",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Dragon Ball",
+          "strength": "strong"
+        },
+        {
+          "text": "Dragon Ball Z",
+          "strength": "strong"
+        },
+        {
+          "text": "Dragon Ball Super",
+          "strength": "strong"
+        },
+        {
+          "text": "DBZ",
+          "strength": "contextual"
+        },
+        {
+          "text": "DBS",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "dragon-ball-son-goku",
+        "dragon-ball-vegeta",
+        "dragon-ball-gohan",
+        "dragon-ball-bulma",
+        "dragon-ball-android-18"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:five-nights-at-freddys",
+      "kind": "franchise",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "Five Nights at Freddy's",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Five Nights at Freddy's",
+          "strength": "strong"
+        },
+        {
+          "text": "Five Nights at Freddys",
+          "strength": "strong"
+        },
+        {
+          "text": "FNAF",
+          "strength": "strong"
+        },
+        {
+          "text": "FNaF",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "five-nights-at-freddys-freddy-fazbear",
+        "five-nights-at-freddys-william-afton",
+        "five-nights-at-freddys-michael-afton",
+        "five-nights-at-freddys-bonnie",
+        "five-nights-at-freddys-glamrock-chica",
+        "five-nights-at-freddys-roxanne-wolf"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:harry-potter",
+      "kind": "franchise",
+      "franchiseId": "harry-potter",
+      "name": "Harry Potter",
+      "category": "books-film",
+      "aliases": [
+        {
+          "text": "Harry Potter",
+          "strength": "strong"
+        },
+        {
+          "text": "Wizarding World",
+          "strength": "strong"
+        },
+        {
+          "text": "Hogwarts",
+          "strength": "strong"
+        },
+        {
+          "text": "HP",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "harry-potter-harry-potter",
+        "harry-potter-draco-malfoy",
+        "harry-potter-severus-snape",
+        "harry-potter-hermione-granger",
+        "harry-potter-luna-lovegood",
+        "harry-potter-ginny-weasley"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:star-wars",
+      "kind": "franchise",
+      "franchiseId": "star-wars",
+      "name": "Star Wars",
+      "category": "film-tv",
+      "aliases": [
+        {
+          "text": "Star Wars",
+          "strength": "strong"
+        },
+        {
+          "text": "The Mandalorian",
+          "strength": "strong"
+        },
+        {
+          "text": "SW",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "star-wars-luke-skywalker",
+        "star-wars-anakin-skywalker",
+        "star-wars-obi-wan-kenobi",
+        "star-wars-leia-organa",
+        "star-wars-padme-amidala",
+        "star-wars-ahsoka-tano"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:pokemon",
+      "kind": "franchise",
+      "franchiseId": "pokemon",
+      "name": "Pokémon",
+      "category": "game-anime",
+      "aliases": [
+        {
+          "text": "Pokémon",
+          "strength": "strong"
+        },
+        {
+          "text": "Pokemon",
+          "strength": "strong"
+        },
+        {
+          "text": "Pocket Monsters",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "pokemon-ash-ketchum",
+        "pokemon-brock",
+        "pokemon-professor-oak",
+        "pokemon-misty",
+        "pokemon-cynthia",
+        "pokemon-jessie"
+      ],
+      "groupIds": [
+        "team-rocket"
+      ],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:baldurs-gate-3",
+      "kind": "franchise",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Baldur's Gate 3",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Baldur's Gate 3",
+          "strength": "strong"
+        },
+        {
+          "text": "Baldurs Gate 3",
+          "strength": "strong"
+        },
+        {
+          "text": "BG3",
+          "strength": "strong"
+        },
+        {
+          "text": "Baldurs Gate",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "baldurs-gate-3-astarion",
+        "baldurs-gate-3-gale-dekarios",
+        "baldurs-gate-3-wyll-ravengard",
+        "baldurs-gate-3-shadowheart",
+        "baldurs-gate-3-karlach",
+        "baldurs-gate-3-lae-zel"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:cyberpunk-2077",
+      "kind": "franchise",
+      "franchiseId": "cyberpunk-2077",
+      "name": "Cyberpunk 2077",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Cyberpunk 2077",
+          "strength": "strong"
+        },
+        {
+          "text": "Cyberpunk: Edgerunners",
+          "strength": "strong"
+        },
+        {
+          "text": "Cyberpunk Edgerunners",
+          "strength": "strong"
+        },
+        {
+          "text": "Cyberpunk",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "cyberpunk-2077-johnny-silverhand",
+        "cyberpunk-2077-viktor-vektor",
+        "cyberpunk-2077-david-martinez",
+        "cyberpunk-2077-judy-alvarez",
+        "cyberpunk-2077-panam-palmer",
+        "cyberpunk-2077-lucy-kushinada"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:the-witcher",
+      "kind": "franchise",
+      "franchiseId": "the-witcher",
+      "name": "The Witcher",
+      "category": "game-books-tv",
+      "aliases": [
+        {
+          "text": "The Witcher",
+          "strength": "strong"
+        },
+        {
+          "text": "Witcher 3",
+          "strength": "strong"
+        },
+        {
+          "text": "Witcher 2",
+          "strength": "strong"
+        },
+        {
+          "text": "Witcher",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "the-witcher-geralt-of-rivia",
+        "the-witcher-jaskier",
+        "the-witcher-yennefer-of-vengerberg",
+        "the-witcher-triss-merigold",
+        "the-witcher-ciri"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:overwatch",
+      "kind": "franchise",
+      "franchiseId": "overwatch",
+      "name": "Overwatch",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "Overwatch 2",
+          "strength": "strong"
+        },
+        {
+          "text": "OW2",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "overwatch-gabriel-reyes",
+        "overwatch-genji-shimada",
+        "overwatch-hanzo-shimada",
+        "overwatch-angela-ziegler",
+        "overwatch-hana-song",
+        "overwatch-kiriko-kamori",
+        "overwatch-amelie-lacroix"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:final-fantasy-vii",
+      "kind": "franchise",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Final Fantasy VII",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Final Fantasy VII",
+          "strength": "strong"
+        },
+        {
+          "text": "Final Fantasy 7",
+          "strength": "strong"
+        },
+        {
+          "text": "FFVII",
+          "strength": "strong"
+        },
+        {
+          "text": "FF7",
+          "strength": "strong"
+        },
+        {
+          "text": "Final Fantasy",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "final-fantasy-vii-cloud-strife",
+        "final-fantasy-vii-sephiroth",
+        "final-fantasy-vii-zack-fair",
+        "final-fantasy-vii-tifa-lockhart",
+        "final-fantasy-vii-aerith-gainsborough",
+        "final-fantasy-vii-yuffie-kisaragi"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:the-legend-of-zelda",
+      "kind": "franchise",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "The Legend of Zelda",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "The Legend of Zelda",
+          "strength": "strong"
+        },
+        {
+          "text": "Breath of the Wild",
+          "strength": "strong"
+        },
+        {
+          "text": "Tears of the Kingdom",
+          "strength": "strong"
+        },
+        {
+          "text": "Zelda",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "the-legend-of-zelda-link",
+        "the-legend-of-zelda-ganondorf",
+        "the-legend-of-zelda-sidon",
+        "the-legend-of-zelda-princess-zelda",
+        "the-legend-of-zelda-impa",
+        "the-legend-of-zelda-midna"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:league-of-legends",
+      "kind": "franchise",
+      "franchiseId": "league-of-legends",
+      "name": "League of Legends / Arcane",
+      "category": "game-animation",
+      "aliases": [
+        {
+          "text": "League of Legends",
+          "strength": "strong"
+        },
+        {
+          "text": "Arcane League of Legends",
+          "strength": "strong"
+        },
+        {
+          "text": "LoL Arcane",
+          "strength": "strong"
+        },
+        {
+          "text": "LoL",
+          "strength": "contextual"
+        },
+        {
+          "text": "Arcane",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "league-of-legends-ekko",
+        "league-of-legends-jayce-talis",
+        "league-of-legends-viktor",
+        "league-of-legends-jinx",
+        "league-of-legends-vi",
+        "league-of-legends-caitlyn-kiramman",
+        "league-of-legends-mel-medarda"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:hazbin-hotel",
+      "kind": "franchise",
+      "franchiseId": "hazbin-hotel",
+      "name": "Hazbin Hotel",
+      "category": "animation",
+      "aliases": [
+        {
+          "text": "Hazbin Hotel",
+          "strength": "strong"
+        },
+        {
+          "text": "Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Hazbin",
+          "strength": "contextual"
+        }
+      ],
+      "characterIds": [
+        "hazbin-hotel-alastor",
+        "hazbin-hotel-angel-dust",
+        "hazbin-hotel-lucifer-morningstar",
+        "hazbin-hotel-charlie-morningstar",
+        "hazbin-hotel-vaggie",
+        "hazbin-hotel-niffty"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:undertale",
+      "kind": "franchise",
+      "franchiseId": "undertale",
+      "name": "Undertale",
+      "category": "game",
+      "aliases": [
+        {
+          "text": "Undertale",
+          "strength": "strong"
+        },
+        {
+          "text": "Under Tale",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "undertale-sans",
+        "undertale-papyrus",
+        "undertale-asgore-dreemurr",
+        "undertale-toriel",
+        "undertale-undyne",
+        "undertale-alphys"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:death-note",
+      "kind": "franchise",
+      "franchiseId": "death-note",
+      "name": "Death Note",
+      "category": "anime-manga",
+      "aliases": [
+        {
+          "text": "Death Note",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "death-note-light-yagami",
+        "death-note-l-lawliet",
+        "death-note-near",
+        "death-note-misa-amane",
+        "death-note-kiyomi-takada",
+        "death-note-naomi-misora"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
       "enabledByDefault": false
     }
   ],
@@ -1277,6 +2169,2620 @@
       ],
       "reviewStatus": "seed-curated",
       "note": "Canonical character identity, not a statement about a bot's gender or RP variants"
+    },
+    {
+      "id": "genshin-impact-zhongli",
+      "franchiseId": "genshin-impact",
+      "name": "Zhongli",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Zhongli Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "Zhongli",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-diluc-ragnvindr",
+      "franchiseId": "genshin-impact",
+      "name": "Diluc Ragnvindr",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Diluc Ragnvindr",
+          "strength": "strong"
+        },
+        {
+          "text": "Diluc Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "Diluc",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-kaeya-alberich",
+      "franchiseId": "genshin-impact",
+      "name": "Kaeya Alberich",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Kaeya Alberich",
+          "strength": "strong"
+        },
+        {
+          "text": "Kaeya",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-tartaglia",
+      "franchiseId": "genshin-impact",
+      "name": "Tartaglia",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Tartaglia Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "Tartaglia",
+          "strength": "strong"
+        },
+        {
+          "text": "Childe",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-raiden-shogun",
+      "franchiseId": "genshin-impact",
+      "name": "Raiden Shogun",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Raiden Shogun",
+          "strength": "strong"
+        },
+        {
+          "text": "Ei Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "Raiden",
+          "strength": "contextual"
+        },
+        {
+          "text": "Ei",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-hu-tao",
+      "franchiseId": "genshin-impact",
+      "name": "Hu Tao",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Hu Tao",
+          "strength": "strong"
+        },
+        {
+          "text": "Hutao",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-furina",
+      "franchiseId": "genshin-impact",
+      "name": "Furina",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Furina Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "Furina",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "genshin-impact-arlecchino",
+      "franchiseId": "genshin-impact",
+      "name": "Arlecchino",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Arlecchino Genshin",
+          "strength": "strong"
+        },
+        {
+          "text": "Arlecchino",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-dan-heng",
+      "franchiseId": "honkai-star-rail",
+      "name": "Dan Heng",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Dan Heng",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-jing-yuan",
+      "franchiseId": "honkai-star-rail",
+      "name": "Jing Yuan",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Jing Yuan",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-aventurine",
+      "franchiseId": "honkai-star-rail",
+      "name": "Aventurine",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Aventurine HSR",
+          "strength": "strong"
+        },
+        {
+          "text": "Aventurine",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-blade",
+      "franchiseId": "honkai-star-rail",
+      "name": "Blade",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Blade Star Rail",
+          "strength": "strong"
+        },
+        {
+          "text": "Blade",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-march-7th",
+      "franchiseId": "honkai-star-rail",
+      "name": "March 7th",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "March 7th",
+          "strength": "strong"
+        },
+        {
+          "text": "March Seventh",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-himeko",
+      "franchiseId": "honkai-star-rail",
+      "name": "Himeko",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Himeko Star Rail",
+          "strength": "strong"
+        },
+        {
+          "text": "Himeko",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-kafka",
+      "franchiseId": "honkai-star-rail",
+      "name": "Kafka",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Kafka Star Rail",
+          "strength": "strong"
+        },
+        {
+          "text": "Kafka",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "honkai-star-rail-firefly",
+      "franchiseId": "honkai-star-rail",
+      "name": "Firefly",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Firefly Star Rail",
+          "strength": "strong"
+        },
+        {
+          "text": "Firefly",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-naruto-uzumaki",
+      "franchiseId": "naruto",
+      "name": "Naruto Uzumaki",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Naruto Uzumaki",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-sasuke-uchiha",
+      "franchiseId": "naruto",
+      "name": "Sasuke Uchiha",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Sasuke Uchiha",
+          "strength": "strong"
+        },
+        {
+          "text": "Sasuke",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-kakashi-hatake",
+      "franchiseId": "naruto",
+      "name": "Kakashi Hatake",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Kakashi Hatake",
+          "strength": "strong"
+        },
+        {
+          "text": "Kakashi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-itachi-uchiha",
+      "franchiseId": "naruto",
+      "name": "Itachi Uchiha",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Itachi Uchiha",
+          "strength": "strong"
+        },
+        {
+          "text": "Itachi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-sakura-haruno",
+      "franchiseId": "naruto",
+      "name": "Sakura Haruno",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Sakura Haruno",
+          "strength": "strong"
+        },
+        {
+          "text": "Sakura",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-hinata-hyuga",
+      "franchiseId": "naruto",
+      "name": "Hinata Hyuga",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Hinata Hyuga",
+          "strength": "strong"
+        },
+        {
+          "text": "Hinata Hyuuga",
+          "strength": "strong"
+        },
+        {
+          "text": "Hinata",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-tsunade",
+      "franchiseId": "naruto",
+      "name": "Tsunade",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Tsunade Naruto",
+          "strength": "strong"
+        },
+        {
+          "text": "Tsunade",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "naruto-ino-yamanaka",
+      "franchiseId": "naruto",
+      "name": "Ino Yamanaka",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Ino Yamanaka",
+          "strength": "strong"
+        },
+        {
+          "text": "Ino",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-monkey-d-luffy",
+      "franchiseId": "one-piece",
+      "name": "Monkey D. Luffy",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Monkey D Luffy",
+          "strength": "strong"
+        },
+        {
+          "text": "Luffy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-roronoa-zoro",
+      "franchiseId": "one-piece",
+      "name": "Roronoa Zoro",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Roronoa Zoro",
+          "strength": "strong"
+        },
+        {
+          "text": "Zoro",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-sanji-vinsmoke",
+      "franchiseId": "one-piece",
+      "name": "Sanji Vinsmoke",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Sanji Vinsmoke",
+          "strength": "strong"
+        },
+        {
+          "text": "Vinsmoke Sanji",
+          "strength": "strong"
+        },
+        {
+          "text": "Sanji",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-trafalgar-law",
+      "franchiseId": "one-piece",
+      "name": "Trafalgar Law",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Trafalgar Law",
+          "strength": "strong"
+        },
+        {
+          "text": "Trafalgar D Water Law",
+          "strength": "strong"
+        },
+        {
+          "text": "Law",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-nami",
+      "franchiseId": "one-piece",
+      "name": "Nami",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Nami One Piece",
+          "strength": "strong"
+        },
+        {
+          "text": "Nami",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-nico-robin",
+      "franchiseId": "one-piece",
+      "name": "Nico Robin",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Nico Robin",
+          "strength": "strong"
+        },
+        {
+          "text": "Robin",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "one-piece-boa-hancock",
+      "franchiseId": "one-piece",
+      "name": "Boa Hancock",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Boa Hancock",
+          "strength": "strong"
+        },
+        {
+          "text": "Hancock",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "demon-slayer-tanjiro-kamado",
+      "franchiseId": "demon-slayer",
+      "name": "Tanjiro Kamado",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Tanjiro Kamado",
+          "strength": "strong"
+        },
+        {
+          "text": "Tanjirou Kamado",
+          "strength": "strong"
+        },
+        {
+          "text": "Tanjiro",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "demon-slayer-zenitsu-agatsuma",
+      "franchiseId": "demon-slayer",
+      "name": "Zenitsu Agatsuma",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Zenitsu Agatsuma",
+          "strength": "strong"
+        },
+        {
+          "text": "Zenitsu",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "demon-slayer-inosuke-hashibira",
+      "franchiseId": "demon-slayer",
+      "name": "Inosuke Hashibira",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Inosuke Hashibira",
+          "strength": "strong"
+        },
+        {
+          "text": "Inosuke",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "demon-slayer-nezuko-kamado",
+      "franchiseId": "demon-slayer",
+      "name": "Nezuko Kamado",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Nezuko Kamado",
+          "strength": "strong"
+        },
+        {
+          "text": "Nezuko",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "demon-slayer-shinobu-kocho",
+      "franchiseId": "demon-slayer",
+      "name": "Shinobu Kocho",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Shinobu Kocho",
+          "strength": "strong"
+        },
+        {
+          "text": "Shinobu Kochou",
+          "strength": "strong"
+        },
+        {
+          "text": "Shinobu",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "demon-slayer-mitsuri-kanroji",
+      "franchiseId": "demon-slayer",
+      "name": "Mitsuri Kanroji",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Mitsuri Kanroji",
+          "strength": "strong"
+        },
+        {
+          "text": "Mitsuri",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "chainsaw-man-denji",
+      "franchiseId": "chainsaw-man",
+      "name": "Denji",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Denji Chainsaw Man",
+          "strength": "strong"
+        },
+        {
+          "text": "Denji",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "chainsaw-man-aki-hayakawa",
+      "franchiseId": "chainsaw-man",
+      "name": "Aki Hayakawa",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Aki Hayakawa",
+          "strength": "strong"
+        },
+        {
+          "text": "Aki",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "chainsaw-man-kishibe",
+      "franchiseId": "chainsaw-man",
+      "name": "Kishibe",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Kishibe Chainsaw Man",
+          "strength": "strong"
+        },
+        {
+          "text": "Kishibe",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "chainsaw-man-makima",
+      "franchiseId": "chainsaw-man",
+      "name": "Makima",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Makima Chainsaw Man",
+          "strength": "strong"
+        },
+        {
+          "text": "Makima",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "chainsaw-man-power",
+      "franchiseId": "chainsaw-man",
+      "name": "Power",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Power Chainsaw Man",
+          "strength": "strong"
+        },
+        {
+          "text": "Power",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "chainsaw-man-kobeni-higashiyama",
+      "franchiseId": "chainsaw-man",
+      "name": "Kobeni Higashiyama",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Kobeni Higashiyama",
+          "strength": "strong"
+        },
+        {
+          "text": "Kobeni",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "attack-on-titan-eren-yeager",
+      "franchiseId": "attack-on-titan",
+      "name": "Eren Yeager",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Eren Yeager",
+          "strength": "strong"
+        },
+        {
+          "text": "Eren Jaeger",
+          "strength": "strong"
+        },
+        {
+          "text": "Eren",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "attack-on-titan-levi-ackerman",
+      "franchiseId": "attack-on-titan",
+      "name": "Levi Ackerman",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Levi Ackerman",
+          "strength": "strong"
+        },
+        {
+          "text": "Levi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "attack-on-titan-armin-arlert",
+      "franchiseId": "attack-on-titan",
+      "name": "Armin Arlert",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Armin Arlert",
+          "strength": "strong"
+        },
+        {
+          "text": "Armin",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "attack-on-titan-mikasa-ackerman",
+      "franchiseId": "attack-on-titan",
+      "name": "Mikasa Ackerman",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Mikasa Ackerman",
+          "strength": "strong"
+        },
+        {
+          "text": "Mikasa",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "attack-on-titan-annie-leonhart",
+      "franchiseId": "attack-on-titan",
+      "name": "Annie Leonhart",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Annie Leonhart",
+          "strength": "strong"
+        },
+        {
+          "text": "Annie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "attack-on-titan-historia-reiss",
+      "franchiseId": "attack-on-titan",
+      "name": "Historia Reiss",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Historia Reiss",
+          "strength": "strong"
+        },
+        {
+          "text": "Historia",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "dragon-ball-son-goku",
+      "franchiseId": "dragon-ball",
+      "name": "Son Goku",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Son Goku",
+          "strength": "strong"
+        },
+        {
+          "text": "Goku Dragon Ball",
+          "strength": "strong"
+        },
+        {
+          "text": "Goku",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "dragon-ball-vegeta",
+      "franchiseId": "dragon-ball",
+      "name": "Vegeta",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Vegeta Dragon Ball",
+          "strength": "strong"
+        },
+        {
+          "text": "Vegeta",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "dragon-ball-gohan",
+      "franchiseId": "dragon-ball",
+      "name": "Gohan",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Son Gohan",
+          "strength": "strong"
+        },
+        {
+          "text": "Gohan Dragon Ball",
+          "strength": "strong"
+        },
+        {
+          "text": "Gohan",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "dragon-ball-bulma",
+      "franchiseId": "dragon-ball",
+      "name": "Bulma",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Bulma Dragon Ball",
+          "strength": "strong"
+        },
+        {
+          "text": "Bulma",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "dragon-ball-android-18",
+      "franchiseId": "dragon-ball",
+      "name": "Android 18",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Android 18 Dragon Ball",
+          "strength": "strong"
+        },
+        {
+          "text": "Android 18",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "five-nights-at-freddys-freddy-fazbear",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "Freddy Fazbear",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Freddy Fazbear",
+          "strength": "strong"
+        },
+        {
+          "text": "Freddy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "five-nights-at-freddys-william-afton",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "William Afton",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "William Afton",
+          "strength": "strong"
+        },
+        {
+          "text": "Purple Guy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "five-nights-at-freddys-michael-afton",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "Michael Afton",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Michael Afton",
+          "strength": "strong"
+        },
+        {
+          "text": "Mike",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "five-nights-at-freddys-bonnie",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "Bonnie",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Bonnie FNAF",
+          "strength": "strong"
+        },
+        {
+          "text": "Bonnie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "five-nights-at-freddys-glamrock-chica",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "Glamrock Chica",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Glamrock Chica",
+          "strength": "strong"
+        },
+        {
+          "text": "Chica",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "five-nights-at-freddys-roxanne-wolf",
+      "franchiseId": "five-nights-at-freddys",
+      "name": "Roxanne Wolf",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Roxanne Wolf",
+          "strength": "strong"
+        },
+        {
+          "text": "Roxy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "harry-potter-harry-potter",
+      "franchiseId": "harry-potter",
+      "name": "Harry Potter",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Harry Potter",
+          "strength": "strong"
+        },
+        {
+          "text": "Harry",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "harry-potter-draco-malfoy",
+      "franchiseId": "harry-potter",
+      "name": "Draco Malfoy",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Draco Malfoy",
+          "strength": "strong"
+        },
+        {
+          "text": "Draco",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "harry-potter-severus-snape",
+      "franchiseId": "harry-potter",
+      "name": "Severus Snape",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Severus Snape",
+          "strength": "strong"
+        },
+        {
+          "text": "Snape",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "harry-potter-hermione-granger",
+      "franchiseId": "harry-potter",
+      "name": "Hermione Granger",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Hermione Granger",
+          "strength": "strong"
+        },
+        {
+          "text": "Hermione",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "harry-potter-luna-lovegood",
+      "franchiseId": "harry-potter",
+      "name": "Luna Lovegood",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Luna Lovegood",
+          "strength": "strong"
+        },
+        {
+          "text": "Luna",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "harry-potter-ginny-weasley",
+      "franchiseId": "harry-potter",
+      "name": "Ginny Weasley",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Ginny Weasley",
+          "strength": "strong"
+        },
+        {
+          "text": "Ginny",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "star-wars-luke-skywalker",
+      "franchiseId": "star-wars",
+      "name": "Luke Skywalker",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Luke Skywalker",
+          "strength": "strong"
+        },
+        {
+          "text": "Luke",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "star-wars-anakin-skywalker",
+      "franchiseId": "star-wars",
+      "name": "Anakin Skywalker",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Anakin Skywalker",
+          "strength": "strong"
+        },
+        {
+          "text": "Darth Vader",
+          "strength": "strong"
+        },
+        {
+          "text": "Anakin",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "star-wars-obi-wan-kenobi",
+      "franchiseId": "star-wars",
+      "name": "Obi-Wan Kenobi",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Obi Wan Kenobi",
+          "strength": "strong"
+        },
+        {
+          "text": "Obi-Wan Kenobi",
+          "strength": "strong"
+        },
+        {
+          "text": "Obi Wan",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "star-wars-leia-organa",
+      "franchiseId": "star-wars",
+      "name": "Leia Organa",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Leia Organa",
+          "strength": "strong"
+        },
+        {
+          "text": "Princess Leia",
+          "strength": "strong"
+        },
+        {
+          "text": "Leia",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "star-wars-padme-amidala",
+      "franchiseId": "star-wars",
+      "name": "Padme Amidala",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Padme Amidala",
+          "strength": "strong"
+        },
+        {
+          "text": "Padmé Amidala",
+          "strength": "strong"
+        },
+        {
+          "text": "Padme",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "star-wars-ahsoka-tano",
+      "franchiseId": "star-wars",
+      "name": "Ahsoka Tano",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Ahsoka Tano",
+          "strength": "strong"
+        },
+        {
+          "text": "Ahsoka",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "pokemon-ash-ketchum",
+      "franchiseId": "pokemon",
+      "name": "Ash Ketchum",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Ash Ketchum",
+          "strength": "strong"
+        },
+        {
+          "text": "Satoshi Pokemon",
+          "strength": "strong"
+        },
+        {
+          "text": "Ash",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "pokemon-brock",
+      "franchiseId": "pokemon",
+      "name": "Brock",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Brock Pokemon",
+          "strength": "strong"
+        },
+        {
+          "text": "Brock",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "pokemon-professor-oak",
+      "franchiseId": "pokemon",
+      "name": "Professor Oak",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Professor Oak",
+          "strength": "strong"
+        },
+        {
+          "text": "Samuel Oak",
+          "strength": "strong"
+        },
+        {
+          "text": "Oak",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "pokemon-misty",
+      "franchiseId": "pokemon",
+      "name": "Misty",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Misty Pokemon",
+          "strength": "strong"
+        },
+        {
+          "text": "Misty",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "pokemon-cynthia",
+      "franchiseId": "pokemon",
+      "name": "Cynthia",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Cynthia Pokemon",
+          "strength": "strong"
+        },
+        {
+          "text": "Cynthia",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "pokemon-jessie",
+      "franchiseId": "pokemon",
+      "name": "Jessie",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Jessie Team Rocket",
+          "strength": "strong"
+        },
+        {
+          "text": "Jessie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "baldurs-gate-3-astarion",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Astarion",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Astarion",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "baldurs-gate-3-gale-dekarios",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Gale Dekarios",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Gale Dekarios",
+          "strength": "strong"
+        },
+        {
+          "text": "Gale BG3",
+          "strength": "strong"
+        },
+        {
+          "text": "Gale",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "baldurs-gate-3-wyll-ravengard",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Wyll Ravengard",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Wyll Ravengard",
+          "strength": "strong"
+        },
+        {
+          "text": "Wyll",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "baldurs-gate-3-shadowheart",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Shadowheart",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Shadowheart",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "baldurs-gate-3-karlach",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Karlach",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Karlach",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "baldurs-gate-3-lae-zel",
+      "franchiseId": "baldurs-gate-3",
+      "name": "Lae'zel",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Lae'zel",
+          "strength": "strong"
+        },
+        {
+          "text": "Laezel",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "cyberpunk-2077-johnny-silverhand",
+      "franchiseId": "cyberpunk-2077",
+      "name": "Johnny Silverhand",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Johnny Silverhand",
+          "strength": "strong"
+        },
+        {
+          "text": "Silverhand",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "cyberpunk-2077-viktor-vektor",
+      "franchiseId": "cyberpunk-2077",
+      "name": "Viktor Vektor",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Viktor Vektor",
+          "strength": "strong"
+        },
+        {
+          "text": "Vik",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "cyberpunk-2077-david-martinez",
+      "franchiseId": "cyberpunk-2077",
+      "name": "David Martinez",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "David Martinez Edgerunners",
+          "strength": "strong"
+        },
+        {
+          "text": "David",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "cyberpunk-2077-judy-alvarez",
+      "franchiseId": "cyberpunk-2077",
+      "name": "Judy Alvarez",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Judy Alvarez",
+          "strength": "strong"
+        },
+        {
+          "text": "Judy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "cyberpunk-2077-panam-palmer",
+      "franchiseId": "cyberpunk-2077",
+      "name": "Panam Palmer",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Panam Palmer",
+          "strength": "strong"
+        },
+        {
+          "text": "Panam",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "cyberpunk-2077-lucy-kushinada",
+      "franchiseId": "cyberpunk-2077",
+      "name": "Lucy Kushinada",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Lucy Kushinada",
+          "strength": "strong"
+        },
+        {
+          "text": "Lucy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-witcher-geralt-of-rivia",
+      "franchiseId": "the-witcher",
+      "name": "Geralt of Rivia",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Geralt of Rivia",
+          "strength": "strong"
+        },
+        {
+          "text": "Geralt",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-witcher-jaskier",
+      "franchiseId": "the-witcher",
+      "name": "Jaskier",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Jaskier Witcher",
+          "strength": "strong"
+        },
+        {
+          "text": "Dandelion Witcher",
+          "strength": "strong"
+        },
+        {
+          "text": "Jaskier",
+          "strength": "contextual"
+        },
+        {
+          "text": "Dandelion",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-witcher-yennefer-of-vengerberg",
+      "franchiseId": "the-witcher",
+      "name": "Yennefer of Vengerberg",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Yennefer of Vengerberg",
+          "strength": "strong"
+        },
+        {
+          "text": "Yennefer",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-witcher-triss-merigold",
+      "franchiseId": "the-witcher",
+      "name": "Triss Merigold",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Triss Merigold",
+          "strength": "strong"
+        },
+        {
+          "text": "Triss",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-witcher-ciri",
+      "franchiseId": "the-witcher",
+      "name": "Ciri",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Cirilla Fiona Elen Riannon",
+          "strength": "strong"
+        },
+        {
+          "text": "Ciri Witcher",
+          "strength": "strong"
+        },
+        {
+          "text": "Ciri",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-gabriel-reyes",
+      "franchiseId": "overwatch",
+      "name": "Gabriel Reyes",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Gabriel Reyes Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "Reaper Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "Reaper",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-genji-shimada",
+      "franchiseId": "overwatch",
+      "name": "Genji Shimada",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Genji Shimada",
+          "strength": "strong"
+        },
+        {
+          "text": "Genji",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-hanzo-shimada",
+      "franchiseId": "overwatch",
+      "name": "Hanzo Shimada",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Hanzo Shimada",
+          "strength": "strong"
+        },
+        {
+          "text": "Hanzo",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-angela-ziegler",
+      "franchiseId": "overwatch",
+      "name": "Angela Ziegler",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Angela Ziegler",
+          "strength": "strong"
+        },
+        {
+          "text": "Mercy Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "Mercy",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-hana-song",
+      "franchiseId": "overwatch",
+      "name": "Hana Song",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Hana Song",
+          "strength": "strong"
+        },
+        {
+          "text": "DVa Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "D Va Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "DVa",
+          "strength": "contextual"
+        },
+        {
+          "text": "D Va",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-kiriko-kamori",
+      "franchiseId": "overwatch",
+      "name": "Kiriko Kamori",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Kiriko Kamori",
+          "strength": "strong"
+        },
+        {
+          "text": "Kiriko",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "overwatch-amelie-lacroix",
+      "franchiseId": "overwatch",
+      "name": "Amelie Lacroix",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Amelie Lacroix",
+          "strength": "strong"
+        },
+        {
+          "text": "Widowmaker Overwatch",
+          "strength": "strong"
+        },
+        {
+          "text": "Widowmaker",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "final-fantasy-vii-cloud-strife",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Cloud Strife",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Cloud Strife",
+          "strength": "strong"
+        },
+        {
+          "text": "Cloud",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "final-fantasy-vii-sephiroth",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Sephiroth",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Sephiroth",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "final-fantasy-vii-zack-fair",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Zack Fair",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Zack Fair",
+          "strength": "strong"
+        },
+        {
+          "text": "Zack",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "final-fantasy-vii-tifa-lockhart",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Tifa Lockhart",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Tifa Lockhart",
+          "strength": "strong"
+        },
+        {
+          "text": "Tifa",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "final-fantasy-vii-aerith-gainsborough",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Aerith Gainsborough",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Aerith Gainsborough",
+          "strength": "strong"
+        },
+        {
+          "text": "Aeris Gainsborough",
+          "strength": "strong"
+        },
+        {
+          "text": "Aerith",
+          "strength": "contextual"
+        },
+        {
+          "text": "Aeris",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "final-fantasy-vii-yuffie-kisaragi",
+      "franchiseId": "final-fantasy-vii",
+      "name": "Yuffie Kisaragi",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Yuffie Kisaragi",
+          "strength": "strong"
+        },
+        {
+          "text": "Yuffie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-legend-of-zelda-link",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "Link",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Link Legend of Zelda",
+          "strength": "strong"
+        },
+        {
+          "text": "Link",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-legend-of-zelda-ganondorf",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "Ganondorf",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Ganondorf",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-legend-of-zelda-sidon",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "Sidon",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Prince Sidon Zelda",
+          "strength": "strong"
+        },
+        {
+          "text": "Sidon",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-legend-of-zelda-princess-zelda",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "Princess Zelda",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Princess Zelda",
+          "strength": "strong"
+        },
+        {
+          "text": "Zelda Hyrule",
+          "strength": "strong"
+        },
+        {
+          "text": "Zelda",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-legend-of-zelda-impa",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "Impa",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Impa Zelda",
+          "strength": "strong"
+        },
+        {
+          "text": "Impa",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "the-legend-of-zelda-midna",
+      "franchiseId": "the-legend-of-zelda",
+      "name": "Midna",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Midna",
+          "strength": "strong"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-ekko",
+      "franchiseId": "league-of-legends",
+      "name": "Ekko",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Ekko League of Legends",
+          "strength": "strong"
+        },
+        {
+          "text": "Ekko",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-jayce-talis",
+      "franchiseId": "league-of-legends",
+      "name": "Jayce Talis",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Jayce Talis",
+          "strength": "strong"
+        },
+        {
+          "text": "Jayce",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-viktor",
+      "franchiseId": "league-of-legends",
+      "name": "Viktor",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Viktor Arcane",
+          "strength": "strong"
+        },
+        {
+          "text": "Viktor League of Legends",
+          "strength": "strong"
+        },
+        {
+          "text": "Viktor",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-jinx",
+      "franchiseId": "league-of-legends",
+      "name": "Jinx",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Jinx Arcane",
+          "strength": "strong"
+        },
+        {
+          "text": "Jinx League of Legends",
+          "strength": "strong"
+        },
+        {
+          "text": "Jinx",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-vi",
+      "franchiseId": "league-of-legends",
+      "name": "Vi",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Vi Arcane",
+          "strength": "strong"
+        },
+        {
+          "text": "Vi League of Legends",
+          "strength": "strong"
+        },
+        {
+          "text": "Vi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-caitlyn-kiramman",
+      "franchiseId": "league-of-legends",
+      "name": "Caitlyn Kiramman",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Caitlyn Kiramman",
+          "strength": "strong"
+        },
+        {
+          "text": "Caitlyn",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "league-of-legends-mel-medarda",
+      "franchiseId": "league-of-legends",
+      "name": "Mel Medarda",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Mel Medarda",
+          "strength": "strong"
+        },
+        {
+          "text": "Mel",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "hazbin-hotel-alastor",
+      "franchiseId": "hazbin-hotel",
+      "name": "Alastor",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Alastor Hazbin",
+          "strength": "strong"
+        },
+        {
+          "text": "Alastor",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "hazbin-hotel-angel-dust",
+      "franchiseId": "hazbin-hotel",
+      "name": "Angel Dust",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Angel Dust Hazbin",
+          "strength": "strong"
+        },
+        {
+          "text": "Angel Dust",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "hazbin-hotel-lucifer-morningstar",
+      "franchiseId": "hazbin-hotel",
+      "name": "Lucifer Morningstar",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Lucifer Morningstar Hazbin",
+          "strength": "strong"
+        },
+        {
+          "text": "Lucifer",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "hazbin-hotel-charlie-morningstar",
+      "franchiseId": "hazbin-hotel",
+      "name": "Charlie Morningstar",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Charlie Morningstar",
+          "strength": "strong"
+        },
+        {
+          "text": "Charlie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "hazbin-hotel-vaggie",
+      "franchiseId": "hazbin-hotel",
+      "name": "Vaggie",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Vaggie Hazbin",
+          "strength": "strong"
+        },
+        {
+          "text": "Vaggie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "hazbin-hotel-niffty",
+      "franchiseId": "hazbin-hotel",
+      "name": "Niffty",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Niffty Hazbin",
+          "strength": "strong"
+        },
+        {
+          "text": "Niffty",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "undertale-sans",
+      "franchiseId": "undertale",
+      "name": "Sans",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Sans Undertale",
+          "strength": "strong"
+        },
+        {
+          "text": "Sans",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "undertale-papyrus",
+      "franchiseId": "undertale",
+      "name": "Papyrus",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Papyrus Undertale",
+          "strength": "strong"
+        },
+        {
+          "text": "Papyrus",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "undertale-asgore-dreemurr",
+      "franchiseId": "undertale",
+      "name": "Asgore Dreemurr",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Asgore Dreemurr",
+          "strength": "strong"
+        },
+        {
+          "text": "Asgore",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "undertale-toriel",
+      "franchiseId": "undertale",
+      "name": "Toriel",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Toriel Undertale",
+          "strength": "strong"
+        },
+        {
+          "text": "Toriel",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "undertale-undyne",
+      "franchiseId": "undertale",
+      "name": "Undyne",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Undyne Undertale",
+          "strength": "strong"
+        },
+        {
+          "text": "Undyne",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "undertale-alphys",
+      "franchiseId": "undertale",
+      "name": "Alphys",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Alphys Undertale",
+          "strength": "strong"
+        },
+        {
+          "text": "Alphys",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "death-note-light-yagami",
+      "franchiseId": "death-note",
+      "name": "Light Yagami",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Light Yagami",
+          "strength": "strong"
+        },
+        {
+          "text": "Light",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "death-note-l-lawliet",
+      "franchiseId": "death-note",
+      "name": "L Lawliet",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "L Lawliet",
+          "strength": "strong"
+        },
+        {
+          "text": "Ryuzaki Death Note",
+          "strength": "strong"
+        },
+        {
+          "text": "L",
+          "strength": "contextual"
+        },
+        {
+          "text": "Ryuzaki",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "death-note-near",
+      "franchiseId": "death-note",
+      "name": "Near",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Near Death Note",
+          "strength": "strong"
+        },
+        {
+          "text": "Nate River",
+          "strength": "strong"
+        },
+        {
+          "text": "Near",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "death-note-misa-amane",
+      "franchiseId": "death-note",
+      "name": "Misa Amane",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Misa Amane",
+          "strength": "strong"
+        },
+        {
+          "text": "Misa",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "death-note-kiyomi-takada",
+      "franchiseId": "death-note",
+      "name": "Kiyomi Takada",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Kiyomi Takada",
+          "strength": "strong"
+        },
+        {
+          "text": "Kiyomi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "death-note-naomi-misora",
+      "franchiseId": "death-note",
+      "name": "Naomi Misora",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Naomi Misora",
+          "strength": "strong"
+        },
+        {
+          "text": "Naomi",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
     }
   ],
   "groups": [
@@ -1317,6 +4823,87 @@
       ],
       "gender": "unknown",
       "note": "Multi-character group. Gender of the primary bot character remains unknown."
+    },
+    {
+      "id": "straw-hat-pirates",
+      "franchiseId": "one-piece",
+      "name": "Straw Hat Pirates",
+      "aliases": [
+        "Straw Hat Pirates",
+        "Straw Hats",
+        "Strawhat Pirates"
+      ],
+      "memberIds": [
+        "one-piece-monkey-d-luffy",
+        "one-piece-roronoa-zoro",
+        "one-piece-sanji-vinsmoke",
+        "one-piece-nami",
+        "one-piece-nico-robin"
+      ],
+      "gender": "unknown",
+      "note": "Group mention alone never implies a single main character or gender"
+    },
+    {
+      "id": "team-rocket",
+      "franchiseId": "pokemon",
+      "name": "Team Rocket",
+      "aliases": [
+        "Team Rocket",
+        "Rocket Trio"
+      ],
+      "memberIds": [
+        "pokemon-jessie"
+      ],
+      "gender": "unknown",
+      "note": "Group mention alone never implies a single main character or gender"
+    },
+    {
+      "id": "akatsuki",
+      "franchiseId": "naruto",
+      "name": "Akatsuki",
+      "aliases": [
+        "Akatsuki",
+        "Akatsuki Naruto"
+      ],
+      "memberIds": [
+        "naruto-itachi-uchiha"
+      ],
+      "gender": "unknown",
+      "note": "Group mention alone never implies a single main character or gender"
+    },
+    {
+      "id": "survey-corps",
+      "franchiseId": "attack-on-titan",
+      "name": "Survey Corps",
+      "aliases": [
+        "Survey Corps AOT",
+        "Survey Corps",
+        "Scout Regiment AOT"
+      ],
+      "memberIds": [
+        "attack-on-titan-levi-ackerman",
+        "attack-on-titan-eren-yeager",
+        "attack-on-titan-mikasa-ackerman"
+      ],
+      "gender": "unknown",
+      "note": "Group mention alone never implies a single main character or gender"
+    },
+    {
+      "id": "team-7",
+      "franchiseId": "naruto",
+      "name": "Team 7",
+      "aliases": [
+        "Naruto Team 7",
+        "Team Seven Naruto"
+      ],
+      "memberIds": [
+        "naruto-naruto-uzumaki",
+        "naruto-sasuke-uchiha",
+        "naruto-sakura-haruno",
+        "naruto-kakashi-hatake"
+      ],
+      "gender": "unknown",
+      "note": "Group mention alone never implies a single main character or gender"
     }
   ]
 }

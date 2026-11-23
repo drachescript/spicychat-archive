@@ -14,8 +14,8 @@ catalog=json.loads((ROOT/"data"/"block-presets"/"catalog.json").read_text(encodi
 class BlockingPresetTests(unittest.TestCase):
     def test_catalog_integrity(self):
         pub.validate(catalog)
-        self.assertEqual(len([p for p in catalog["presets"] if p["kind"]=="franchise"]),8)
-        self.assertEqual(len(catalog["characters"]),42)
+        self.assertEqual(len([p for p in catalog["presets"] if p["kind"]=="franchise"]),31)
+        self.assertEqual(len(catalog["characters"]),187)
         self.assertTrue(all(p["enabledByDefault"] is False for p in catalog["presets"]))
         self.assertNotIn("theory",json.dumps(catalog).lower())
     def test_normalization_and_boundaries(self):

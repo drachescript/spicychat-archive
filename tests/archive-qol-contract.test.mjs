@@ -18,6 +18,9 @@ test('blocking preset catalog matches the manifest used by QoL',()=>{
   assert.equal(p.catalogVersion,c.catalogVersion);
   assert.equal(p.catalog,'https://spicychatarchive.drache.uk/data/block-presets/catalog.json');
   assert.ok(c.presets.length<=500&&c.characters.length<=5000&&c.groups.length<=1000);
+  assert.equal(p.catalogVersion,3);
+  assert.equal(p.counts.franchises,31);
+  assert.equal(p.counts.characters,187);
   assert.ok(c.presets.every(x=>x.enabledByDefault===false));
   assert.ok(c.presets.some(x=>x.id==='franchise:call-of-duty'));
   assert.ok(c.characters.some(x=>x.id==='cod-ghost'));

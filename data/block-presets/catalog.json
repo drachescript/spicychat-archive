@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contract": "spicychat-archive-block-presets-v1",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "updatedAt": "2026-11-22",
   "matchPolicy": {
     "sourceFields": [
@@ -1218,10 +1218,6 @@
           "strength": "strong"
         },
         {
-          "text": "Helluva Boss",
-          "strength": "strong"
-        },
-        {
           "text": "Hazbin",
           "strength": "contextual"
         }
@@ -1297,6 +1293,36 @@
         "death-note-misa-amane",
         "death-note-kiyomi-takada",
         "death-note-naomi-misora"
+      ],
+      "groupIds": [],
+      "modes": [
+        "all",
+        "keep-female",
+        "keep-male",
+        "custom"
+      ],
+      "recommendedMode": "all",
+      "enabledByDefault": false
+    },
+    {
+      "id": "franchise:helluva-boss",
+      "kind": "franchise",
+      "franchiseId": "helluva-boss",
+      "name": "Helluva Boss",
+      "category": "animation",
+      "aliases": [
+        {
+          "text": "Helluva Boss",
+          "strength": "strong"
+        }
+      ],
+      "characterIds": [
+        "helluva-boss-stolas",
+        "helluva-boss-blitz",
+        "helluva-boss-moxxie",
+        "helluva-boss-millie",
+        "helluva-boss-loona",
+        "helluva-boss-octavia"
       ],
       "groupIds": [],
       "modes": [
@@ -2401,12 +2427,24 @@
       "gender": "female",
       "aliases": [
         {
-          "text": "March 7th",
+          "text": "March 7th Honkai",
           "strength": "strong"
         },
         {
-          "text": "March Seventh",
+          "text": "March 7th Star Rail",
           "strength": "strong"
+        },
+        {
+          "text": "March Seventh Honkai",
+          "strength": "strong"
+        },
+        {
+          "text": "March 7th",
+          "strength": "contextual"
+        },
+        {
+          "text": "March Seventh",
+          "strength": "contextual"
         }
       ],
       "reviewStatus": "seed-curated",
@@ -4783,6 +4821,122 @@
       ],
       "reviewStatus": "seed-curated",
       "note": "Canonical character identity only; not proof of a bot's gender or roleplay variation"
+    },
+    {
+      "id": "helluva-boss-stolas",
+      "franchiseId": "helluva-boss",
+      "name": "Stolas",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Stolas Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Stolas",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only, not proof of a bot's roleplay or gender variant"
+    },
+    {
+      "id": "helluva-boss-blitz",
+      "franchiseId": "helluva-boss",
+      "name": "Blitzø",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Blitzo Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Blitz Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Blitz",
+          "strength": "contextual"
+        },
+        {
+          "text": "Blitzo",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only, not proof of a bot's roleplay or gender variant"
+    },
+    {
+      "id": "helluva-boss-moxxie",
+      "franchiseId": "helluva-boss",
+      "name": "Moxxie",
+      "gender": "male",
+      "aliases": [
+        {
+          "text": "Moxxie Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Moxxie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only, not proof of a bot's roleplay or gender variant"
+    },
+    {
+      "id": "helluva-boss-millie",
+      "franchiseId": "helluva-boss",
+      "name": "Millie",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Millie Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Millie",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only, not proof of a bot's roleplay or gender variant"
+    },
+    {
+      "id": "helluva-boss-loona",
+      "franchiseId": "helluva-boss",
+      "name": "Loona",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Loona Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Loona",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only, not proof of a bot's roleplay or gender variant"
+    },
+    {
+      "id": "helluva-boss-octavia",
+      "franchiseId": "helluva-boss",
+      "name": "Octavia",
+      "gender": "female",
+      "aliases": [
+        {
+          "text": "Octavia Helluva Boss",
+          "strength": "strong"
+        },
+        {
+          "text": "Octavia",
+          "strength": "contextual"
+        }
+      ],
+      "reviewStatus": "seed-curated",
+      "note": "Canonical character identity only, not proof of a bot's roleplay or gender variant"
     }
   ],
   "groups": [

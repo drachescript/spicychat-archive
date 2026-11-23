@@ -11,7 +11,7 @@ A separate, **opt-in** name/title blocking-preset catalog for use by DragonScrip
 - Reference matcher: https://spicychatarchive.drache.uk/assets/block-preset-matcher.js
 - Weekly discovery (once populated): https://data.spicychatarchive.drache.uk/indexes/block-presets/discovery.json
 
-The catalog contains `8` seeded media/franchise presets, `42` curated character identities, `2` groups, and `5` optional title-keyword theme presets. All are **OFF by default**. The Archive can add new presets/aliases after reviewing deterministic candidate discovery; newly observed strings are never silently trusted or applied.
+The catalog contains `31` seeded media/franchise presets, `187` curated character identities, `7` groups, and `5` optional title-keyword theme presets. All are **OFF by default**. The Archive can add new presets/aliases after reviewing deterministic candidate discovery; newly observed strings are never silently trusted or applied.
 
 ## Independent options
 
@@ -29,8 +29,10 @@ The words `theory` and other unrelated ambiguous generic terms are **not preset 
 
 ## Versioning and optional discovery
 
-Catalog version `1`; stable IDs and explicit `schemaVersion`. QoL should check the small manifest, fetch the catalog only on opt-in and on a changed catalogVersion, and cache locally; no per-card requests. Local matching uses the existing dirty-card pipeline, batching and on-demand modules. Failure to load presets must not affect manual blocked words, Community Themes, or other QoL functions.
+Catalog version `3`; stable IDs and explicit `schemaVersion`. QoL should check the small manifest, fetch the catalog only on opt-in and on a changed catalogVersion, and cache locally; no per-card requests. Local matching uses the existing dirty-card pipeline, batching and on-demand modules. Failure to load presets must not affect manual blocked words, Community Themes, or other QoL functions.
 
 Weekly discovery aggregates the existing 256 public Archive creator-index shards. It counts observed franchise/character alias patterns and prepares **review-only candidate phrases** from public titles; no million individual bot reads or automatic trusted alias additions. Candidate frequencies **do not prove** franchise membership. Title signals are public archival observations, including deleted or no-longer-public records; not a live count or full site coverage.
+
+The initial expansion adds 23 new franchise choices including Genshin Impact, Honkai Star Rail, Naruto, One Piece, Overwatch, Baldur's Gate 3 and Helluva Boss. Helluva Boss and Hazbin Hotel are separate choices. Short or generic nicknames (e.g. March 7th, Power, Link, V, Jinx) do **not** match without more franchise context.
 
 A reviewed alias/character addition should be committed to the catalog with regression cases and a version bump. Do not take reports as proof; require public evidence and allow corrections. No AI models, private chats, imported user blocked words, account details, or automatic permanent blocks / dislikes.

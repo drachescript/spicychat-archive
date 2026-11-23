@@ -12,9 +12,12 @@ from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "block-presets" / "catalog.json"
+REVIEW_LOG = ROOT / "data" / "block-presets" / "review-decisions.json"
+BOT_UUID = re.compile(r"^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$", re.I)
 SKIP = {"roleplay", "story", "the", "your", "chat", "scenario", "bot",
         "oc", "original", "female", "male", "girlfriend", "boyfriend",
         "wife", "husband", "friend", "enemy", "new", "role", "character"}
@@ -71,6 +74,42 @@ def validate(catalog: dict[str, Any]) -> None:
             raise ValueError("Invalid group members")
 
 
+def reviewed_decisions(catalog: dict[str, Any],
+                       log: dict[str, Any]) -> dict[tuple[str, str], str]:
+    """Only a manually reviewed catalog version can activate new aliases."""
+    if log.get("schemaVersion") != 1 or not isinstance(log.get("decisions"), list):
+        raise ValueError("Invalid blocking preset review log")
+    franchises = {p["id"]: p for p in catalog["presets"] if p["kind"] == "franchise"}
+    result = {}
+    for item in log["decisions"]:
+        if not isinstance(item, dict) or item.get("presetId") not in franchises:
+            raise ValueError("Review refers to unknown franchise")
+        text = norm(item.get("candidateText"))
+        verdict = item.get("decision")
+        if not text or len(text) > 60 or verdict not in {"accepted", "rejected"}:
+            raise ValueError("Invalid review candidate or decision")
+        if not re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ",
+                            str(item.get("reviewedAt") or "")):
+            raise ValueError("Review timestamp must be UTC ISO format")
+        url = urlsplit(str(item.get("evidenceUrl") or ""))
+        if (url.scheme != "https" or url.hostname not in
+                {"spicychat.ai", "spicychatarchive.drache.uk"} or
+                url.username or url.password):
+            raise ValueError("Review must reference public Archive/SpicyChat evidence")
+        if not str(item.get("reason") or "").strip():
+            raise ValueError("Review must explain approval or rejection")
+        key = (item["presetId"], text)
+        if key in result:
+            raise ValueError("Duplicate review decision")
+        if verdict == "accepted":
+            active = {norm(alias["text"]) for alias in
+                      franchises[item["presetId"]]["aliases"]}
+            if text not in active:
+                raise ValueError("Accepted alias must first be promoted to versioned catalog")
+        result[key] = verdict
+    return result
+
+
 def candidate_suffix(title: str, preset: dict[str, Any]) -> str | None:
     # Review-only suggestions after explicit multi-word franchise references.
     for a in preset["aliases"]:
@@ -88,8 +127,11 @@ def candidate_suffix(title: str, preset: dict[str, Any]) -> str | None:
     return None
 
 
-def collect(shards: Iterable[dict[str, Any]], catalog: dict[str, Any]) -> dict[str, Any]:
+def collect(shards: Iterable[dict[str, Any]], catalog: dict[str, Any],
+            review_log: dict[str, Any] | None = None) -> dict[str, Any]:
     validate(catalog)
+    reviewed = reviewed_decisions(catalog, review_log or
+                                  {"schemaVersion": 1, "decisions": []})
     franchises = [p for p in catalog["presets"] if p["kind"] == "franchise"]
     by_franchise = defaultdict(list)
     group_by_franchise = defaultdict(list)
@@ -101,6 +143,7 @@ def collect(shards: Iterable[dict[str, Any]], catalog: dict[str, Any]) -> dict[s
     totals = Counter()
     characters = Counter()
     candidates = defaultdict(Counter)
+    examples: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     examined = 0
     for shard in shards:
         if not isinstance(shard, dict):
@@ -136,11 +179,20 @@ def collect(shards: Iterable[dict[str, Any]], catalog: dict[str, Any]) -> dict[s
                                                 for c in by_franchise[p["franchiseId"]]
                                                 for a in c["aliases"]):
                             candidates[p["id"]][possible] += 1
+                            key = (p["id"], possible)
+                            # Only publicly indexed title + bot UUID are
+                            # eligible for evidence, never definitions/chats.
+                            if BOT_UUID.fullmatch(str(bot_id)) and len(examples[key]) < 3:
+                                examples[key].append({"botId": str(bot_id).lower(),
+                                                      "title": raw[:150]})
     suggestions = [
         {"presetId": preset, "candidateText": candidate,
-         "observedTitleCount": count, "status": "review-needed"}
+         "observedTitleCount": count, "status": "review-needed",
+         "confidence": "unverified-pattern",
+         "examples": examples[(preset, candidate)]}
         for preset, counts in candidates.items()
-        for candidate, count in counts.items() if count >= 3
+        for candidate, count in counts.items()
+        if count >= 3 and (preset, candidate) not in reviewed
     ]
     suggestions.sort(key=lambda x: (-x["observedTitleCount"], x["presetId"], x["candidateText"]))
     return {
@@ -152,7 +204,10 @@ def collect(shards: Iterable[dict[str, Any]], catalog: dict[str, Any]) -> dict[s
         "presetMentions": dict(sorted(totals.items())),
         "characterMentions": dict(sorted(characters.items())),
         "reviewCandidates": suggestions[:200],
-        "reviewNotice": "Candidates are never automatically trusted or added as active aliases.",
+        "reviewLog": {"decisions": len(reviewed),
+                      "accepted": sum(v == "accepted" for v in reviewed.values()),
+                      "rejected": sum(v == "rejected" for v in reviewed.values())},
+        "reviewNotice": "Candidates are not active. Acceptance also requires a manually reviewed, versioned catalog update.",
         "method": "Deterministic string rules on archived public titles; no AI or per-bot requests"
     }
 
@@ -177,7 +232,9 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    reviews = json.loads(REVIEW_LOG.read_text(encoding="utf-8"))
     validate(catalog)
+    reviewed_decisions(catalog, reviews)
     import archive
     from publish_name_trends import _read_shards, CREATOR_SHARDS
     from storage_r2 import R2ArchiveStore
@@ -188,7 +245,8 @@ def main() -> int:
     if not store.is_migrated():
         print("Block presets: Archive not migrated", flush=True)
         return 1
-    payload = collect(_read_shards(store, "creators", CREATOR_SHARDS), catalog)
+    payload = collect(_read_shards(store, "creators", CREATOR_SHARDS),
+                      catalog, reviews)
     print("Block presets: " + format(payload["coverage"]["creatorIndexedBotsExamined"], ",") +
           " indexed bots, " + format(payload["coverage"]["franchiseMentions"], ",") +
           " franchise mentions", flush=True)

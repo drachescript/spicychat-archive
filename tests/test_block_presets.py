@@ -41,6 +41,35 @@ class BlockingPresetTests(unittest.TestCase):
         self.assertEqual(len([x for x in result["reviewCandidates"]
                               if x["candidateText"]=="unknown name"]),1)
         self.assertNotIn("activeAliases",result)
+    def test_review_queue_examples_and_suppression(self):
+        ids = ["11111111-1111-4111-8111-%012d" % i for i in (1, 2, 3)]
+        shard = {"creator": {"bots": {
+            id_: {"title": "Call of Duty: Unlisted Character", "status": "public"}
+            for id_ in ids
+        }}}
+        before = pub.collect([shard], catalog)
+        row = next(item for item in before["reviewCandidates"]
+                   if item["candidateText"] == "unlisted character")
+        self.assertEqual(row["status"], "review-needed")
+        self.assertEqual(row["confidence"], "unverified-pattern")
+        self.assertEqual(len(row["examples"]), 3)
+        self.assertEqual(row["examples"][0]["botId"], ids[0])
+        decision = {"schemaVersion": 1, "decisions": [{
+            "presetId": "franchise:call-of-duty",
+            "candidateText": "Unlisted Character",
+            "decision": "rejected",
+            "reviewedAt": "2026-11-22T00:00:00Z",
+            "evidenceUrl": "https://spicychatarchive.drache.uk/bot/?id="+ids[0],
+            "reason": "Generic story title, not a character alias"
+        }]}
+        after = pub.collect([shard], catalog, decision)
+        self.assertEqual(after["reviewCandidates"], [])
+        self.assertEqual(after["reviewLog"]["rejected"], 1)
+        invalid = {"schemaVersion":1,"decisions":[{**decision["decisions"][0],
+                    "decision":"accepted"}]}
+        with self.assertRaisesRegex(ValueError, "promoted"):
+            pub.collect([shard], catalog, invalid)
+
     def test_unchanged_snapshot_not_rewritten(self):
         store=Mock()
         store.key.side_effect=lambda *parts:"/".join(parts)

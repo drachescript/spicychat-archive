@@ -37,4 +37,6 @@ The initial expansion adds 23 new franchise choices including Genshin Impact, Ho
 
 Archive-discovered candidates now appear on the [preset library page](https://spicychatarchive.drache.uk/presets/). Public examples may accompany candidates; users can suggest a correction with the GitHub [preset review form](https://github.com/drachescript/spicychat-archive/issues/new/choose). Suggestions do not become active automatically.
 
+Decisions can be recorded in `data/block-presets/review-decisions.json` with `presetId`, `candidateText`, `decision` (`accepted` or `rejected`), `reviewedAt`, `evidenceUrl`, and `reason`. Rejected candidates stop resurfacing in discovery; accepted aliases must **also** be added to the versioned catalog or the publisher fails validation. Candidate evidence is restricted to up to three publicly indexed bot titles and IDs.
+
 A reviewed alias/character addition should be committed to the catalog with regression cases and a version bump. Do not take reports as proof; require public evidence and allow corrections. No AI models, private chats, imported user blocked words, account details, or automatic permanent blocks / dislikes.

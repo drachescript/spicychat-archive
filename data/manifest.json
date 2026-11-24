@@ -1,22 +1,22 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-24T00:19:26Z",
+  "generatedAt": "2026-11-24T02:55:20Z",
   "totalBots": 1483579,
   "activeBots": 1453204,
   "publicIndexBots": 1453204,
-  "publicIndexCountSource": "observed-this-run",
-  "publicIndexLastObservedAt": "2026-11-24T00:19:26Z",
-  "deletedBots": 28133,
+  "publicIndexCountSource": "carried-forward",
+  "publicIndexLastObservedAt": "2026-11-24T00:51:32Z",
+  "deletedBots": 29001,
   "restrictedBots": 0,
-  "missingBots": 1808,
+  "missingBots": 684,
   "reconciliation": {
     "trackedBots": 1483579,
     "publicIndexBots": 1453204,
-    "confirmedGoneBots": 28133,
-    "countGap": 2242,
-    "unreconciledBots": 2242,
+    "confirmedGoneBots": 29001,
+    "countGap": 1374,
+    "unreconciledBots": 1374,
     "publicCountBeyondTracked": 0,
-    "pendingVerificationBots": 1808,
+    "pendingVerificationBots": 684,
     "basis": "arithmetic-only-not-id-reconciliation",
     "countGapIsIdentifiedBotIds": false,
     "fullPerIdPublicComparisonComplete": false,
@@ -8643,21 +8643,21 @@
       "8c27ba61-a40b-4294-8bdb-6fd5088a283a"
     ]
   },
-  "lastScan": "2026-11-24T00:19:26Z",
+  "lastScan": "2026-11-24T02:55:20Z",
   "storageMode": "r2",
   "quotaGuard": {
     "selectedMode": "r2",
     "reasonCodes": [],
     "r2ReadAllowed": true,
-    "checkedAt": "2026-11-24T00:17:50Z"
+    "checkedAt": "2026-11-24T02:55:12Z"
   },
   "storage": {
-    "usedBytes": 5777241709,
+    "usedBytes": 5779167872,
     "mediaBytes": 1999994650,
     "hardLimitBytes": 9500000000,
     "warningBytes": 9300000000,
     "mediaLimitBytes": 2000000000,
-    "writesThisMonth": 392320
+    "writesThisMonth": 394015
   },
   "exploration": {
     "mode": "page",

@@ -54,6 +54,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -153,6 +154,28 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ runner.temp }}/pages-site
+
+      # GitHub's artifact-list API can lag behind a successful upload by
+      # several seconds. Without checking, deploy-pages can fail with
+      # "No artifacts named github-pages" even though the artifact exists.
+      - name: Wait for uploaded Pages artifact to become visible
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for attempt in {1..12}; do
+            if count="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length' 2>/dev/null)"; then
+              if [[ "$count" =~ ^[0-9]+$ ]] && (( count > 0 )); then
+                echo "GitHub Pages artifact is registered (attempt $attempt)."
+                exit 0
+              fi
+            fi
+            echo "Pages artifact upload succeeded; waiting for GitHub artifact listing (attempt $attempt/12)."
+            sleep 5
+          done
+          echo "::error::Uploaded Pages artifact is not visible to GitHub's artifact API after retries."
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment

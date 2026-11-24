@@ -1,4 +1,5 @@
 
+import {exactBotId,bindExactBotLookup} from './bot-id-search.js';
 const app=document.querySelector('#app');
 const page=document.body.dataset.page||'';
 const PAGE_SIZE=100;
@@ -305,8 +306,9 @@ function recordSearchText(record,field){
 async function advancedSearchPage(){
   const runtime=await loadRuntime(),manifest=await loadIndex(runtime,'text-search.json');
   const state={q:qs('q')||'',field:qs('field')||'any',exact:qs('exact')==='1'};
-  app.innerHTML='<section class="hero"><h1>Archived content search</h1><p>Search saved Greeting, Personality, Scenario, Example Dialogue, title text, and historical before/after values. A compact Bloom index narrows candidates first; matching bot records are then checked directly so Bloom false positives are not shown as results.</p></section><div class="changes-toolbar"><input id="archive-text-q" placeholder="Search archived text"><select id="archive-text-field"><option value="any">All archived text</option><option value="greeting">Greeting</option><option value="personality">Personality</option><option value="scenario">Scenario</option><option value="dialogue">Example Dialogue</option><option value="title">Name / title</option></select><label class="checkline"><input id="archive-text-exact" type="checkbox"> Exact phrase</label><button id="archive-text-run" class="primary-button" type="button">Search</button></div><p class="filter-note" id="archive-text-status">The search index covers '+fmt(manifest.botCount)+' detailed bot records.</p><section class="grid" id="archive-text-results"></section>';
+  app.innerHTML='<section class="hero"><h1>Archived content search</h1><p>Search saved Greeting, Personality, Scenario, Example Dialogue, title text, and historical before/after values. A compact Bloom index narrows candidates first; matching bot records are then checked directly so Bloom false positives are not shown as results.</p></section><div class="changes-toolbar"><input id="archive-text-q" placeholder="Search archived text, bot ID or link" aria-label="Search archived text, bot ID or link"><select id="archive-text-field"><option value="any">All archived text</option><option value="greeting">Greeting</option><option value="personality">Personality</option><option value="scenario">Scenario</option><option value="dialogue">Example Dialogue</option><option value="title">Name / title</option></select><label class="checkline"><input id="archive-text-exact" type="checkbox"> Exact phrase</label><button id="archive-text-run" class="primary-button" type="button">Search</button></div><p class="filter-note" id="archive-text-status">The search index covers '+fmt(manifest.botCount)+' detailed bot records.</p><section class="grid" id="archive-text-results"></section>';
   document.querySelector('#archive-text-q').value=state.q;document.querySelector('#archive-text-field').value=state.field;document.querySelector('#archive-text-exact').checked=state.exact;
+  bindExactBotLookup(document.querySelector('#archive-text-q'));
   let shardRows=null;
   async function loadRows(){
     if(shardRows)return shardRows;
@@ -319,6 +321,8 @@ async function advancedSearchPage(){
     state.q=document.querySelector('#archive-text-q').value.trim();state.field=document.querySelector('#archive-text-field').value;state.exact=document.querySelector('#archive-text-exact').checked;
     setParams({q:state.q,field:state.field,exact:state.exact?'1':''});
     const out=document.querySelector('#archive-text-results'),status=document.querySelector('#archive-text-status'),tokens=searchTokens(state.q);
+    const id=exactBotId(state.q);
+    if(id){location.href=detailHref(id);return;}
     if(!state.q||!tokens.length){out.innerHTML='';status.textContent='Enter at least one searchable word (3+ characters).';return;}
     status.textContent='Loading compact search shards…';const rows=await loadRows(),bytes=Number(manifest.bloomBytes||32),hashes=Number(manifest.hashes||4);
     let candidates=rows.filter(r=>tokens.every(t=>bloomHas(r.meta[4],t,bytes,hashes)));

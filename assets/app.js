@@ -1,6 +1,7 @@
 import {loadCoverage} from './archive-coverage.js';
 import {botTimestamp,reportedBotTimestamp} from './bot-dates.js';
 import {recordBotView} from './bot-popularity.js';
+import {exactBotId,bindExactBotLookup} from './bot-id-search.js';
 const asset = (path) => new URL(`../${path}`, import.meta.url);
 const app = document.querySelector('#app');
 const page = document.body.dataset.page || 'browse';
@@ -484,7 +485,7 @@ function toolbar(state,deletedOnly){
     : `<option value="trending">Trending</option><option value="popular">Popular</option><option value="top-rated">Top rated</option>`;
   const selected=(value,wanted)=>value===wanted?' selected':'';
   return `<button type="button" class="secondary-button mobile-filter-toggle" id="mobile-filter-toggle">Filters</button>
-    <div class="toolbar archive-search-toolbar"><input id="search" value="${esc(state.q)}" placeholder="Search bots">
+    <div class="toolbar archive-search-toolbar"><input id="search" value="${esc(state.q)}" placeholder="Search bots by name, ID or link" aria-label="Search bots by name, ID or link">
       <input id="creator" value="${esc(state.creator)}" placeholder="Creator username (partial)">
       <select id="sort">${sorts}</select>
       <select id="saved-field" aria-label="Archived field saved">
@@ -641,7 +642,7 @@ function botHasSavedField(bot,field){
   return !!bot?.savedFields?.[field];
 }
 function localFilterAndSort(bots,state,formerTagMembers=new Map()){
-  const q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=(state.showBlocked?[]:state.exclude).map(x=>x.toLowerCase());
+  const exactId=exactBotId(state.q),q=state.q.toLowerCase(), creator=state.creator.toLowerCase(), inc=state.include.map(x=>x.toLowerCase()), exc=(state.showBlocked?[]:state.exclude).map(x=>x.toLowerCase());
   const createdDays=state.created==='1d'?1:state.created==='7d'?7:state.created==='30d'?30:0,createdCutoff=createdDays?Date.now()-createdDays*86400000:0;
   const firstSeenCutoff=archiveTimeCutoff(state.firstSeen),lastSeenCutoff=archiveTimeCutoff(state.lastSeen);
   let rows=bots.filter(b=>{
@@ -662,7 +663,7 @@ function localFilterAndSort(bots,state,formerTagMembers=new Map()){
     if(lastSeenCutoff&&new Date(b.lastSeenAt||0).getTime()<lastSeenCutoff)return false;
     if(!botHasSavedField(b,state.savedField))return false;
     if(state.roleHint&&state.roleHint!=='any'&&!titleMatchesRole(b.title,state.roleHint))return false;
-    if(q&&!([b.id,b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
+    if(exactId ? String(b.id||'').toLowerCase()!==exactId : q&&!([b.id,b.name,b.title,b.creator,...(b.tags||[])].join(' ').toLowerCase().includes(q)))return false;
     return true;
   });
   rows.sort((a,b)=>{
@@ -767,13 +768,14 @@ async function browseLive(runtime,manifest,tags,stats){
       <footer class="footer">Active browsing queries SpicyChat's public Typesense index. Historical bot records and archived images are stored separately in the archive.</footer>
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
+  bindExactBotLookup($('#search'),{otherPage:'deleted'});
   let requestNo=0,timer,found=0;
   const fieldScanCache=new Map();
   const sync=()=>{state.q=$('#search').value.trim();state.creator=$('#creator').value.trim();state.sort=$('#sort').value;state.savedField=$('#saved-field')?.value||'any';state.contentRating=($('#safety-filter')?.value||state.contentRating||'any');if(state.contentRating==='all')state.contentRating='any';state.match=document.querySelector('input[name=match]:checked')?.value||'all';document.querySelectorAll('[data-meta-filter]').forEach(select=>{const key=select.dataset.metaFilter;if(key&&key!=='contentRating')state[key]=select.value||'any';});const sidebarSafety=document.querySelector('[data-meta-filter="contentRating"]');if(sidebarSafety)sidebarSafety.value=state.contentRating;state.blurNsfw=$('#blur-nsfw').checked;localStorage.setItem('sca-blur-nsfw',state.blurNsfw?'1':'0');setQuery(state);};
   async function run(){
     sync();grid.innerHTML='<p class="loading">Loading public bots…</p>';const token=++requestNo;
     const sortBy=(runtime.sorts||{})[state.sort]||runtime.sorts?.trending||'num_messages_24h:desc';
-    const exactId=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(state.q)?state.q.toLowerCase():'';
+    const exactId=exactBotId(state.q);
     const baseFilter=buildTsFilter(runtime,state);
     const oldResults=$('#historical-tag-public-results');
     // Historical matches are rendered separately; never mix them into a
@@ -870,6 +872,7 @@ async function browseDeleted(runtime,manifest,tags,stats){
       <footer class="footer">A bot is only moved here after repeated explicit public character API 404s. Disappearing from a listing alone is not deletion evidence.</footer>
     </section></div>`;
   const $=s=>document.querySelector(s),grid=$('#grid'),count=$('#result-count');$('#sort').value=state.sort;
+  bindExactBotLookup($('#search'),{otherPage:'bots'});
   let deletedRenderToken=0;
   async function ensureDeletedSavedFields(){
     if(state.savedField==='any')return;

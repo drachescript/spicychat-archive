@@ -91,6 +91,8 @@ jobs:
           node --check assets/archive-history-pages.js
           node --check assets/lorebooks.js
           node --check assets/rulebooks.js
+          node --check assets/public-relationships.js
+          node --test --experimental-default-type=module tests/public-relationships.test.mjs
           node --check assets/rulebook-filters.js
           node --test --experimental-default-type=module tests/rulebook-filters.test.mjs tests/rulebook-tags-catalog.test.mjs
           node --check assets/site-shell.js

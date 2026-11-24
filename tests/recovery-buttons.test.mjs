@@ -35,7 +35,7 @@ test('essential field/export actions initialize before optional helpers',()=>{
   assert.match(render,/recoveryStorageGet\('sca-recovery-ai-endpoint'\)/);
   assert.match(render,/recoveryStorageGet\('sca-recovery-ai-model'\)/);
   for(const name of [
-    'recovery-export-package','recovery-export-card','recovery-export-fields',
+    'recovery-export-spicychat','recovery-export-package','recovery-export-card','recovery-export-fields',
     'recovery-export-png','recovery-preview-export','recovery-copy-fields'
   ])assert.match(app,new RegExp(name));
 });

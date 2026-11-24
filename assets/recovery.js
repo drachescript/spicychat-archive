@@ -1,4 +1,4 @@
-import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,fieldExpansionPrompt,cardV2Payload,packCardPng} from './recovery-tools.js';
+import {recoveryReadiness,evidenceWarnings,conversationPreview,suggestionForField,fieldSuggestionPrompt,fieldExpansionPrompt,cardV2Payload,spicyChatImportPayload,packCardPng} from './recovery-tools.js';
 import {sensitiveRecoveryContext,validateSafeDraft} from './recovery-local.js';
 import {wireLocalRecovery,reportBrowserModelStatus} from './recovery-assistant.js';
 import {searchShardForId,recordFromSearchIndex,recordWithoutArchive} from './recovery-index.js';
@@ -144,7 +144,7 @@ function renderEditor(){
     '<button class="recovery-reset" type="button" data-clear-field="'+esc(def.key)+'">Clear</button></div></div>'+control+(conf?'<div class="recovery-confidence">Confidence: '+esc(String(conf.level||conf))+(conf.reason?' · '+esc(conf.reason):'')+(Array.isArray(conf.evidence)&&conf.evidence.length?' · Evidence: '+esc(conf.evidence.join('; ').slice(0,700)):'')+'</div>':'')+'</div>';}).join('');
   // Legacy description remains export-only metadata, never a visible creator field.
   const metadata='';
-  return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Exports preserve the provenance labels so inferred text is never presented as an original creator field.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div>'+metadata+'<div class="recovery-output-actions"><button class="primary-button" id="recovery-export-package" type="button">Download recovery package</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button><button class="secondary-button" id="recovery-export-png" type="button">Download image character card (PNG)</button><button class="secondary-button" id="recovery-preview-export" type="button">Preview export</button></div></article>';
+  return '<article class="recovery-card"><h2>Edit & export</h2><p>Everything is editable. Changing an archived or reconstructed value marks that field as User Modified. Recovery backups preserve provenance labels. Import files contain the reviewed character text, not recovery metadata.</p><div class="recovery-editor" id="recovery-editor">'+fields+'</div>'+metadata+'<section class="recovery-import-preview" aria-label="Create a new SpicyChat bot"><h3>Want to create your own bot on SpicyChat?</h3><ol><li>Review the character fields above.</li><li>Download the SpicyChat import JSON below.</li><li>In normal SpicyChat, open Create Chatbot → Avatar → Import and select the downloaded file.</li><li>Check the imported name, greeting and personality. Add or correct the title, tags, image, scenario, example dialogue and visibility as needed. Save as a new bot.</li></ol><p>This JSON is a text-only import file, not an undelete or conversation transfer. No QoL extension is required to use the native Import button. Only import content you are allowed to use.</p><div class="recovery-action-row"><button class="primary-button" id="recovery-export-spicychat" type="button">Download SpicyChat import JSON</button><a class="secondary-button" href="https://spicychat.ai/" target="_blank" rel="noopener noreferrer">Open SpicyChat</a><a class="secondary-button" href="../guide/#new-bot">How to import</a></div><p class="recovery-privacy">If the importer leaves any fields blank or rejects the file, use Copy fields and paste them manually. SpicyChat may change its supported formats.</p></section><h3>Backups &amp; other formats</h3><p>The recovery package is for keeping a local backup with provenance. Do not upload it to the normal SpicyChat importer.</p><div class="recovery-output-actions"><button class="secondary-button" id="recovery-export-package" type="button">Download recovery package (backup)</button><button class="secondary-button" id="recovery-export-card" type="button">Download character-card JSON (V2)</button><button class="secondary-button" id="recovery-export-fields" type="button">Download field JSON</button><button class="secondary-button" id="recovery-copy-fields" type="button">Copy fields</button><button class="secondary-button" id="recovery-export-png" type="button">Download image character card (PNG)</button><button class="secondary-button" id="recovery-preview-export" type="button">Preview export</button></div></article>';
 }
 
 
@@ -519,6 +519,7 @@ function bindEditorOnly(){
    button.addEventListener('click',()=>resetOneField(button.dataset[attr],mode));
   }
  }
+ document.querySelector('#recovery-export-spicychat')?.addEventListener('click',exportSpicyChatImport);
  document.querySelector('#recovery-export-package')?.addEventListener('click',exportRecoveryPackage);
  document.querySelector('#recovery-export-card')?.addEventListener('click',exportCharacterCard);
  document.querySelector('#recovery-export-fields')?.addEventListener('click',exportFields);
@@ -540,6 +541,11 @@ function cardPayload(){
 }
 function safeFilename(value){
  return (String(value||state.botId).replace(/[^a-z0-9._-]+/gi,'_').slice(0,70)||state.botId);
+}
+function exportSpicyChatImport(){
+ const fields=editorFieldObject();
+ const payload=spicyChatImportPayload(fields);
+ downloadBlob('spicychat-import-'+safeFilename(fields.name)+'.json',JSON.stringify(payload,null,2)+'\n','application/json;charset=utf-8');
 }
 function exportRecoveryPackage(){
  const payload={

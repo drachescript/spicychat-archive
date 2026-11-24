@@ -115,6 +115,21 @@ export function fieldExpansionPrompt(field,evidence,conversation=null){
  ].join('\n');
 }
 
+// Flat CAI-style character export, separate from Archive recovery packages.
+// SpicyChat documents CAI Tools JSON import, but does not publish a complete
+// importer schema. Keep common field aliases consistent and review after import.
+export function spicyChatImportPayload(fields = {}) {
+  const text = key => typeof fields[key] === 'string' ? fields[key] : '';
+  const name = text('name'), title = text('title'), greeting = text('greeting');
+  const personality = text('personality'), dialogue = text('example_dialogue');
+  return {
+    name, title, description: title, greeting, definition: personality,
+    personality, first_mes: greeting, scenario: text('scenario'),
+    example_dialogue: dialogue, mes_example: dialogue,
+    tags: Array.isArray(fields.tags) ? fields.tags.filter(x => typeof x === 'string') : []
+  };
+}
+
 export function cardV2Payload(fields, context = {}) {
   return {
     spec: 'chara_card_v2', spec_version: '2.0',

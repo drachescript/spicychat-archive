@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import {readFileSync} from 'node:fs';
 import {
  recoveryReadiness,evidenceWarnings,conversationPreview,
- suggestionForField,fieldSuggestionPrompt,cardV2Payload,packCardPng
+ suggestionForField,fieldSuggestionPrompt,cardV2Payload,spicyChatImportPayload,packCardPng
 } from '../assets/recovery-tools.js';
 
 test('readiness counts only actual creator fields; not unused Description',()=>{
@@ -50,6 +50,14 @@ test('Character Card V2 preserves original title and field provenance without ma
  assert.equal(card.data.extensions.spicychat_archive_recovery.image_url,'https://example.com/a.png');
 });
 
+test('SpicyChat import JSON is flat, uses reviewed character fields, and excludes recovery metadata',()=>{
+ const fields={name:'Mira',title:'Forest guide',greeting:'Welcome!',personality:'Patient and curious',scenario:'A forest trail',example_dialogue:'Hello',tags:['Fantasy'],image:'https://example.com/a.png',provenance:{name:'archived'},conversation:{messages:['private']},botId:'old-id',visibility:'public'};
+ const card=spicyChatImportPayload(fields);
+ assert.deepEqual(card,{name:'Mira',title:'Forest guide',description:'Forest guide',greeting:'Welcome!',definition:'Patient and curious',personality:'Patient and curious',first_mes:'Welcome!',scenario:'A forest trail',example_dialogue:'Hello',mes_example:'Hello',tags:['Fantasy']});
+ assert.equal(spicyChatImportPayload({}).definition,'');
+ assert.deepEqual(spicyChatImportPayload({tags:['Fantasy',null,1]}).tags,['Fantasy']);
+ assert.equal(JSON.parse(JSON.stringify(card)).greeting,fields.greeting);
+});
 test('PNG character-card export inserts a chara tEXt chunk after IHDR and leaves image bytes intact',()=>{
  // A minimal 1px PNG sample, with a proper IHDR first.
  const original=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/uE8AAAAASUVORK5CYII=','base64');

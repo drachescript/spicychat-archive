@@ -7,6 +7,7 @@
     ['/deleted-lorebooks/', 'Deleted Lorebooks'],
     ['/deleted-rulebooks/', 'Deleted Rulebooks'],
     ['/recovery/', 'Recovery Lab'],
+    ['/guide/', 'Archive for Dummies'],
     ['/stats/', 'Stats'],
     ['/faq/', 'FAQ'],
   ];

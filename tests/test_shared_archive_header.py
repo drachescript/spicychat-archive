@@ -43,7 +43,8 @@ class SharedArchiveHeaderTests(unittest.TestCase):
             ('/', 'Home'), ('/deleted/', 'Deleted bots'),
             ('/deleted-lorebooks/', 'Deleted Lorebooks'),
             ('/deleted-rulebooks/', 'Deleted Rulebooks'),
-            ('/recovery/', 'Recovery Lab'), ('/stats/', 'Stats'),
+            ('/recovery/', 'Recovery Lab'), ('/guide/', 'Archive for Dummies'),
+            ('/stats/', 'Stats'),
             ('/faq/', 'FAQ')
         ])
         self.assertIn("summary.textContent = 'More'",source)

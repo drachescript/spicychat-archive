@@ -1,0 +1,19 @@
+.guide-page{max-width:1050px;padding-bottom:32px;line-height:1.65}
+.guide-hero{padding-bottom:12px}.guide-kicker{color:var(--accent2);font-size:12px;font-weight:700;letter-spacing:.04em}
+.guide-page h1,.guide-page h2,.guide-page h3{line-height:1.25}
+.guide-note,.guide-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:16px 0;min-width:0;scroll-margin-top:160px}
+.guide-note{border-left:4px solid var(--accent)}
+.guide-page h2{margin:0 0 12px;font-size:21px}.guide-page h3{margin:20px 0 8px;font-size:16px}
+.guide-page p{margin:8px 0 12px;color:var(--muted)}.guide-page strong{color:var(--text)}
+.guide-page a:not(.primary-button):not(.secondary-button){color:var(--accent2)}
+.guide-start,.guide-definitions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.guide-start a,.guide-definitions>div{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);text-decoration:none;min-width:0}
+.guide-start a:hover,.guide-start a:focus-visible{border-color:var(--accent)}.guide-start span,.guide-definitions span{font-size:13px;color:var(--muted)}
+.guide-page ol{padding-left:25px}.guide-page li{padding-left:3px;margin:8px 0}.guide-steps li{margin:13px 0}
+.guide-example{padding:14px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
+.guide-example code{display:block;overflow-wrap:anywhere;word-break:break-word;font-size:13px;color:var(--text)}
+.guide-page code{overflow-wrap:anywhere}.guide-example mark{background:#493b25;color:#ffe0a3;border-radius:3px}.guide-muted{color:var(--muted)}
+.guide-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.guide-actions a{white-space:normal;max-width:100%;text-align:center}
+.guide-card details{border-top:1px solid var(--line);padding:12px 0}.guide-card summary{cursor:pointer;font-weight:700}
+@media(max-width:680px){.guide-note,.guide-card{padding:15px;scroll-margin-top:220px}.guide-start,.guide-definitions{grid-template-columns:minmax(0,1fr)}.guide-page h2{font-size:19px}.guide-actions a{flex:1 1 auto}}

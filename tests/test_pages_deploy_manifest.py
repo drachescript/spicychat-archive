@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "pages.yml"
 ROUTES = (
     "bot", "bots", "deleted", "deleted-lorebooks", "lorebook", "lorebooks",
-    "recovery", "merge", "name-trends", "tag-stats", "creator", "changes",
+    "recovery", "guide", "merge", "name-trends", "tag-stats", "creator", "changes",
     "activity", "search", "explorer", "restored", "health", "stats", "faq",
     "rulebook", "rulebooks", "deleted-rulebooks",
 )
@@ -38,7 +38,7 @@ class PagesManifestTests(unittest.TestCase):
     def test_publish_fails_if_required_html_is_missing(self):
         content = WORKFLOW.read_text(encoding="utf-8")
         for token in ("Verify required Pages routes before publishing",
-                      "recovery/index.html", "merge/index.html",
+                      "recovery/index.html", "guide/index.html", "assets/guide.css", "merge/index.html",
                       "deleted-lorebooks/index.html", "name-trends/index.html",
                       "tag-stats/index.html", "Pages artifact missing required routes"):
             with self.subTest(token=token):

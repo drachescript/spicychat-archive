@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-25T00:46:47Z",
+  "checkedAt": "2026-11-25T09:03:05Z",
   "monthStart": "2026-10-28T00:00:00Z",
   "selectedMode": "r2",
   "reasonCodes": [],
@@ -8,26 +8,26 @@
   "r2ReadAllowed": true,
   "imagesAllowed": false,
   "usage": {
-    "classA": 474125,
-    "classB": 1180538,
+    "classA": 474410,
+    "classB": 1188304,
     "freeOperations": 706,
-    "storageBytes": 5897832886,
+    "storageBytes": 5897834601,
     "objectCount": 853595,
     "actions": {
       "DeleteObject": 558,
       "DeleteObjects": 148,
-      "GetObject": 725684,
+      "GetObject": 733194,
       "HeadBucket": 25,
-      "HeadObject": 454829,
+      "HeadObject": 455085,
       "ListBuckets": 9,
-      "ListObjects": 5449,
-      "PutObject": 468667
+      "ListObjects": 5452,
+      "PutObject": 468949
     },
     "buckets": {
       "spicychat-archiv": {
-        "datetime": "2026-11-25T00:10:00Z",
-        "payloadSize": 5817078451,
-        "metadataSize": 80754435,
+        "datetime": "2026-11-25T08:10:00Z",
+        "payloadSize": 5817079582,
+        "metadataSize": 80755019,
         "objectCount": 853595
       }
     }

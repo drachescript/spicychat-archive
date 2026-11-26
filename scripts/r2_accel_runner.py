@@ -149,6 +149,25 @@ def _apply_scheduled_archive_profile(config: dict) -> dict:
     return config
 
 
+def _apply_coverage_sweep_profile(config: dict, budget: int) -> dict:
+    config = _apply_scheduled_archive_profile(config)
+    crawler = config["crawler"]
+    crawler.update(coverage_sweep_only=True, maintenance_verification_enabled=True,
+                   maintenance_verification_budget=max(1, min(50000, int(budget))),
+                   maintenance_priority_budget=10000,
+                   maintenance_verification_time_limit_seconds=5400,
+                   image_archive_enabled=False)
+    return config
+
+
+def _install_coverage_sweep_profile() -> None:
+    original_load_config = legacy.load_config
+    def load():
+        return _apply_coverage_sweep_profile(original_load_config(),
+                                            _env_int("SPICYCHAT_ARCHIVE_COVERAGE_BUDGET", 5000))
+    legacy.load_config = load
+
+
 def _install_scheduled_archive_profile() -> None:
     original_load_config = legacy.load_config
 
@@ -236,7 +255,9 @@ def main() -> int:
         # Install this after the batching/maintenance wrapper so retries repeat
         # the exact same logical Typesense request, including failover.
         install_typesense_retry()
-        if os.environ.get("SPICYCHAT_ARCHIVE_VERIFY_MISSING", "").strip().lower() in {
+        if os.environ.get("SPICYCHAT_ARCHIVE_COVERAGE_SWEEP", "").lower() == "true":
+            _install_coverage_sweep_profile()
+        elif os.environ.get("SPICYCHAT_ARCHIVE_VERIFY_MISSING", "").strip().lower() in {
             "1", "true", "yes", "on",
         }:
             _install_missing_verification_profile()

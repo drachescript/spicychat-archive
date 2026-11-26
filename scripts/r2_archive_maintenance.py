@@ -21,6 +21,7 @@ from typing import Any
 import archive as legacy
 import r2_archive_batched as batched
 import r2_archive_optimized as optimized
+from coverage_sweep import select_missing
 
 
 _original_configure_cloud = optimized.optimized_configure_cloud
@@ -327,8 +328,19 @@ def _maintenance_character_refresh(
     order = store.discovery_order
     total = len(order)
     priority = list(dict.fromkeys(run_state.setdefault("priorityEnrichment", [])))
-    priority_selected = priority[: min(priority_budget, budget)]
-    remaining_priority = priority[len(priority_selected) :]
+    coverage, positions = [], []
+    coverage_state = None
+    if crawler.get("coverage_sweep_only"):
+        from audit_discovery_ids import inventory_bot_file_ids
+        stored, inventory = inventory_bot_file_ids(store, max_pages=2000)
+        coverage_state = run_state.setdefault("coverageSweep", {})
+        excluded = set(store.deleted_index) | set(run_state.get("missingChecks") or {}) | set(priority)
+        coverage, positions = select_missing(order, stored, excluded,
+            int(coverage_state.get("cursor") or 0), min(8000, budget, priority_budget))
+        print(f"Coverage sweep: {len(coverage):,} known IDs without saved files prioritized; {inventory['r2ListPages']:,} R2 listing pages.", flush=True)
+    regular_room = max(0, min(priority_budget, budget)-len(coverage))
+    priority_selected = coverage + priority[:regular_room]
+    remaining_priority = priority[regular_room:]
     selected_ids = set(priority_selected)
 
     sweep = run_state.setdefault("verificationSweep", {})
@@ -569,6 +581,12 @@ def _maintenance_character_refresh(
     elapsed = int(time.monotonic() - started)
 
     run_state["enrichmentCursor"] = cursor
+    if coverage_state is not None:
+        attempted_coverage = min(priority_processed, len(coverage))
+        if attempted_coverage:
+            coverage_state["cursor"] = positions[attempted_coverage-1]
+        coverage_state.update(lastRunAt=at, lastAttempted=attempted_coverage,
+                              lastSelected=len(coverage))
     run_state["priorityEnrichment"] = []
     unprocessed_priority = priority_selected[priority_processed:]
     for bot_id in [*unprocessed_priority, *remaining_priority, *retry]:
@@ -740,7 +758,8 @@ def maintenance_configure_cloud(config: dict[str, Any], store):
         at: str,
         run_state: dict[str, Any],
     ):
-        if (run_config.get("crawler") or {}).get("verify_missing_only"):
+        if ((run_config.get("crawler") or {}).get("verify_missing_only") or
+                (run_config.get("crawler") or {}).get("coverage_sweep_only")):
             # Preserve stored rankings and the site runtime config, while making
             # zero public Typesense discovery/listing requests.
             return {"ok": False, "skipped": True, "count": 0,

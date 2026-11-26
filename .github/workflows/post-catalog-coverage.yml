@@ -1,0 +1,165 @@
+name: Post-catalog detailed Archive sweep
+run-name: Post-catalog detailed Archive sweep
+on:
+  workflow_run:
+    workflows: ["Update SpicyChat archive"]
+    types: [completed]
+permissions:
+  contents: write
+jobs:
+  coverage:
+    # One-time campaign tied to the explicitly requested sequential sweep.
+    if: github.event.workflow_run.id == 45859255626 && github.event.workflow_run.conclusion == 'success'
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        batch: [1, 2, 3, 4, 5, 6]
+    concurrency:
+      group: spicychat-archive-writer
+      cancel-in-progress: false
+      queue: max
+    runs-on: ubuntu-latest
+    timeout-minutes: 165
+    env:
+      CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+      CLOUDFLARE_R2_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      CLOUDFLARE_R2_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      SPICYCHAT_ARCHIVE_COVERAGE_SWEEP: "true"
+      SPICYCHAT_ARCHIVE_DISABLE_IMAGES: "true"
+      SPICYCHAT_ARCHIVE_EXPLORE_GUARD_CAP: "0"
+      ARCHIVE_COVERAGE_BATCH: ${{ matrix.batch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Verify preceding catalog actually crawled
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          stats=json.loads(Path("data/stats.json").read_text())
+          rows=[r for r in stats.get("runs",[]) if str(r.get("workflowRunUrl") or "").endswith("/45859255626")]
+          if not rows or not any(int((r.get("exploration") or {}).get("pagesCompleted") or 0)>0 for r in rows):
+              raise SystemExit("The requested catalog crawl has no published completed pages; refusing to start follow-up.")
+          PY
+      - name: Test crawler
+        run: python -m unittest discover -s tests -v
+      - name: Fresh quota check and bounded Character API budget
+        id: guard
+        run: |
+          python scripts/r2_guard_adaptive.py --github-output "$GITHUB_OUTPUT" --status-file data/r2-usage.json
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0,"scripts")
+          from coverage_sweep import safe_budget
+          budget=safe_budget(json.loads(Path("data/r2-usage.json").read_text()),json.loads(Path("config.json").read_text()))
+          if budget < 500:
+              raise SystemExit("Insufficient safe quota for another detailed sweep batch; stopping campaign.")
+          with open(os.environ["GITHUB_OUTPUT"],"a") as f:
+              f.write(f"budget={budget}\n")
+          print(f"Detailed sweep batch: up to {budget:,} checks, 90-minute crawl limit.")
+          PY
+      - name: Gather detailed bot files and refresh rolling Archive corpus
+        id: crawl
+        if: steps.guard.outputs.mode == 'r2'
+        env:
+          SPICYCHAT_ARCHIVE_COVERAGE_BUDGET: ${{ steps.guard.outputs.budget }}
+        run: python scripts/r2_accel_runner.py archive --summary-file "$RUNNER_TEMP/archive-summary.md"
+      - name: Publish batch feed
+        if: always() && steps.crawl.outcome == 'success'
+        env:
+          ARCHIVE_RUN_STATUS: success
+          ARCHIVE_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python scripts/publish_run_feed.py
+      - name: Refresh full saved-file inventory and public statistics
+        if: steps.crawl.outcome == 'success'
+        run: |
+          python scripts/audit_discovery_ids.py --max-list-pages 2000
+          python scripts/sync_archive_coverage.py
+          python scripts/public_growth.py
+      - name: Add run summary
+        if: always()
+        run: |
+          [ ! -f "$RUNNER_TEMP/archive-summary.md" ] || cat "$RUNNER_TEMP/archive-summary.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Commit public stats/runtime changes
+        if: always() && steps.crawl.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          stage_publish_files() {
+            git add -A -- archive data config.json
+            for path in fallback media; do
+              if [ -e "$path" ] || git ls-files -- "$path" | grep -q .; then
+                git add -A -- "$path"
+              fi
+            done
+          }
+
+          # Snapshot only files this run actually changed. A long crawler run can
+          # overlap a human/code commit to main; rebasing generated JSON then can
+          # conflict even though the crawl itself succeeded.
+          stage_publish_files
+          if git diff --cached --quiet; then
+            echo "No Git-side archive changes to commit."
+            exit 0
+          fi
+
+          snapshot="$RUNNER_TEMP/archive-publish-snapshot"
+          changed="$RUNNER_TEMP/archive-publish-changed"
+          deleted="$RUNNER_TEMP/archive-publish-deleted"
+          rm -rf "$snapshot"
+          mkdir -p "$snapshot/files"
+
+          git diff --cached --name-only --diff-filter=ACMRTUXB -z > "$changed"
+          git diff --cached --name-only --diff-filter=D -z > "$deleted"
+
+          while IFS= read -r -d '' file; do
+            mkdir -p "$snapshot/files/$(dirname "$file")"
+            cp -a -- "$file" "$snapshot/files/$file"
+          done < "$changed"
+
+          # Publish the snapshot on top of the newest main instead of rebasing a
+          # stale generated-data commit. This preserves newer code/docs while the
+          # completed run remains authoritative for the runtime files it changed.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            cp -a "$snapshot/files/." .
+            while IFS= read -r -d '' file; do
+              rm -f -- "$file"
+            done < "$deleted"
+
+            stage_publish_files
+            if git diff --cached --quiet; then
+              echo "Newest main already contains this archive result."
+              exit 0
+            fi
+
+            git commit -m "Update SpicyChat archive"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            if [ "$attempt" -eq 5 ]; then
+              echo "main kept changing; archive result publish failed after 5 race-safe attempts."
+              exit 1
+            fi
+            echo "main changed during publish; applying the same archive snapshot to the new tip and retrying..."
+            sleep $((attempt * 2))
+          done
+

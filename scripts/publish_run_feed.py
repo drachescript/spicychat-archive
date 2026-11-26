@@ -239,7 +239,8 @@ def main() -> int:
     STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     requested_raw = os.environ.get("SPICYCHAT_ARCHIVE_MANUAL_PAGES", "").strip()
-    requested = int_or_none(requested_raw) if requested_raw else scheduled_pages
+    coverage_sweep = os.environ.get("SPICYCHAT_ARCHIVE_COVERAGE_SWEEP", "").lower() == "true"
+    requested = 0 if coverage_sweep else int_or_none(requested_raw) if requested_raw else scheduled_pages
     raw_run_status = os.environ.get("ARCHIVE_RUN_STATUS", "success")
     run_status = classify_run_status(raw_run_status, exploration)
     run_at = latest.get("at") or stats.get("generatedAt") or utc_now()
@@ -251,6 +252,10 @@ def main() -> int:
         if github_run_id
         else f"archive-run:{run_at}"
     )
+
+    batch = os.environ.get("ARCHIVE_COVERAGE_BATCH", "").strip()
+    if coverage_sweep and batch.isdecimal():
+        run_id += f":coverage-{batch}"
 
     total_duration = int(latest.get("runDurationSeconds") or 0)
     discovery_duration = int(exploration.get("durationSeconds") or 0)
@@ -281,7 +286,8 @@ def main() -> int:
             "pagesCompleted": int(exploration.get("pagesCompleted") or 0),
             "discoveryCompletion": completion,
             "runType": (
-                "manual-discovery"
+                "coverage-sweep"
+                if coverage_sweep else "manual-discovery"
                 if requested_raw and (int_or_none(requested_raw) or 0) > 0
                 else "scheduled-maintenance"
                 if int(exploration.get("pageBudget") or 0) == 0

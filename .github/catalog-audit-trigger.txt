@@ -6,3 +6,6 @@ Do not bypass R2 free-tier guards or scheduled archive writer concurrency.
 User-requested repeat full-catalog sweep: 2026-11-23.
 Reason: prior 2,500-page sweep completed and archived to R2, but a later regression-test failure prevented the updated public run feed from reaching GitHub and the Discord reporter.
 Run the existing full-index public Typesense cursor with 2,500-page budget; revalidate code first; retain R2 guard, write thresholds, verification safeguards, and existing archive history.
+
+User-requested sequential public archive sweep: 2026-11-26.
+Run Lorebooks, then Rulebooks, then the existing 2,500-page bot catalog sweep under the shared writer lock. Preserve the 24-hour cooldown, fresh quota checks, and all existing safety limits.

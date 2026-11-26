@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-26T09:15:17Z",
-  "runId": "github:45786543604:1",
+  "generatedAt": "2026-11-26T13:57:20Z",
+  "runId": "github:45833938964:1",
   "status": "success",
   "archive": {
     "totalBots": 1486998,
-    "deletedBots": 29664,
+    "deletedBots": 29677,
     "publicIndexBots": 1455542,
     "startedAt": "2026-09-28T00:00:00Z"
   },
   "run": {
-    "finishedAt": "2026-11-26T09:15:11Z",
-    "durationSeconds": 1310,
-    "addedBots": 301,
-    "deletedConfirmed": 0,
+    "finishedAt": "2026-11-26T13:57:18Z",
+    "durationSeconds": 41,
+    "addedBots": 0,
+    "deletedConfirmed": 13,
     "pagesRequested": 500,
     "scheduledPages": 500,
     "pagesBudget": 0,
@@ -21,13 +21,13 @@
     "discoveryCompletion": "not-run",
     "runType": "scheduled-maintenance",
     "hits": 0,
-    "newFromListings": 300,
-    "newestListingsChecked": 6498,
-    "newFromNewest": 300,
+    "newFromListings": 0,
+    "newestListingsChecked": 0,
+    "newFromNewest": 0,
     "newFromDiscovery": 0,
     "changedIngestRecords": 0,
     "discoveryDurationSeconds": 0,
-    "nonDiscoveryDurationSeconds": 1310,
+    "nonDiscoveryDurationSeconds": 41,
     "discoverySharePercent": 0.0,
     "timeLimited": false,
     "naturalEnd": false,
@@ -35,12 +35,12 @@
     "switchedToCursor": false,
     "errors": [],
     "stopReason": null,
-    "enrichmentAttempted": 5000,
-    "enriched": 4914,
-    "imagesAttempted": 1,
+    "enrichmentAttempted": 0,
+    "enriched": 0,
+    "imagesAttempted": 0,
     "imagesSaved": 0,
-    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/45786543604",
-    "newOther": 1
+    "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/45833938964",
+    "newOther": 0
   },
   "lastSuccessfulRun": null,
   "lastDiscoveryRun": {
@@ -56,22 +56,22 @@
     "status": "success"
   },
   "growth": {
-    "added24h": 2017,
+    "added24h": 1384,
     "added7d": 12186,
-    "added30d": 52922,
-    "averagePerDay": 1787.2,
-    "observedHours": 1413.0,
+    "added30d": 52013,
+    "averagePerDay": 1625.6,
+    "observedHours": 1418.1,
     "observedGrowth": 1475729
   },
   "storage": {
-    "usedBytes": 5852467317,
+    "usedBytes": 5852500866,
     "mediaBytes": 1999994650,
-    "objects": 866963,
-    "writesThisMonth": 426127
+    "objects": 866970,
+    "writesThisMonth": 426172
   },
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-26T09:15:11Z",
+    "generatedAt": "2026-11-26T13:57:18Z",
     "sampleCount": 234,
     "latestPublicIndexBots": 1455542,
     "firstSampleAt": "2026-09-28T17:36:57Z",

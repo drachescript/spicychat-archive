@@ -15,7 +15,7 @@ SCRIPT = ROOT / "scripts" / "audit_discovery_ids.py"
 
 
 class AuditWorkflowTests(unittest.TestCase):
-    def test_exactly_one_id_inventory_workflow_and_no_retired_flags(self):
+    def test_exactly_one_scheduled_inventory_and_guarded_explicit_followup(self):
         scheduled = []
         invocations = []
         for path in sorted(WORKFLOWS.glob("*.yml")):
@@ -27,7 +27,16 @@ class AuditWorkflowTests(unittest.TestCase):
             self.assertIn("--max-list-pages", source, path.name)
             if re.search(r"(?m)^  schedule:\s*$", source):
                 scheduled.append(path.name)
-        self.assertEqual([name for name, _ in invocations], ["archive-id-audit.yml"])
+        self.assertEqual([name for name, _ in invocations], ["archive-id-audit.yml", "post-catalog-coverage.yml"])
+        followup = dict(invocations)["post-catalog-coverage.yml"]
+        self.assertIn("github.event.workflow_run.id == 45859255626", followup)
+        self.assertIn("github.event.workflow_run.conclusion == 'success'", followup)
+        self.assertIn("paths: [\".github/coverage-sweep-retry.txt\"]", followup)
+        self.assertIn("Verify preceding catalog actually crawled", followup)
+        self.assertIn("Fresh quota check", followup)
+        self.assertIn("steps.crawl.outcome == 'success'", followup)
+        self.assertIn("group: spicychat-archive-writer", followup)
+        self.assertIn("max-parallel: 1", followup)
         self.assertEqual(scheduled, ["archive-id-audit.yml"])
 
     def test_workflow_flags_match_script_help(self):

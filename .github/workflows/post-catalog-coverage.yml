@@ -1,6 +1,10 @@
 name: Post-catalog detailed Archive sweep
 run-name: Post-catalog detailed Archive sweep
 on:
+  push:
+    branches: [main]
+    paths: [".github/coverage-sweep-retry.txt"]
+  workflow_dispatch:
   workflow_run:
     workflows: ["Update SpicyChat archive"]
     types: [completed]
@@ -9,7 +13,10 @@ permissions:
 jobs:
   coverage:
     # One-time campaign tied to the explicitly requested sequential sweep.
-    if: github.event.workflow_run.id == 45859255626 && github.event.workflow_run.conclusion == 'success'
+    if: >-
+      ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.id == 45859255626 && github.event.workflow_run.conclusion == 'success') ||
+          (github.event_name == 'push' && contains(github.event.head_commit.message, 'Retry detailed Archive sweep')) ||
+          github.event_name == 'workflow_dispatch' }}
     strategy:
       fail-fast: true
       max-parallel: 1
@@ -49,7 +56,7 @@ jobs:
           from pathlib import Path
           stats=json.loads(Path("data/stats.json").read_text())
           rows=[r for r in stats.get("runs",[]) if str(r.get("workflowRunUrl") or "").endswith("/45859255626")]
-          if not rows or not any(int((r.get("exploration") or {}).get("pagesCompleted") or 0)>0 for r in rows):
+          if not rows or not any((int((r.get("exploration") or {}).get("pagesCompleted") or 0) >= 2500 or (r.get("exploration") or {}).get("naturalEnd") is True) and not (r.get("exploration") or {}).get("errors") for r in rows):
               raise SystemExit("The requested catalog crawl has no published completed pages; refusing to start follow-up.")
           PY
       - name: Test crawler

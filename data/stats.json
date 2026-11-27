@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-27T13:20:05Z",
+  "generatedAt": "2026-11-27T15:07:55Z",
   "startedAt": "2026-09-28T00:00:00Z",
   "totalBots": 1488400,
   "publicIndexBots": 1456670,
-  "deletedBots": 29834,
+  "deletedBots": 29844,
   "latestAdded": 0,
   "growth": {
     "added24h": 1402,
-    "added7d": 12008,
+    "added7d": 11939,
     "added30d": 53057,
-    "averagePerDay": 1707.2,
-    "observedHours": 1439.8,
+    "averagePerDay": 1742.3,
+    "observedHours": 1441.6,
     "observedGrowth": 1477131
   },
   "adaptiveDiscovery": {
@@ -14106,11 +14106,63 @@
       },
       "publicIndexCountSource": "carried-forward",
       "addedSincePrevious": 0
+    },
+    {
+      "at": "2026-11-27T15:07:55Z",
+      "kind": "archive-run",
+      "workflowRunUrl": "https://github.com/drachescript/spicychat-archive/actions/runs/45936529915",
+      "totalBots": 1488400,
+      "publicIndexBots": 1456670,
+      "deletedBots": 29844,
+      "missingBots": 55,
+      "reconciliationGap": 1886,
+      "unreconciledBots": 1886,
+      "runDurationSeconds": 5998,
+      "listings": {
+        "latest": {
+          "found": 0,
+          "count": 0,
+          "new": 0,
+          "changed": 0
+        }
+      },
+      "exploration": {
+        "hits": 0,
+        "new": 0,
+        "changed": 0,
+        "pageBudget": 0,
+        "pagesCompleted": 0,
+        "nextPageBudget": 0,
+        "timeLimited": false,
+        "durationSeconds": 0,
+        "errors": [],
+        "partial": false,
+        "naturalEnd": false,
+        "resultCapReached": false,
+        "switchedToCursor": false
+      },
+      "enrichment": {
+        "attempted": 14864,
+        "enriched": 14629
+      },
+      "images": {
+        "attempted": 0,
+        "saved": 0
+      },
+      "deletedConfirmed": 20,
+      "storage": {
+        "usedBytes": 6072618495,
+        "mediaBytes": 1999994650,
+        "objects": 966288,
+        "writesThisMonth": 537815
+      },
+      "publicIndexCountSource": "carried-forward",
+      "addedSincePrevious": 0
     }
   ],
   "publicGrowth": {
     "schemaVersion": 1,
-    "generatedAt": "2026-11-27T13:20:05Z",
+    "generatedAt": "2026-11-27T15:07:55Z",
     "sampleCount": 236,
     "latestPublicIndexBots": 1456670,
     "firstSampleAt": "2026-09-28T17:36:57Z",
